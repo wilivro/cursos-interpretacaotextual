@@ -1,0 +1,77 @@
+<!-- Desenvolvedor: Danilo Thiago -->
+<!doctype html>
+<html lang="pt-br">
+<head>
+    <title>Lição 01 Peça 05</title>
+    <meta charset="utf-8">
+    <script src="../wilib/js/lib/require.js"></script>
+    <script src="../wilib/js/app.js"></script>
+    <link type="text/css" rel="stylesheet" href="../wilib/css/font-awesome.css">
+    <link type="text/css" rel="stylesheet" href="../wilib/css/meioAmbiente.css">
+
+    <style type="text/css">
+    </style>
+    <script>
+        require(['../wilib/js/lib/slide_vertical'], function (edi) {
+
+            edi.setConfig({
+                titulo: "Em uma prova de concurso os candidatos são levados através da<br>Interpretação de Textos a cumprir algumas exigências, para<br>conhecê-las clique sobre as barras a seguir.",
+                mascote: 'mascote',
+                icone: "interrogacaoAzul"
+            });
+
+            var slides = [
+                {
+                    btn: 'IDENTIFICAR',
+                    txt: 'reconhecer os elementos fundamentais de uma argumentação, de um processo, de uma época (neste caso, procuram-se os verbos e os advérbios, os quais definem o tempo).',
+                    img: '../img/licao01/p05.1.png'
+                },
+                {
+                    btn: 'COMPARAR ',
+                    txt: 'descobrir as relações de semelhança ou de diferenças entre as situações do texto.',
+                    img: '../img/licao01/p05.2.png'
+                },
+                {
+                    btn: 'COMENTAR',
+                    txt: 'relacionar  o conteúdo apresentado com uma realidade, opinando a respeito.',
+                    img: '../img/licao01/p05.3.png'
+                },
+                {
+                    btn: 'RESUMIR',
+                    txt: 'concentrar as ideias centrais e/ou secundárias em um só parágrafo.',
+                    img: '../img/licao01/p05.4.png'
+                },
+                {
+                    btn: 'PARAFRASEAR',
+                    txt: 'reescrever o texto com outras palavras. ',
+                    img: '../img/licao01/p05.5.png'
+                }
+            ];
+
+            edi.slide_vertical(slides, function () {
+
+            }, function () {
+                $('<div>')
+                        .css({
+                            position: 'absolute',
+                            top: 170,
+                            left: 60,
+                            width: 640,
+                            color: '#5EFF00',
+                            background: 'rgba(0, 0, 0, 0.5)',
+                            zIndex: 101,
+                            padding: 10,
+                            textAlign: 'center',
+                            fontSize: 30,
+                            textShadow: '2px 2px 2px rgba(255, 255, 255, 0.8)',
+                            borderRadius: 10
+                        })
+                        .html('Muito Bem! Ao realizar uma prova de concurso será exigido de você este conhecimento.')
+                        .appendTo('#conteudo');
+            }, {showNumber: true});
+        });
+    </script>
+</head>
+<body>
+</body>
+</html>

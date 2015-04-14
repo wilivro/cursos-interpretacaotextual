@@ -1,0 +1,315 @@
+<!-- Desenvolvedor: Danilo Thiago -->
+<!doctype html>
+<html lang="pt-br">
+
+<head>
+    <title>rev_p001</title>
+    <meta charset="utf-8">
+    <script src="../wilib/js/lib/require.js"></script>
+    <script src="../wilib/js/app.js"></script>
+    <link rel="stylesheet" href="../wilib/css/font-awesome.css">
+    <link rel="stylesheet" href="../wilib/css/meioAmbiente.css">
+
+    <script>
+        require(['../wilib/js/lib/edi'], function (edi) {
+
+            var config = {
+                titulo: 'Clique sobre as barras e saiba o que é necessário para compreender bem um texto.',
+                mascote: 'mascote'
+            };
+
+            edi.iniciar(config);
+
+            var condicao = true,
+                finalizar = true;
+
+            var configPeca = {
+                msgBloqueio: 'para clicar em outro botão!',
+                bloqueio: 5,
+                fontSize: 12,
+                distancia: 245,
+                color: '#999',
+                top: -40, // para subir as janelas, diminuir o top
+                topConteudo: 20 // move o icone e o texto
+            };
+
+            var arrTxt = [
+                    "Conheça os recursos linguísticos. Por exemplo, a regência verbal não compreendida pelo leitor pode levá-lo ao erro. Veja: Assisti o doente é diferente de assisti ao doente. No primeiro caso, a pessoa ajuda ao doente; no segundo, ela vê o doente.",
+                    "Perceba as referências geográficas, mitológicas, lendárias, econômicas, religiosas, políticas e históricas para que faça as possíveis associações.",
+                    "Esclareça as suas dúvidas de léxico (vocabulário).",
+                    "Esteja familiarizado com as circunstâncias históricas em que o texto foi escrito. Por exemplo, para entender que, no poema Canção do Exílio, de Gonçalves Dias, o advérbio aqui e lá é, respectivamente, Portugal e Brasil, você tem que saber onde o poeta escreveu seu poema naquela época.",
+                    "Observe se há no texto intertextualidade por meio da paráfrase, <br> paródia ou citação."
+            ];
+
+            for(var x=0; x<arrTxt.length; x++){
+
+                var ct = $('<div>')
+                        .attr({
+                            id: 'ct'+x
+                        })
+                        .addClass((x<1)?'ct':'ct noShow')
+                        .css({
+                            position: 'absolute',
+                            top: (x<1)?320+configPeca.top:320+configPeca.top+20*x,
+                            left: (x<1)?2:12*x,
+                            width: (x<1)?598:600-12*x,
+                            height: 310,
+                            background: '#F3F6F8',
+                            borderColor: '#CCC',
+                            borderStyle: 'solid',
+                            borderWidth: '0 1px',
+                            zIndex: 1
+                        })
+                        .appendTo('#conteudo');
+
+                var barraCt = $('<div>')
+                        .addClass((x<1)?'barraCt':'barraCt noShow')
+                        .css({
+                            position: 'absolute',
+                            top: 0,
+                            left: 0,
+                            width: (x<1)?598:600-12*x,
+                            height: 16,
+                            background: '#E8EEF1',
+                            borderColor: '#CCC',
+                            borderStyle: 'solid',
+                            borderWidth: '1px 0',
+                            cursor: (x<1)?'pointer':'default'
+                        })
+                        .appendTo(ct)
+                        .mousedown(function(){
+                            var _this = $(this);
+                            if(!_this.parent().hasClass('show') && !_this.parent().hasClass('noShow')) {
+
+                                if(!!_this.closest('.ct').next().length){
+                                    $('<div>')
+                                            .attr({id: 'bloqueio'})
+                                            .css({
+                                                position: 'absolute',
+                                                width: 788,
+                                                height: 383,
+                                                top: 0,
+                                                left: 0,
+                                                zIndex: 100
+                                            })
+                                            .appendTo('#conteudo');
+
+                                    edi.regressiva(1000*configPeca.bloqueio, configPeca.msgBloqueio, function(){                                   
+                                        $('#bloqueio').remove();});
+                                }else{
+                                    if(finalizar){
+                                        $('#msgAcerto').fadeIn();
+                                        edi.finalizar();
+                                        finalizar = false;
+                                    }
+                                }
+
+                                // BTN MAXIMINIZAR
+                                // janela sobe e bloqueia para nao subir mais com a class show
+                                var _top = configPeca.distancia+configPeca.top;
+                                _this
+                                        .css({
+                                            cursor: 'default'
+                                        })
+                                        .parent()
+                                        .transition({
+                                            top: '-='+_top
+                                        },1000)
+                                        .addClass('show')
+                                        .find('.spanBtn').css({cursor: 'pointer'});
+
+                                _this.closest('.ct').next().find('.barraCt').css({cursor: 'pointer'})
+
+                                // adiciona a img da interrogacao
+                                setTimeout(function(){
+                                    var img = $('<img>')
+                                            .addClass('img')
+                                            .css({
+                                                position: 'absolute',
+                                                top: 83+configPeca.topConteudo,
+                                                left: 79
+                                            })
+                                            .attr({
+                                                width: 0,
+                                                height: 0,
+                                                src: '../wilib/img/svg/ico-exclamacao-cinza.svg'
+                                            })
+                                            .appendTo(_this.parent())
+                                            .transition({
+                                                top: 50+configPeca.topConteudo,
+                                                left: 50,
+                                                width: 66,
+                                                height: 59,
+                                                rotate: '360deg'
+                                            },1000, function(){
+                                                _this.closest('.ct').find('.txt').fadeIn();
+                                            });
+                                },1000);
+
+                                _this.parent().next().removeClass('noShow');
+                                console.log()
+                                if(!!_this.closest('.ct').prev().length){
+                                    _this.closest('.ct').prev().removeClass('show');
+                                    _this.closest('.ct').prev().addClass('noShow');
+                                }
+
+                            }
+                        })
+                        .mouseover(function(){
+                            // verifica se a janela esta ativa para ser clicada e poem efeito de selecao na barra
+                            if(!$(this).parent().hasClass('show') && !$(this).parent().hasClass('noShow')) {
+                                if (condicao) {
+                                    $('<div>')
+                                            .addClass('sobre')
+                                            .css({
+                                                position: 'absolute',
+                                                width: $(this).parent().width(),
+                                                height: 16,
+                                                background: 'rgba(255,255,255,.5)'
+                                            })
+                                            .appendTo($(this).parent().find('.barraCt'));
+                                    condicao = false;
+                                }
+                            }
+                        })
+                        .mouseleave(function(){
+                            // remove o efeito de selacao na barra
+                            $(this).find('.sobre').remove();
+                            condicao = true;
+                        })
+
+                var spanTxt = $('<span>')
+                        .css({
+                            float: 'left',
+                            lineHeight: '16px',
+                            fontSize: 8,
+                            marginLeft: 10,
+                            color: '#999'
+                        })
+                        .html('Clique aqui e fique por dentro')
+                        .appendTo(barraCt);
+
+                var spanBtn = $('<span>')
+                        .addClass('spanBtn')
+                        .css({
+                            position: 'absolute',
+                            zIndex: 1,
+                            width:14,
+                            height: 4,
+                            boxShadow: '1px 1px 1px rgba(0,0,0,.5)',
+                            borderRadius: 5,
+                            border: '2px solid #FFF',
+                            textAlign: 'center',
+                            right: 5,
+                            margin: 2,
+                            marginRight: 10,
+                            padding: '2px 2px',
+                            backgroundColor: '#FFC616',
+                            opacity:.5
+                        })
+                        .appendTo(barraCt)
+                        .mousedown(function(){
+                            // BTN MINIMIZAR
+                            // abaixa a janela clicada e desbloqueia o clique para subir removendo a class show
+                            var _this = $(this);
+                            if(_this.closest('.ct').hasClass('show')){
+
+                                _this.closest('.ct')
+                                        .transition({
+                                            top: '+=245'
+                                        },1000, function(){
+                                            $('#ct'+_this.find('i').attr('id')).removeClass('show');
+                                            //remove a interrogacao
+                                            _this.closest('.ct').find('.img').remove();
+                                            _this.closest('.ct').find('.txt').fadeOut();
+                                        })
+                                        .find('.barraCt').css({cursor: 'pointer'});
+
+                                _this.closest('.ct').prev().removeClass('noShow').addClass('show');
+
+                                if(!!_this.closest('.ct').next().length)
+                                    _this.closest('.ct').next().addClass('noShow');
+
+                            }
+                        })
+                        .mouseover(function(){
+                            if($(this).closest('.ct').hasClass('show')){
+                                $(this).css({opacity: 1});
+                            }
+                        })
+                        .mouseleave(function(){
+                            $(this).css({opacity:.5});
+                        });
+
+                var ico = $('<i>')
+                        .attr({id:x})
+                        .css({
+                            position: 'absolute',
+                            color: 'rgba(255,255,255,.9)',
+                            fontSize: 10,
+                            top: 0,
+                            right: 5,
+                            textShadow: '1px 1px 1px rgba(0,0,0,.2)'
+                        })
+                        .addClass('fa fa-minus')
+                        .appendTo(spanBtn);
+
+                var ctTxt = $('<div>')
+                        .addClass('txt')
+                        .css({
+                            position: 'absolute',
+                            top: 30+configPeca.topConteudo,
+                            left: 150,
+                            height: 100,
+                            display: 'none'
+                        })
+                        .appendTo(ct);
+
+                var txt = $('<div>')
+                        .css({
+                            display: 'table-cell',
+                            verticalAlign: 'middle',
+                            height: 100,
+                            fontSize: configPeca.fontSize,
+                            color: configPeca.color
+                        })
+                        .html(arrTxt[x])
+                        .appendTo(ctTxt)
+
+            }
+
+            edi.util.removeLoading();
+        });
+    </script>
+
+    <style>
+
+    #msgAcerto {
+      width: 140px;
+      height: 150px;
+      position: absolute;
+      padding: 5px;
+      left: 615px;
+      top: 140px;
+      padding-bottom: 15px;
+      font-size: 16px;
+      text-align: center;
+      font-weight: bold;
+      line-height: 16px;        
+      color: #9c0;
+      display: none;
+    }
+
+    </style>
+
+</head>
+
+<body>
+
+    <div id="msgAcerto" class="borda-pontilhado-verde arredondado">
+      <p>Muito bem!  Você conhece as dicas para compreender e interpretar bem um texto tente utilizá-las em seus exercícios de interpretação.</p>
+    </div>
+
+</body>
+
+</html>

@@ -1,0 +1,41 @@
+<!-- Desenvolvedor: Rodolfo Araújo -->
+<!doctype html>
+<html lang="pt-br">
+
+<head>
+	<title>Lição 02 Peça 01</title>
+	<meta charset="utf-8">
+	<script src="../wilib/js/lib/require.js"></script>
+	<script src="../wilib/js/app.js"></script>
+	<link rel="stylesheet" href="../wilib/css/font-awesome.css">
+	<link rel="stylesheet" href="../wilib/css/meioAmbiente.css">
+
+	<script>
+		require(['../wilib/js/lib/reflita2'], function (edi) {
+
+			edi.setConfig({
+                enunciado: false
+			});
+
+            var texto = "Nesta lição você receberá dicas de como interpretar textos <br> com eficiência. <br>" +
+                    "A leitura é o meio mais importante para se chegar ao conhecimento, portanto, precisamos exercitar o hábito da leitura, aprender a ler efetivamente, ler com atenção para dominar o texto lido. <br>" +
+                    "Para uma boa leitura é preciso exercitar-se na arte de pensar, refletir critica e lógicamente, captar ideias, investigar e decifrar palavras. Dedique-se a leitura e amplie seus conhecimentos! "
+
+			edi.reflita2(texto);
+		});
+	</script>
+    <style>
+        .balao-texto {
+            width: 400px !important;
+            right: 20px !important;
+        }
+        .balao-texto p {
+            text-align: justify;
+        }
+    </style>
+</head>
+
+<body>
+</body>
+
+</html>

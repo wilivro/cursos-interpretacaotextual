@@ -1,0 +1,143 @@
+<!doctype html>
+<html lang="pt-br">
+	<head>
+		<title>Alternativa Botao</title>
+		<meta charset="utf-8">
+		<script src="../wilib/js/lib/require.js"></script>
+		<script src="../wilib/js/app.js"></script>
+		<link rel="stylesheet" href="../wilib/css/font-awesome.css">
+		<link rel="stylesheet" href="../wilib/css/meioAmbiente.css">
+
+		<!-- main -->
+		<script>
+
+			require(['../wilib/js/lib/alternativa_boliche'], function (edi) {
+				
+				edi.setConfig({// configurando o EDI
+					icone: 'exclamacao',
+					titulo: 'Responda corretamente às questões clicando em CERTO ou ERRADO.',
+
+				});
+				
+				var btns = {
+                    tela1:{
+                        texto:'O autor escreveu com uma intenção, e você deve descobrir qual é <br> essa intenção ao ler um texto.',
+                        btns:[
+                            {texto: 'CERTO', dataCorreta: true},
+                            {texto: 'ERRADO', dataCorreta: false},
+                        ],
+                    },
+                    tela2:{
+                        texto:'Ao ler um texto precisamos identificar as características físicas e psicológicas dos personagens.',
+                        btns:[
+                            {texto: 'CERTO', dataCorreta: true},
+                            {texto: 'ERRADO', dataCorreta: false},
+                        ],
+                    }
+                };
+
+				var config = {
+					width: 150,
+					height: 50,
+					left: 225,
+					top: 150,
+					colunas: 2,
+					margin: 5,
+					padding: 5
+				};
+				
+				var callback = function (a) {
+					//$('.btn').fadeOut();
+					if(a){
+						$('#certo'+edi.telaAtual()).fadeIn();	
+					}
+					else
+						$('#errado'+edi.telaAtual()).fadeIn();	
+				}
+				
+
+                edi.alternativa_boliche(btns, callback, config);//iniciando o EDI
+              
+			});
+		</script>
+		
+		<style>
+			#conteudo {
+				height: 315px;
+			}
+
+			#grifado {
+				font-weight: bold;
+			}
+
+			.bordaVerde{
+				position: absolute;
+				color: #9c0;
+				border: 2px dashed #9c0;
+				text-align: center;
+				background-color: #FFF;
+				z-index: 1;
+				display: none;
+			}
+			#certo1{
+				top: 258px;
+				left: 150px;
+				width: 429px;
+				height: 40px;
+				padding: 30px;
+			}
+
+			#certo2{
+				top: 258px;
+				left: 130px;
+				width: 500px;
+				height: 70px;
+				padding: 20px;
+			}
+
+
+			#errado1{
+				position: absolute;
+				top: 268px;
+				left: 150px;
+				width: 439px;
+				height: 40px;
+				padding: 20px 20px;
+				color: #F00;
+				border: 2px dashed #F00;
+				text-align: center;
+				background-color: #FFF;
+				z-index: 1;
+				display: none;
+			}
+
+			#errado2{
+				position: absolute;
+				top: 258px;
+				left: 150px;
+				width: 439px;
+				height: 70px;
+				padding: 20px 20px;
+				color: #F00;
+				border: 2px dashed #F00;
+				text-align: center;
+				background-color: #FFF;
+				z-index: 1;
+				display: none;
+			}
+
+		</style>
+	</head>
+	
+	<body>
+
+		<div id="certo1" class="arredondado bordaVerde">Excelente! Ao ler um texto precisamos estar atentos para perceber sobre o quê o que autor fala no texto.</div>
+
+		<div id="certo2" class="arredondado bordaVerde">Excelente! Se um determinado personagem tem como característica ser mentiroso, por exemplo, o que ele diz no texto poderá ser mentira. Analisar e identificar os personagens são pontos necessários para uma boa interpretação de texto.
+		</div>
+
+		<div id="errado1" class="arredondado">Atenção! Perceba que quando alguém escreve um texto tem a intenção de transmitir alguma coisa, pense um pouco mais.</div>
+		<div id="errado2" class="arredondado">Atenção! Se um determinado personagem tem como característica ser mentiroso, por exemplo, o <br> que ele diz no texto poderá ser mentira. <br> Sendo assim, reflita sobre a questão.</div>
+
+	</body>
+</html>

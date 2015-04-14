@@ -1,0 +1,42 @@
+<!-- Desenvolvedor: Rodolfo Araújo -->
+<!doctype html>
+<html lang="pt-br">
+
+<head>
+	<title>Lição 02 Peça 01</title>
+	<meta charset="utf-8">
+	<script src="../wilib/js/lib/require.js"></script>
+	<script src="../wilib/js/app.js"></script>
+	<link rel="stylesheet" href="../wilib/css/font-awesome.css">
+	<link rel="stylesheet" href="../wilib/css/meioAmbiente.css">
+
+	<script>
+		require(['../wilib/js/lib/reflita2'], function (edi) {
+
+			edi.setConfig({
+                enunciado: false
+			});
+
+            var texto = "Nesta lição você receberá dicas de como <br> interpretar textos  com eficiência. <br> " +
+                    "Utilize essas dicas em seu dia a dia, leia sobre <br> assuntos variados, não existe mágica para interpretar, <br> e sim, muito esforço e conhecimento. <br> " +
+                    "Não desista, persista em seus estudos com entusiasmo, <br> aplicando no seu cotidiano tudo que aprendeu até aqui. <br><br>" +
+                    "Bons estudos!"
+
+			edi.reflita2(texto);
+		});
+	</script>
+    <style>
+        .balao-texto {
+            width: 400px !important;
+            right: 20px !important;
+        }
+        .balao-texto p {
+            text-align: justify;
+        }
+    </style>
+</head>
+
+<body>
+</body>
+
+</html>

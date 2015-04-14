@@ -1,0 +1,91 @@
+<!-- Desenvolvedor: Micael Souza -->
+<!doctype html>
+<html lang="pt-br">
+
+<head>
+	<title>Lição 01 Peça 18</title>
+	<meta charset="utf-8">
+	<script src="../wilib/js/lib/require.js"></script>
+	<script src="../wilib/js/app.js"></script>
+
+	<link rel="stylesheet" href="../wilib/css/font-awesome.css">
+	<link rel="stylesheet" href="../wilib/css/meioAmbiente.css">
+
+	<!-- main -->
+	<script>
+		require(['../wilib/js/lib/ligar'], function (edi) {
+
+			edi.setConfig({ // configurando o EDI
+                mascote: 'mascote',
+                icone: 'exclamacao',
+                titulo: 'Outra maneira de ampliar sua capacidade de interpretar é fazendo exercícios de sinônimo e antônimo. Você sabe a diferença entre esses dois conceitos? Relacione cada conceito a sua denominação correta.',
+                enunciado: 'vertical'
+			});
+
+            var ligas = [
+                {conteudo: 'SINÔNIMO', dataCorreta: 1, cor: '#8BC959'},
+                {conteudo: 'ANTÔNIMO', dataCorreta: 0, cor: '#0089FF'}
+            ];
+
+            var alvos = [
+                {conteudo: 'Palavras com significado oposto.', dataCorreta: 0},
+                {conteudo: 'Palavras com significado semelhante.', dataCorreta: 1}
+            ];
+
+			edi.ligar(ligas, alvos, function (a, b, c) {
+				//callback
+				//a:booleano = acertou/errou
+				//b:elementoHTML = liga
+				//c:elementoHTML = alvo
+			}, function () {
+				$('#msgAcerto').fadeIn();
+			}, {
+				fontSize: 10,
+				ligaFixo: false,
+
+        alvo: {
+            width: 175,
+            paddingTop: 6,
+            paddingBottom: 6,
+            marginBottom: 5,
+            left: 440,
+            top: 140,
+            textAlign: 'center'
+        }
+      });            
+		});
+	</script>
+
+	<style>
+        #conteudo {
+            background: radial-gradient(#fff, #fdfdfd);
+        }
+
+        #msgAcerto {
+          width: 370px;
+          height: 100px;
+          position: absolute;
+          padding: 5px;
+          left: 115px;
+          top: 250px;
+          padding-bottom: 15px;
+          font-size: 14px;
+          text-align: center;
+          font-weight: bold;
+          line-height: 16px;        
+          color: #9c0;
+          display: none;
+        }
+
+	</style>
+</head>
+
+<body>
+
+    <div id="msgAcerto" class="borda-pontilhado-verde arredondado">
+      <p>Muito bem! Palavras sinônimas são as que têm o mesmo significado, enquanto, as antônimas têm significados diferentes, contrários. Conhecendo os sinônimos e antônimos, você compreenderá melhor o texto, pois conseguirá relacionar as palavras com maior facilidade.</p>
+    </div>
+
+</body>
+
+</html>

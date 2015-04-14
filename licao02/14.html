@@ -1,0 +1,103 @@
+<!-- Desenvolvedor: Micael Souza -->
+<!doctype html>
+<html lang="pt-br">
+  <head>
+    <title>Lição 04 Peça 34</title>
+    <meta charset="utf-8">
+    <script src="../wilib/js/lib/require.js"></script>
+    <script src="../wilib/js/app.js"></script>
+      <link type="text/css" rel="stylesheet" href="../wilib/css/font-awesome.css">
+      <link type="text/css" rel="stylesheet" href="../wilib/css/meioAmbiente.css">
+
+    <style type="text/css">
+    </style>
+    <script>
+      require(['../wilib/js/lib/slide_vertical'], function (edi) {
+
+        edi.setConfig({
+          titulo: "Clique na barra azul inferior e saiba mais:",
+          mascote: 'mascote',
+          icone: "interrogacaoAzul"
+        });
+
+        var slides = [
+          {
+            txt: "Ao ler um texto, anote as palavras que você não <br>"+
+                 "conhece e busque o significado delas em um dicionário. ",
+            img: "../img/licao02/p14_1.png"
+          },
+          {
+            txt: "Leia as questões da prova com calma e defina <br>"+
+                 "uma linha de raciocínio, buscando no decorrer da  <br>"+
+                 "leitura as respostas para essas questões. ",
+            img: "../img/licao02/p14_2.png"
+          },
+          {
+            txt: "Primeiro divida o texto que está lendo em partes.  <br>"+
+                 "Depois, defina as ideias mais importantes de cada   <br>"+
+                 "parte e estabeleça relações entre esses fragmentos. ",
+            img: "../img/licao02/p14_3.png"
+          },
+          {
+            txt: "Grife as ideias mais importantes à medida que for <br>"+
+                 "lendo o texto. Marque de alguma forma as partes <br>"+
+                 "que considerar importantes, pois depois voltar a <br>"+
+                 "elas, e encontrar possíveis respostas.",
+            img: "../img/licao02/p14_4.png"
+          },
+          {
+            txt: "Cuidado com os travessões e as vírgulas. Muitas  <br>"+
+                 "vezes eles são utilizados como “obstáculos” para  <br>"+
+                 "confundir os leitores.",
+            img: "../img/licao02/p14_5.png"
+          },
+          {
+            txt: "Os pronomes, usados para substituir palavras já  <br>"+
+                 "citadas, e a elipse, que é a omissão de palavras  <br>"+
+                 "subentendidas na frase para evitar a repetição, <br>"+
+                 "devem ser dominados pelo leitor pára <br>"+
+                 "melhor compreensão do texto. ",
+            img: "../img/licao02/p14_6.png"
+          },
+          {
+            txt: "Os leitores devem entender bem as conjunções, <br>"+
+                 "que são as expressões usadas para introduzir ideias  <br>"+
+                 "novas no texto. Exemplos: embora, todavia, no  <br>"+
+                 "entanto, porquanto, não obstante. ",
+            img: "../img/licao02/p14_7.png"
+          }
+        ];
+
+        edi.slide_vertical(slides, function() {
+          console.log('cb');
+        }, function() {
+          $('#msgAcerto').fadeIn();
+        });
+      });
+    </script>
+    <style>
+    #msgAcerto {
+        width: 450px;
+        height: 50px;
+        position: absolute;
+        left: 200px;
+        top: 320px;
+        font-size: 16px;
+        text-align: center;
+        font-weight: bold;
+        line-height: 16px;        
+        color: #9c0;
+        display: none;
+        z-index: 5;
+      }
+    </style>
+  </head>
+
+  <body>
+
+    <div id="msgAcerto" class="arredondado">
+      <p>Muito bem! Essas dicas podem ajudá-lo a interpretar melhor um texto, mas você precisa cultivar o hábito da leitura.</p>
+    </div>
+    
+  </body>
+</html>

@@ -1,0 +1,66 @@
+<!-- Desenvolvedor: Micael Souza -->
+<!doctype html>
+<html lang="pt-br">
+
+<head>
+    <title>Liçao 01 Peça 27</title>
+	<meta charset="utf-8">
+	<script src="../wilib/js/lib/require.js"></script>
+	<script src="../wilib/js/app.js"></script>
+	<link rel="stylesheet" href="../wilib/css/font-awesome.css">
+	<link rel="stylesheet" href="../wilib/css/meioAmbiente.css">
+
+	<script>
+		require(['../wilib/js/lib/arrasta-folha'], function (edi) {
+
+			edi.setConfig({
+				titulo: 'Arraste as folhas para fora da pasta e saiba o <br> que precisamos ter para interpretar bem.'
+			});
+
+            var folhas = [
+                "Conhecimento Histórico - literário (Leitura e prática)",
+                "Conhecimento Gramatical",
+                "Capacidade de observação e de síntese.",
+                "Capacidade de raciocínio."
+            ];
+
+			var config = {
+                fontSize: 8,
+                lineHeight: 1.3,
+                maxScale: 1.4
+            };
+
+			edi.arrastaFolha(folhas, null, function() {
+				$('#msgAcerto').fadeIn();
+			}, config);
+		});
+	</script>
+	<style>
+		#msgAcerto {
+        width: 425px;
+        height: 60px;
+        position: absolute;
+        padding: 5px;
+        left: 250px;
+        top: 305px;
+        padding-bottom: 10px;
+        font-size: 12px;
+        text-align: center;
+        font-weight: bold;
+        line-height: 16px;        
+        color: #9c0;
+        display: none;
+	    }
+	</style>
+</head>
+
+<body>
+
+	 <div id="msgAcerto" class="arredondado">
+      <p>Muito bem! Quanto mais leitura você tiver maior será o seu conhecimento literário e gramatical, não esqueça, de praticar, fazer exercícios constantes de interpretação que o ajudarão a desenvolver seu raciocínio lógico.</p>
+    </div>
+
+
+</body>
+
+</html>

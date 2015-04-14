@@ -1,0 +1,97 @@
+<!-- Desenvolvedor: Micael Souza -->
+<!doctype html>
+<html lang="pt-br">
+
+<head>
+	<title>Lição 01 Peça 18</title>
+	<meta charset="utf-8">
+	<script src="../wilib/js/lib/require.js"></script>
+	<script src="../wilib/js/app.js"></script>
+
+	<link rel="stylesheet" href="../wilib/css/font-awesome.css">
+	<link rel="stylesheet" href="../wilib/css/meioAmbiente.css">
+
+	<!-- main -->
+	<script>
+		require(['../wilib/js/lib/ligar'], function (edi) {
+
+			edi.setConfig({ // configurando o EDI
+                mascote: 'mascote',
+                icone: 'exclamacao',
+                titulo: 'Você aprendeu os conceitos de Denotação e Conotação, ligue cada explicação ao seu conceito.',
+                enunciado: 'vertical'
+			});
+
+            var ligas = [
+                {conteudo: 'CONOTAÇÃO', dataCorreta: 1, cor: '#8BC959'},
+                {conteudo: 'DENOTAÇÃO', dataCorreta: 0, cor: '#0089FF'}
+            ];
+
+            var alvos = [
+                {conteudo: 'Palavra com significação restrita.', dataCorreta: 0},
+                {conteudo: 'Palavra com significação ampla.', dataCorreta: 1},
+                {conteudo: 'Palavra com sentido comum do dicionário.', dataCorreta: 0},
+                {conteudo: 'Palavra cujos sentidos extrapolam o sentido comum.', dataCorreta: 1},
+                {conteudo: 'Palavra usada de modo automatizado.', dataCorreta: 0},
+                {conteudo: 'Palavra usada de modo criativo.', dataCorreta: 1},
+                {conteudo: 'Linguagem comum.', dataCorreta: 0},
+                {conteudo: 'Linguagem rica e expressiva.', dataCorreta: 1}
+            ];
+
+			edi.ligar(ligas, alvos, function (a, b, c) {
+				//callback
+				//a:booleano = acertou/errou
+				//b:elementoHTML = liga
+				//c:elementoHTML = alvo
+			}, function () {
+				$('#msgAcerto').fadeIn();
+			}, {
+				fontSize: 10,
+				ligaFixo: false,
+
+        alvo: {
+            width: 175,
+            paddingTop: 6,
+            paddingBottom: 6,
+            marginBottom: 5,
+            left: 440,
+            top: 60,
+            textAlign: 'center'
+        }
+      });            
+		});
+	</script>
+
+	<style>
+        #conteudo {
+            background: radial-gradient(#fff, #fdfdfd);
+        }
+
+        #msgAcerto {
+          width: 270px;
+          height: 60px;
+          position: absolute;
+          padding: 5px;
+          left: 65px;
+          top: 280px;
+          padding-bottom: 15px;
+          font-size: 14px;
+          text-align: center;
+          font-weight: bold;
+          line-height: 16px;        
+          color: #9c0;
+          display: none;
+        }
+
+	</style>
+</head>
+
+<body>
+
+    <div id="msgAcerto" class="borda-pontilhado-verde arredondado">
+      <p>Muito bem! Com o entendimento dos conceitos de conotação e denotação sua interpretação de textos ficará mais fácil.</p>
+    </div>
+
+</body>
+
+</html>

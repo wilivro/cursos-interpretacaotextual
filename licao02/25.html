@@ -1,0 +1,131 @@
+<!-- Desenvolvedor: Danilo Thiago -->
+<!doctype html>
+<html lang="pt-br">
+<head>
+    <title>Lição 01 Peça 12</title> <!-- rev_m001 -->
+    <meta charset="utf-8">
+    <script src="../wilib/js/lib/require.js"></script>
+    <script src="../wilib/js/app.js"></script>
+    <link rel="stylesheet" href="../wilib/css/font-awesome.css">
+    <link rel="stylesheet" href="../wilib/css/meioAmbiente.css">
+
+    <script>
+        require(['../wilib/js/lib/revela'], function (edi) {
+
+            edi.setConfig({
+                icone: "exclamacao",
+                titulo: "Clique sobre os personagens e revele o texto.",
+                mascote: 'mascote'
+            });
+
+            edi.revela('btn-rev', 'box-rev', function (a) {
+                a.css('opacity', 1).off();
+            }, function() {
+                $('#msgAcerto').fadeIn();
+            }, {
+                ocultarRev: true,
+                tempoBloqueio: 10000,
+                bloqueiaClickFinal: false,
+                ordenado: true
+            });
+
+            $('#rev-01').peBalao({
+                top: 86,
+                left: 296,
+                scaleX: -1,
+                scaleY: -1,
+                rotate: 0
+            });
+
+            $('#rev-02').peBalao({
+                top: 104,
+                left: 50,
+                scaleX: 1,
+                scaleY: -1,
+                rotate: 0
+            });
+        });
+    </script>
+
+    <style>
+        .box-rev {
+            width: 430px;
+            text-align: center;
+            font-size: 14px;
+            position: absolute;
+            top: 75px;
+            line-height: 1.3;
+            padding: 10px;
+            border: 1px solid #ccc;
+            background: #fff;
+            border-radius: 10px;
+            z-index: 1;
+        }
+
+        #rev-01 {
+            left: 32px;
+        }
+
+        #rev-02 {
+            left: 330px;
+        }
+
+        .btn-rev {
+            position: absolute;
+            cursor: pointer;
+        }
+
+        #pers-01 {
+            background: url(../wilib/img/svg/personagem_001.svg) no-repeat;
+            background-size: 100% 100%;
+            width: 100px;
+            height: 150px;
+            left: 270px;
+            top: 210px;
+        }
+
+        #pers-02 {
+            background: url(../wilib/img/svg/personagem_002.svg) no-repeat;
+            background-size: 100% 100%;
+            width: 120px;
+            height: 170px;
+            left: 400px;
+            top: 190px;
+        }
+
+        #msgAcerto {
+          width: 180px;
+          height: 120px;
+          position: absolute;
+          padding: 5px;
+          left: 35px;
+          top: 220px;
+          padding-bottom: 15px;
+          font-size: 14px;
+          text-align: center;
+          font-weight: bold;
+          line-height: 16px;        
+          color: #9c0;
+          display: none;
+        }
+    </style>
+</head>
+
+<body>
+<p class="box-rev" id="rev-01" data-revela="0">
+    Algumas palavras, dependendo do contexto, assumem múltiplos significados, como, por exemplo, a palavra ponto: ponto de ônibus, ponto de vista, ponto final, ponto de cruz... 
+</p>
+
+<p class="box-rev" id="rev-02" data-revela="1" style="width: 320px;">
+    Neste caso, não se está atribuindo um sentido fantasioso à palavra ponto, e sim ampliando sua significação através de expressões que lhe completem e esclareçam o sentido.
+</p>
+
+ <div id="msgAcerto" class="borda-pontilhado-verde arredondado">
+      <p>Excelente! Neste caso não se trata de conotação, mas de polissemia (palavras que têm muitas significações). No decorrer das lições deste curso você aprenderá mais sobre polissemia.</p>
+    </div>
+
+
+<span class="btn-rev" id="pers-01" data-revela="0"></span>
+<span class="btn-rev" id="pers-02" data-revela="1"></span>
+</body>
+</html>

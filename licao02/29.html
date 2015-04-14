@@ -1,0 +1,144 @@
+<!-- Desenvolvedor: Danilo Thiago -->
+<!doctype html>
+<html lang="pt-br">
+<head>
+    <title>rev_a002</title>
+    <meta charset="utf-8">
+    <script src="../wilib/js/lib/require.js"></script>
+    <script src="../wilib/js/app.js"></script>
+    <link type="text/css" rel="stylesheet" href="../wilib/css/font-awesome.css">
+    <link type="text/css" rel="stylesheet" href="../wilib/css/meioAmbiente.css">
+
+    <script>
+        require(['../wilib/js/lib/revela'], function (edi) {
+
+            edi.setConfig({// configurando o EDI
+                titulo: "Clique sobre os botões e revele os conceitos. ",
+                tempoFinal: 15
+            });
+
+            var config = {
+            }
+
+            function callback() {
+
+            }
+
+            edi.revela('clique', 'revela', function (a, b) {
+                a.remove();
+            }, function() {
+                $('#msgAcerto').fadeIn();
+            }, {tempoBloqueio: 0});
+
+
+        });
+    </script>
+
+    <style>
+        .tamanhoClique {
+            position: absolute;
+            left: 310px;
+            width: 150px;
+            height: 40px;
+            z-index: 1;;
+            margin: 3px;
+        }
+
+        .tamanhoRevela {
+            position: absolute;
+            left: 10px;
+            width: 600px;
+            height: 40px;
+            font-size: 12px;
+        }
+
+        .texto {
+            position: relative;
+            vertical-align: middle;
+            text-align: center;
+            display: table-cell;
+            width: 150px;
+            left: 0px;
+        }
+
+        #msgAcerto {
+          width: 125px;
+          height: 150px;
+          position: absolute;
+          padding: 5px;
+          left: 640px;
+          top: 160px;
+          padding-bottom: 15px;
+          font-size: 14px;
+          text-align: center;
+          font-weight: bold;
+          line-height: 16px;        
+          color: #9c0;
+          display: none;
+        }
+    </style>
+</head>
+
+<body>
+
+    <div class="btn btn-default tamanhoClique clique" style="top:80px;" data-revela="1">
+        <div class="texto tamanhoClique">
+            CLIQUE
+        </div>
+    </div>
+    <div class="btn btn-default-hover tamanhoRevela revela" style="top:80px;" data-revela="1">
+        <div class="texto tamanhoRevela" style="width: 650px;">
+            IDENTIFICAR – é reconhecer os elementos fundamentais de uma argumentação, de um processo, de uma época (neste caso, procuram-se os verbos e os advérbios, os quais definem o tempo).
+        </div>
+    </div>
+
+    <div class="btn btn-default tamanhoClique clique" style="top:140px;" data-revela="2">
+        <div class="texto tamanhoClique">
+            CLIQUE
+        </div>
+    </div>
+    <div class="btn btn-default-hover tamanhoRevela revela" style="top:140px;" data-revela="2">
+        <div class="texto tamanhoRevela" style="width: 650px;">
+            COMPARAR – é descobrir as relações de semelhança ou de diferenças entre as situações do texto.
+        </div>
+    </div>
+
+    <div class="btn btn-default tamanhoClique clique" style="top:200px;" data-revela="3">
+        <div class="texto tamanhoClique">
+            CLIQUE
+        </div>
+    </div>
+    <div class="btn btn-default-hover tamanhoRevela revela" style="top:200px;" data-revela="3">
+        <div class="texto tamanhoRevela" style="width: 650px;">
+            COMENTAR - é relacionar  o conteúdo apresentado com uma realidade, opinando a respeito. 
+        </div>
+    </div>
+
+    <div class="btn btn-default tamanhoClique clique" style="top:260px;" data-revela="4">
+        <div class="texto tamanhoClique">
+            CLIQUE
+        </div>
+    </div>
+    <div class="btn btn-default-hover tamanhoRevela revela" style="top:260px;" data-revela="4">
+        <div class="texto tamanhoRevela" style="width: 650px;">
+            RESUMIR – é concentrar as ideias centrais e/ou secundárias em um só parágrafo.
+        </div>
+    </div>
+
+    <div class="btn btn-default tamanhoClique clique" style="top:320px;" data-revela="5">
+        <div class="texto tamanhoClique">
+            CLIQUE
+        </div>
+    </div>
+    <div class="btn btn-default-hover tamanhoRevela revela" style="top:320px;" data-revela="5">
+        <div class="texto tamanhoRevela" style="width: 650px;">
+           PARAFRASEAR – é reescrever o texto com outras palavras.
+        </div>
+    </div>
+
+    <div id="msgAcerto" class="borda-pontilhado-verde arredondado">
+      <p>Muito bem! Para interpretar bem um texto nós precisamos compreender o que significa: Identificar, Comentar, Resumir e Parafrasear.</p>
+    </div>
+
+</body>
+</html>

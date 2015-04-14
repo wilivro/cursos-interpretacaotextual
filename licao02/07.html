@@ -1,0 +1,79 @@
+<!-- Desenvolvedor: Rodolfo Araújo -->
+<!doctype html>
+<html lang="pt-br">
+
+<head>
+	<title>Lição 02 Peça 07</title> <!-- alt_f002 -->
+        <meta charset="utf-8">
+        <script src="../wilib/js/lib/require.js"></script>
+        <script src="../wilib/js/app.js"></script>
+        <link rel="stylesheet" href="../wilib/css/font-awesome.css">
+        <link rel="stylesheet" href="../wilib/css/meioAmbiente.css">
+
+	<script>
+		require(['../wilib/js/lib/alternativa_balao'], function (edi) {
+
+			edi.setConfig({
+				titulo: 'Clique sobre o balão em que a frase explica corretamente como devemos nos posicionar diante da leitura de um texto.',
+                mascote: 'mascote',
+                tempoFinal: 10
+			});
+
+            //balões
+            var baloes = [
+
+                {texto: 'Devemos impor nossa opinião e não dar atenção ao que o autor escreveu.', dataCorreta: false},
+                {texto: 'Não devemos permitir que nossas ideias, prevaleçam sobre as do autor.', dataCorreta: true},
+                {texto: 'Devemos criticar discutir se necessário, mas não aceitar o que texto traz!', dataCorreta: false},
+                {texto: 'Ler rápido e sem atenção, esse é o segredo!', dataCorreta: false}
+
+            ];
+
+			edi.alternativa_balao(baloes, function (a, b) {
+                //cb
+            }, function (a) {
+                if (a) {
+                    $('#msgAcerto').fadeIn();
+                };
+                
+            }, {
+                top: 0,
+                left: 80,
+                width: 300,
+                height: 150,
+                margin: '0 60px 0 0',
+                fontSize: 12,
+                leftPerson: -65,
+                topPerson: 43,
+                topIco: 0,
+                leftIco: -7
+            });
+		});
+	</script>
+    <style>
+    #msgAcerto {
+        width: 450px;
+        height: 155px;
+        position: absolute;
+        left: 190px;
+        top: 140px;
+        padding: 10px;
+        font-size: 16px;
+        text-align: center;
+        font-weight: bold;
+        line-height: 20px;              
+        color: #9c0;
+        background-color: rgba(255,255,255,0.8);
+        display: none;
+        z-index: 1;
+    }
+    </style>
+</head>
+
+<body>
+    <div id="msgAcerto" class="borda-pontilhado-verde arredondado">
+            <p>Muito bem! Ao interpretar um texto, devemos nos lembrar que ele foi escrito por outra pessoa, e que este texto contem as ideias desse autor, não podemos expressar nossa opinião, pois corremos o sério risco de errar na interpretação. Devemos sim, captar as ideias do autor e responder as questões tomando as ideias dele como base.</p>
+        </div>
+</body>
+
+</html>

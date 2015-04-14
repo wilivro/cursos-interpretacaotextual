@@ -1,0 +1,141 @@
+<!-- Desenvolvedor: Rodolfo Araújo -->
+<!doctype html>
+<html lang="pt-br">
+
+<head>
+	<title>alt_c004</title>
+        <meta charset="utf-8">
+        <script src="../wilib/js/lib/require.js"></script>
+        <script src="../wilib/js/app.js"></script>
+        <link rel="stylesheet" href="../wilib/css/font-awesome.css">
+        <link rel="stylesheet" href="../wilib/css/meioAmbiente.css">
+
+	<script>
+		require(['../wilib/js/lib/alternativa_img'], function (edi) {
+
+			edi.setConfig({
+				icone: 'exclamacao',
+        mascote: 'mascote',
+				titulo: 'De acordo com seus conhecimentos prévios, que fator é imprescindível para uma boa interpretação de textos? Clique sobre a imagem que <br> representa a alternativa correta.',
+                tempoFinal: 15
+			});
+
+			var imgs = [
+				{
+					src: '../img/licao02/p2_1.png',
+					dataCorreta: false,
+					texto: '',
+					textoConfig: {
+						width: 100,
+						height: 200,
+						left: 10,
+						top: 85,
+						setaLeft: 55,
+						fontSize: 12,
+						lineHeight: 1,
+						pMarginTop: 40
+					}
+				},
+                {
+					src: '../img/licao02/p2_2.png',
+					dataCorreta: false,
+					texto: '',
+					textoConfig: {
+						width: 100,
+						height: 200,
+						left: -5,
+						top: 85,
+						setaLeft: 85,
+						fontSize: 12,
+						lineHeight: 1,
+						pMarginTop: 35
+					}
+				},
+                {
+					src: '../img/licao02/p2_3.png',
+					dataCorreta: true,
+					texto: '',
+					textoConfig: {
+						width: 100,
+						height: 100,
+						left: -75,
+						top: 85,
+						setaLeft: 85,
+						fontSize: 12,
+						lineHeight: 1,
+						pMarginTop: 22
+					}
+				}
+			];
+
+			var config = {
+				width: 160,
+				height: 150,
+				left: 130,
+				top: 95,
+				colunas: 7,
+				margin: 5,
+				padding: 5,
+				fontSize: 11
+			};
+
+			function callback(a) {
+				if (a) {
+					$('#msgAcerto').fadeIn();
+				} else{
+					$('#msgErrado').fadeIn();
+			}
+		}
+
+			edi.alternativa_img(imgs, callback, null, config);
+		});
+	</script>
+    <style>
+
+    #msgAcerto {
+				width: 450px;
+				height: 85px;
+				position: absolute;
+				left: 160px;
+				top: 285px;
+				padding: 3px;
+				font-size: 12px;
+				text-align: center;
+				font-weight: bold;
+				line-height: 16px;				
+				color: #9c0;
+				display: none;
+			}
+
+			#msgErrado {
+				width: 450px;
+				height: 70px;
+				position: absolute;
+				left: 160px;
+				top: 295px;
+				padding: 3px;
+				font-size: 12px;
+				text-align: center;
+				font-weight: bold;
+				line-height: 16px;				
+				color: #F00;
+				display: none;
+			}
+
+    </style>
+</head>
+
+<body>
+
+	<div id="msgAcerto" class="borda-pontilhado-verde arredondado">
+			<p>Excelente! Se você tem pouca leitura, consequentemente terá pouca argumentação, pouca visão, pouco ponto de vista e um grande medo de interpretar. A interpretação é o alargamento dos horizontes. E esse alargamento acontece justamente quando há leitura.</p>
+		</div>
+
+		<div id="msgErrado" class="borda-pontilhado-vermelho arredondado">
+			<p>Atenção! Pense um pouco mais. Se você tem pouca visão de mundo, terá dificuldades em interpretar, o que nos faz alargar nosso ponto de vista? Reflita e responda corretamente..</p>
+		</div>
+
+
+</body>
+
+</html>

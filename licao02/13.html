@@ -1,0 +1,172 @@
+<!-- Desenvolvedor: Danilo Thiago -->
+<!doctype html>
+<html lang="pt-br">
+<head>
+    <title>Lição 01 Peça 04</title>
+    <meta charset="utf-8">
+    <script src="../wilib/js/lib/require.js"></script>
+    <script src="../wilib/js/app.js"></script>
+    <link rel="stylesheet" href="../wilib/css/font-awesome.css">
+    <link rel="stylesheet" href="../wilib/css/meioambiente.css">
+
+    <script>
+        require(['../wilib/js/lib/arrasta'], function (edi) {
+
+            edi.setConfig({
+                mascote: 'mascote',
+                titulo: 'Maria tem aspectos a acrescentar em seus estudos, complete a sentença com as palavras que faltam e leia atentamente.',
+                tempoFinal: 20
+            });          
+
+            var arrArrasta = [
+                {arrasta: 'compreender', dataCorreta: '1', dataId: '1'},
+                {arrasta: 'opiniões', dataCorreta: '2', dataId: '2'},
+                {arrasta: 'definindo', dataCorreta: '3', dataId: '3'},
+                {arrasta: 'mensagem', dataCorreta: '4', dataId: '4'},
+                {arrasta: 'ideias', dataCorreta: '5', dataId: '5'}
+            ];
+
+            var texto = $('#boxTexto').html();
+
+            for (var i = 0; i < arrArrasta.length; i++) {
+                var aux = '';
+                aux += '<span class="linha"></span>';
+
+                texto = texto.replace('[' + i + ']', '<div id="alvo' + i + '" class="alvo" data-correta="'+arrArrasta[i].dataCorreta+'">' + aux + '</div>');
+            }
+
+            $('#boxTexto').html(texto);
+
+            arrArrasta.sort(function () {
+                return 0.5 - Math.random()
+            });
+
+
+            for (var i = 0; i < arrArrasta.length; i++) {
+                $('<div>')
+                        .addClass('arrasta fundoArrasta azulAlpha')
+                        .attr({
+                            'data-id': arrArrasta[i].dataId,
+                            id: 'arrasta'+(i+1),
+                            'data-correta': arrArrasta[i].dataCorreta
+                        })
+                        .html(arrArrasta[i].arrasta)
+                        .appendTo('#arrasta');
+            }
+
+            var config = {
+                colorirFilho: true,
+                arrastaAbsolute: true,
+                reloadCorreta: true,
+                alvoFixo: true
+            };
+
+            edi.arrasta('arrasta', 'alvo', function (a, b) {
+                b.css({top: 5})
+            }, function (a) {
+                if(a)
+                    $('#msgAcerto').fadeIn();
+                    $('#boxTexto').html('' +
+                            '<div style="position: absolute; color: #818181; height: 180px; font-size: 16px; width: 440px; left: 25px; top: 68px;">' +
+                            'Ao interpretar procure compreender quais foram ' +
+                            'às opiniões expostas pelo autor, comece definindo passar. ' +
+                            'O autor defende ideias em seu texto, e você deve ' +
+                            'percebê-las.' +
+                            ' </div>')
+            }, config);
+
+            $('.arrasta').css({
+                margin: -5,
+                padding: 5
+            });
+
+            $('<div>')
+                    .attr('id', 'mascote')
+                    .appendTo('#conteudo');
+        });
+    </script>
+    <style>
+        .alvo {
+            display: inline-block;
+            width: 110px;
+            height: 25px;
+            border-bottom: 1px solid #999;
+        }
+        .arrasta {
+            padding: 5px;
+            margin-right: 10px;
+            margin-left: 10px;
+            display: inline-block;
+            color: #FFF;
+        }
+        #boxArrasta{
+            padding-top: 5px;
+            width: 650px;
+            height: 55px;
+            cursor: default;
+            top: 235px;
+            left: 50px;
+        }
+        #arrasta{
+            position: relative;
+            display: table-cell;
+            vertical-align: middle;
+            width: 650px;
+            height: 60px;
+        }
+        #boxTexto{
+            position: absolute;
+            width: 400px;
+            height: 240px;
+            text-align: center;
+            line-height: 30px;
+            color: #999;
+            top: 98px;
+            left: 225px;
+            border-radius: 10px;
+            padding-left: 20px;
+        }
+        #img{
+            position: absolute;
+            left: 20px;
+            top: 90px;
+            background: url(../wilib/img/svg/ruiva.svg);
+            background-size: 100% 100%;
+            width: 200px;
+            height: 200px;
+        }
+
+        #msgAcerto {
+            width: 650px;
+            height: 155px;
+            position: absolute;
+            left: 60px;
+            top: 305px;
+            font-size: 14px;
+            text-align: center;
+            font-weight: bold;
+            line-height: 15px;              
+            color: #fff;
+            display: none;
+        }
+
+    </style>
+
+</head>
+<body>
+<div id="boxArrasta" class="btn btn-default-hover">
+    <div id="arrasta"></div>
+</div>
+<div id="img"></div>
+<div id="boxTexto">
+    Ao interpretar procure [0] quais foram às [1] expostas pelo autor, comece [2] o tema do texto
+    e a [3] que ele tenta passar. O autor defende [4] em seu texto, e você deve percebê-las.
+</div>
+
+<div id="msgAcerto" class="arredondado">
+            <p>Muito bem! Leia tentando entender o que o autor quer dizer, não coloque sua opinião, <br> busque perceber qual é o tema e a mensagem expressa em determinado texto, desta forma, <br> sua interpretação será mais eficaz.
+</p>
+</div>
+
+</body>
+</html>

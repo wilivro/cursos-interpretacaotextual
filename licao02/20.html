@@ -1,0 +1,181 @@
+<!doctype html>
+<html lang="pt-br">
+	<head>
+		<title>Alternativa Botao</title>
+		<meta charset="utf-8">
+		<script src="../wilib/js/lib/require.js"></script>
+		<script src="../wilib/js/app.js"></script>
+		<link rel="stylesheet" href="../wilib/css/font-awesome.css">
+		<link rel="stylesheet" href="../wilib/css/meioAmbiente.css">
+
+		<!-- main -->
+		<script>
+
+			require(['../wilib/js/lib/alternativa_boliche'], function (edi) {
+				
+				edi.setConfig({// configurando o EDI
+					icone: 'exclamacao',
+					titulo: 'Vamos testar seus conhecimentos? Responda corretamente às questões e marque pontos em nosso basquete do saber!',
+				});
+				
+				var btns = {
+                    tela1:{
+                        texto:'O que é o sentido denotativo das palavras?',
+                        btns:[
+                            {texto: 'É aquele encontrado nos dicionários, o chamado sentido verdadeiro, real. ', dataCorreta: true},
+                            {texto: 'É o sentido que tem vários significados. ', dataCorreta: false},
+                            {texto: 'É o sentido imaginativo que damos as palavras. ', dataCorreta: false},
+                        ],
+                    },
+                    tela2:{
+                        texto:'O que é o sentido conotativo das palavras?',
+                        btns:[
+                            {texto: 'É o encontrado nos dicionários. O tido como verdadeiro e real.', dataCorreta: false},
+                            {texto: 'É a atribuição de um sentido figurado, fantasioso das palavras.', dataCorreta: true},
+                            {texto: 'É o sentido que nunca entendemos em um texto.', dataCorreta: false},
+                        ],
+                    },
+                    tela3:{
+                        texto:'Por que muitos textos utilizam o sentido <br> conotativo das palavras?',
+                        btns:[
+                            {texto: 'Para enganar o leitor.', dataCorreta: false},
+                            {texto: 'Para provocar reações diferenciadas em seus leitores.', dataCorreta: true},
+                            {texto: 'Para atrapalhar a leitura e compreensão do texto.', dataCorreta: false},
+                        ],
+                    }
+                };
+
+		        var config = {
+		            width:150,
+		            topContainer: 95,
+		            fontSizeTexto: '14px',
+		            widthBoxTexto: 513,
+		            heightBoxTexto: 155,
+		            basquete: true,
+		            boliche: false,
+		            numeracao: false,
+		            tamanhoTextoBtn: 10
+		        };
+				
+				var callback = function (a) {
+					//$('.btn').fadeOut();
+					if(a){
+						$('#acerto'+edi.telaAtual()).fadeIn();	
+					}
+					else
+						$('#errado'+edi.telaAtual()).fadeIn();	
+				}
+				
+
+                edi.alternativa_boliche(btns, callback, config);//iniciando o EDI
+              
+			});
+		</script>
+		
+		<style>
+
+			#grifado {
+				font-weight: bold;
+			}
+
+			#conteudo {
+				height: 315px;
+			}
+
+			.bordaVerde{
+				position: absolute;
+				color: #9c0;
+				border: 2px dashed #9c0;
+				text-align: center;
+				background-color: #FFF;
+				z-index: 1;
+				display: none;
+			}
+			#acerto1{
+				top: 108px;
+				left: 430px;
+				width: 200px;
+				height: 60px;
+				padding: 90px 20px;
+			}
+
+			#acerto2{
+				top: 108px;
+				left: 430px;
+				width: 200px;
+				height: 100px;
+				padding: 70px 20px;
+			}
+
+			#acerto3{
+				top: 108px;
+				left: 430px;
+				width: 200px;
+				height: 100px;
+				padding: 70px 20px;
+			}
+
+			#errado1{
+				position: absolute;
+				top: 108px;
+				left: 430px;
+				width: 170px;
+				height: 100px;
+				padding: 80px 20px;
+				color: #F00;
+				border: 2px dashed #F00;
+				text-align: center;
+				background-color: #FFF;
+				z-index: 1;
+				display: none;
+			}
+
+			#errado2{
+				position: absolute;
+				top: 108px;
+				left: 430px;
+				width: 170px;
+				height: 100px;
+				padding: 80px 20px;
+				color: #F00;
+				border: 2px dashed #F00;
+				text-align: center;
+				background-color: #FFF;
+				z-index: 1;
+				display: none;
+			}
+
+			#errado3{
+				position: absolute;
+				top: 108px;
+				left: 430px;
+				width: 170px;
+				height: 220px;
+				padding: 10px 20px;
+				color: #F00;
+				border: 2px dashed #F00;
+				text-align: center;
+				background-color: #FFF;
+				z-index: 1;
+				display: none;
+			}
+
+		</style>
+	</head>
+	
+	<body>
+
+		<div id="acerto1" class="arredondado bordaVerde bold">Correto! O sentido denotativo das palavras é o sentido real, aquele significado expresso nos dicionários.</div>
+
+		<div id="acerto2" class="arredondado bordaVerde bold">Correto! O sentido conotativo das palavras é figurado, fantasioso, e para compreendê-lo precisamos estar atentos ao contexto.</div>
+
+		<div id="acerto3" class="arredondado bordaVerde bold">Correto! Você marcou mais um ponto! Os textos literários exploram bastante as construções de base conotativa, numa tentativa de extrapolar o espaço do texto e provocar reações diferenciadas em seus leitores.</div>
+
+		<div id="errado1" class="arredondado  bold">Você errou! O sentido denotativo tem relação com a realidade, pense um pouco mais!</div>
+
+		<div id="errado2" class="arredondado  bold">Você errou! O sentido conotativo está relacionado à nossa percepção de todo texto, das palavras subjetivas. </div>
+
+		<div id="errado3" class="arredondado  bold">Você errou! Os textos literários exploram bastante as construções de base conotativa, numa tentativa de extrapolar o espaço do texto e provocar reações diferenciadas em seus leitores. Responda corretamente!</div>
+
+	</body>
+</html>

@@ -1,0 +1,53 @@
+<!doctype html>
+<html lang="pt-br">
+<head>
+    <title>Lição 01 Peça 08</title>
+    <meta charset="utf-8">
+    <script src="../wilib/js/lib/require.js"></script>
+    <script src="../wilib/js/app.js"></script>
+    <link rel="stylesheet" href="../wilib/css/font-awesome.css">
+    <link rel="stylesheet" href="../wilib/css/meioambientetrabalho.css">
+
+    <script>
+        require(['../wilib/js/lib/revela_b05'], function (edi) {
+
+            edi.setConfig({
+
+                titulo: "Quais os erros que poderemos cometer ao interpretar um texto?<br>Clique sobre os botões e conheça-os.",
+                mascote: 'mascote'
+
+            });
+
+            var img = '../img/licao01/p08.jpg';
+
+            var revelas = [
+                    'Extrapolação - Ocorre quando se sai do contexto, acrescentando ideias que não estão no texto, quer por conhecimento prévio do tema quer pela imaginação.',
+                    'Redução - É o oposto da extrapolação. Dá-se atenção apenas a um aspecto, esquecendo que um texto é um conjunto de ideias, o que pode ser insuficiente para o total do entendimento do tema desenvolvido.',
+                    'Contradição - Não raro, o texto apresenta  ideias contrárias às do candidato, fazendo-o tirar conclusões equivocadas  e, consequentemente, errando a questão.'
+            ];
+
+            edi.revela_b05(revelas, null, function(){
+                mensagem('Neste exercício você aprendeu o<br> que não deve fazer ao Interpretar<br>um Texto, portanto, esteja atento!');
+            }, {fontSize: 12});
+
+            $('<img>')
+                    .css({
+                        position: 'absolute',
+                        left: 15,
+                        top: 95,
+                        border: '7px solid #FFF',
+                        boxShadow: '0 0 1px 1px #ccc',
+                        borderRadius: 10
+                    })
+                    .attr({
+                        src: img,
+                        width: 250
+                    })
+                    .appendTo('#conteudo');
+
+        });
+    </script>
+</head>
+<body>
+</body>
+</html>

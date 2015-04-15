@@ -1,0 +1,57 @@
+<!doctype html>
+<html lang="pt-br">
+<head>
+	<title>Lição 01 Peça 10</title>
+        <meta charset="utf-8">
+        <script src="../wilib/js/lib/require.js"></script>
+        <script src="../wilib/js/app.js"></script>
+        <link rel="stylesheet" href="../wilib/css/font-awesome.css">
+        <link rel="stylesheet" href="../wilib/css/meioAmbiente.css">
+
+	<script>
+		require(['../wilib/js/lib/alternativa_balao'], function (edi) {
+
+			edi.setConfig({
+				titulo: 'Você sabe o que significa interpretar?<br>Clique sobre a alternativa correta.',
+                mascote: 'mascote',
+                tempoFinal: 10
+			});
+
+            var baloes = [
+
+                {texto: 'Interpretar é o mesmo que atuar, é representar uma personagem criada por um autor ou escritor.', dataCorreta: false},
+                {texto: 'O ato de interpretar só pode ser realizado por atrizes e atores consagrados.', dataCorreta: false},
+                {texto: 'Interpretar significa explicar, esclarecer, compreender o que está subentendido em um texto ou imagem.', dataCorreta: true},
+                {texto: 'Interpretar é dissimular, fingir ser o que não é. Pode ser entendido como ação de enganar, mentir.', dataCorreta: false}
+
+            ];
+
+			edi.alternativa_balao(baloes, function (a, b) {
+                //cb
+            }, function (a) {
+                if(a){
+                    mensagem('Excelente! Interpretar é compreender<br> o que está escrito em um texto,<br> uma imagem, um som, etc.');
+                }
+                else {
+                    mensagem('Atenção! Releia as alternativas e,<br> leve em consideração que este<br> curso fala sobre interpretação <br>de textos e lógica.<br> Tente novamente!');
+                }
+            }, {
+                top: 0,
+                left: 80,
+                width: 300,
+                height: 150,
+                margin: '0 60px 0 0',
+                fontSize: 12,
+                leftPerson: -65,
+                topPerson: 43,
+                topIco: 0,
+                leftIco: -7
+            });
+		});
+	</script>
+</head>
+
+<body>
+</body>
+
+</html>

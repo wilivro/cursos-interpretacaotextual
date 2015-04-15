@@ -1,0 +1,152 @@
+<!-- Desenvolvedor: Leandro Fortaleza -->
+<!doctype html>
+<html lang="pt-br">
+<head>
+    <title>arr_c005</title>
+    <meta charset="utf-8">
+    <script src="../wilib/js/lib/require.js"></script>
+    <script src="../wilib/js/app.js"></script>
+    <link rel="stylesheet" href="../wilib/css/font-awesome.css">
+    <link rel="stylesheet" href="../wilib/css/meioAmbiente.css">
+
+    <script>
+        require(['../wilib/js/lib/arrasta'], function (edi) {
+
+            edi.setConfig({
+                mascote: 'mascote',
+                titulo: 'Arraste as palavras para os locais corretos e complete a sentença:',
+                tempoFinal: 20
+            });
+
+            var arrArrasta = [
+                {arrasta: 'Conotação', dataCorreta: '1', dataId: '1'},
+                {arrasta: 'Denotação', dataCorreta: '2', dataId: '2'}
+            ];
+
+            var texto = $('#boxTexto').html();
+
+            texto = texto.replace(/\[[1]\]/g, '<div class="alvo" data-correta="1">____________</div>');
+
+            texto = texto.replace(/\[[2]\]/g, '<div class="alvo" data-correta="2">____________</div>');
+
+
+            $('#boxTexto').html(texto);
+
+
+            arrArrasta.sort(function () {
+                return 0.5 - Math.random()
+            });
+
+
+            for (var i = 0; i < arrArrasta.length; i++) {
+                $('<div>')
+                        .addClass('arrasta fundoArrasta azulAlpha')
+                        .attr({
+                            'data-id': arrArrasta[i].dataId,
+                            id: 'arrasta'+(i+1),
+                            'data-correta': arrArrasta[i].dataCorreta
+                        })
+                        .html(arrArrasta[i].arrasta)
+                        .appendTo('#arrasta');
+            }
+
+            var config = {
+                colorirFilho: true,
+                arrastaAbsolute: true,
+                reloadCorreta: true,
+                clone: true,
+                alvoFixo: true
+            };
+
+            edi.arrasta('arrasta', 'alvo', function (a, b, c) {
+                if(a){
+                    b.css({
+                        display: 'flex'
+                    })
+                    c.html(b)
+                }
+            }, function (a) {
+                
+            }, config);
+
+            $('.arrasta').css({
+                margin: -5,
+                padding: 5
+            });
+
+            $('<div>')
+                    .attr('id', 'mascote')
+                    .appendTo('#conteudo');
+        });
+    </script>
+    <style>
+        .alvo {
+            display: inline-block;
+        }
+        .arrasta {
+            padding: 5px;
+            margin-right: 10px;
+            margin-left: 10px;
+            display: inline-block;
+            color: #FFF;
+            width: 77px;
+            text-align: center;
+        }
+        #boxArrasta{
+            width: 180px;
+            height: 280px;
+            cursor: default;
+            top: 10px;
+            left: 1px;
+        }
+        #arrasta{
+            position: relative;
+            display: table-cell;
+            vertical-align: middle;
+
+            width: 600px;
+            height: 290px;
+        }
+        #boxTexto{
+            position: absolute;
+            width: 700px;
+            height: 240px;
+            text-align: left;
+            line-height: 30px;
+            color: #999;
+            top: 71px;
+            left: 250px;
+            border-radius: 10px;
+            padding-left: 20px;
+        }
+
+    </style>
+
+</head>
+<body>
+<div id="boxArrasta" class="btn btn-default-hover">
+    <div id="arrasta"></div>
+</div>
+<div id="boxTexto">
+    [1] Meu pai é meu espelho.<br>
+
+    [2] Quebrei o espelho do banheiro.<br>
+
+    [1] Essa menina tem um coração de ouro.<br>
+
+    [1] A Praça da Sé fica no coração de São Paulo.<br>
+
+    [2] Fez um transplante de coração.<br>
+
+    [1] Você é mesmo mau: tem um coração de pedra.<br>
+
+    [1] Completou vinte primaveras.<br>
+
+    [2] Na primavera os campos florescem.<br>
+
+    [2] O metro é uma unidade de comprimento.<br>
+
+    [1]Estava tudo em pé de guerra.<br>
+</div>
+</body>
+</html>

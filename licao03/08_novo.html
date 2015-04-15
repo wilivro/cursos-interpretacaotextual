@@ -1,0 +1,164 @@
+<!-- Desenvolvedor: Leandro Fortaleza -->
+<!doctype html>
+<html lang="pt-br">
+<head>
+    <title>Lição 01 Peça 16</title>
+    <meta charset="utf-8">
+    <script src="../wilib/js/lib/require.js"></script>
+    <script src="../wilib/js/app.js"></script>
+    <link rel="stylesheet" href="../wilib/css/font-awesome.css">
+    <link rel="stylesheet" href="../wilib/css/meioAmbiente.css">
+
+    <script>
+        require(['../wilib/js/lib/alternativa_botao'], function (edi) {
+
+            edi.setConfig({
+                titulo: 'Que tal testar seu conhecimento? Responda corretamente as questões sobre Denotação e Conotação.',
+                mascote: 'mascote',
+                qtdTelas: 3
+            });
+
+            if (edi.telaAtual == 1) {
+                var texto = 'Assinale o segmento em que NÃO foram usadas palavras em sentido figurado:';
+
+                var correto = "Muito bem! O sentido figurado é utilizado em palavras conotativas, neste caso, o exercício pede a identificação da frase que não usou a conotação, mas sim, a denotação, o sentido real da palavra.";
+                var errado = "Atenção! Lembre-se, que Conotação é o sentido figurado e Denotação o significado real da palavra. Caso ainda tenha dúvidas retorne aos exercícios anteriores. ";
+
+                var btns = [
+                    {texto: 'Lendo o futuro no passado dos políticos(...)', dataCorreta: false},
+                    {texto: 'As fontes é que iam beber em seus ouvidos.', dataCorreta: false},
+                    {texto: 'Eram 75 linhas que jorravam na máquina de escrever com regularidade mecânica.', dataCorreta: false},
+                    {texto: 'Antes do meio-dia, a coluna estava pronta.', dataCorreta: true}
+                ];
+            }
+
+            if (edi.telaAtual == 2) {
+                var texto = 'Assinale a alternativa cujo termo grifado NÃO é linguagem conotativa:';
+
+                var correto = "Muito bem! Você compreendeu bem os dois conceitos apresentados, e conseguiu identificar a diferença no exercício proposto.";
+                var errado = "Atenção! O exercício pede que você identifique a frase que não é linguagem conotativa. Conotação é o significado figurado das palavras. Tente novamente!";
+
+                var btns = [
+                    {texto: '“... mas um defunto autor, para quem a campa foi outro berço ”', dataCorreta: false},
+                    {texto: '“Acresce que chovia - peneirava - uma chuvinha miúda, triste”', dataCorreta: false},
+                    {texto: '“A natureza parece estar chorando a perda irreparável ...”', dataCorreta: false},
+                    {texto: '“... no discurso que proferiu à beira da minha cova.”', dataCorreta: true}
+                ];
+            }
+
+             if (edi.telaAtual == 3) {
+                var texto = 'O item em que o termo sublinhado está empregado no sentido denotativo é:'
+
+                var correto = "Muito bem! Neste exercício você precisou identificar o sentido denotativo, e fez isso com muita segurança. Parabéns!";
+                var errado = "Atenção! O sentido Denotativo é o sentido real da palavra, aquele do dicionário, não é subjetivo e nem figurado. Pense um pouco mais!";
+
+                var btns = [
+                    {texto: '“Além dos ganhos econômicos, a nova realidade rendeu frutos políticos.”', dataCorreta: false},
+                    {texto: '“...com percentuais capazes de causar inveja ao presidente.”', dataCorreta: true},
+                    {texto: '“Os genéricos estão abrindo as portas do mercado...”', dataCorreta: false},
+                    {texto: '“...a indústria disparou gordos investimentos.”', dataCorreta: false}
+                ];
+            }
+
+
+            var config = {
+                randomico: true,
+                width: 440,
+                height: 40,
+                left: 300,
+                top: 100,
+                tamanhoTexto: 16,
+                colunas: 1,
+                margin: '0 0 10px 0',
+                padding: 5,
+                display: 'block',
+                btnBranco: true,
+                animacao: true
+            };
+
+            function callback(a, b) {
+                $('.texto').html("");
+
+                var dv_texto = $('<div>')
+                    .addClass('texto')
+                    .css({
+                        position: 'relative',
+                        display: 'table-cell',
+                        verticalAlign: 'middle',
+                        border: 0,
+                        top: 0,
+                        left: 0,
+                        padding: '0 2px'
+                    }).appendTo('.texto');
+
+                if (a) 
+                    dv_texto.css({
+                        color: '#9c0',
+                        textAlign: 'center'
+                    }).html(correto);
+                else
+                    dv_texto.css({
+                        color: '#F00',
+                        textAlign: 'center'
+                    }).html(errado);
+                
+            }
+
+            edi.alternativa_botao(btns, callback, null, config);
+
+            $('.texto').peBalao();
+            $('#num').iconeInterrogacaoAzul(true);
+            //.html(edi.telaAtual);
+            $('.texto').find('p').html(texto);
+        });
+    </script>
+
+    <style>
+        #conteudo {
+            background: radial-gradient(#fff, #eee);
+            height: 315px;
+        }
+
+        .texto {
+            background: #fff;
+            width: 150px;
+            height: 268px;
+            padding: 0 20px;
+            position: absolute;
+            left: 20px;
+            top: 85px;
+            border-radius: 5px;
+            border: 1px solid #E2E2E2;
+        }
+
+        .texto p {
+            margin: 140px 0 0 0;
+            text-align: center;
+            line-height: 1.3;
+        }
+
+        #num {
+            width: 50px;
+            display: block;
+            height: 50px;
+            text-align: center;
+            font-size: 35px;
+            position: absolute;
+            left: 63px;
+            top: 50px;
+        }
+
+        .btn-sem-estilo {
+            box-shadow: 0 0 0 0;
+        }
+    </style>
+</head>
+
+<body>
+<div class="texto">
+    <span id="num"></span>
+
+    <p></p>
+</div>
+</body>
+</html>

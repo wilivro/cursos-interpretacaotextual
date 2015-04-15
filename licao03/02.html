@@ -1,0 +1,153 @@
+<!-- Desenvolvedor: Leandro Fortaleza -->
+<!doctype html>
+<html lang="pt-br">
+<head>
+    <title>arr_c009</title>
+    <meta charset="utf-8">
+    <script src="../wilib/js/lib/require.js"></script>
+    <script src="../wilib/js/app.js"></script>
+    <link rel="stylesheet" href="../wilib/css/font-awesome.css">
+    <link rel="stylesheet" href="../wilib/css/meioAmbiente.css">
+
+    <script>
+        require(['../wilib/js/lib/arrasta'], function (edi) {
+            edi.setConfig({
+                mascote: 'mascote',
+                titulo: "Na lição anterior estudamos um pouco sobre os conceitos<br>de Denotação e Conotação. Levando em conta este estudo,<br>arraste os termos aos conceitos corretos."
+            });
+
+            var config = {
+                colorirFilho: true,
+                arrastaAbsolute: true,
+            };
+
+            edi.arrasta('arrasta', 'alvo', function (a, b) {
+                $(b).css('margin-top', '5px')
+            }, function(a){
+                if(a)
+                    $('#balao').fadeIn();
+                else
+                    $('#balao').fadeIn().css({
+                        border: '2px dashed #F00',
+                        color: '#F00',
+                        height: '161px'
+                    }).html("Atenção! Pense um pouco mais. Lembre-se que um conceito está relacionado ao uso da linguagem em sentido figurado e outro, está ligado ao uso da palavra em sentido original, como do dicionário.");
+                
+            }, config);
+
+        });
+    </script>
+
+    <style media="screen">
+        #balao {
+            border: 2px dashed #9C0;
+            background: #fff;
+            padding: 2px;
+            width: 140px;
+            height: 255px;
+            position: absolute;
+            left: 10px;
+            top: 90px;
+            font-size: 13px;
+            text-align: center;
+            line-height: 1.3;
+            border-radius: 10px;
+            color: #9C0;
+            display: none;
+        }
+
+        #ico {
+            margin: 40px 0 20px 0;
+            height: 59px;
+            position: relative;
+            left: 35px;
+        }
+        #main {
+            position: absolute;
+            left: 170px;
+            top: 80px;
+        }
+
+        .box {
+            width: 200px;
+            height: 200px;
+            float: left;
+            margin: 5px 5px 15px 5px;
+            padding: 5px;
+            border-radius: 5px;
+            background: linear-gradient(to bottom, #fff, #eee);
+            box-shadow: 0px 1px 3px rgba(0, 0, 0, 0.3);
+        }
+
+        .box .alvo {
+            width: 100%;
+            height: 30px;
+            background: #eee;
+            box-shadow: inset 1px 1px 2px rgba(0, 0, 0, 0.3);
+            border-radius: 5px;
+        }
+
+        .box .text {
+            width: 100%;
+            height: 170px;
+            display: table;
+        }
+
+        .box .text p {
+            width: 100%;
+            display: table-cell;
+            vertical-align: middle;
+            font-size: 13px;
+            text-align: center;
+            color: #666;
+        }
+
+        #arrastas {
+            width: 415px;
+            height: 20px;
+            clear: both;
+            margin: 5px;
+            padding: 5px;
+            border-radius: 5px;
+        }
+
+        .arrasta {
+            width: 205px;
+            float: left;
+            text-align: center;
+            color: #fff;
+        }
+    </style>
+</head>
+<body>
+<div id="main">
+    <div class="box">
+        <div class="alvo" data-correta="0"></div>
+        <div class="text">
+            <p>
+                É o uso da palavra em seu sentido original.
+            </p>
+        </div>
+    </div>
+
+    <div class="box">
+        <div class="alvo" data-correta="1"></div>
+        <div class="text">
+            <p>
+                É o uso da palavra em seu sentido figurado ou simbólico.
+            </p>
+        </div>
+    </div>
+
+    <div id="arrastas" class="btn btn-default-hover">
+        <div class="arrasta fundoArrasta azulAlpha" data-correta="0">Denotação </div>
+        <div class="arrasta fundoArrasta azulAlpha" data-correta="1">Conotação</div>
+    </div>
+
+
+</div>
+<div id="balao">
+    Excelente! Quando a palavra é utilizada com seu sentido comum (o que aparece no dicionário) dizemos que foi empregada denotativamente. Quando é utilizada com um sentido diferente daquele que lhe é comum, dizemos que foi empregada conotativamente. Este recurso é muito explorado na Literatura.
+</div>
+</body>
+</html>

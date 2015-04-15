@@ -1,0 +1,40 @@
+<!-- Desenvolvedor: Leandro Fortaleza -->
+<!doctype html>
+<html lang="pt-br">
+
+<head>
+	<title>Lição 01 Peça 01</title>
+	<meta charset="utf-8">
+	<script src="../wilib/js/lib/require.js"></script>
+	<script src="../wilib/js/app.js"></script>
+	<link rel="stylesheet" href="../wilib/css/font-awesome.css">
+	<link rel="stylesheet" href="../wilib/css/meioAmbiente.css">
+
+	<script>
+		require(['../wilib/js/lib/reflita2'], function (edi) {
+
+			edi.setConfig({
+                enunciado: false
+			});
+
+            var texto = "Nesta lição trabalharemos de forma mais intensa os conceitos de Denotação e Conotação.<br>" +
+                    "Faremos muitos exercícios envolvendo esses dois conceitos para que sua habilidade de interpretar textos seja cada vez mais desenvolvida.<br>" +
+                    "Por serem conceitos importantes e fazerem parte dos exercícios de interpretação, precisamos dedicar uma lição a este assunto. Mantenha seu foco e continue atento aos estudos! <br>";
+			edi.reflita2(texto);
+		});
+	</script>
+    <style>
+        .balao-texto {
+            width: 400px !important;
+            right: 20px !important;
+        }
+        .balao-texto p {
+            text-align: justify;
+        }
+    </style>
+</head>
+
+<body>
+</body>
+
+</html>

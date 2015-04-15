@@ -1,0 +1,106 @@
+<!-- Desenvolvedor: Leandro Fortaleza -->
+<!doctype html>
+<html lang="pt-br">
+
+<head>
+	<title>Lição 01 Peça 18</title>
+	<meta charset="utf-8">
+	<script src="../wilib/js/lib/require.js"></script>
+	<script src="../wilib/js/app.js"></script>
+
+	<link rel="stylesheet" href="../wilib/css/font-awesome.css">
+	<link rel="stylesheet" href="../wilib/css/meioAmbiente.css">
+
+	<!-- main -->
+	<script>
+		require(['../wilib/js/lib/ligar'], function (edi) {
+
+			edi.setConfig({ // configurando o EDI
+                mascote: 'mascote',
+                icone: 'exclamacao',
+                titulo: 'Ligue os<br>pontos e<br>classifique<br>cada<br>Ecossistema<br>em terrestre<br>ou aquático',
+                enunciado: 'vertical'
+			});
+
+            var ligas = [
+                {conteudo: '<img src="../img/licao03/peca10.jpg">', dataCorreta: 1, cor: '#8BC959'},
+                {conteudo: '<img src="../img/licao03/peca10_1.jpg">', dataCorreta: 0, cor: '#0089FF'}
+            ];
+
+            var alvos = [
+                {conteudo: '"Engolindo sapo"', dataCorreta: 0},
+                {conteudo: '"Chá de cadeira"', dataCorreta: 1}
+            ];
+
+			edi.ligar(ligas, alvos, function (a, b, c) {
+				//callback
+				//a:booleano = acertou/errou
+				//b:elementoHTML = liga
+				//c:elementoHTML = alvo
+			}, function () {
+				//callbackfinal
+				$("#certo").fadeIn();
+			}, {
+				ligaFixo: false,
+				fontSize: 10,
+				liga: {
+          width: 210,
+          height: 'auto',
+          left: 20,
+          top: 5,
+          paddingTop: 5,
+          paddingBottom: 5,
+          marginBottom: 20,
+          textAlign: 'center'
+      	},
+        alvo: {
+          width: 150,
+          height: 'none',
+          left: 470,
+          top: 100,
+          paddingTop: 6,
+          paddingBottom: 6,
+          marginBottom: 100,
+          textAlign: 'center'
+        }
+			});
+		});
+	</script>
+
+	<style>
+        #conteudo {
+            background: radial-gradient(#fff, #fdfdfd);
+        }
+        #certo{
+        	position: absolute;
+				  height: 300px;
+				  background-color: rgba(255, 255, 255, 0.8);
+				  border-radius: 15px;
+				  border: 2px solid #999;
+				  width: 176px;
+				  top: 42px;
+				  left: 250px;
+				  z-index: 400;
+				  display: none;
+        }
+
+        #texto{
+        	position: relative;
+        	display: table-cell;
+        	padding: 0 5px;
+        	vertical-align: middle;
+        	text-align: center;
+					height: 300px;
+					width: 176px;
+					color: #9C0;
+        }
+	</style>
+</head>
+
+<body>
+	<div id="certo">
+		<div id="texto">Muito bem! Você está atento aos nossos estudos. Veja como é simples quando entendemos os conceitos! A linguagem conotativa, figurada, está em muitas situações do nosso dia a dia.</div>
+	</div>
+</body>
+
+</html>

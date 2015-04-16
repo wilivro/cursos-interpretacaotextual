@@ -1,0 +1,82 @@
+<!doctype html>
+<html lang="pt-br">
+	<head>
+    <title>Lição 04 Peça 05</title>
+		<meta charset="utf-8">
+		<script src="../wilib/js/lib/require.js"></script>
+		<script src="../wilib/js/app.js"></script>
+
+    <link rel="stylesheet" href="../wilib/css/font-awesome.css">
+    <link rel="stylesheet" href="../wilib/css/meioAmbiente.css">
+
+		<script>
+			require(['../wilib/js/lib/revela'], function (edi) {
+
+				edi.setConfig({
+          icone: "exclamacao",
+					titulo: "Clique na imagem e conheça algumas vantagens das<br> empresas que colocam em prática a consciência ecológica:",
+					mascote: 'mascote'
+				});
+
+				edi.revela('btn-revela', 'box-revela', function (btn, revela) {
+					setTimeout(function() {
+						mensagem(
+							'Muito bem! Vamos começar a estudar as figuras de ' +
+							'palavras, iniciando pela metáfora e metonímia. Bom estudo!'
+						);
+					}, 5000);
+				}, function (btn) {
+					btn.animate({left: 20}, 1000);
+				}, {
+					piscar: false,
+					delay: 1000
+				});//iniciando o EDI
+
+			});
+		</script>
+
+		<style>
+			.btn-revela {
+				background: url(../img/licao04/05.jpg) no-repeat;
+				background-size: 100% 100%;
+				width: 181px;
+				height: 129px;
+				top: 160px;
+				left: 305px;
+				z-index: 100;
+				position: absolute;
+				cursor: pointer;
+			}
+
+			.box-revela {
+        width: 280px;
+        border: 1px solid #ccc;
+        border-radius: 15px;
+        font-size: 12px;
+        padding: 10px;
+        position: absolute;
+        line-height: 1.8;
+        text-align: left;
+        text-shadow: 1px 1px 1px rgba(0, 0, 0, 0.2);
+        top: 90px;
+        left: 235px;
+
+            }
+		</style>
+	</head>
+
+	<body>
+		<div class="btn-revela"></div>
+		<div class="box-revela">
+      <p>
+				A figura de palavra consiste na substituição de uma palavra por
+				outra, isto é, no emprego figurado, simbólico, seja por uma
+				relação muito próxima (contiguidade) seja por uma associação,
+				uma comparação, uma similaridade. Esses dois conceitos básicos - 
+				contiguidade e similaridade - permitem-nos reconhecer dois
+				tipos de figuras de palavras: a metáfora e a metonímia.
+				Começaremos nossos estudos por essas duas.
+      </p>
+		</div>
+	</body>
+</html>

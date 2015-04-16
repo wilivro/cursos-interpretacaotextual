@@ -1,0 +1,100 @@
+<!-- Desenvolvedor: Danilo Thiago -->
+<!doctype html>
+<html lang="pt-br">
+	<head>
+		<title>Lição 04 Peça 24</title>
+		<meta charset="utf-8">
+		<script src="../wilib/js/lib/require.js"></script>
+		<script src="../wilib/js/app.js"></script>
+
+		<link rel="stylesheet" href="../wilib/css/font-awesome.css">
+		<link rel="stylesheet" href="../wilib/css/meioAmbiente.css">
+
+		<script>
+            $(function () {
+                require(['../wilib/js/lib/alternativa'], function (edi) {
+
+                    edi.setConfig({
+                        icone: 'interrogacaoAzul',
+                        titulo: '(FUVEST 2009) - Metonímia é a figura de linguagem ' +
+																'que consiste no emprego de um termo por outro, ' +
+																'havendo sempre uma relação entre os dois. A relação ' +
+																'pode ser de causa e efeito, de continente e conteúdo, ' +
+																'de autor e obra ou da parte pelo todo. Marque a ' +
+																'alternativa em que essa figura ocorre:'
+                    });
+
+                    var alternativas = [
+                        {
+                            alternativa: 'Achando aquilo um desaforo.',
+                            correta: false
+                        },{
+                            alternativa: 'Miquelina ficou abobada com o olhar parado.',
+                            correta: false
+                        },{
+                            alternativa: 'E as mãos batendo nas bocas.',
+                            correta: false
+                        },{
+                            alternativa: 'Calções negros corriam, pulavam.',
+                            correta: true
+                        },{
+                            alternativa: 'Palhetas subiram no ar.',
+                            correta: false
+                        }
+                    ];
+
+                    var config = {
+                        posx: 15,
+                        posy: 85,
+                        aleatorio: true,
+                        tamanhoBox: 35,
+                        tamanhoBoxTexto: 600,
+                        marginBtns: 5
+                    }
+
+                    edi.alternativa(alternativas, function (acertou) {
+                    }, function (a) {
+                        if (a) {
+													$('#msg').fadeIn();
+													setTimeout(function() {
+														mensagem(
+															'Muito bem! A resposta é a letra D - Calções ' +
+															'negros corriam, pulavam. A relação é de continente ' +
+															'e conteúdo, pois quem corria e pulava na verdade ' +
+															'eram as pernas e não o calção.'
+														);
+													}, 3000);
+													return;
+												}
+
+												setTimeout(function() {
+													mensagem(
+														'Atenção! A relação é de continente e conteúdo, pois ' +
+														'quem corria e pulava na verdade eram as pernas e não ' +
+														'o calção. Pense um pouco mais.'
+													);
+												}, 3000);
+                    }, config);
+
+                        $('#balao').peBalao({
+                            left: 10,
+                            tamanhoBorda: 15,
+                            borda: '#ccc'
+                        });
+
+                });
+            })
+		</script>
+
+		<style>
+			#texto-titulo {
+				font-size: 13px;
+			}
+
+		</style>
+	</head>
+
+	<body>
+
+	</body>
+</html>

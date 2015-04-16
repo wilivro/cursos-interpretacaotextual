@@ -1,0 +1,64 @@
+<!doctype html>
+<html lang="pt-br">
+  <head>
+    <title>Lição 04 Peça 26</title>
+    <meta charset="utf-8">
+    <script src="../wilib/js/lib/require.js"></script>
+    <script src="../wilib/js/app.js"></script>
+      <link type="text/css" rel="stylesheet" href="../wilib/css/font-awesome.css">
+      <link type="text/css" rel="stylesheet" href="../wilib/css/meioAmbiente.css">
+
+    <style type="text/css">
+    </style>
+    <script>
+      require(['../wilib/js/lib/slide_vertical'], function (edi) {
+
+        edi.setConfig({
+          titulo: "Conheça outros exemplos de metonímia " +
+                  "clicando nas barras a seguir.",
+          mascote: 'mascote',
+          icone: "interrogacaoAzul"
+        });
+
+        var slides = [
+          {
+            btn: '',
+            txt: 'Aqui as árvores representam os pulmões de uma pessoa. ' +
+                 'A metonímia está na imagem da árvore associada aos pulmões ' +
+                 'que representam o homem = parte pelo todo. A mensagem ' +
+                 'transmitida é de que se preservarmos as árvores e a natureza, ' +
+                 'preservaremos também nossa vida.',
+            img: '../img/licao04/26.1.jpg'
+          },
+          {
+            btn: '',
+            txt: 'As placas de sinalização também são exemplos de metonímia. ' +
+                 'Um E cortado significa que não é permitido estacionar. '  +
+                 'A letra E simboliza a palavra “estacionar”; e o traço, a proibição. ',
+            img: '../img/licao04/26.2.jpg'
+          },
+          {
+            btn: 'Pés bem apoiados',
+            txt: 'Os símbolos dessas placas são universais. Eles nos remetem ' +
+                 'ao contexto que representam sem haver necessidade de um '  +
+                 'texto explicativo mais longo.',
+            img: '../img/licao04/26.3.jpg'
+          }
+        ];
+
+        edi.slide_vertical(slides, function() {
+
+        }, function() {
+          mensagem(
+            'Excelente! Com estas imagens podemos perceber que a ' +
+            'metonímia também aparece na linguagem não verbal.'
+          );
+        }, {showNumber: true});
+      });
+    </script>
+  </head>
+
+  <body>
+
+  </body>
+</html>

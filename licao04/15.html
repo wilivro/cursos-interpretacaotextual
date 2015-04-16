@@ -1,0 +1,84 @@
+<!doctype html>
+<html lang="pt-br">
+	<head>
+    <title>Lição 04 Peça 15</title>
+		<meta charset="utf-8">
+		<script src="../wilib/js/lib/require.js"></script>
+		<script src="../wilib/js/app.js"></script>
+
+        <link rel="stylesheet" href="../wilib/css/font-awesome.css">
+        <link rel="stylesheet" href="../wilib/css/meioAmbientetrabalho.css">
+
+		<script>
+			require(['../wilib/js/lib/revela'], function (edi) {
+
+				edi.setConfig({
+          icone: "exclamacao",
+					titulo: "Clique em Fred e observe o que ele nos explica:",
+					mascote: 'mascote'
+				});
+
+				edi.revela('btn-revela', 'box-revela', function (btn, revela) {
+					setTimeout(function() {
+						mensagem(
+							'Muito bem! Curiosas são as catacreses constituídas ' +
+							'por verbos: embarcar num trem, enterrar uma agulha ' +
+							'no dedo etc. Embarcar é entrar no barco, não no trem; ' +
+							'enterrar é entrar na terra, não no dedo.'
+						);
+					}, 3000);
+				}, null, {
+					piscar: false
+				});//iniciando o EDI
+
+				$(".box-revela").peBalao({
+						scaleX: -1,
+						scaleY: -1,
+						top: 137,
+						left: 0
+				});
+			});
+		</script>
+
+		<style>
+			.btn-revela {
+				background: url(../img/licao04/fred.svg);
+				background-size: 100% 100%;
+				z-index: 100;
+				width: 130px;
+				height: 224px;
+				position: absolute;
+				left: 40px;
+				top: 160px;
+				cursor: pointer;
+			}
+
+			.box-revela {
+          width: 280px;
+          border: 1px solid #ccc;
+          border-radius: 15px;
+          font-size: 13px;
+          padding: 0px 40px 3px 20px;
+          position: absolute;
+          line-height: 1.2;
+          text-align: left;
+          text-shadow: 1px 1px 1px rgba(0, 0, 0, 0.2);
+          top: 120px;
+          left: 205px;
+					padding: 10px 20px;
+      }
+		</style>
+	</head>
+
+	<body>
+		<div class="btn-revela"></div>
+		<div class="box-revela">
+			Catacrese é a extensão de sentido que sofrem determinadas
+			palavras na falta ou desconhecimento do termo apropriado.
+			Essa extensão ocorre com base na analogia. Por isso, ela é
+			uma variação da metáfora.
+			<br>
+			Exemplo: Leito do rio./ Dente de alho. / Barriga da perna. / Céu da boca.
+		</div>
+	</body>
+</html>

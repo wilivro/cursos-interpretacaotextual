@@ -1,0 +1,159 @@
+<!doctype html>
+<html lang="pt-br">
+<head>
+    <title>Lição 04 Peça 22</title>
+    <meta charset="utf-8">
+    <script src="../wilib/js/lib/require.js"></script>
+    <script src="../wilib/js/app.js"></script>
+    <link rel="stylesheet" href="../wilib/css/font-awesome.css">
+    <link rel="stylesheet" href="../wilib/css/meioAmbiente.css">
+
+    <script>
+        require(['../wilib/js/lib/arrasta'], function (edi) {
+
+            edi.setConfig({
+                mascote: 'mascote',
+                titulo: 'Outra figura de linguagem que estudaremos nesta ' +
+                        'lição é a metonímia. Complete a explicação de ' +
+                        'Laura e conheça esta figura.',
+                tempoFinal: 20
+            });
+
+            var arrArrasta = [
+                {arrasta: 'Metonímia', dataCorreta: '1', dataId: '1'},
+                {arrasta: 'figura', dataCorreta: '2', dataId: '2'},
+                {arrasta: 'falante', dataCorreta: '3', dataId: '3'},
+                {arrasta: 'ênfase', dataCorreta: '4', dataId: '4'}
+            ];
+
+            var texto = $('#boxTexto').html();
+
+            for (var i = 0; i < arrArrasta.length; i++) {
+                var aux = '';
+                aux += '<span class="linha"></span>';
+
+                texto = texto.replace('[' + i + ']', '<div id="alvo' + i + '" class="alvo" data-correta="'+arrArrasta[i].dataCorreta+'">' + aux + '</div>');
+            }
+
+            $('#boxTexto').html(texto);
+
+            arrArrasta.sort(function () {
+                return 0.5 - Math.random()
+            });
+
+
+            for (var i = 0; i < arrArrasta.length; i++) {
+                $('<div>')
+                        .addClass('arrasta fundoArrasta azulAlpha')
+                        .attr({
+                            'data-id': arrArrasta[i].dataId,
+                            id: 'arrasta'+(i+1),
+                            'data-correta': arrArrasta[i].dataCorreta
+                        })
+                        .html(arrArrasta[i].arrasta)
+                        .appendTo('#arrasta');
+            }
+
+            var config = {
+                colorirFilho: true,
+                arrastaAbsolute: true,
+                reloadCorreta: true,
+                alvoFixo: true
+            };
+
+            edi.arrasta('arrasta', 'alvo', function (a, b) {
+                b.css({top: 5})
+            }, function (a) {
+                if(a) {
+                    $('#boxTexto').html(
+                      'Metonímia é uma figura de linguagem que surge ' +
+                      'da necessidade do falante ou escritor dar' +
+                      'mais ênfase à comunicação.'
+                    );
+
+                    setTimeout(function() {
+                      mensagem(
+                        'Excelente! Metonímia é a substituição de uma palavra ' +
+                        'por outra, quando entre ambas existe uma relação de ' +
+                        'proximidade de sentidos que permite essa troca. ' +
+                        'Ex.: O estádio aplaudiu o jogador.'
+                      );
+                    }, 3000);
+                }
+            }, config);
+
+            $('.arrasta').css({
+                margin: -5,
+                padding: 5
+            });
+
+            $('<div>')
+                    .attr('id', 'mascote')
+                    .appendTo('#conteudo');
+        });
+    </script>
+    <style>
+        .alvo {
+            display: inline-block;
+            width: 110px;
+            height: 25px;
+            border-bottom: 1px solid #999;
+        }
+        .arrasta {
+            padding: 5px;
+            margin-right: 10px;
+            margin-left: 10px;
+            display: inline-block;
+            color: #FFF;
+        }
+        #boxArrasta{
+            padding-top: 5px;
+            width: 650px;
+            height: 55px;
+            cursor: default;
+            top: 235px;
+            left: 50px;
+        }
+        #arrasta{
+            position: relative;
+            display: table-cell;
+            vertical-align: middle;
+            width: 650px;
+            height: 60px;
+        }
+        #boxTexto{
+            position: absolute;
+            width: 400px;
+            height: 240px;
+            text-align: center;
+            line-height: 30px;
+            color: #999;
+            top: 80px;
+            left: 225px;
+            border-radius: 10px;
+            padding-left: 20px;
+        }
+        #img{
+            position: absolute;
+            left: 20px;
+            top: 90px;
+            background: url(../wilib/img/svg/ruiva.svg);
+            background-size: 100% 100%;
+            width: 200px;
+            height: 200px;
+        }
+
+    </style>
+
+</head>
+<body>
+<div id="boxArrasta" class="btn btn-default-hover">
+    <div id="arrasta"></div>
+</div>
+<div id="img"></div>
+<div id="boxTexto">
+  [0] é uma [1] de linguagem que surge da necessidade do
+  [2] ou escritor dar mais [3] à comunicação.
+</div>
+</body>
+</html>

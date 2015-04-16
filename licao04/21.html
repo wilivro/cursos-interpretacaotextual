@@ -1,0 +1,68 @@
+<!doctype html>
+<html lang="pt-br">
+	<head>
+        <title>Lição 04 Peça 21</title>
+        <meta charset="utf-8">
+        <script src="../wilib/js/lib/require.js"></script>
+        <script src="../wilib/js/app.js"></script>
+        <link rel="stylesheet" href="../wilib/css/font-awesome.css">
+        <link rel="stylesheet" href="../wilib/css/meioAmbiente.css">
+
+		<script>
+			require(['../wilib/js/lib/alternativa_vf'], function (edi) {
+
+				edi.setConfig({
+          icone: "interrogacaoAzul",
+          mascote: 'mascote',
+					titulo: 'Marque <span style="color: green">V</span> para os trechos que representam <br>comparação ' +
+									'e <span style="color: red">F</span> para os que não representam.'
+				});
+
+				var alternativas  = [];
+
+				alternativas.push({
+					texto: '“O arco-íris saltou como serpente multicolor ' +
+								 'nessa piscina de desenhos delicados.”(Cecília Meireles)',
+					dataCorreta: true
+				});
+
+				alternativas.push({
+					texto: '“Iam-se as sombras lentas desfazendo Sobre as ' +
+								 'flores da terra frio orvalho.”(Camões)',
+					dataCorreta: false
+				});
+
+				alternativas.push({
+					texto: '“O meu abraço te informará de mim.”' +
+								 '(Alcântara Machado)',
+					dataCorreta: false
+				});
+
+				edi.alternativa_vf(alternativas, function (a) {
+
+        }, function (a) {
+					if (a) {
+						mensagem(
+							'Muito bem! O único trecho que representa a figura ' +
+							'comparação é o do poema de Cecília Meireles.'
+						);
+						return;
+					}
+
+					mensagem(
+						'Atenção! Retorne a explicação da figura comparação e ' +
+						'relembre este conceito antes de tentar responder novamente.'
+					);
+        }, {
+            left: 60,
+            top: 50,
+            margin: '0 0 15px 0'
+        });
+			});
+		</script>
+	</head>
+
+	<body>
+
+	</body>
+</html>

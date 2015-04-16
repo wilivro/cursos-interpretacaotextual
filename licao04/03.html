@@ -1,0 +1,110 @@
+<!doctype html>
+<html lang="pt-br">
+
+<head>
+  <title>Lição 04 Peça 03</title>
+  <meta charset="utf-8">
+  <script src="../wilib/js/lib/require.js"></script>
+  <script src="../wilib/js/app.js"></script>
+
+  <link rel="stylesheet" href="../wilib/css/font-awesome.css">
+  <link rel="stylesheet" href="../wilib/css/meioAmbiente.css">
+
+  <!-- main -->
+  <script>
+  require(['../wilib/js/lib/revela_slide'], function (edi) {
+
+    edi.setConfig({ // configurando o EDI
+      icone: 'exclamacao',
+      titulo: 'Clique nos botões e observe as explicações da professora.'
+    });
+
+    function callback(a, b) {
+      b.parent().css('box-shadow', '0 0 0 3px #8CA8B8');
+    }
+
+    function calbackFinal () {
+      mensagem(
+        'Excelente! As figuras de linguagem subdividem-se em: ' +
+        'figuras de palavras, figuras de som, figuras de pensamento ' +
+        'e figuras de construção. Nesta lição ' +
+        'estudaremos as figuras de palavras.'
+      );
+    }
+
+    edi.revela_slide('.revela', callback, calbackFinal, {
+      tempoBloqueio: 5000,
+      btnPrevConfig: {
+        left: 360,
+        top: 280
+      },
+      btnNextConfig: {
+        left: 555,
+        top: 280
+      }
+    });
+  });
+  </script>
+
+  <style>
+  i {
+    font-style: italic;
+    font-weight: bold;
+  }
+
+  .revela {
+    width: 270px;
+    font-size: 13px;
+    line-height: 1.3;
+    text-shadow: 1px 1px 1px rgba(0, 0, 0, 0.2);
+    position: absolute;
+    top: 130px;
+    left: 360px;
+  }
+
+  .img{
+    width: 266px;
+    height: 265px;
+    position: absolute;
+    left: 10px;
+    top: 80px;
+    border: 5px solid #fff;
+    border-radius: 10px;
+    box-shadow: 0px 1px 3px 0px rgba(0, 0, 0, 0.3);
+  }
+</style>
+</head>
+
+<body>
+  <img class="img" src="../img/licao04/03.png">
+  <p class="revela" id="rev-01">
+    Professora:- Carlinhos, as figuras de linguagem são recursos 
+    usados na fala ou na escrita para tornar
+    mais expressiva à mensagem transmitida.
+  </p>
+  <p class="revela" id="rev-02">
+    Carlinhos: -Então professora é muito importante saber
+    identificar as diversas figuras de linguagem,
+    porque desta forma será possível compreender
+    melhor os diferentes textos, estou certo?
+  </p>
+  <p class="revela" id="rev-03">
+    Professora: -Sim, compreender e saber usar as figuras de
+    linguagem nos capacita a usar de forma mais eficaz a
+    linguagem como fenômeno social e nos ajuda a descobrir
+    o simbolismo de algumas conversas e obras escritas.
+  </p>
+  <p class="revela" id="rev-04">
+    Pedro: - Poxa, por isso, eu tenho tanta dificuldade em
+    compreender o que os autores querem dizer em seus textos,
+    porque não conheço as figuras de linguagem.
+  </p>
+  <p class="revela" id="rev-05">
+    Professora: - Exato! Mas a partir deste momento estudaremos
+    todas as figuras de linguagem, e com certeza, você conseguirá
+    interpretar textos com muito mais facilidade.
+  </p>
+
+</body>
+
+</html>

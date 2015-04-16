@@ -1,0 +1,85 @@
+<!doctype html>
+<html lang="pt-br">
+	<head>
+		<title>Lição 04 Peça 19</title>
+		<meta charset="utf-8">
+		<script src="../wilib/js/lib/require.js"></script>
+		<script src="../wilib/js/app.js"></script>
+
+		<link rel="stylesheet" href="../wilib/css/font-awesome.css">
+		<link rel="stylesheet" href="../wilib/css/meioAmbiente.css">
+
+		<script>
+      $(function () {
+          require(['../wilib/js/lib/alternativa'], function (edi) {
+
+            edi.setConfig({
+              icone: 'interrogacaoAzul',
+              titulo: 'Marque as alternativas que indicam a figura de linguagem: comparação.'
+            });
+
+            var alternativas = [
+              {
+                alternativa: '"Amou daquela vez como se fosse ' +
+														 'máquina. / Beijou sua mulher como se ' +
+														 'fosse lógico." (Chico Buarque).',
+                correta: true
+              },{
+                alternativa: '"As solteironas, os longos vestidos negros ' +
+														 'fechados no pescoço, negros xales nos ombros, ' +
+														 'pareciam aves noturnas paradas..." (Jorge Amado). ',
+                correta: true
+              },{
+                alternativa: '"Supondo o espírito humano uma vasta concha, ' +
+														 'o meu fim, Sr. Soares, é ver se posso extrair ' +
+														 'pérolas, que é a razão." (Machado de Assis). ',
+                correta: false
+              }
+            ];
+
+            var config = {
+                posx: 15,
+                posy: 85,
+                aleatorio: true,
+                tamanhoBox: 35,
+                tamanhoBoxTexto: 600,
+                marginBtns: 5
+            }
+
+            edi.alternativa(alternativas, function (acertou) {
+            }, function (a) {
+                if (a) {
+									$('#msg').fadeIn();
+									mensagem(
+										'Correto! O trecho extraído da obra de Machado de Assis é uma metáfora.'
+									);
+									return;
+								}
+
+								mensagem(
+									'Atenção! Relembre os conectivos que designam comparação: ' +
+									'assim como, tal, como, tal qual, tal como, qual, que nem - ' +
+									'e alguns verbos - parecer, assemelhar-se e outros. '
+								);
+            }, config);
+
+            $('#balao').peBalao({
+                left: 10,
+                tamanhoBorda: 15,
+                borda: '#ccc'
+            });
+
+          });
+      })
+		</script>
+
+		<style>
+
+
+		</style>
+	</head>
+
+	<body>
+
+	</body>
+</html>

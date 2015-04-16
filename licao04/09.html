@@ -1,0 +1,73 @@
+<!doctype html>
+<html lang="pt-br">
+<head>
+    <title>Lição 04 Peça 09</title> <!-- alt_b001 -->
+    <meta charset="utf-8">
+    <script src="../wilib/js/lib/require.js"></script>
+    <script src="../wilib/js/app.js"></script>
+    <link rel="stylesheet" href="../wilib/css/font-awesome.css">
+    <link rel="stylesheet" href="../wilib/css/meioAmbiente.css">
+
+    <script>
+        require(['../wilib/js/lib/alternativa_botao'], function (edi) {
+
+            edi.setConfig({
+                titulo: "Identifique qual das alternativas trata-se de metáfora. " +
+                        "<br>Clique sobre a resposta correta.",
+                mascote: 'mascote'
+            });
+
+            var btns = [
+              {
+                texto: "Eles morreram de rir daquela cena.",
+                dataCorreta: false
+              },{
+                texto: "Aqueles olhos eram como dois faróis acesos.",
+                dataCorreta: false
+              },{
+                texto: "Ah! O doce saber da vitória.",
+                dataCorreta: false
+              },{
+                texto: "Aquele velho é uma raposa.",
+                dataCorreta: true
+              }
+            ];
+
+            var config = {
+                colunas: 4,
+                width: 380,
+                height: 35,
+                left: 190,
+                top: 100,
+                margin: '12px 12px 0 12px',
+                tamanhoTexto: 14,
+                btnBranco: true,
+                randomico: true,
+                lineHeight: '1.4',
+                animacao: true
+            }
+
+            edi.alternativa_botao(btns, null, function(a) {
+              if (a) {
+                mensagem(
+                  'Parabéns! A metáfora consiste numa comparação, mas sem os ' +
+                  'elementos comparativos (“tal como”, “como”, “tanto quanto”, etc.).'
+                );
+                return;
+              }
+
+              mensagem(
+                'Atenção! Para que ocorra metáfora precisamos da comparação, ' +
+                'mas não utilizamos nas metáforas elementos comparativos como: ' +
+                '(“tal como”, “como”, “tanto quanto”, etc.).'
+              );
+            }, config);
+        });
+    </script>
+
+</head>
+
+<body>
+
+</body>
+</html>

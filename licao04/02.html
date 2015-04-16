@@ -1,0 +1,78 @@
+<!doctype html>
+<html lang="pt-br">
+	<head>
+		<title>Lição 04 peça 02</title>
+		<meta charset="utf-8">
+		<script src="../wilib/js/lib/require.js"></script>
+		<script src="../wilib/js/app.js"></script>
+	  <link rel="stylesheet" href="../wilib/css/meioambientetrabalho.css">
+	  <link rel="stylesheet" href="../wilib/css/font-awesome.css">
+	  <link rel="stylesheet" href="../wilib/css/meioambientetrabalho.css">
+
+		<!-- main -->
+		<script>
+			require(['../wilib/js/lib/alternativa_botao'], function (edi) {
+
+				edi.setConfig({// configurando o EDI
+          icone: "exclamacao",
+					titulo: "Você sabe o que são figuras de linguagem? Clique sobre a " +
+									"alternativa que melhor as define, de acordo, " +
+									"com seus conhecimentos prévios.",
+				});
+
+				var btns = [];
+
+				btns.push({
+					texto: "São recursos que tornam as mensagens <br>que emitimos menos expressivas.",
+					dataCorreta: false
+				});
+
+				btns.push({
+					texto: "São recursos que usamos em mensagens <br>para pessoas especiais.",
+					dataCorreta: false
+				});
+
+				btns.push({
+					texto: "São recursos que tornam as mensagens <br>que emitimos mais expressivas. ",
+					dataCorreta: true
+				});
+
+				btns.push({
+					texto: "São desenhos que expressam mensagens.",
+					dataCorreta: false
+				});
+
+				var config = {
+					colunas: 4,
+					width: 380,
+					height: 35,
+					left: 190,
+					top: 90,
+					margin: '12px 12px 0 12px',
+					tamanhoTexto: 14,
+					btnBranco: true,
+					lineHeight: '1.4',
+					animacao: true
+				}
+
+				function callback (a) {
+					if (a) {
+						mensagem('Excelente! São recursos, usados pelo falante para realçar a sua mensagem.');
+						return;
+					}
+
+					mensagem(
+						'Atenção! As figuras de linguagem são recursos, ' +
+						'usados pelo falante para realçar a sua mensagem Tente novamente!'
+					);
+				}
+
+				edi.alternativa_botao(btns, null, callback, config);//iniciando o EDI
+			});
+		</script>
+	</head>
+
+	<body>
+
+	</body>
+</html>

@@ -1,0 +1,123 @@
+
+<svg xmlns="http://www.w3.org/2000/svg" version="1.1" xmlns:xlink="http://www.w3.org/1999/xlink" preserveAspectRatio="none" x="0px" y="0px" width="225px" height="219px" viewBox="0 0 225 219">
+<defs>
+<linearGradient id="Gradient_1" gradientUnits="userSpaceOnUse" x1="21.125" y1="19.575000000000003" x2="123.275" y2="121.72500000000001" spreadMethod="pad">
+<stop  offset="0%" stop-color="#333333" stop-opacity="0.050980392156862744"/>
+
+<stop  offset="100%" stop-color="#333333" stop-opacity="0.2"/>
+</linearGradient>
+
+<linearGradient id="Gradient_2" gradientUnits="userSpaceOnUse" x1="70.4" y1="15.712499999999999" x2="70.4" y2="128.2875" spreadMethod="pad">
+<stop  offset="0%" stop-color="#FFFFFF" stop-opacity="0.5019607843137255"/>
+
+<stop  offset="16.470588235294116%" stop-color="#8AC859" stop-opacity="0.5019607843137255"/>
+
+<stop  offset="85.49019607843137%" stop-color="#8AC859" stop-opacity="0.4980392156862745"/>
+
+<stop  offset="100%" stop-color="#FFFFFF" stop-opacity="0.5019607843137255"/>
+</linearGradient>
+
+<linearGradient id="Gradient_3" gradientUnits="userSpaceOnUse" x1="72.2" y1="6.987499999999997" x2="67.10000000000001" y2="47.0125" spreadMethod="pad">
+<stop  offset="0%" stop-color="#FFFFFF" stop-opacity="0.2"/>
+
+<stop  offset="100%" stop-color="#ACD630" stop-opacity="0.2"/>
+</linearGradient>
+
+<g id="gr_vet_verde_0_Layer0_0_MEMBER_0_MEMBER_0_FILL">
+<path fill="url(#Gradient_1)" stroke="none" d="
+M 144.6 9.65
+Q 144.6 -0.05 134.85 0
+L 9.75 0
+Q 0 -0.05 0 9.65
+L 0 131.6
+Q 0 141.3 9.75 141.3
+L 134.85 141.3
+Q 144.6 141.3 144.6 131.6
+L 144.6 9.65 Z"/>
+</g>
+
+<g id="gr_vet_verde_0_Layer0_0_MEMBER_0_MEMBER_1_FILL">
+<path fill="#FEFFFD" stroke="none" d="
+M 141.95 11.7
+Q 141.95 1.95 132.2 1.95
+L 11.7 1.95
+Q 1.95 1.95 1.95 11.7
+L 1.95 128.95
+Q 1.95 138.7 11.7 138.7
+L 132.2 138.7
+Q 141.95 138.7 141.95 128.95
+L 141.95 11.7 Z"/>
+</g>
+
+<g id="gr_vet_verde_0_Layer0_0_MEMBER_1_FILL">
+<path fill="#8AC859" stroke="none" d="
+M 133.8 21.3
+Q 133.8 9.65 122.15 9.65
+L 18.95 9.65
+Q 7.25 9.65 7.25 21.3
+L 7.25 121.8
+Q 7.25 133.45 18.95 133.45
+L 122.15 133.45
+Q 133.8 133.45 133.8 121.8
+L 133.8 21.3 Z"/>
+</g>
+
+<g id="gr_vet_verde_0_Layer0_0_MEMBER_2_FILL">
+<path fill="url(#Gradient_2)" stroke="none" d="
+M 130.6 25.9
+Q 130.6 12.8 116.55 12.8
+L 24.45 12.8
+Q 10.2 12.8 10.4 25.9
+L 10.4 118.3
+Q 10.2 131.45 24.45 131.45
+L 116.55 131.45
+Q 130.6 131.45 130.6 118.3
+L 130.6 25.9 Z"/>
+</g>
+
+<g id="gr_vet_verde_0_Layer0_0_MEMBER_3_FILL">
+<path fill="url(#Gradient_3)" stroke="none" d="
+M 129.2 21.85
+Q 128.8 15.6 128.05 14.45 126.85 12.85 121.4 12.9
+L 22.1 12.9
+Q 15.25 12.9 13.35 13.85 10.4 15.3 10.4 20.65 10.4 27.5 17.8 30.85 23.5 33.45 38.25 35.45 66.4 39.35 69.15 39.8 90.05 43.3 107.9 49.15 125.95 55.05 129.4 40.3 130.5 35.6 130 28.9 129.75 25.45 129.2 21.85 Z"/>
+</g>
+
+<path id="gr_vet_verde_0_Layer0_0_MEMBER_0_MEMBER_2_1_STROKES" stroke="#77BB4A" stroke-width="4" stroke-linejoin="round" stroke-linecap="round" fill="none" d="
+M 133.825 21.3
+L 133.825 121.8
+Q 133.8193359375 133.4693359375 122.15 133.475
+L 18.925 133.475
+Q 7.2681640625 133.4693359375 7.275 121.8
+L 7.275 21.3
+Q 7.2681640625 9.6431640625 18.925 9.65
+L 122.15 9.65
+Q 133.8193359375 9.6431640625 133.825 21.3 Z"/>
+</defs>
+
+<g transform="matrix( 1.5566864013671875, 0, 0, 1.55633544921875, 0.95,0) ">
+<g transform="matrix( 1, 0, 0, 1, 0,0) ">
+<use xlink:href="#gr_vet_verde_0_Layer0_0_MEMBER_0_MEMBER_0_FILL"/>
+</g>
+
+<g transform="matrix( 1, 0, 0, 1, 0,0) ">
+<use xlink:href="#gr_vet_verde_0_Layer0_0_MEMBER_0_MEMBER_1_FILL"/>
+</g>
+
+<g transform="matrix( 1, 0, 0, 1, 0,0) ">
+<use xlink:href="#gr_vet_verde_0_Layer0_0_MEMBER_0_MEMBER_2_1_STROKES"/>
+</g>
+
+<g transform="matrix( 1, 0, 0, 1, 0,0) ">
+<use xlink:href="#gr_vet_verde_0_Layer0_0_MEMBER_1_FILL"/>
+</g>
+
+<g transform="matrix( 1, 0, 0, 1, 0,0) ">
+<use xlink:href="#gr_vet_verde_0_Layer0_0_MEMBER_2_FILL"/>
+</g>
+
+<g transform="matrix( 1, 0, 0, 1, 0,0) ">
+<use xlink:href="#gr_vet_verde_0_Layer0_0_MEMBER_3_FILL"/>
+</g>
+</g>
+</svg>

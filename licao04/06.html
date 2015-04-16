@@ -1,0 +1,80 @@
+<!doctype html>
+<html lang="pt-br">
+
+<head>
+	<title>Lição 04 Peça 05</title> <!-- alt_f002 -->
+  <meta charset="utf-8">
+  <script src="../wilib/js/lib/require.js"></script>
+  <script src="../wilib/js/app.js"></script>
+  <link rel="stylesheet" href="../wilib/css/font-awesome.css">
+  <link rel="stylesheet" href="../wilib/css/meioAmbiente.css">
+
+	<script>
+		require(['../wilib/js/lib/alternativa_balao'], function (edi) {
+
+			edi.setConfig({
+				titulo: 'De acordo com seus conhecimentos prévios, clique sobre' +
+								'o balão que melhor explica o conceito de metáfora.',
+        mascote: 'mascote',
+        tempoFinal: 10
+			});
+
+      //balões
+      var baloes = [
+        {
+					dataCorreta: true,
+					texto: 'Metáfora consiste em utilizar um termo para substituir outro, ' +
+								 'através de uma relação de semelhança resultante da subjetividade ' +
+								 'de quem a cria.'
+				},{
+					dataCorreta: false,
+					texto: 'Metáfora consiste em utilizar um termo diferente do que já ' +
+								 'foi usado. Não há semelhança entre os termos.'
+				},{
+					dataCorreta: false,
+					texto: 'Metáfora consiste em palavras que fazem parte das gírias, ' +
+								 'não precisam fazer sentido algum para serem usadas.'
+				},{
+					dataCorreta: false,
+					texto: 'A metáfora diz respeito quando se estabelece aproximação ' +
+								 'entre dois elementos que se identificam, ligados por ' +
+								 'conectivos comparativos. explícitos'
+				}
+      ];
+
+			edi.alternativa_balao(baloes, function (a, b) {
+        if (a) {
+        	mensagem(
+						'Muito bem! Perceba que toda metáfora é uma espécie de comparação ' +
+						'implícita, em que o elemento comparativo não aparece.'
+					);
+					return;
+        }
+
+				mensagem(
+					'Atenção! Na metáfora usamos um termo para substituir outro, através' +
+					'de uma relação de semelhança. Que alternativa mais se ' +
+					'adapta a esta definição? Tente novamente!'
+				);
+	    }, function (a) {
+        //cbfinal
+	    }, {
+        top: 0,
+        left: 80,
+        width: 300,
+        height: 150,
+        margin: '0 60px 0 0',
+        fontSize: 12,
+        leftPerson: -65,
+        topPerson: 43,
+        topIco: 0,
+        leftIco: -7
+	    });
+		});
+	</script>
+</head>
+
+<body>
+</body>
+
+</html>

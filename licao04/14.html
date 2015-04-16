@@ -1,0 +1,83 @@
+<!doctype html>
+<html lang="pt-br">
+	<head>
+		<title>Lição 04 Peça 12</title>
+		<meta charset="utf-8">
+		<script src="../wilib/js/lib/require.js"></script>
+		<script src="../wilib/js/app.js"></script>
+
+		<link rel="stylesheet" href="../wilib/css/font-awesome.css">
+		<link rel="stylesheet" href="../wilib/css/meioAmbiente.css">
+
+		<script>
+            $(function () {
+                require(['../wilib/js/lib/alternativa'], function (edi) {
+
+                    edi.setConfig({
+                        icone: 'interrogacaoAzul',
+                        titulo: 'Marque a alternativa que explica o ' +
+																'conceito de catacrese corretamente.'
+                    });
+
+                    var alternativas = [
+                        {
+                            alternativa: 'É o emprego de uma palavra, com '  +
+																				 'base na similaridade, para designar algo que não tem vocábulo próprio.',
+                            correta: true
+                        },{
+                            alternativa: 'Ocorre quando omitimos uma palavra ao escrever a frase.',
+                            correta: false
+                        },{
+                            alternativa: 'Refere-se à atribuição de atos, sentimentos humanos a seres inanimados.',
+                            correta: false
+                        }
+                    ];
+
+                    var config = {
+                        posx: 15,
+                        posy: 85,
+                        aleatorio: true,
+                        tamanhoBox: 35,
+                        tamanhoBoxTexto: 600,
+                        marginBtns: 5
+                    }
+
+                    edi.alternativa(alternativas, function (acertou) {
+                    }, function (a) {
+                        if (a) {
+													$('#msg').fadeIn();
+													mensagem(
+														'Excelente! A catacrese não tem um ' +
+														'vocabulário próprio, se utiliza de palavras '  +
+														'com base na similaridade para designar algum objeto.'
+													);
+													return;
+												}
+
+												mensagem(
+													'Atenção! Lembre-se, que a catacrese ' +
+													'utiliza palavras emprestadas para ' +
+													'dar significado aos objetos.'
+												);
+                    }, config);
+
+                        $('#balao').peBalao({
+                            left: 10,
+                            tamanhoBorda: 15,
+                            borda: '#ccc'
+                        });
+
+                });
+            })
+		</script>
+
+		<style>
+
+
+		</style>
+	</head>
+
+	<body>
+
+	</body>
+</html>

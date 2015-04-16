@@ -1,0 +1,170 @@
+<!doctype html>
+<html lang="pt-br">
+<head>
+    <title>Lição 04 Peça 12</title>
+    <meta charset="utf-8">
+    <script src="../wilib/js/lib/require.js"></script>
+    <script src="../wilib/js/app.js"></script>
+    <link rel="stylesheet" href="../wilib/css/font-awesome.css">
+    <link rel="stylesheet" href="../wilib/css/meioAmbiente.css">
+
+    <script>
+        require(['../wilib/js/lib/arrasta'], function (edi) {
+
+            edi.setConfig({
+                icone: 'interrogacaoAzul',
+                mascote: 'mascote',
+                titulo: 'Você conhece a figura de linguagem catacrese? <br>' +
+                        'Arraste a definição correta para dentro do quadrado.'
+            });
+
+            var texto = [
+              {
+                dataCorreta: 1,
+                texto: 'É o emprego de palavras fora de seu significado ' +
+                       'real; no entanto, devido ao uso contínuo, não se ' +
+                       'percebe mais que estão sendo usadas em sentido figurado.'
+              },
+              {
+                dataCorreta: 0,
+                texto: 'É o emprego de palavras em seu sentido real; onde ' +
+                       'percebemos exatamente o significado da palavra, ' +
+                       'que jamais serão utilizadas em sentido figurado.'
+              },
+            ]
+
+            texto.sort(function () {
+                return 0.5 - Math.random()
+            });
+
+            for (var i = 0; i < texto.length; i++) {
+                var div = $('<div>')
+                        .css({
+                            position: 'relative',
+                            display: 'table-cell',
+                            'vertical-align': 'middle',
+                            width: '200px',
+                            height: '75px'
+                        })
+                        .html(texto[i].texto)
+
+                $('<div>')
+                        .css('margin','5px')
+                        .attr('data-correta', texto[i].dataCorreta)
+                        .addClass('arrasta')
+                        .addClass('azulAlpha')
+                        .append(div)
+                        .appendTo('#arrastas')
+            }
+
+            var config = {
+                colorirFilho: true,
+                cb: function () {
+                    $('<img>').attr({
+                        src:"../wilib/img/svg/seta.svg",
+                        style: "transform: rotate(90deg); left: 168px"
+                    }).appendTo('#ctAlvo');
+
+                    $('<img>').attr({
+                        src:"../wilib/img/svg/seta.svg",
+                        style: "transform: rotate(-90deg); left: 574px"
+                    }).appendTo('#ctAlvo');
+                }
+            };
+
+            edi.arrasta('arrasta', 'alvo', function (a, b, c) {
+                b.removeClass('azulAlpha');
+            }, function(a) {
+              if (a) {
+                mensagem(
+                  'Excelente! A catacrese ocorre quando na falta de um ' +
+                  'termo específico para designar um conceito, ' +
+                  'usamos outro por empréstimo.'
+                );
+                return;
+              }
+
+              mensagem(
+                'Atenção! A catacrese ocorre quando na falta de um ' +
+                'termo específico para designar um conceito, usamos ' +
+                'outro por empréstimo. Pense um pouco mais!'
+              );
+            }, config);
+
+            $('.arrasta').css({
+                margin: -5,
+                padding: 5
+            });
+
+        });
+    </script>
+    <style>
+        #ctAlvo {
+            width: 788px;
+            text-align: center;
+        }
+
+        #ctAlvo p {
+            margin: 40px 0 0 0;
+            color: #6D9DB8;
+            font-size: 22px;
+        }
+
+        #ctAlvo > div
+        {
+            position: absolute;
+            margin: 10px 0 0 0;
+            margin-left: 50%;
+            left: -100px;
+            border: 1px solid #C7D9E4;
+            height: 75px;
+            width: 200px;
+        }
+
+        #ctAlvo img {
+            position: absolute;
+            top: 30px;
+        }
+
+        #ctArrasta {
+            position: absolute;
+            top: 280px;
+            margin-left: 50%;
+            left: -350px;
+            width: 700px;
+            height: 85px;
+        }
+        #arrastas{
+            position: relative;
+            display: table-cell;
+            vertical-align: middle;
+            width: 700px;
+            height: 85px;
+        }
+
+        .arrasta {
+            display: inline-block;
+            width: 190px;
+            text-align: center;
+            height: 65px;
+            font-size: 11px;
+            color: #FFF;
+        }
+
+
+    </style>
+
+</head>
+<body>
+<div id="ctAlvo">
+    <p>CATACRESE</p>
+
+    <div class="alvo" data-correta="1"></div>
+
+</div>
+
+<div id="ctArrasta" class="btn btn-default-hover">
+    <div id="arrastas"></div>
+</div>
+</body>
+</html>

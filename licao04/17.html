@@ -1,0 +1,109 @@
+<!doctype html>
+<html lang="pt-br">
+	<head>
+		<title>Lição 04 peça 17</title>
+		<meta charset="utf-8">
+		<script src="../wilib/js/lib/require.js"></script>
+		<script src="../wilib/js/app.js"></script>
+	  <link rel="stylesheet" href="../wilib/css/meioambientetrabalho.css">
+	  <link rel="stylesheet" href="../wilib/css/font-awesome.css">
+	  <link rel="stylesheet" href="../wilib/css/meioambientetrabalho.css">
+
+		<!-- main -->
+		<script>
+			require(['../wilib/js/lib/alternativa_botao'], function (edi) {
+
+				edi.setConfig({// configurando o EDI
+          icone: "exclamacao",
+					titulo: "Você sabe o que são figuras de linguagem? Clique sobre a " +
+									"alternativa que melhor as define, de acordo, " +
+									"com seus conhecimentos prévios.",
+				});
+
+				var btns = [];
+
+				btns.push({
+					texto: "Catacrese",
+					dataCorreta: false
+				});
+
+				btns.push({
+					texto: "Metáfora",
+					dataCorreta: false
+				});
+
+				btns.push({
+					texto: "Comparação ",
+					dataCorreta: true
+				});
+
+				var config = {
+					colunas: 4,
+					width: 250,
+					height: 35,
+					left: 380,
+					top: 120,
+					margin: '12px 12px 0 12px',
+					tamanhoTexto: 14,
+					btnBranco: true,
+					lineHeight: '1.4',
+					animacao: true
+				}
+
+				function callback (a) {
+					if (a) {
+						mensagem(
+							'Correto! Ocorre comparação quando se estabelece aproximação ' +
+							'entre dois elementos que se identificam ligados por conectivos ' +
+							'comparativos, como por exemplo: assim como, tal, como, tal qual, ' +
+							'tal como, qual, que nem - e alguns verbos - parecer, assemelhar-se e outros. '
+						);
+						return;
+					}
+
+					mensagem(
+						'Você errou! Use seu raciocínio lógico para responder. ' +
+						'Você não conhece o conceito de comparação, mas conhece o ' +
+						'de metáfora e catacrese, portanto, tente encontrar a resposta ' +
+						'correta, através da eliminação. '
+					);
+				}
+
+				edi.alternativa_botao(btns, null, callback, config);//iniciando o EDI
+
+				$(".balao").peBalao({
+						scaleX: -1,
+						scaleY: 1,
+						top: 2,
+						left: 0
+				});
+			});
+		</script>
+
+		<style>
+			.alter-btn {
+				width: 250px;
+			}
+
+			.balao {
+				position: absolute;
+				left: 10px;
+				top: 100px;
+				width: 250px;
+				border: 1px solid #ccc;
+				border-radius: 5px;
+				padding: 5px;
+			}
+
+			.balao img {
+				width: 100%;
+			}
+		</style>
+	</head>
+
+	<body>
+		<div class="balao">
+			<img src="../img/licao04/17.png">
+		</div>
+	</body>
+</html>

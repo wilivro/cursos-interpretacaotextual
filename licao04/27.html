@@ -1,0 +1,99 @@
+<!doctype html>
+<html lang="pt-br">
+	<head>
+		<title>Lição 04 Peça 27</title>
+		<meta charset="utf-8">
+		<script src="../wilib/js/lib/require.js"></script>
+		<script src="../wilib/js/app.js"></script>
+
+		<link rel="stylesheet" href="../wilib/css/font-awesome.css">
+		<link rel="stylesheet" href="../wilib/css/meioAmbiente.css">
+
+		<script>
+            $(function () {
+                require(['../wilib/js/lib/alternativa'], function (edi) {
+
+                    edi.setConfig({
+                        icone: 'interrogacaoAzul',
+                        titulo: '(UERJ 2013) No cinema, só quem fala são os atores ' +
+																'do filme. Nós calamos para que eles possam falar. ' +
+																'Nossa vida cala para que outra fale.  (l. 19-20) ' +
+																'O trecho acima usa uma figura de linguagem, marque ' +
+																'a resposta que aponta a figura correta.'
+                    });
+
+                    var alternativas = [
+                        {
+                            alternativa: 'metáfora',
+                            correta: false
+                        },{
+                            alternativa: 'hipérbole',
+                            correta: false
+                        },{
+                            alternativa: 'eufemismo',
+                            correta: false
+                        },{
+                            alternativa: 'metonímia',
+                            correta: true
+                        }
+                    ];
+
+                    var config = {
+                        posx: 15,
+                        posy: 85,
+                        aleatorio: true,
+                        tamanhoBox: 35,
+                        tamanhoBoxTexto: 600,
+                        marginBtns: 5
+                    }
+
+                    edi.alternativa(alternativas, function (acertou) {
+                    }, function (a) {
+												setTimeout(function() {
+													if (a) {
+														$('#msg').fadeIn();
+
+														mensagem(
+															'Muito bem!  “Nossa vida” representa pessoas, ' +
+															'no caso os espectadores que se calam para ouvir ' +
+															'os atores. Há também a ideia de que os atores ' +
+															'representam personagens que por sua vez representam ' +
+															'os espectadores que assistem aos filmes. Cada personagem ' +
+															'representa inumeráveis espectadores, cumprindo uma função ' +
+															'metonímica, isto é, pela parte (o personagem) representa-se ' +
+															'o todo (todos os espectadores). '
+														);
+														return;
+													}
+
+													mensagem(
+														'Você errou! Observe que “Nossa vida” representa pessoas, ' +
+														'no caso os espectadores que se calam para ouvir os atores. ' +
+														'Há também a ideia de que os atores representam personagens ' +
+														'que por sua vez representam os espectadores que assistem ' +
+														'aos filmes. Cada personagem representa inumeráveis ' +
+														'espectadores, analise um pouco mais.'
+													);
+												}, 1000);
+                    }, config);
+
+                        $('#balao').peBalao({
+                            left: 10,
+                            tamanhoBorda: 15,
+                            borda: '#ccc'
+                        });
+
+                });
+            })
+		</script>
+
+		<style>
+
+
+		</style>
+	</head>
+
+	<body>
+
+	</body>
+</html>

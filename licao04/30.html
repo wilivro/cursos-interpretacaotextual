@@ -1,0 +1,90 @@
+<!doctype html>
+<html lang="pt-br">
+
+<head>
+  <title>Lição 04 Peça 30</title>
+  <meta charset="utf-8">
+  <script src="../wilib/js/lib/require.js"></script>
+  <script src="../wilib/js/app.js"></script>
+  <link rel="stylesheet" href="../wilib/css/font-awesome.css">
+  <link rel="stylesheet" href="../wilib/css/meioAmbiente.css">
+
+  <script>
+    require(['../wilib/js/lib/ligar'], function (edi) {
+
+      edi.setConfig({
+        mascote: 'mascote',
+        icone: 'exclamacao',
+        titulo: 'Ligue as onomatopeias aos seus respectivos significados.',
+      });
+
+      var ligas = [
+        {conteudo: 'Aaai!',             dataCorreta: 0},
+        {conteudo: 'Ah! Ah! Ah!',       dataCorreta: 1},
+        {conteudo: 'Atchim',            dataCorreta: 2},
+        {conteudo: 'Bang! Bang',        dataCorreta: 3},
+        {conteudo: 'Buá! Buá!',         dataCorreta: 4},
+        {conteudo: 'Nhoc! Nhoc!',       dataCorreta: 5},
+        {conteudo: 'Glub! Glub! Glub!', dataCorreta: 6},
+      ];
+
+      var alvos = [
+        {conteudo: 'Dor',                 dataCorreta: 0},
+        {conteudo: 'Gargalhada',          dataCorreta: 1},
+        {conteudo: 'Espirro',             dataCorreta: 2},
+        {conteudo: 'Tiro',                dataCorreta: 3},
+        {conteudo: 'Choro',               dataCorreta: 4},
+        {conteudo: 'Comer',               dataCorreta: 5},
+        {conteudo: 'Beber algum líquido', dataCorreta: 6}
+      ];
+
+      edi.ligar(ligas, alvos, function (a, b, c) {
+        //callback
+        //a:booleano = acertou/errou
+        //b:elementoHTML = liga
+        //c:elementoHTML = alvo
+      }, function () {
+        mensagem(
+          'Muito bem! Onomatopeia: significa imitar um som com um fonema ' +
+          'ou palavra. Ruídos, gritos, canto de animais, sons da natureza, ' +
+          'barulho de máquinas, o timbre da voz humana fazem parte do ' +
+          'universo das onomatopeias. '
+        );
+      }, {
+        fontSize: 10,
+        liga: {
+          width: 150,
+          paddingTop: 10,
+          paddingLeft: 5,
+          paddingBottom: 10,
+          marginBottom: 8,
+          left: 10,
+          top: 12,
+          textAlign: 'center'
+        },
+        alvo: {
+          width: 150,
+          paddingTop: 5,
+          paddingBottom: 5,
+          marginBottom: 7,
+          left: 628,
+          top: 50,
+          textAlign: 'center'
+        }
+      });
+
+    });
+  </script>
+
+  <style>
+    #conteudo {
+        background: radial-gradient(#fff, #fdfdfd);
+    }
+  </style>
+</head>
+
+<body>
+
+</body>
+
+</html>

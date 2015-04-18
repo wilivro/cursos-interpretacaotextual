@@ -1,0 +1,81 @@
+<!doctype html>
+<html lang="pt-br">
+	<head>
+		<title>Lição 04 Peça 41</title>
+		<meta charset="utf-8">
+		<script src="../wilib/js/lib/require.js"></script>
+		<script src="../wilib/js/app.js"></script>
+
+		<link rel="stylesheet" href="../wilib/css/font-awesome.css">
+		<link rel="stylesheet" href="../wilib/css/meioAmbiente.css">
+
+		<script>
+            $(function () {
+                require(['../wilib/js/lib/alternativa_vf'], function (edi) {
+
+                    edi.setConfig({
+                        icone: 'interrogacaoAzul',
+                        titulo: 'Marque V para as frases onde aparece ' +
+																'sinestesia e F para as que não <br>apresentam ' +
+																'a figura sinestesia.'
+                    });
+
+                    var alternativas = [
+                        {
+                            texto: 'Esses livros, eu já os comprei.',
+                            dataCorreta: false
+                        },{
+                            texto: 'O cheiro doce e verde do capim traziam recordações da fazenda.',
+                            dataCorreta: true
+                        },{
+                            texto: 'O vento varreu o vale.',
+                            dataCorreta: false
+                        },{
+                            texto: 'Ouviu-se um estalo seco.',
+                            dataCorreta: true
+                        }
+                    ];
+
+                    var config = {
+                        posx: 15,
+                        posy: 85,
+                        aleatorio: true,
+                        tamanhoBox: 35,
+                        tamanhoBoxTexto: 600,
+                        marginBtns: 5
+                    }
+
+                    edi.alternativa_vf(alternativas, function (acertou) {
+                    }, function (a) {
+                        if (a) {
+													mensagem('Parabéns! Você conseguiu entender o conceito de sinestesia.');
+													return;
+												}
+
+												mensagem(
+													'Você errou!  Lembre-se, que a sinestesia é a ' +
+													'transferência de uma sensação sugerida por um ' +
+													'sentido para outro sentido. Tente novamente.'
+												);
+                    }, config);
+
+                        $('#balao').peBalao({
+                            left: 10,
+                            tamanhoBorda: 15,
+                            borda: '#ccc'
+                        });
+
+                });
+            })
+		</script>
+
+		<style>
+
+
+		</style>
+	</head>
+
+	<body>
+
+	</body>
+</html>

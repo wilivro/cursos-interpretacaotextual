@@ -1,0 +1,92 @@
+<!doctype html>
+<html lang="pt-br">
+
+<head>
+  <title>Lição 04 Peça 45</title>
+  <meta charset="utf-8">
+  <script src="../wilib/js/lib/require.js"></script>
+  <script src="../wilib/js/app.js"></script>
+  <link rel="stylesheet" href="../wilib/css/font-awesome.css">
+  <link rel="stylesheet" href="../wilib/css/meioAmbiente.css">
+
+  <script>
+    require(['../wilib/js/lib/ligar'], function (edi) {
+
+      edi.setConfig({
+        mascote: 'mascote',
+        icone: 'exclamacao',
+        titulo: 'Ligue as frases, as figuras de linguagem corretas.',
+      });
+
+      var ligas = [
+        {conteudo: 'Minha boca é um tumulo.',                 dataCorreta: 0},
+        {conteudo: 'O carro dele é rápido como um avião.',    dataCorreta: 1},
+        {conteudo: 'Raquel tem um olhar frio, desesperador.', dataCorreta: 2},
+        {conteudo: 'O menino quebrou o braço da cadeira',     dataCorreta: 3}
+      ];
+
+      var alvos = [
+        {conteudo: 'Metáfora',    dataCorreta: 0},
+        {conteudo: 'Comparação',  dataCorreta: 1},
+        {conteudo: 'Sinestesia',  dataCorreta: 2},
+        {conteudo: 'Catacrese',   dataCorreta: 3}
+      ];
+
+      edi.ligar(ligas, alvos, function (a, b, c) {
+        //callback
+        //a:booleano = acertou/errou
+        //b:elementoHTML = liga
+        //c:elementoHTML = alvo
+      }, function (a) {
+        if (a) {
+          mensagem(
+            'Muito bem!  Você compreendeu muito bem os conceitos das ' +
+            'figuras de linguagem apresentadas nesta lição.'
+          );
+          return;
+        }
+
+        mensagem(
+          'Atenção! Você ainda não compreendeu bem os conceitos ' +
+          'apresentados nesta lição. Retorne ao início da lição e ' +
+          'reveja alguns conceitos antes de seguir adiante.'
+        );
+      }, {
+        fontSize: 10,
+        erros: true,
+        liga: {
+          width: 200,
+          paddingTop: 10,
+          paddingLeft: 5,
+          paddingBottom: 10,
+          marginBottom: 8,
+          left: 10,
+          top: 12,
+          textAlign: 'center'
+        },
+        alvo: {
+          width: 150,
+          paddingTop: 5,
+          paddingBottom: 5,
+          marginBottom: 7,
+          left: 628,
+          top: 50,
+          textAlign: 'center'
+        }
+      });
+
+    });
+  </script>
+
+  <style>
+    #conteudo {
+        background: radial-gradient(#fff, #fdfdfd);
+    }
+  </style>
+</head>
+
+<body>
+
+</body>
+
+</html>

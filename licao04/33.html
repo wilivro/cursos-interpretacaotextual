@@ -1,0 +1,61 @@
+<!doctype html>
+<html lang="pt-br">
+<head>
+  <title>Lição 04 Peça 33</title>
+  <meta charset="utf-8">
+  <script src="../wilib/js/lib/require.js"></script>
+  <script src="../wilib/js/app.js"></script>
+
+  <link rel="stylesheet" href="../wilib/css/font-awesome.css">
+  <link rel="stylesheet" href="../wilib/css/meioAmbiente.css">
+
+  <script>
+  require(['../wilib/js/lib/revela_pergaminho'], function (edi) {
+
+    edi.setConfig({
+      icone: 'exclamacao',
+      titulo: 'Clique na partitura e conheça uma música onde o compositor ' +
+              'utilizou onomatopeias para representar o som das coisas.',
+      mascote: 'mascote',
+      tempoFinal: 15
+    });
+
+    var pergaminhos = [
+      '“Passa tempo<br>Tic-tac<br>Tic-tac<br>Passa hora chega logo<br>Tic-tac<br>' +
+      'Tic-tac<br>E vai-te embora<br>Passa tempo<br>Bem depressa<br>Não atrasa<br>' +
+      'Nem demora (...)<br>(Vinícius de Morais)',
+    ];
+
+    var config = {
+      textoMarginTop: 10,
+      width: 130,
+      height: 185,
+      left: 290,
+      top: 100,
+      fontSize: 12
+    };
+
+    edi.revela_pergaminho(pergaminhos, function () {
+      //
+    }, function () {
+      setTimeout(function() {
+        mensagem(
+          'Muito bem! Você aprendeu o conceito <br>da figura de linguagem ' +
+          'onomatopeia, continue <br>seus estudos com atenção. Muitas outras ' +
+          '<br>figuras serão apresentadas a você.'
+        );
+      }, 3000);
+    }, config);
+
+  });
+  </script>
+
+  <style>
+
+  </style>
+</head>
+
+<body>
+
+</body>
+</html>

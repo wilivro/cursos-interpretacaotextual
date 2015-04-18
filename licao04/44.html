@@ -1,0 +1,152 @@
+<!doctype html>
+<html lang="pt-br">
+	<head>
+		<title>Lição 04 peça 44</title>
+		<meta charset="utf-8">
+		<script src="../wilib/js/lib/require.js"></script>
+		<script src="../wilib/js/app.js"></script>
+	  <link rel="stylesheet" href="../wilib/css/meioambientetrabalho.css">
+	  <link rel="stylesheet" href="../wilib/css/font-awesome.css">
+	  <link rel="stylesheet" href="../wilib/css/meioambientetrabalho.css">
+
+		<!-- main -->
+		<script>
+			require(['../wilib/js/lib/alternativa_botao'], function (edi) {
+
+				edi.setConfig({// configurando o EDI
+          icone: "exclamacao",
+					titulo: "Clique na imagem para revelar o problema.",
+				});
+
+				var btns = [
+					{
+						texto: 'Catacrese',
+						dataCorreta: true
+					},{
+						texto: 'Onomatopeia',
+						dataCorreta: false
+					},{
+						texto: 'Pleonasmo',
+						dataCorreta: false
+					},{
+						texto: 'Eufemismo',
+						dataCorreta: false
+					},{
+						texto: 'Personificação',
+						dataCorreta: false
+					},
+				];
+
+				var config = {
+					colunas: 4,
+					width: 250,
+					height: 25,
+					left: 380,
+					top: 100,
+					margin: '10px 12px 0 12px',
+					tamanhoTexto: 14,
+					btnBranco: true,
+					lineHeight: '1.4',
+					animacao: true
+				}
+
+				function callback (a) {
+					if (a) {
+						mensagem(
+							'Muito bem!  Neste exercício você ' +
+							'relembrou o conceito de catacrese.'
+						);
+						return;
+					}
+
+					mensagem(
+						'Você errou! Relembre os conceitos ' +
+						'estudados, e refaça o exercício.'
+					);
+				}
+
+				edi.alternativa_botao(btns, null, callback, config);//iniciando o EDI
+
+				$(".balao").peBalao({
+						scaleX: -1,
+						scaleY: 1,
+						top: 2,
+						left: 0
+				});
+
+				$('.balao, .alter-btn').hide();
+
+
+				$('#_btn').click(function() {
+
+					$('#texto-titulo').html(
+						'Leia a receita a seguir e depois responda corretamente a questão.'
+					);
+
+					$(this).fadeOut(function() {
+						$('.balao, .alter-btn').fadeIn();
+					});
+
+				});
+			});
+		</script>
+
+		<style>
+			.alter-btn {
+				width: 250px;
+			}
+
+			.balao {
+				position: absolute;
+				left: 10px;
+				top: 90px;
+				width: 250px;
+				border: 1px solid #ccc;
+				border-radius: 5px;
+				padding: 5px;
+			}
+
+			.balao h4,
+			.balao h5 {
+				margin: 0;
+				padding: 0;
+			}
+
+			.balao ul li {
+				font-size: 13px;
+			}
+
+			.balao img {
+				width: 150px;
+				margin-left: 35px;
+			}
+
+			#_btn {
+				position: absolute;
+				top: 150px;
+				left: 290px;
+				width: 200px;
+				cursor: pointer;
+			}
+
+			#_btn:hover {
+				opacity: 0.6;
+			}
+		</style>
+	</head>
+
+	<body>
+		<img id="_btn" src="../img/licao04/44.jpg"/>
+		<div class="balao">
+			<h4>Conserva de alho</h4>
+			<h5>Ingredientes</h5>
+			<ul>
+				<li>1 kg de dente de alho</li>
+				<li>2 kg de sal grosso</li>
+				<li>750 ml de azeite</li>
+				<li>1 vidro grande de 3 litros (tipo vidro de palmito)</li>
+			</ul>
+			<img src="../img/licao04/44.jpg">
+		</div>
+	</body>
+</html>

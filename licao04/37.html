@@ -1,0 +1,148 @@
+<!doctype html>
+<html lang="pt-br">
+<head>
+    <title>Lição 04 Peça 37</title>
+    <meta charset="utf-8">
+    <script src="../wilib/js/lib/require.js"></script>
+    <script src="../wilib/js/app.js"></script>
+    <link rel="stylesheet" href="../wilib/css/font-awesome.css">
+    <link rel="stylesheet" href="../wilib/css/meioAmbiente.css">
+
+    <script>
+        require(['../wilib/js/lib/arrasta'], function (edi) {
+
+            edi.setConfig({
+                titulo: 'Arraste as palavras que completam o sentido das frases para dentro dos parênteses.',
+                mascote: 'mascote'
+            });
+
+            var arrArrasta = [
+                {arrasta: 'sol', dataCorreta: '1'},
+                {arrasta: 'Deus', dataCorreta: '2'},
+                {arrasta: 'Brasil', dataCorreta: '3'},
+                {arrasta: 'os gananciosos', dataCorreta: '4'}
+            ];
+
+            arrArrasta.sort(function () {
+                return 0.5 - Math.random()
+            });
+
+            for (var i = 0; i < arrArrasta.length; i++) {
+                $('<div>')
+                        .addClass('arrasta')
+                        .attr('data-correta', arrArrasta[i].dataCorreta)
+                        .html(arrArrasta[i].arrasta)
+                        .appendTo('#boxArrasta');
+            }
+
+            var config = {
+                alvoFixo: true,
+                animacaoFundoArrasta: true,
+                colorirFilho: true,
+                arrastaAbsolute: true,
+                gradiente: 'corGradiente-claro'
+            };
+
+            edi.arrasta('arrasta', 'alvo', function (a, b) {
+                   if(a){
+                       b.css({
+                           top: -2,
+                           margin: 0,
+                           padding: 0,
+                           height: 0
+                       });
+                   }
+
+            }, function() {
+              mensagem(
+                'Muito bem! Em termos práticos, a perífrase é ' +
+                'parecida com a antonomásia, que se refere somente a ' +
+                'nomes próprios; e a perífrase serve para substituir ' +
+                'qualquer palavra, seja ela um nome próprio ou não.'
+              );
+            }, config);
+
+//
+        });
+
+    </script>
+
+    <style>
+        #boxArrasta {
+            position: relative;
+            border: solid 1px #A7B9C3;
+            background: rgba(140, 168, 184, 0.1);
+            display: table-cell;
+            vertical-align: middle;
+            width: 500px;
+            height: 60px;
+            cursor: default;
+            text-align: center;
+            padding: 20px 20px 20px 0px;
+        }
+
+        .arrasta {
+            display: inline-block;
+            padding: 5px;
+            margin: 0px 0px 10px 10px;
+            top: 15px;
+        }
+
+        #boxTexto {
+            font-size: 13px;
+            line-height: 15px;
+            width: 470px;
+            position: absolute;
+            top: 80px;
+            left: 175px;
+            text-align: center;
+            color: #999;
+        }
+
+        .alvo {
+            display: inline-block;
+            width: 100px;
+            height: 27px;
+            margin-top: 2px;
+            padding: 0;
+            border-bottom: 1px solid #999;
+        }
+
+        #boxBox{
+            position: absolute;
+            top: 250px;
+            left: 150px;
+        }
+
+    </style>
+</head>
+
+<body>
+<section id="boxBox">
+    <div id="boxArrasta"></div>
+</section>
+
+<div id="ponto"></div>
+
+<div id="boxTexto">
+    O astro rei
+    (<div class="alvo" style="width:60px;" data-correta="1"></div>)
+    brilha intensamente.<br>
+
+    Aquele que tudo pode
+    (<div class="alvo" style="width:45px;" data-correta="2"></div>)
+    nos protege.<br>
+
+    O país do futebol
+    (<div class="alvo" style="width:65px;" data-correta="3"></div>)
+    é adorado por seus filhos.<br>
+
+    As pessoas que tudo querem 
+    (<div class="alvo" style="width:140px;" data-correta="4"></div>)
+    nada conseguem.<br>
+
+</div>
+
+
+</body>
+</html>

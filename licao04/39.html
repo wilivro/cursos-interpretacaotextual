@@ -1,0 +1,125 @@
+<!-- Desenvolvedor: Danilo Thiago -->
+<!doctype html>
+<html lang="pt-br">
+
+<head>
+    <title>Lição 04 Peça 39</title>
+    <meta charset="utf-8">
+    <script src="../wilib/js/lib/require.js"></script>
+    <script src="../wilib/js/app.js"></script>
+    <link rel="stylesheet" href="../wilib/css/font-awesome.css">
+    <link rel="stylesheet" href="../wilib/css/meioAmbiente.css">
+
+    <script>
+        require(['../wilib/js/lib/revela_slide'], function (edi) {
+
+            edi.setConfig({
+                icone: 'exclamacao',
+                titulo: 'Clique sobre os personagens e leia o diálogo.'
+            });
+
+            function callback(a, b) {
+                b.parent().css('box-shadow', '0 0 0 3px #8CA8B8');
+            }
+
+            function calbackFinal () {
+              setTimeout(function() {
+                mensagem(
+                  'Excelente! Você conheceu o conceito da ' +
+                  'figura de linguagem sinestesia.'
+                );
+              }, 3000);
+            }
+
+            edi.revela_slide('.revela', callback, calbackFinal);
+
+
+            $('.revelaEsquerda').each(function() {
+                $(this).peBalao({
+                    top:82,
+                    left:230,
+                    scaleX:-1,
+                    scaleY:-1,
+                    rotate:0
+                });
+            });
+
+            $('.revelaDireito').each(function() {
+                $(this).peBalao({
+                    top:81,
+                    left:20,
+                    scaleX:1,
+                    scaleY:-1,
+                    rotate:0
+                });
+            });
+
+        });
+    </script>
+
+    <style>
+        i {
+            font-style: italic;
+            font-weight: bold;
+        }
+
+        .revela {
+            border: 1px solid #ccc;
+            padding: 10px 10px 10px 10px;
+            font-size: 14px;
+            line-height: 1.3;
+            border-radius: 10px;
+            background: #fff;
+            text-shadow: 1px 1px 1px rgba(0, 0, 0, 0.2);
+            text-align: center;
+            position: absolute;
+            bottom: 200px;
+            height: 50px;
+            width: 420px;
+        }
+
+        #rev-01 {
+            left: 50px;
+            top: 120px;
+        }
+        #rev-02 {
+            left: 330px;
+            top: 110px;
+        }
+
+        .person {
+            width: 280px;
+            height: 200px;
+            position: absolute;
+            left: 210px;
+            top: 200px;
+        }
+
+
+    </style>
+</head>
+
+<body>
+    <img src="../wilib/img/svg/personagens.svg" class="person" id="person-03">
+
+    <p class="revelaEsquerda revela" id="rev-01">
+      Fred veja esse trecho de um poema de Mario de Andrade: “Esta chuvinha de água
+      viva esperneando luz e ainda com gosto de mato longe, meio baunilha, meio
+      manacá, meio alfazema”.
+    </p>
+    <p class="revelaDireito revela" id="rev-02">
+      No trecho de Mário misturou diferentes tipos de sensações:
+      visuais, olfativas e gustativas.
+    </p>
+    <p class="revelaEsquerda revela" id="rev-01">
+      Que figura de linguagem foi utilizada neste caso?
+    </p>
+
+    <p class="revelaDireito revela" id="rev-02">
+      A isso chamamos sinestesia, figura de palavra que consiste em agrupar
+      e reunir sensações originárias de diferentes órgãos do sentido:
+      visão, tato, olfato, paladar e audição.
+    </p>
+
+</body>
+</html>

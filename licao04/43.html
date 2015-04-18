@@ -1,0 +1,106 @@
+<!doctype html>
+<html lang="pt-br">
+	<head>
+		<title>Lição 04 peça 43</title>
+		<meta charset="utf-8">
+		<script src="../wilib/js/lib/require.js"></script>
+		<script src="../wilib/js/app.js"></script>
+	  <link rel="stylesheet" href="../wilib/css/meioambientetrabalho.css">
+	  <link rel="stylesheet" href="../wilib/css/font-awesome.css">
+	  <link rel="stylesheet" href="../wilib/css/meioambientetrabalho.css">
+
+		<!-- main -->
+		<script>
+			require(['../wilib/js/lib/alternativa_botao'], function (edi) {
+
+				edi.setConfig({// configurando o EDI
+          icone: "exclamacao",
+					titulo: "Que figura de linguagem aparece na imagem a " +
+									"seguir? <br>Clique sobre a alternativa certa.",
+				});
+
+				var btns = [
+					{
+						texto: 'Catacrese',
+						dataCorreta: false
+					},{
+						texto: 'Onomatopeia',
+						dataCorreta: true
+					},{
+						texto: 'Pleonasmo',
+						dataCorreta: false
+					},{
+						texto: 'Eufemismo',
+						dataCorreta: false
+					},{
+						texto: 'Personificação',
+						dataCorreta: false
+					},
+				];
+
+				var config = {
+					colunas: 4,
+					width: 250,
+					height: 25,
+					left: 380,
+					top: 100,
+					margin: '10px 12px 0 12px',
+					tamanhoTexto: 14,
+					btnBranco: true,
+					lineHeight: '1.4',
+					animacao: true
+				}
+
+				function callback (a) {
+					if (a) {
+						mensagem(
+							'Muito bem! A figura de linguagem que representa ' +
+							'o som das coisas é a onomatopeia.'
+						);
+						return;
+					}
+
+					mensagem(
+						'Atenção! Lembre-se, qual é a figura de linguagem ' +
+						'que representa os sons das coisas.'
+					);
+				}
+
+				edi.alternativa_botao(btns, null, callback, config);//iniciando o EDI
+
+				$(".balao").peBalao({
+						scaleX: -1,
+						scaleY: 1,
+						top: 2,
+						left: 0
+				});
+			});
+		</script>
+
+		<style>
+			.alter-btn {
+				width: 250px;
+			}
+
+			.balao {
+				position: absolute;
+				left: 10px;
+				top: 100px;
+				width: 250px;
+				border: 1px solid #ccc;
+				border-radius: 5px;
+				padding: 5px;
+			}
+
+			.balao img {
+				width: 100%;
+			}
+		</style>
+	</head>
+
+	<body>
+		<div class="balao">
+			<img src="../img/licao04/43.jpg">
+		</div>
+	</body>
+</html>

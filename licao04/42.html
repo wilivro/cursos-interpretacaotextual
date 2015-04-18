@@ -1,0 +1,105 @@
+<!doctype html>
+<html lang="pt-br">
+<head>
+    <title>Lição 04 Peça 42</title>
+    <meta charset="utf-8">
+    <script src="../wilib/js/lib/require.js"></script>
+    <script src="../wilib/js/app.js"></script>
+    <link rel="stylesheet" href="../wilib/css/font-awesome.css">
+    <link rel="stylesheet" href="../wilib/css/meioAmbientetrabalho.css">
+
+    <script>
+        require(['../wilib/js/lib/arrasta'], function (edi) {
+
+            edi.setConfig({
+                titulo: 'Arraste para o meio das setas a frase que ' +
+                        'apresenta a figura de linguagem sinestesia.',
+                mascote: 'mascote',
+                tempoFinal: 15
+            });
+
+            edi.arrasta('arrasta', 'alvo', function (a, b, c) {
+              if (a) {
+                mensagem(
+                  'Muito bem!  Sinestesia é uma figura de palavra que ' +
+                  'consiste em agrupar e reunir sensações originárias ' +
+                  'de diferentes órgãos do sentido: visão, tato, ' +
+                  'olfato, paladar e audição.'
+                );
+              }
+            });
+
+
+        });
+
+    </script>
+
+    <style>
+      #arrasta {
+        position: absolute;
+        left: 10px;
+        top: 100px;
+        padding: 20px;
+        width: 225px;
+        height: 219px;
+        background: url(../img/licao04/04.svg) no-repeat;
+        background-size: 100% 100%;
+      }
+
+      .arrasta {
+        width: 220px;
+        font-size: 12px;
+        text-align: center;
+        line-height: 1;
+        margin-top: 10px;
+      }
+
+      #alvo {
+        position: absolute;
+        left: 450px;
+        top: 90px;
+        width: 292px;
+        height: 292px;
+        background: url(../img/licao04/04.1.svg) no-repeat;
+        background-size: 100% 100%;
+      }
+
+      .alvo {
+        position: absolute;
+        left: 0px;
+        top: 120px;
+        width: 292px;
+        height: 50px;
+        border: 1px solid #ccc;
+      }
+    </style>
+</head>
+
+<body>
+  <div id="arrasta">
+    <div class="arrasta" data-correta="1">
+      Despertou-me um som colorido.
+      <br><br>
+    </div>
+
+    <div class="arrasta" data-correta="0">
+      “Plunct, plact, zum, você não vai a lugar nenhum.”
+      <br><br>
+    </div>
+
+    <div class="arrasta" data-correta="0">
+      “Tudo cura o tempo, tudo gasta, tudo digere”.
+      <br><br>
+    </div>
+
+    <div class="arrasta" data-correta="0">
+      “Todos estão morrendo de sede”.
+      <br><br>
+    </div>
+  </div>
+
+  <div id="alvo">
+    <div class="alvo" data-correta="1"></div>
+  </div>
+</body>
+</html>

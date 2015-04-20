@@ -20,16 +20,23 @@
 
                 edi.revela('_btn', 'revela', function () {
                             $('#bloqueio').show()
-                        }, null, {ocultarRev: true, tempoBloqueio: 1000}
+                        }, function(){
+                            $('#txt1').hide();
+                            $('#txt2').hide();
+                            $('#certo').fadeIn();
+                        }, {ocultarRev: true, tempoBloqueio: 1000}
                         ,function () {
                             log('geral: '+cont)
                             $('#bloqueio').fadeOut();
                             switch (cont){
                                 case 1:
+                                    $('#txt1').hide();
                                     $('#txt2').show();
                                     break;
                                 case 2:
                                     $('#txt2').html('Clique na<br>Professora.');
+                                    $('#txt2').hide();
+                                    $('#txt1').show();
                                     break;
                                 case 3:
                                     $('#txt1').html('Clique nos<br>alunos.');
@@ -48,7 +55,8 @@
 
                                 case 6:
                                     $('#txt1').hide();
-                                    $('#txt2').show();
+                                    $('#txt2').hide();
+                                    $('#certo').fadeIn();
                                     break;                            }
                         });
 
@@ -110,6 +118,34 @@
                     borda: '#ccc'
                 });
 
+                $('#revela6').peBalao({
+                    left:60,
+                    scaleX:-1,
+                    scaleY:-1,
+                    rotate:180,
+                    borda: '#ccc'
+                });
+                $('#revela6').peBalao({
+                    left: 178,
+                    scaleY:-1,
+                    rotate:180,
+                    borda: '#ccc'
+                });
+                $('#revela6').peBalao({
+                    left: 212,
+                    scaleY:-1,
+                    rotate:180,
+                    borda: '#ccc'
+                });
+
+                $('#revela5').peBalao({
+                    top:34,
+                    left:-35,
+                    scaleX:1,
+                    scaleY:-1,
+                    rotate:90,
+                    borda: '#ccc'
+                });
 
 
                 var canvas = "../wilib/canvas/objetos/professora";
@@ -184,6 +220,13 @@
                 width: 200px;
             }
 
+            #revela5{
+                top: 70px;
+                left: 330px;
+                width: 370px;
+                z-index: 1;
+            }
+
             #bloqueio{
                 position: absolute;
                 width: 320px;
@@ -201,6 +244,13 @@
                 z-index: 1;
             }
 
+            #revela6{
+                width: 320px;
+                left: 210px;
+                top: 300px;
+                z-index: 1;
+            }
+
             .retangulo{
                 position: absolute;
                 left: 20px;
@@ -211,6 +261,20 @@
                 font-size: 12px;
                 padding: 10px;
                 color: #666;
+            }
+
+            #certo{
+                position: absolute;
+                width: 200px;
+                height: 103px;
+                top: 90px;
+                left: 500px;
+                border-radius: 15px;
+                padding: 10px;
+                border: 2px dashed #9C0;
+                text-align: center;
+                color: #9C0;
+                display: none;
             }
 
 		</style>
@@ -287,5 +351,7 @@
                 Que interessante! Uma mesma palavra pode ser usada para indicar diferentes significados.
             </p>
         </div>
+
+        <div id="certo">Muito Bem! Através da explicação da professora Sara, você pode aprender mais sobre os conceitos de Denotação e Conotação.</div>
 	</body>
 </html>

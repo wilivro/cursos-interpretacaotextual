@@ -1,0 +1,194 @@
+<!-- Desenvolvedor: Danilo Thiago -->
+<!doctype html>
+<html lang="pt-br">
+<head>
+    <title>Lição 01 Peça 03</title>
+    <meta charset="utf-8">
+    <script src="../wilib/js/lib/require.js"></script>
+    <script src="../wilib/js/app.js"></script>
+    <link rel="stylesheet" href="../wilib/css/font-awesome.css">
+    <link rel="stylesheet" href="../wilib/css/meioAmbiente.css">
+
+    <script>
+        require(['../wilib/js/lib/revela_slide'], function (edi) {
+
+            edi.setConfig({
+                icone: 'exclamacao',
+                titulo: 'Clique sobre os personagens e leia o diálogo.'
+            });
+
+            function callback(a, b) {
+                b.parent().css('box-shadow', '0 0 0 3px #8CA8B8');
+            }
+
+            function calbackFinal() {
+                mensagem('Muito bem!  Através do diálogo entre Joana e Pedro <br> você pode recordar um pouco da importância <br> de estudarmos e estarmos atentos a leitura.')
+            }
+
+            edi.revela_slide('.revela', callback, calbackFinal, {});
+
+
+            $('.revelaEsquerda').each(function () {
+                $(this).peBalao({
+                    top: 81,
+                    left: 220,
+                    scaleX: -1,
+                    scaleY: -1,
+                    rotate: 0
+                });
+            });
+
+            $('.revelaDireito').each(function () {
+                $(this).peBalao({
+                    top: 86,
+                    left: 20,
+                    scaleX: 1,
+                    scaleY: -1,
+                    rotate: 0
+                });
+            });
+
+            $('#rev-04').each(function () {
+                $(this).peBalao({
+                    top: 86,
+                    left: 10,
+                    scaleX: 1,
+                    scaleY: -1,
+                    rotate: 0
+                });
+            });
+
+            $('#rev-06').each(function () {
+                $(this).peBalao({
+                    top: 90,
+                    left: 10,
+                    scaleX: 1,
+                    scaleY: -1,
+                    rotate: 0
+                });
+            });
+
+        });
+    </script>
+
+    <style>
+        i {
+            font-style: italic;
+            font-weight: bold;
+        }
+
+        .revela {
+            border: 1px solid #ccc;
+            padding: 10px 10px 10px 10px;
+            font-size: 14px;
+            line-height: 1.3;
+            border-radius: 10px;
+            background: #fff;
+            text-shadow: 1px 1px 1px rgba(0, 0, 0, 0.2);
+            text-align: center;
+            position: absolute;
+            bottom: 200px;
+        }
+
+        #rev-01  {
+            left: 20px;
+            top: 120px;
+            padding-top: 10px;
+            width: 320px;
+            height: 49px;
+        }
+
+        #rev-02 {
+            left: 320px;
+            top: 100px;
+            width: 420px;
+            padding-top: 25px;
+            height: 39px;
+        }
+
+        #rev-03  {
+            left: 30px;
+            top: 120px;
+            width: 320px;
+            padding-top: 14px;
+            height: 45px;
+        }
+
+        #rev-04 {
+            width: 370px;
+            left: 300px;
+            top: 95px;
+            height: 55px;
+        }
+
+        #rev-05  {
+            left: 30px;
+            top: 120px;
+            width: 320px;
+            padding-top: 14px;
+            height: 45px;
+        }
+
+        #rev-06 {
+            width: 370px;
+            left: 300px;
+            top: 95px;
+            padding-top: 14px;
+            height: 55px;
+        }
+
+        #rev-07  {
+            left: 30px;
+            top: 120px;
+            width: 320px;
+            padding-top: 20px;
+            height: 39px;
+        }
+
+        .person {
+            width: 280px;
+            height: 200px;
+            position: absolute;
+            left: 200px;
+            top: 200px;
+        }
+
+
+    </style>
+</head>
+
+<body>
+<img src="../wilib/img/svg/personagens.svg" class="person" id="person-03">
+
+<p class="revelaEsquerda revela" id="rev-01">
+    A professora Sara, escreveu uma frase no quadro e nos solicitou que marcássemos se era conotativa ou denotativa. Confesso que eu fiquei em dúvida.
+</p>
+
+<p class="revelaDireito revela" id="rev-02">
+    Qual era a frase?
+</p>
+
+<p class="revelaEsquerda revela" id="rev-03">
+    “Não, eu te peço, não te ausentes / Porque a dor que agora sentes / Só se esquece no perdão.”
+</p>
+
+<p class="revela" id="rev-04">
+    Esta frase está em sentido denotativo porque <br> as palavras são usadas em sua forma verdadeira, <br> e não em sentido figurado.
+</p>
+
+<p class="revelaEsquerda revela" id="rev-05">
+    Certo! Eu pensei que por ser uma <br> linguagem poética seria conotação.
+</p>
+
+<p class="revela" id="rev-06">
+    Por isso, precisamos compreender muito bem a diferença entre essas duas linguagens, para que não haja confusão ao interpretar frases ou textos completos.
+</p>
+
+<p class="revelaEsquerda revela" id="rev-07">
+    Certo! Eu pensei que por ser uma linguagem poética seria conotação.
+</p>
+
+
+
+</body>
+</html>

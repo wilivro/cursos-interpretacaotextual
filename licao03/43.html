@@ -1,0 +1,110 @@
+<!-- Desenvolvedor: Rodolfo Araújo -->
+<!doctype html>
+<html lang="pt-br">
+	<head>
+		<title>Lição 10 Peça 04</title>
+    <meta charset="utf-8">
+    <script src="../wilib/js/lib/require.js"></script>
+    <script src="../wilib/js/app.js"></script>
+    <link rel="stylesheet" href="../wilib/css/font-awesome.css">
+    <link rel="stylesheet" href="../wilib/css/meioambientetrabalho.css">
+
+    <script>
+        require(['../wilib/js/lib/quebra-cabeca'], function (edi) {
+
+            edi.setConfig({
+                titulo: 'Monte o quebra-cabeça e revele a frase.'
+            });
+
+            var config = {
+                width: 253,
+                height: 258,
+                left: 10,
+                top: 30,
+                background: '#ccc',
+                numPecas: 2,
+                callBacks: [
+                    function () {
+                        $('#texto-01').fadeIn();
+                    },
+                    function () {
+                        $('#texto-02').fadeIn();
+                    },
+                    function () {
+                        $('#texto-03').fadeIn();
+                    }
+                ]
+            };
+
+            edi.quebraCabeca('../img/licao03/p43.png', function () {
+                $('#texto-04').fadeIn();
+                $('#msgAcerto').fadeIn();
+            }, config);
+
+            ajuda({
+                width: 300
+            });
+        });
+    </script>
+
+    <style>
+        #texto {
+            width: 270px;
+            position: absolute;
+            left: 310px;
+            top: 140px;
+            font-size: 14px;
+            line-height: 1.4;
+            z-index: 1000;
+            text-align: justify;
+        }
+
+        .texto {
+            display: none;
+        }
+
+        #centralizado {
+            margin-left: 30px;
+        }
+
+        #msgAcerto {
+          width: 150px;
+          height: 140px;
+          position: absolute;
+          padding: 5px;
+          left: 550px;
+          top: 160px;
+          padding-bottom: 15px;
+          font-size: 14px;
+          text-align: center;
+          font-weight: bold;
+          line-height: 16px;        
+          color: #9c0;
+          display: none;
+        }
+
+    </style>
+</head>
+
+<body>
+<div id="texto">
+    <span class="texto" id="texto-01">
+       <span id="centralizado"> “Cara de pau”.</span> <br><br>
+    </span>
+    <span class="texto" id="texto-02">
+        Esta frase está em sentido <br>
+    </span>
+    <span class="texto" id="texto-03">
+       conotativo, ou seja, sentido  <br>
+    </span>
+    <span class="texto" id="texto-04">
+      figurado, por isso, é uma conotação.
+    </span>
+</div>
+
+ <div id="msgAcerto" class="borda-pontilhado-verde arredondado">
+      <p>Muito bem! Perceba como a linguagem conotativa está impregnada em nosso dia a dia. Em nossas maneiras de falar, na linguagem do cotidiano.</p>
+    </div>
+
+</body>
+</html>

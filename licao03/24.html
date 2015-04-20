@@ -1,0 +1,111 @@
+<!doctype html>
+<html lang="pt-br">
+<head>
+    <title>Lição 04 Peça 04</title>
+    <meta charset="utf-8">
+    <script src="../wilib/js/lib/require.js"></script>
+    <script src="../wilib/js/app.js"></script>
+    <link rel="stylesheet" href="../wilib/css/font-awesome.css">
+    <link rel="stylesheet" href="../wilib/css/meioAmbientetrabalho.css">
+
+    <script>
+        require(['../wilib/js/lib/arrasta'], function (edi) {
+
+            edi.setConfig({
+                titulo: 'Arraste para o centro das setas ' +
+                        'a alternativa cujo termo <br> grifado NÃO ' +
+                        'é linguagem conotativa.',
+                mascote: 'mascote',
+                tempoFinal: 15
+            });
+
+            edi.arrasta('arrasta', 'alvo', function (a, b, c) {
+              if (a) {
+                mensagem(
+                  'Muito bem! Nesta frase a palavra cova foi' +
+                  'usada em seu sentido real, de dicionário.'
+                );
+                return;
+              }
+
+              mensagem(
+                'Atenção! Observe a frase onde a palavra grifada ' +
+                'é <br> usada com significado de dicionário.'
+              );
+            });
+
+            
+             
+              
+
+
+        });
+
+    </script>
+
+    <style>
+      #arrasta {
+        position: absolute;
+        left: 10px;
+        top: 100px;
+        padding: 20px;
+        width: 225px;
+        height: 219px;
+        background: url(../wilib/img/svg/04.svg) no-repeat;
+        background-size: 100% 100%;
+      }
+
+      .arrasta {
+        width: 220px;
+        font-size: 12px;
+        text-align: center;
+        line-height: 1;
+        margin-top: 10px;
+      }
+
+      #alvo {
+        position: absolute;
+        left: 450px;
+        top: 90px;
+        width: 292px;
+        height: 292px;
+        background: url(../wilib/img/svg/04.1.svg) no-repeat;
+        background-size: 100% 100%;
+      }
+
+      .alvo {
+        position: absolute;
+        left: 0px;
+        top: 120px;
+        width: 292px;
+        height: 50px;
+        border: 1px solid #ccc;
+      }
+    </style>
+</head>
+
+<body>
+  <div id="arrasta">
+    <div class="arrasta" data-correta="0">
+      “… mas um defunto autor, para quem a campa foi outro berço.”
+      <br><br>
+    </div>
+    <div class="arrasta" data-correta="0">
+      “Acresce que chovia - peneirava - uma chuvinha miúda, triste.”
+      <br><br>
+    </div>
+    <div class="arrasta" data-correta="0">
+      “A natureza parece estar chorando a perda irreparável…”
+      <br><br>
+    </div>
+    <div class="arrasta" data-correta="1">
+     “… no discurso que proferiu à beira da minha cova.”
+      <br><br>
+    </div>
+  </div>
+
+  <div id="alvo">
+    <div class="alvo" data-correta="1"></div>
+  </div>
+</body>
+</html>

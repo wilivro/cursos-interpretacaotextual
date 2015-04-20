@@ -1,0 +1,117 @@
+<!-- Desenvolvedor: Danilo Thiago -->
+<!doctype html>
+<html lang="pt-br">
+	<head>
+		<title>alt_d002</title>
+		<meta charset="utf-8">
+		<script src="../wilib/js/lib/require.js"></script>
+		<script src="../wilib/js/app.js"></script>
+		
+		<link rel="stylesheet" href="../wilib/css/font-awesome.css">
+		<link rel="stylesheet" href="../wilib/css/meioAmbiente.css">
+
+		<script>
+            $(function () {
+                require(['../wilib/js/lib/alternativa'], function (edi) {
+
+                    edi.setConfig({
+                        icone: 'interrogacaoAzul',
+                        titulo: 'Clique sobre a alternativa cuja frase apresenta  <br> palavras empregadas em sentido conotativo.'
+                    });
+
+                    var alternativas = [
+                        {
+                            alternativa: 'O homem procura novos caminhos na tentativa de fixar suas raízes.',
+                            correta: true
+                        },{
+                            alternativa: '“Mas lá, no ano dois mil, tudo pode acontecer. Hoje, não.”',
+                            correta: false
+                        },{
+                            alternativa: '“... os planejadores fizeram dele a meta e o ponto de partida.” ',
+                            correta: false
+                        },{
+                            alternativa: '“Pode estabelecer regras que conduzam a um viver tranquilo...” ',
+                            correta: false
+                        },{
+                            alternativa: '“Evidentemente, (...) as transformações serão mais rápidas.” ',
+                            correta: false
+                        }
+                    ];
+
+                    var config = {
+                        posx: 15,
+                        posy: 85,
+                        aleatorio: true,
+                        tamanhoBox: 35,
+                        tamanhoBoxTexto: 600,
+                        marginBtns: 5
+                    }
+
+                    edi.alternativa(alternativas, function (acertou) {
+                    }, function (a) {
+                    if (a) {
+                        $('#msgAcerto').fadeIn();
+                    } else{
+                        $('#msgErrado').fadeIn();
+                    };
+                    }, config);
+
+                        $('#balao').peBalao({
+                            left: 10,
+                            tamanhoBorda: 15,
+                            borda: '#ccc'
+                        });
+
+                });
+            })
+		</script>
+
+		<style>
+
+
+        #msgAcerto {
+                width: 130px;
+                height: 120px;
+                position: absolute;
+                left: 625px;
+                top: 180px;
+                padding: 3px;
+                font-size: 12px;
+                text-align: center;
+                font-weight: bold;
+                line-height: 16px;              
+                color: #9c0;
+                display: none;
+            }
+
+            #msgErrado {
+                width: 130px;
+                height: 180px;
+                position: absolute;
+                left: 625px;
+                top: 140px;
+                padding: 3px;
+                font-size: 12px;
+                text-align: center;
+                font-weight: bold;
+                line-height: 16px;              
+                color: #F00;
+                display: none;
+            }
+
+
+		</style>
+	</head>
+
+	<body>
+
+        <div id="msgAcerto" class="arredondado borda-pontilhado-verde">
+            <p>Parabéns! Você conseguiu entender mesmo o sentido conotativo das palavras, continue com essa dedicação!</p>
+        </div>
+
+        <div id="msgErrado" class="arredondado borda-pontilhado-vermelho">
+            <p>Você errou! Você não conseguiu perceber a diferença entre conotação e denotação, aconselho que refaça alguns exercícios porque este conhecimento é muito importante para interpretação de textos.</p>
+        </div>
+
+	</body>
+</html>

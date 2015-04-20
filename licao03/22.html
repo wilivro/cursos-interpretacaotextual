@@ -1,0 +1,87 @@
+<!-- Desenvolvedor: Leandro Fortaleza -->
+<!doctype html>
+<html lang="pt-br">
+	<head>
+        <title>Lição 02 Peça 11</title>
+		<meta charset="utf-8">
+		<script src="../wilib/js/lib/require.js"></script>
+		<script src="../wilib/js/app.js"></script>
+
+        <link rel="stylesheet" href="../wilib/css/font-awesome.css">
+        <link rel="stylesheet" href="../wilib/css/meioAmbiente.css">
+
+		<script>
+			require(['../wilib/js/lib/revela'], function (edi) {
+
+				edi.setConfig({
+                    icone: "exclamacao",
+					titulo: "Clique sobre a fotografia e leia um<br>exemplo de texto Denotativo.",
+					mascote: 'mascote'
+				});
+
+				edi.revela('btn-revela', 'box-revela', function (btn, revela) {
+					//
+				}, function (btn) {
+					btn.animate({left: 50}, 1000);
+				}, {
+					piscar: false,
+					delay: 1000
+				});//iniciando o EDI
+
+			});
+		</script>
+
+		<style>
+			.btn-revela {
+				background: url(../img/licao03/peca22.jpg) no-repeat;
+				background-size: 100% 100%;
+				width: 171px;
+				height: 159px;
+				top: 157px;
+				left: 332px;
+				z-index: 100;
+				position: absolute;
+				cursor: pointer;
+			}
+
+			.box-revela1 {
+                width: 280px;
+                border: 1px solid #ccc;
+                border-radius: 15px;
+                font-size: 12px;
+                padding: 10px;
+                position: absolute;
+                line-height: 1.8;
+                text-align: left;
+                text-shadow: 1px 1px 1px rgba(0, 0, 0, 0.2);
+                top: 90px;
+                left: 235px;
+
+            }
+      #certo{
+        position: absolute;
+			  width: 280px;
+			  height: 81px;
+			  top: 231px;
+			  left: 232px;
+			  border-radius: 15px;
+			  padding: 10px;
+			  border: 2px dashed #9C0;
+			  text-align: center;
+			  color: #9C0;
+
+       }
+		</style>
+	</head>
+
+	<body>
+		<div class="btn-revela"></div>
+		<div class="box-revela box-revela1">
+        De gari a universitária em Mato Grosso do Sul, Walkíria já pensa em mestrado e doutorado. Walkíria Benites trabalhou como gari enquanto fazia cursinho pré-vestibular.
+				Ela passou em 29º lugar para faculdade de Biologia, em Dourados.		
+		</div>
+
+		<div id="certo" class="box-revela">
+				Excelente! A Denotação é muito utilizada em textos jornalísticos. Sigam o exemplo de Walkíria, se ela conseguiu você também conseguirá!</div>
+	</body>
+</html>

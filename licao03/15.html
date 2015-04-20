@@ -1,0 +1,86 @@
+<!-- Desenvolvedor: Leandro Fortaleza -->
+<!doctype html>
+<html lang="pt-br">
+	<head>
+        <title>Lição 02 Peça 11</title>
+		<meta charset="utf-8">
+		<script src="../wilib/js/lib/require.js"></script>
+		<script src="../wilib/js/app.js"></script>
+
+        <link rel="stylesheet" href="../wilib/css/font-awesome.css">
+        <link rel="stylesheet" href="../wilib/css/meioAmbiente.css">
+
+		<script>
+			require(['../wilib/js/lib/revela'], function (edi) {
+
+				edi.setConfig({
+                    icone: "exclamacao",
+					titulo: 'Na tirinha acima, a expressão "pendurar a conta"<br>está utilizando o sentido conotativo da língua.:',
+					mascote: 'mascote'
+				});
+
+				edi.revela('btn-revela', 'revela', function (btn, revela) {
+					//
+				}, function (btn) {
+					btn.animate({top: 70}, 1000);
+				}, {
+					piscar: false,
+					delay: 1000
+				});//iniciando o EDI
+
+			});
+		</script>
+
+		<style>
+			.btn-revela {
+				background: url(../img/licao03/peca15.jpg) no-repeat;
+				background-size: 100% 100%;
+				width: 526px;
+				height: 153px;
+				top: 150px;
+				left: 128px;
+				z-index: 100;
+				position: absolute;
+				cursor: pointer;
+			}
+
+			.box-revela {
+          width: 280px;
+          border: 1px solid #ccc;
+          border-radius: 15px;
+          font-size: 12px;
+          padding: 10px;
+          position: absolute;
+          line-height: 1.8;
+          text-shadow: 1px 1px 1px rgba(0, 0, 0, 0.2);
+          top: 224px;
+          left: 235px;
+          text-align: center;
+      }
+
+      #certo{
+        position: absolute;
+			  width: 640px;
+			  height: 69px;
+			  top: 294px;
+			  left: 64px;
+			  font-size: 14px;
+			  border-radius: 15px;
+			  padding: 5px;
+			  border: 2px dashed #9C0;
+			  text-align: center;
+			  color: #9C0;
+			  display: none;
+
+        }
+		</style>
+	</head>
+
+	<body>
+		<div class="btn-revela"></div>
+		<div id="certo" class="revela">Muito bem! A palavra está sendo utilizada em seu sentido figurado, com significação ampla. O sentido conotativo é próprio da criatividade do falante e remete às inúmeras possibilidades existentes na língua. É muito comum o uso da linguagem conotativa nos textos literários, principalmente através das figuras de linguagem que começaremos a estudar na próxima lição.</div>
+		<div class="box-revela revela">
+            Na tirinha acima, a expressão "pendurar a conta" está utilizando o sentido conotativo da língua.
+		</div>
+	</body>
+</html>

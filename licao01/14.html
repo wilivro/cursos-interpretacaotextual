@@ -1,0 +1,198 @@
+<!doctype html>
+<html lang="pt-br">
+<head>
+    <title>Lição 01 Peça 14</title>
+    <meta charset="utf-8">
+    <script src="../wilib/js/lib/require.js"></script>
+    <script src="../wilib/js/app.js"></script>
+    <link rel="stylesheet" href="../wilib/css/font-awesome.css">
+    <link rel="stylesheet" href="../wilib/css/meioAmbiente.css">
+
+    <script>
+        require(['../wilib/js/lib/revela', '../wilib/js/lib/arrasta'], function (edi, edi2) {
+
+            edi.setConfig({
+                titulo: "O que você entende por Coerência e Coesão?<br> Arraste as palavras para as lacunas corretas e complete as definições.",
+                mascote: 'mascote'
+            });
+
+            edi.revela('_btn', 'revela', null, function () {
+                $('#bloqueio').fadeOut()
+            }, {});
+
+            $('.revela').peBalao({
+                top: 34,
+                left: -35,
+                scaleX: 1,
+                borda: '#ccc',
+                tamanhoBorda: 12,
+                scaleY: -1,
+                rotate: 90
+            });
+
+            var arrArrasta = [
+                {arrasta: 'coesão', dataCorreta: '1', dataId: '1'},
+                {arrasta: 'elementos', dataCorreta: '2', dataId: '2'},
+                {arrasta: 'frases', dataCorreta: '3', dataId: '3'},
+                {arrasta: 'parágrafos', dataCorreta: '4', dataId: '4'},
+                {arrasta: 'coeso', dataCorreta: '5', dataId: '5'},
+                {arrasta: 'conectivos', dataCorreta: '6', dataId: '6'},
+                {arrasta: 'preposição', dataCorreta: '7', dataId: '7'},
+                {arrasta: 'coerência', dataCorreta: '8', dataId: '8'},
+                {arrasta: 'ordenação', dataCorreta: '9', dataId: '9'},
+                {arrasta: 'problemas', dataCorreta: '10', dataId: '10'},
+                {arrasta: 'provavelmente', dataCorreta: '10', dataId: '11'}
+            ];
+
+            var texto = $('#texto').html();
+
+            for (var i = 0; i < arrArrasta.length; i++) {
+                var aux = '';
+                aux += '<span class="linha"></span>';
+
+                texto = texto.replace('[' + i + ']', '<div id="alvo' + i + '" class="alvo" data-correta="' + arrArrasta[i].dataCorreta + '">' + aux + '</div>');
+            }
+
+            $('#texto').html(texto);
+
+            arrArrasta.sort(function () {
+                return 0.5 - Math.random();
+            });
+
+
+            for (var i = 0; i < arrArrasta.length; i++) {
+                $('<div>')
+                        .addClass('arrasta fundoArrasta azulAlpha')
+                        .attr({
+                            'data-id': arrArrasta[i].dataId,
+                            id: 'arrasta' + (i + 1),
+                            'data-correta': arrArrasta[i].dataCorreta
+                        })
+                        .html(arrArrasta[i].arrasta)
+                        .appendTo('#arrasta');
+            }
+
+            var config = {
+                colorirFilho: true,
+                arrastaAbsolute: true,
+                reloadCorreta: true
+            };
+
+            edi2.arrasta('arrasta', 'alvo', function (a, b) {
+                b.css({top: 5})
+            }, function (a) {
+                if(a)
+                    mensagem('<div style="display: inline-block; width: 420px;">Através deste exercício você pode perceber os conceitos de Coerência e Coesão, a seguir, veremos mais detalhadamente cada conceito.</div>')
+            }, config);
+
+            $('.arrasta').css({
+                margin: -5,
+                padding: 5
+            });
+        });
+    </script>
+
+    <style>
+
+        ._btn {
+            background: url(../img/licao02/p44.jpg) no-repeat;
+            background-size: 100% 100%;
+            width: 190px;
+            height: 190px;
+            position: absolute;
+            left: 20px;
+            top: 118px;
+            cursor: pointer;
+            border-radius: 10px;
+            border: 7px solid #FFF;
+            box-shadow: 0 0 5px rgba(0, 0, 0, 0.5);
+        }
+
+        .revela {
+            background: #FFF;
+            width: 515px;
+            padding: 5px;
+            color: #666;
+            position: absolute;
+            left: 250px;
+            top: 85px;
+            text-align: center;
+            border: 1px solid #CCC;
+            border-radius: 10px;
+        }
+
+        .alvo {
+            display: inline-block;
+            width: 90px;
+            height: 18px;
+            border-bottom: 1px solid #999;
+        }
+
+        .arrasta {
+            padding: 5px;
+            margin-right: 10px;
+            margin-left: 10px;
+            display: inline-block;
+            color: #FFF;
+        }
+
+        #boxArrasta {
+            width: 450px;
+            height: 80px;
+            cursor: default;
+            top: 200px;
+            left: 275px;
+        }
+
+        #arrasta {
+            position: relative;
+            display: table-cell;
+            vertical-align: middle;
+            width: 450px;
+            height: 70px;
+        }
+
+        #texto {
+            font-size: 12px;
+        }
+
+        #texto i {
+            color: #FFCC00;
+        }
+
+        #bloqueio {
+            position: absolute;
+            background-color: #FFF;
+            width: 570px;
+            height: 120px;
+            cursor: default;
+            top: 250px;
+            left: 230px;
+            z-index: 10;
+        }
+    </style>
+</head>
+
+<body>
+<div class="_btn"></div>
+<div class="revela">
+    <div id="texto">
+        A [0]: é a correta ligação entre os [1] de um texto, que ocorre no interior das [2], entre as
+        próprias frases e entre os vários [3]. Pode-se dizer que um texto é [4] quando os [5]
+        (conjunções, pronomes relativos) e também a [6] são empregados corretamente.<br>A [7]: diz respeito
+        à [8] das ideias e dos argumentos. A coerência depende da coesão. Um texto com [9] de coesão terá,
+        [10], problemas de coerência.
+    </div>
+</div>
+<div id="boxArrasta" class="btn btn-default-hover">
+    <div id="arrasta"></div>
+</div>
+<div id="bloqueio"></div>
+</body>
+</html>
+
+
+
+
+
+

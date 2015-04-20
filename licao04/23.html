@@ -1,0 +1,79 @@
+<!doctype html>
+<html lang="pt-br">
+	<head>
+    <title>Lição 01 Peça 52</title>
+		<meta charset="utf-8">
+		<script src="../wilib/js/lib/require.js"></script>
+		<script src="../wilib/js/app.js"></script>
+		<link rel="stylesheet" href="../wilib/css/font-awesome.css">
+		<link rel="stylesheet" href="../wilib/css/meioambientetrabalho.css">
+
+		<script>
+			require(['../wilib/js/lib/revela_seta'], function (edi) {
+
+				edi.setConfig({
+					mascote: 'mascote',
+					titulo: 'Clique nas setas para compreender a substituição de ' +
+									'uma <br>palavra por outra no caso da figura metonímia.'
+				});
+
+				var config = {
+					leftBtn: 20,
+					height: 250,
+					alturaFrase: 'auto',//use auto caso não tenha borda
+					larguraFrase: 500,
+					textAlign: 'left',
+					fontSize: 13,
+					lineHeight: 1,
+					paddingLeftTxt: 0,
+					top: 70,
+					tempoBloqueio: 2000,
+					borda: '',
+          posx: 650,
+          posy: 330
+				};
+
+				function callback () {}
+
+				var frases = [
+					'<strong>O autor pela obra: </strong>ler Machado de Assis.',
+					'<strong>A causa pelo efeito, </strong>ou vice versa: viver do trabalho.',
+					'<strong>O inventor pelo invento: </strong>comprar um Ford.',
+					'<strong>O concreto pelo abstrato, </strong>ou vice versa: ter ótima cabeça (inteligência).',
+					'<strong>Parte pelo todo, </strong>ou vice versa: cinco cabeças de gado.',
+					'<strong>O gênero pela espécie: </strong>a estação das rosas.',
+					'<strong>O singular pelo plural: </strong>as chuvas chegaram.',
+					'<strong>O determinado pelo indeterminado: </strong>fazer mil perguntas.',
+					'<strong>O indivíduo pela classe: </strong>ser o cristo da turma',
+				];
+
+				edi.revela_seta(frases, callback, function() {
+					$('#msg').fadeIn();
+				}, config);
+
+			});
+		</script>
+
+		<style>
+			#msg {
+				position: absolute;
+				left: 20px;
+				top: 325px;
+				width: 560px;
+				color: #9c0;
+				font-style: italic;
+				text-align: center;
+				font-size: 13px;
+				display: none;
+			}
+		</style>
+	</head>
+
+	<body>
+		<div id="msg">
+			Muito bem! A metonímia não deve ser confundida com metáfora,
+			que se baseia num processo de associação de ideias, de
+			semelhança, de comparação mental. Ex.: Esse homem é uma fera.
+		</div>
+	</body>
+</html>

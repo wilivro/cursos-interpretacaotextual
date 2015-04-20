@@ -1,0 +1,132 @@
+<!doctype html>
+<html lang="pt-br">
+	<head>
+		<title>Lição 04 peça 17</title>
+		<meta charset="utf-8">
+		<script src="../wilib/js/lib/require.js"></script>
+		<script src="../wilib/js/app.js"></script>
+	  <link rel="stylesheet" href="../wilib/css/meioambientetrabalho.css">
+	  <link rel="stylesheet" href="../wilib/css/font-awesome.css">
+	  <link rel="stylesheet" href="../wilib/css/meioambientetrabalho.css">
+
+		<!-- main -->
+		<script>
+			require(['../wilib/js/lib/alternativa_botao'], function (edi) {
+
+				edi.setConfig({// configurando o EDI
+          icone: "exclamacao",
+					titulo: "Observe as frases a seguir e marque a opção que " +
+									"define a figura de <br>linguagem utilizada para escrevê-las.",
+				});
+
+				var btns = [
+					{
+						texto: 'Catacrese',
+						dataCorreta: false
+					},{
+						texto: 'Perífrase',
+						dataCorreta: true
+					},{
+						texto: 'Metáfora',
+						dataCorreta: false
+					},{
+						texto: 'Comparação',
+						dataCorreta: false
+					}
+				];
+
+
+				var config = {
+					colunas: 4,
+					width: 250,
+					height: 35,
+					left: 260,
+					top: 105,
+					margin: '12px 12px 0 12px',
+					tamanhoTexto: 14,
+					btnBranco: true,
+					lineHeight: '1.4',
+					animacao: true
+				}
+
+				function callback (a) {
+					if (a) {
+						$('#msg').fadeIn();
+						return;
+					}
+
+					$('#msg').css({
+						color: 'red',
+						top: 170
+					}).html(
+						'Atenção! A figura de linguagem utilizada consiste em ' +
+						'uma expressão que designa um ser através de alguma de ' +
+						'suas características ou atributos, ou de um ' +
+						'fato que o celebrizou.'
+					).fadeIn();
+				}
+
+				edi.alternativa_botao(btns, null, callback, config);//iniciando o EDI
+
+				$(".balao").peBalao({
+						scaleX: 1,
+						scaleY: 1,
+						top: 2,
+						left: 0
+				});
+			});
+		</script>
+
+		<style>
+			.alter-btn {
+				width: 250px;
+			}
+
+			.balao {
+				position: absolute;
+				left: 10px;
+				top: 100px;
+				width: 200px;
+				height: 250px;
+				border: 1px solid #ccc;
+				border-radius: 5px;
+				padding: 5px;
+				display: table;
+			}
+
+			.balao p {
+				width: 100%;
+				display: table-cell;
+				vertical-align: middle;
+				font-size: 12px;
+			}
+
+			#msg {
+				position: absolute;
+				left: 570px;
+				top: 190px;
+				width: 150px;
+				color: #9c0;
+				font-style: italic;
+				text-align: center;
+				font-size: 13px;
+				display: none;
+			}
+		</style>
+	</head>
+
+	<body>
+		<div class="balao">
+			<p>
+				O Divino Mestre (Jesus Cristo)<br>
+				O Poeta dos Escravos (Castro Alves)<br>
+				O Poeta da Vila (Noel Rosa)
+			</p>
+		</div>
+
+		<div id="msg">
+			Excelente! Através destes exemplos ficará mais fácil
+			identificar esta figura de linguagem.
+		</div>
+	</body>
+</html>

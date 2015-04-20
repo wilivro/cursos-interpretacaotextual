@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Lição 04 Peça 35</title>
+    <meta charset="utf-8">
+    <script src="../wilib/js/lib/require.js"></script>
+    <script src="../wilib/js/app.js"></script>
+    <link rel="stylesheet" href="../wilib/css/font-awesome.css">
+    <link rel="stylesheet" href="../wilib/css/meioAmbiente.css">
+
+    <script>
+      require(['../wilib/js/lib/revela_f01'], function(edi) {
+
+        edi.setConfig({
+          titulo: 'Clique sobre os botões e conheça alguns exemplos de perífrase.'
+        });
+
+        var peca = {};
+
+        peca.btns = [
+          'Emprego de várias palavras no lugar de poucas ou de uma só.',
+          '“Se lá no assento etéreo onde subiste...” (Camões) (assento etéreo = céu).',
+          'Morei na Veneza brasileira. (Veneza brasileira = Recife).',
+          'Não provoque o rei dos animais. (rei dos animais = leão).'
+        ];
+
+        peca.img = '../img/licao04/35.jpg';
+
+        peca.texto =  'Questões que envolvem perífrase pedem frequentemente, ' +
+                      'conhecimento independente do texto. Por este motivo é muito ' +
+                      'importante à leitura, para o conhecimento de novas ' +
+                      'palavras e seus significados.';
+
+        edi.iniciar(peca.btns, peca.img, peca.texto, null, null, function() {
+          $('<div>')
+            .css({
+              position: 'absolute',
+              top: 238,
+              left: 10,
+              width: 380,
+              fontSize: 12,
+              color: '#9c0',
+              fontStyle: 'italic',
+              textAlign: 'center',
+              display: 'none'
+            }).html(
+              'Muito bem! Perífrase é um processo que consiste em expressar ' +
+              'por muitas palavras o que se poderia dizer em poucos termos.'
+            ).appendTo($('.boxBtns')).fadeIn();
+        });
+
+      });
+    </script>
+  </head>
+</html>

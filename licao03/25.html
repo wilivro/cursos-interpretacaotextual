@@ -1,0 +1,158 @@
+<!-- Desenvolvedor: Micael Souza -->
+<!doctype html>
+<html lang="pt-br">
+<head>
+    <title>rev_j002</title>
+  <meta charset="utf-8">
+  <script src="../wilib/js/lib/require.js"></script>
+  <script src="../wilib/js/app.js"></script>
+
+  <link rel="stylesheet" href="../wilib/css/font-awesome.css">
+  <link rel="stylesheet" href="../wilib/css/meioAmbiente.css">
+
+  <!-- main -->
+  <script>
+  require(['../wilib/js/lib/revela'], function (edi) {
+
+    edi.setConfig({// configurando o EDI
+      icone: "exclamacao",
+      titulo: "Clique sobre as imagens e veja alguns exemplos de linguagem conotativa.",
+    });
+
+    function callback () {
+
+    }
+
+    edi.revela('btn-revela', 'box-revela', null, function() {
+      $('#msgAcerto').fadeIn();
+    }, {
+      ocultarRev: true,
+      bloqueiaClickFinal: false,
+      tempoBloqueio: 7000
+    });//iniciando o EDI
+
+    $('#rev-1').peBalao({
+      top:40,
+      left:-35,
+      scaleX:-1,
+      scaleY:1,
+      background:'#FFF',
+      borda:'#ccc',
+      tamanhoBorda: 9,
+      rotate:-90
+    });
+
+    $('#rev-2').peBalao({
+      top:40,
+      left:-35,
+      scaleX:-1,
+      scaleY:1,
+      background:'#FFF',
+      borda:'#ccc',
+      tamanhoBorda: 9,
+      rotate:-90
+    });
+
+    $('#rev-3').peBalao({
+      top:40,
+      left:-35,
+      scaleX:-1,
+      scaleY:1,
+      background:'#FFF',
+      borda:'#ccc',
+      tamanhoBorda: 9,
+      rotate:-90
+    });
+
+  });
+  </script>
+
+  <style>
+    .container {
+      width: 100%;
+      margin-top: 15px;
+      float: left;
+    }
+
+    .btn-revela {
+      width: 140px;
+      height: 75px;
+      background-size: 100% 100%;
+      border: 7px solid #fff;
+      border-radius: 15px;
+      margin-left: 20px;
+      cursor: pointer;
+      float: left;
+      box-shadow: 0 0 5px rgba(0, 0, 0, 0.3);
+    }
+
+    .box-revela {
+      background-size: 100% 100% !important;
+      width: 140px;
+      height: 55px;
+      margin: 7px 0 0 20px;
+      float: left;
+      border: 1px solid #ccc;
+      border-radius: 10px;
+      position: relative
+    }
+
+    .box-revela p {
+      width: 350px;
+      height: 120px;
+      margin: 16px 10px 10px 18px;
+      font-size: 13px;
+    }
+
+    #msgAcerto {
+      width: 150px;
+      height: 100px;
+      position: absolute;
+      left: 500px;
+      top: 160px;
+      padding:10px;
+      font-size: 12px;
+      text-align: center;
+      font-weight: bold;
+      line-height: 16px;              
+      color: #9c0;
+      display: none;
+    }
+  </style>
+</head>
+
+<body>
+  <section class="container">
+    <img class="btn-revela" data-revela="0" src="../img/licao03/p25_1.png">
+    <div class="box-revela" id="rev-1" data-revela="0">
+      <p>
+        Engolindo sapo.
+      </p>
+    </div>
+  </section>
+
+  <section class="container">
+    <img class="btn-revela" data-revela="1" src="../img/licao03/p25_2.png">
+    <div class="box-revela" id="rev-2" data-revela="1">
+      <p>
+        Carta na manga.
+      </p>
+    </div>
+  </section>
+
+
+  <section class="container">
+    <img class="btn-revela" data-revela="2" src="../img/licao03/p25_3.png">
+    <div class="box-revela" id="rev-3" data-revela="2">
+      <p>
+       Enchendo linguiça.
+      </p>
+    </div>
+  </section>
+
+  <div id="msgAcerto" class="arredondado borda-pontilhado-verde">
+      <p>Excelente! Perceba como a linguagem conotativa é utilizada com frequência em nossa linguagem cotidiana.</p>
+  </div>
+
+</body>
+</html>

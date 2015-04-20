@@ -1,0 +1,78 @@
+<!-- Desenvolvedor: Danilo Thiago -->
+<!doctype html>
+<html lang="pt-br">
+	<head>
+        <title>Lição 01 Peça 03</title>
+		<meta charset="utf-8">
+		<script src="../wilib/js/lib/require.js"></script>
+		<script src="../wilib/js/app.js"></script>
+
+        <link rel="stylesheet" href="../wilib/css/font-awesome.css">
+        <link rel="stylesheet" href="../wilib/css/meioAmbiente.css">
+
+		<script>
+			require(['../wilib/js/lib/revela'], function (edi) {
+
+				edi.setConfig({
+                    icone: "exclamacao",
+					titulo: "Clique sobre o ícone e revele o texto.",
+					mascote: 'mascote'
+				});
+
+				edi.revela('btn-revela', 'box-revela', function (btn, revela) {
+					//
+				}, function (btn) {
+					btn.animate({left: 50}, 1000);
+				}, {
+					piscar: false,
+					delay: 1000
+				});//iniciando o EDI
+
+				$('.btn-revela').transition({
+					width: 81,
+					height: 79,
+					top: 180,
+					left: 355,
+					rotate: '-360deg'
+				}, 1000);
+			});
+		</script>
+
+		<style>
+			.btn-revela {
+				background: url(../wilib/img/svg/interrogacao.svg) no-repeat;
+				background-size: 100% 100%;
+				width: 800px;
+				height: 700px;
+				z-index: 100;
+				position: absolute;
+				left: 20px;
+				top: -135px;
+				cursor: pointer;
+			}
+
+			.box-revela {
+        width: 280px;
+        border: 1px solid #ccc;
+        border-radius: 15px;
+        font-size: 14px;
+        padding: 0px 40px 3px 20px;
+        position: absolute;
+        line-height: 1.8;
+        text-align: left;
+        text-shadow: 1px 1px 1px rgba(0, 0, 0, 0.2);
+        top: 100px;
+        left: 225px;
+      }
+		</style>
+	</head>
+
+	<body>
+		<div class="btn-revela"></div>
+		<div class="box-revela">            
+            As palavras, expressões e enunciados da língua atuam em dois planos distintos: o conotativo (ou figurado) e o denotativo (ou literal). 
+						A linguagem denotativa predomina em textos com função utilitária, ou seja, que têm como objetivo principal informar, argumentar e orientar.
+						A linguagem conotativa predomina em textos literários, poesias, ditados populares, e em nossa linguagem do dia a dia.
+        </div>
+	</body>
+</html>

@@ -1,0 +1,102 @@
+<!-- Desenvolvedor: Leandro Fortaleza -->
+<!doctype html>
+<html lang="pt-br">
+
+<head>
+    <title>Lição 01 Peça 19</title> <!-- rev_ad001 -->
+    <meta charset="utf-8">
+    <script src="../wilib/js/lib/require.js"></script>
+    <script src="../wilib/js/app.js"></script>
+    <link rel="stylesheet" href="../wilib/css/font-awesome.css">
+    <link rel="stylesheet" href="../wilib/css/meioAmbiente.css">
+
+    <script>
+        require(['../wilib/js/lib/quebra-cabeca'], function (edi) {
+
+            edi.setConfig({
+                titulo: 'Vamos aprender mais sobre Denotação?<br>Monte o quebra-cabeça e revele o texto.'
+            });
+
+            var config = {
+                width: 623,
+                height: 181,
+                left: 80,
+                top: 10,
+                background: '#ccc',
+                numPecas: 2,
+                callBacks: [
+                    function () {
+                        $('#texto-01').fadeIn();
+                    },
+                    function () {
+                        $('#texto-02').fadeIn();
+                    },
+                    function () {
+                        $('#texto-03').fadeIn();
+                    }
+                ]
+            };
+
+            edi.quebraCabeca('../img/licao03/peca14.jpg', function () {
+                $('#texto-04').fadeIn();
+                $('#certo').fadeIn();
+            }, config);
+
+            ajuda({
+                width: 300
+            });
+        });
+    </script>
+
+    <style>
+        #texto {
+          width: 300px;
+          position: absolute;
+          left: 26px;
+          top: 278px;
+          font-size: 14px;
+          line-height: 1.4;
+          z-index: 1000;
+          text-align: justify;
+        }
+
+        .texto {
+            display: none;
+        }
+
+        #certo{
+          position: absolute;
+          width: 410px;
+          height: 81px;
+          top: 270px;
+          left: 350px;
+          border-radius: 15px;
+          padding: 10px;
+          border: 2px dashed #9C0;
+          text-align: center;
+          color: #9C0;
+          display: none;
+
+        }
+
+    </style>
+</head>
+
+<body>
+<div id="texto">
+    <span class="texto" id="texto-01">
+        Na tirinha, as expressões estão em seu sentido denotativo, 
+    </span>
+    <span class="texto" id="texto-02">
+        e o humor é obtido pelo enunciado
+    </span>
+    <span class="texto" id="texto-03">
+        do segundo quadrinho e a expressão de 
+    </span>
+    <span class="texto" id="texto-04">
+        desaprovação de Helga, esposa de Hagar.
+    </span>
+</div>
+<div id="certo">Excelente! A palavra está sendo utilizada em seu sentido real, literal, próprio de dicionário, com significado restrito. É muito comum o uso da linguagem denotativa nos textos jornalísticos e científicos.</div>
+</body>
+</html>

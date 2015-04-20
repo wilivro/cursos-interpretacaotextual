@@ -1,0 +1,62 @@
+<!-- Desenvolvedor: Leandro Fortaleza -->
+<!doctype html>
+<html lang="pt-br">
+	<head>
+        <title>Lição 01 Peça 25</title>
+        <meta charset="utf-8">
+        <script src="../wilib/js/lib/require.js"></script>
+        <script src="../wilib/js/app.js"></script>
+        <link rel="stylesheet" href="../wilib/css/font-awesome.css">
+        <link rel="stylesheet" href="../wilib/css/meioAmbiente.css">
+
+		<script>
+			require(['../wilib/js/lib/alternativa_vf'], function (edi) {
+				
+				edi.setConfig({
+                    icone: "interrogacaoAzul",
+                    mascote: 'mascote',
+					titulo: "Clique em D quando a frase tiver sentido <br>Denotativo e C quando o sentido for Conotativo."
+				});
+				
+				var alternativas  = [];
+				
+				alternativas.push({
+					texto: 'Meu coração tropical está coberto de neve, mas ferve em seu cofre gelado, a voz vibra e a mão escreve mar. (João Bosco / Aldir Blanc).',
+					dataCorreta: false
+				});
+				
+				alternativas.push({
+					texto: 'Nas tuas mãos trazias o meu mundo. Para mim dos teus gestos escorriam estrelas infinitas... (Sophia de Mello Breyner Andresen). ',
+					dataCorreta: false
+				});
+				
+				alternativas.push({
+					texto: 'Receita de bolo de cenoura:<br>Ingredientes:<br> Massa / 3 unidades de cenoura picada<br>1 xícara de óleo de soja / 3 xícaras de farinha de trigo <br> 2 xícaras de açúcar / 1 colher de fermento em pó.',
+					dataCorreta: true
+				});
+
+				alternativas.push({
+					texto: 'O passaporte brasileiro é o documento oficial, emitido pelo Departamento de Polícia Federal, que identifica o cidadão brasileiro perante as autoridades de outros países. ',
+					dataCorreta: true
+				});
+				
+				edi.alternativa_vf(alternativas, function (a) {
+
+                }, function (a) {
+                	if(a)
+                	mensagem('<div style="width: 510px; display:inline-block;">Correto! Continuem determinados em seus estudos, sua capacidade de raciocinar logicamente e interpretar melhora a cada exercício!</div>');
+                }, {
+                		width: 700,
+                    left: 60,
+                    top: 30,
+                    margin: '0 0 15px 0',
+                    textoBtn: ['D', 'C']
+                });
+			});
+		</script>
+	</head>
+	
+	<body>
+
+	</body>
+</html>

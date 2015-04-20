@@ -1,0 +1,111 @@
+<!-- Desenvolvedor: Danilo Thiago -->
+<!doctype html>
+<html lang="pt-br">
+<head>
+    <title>rev_n004</title>
+    <meta charset="utf-8">
+    <script src="../wilib/js/lib/require.js"></script>
+    <script src="../wilib/js/app.js"></script>
+    <link type="text/css" rel="stylesheet" href="../wilib/css/font-awesome.css">
+    <link type="text/css" rel="stylesheet" href="../wilib/css/meioAmbiente.css">
+
+    <script>
+        require(['../wilib/js/lib/revela'], function (edi) {
+
+            edi.setConfig({
+                titulo: "Clique sobre a palavra ambiguidade e revele a imagem. ",
+                mascote: 'mascote'
+            });
+
+            edi.revela('btn-revela', 'box-revela',null, function (btn) {
+                btn.animate({left: 20, width: 200, top: 185}, 1000);
+                $('#msgAcerto').fadeIn();
+            },{piscar:false});
+
+            var x = 0;
+
+            function removeBarra() {
+                setTimeout(function () {
+                    $('#barra' + x).animate({height: 0}, 500, function () {
+                        $(this).remove()
+                    });
+                    if (!!$('#barra' + x).length)
+                        removeBarra();
+                    x++;
+                }, 50)
+            }
+
+            for (var i = 0; i < 33; i++) {
+                $('<div>').attr('id', 'barra' + i).css({left: 14 * i}).addClass('barra').appendTo('#ct');
+                if (i == 17)
+                    removeBarra();
+            }
+            
+        });
+    </script>
+
+    <style>
+        .btn-revela {
+            position: absolute;
+            left: 180px;
+            top: 150px;
+            cursor: pointer;
+            z-index: 1;
+        }
+
+        .box-revela {
+            width: 250px;
+            height: 230px;
+            position: absolute;
+            top: 110px;
+            left: 250px;
+            background: url(../img/licao03/p31.png) no-repeat;
+            background-size: 100% 100%;
+        }
+
+        #ct {
+            position: absolute;
+            top: 149px;
+            left: 180px;
+            z-index: 2000;
+        }
+
+        .barra {
+            position: absolute;
+            width: 15px;
+            background: #FFF;
+            height: 134px;
+        }
+
+        #msgAcerto {
+            width: 150px;
+            height: 200px;
+            position: absolute;
+            left: 580px;
+            top: 120px;
+            padding:10px;
+            font-size: 12px;
+            text-align: center;
+            font-weight: bold;
+            line-height: 16px;              
+            color: #9c0;
+            display: none;
+        }
+    </style>
+</head>
+
+<body>
+<img class="btn-revela" src="../img/fotos/inglaterra.png" alt=""/>
+
+<div id="ct">
+</div>
+
+<div id="imagem" class="box-revela"></div>
+
+
+<div id="msgAcerto" class="arredondado borda-pontilhado-verde">
+            <p>Parabéns! Como já vimos a AMBIGUIDADE TEXTUAL ocorre quando a leitura do texto oferece ao seu leitor mais de uma interpretação, seja pela ordem das palavras, estrutura da frase ou inadequação ao contexto. A imagem apresenta diversos significados, depende da forma que a observamos.</p>
+        </div>
+
+</body>
+</html>

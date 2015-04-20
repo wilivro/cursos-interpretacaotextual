@@ -1,0 +1,151 @@
+<!-- Desenvolvedor: Rodolfo Araújo -->
+<!doctype html>
+<html lang="pt-br">
+	<head>
+        <title>Lição 03 Peça 13</title>
+		<meta charset="utf-8">
+		<script src="../wilib/js/lib/require.js"></script>
+		<script src="../wilib/js/app.js"></script>
+
+        <link rel="stylesheet" href="../wilib/css/font-awesome.css">
+        <link rel="stylesheet" href="../wilib/css/meioambientetrabalho.css">
+
+		<script>
+			require(['../wilib/js/lib/revela','../wilib/js/lib/alternativa_botao'], function (edi, edi2) {
+
+				edi2.setConfig({
+                    icone: "exclamacao",
+                    mascote: 'mascote',
+					titulo: "Observe a tirinha abaixo e responda corretamente a questão.",
+                    tempoFinal: 10
+				});
+
+                var btns = [];
+
+                btns.push({
+                    texto: "Literal",
+                    dataCorreta: false
+                });
+
+                btns.push({
+                    texto: "Figurada",
+                    dataCorreta: false
+                });
+
+                btns.push({
+                    texto: "Literal e Figurada",
+                    dataCorreta: true
+                });
+
+
+                var config = {
+                    colunas: 1,
+                    width: 200,
+                    height: 35,
+                    left: 400,
+                    top: 140,
+                    margin: '7px 7px 0 100px',
+                    tamanhoTexto: 14,
+                    btnBranco: true,
+                    lineHeight: '1.4',
+                    animacao: true
+                };
+
+
+                edi2.alternativa_botao(btns, null, function(a) {
+                    if (a) {
+                        $('#msgAcerto').fadeIn();
+                    } else{
+                        $('#msgErrado').fadeIn();
+                    };
+                }, config);
+
+                $('[data-edi = "alternativa_botao"]')
+                        .css({width: 100})
+                        .attr('data-revela','0')
+                        .addClass('box-revela');
+
+				edi.revela('btn-revela', 'box-revela', function (btn, revela) {
+
+				}, function (btn) {
+				}, {ordenado: true});
+
+			});
+		</script>
+
+		<style>
+
+            .img{
+                position: absolute;
+                top: 150px;
+                left: 20px;
+                width: 380px;
+                height: 140px;
+                border: 7px solid #fff;
+                border-radius: 15px;
+                margin-left: 20px;
+                cursor: pointer;
+                float: left;
+                box-shadow: 0 0 5px rgba(0, 0, 0, 0.3);
+            }
+
+            .texto{
+                position: absolute;
+                color: #666;
+                width: 467px;
+                text-align: center;
+                left: 360px;
+                top: 72px;
+            }
+
+            #msgAcerto {
+                width: 400px;
+                height: 60px;
+                position: absolute;
+                left: 35px;
+                top: 300px;
+                padding: 3px;
+                font-size: 12px;
+                text-align: center;
+                font-weight: bold;
+                line-height: 16px;              
+                color: #9c0;
+                display: none;
+            }
+
+            #msgErrado {
+                width: 400px;
+                height: 70px;
+                position: absolute;
+                left: 35px;
+                top: 305px;
+                padding: 3px;
+                font-size: 12px;
+                text-align: center;
+                font-weight: bold;
+                line-height: 16px;              
+                color: #F00;
+                display: none;
+            }
+
+
+		</style>
+	</head>
+
+	<body>
+
+        <img class="btn-revela img" data-revela="0" src="../img/licao03/p45.png" />
+        <p class="box-revela texto" data-revela="0">
+            Qual a linguagem utilizada, literal ou figurada?
+        </p>
+
+        <div id="msgAcerto" class="arredondado">
+            <p>Muito bem!  No primeiro quadrinho a linguagem utilizada foi a figurada, no entanto, o recruta no segundo quadrinho compreendeu a linguagem como sendo literal, por tanto, ambas linguagens foram usadas.</p>
+        </div>
+
+        <div id="msgErrado" class="arredondado">
+            <p>Atenção! No primeiro quadrinho a linguagem utilizada foi a figurada, no entanto, o recruta no segundo quadrinho compreendeu a linguagem como sendo literal, pense um pouco mais!</p>
+        </div>
+
+   	</body>
+</html>

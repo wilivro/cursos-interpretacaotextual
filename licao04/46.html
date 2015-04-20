@@ -1,0 +1,85 @@
+<!doctype html>
+<html lang="pt-br">
+	<head>
+    <title>Lição 04 Peça 46</title>
+		<meta charset="utf-8">
+		<script src="../wilib/js/lib/require.js"></script>
+		<script src="../wilib/js/app.js"></script>
+
+    <link rel="stylesheet" href="../wilib/css/font-awesome.css">
+    <link rel="stylesheet" href="../wilib/css/meioAmbiente.css">
+
+		<script>
+			require(['../wilib/js/lib/revela'], function (edi) {
+
+				edi.setConfig({
+          icone: 'exclamacao',
+					mascote: 'mascote',
+					titulo: 'Clique sobre o ícone e revele o texto.'
+				});
+
+				edi.revela('btn-revela', 'box-revela', null, function (btn) {
+					btn.animate({left: 50}, 1000, function() {
+						setTimeout(function() {
+							mensagem(
+								'Excelente! Continue dedicado aos <br>estudos, você ' +
+								'tem muito a aprender <br>sobre interpretação de textos!'
+							);
+						}, 3000);
+					});
+				}, {
+					piscar: false,
+					delay: 1000
+				});//iniciando o EDI
+
+				$('.btn-revela').transition({
+					width: 81,
+					height: 79,
+					top: 180,
+					left: 355,
+					rotate: '-360deg'
+				}, 1000);
+			});
+		</script>
+
+		<style>
+			.btn-revela {
+				background: url(../wilib/img/svg/interrogacao.svg) no-repeat;
+				background-size: 100% 100%;
+				width: 800px;
+				height: 700px;
+				z-index: 100;
+				position: absolute;
+				left: 20px;
+				top: -135px;
+				cursor: pointer;
+			}
+
+			.box-revela {
+        width: 280px;
+        border: 1px solid #ccc;
+        border-radius: 15px;
+        font-size: 14px;
+        padding: 0px 40px 3px 20px;
+        position: absolute;
+        line-height: 1.8;
+        text-align: left;
+        text-shadow: 1px 1px 1px rgba(0, 0, 0, 0.2);
+        top: 120px;
+        left: 225px;
+      }
+		</style>
+	</head>
+
+	<body>
+		<div class="btn-revela"></div>
+		<div class="box-revela">
+			<p>
+				A importância em reconhecer figuras de linguagem está no fato de
+				que tal conhecimento, além de auxiliar a compreender melhor os
+				textos literários, deixa-nos mais sensíveis à beleza da linguagem
+				e ao significado simbólico das palavras e dos textos.
+			</p>
+    </div>
+	</body>
+</html>

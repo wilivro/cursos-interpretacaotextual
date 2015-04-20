@@ -1,0 +1,59 @@
+<!-- Desenvolvedor: Micael Souza -->
+<!doctype html>
+<html lang="pt-br">
+
+<head>
+	<title>Lição 01 Peça 31</title>
+	<meta charset="utf-8">
+	<script src="../wilib/js/lib/require.js"></script>
+	<script src="../wilib/js/app.js"></script>
+
+	<link rel="stylesheet" href="../wilib/css/font-awesome.css">
+	<link rel="stylesheet" href="../wilib/css/meioAmbiente.css">
+
+	<!-- main -->
+	<script>
+		require(['../wilib/js/lib/quebra-cabeca'], function (edi) {
+
+			edi.setConfig({ // configurando o EDI
+				icone: 'exclamacao',
+				titulo: 'Monte o quebra-cabeça e aprenda mais sobre metonímia.'
+			});
+
+      var config = {
+          width: 410,
+          height: 300,
+          left: 10,
+          top: 8,
+          background: '#ccc'
+      };
+
+			edi.quebraCabeca('../img/licao04/25.jpg', function() {
+				$('#msg').fadeIn();
+			}, config);
+		});
+	</script>
+
+	<style>
+		#msg {
+			position: absolute;
+			left: 440px;
+			top: 80px;
+			width: 150px;
+			color: #9c0;
+			font-style: italic;
+			text-align: center;
+			font-size: 13px;
+			display: none;
+		}
+	</style>
+</head>
+
+<body>
+	<div id="msg">
+		Excelente! Através destes exemplos ficará mais fácil
+		identificar esta figura de linguagem.
+	</div>
+</body>
+
+</html>

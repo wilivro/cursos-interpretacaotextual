@@ -1,0 +1,130 @@
+<!doctype html>
+<html lang="pt-br">
+	<head>
+        <title>Lição 01 Peça 46</title>
+		<meta charset="utf-8">
+		<script src="../wilib/js/lib/require.js"></script>
+		<script src="../wilib/js/app.js"></script>
+        <link rel="stylesheet" href="../wilib/css/font-awesome.css">
+        <link rel="stylesheet" href="../wilib/css/estilo.css">
+
+		<script>
+			require(['../wilib/js/lib/revela','../wilib/js/lib/alternativa'], function (edi, edi2) {
+
+				edi2.setConfig({
+                    icone: "exclamacao",
+                    mascote: 'mascote',
+					titulo: "Clique sobre a imagem para revelar o texto<br> e em seguida responda corretamente a questão.",
+                    tempoFinal: 10
+				});
+
+                var btns = [];
+
+                btns.push({
+                    alternativa: "<div class='txt'>por sua capacidade de viver fora de seu ecossistema</div>",
+                    correta: false
+                });
+
+                btns.push({
+                    alternativa: "<div class='txt'>por sua sobrevivência e proliferação</div>",
+                    correta: true
+                });
+
+                btns.push({
+                    alternativa: "<div class='txt'>por possibilidade de produzir seu próprio alimento</div>",
+                    correta: false
+                });
+
+                btns.push({
+                    alternativa: "<div class='txt'>por sua inalterabilidade e resistência à extinção</div>",
+                    correta: false
+                });
+
+                btns.push({
+                    alternativa: "<div class='txt'>por sua agricultura</div>",
+                    correta: false
+                });
+
+                var config = {
+                    tamanhoBoxTexto: 210,
+                    marginBtns: 5,
+                    posx: 200,
+                    posy: 73
+
+                };
+
+                function callback (a) {
+
+                }
+
+                edi2.alternativa(btns, callback, null, config);
+
+                $('[data-edi = "alternativa"]').addClass('box-revela');
+
+				edi.revela('btn-revela', 'box-revela', function () {
+                    console.log(edi.objetivos)
+                }, function (btn) {
+				}, {});
+
+				$('#img').transition({
+                    transform: 'scale(0.8)',
+                    top: 100,
+					left: -10
+				}, 1000);
+			});
+		</script>
+
+		<style>
+
+            #img{
+                position: absolute;
+                top: 200px;
+                left: 180px;
+                -webkit-transform: scale(0.1);
+                -moz-transform: scale(0.1);
+                -ms-transform: scale(0.1);
+                transform: scale(0.1);
+                text-align: center;
+                border-radius: 10px;
+                border: solid 1px #E2E2E2;
+                color: rgb(128, 126, 126);
+                padding: 10px;
+                font-size: 16px;
+            }
+
+            #txt {
+                position: absolute;
+                top: 75px;
+                left: 540px;
+                font-size: 14px;
+                width: 219px;
+                height: 290px;
+                overflow: scroll;
+                background: #FAFAFA;
+                color: #666;
+                padding: 5px 10px;
+            }
+
+            .bold {
+                font-size: 11px;
+                float: right;
+                color: #000;
+            }
+
+		</style>
+	</head>
+
+    <div id="txt" class="box-revela">
+        Li que a espécie humana é um sucesso sem precedentes.<br>
+        Nenhuma outra com uma proporção parecida de peso e volume se iguala a nossa em termos de sobrevivência e proliferação. E tudo se deve à agricultura.<br>
+        Como controlamos a produção do nosso próprio alimento, somos a primeira espécie na história do planeta a poder viver fora de seu ecossistema de nascença.<br>
+        Isso nos deu mobilidade e a sociabilidade que nos salvaram do processo de seleção, que limitou outros bichos de tamanho equivalente e que acontece quando uma linhagem genética dependente de um ecossistema restrito fica geograficamente isolada e só evolui como outra espécie. É por isso que não temos mudado muito, mas também não nos extinguimos.<br><br>
+
+        <span class="bold">(Luís Fernando Veríssimo)</span>
+
+    </div>
+
+	<body>
+        <img id="img" class="btn-revela" src="../img/licao01/p46.png" width="200"/>
+	</body>
+</html>

@@ -1,0 +1,92 @@
+<!doctype html>
+<html lang="pt-br">
+<head>
+    <title>Lição 01 Peça 44</title>
+    <meta charset="utf-8">
+    <script src="../wilib/js/lib/require.js"></script>
+    <script src="../wilib/js/app.js"></script>
+    <link rel="stylesheet" href="../wilib/css/font-awesome.css">
+    <link rel="stylesheet" href="../wilib/css/estilo.css">
+
+    <script>
+        require(['../wilib/js/lib/revela'], function (edi) {
+
+            edi.setConfig({
+                titulo: "Clique sobre a imagem e revele o texto.",
+                mascote: 'mascote'
+            });
+
+            var arrPeca = [
+                {
+                    img: '../img/licao01/p44.png',
+                    txt: 'Algum tempo hesitei se devia abrir estas memórias pelo princípio ou pelo fim, isto é, se poria em primeiro lugar o meu nascimento ou a minha morte. Suposto o uso vulgar seja começar pelo nascimento, duas considerações me levaram a adotar diferente método: a primeira é que eu não sou propriamente um autor defunto, mas um defunto autor, para quem a campa foi outro berço; a segunda é que escrito ficaria assim mais galante e mais novo. Moisés, que também contou a sua morte, não a pôs no intróito, mas no cabo: diferença radical entre este livro e o Pentateuco.<br><br> <soan class="bold">(Machado de Assis, in Memórias Póstumas de Brás Cubas)</soan>'
+                }
+            ];
+
+            edi.revela('_btn', 'revela', null, function () {
+                setTimeout(function () {
+                    mensagem('<div style="width: 430px; font-size: 22px; display: inline-block">Muito Bem! A seguir, você deverá ser capaz de responder a questões relacionadas a este texto, fique atento!</div>');
+                }, 6000)
+            });
+
+            $('._btn')
+                    .css({
+                        background: 'url(' + arrPeca[edi.telaAtual() - 1].img + ')',
+                        backgroundSize: '100% 100%'
+                    });
+
+            $('.revela').html(arrPeca[edi.telaAtual() - 1].txt);
+
+            $('.revela')
+                    .peBalao({
+                        top: 34,
+                        left: -35,
+                        scaleX: 1,
+                        scaleY: -1,
+                        rotate: 90
+                    });
+
+        });
+    </script>
+
+    <style>
+        ._btn {
+            width: 201px;
+            height: 274px;
+            position: absolute;
+            left: 10px;
+            top: 78px;
+            cursor: pointer;
+            border-radius: 10px;
+            border: 7px solid #fff;
+            box-shadow: 0 0 5px rgba(0, 0, 0, 0.5);
+        }
+
+        .bold {
+            font-size: 11px;
+            color: #000;
+            float: right;
+        }
+
+        .revela {
+            background: #FFF;
+            width: 360px;
+            padding: 10px 20px;
+            position: absolute;
+            left: 245px;
+            top: 75px;
+            text-align: left;
+            border: 1px solid #CCC;
+            border-radius: 10px;
+            color: #666;
+        }
+
+    </style>
+</head>
+
+<body>
+<div class="_btn"></div>
+<div class="revela">
+</div>
+</body>
+</html>

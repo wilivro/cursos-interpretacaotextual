@@ -1,0 +1,88 @@
+<!doctype html>
+<html lang="pt-br">
+<head>
+    <title>Lição 01 Peça 45</title>
+    <meta charset="utf-8">
+    <script src="../wilib/js/lib/require.js"></script>
+    <script src="../wilib/js/app.js"></script>
+    <link rel="stylesheet" href="../wilib/css/font-awesome.css">
+    <link rel="stylesheet" href="../wilib/css/estilo.css">
+
+    <script>
+        require(['../wilib/js/lib/alternativa_boliche'], function (edi) {
+
+            edi.setConfig({
+                icone: 'exclamacao',
+                mascote:'mascote',
+                titulo: 'Vamos jogar basquete? Responda corretamente<br> as questões a seguir e marque muitos pontos.',
+				qtdTelas: 3
+            });
+
+			var msgFinal = [
+				{
+					msgT:'Correto! Um texto autobiográfico é aquele em que o autor fala de sua própria vida, de sua própria história. É o que ocorre no texto.',
+					msgF:'Pense um pouco mais! Neste texto o autor fala de sua própria vida, de sua própria história.'
+				},
+				{
+					msgT:'Muito Bem! O autor diz que o uso vulgar é começar o livro pelo nascimento. Assim, começar pela morte é uma coisa menos comum. Cuidado com os jogos de palavras que às vezes as alternativas apresentam.',
+					msgF:'Atenção! O autor diz que o uso vulgar é começar o livro pelo nascimento. Assim, começar pela morte é uma coisa menos comum.'
+				},
+				{
+					msgT:'Parabéns! Quando o autor diz estar em dúvida quanto a começar o livro por seu nascimento ou sua morte, na realidade está afirmando que já morreu. Também se pode chegar a essa conclusão quando ele se diz um defunto autor.',
+					msgF:'Pense um pouco mais! Quando o autor diz estar em dúvida quanto a começar o livro por seu nascimento ou sua morte, na realidade está fazendo uma afirmação que seria que ele...'
+				}
+			];
+
+            var btns = {
+				tela1: {
+					texto: '<div style="width: 300px; display: inline-block">Pode-se afirmar, com base nas ideias do autor-personagem, que se trata:</div>',
+					btns: [
+						{texto: 'de um texto jornalístico', dataCorreta: false},
+						{texto: 'de um texto religioso', dataCorreta: false},
+						{texto: 'de um texto autobiográfico', dataCorreta: true}
+					]
+				},
+				tela2: {
+					texto: '<div style="width: 200px; display: inline-block">Para o autor-personagem, é menos comum::</div>',
+					btns: [
+						{texto: 'começar um livro por seu nascimento', dataCorreta: false},
+						{texto: 'não começar um livro por seu nascimento, nem por sua morte', dataCorreta: false},
+						{texto: 'começar um livro por sua morte', dataCorreta: true}
+					]
+				},
+				tela3: {
+					texto: '<div style="width: 400px; display: inline-block">Deduz-se do texto que o autor-personagem:</div>',
+					btns: [
+						{texto: 'está morrendo', dataCorreta: false},
+						{texto: 'não quer morrer', dataCorreta: false},
+						{texto: 'já morreu', dataCorreta: true}
+					]
+				}
+            };
+
+            var config = {
+				width: 240,
+                fontSize: '16px',
+                boliche: false,
+				basquete: true,
+				randomico: true
+            };
+
+            edi.alternativa_boliche(btns, function (a) {
+				console.log(edi.telaAtual());
+				if(a)
+					mensagem('<div style="width: 430px; font-size: 22px; display: inline-block">'+ msgFinal[edi.telaAtual() - 1].msgT+'</div>');
+				else
+					mensagem('<div style="width: 430px; font-size: 22px; display: inline-block">'+ msgFinal[edi.telaAtual() - 1].msgF+'</div>');
+			}, config);//iniciando o EDI
+        });
+    </script>
+
+    <style>
+
+    </style>
+</head>
+
+<body>
+</body>
+</html>

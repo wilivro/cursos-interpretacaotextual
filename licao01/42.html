@@ -1,7 +1,7 @@
 <!doctype html>
 <html lang="pt-br">
 	<head>
-        <title>Lição 01 Peça 46</title>
+        <title>Lição 01 Peça 42</title>
 		<meta charset="utf-8">
 		<script src="../wilib/js/lib/require.js"></script>
 		<script src="../wilib/js/app.js"></script>
@@ -9,7 +9,7 @@
         <link rel="stylesheet" href="../wilib/css/estilo.css">
 
 		<script>
-			require(['../wilib/js/lib/revela','../wilib/js/lib/alternativa'], function (edi, edi2) {
+			require(['../wilib/js/lib/revela','../wilib/js/lib/alternativa_botao'], function (edi, edi2) {
 
 				edi2.setConfig({
                     icone: "exclamacao",
@@ -46,10 +46,12 @@
                 });
 
                 var config = {
-                    tamanhoBoxTexto: 210,
-                    marginBtns: 5,
-                    posx: 200,
-                    posy: 73
+                    width: 350,
+                    btnBranco: true,
+                    colunas: 1,
+                    margin: 1,
+                    height: 30,
+                    top: 80
 
                 };
 
@@ -57,14 +59,7 @@
 
                 }
 
-                edi2.alternativa(btns, callback, function(a){
-                    if(a) {
-                        mensagem('<div style="width: 430px; font-size: 22px; display: inline-block">Correto! A resposta pode ser localizada, com clareza, no segundo período, onde se destaca a expressão sobrevivência e proliferação.</div>')
-                    }
-                    else {
-                        mensagem('<div style="width: 430px; font-size: 22px; display: inline-block">Atenção! Leia o texto com calma e procure compreender o que ele diz.</div>')
-                    }
-                }, config);
+                edi2.alternativa_botao(btns, callback, null, config);
 
                 $('[data-edi = "alternativa"]').addClass('box-revela');
 
@@ -73,11 +68,7 @@
                 }, function (btn) {
 				}, {});
 
-				$('#img').transition({
-                    transform: 'scale(0.8)',
-                    top: 100,
-					left: -10
-				}, 1000);
+
 			});
 		</script>
 
@@ -85,16 +76,12 @@
 
             #img{
                 position: absolute;
-                top: 200px;
-                left: 180px;
-                -webkit-transform: scale(0.1);
-                -moz-transform: scale(0.1);
-                -ms-transform: scale(0.1);
-                transform: scale(0.1);
+                top: 110px;
+                left: 280px;
                 text-align: center;
                 border-radius: 10px;
                 border: solid 1px #E2E2E2;
-                color: rgb(128, 126, 126);
+                color: #807E7E;
                 padding: 10px;
                 font-size: 16px;
             }

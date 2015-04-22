@@ -1,0 +1,251 @@
+<!doctype html>
+<html lang="pt-br">
+<head>
+    <title>Lição 04 Peça 28</title>
+    <meta charset="utf-8">
+    <script src="../wilib/js/lib/require.js"></script>
+    <script src="../wilib/js/app.js"></script>
+    <link rel="stylesheet" href="../wilib/css/font-awesome.css">
+    <link rel="stylesheet" href="../wilib/css/estilo.css">
+
+    <script>
+        require(['../wilib/js/lib/arrasta'], function (edi) {
+
+            edi.setConfig({
+                mascote: 'mascote',
+                titulo: 'Relacione as semelhanças sobre as quais se ' +
+                        'construíram as metáforas das frases a seguir ' +
+                        'pintando a alternativa correta.',
+                tempoFinal: 10,
+                qtdTelas: 1
+            });
+
+            var telas = [
+              {
+                textoAcertou: 'Muito bem! A onomatopeia é um recurso muito ' +
+                              'utilizado nas histórias em quadrinhos, porque ' +
+                              'reproduz na escrita os sons que existem ao nosso redor.',
+                textoErrou: 'Você errou! A figura de linguagem expressa na ' +
+                            'imagem é um recurso muito utilizado nas histórias ' +
+                            'em quadrinhos, porque reproduz na escrita os sons ' +
+                            'que existem ao nosso redor. Tente novamente.',
+                arr: [
+                    {txt: 'Metáfora', dataCorreta: 0},
+                    {txt: 'Catacrese', dataCorreta: 0},
+                    {txt: 'Comparação', dataCorreta: 0},
+                    {txt: 'Metonímia', dataCorreta: 0},
+                    {txt: 'Onomatopeia', dataCorreta: 1}
+                ]
+              }
+            ];
+
+            var arrArrasta = [
+                {arrasta: '', dataCorreta: '1', dataId: '1'}
+            ];
+
+
+            arrArrasta.sort(function () {
+                return 0.5 - Math.random()
+            });
+
+            for (var i = 0; i < arrArrasta.length; i++) {
+              $('<div>')
+                .addClass('arrasta')
+                .css({
+                    width: '102px',
+                    height: '65px',
+                })
+                .attr({
+                    'data-id': arrArrasta[i].dataId,
+                    id: 'arrasta'+(i+1),
+                    'data-correta': arrArrasta[i].dataCorreta
+                })
+                .html(arrArrasta[i].arrasta)
+                .appendTo('#arrasta');
+            }
+
+            var config = {
+                colorirFilho: true,
+                arrastaAbsolute: true,
+                reloadCorreta: true,
+                clone: false,
+                alvoFixo: false,
+                multAlvo: true,
+                target: false
+            };
+
+            var animacao = function(a, fps, stop){
+                var cont = 0;
+                var tempo = setInterval(function(){
+                    cont+=10;
+                    a.attr('width', cont);
+                    if(cont == stop)
+                        clearInterval(tempo);
+                }, 30/1000);
+            };
+
+            telas[edi.util.telaAtual].arr.sort(function () {
+                return 0.5 - Math.random()
+            });
+
+            for(var i = 0; i < telas[edi.util.telaAtual].arr.length; i++){
+                var alvo = $('<div>')
+                        .addClass('alvo')
+                        .attr({'data-correta': telas[edi.util.telaAtual].arr[i].dataCorreta})
+                        .appendTo('#boxTexto')
+
+                $('<div>').addClass('svg').appendTo(alvo)
+
+                $('<div>')
+                        .addClass('centraliza')
+                        .html(telas[edi.util.telaAtual].arr[i].txt)
+                        .appendTo(alvo)
+
+            };
+
+            edi.arrasta('arrasta', 'alvo', function (a, b, c) {
+
+                b.remove();
+
+                animacao(c.find('#Layer_2 rect'), 10000, 611);
+                c.css('color', '#DDD');
+
+                $('.arrasta').off();
+
+                c.find('#Layer_2 rect').attr('fill', '#9c0');
+
+            }, function (a) {
+              if (a) {
+                $('#msg')
+                  .html(telas[edi.util.telaAtual].textoAcertou)
+                  .fadeIn();
+                return;
+              }
+
+              $('#msg')
+                .html(telas[edi.util.telaAtual].textoErrou)
+                .css('color', 'red')
+                .fadeIn();
+            }, config);
+
+            $('#arrasta1')
+                    .css({
+                        top: '304px',
+                        left: '69px'
+                    })
+                    .attr('data-x', '69')
+                    .attr('data-y', '174')
+                    .load('../wilib/img/svg/pincel.svg', function(){
+                        $('#corPonta').attr('fill', '#9c0');
+                    });
+
+            $('<div>')
+                    .attr('id', 'mascote')
+                    .appendTo('#conteudo');
+
+            $('.svg').load('../wilib/img/svg/fundoPincel.svg', function(){
+                $('#Layer_2 rect')
+                        .attr({
+                            width: 0,
+                            height: 50
+                        });
+            });
+
+        });
+    </script>
+    <style>
+        .svg, .svg svg{
+            position: absolute;
+            width: 514px;
+            height: 48px;
+            display: block;
+        }
+
+        .alvo {
+            display: inline-block;
+            width: 514px;
+            height: 48px;
+            margin-bottom: 5px;
+        }
+        .arrasta {
+            padding: 5px;
+            margin-right: 10px;
+            margin-left: 10px;
+            display: inline-block;
+            color: #FFF;
+            width: 77px;
+            text-align: center;
+        }
+        #arrasta{
+            display: table-cell;
+            vertical-align: middle;
+            color: #666;
+            width: 600px;
+            height: 290px;
+        }
+        #boxTexto{
+            position: absolute;
+            width: 700px;
+            height: 240px;
+            text-align: left;
+            line-height: 30px;
+            color: #999;
+            top: 71px;
+            left: 250px;
+            border-radius: 10px;
+            padding-left: 20px;
+        }
+
+        .centraliza{
+            position: relative;
+            text-align: center;
+            display: table-cell;
+            vertical-align: middle;
+            width: 514px;
+            height: 48px;
+        }
+
+        #txt {
+            position: absolute;
+            width: 350px;
+            padding: 10px;
+            left: 20px;
+            top: 80px;
+            color: #666;
+            z-index: 100;
+        }
+
+        #msg {
+          position: absolute;
+          left: 0px;
+          top: 300px;
+          width: 270px;
+          font-size: 12px;
+          font-style: italic;
+          color: #9c0;
+          text-align: center;
+          display: none;
+        }
+
+        #img {
+          width: 250px;
+          position: absolute;
+          left: 10px;
+          top: 80px;
+        }
+
+    </style>
+
+</head>
+<body>
+  <img id="img" src="../img/licao04/28.jpg" alt="" />
+
+    <div id="arrasta"></div>
+<div id="boxTexto">
+
+</div>
+<div id="msg">
+
+</div>
+</body>
+</html>

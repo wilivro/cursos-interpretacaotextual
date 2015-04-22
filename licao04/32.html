@@ -1,0 +1,198 @@
+<!doctype html>
+<html lang="pt-br">
+<head>
+    <title>Lição 04 Peça 32</title>
+    <meta charset="utf-8">
+    <script src="../wilib/js/lib/require.js"></script>
+    <script src="../wilib/js/app.js"></script>
+
+    <link rel="stylesheet" href="../wilib/css/font-awesome.css">
+    <link rel="stylesheet" href="../wilib/css/meioAmbiente.css">
+
+    <script>
+        require(['../wilib/js/lib/revela', '../wilib/js/lib/arrasta'], function (edi, edi2) {
+
+            edi.setConfig({
+              mascote: 'mascote',
+              titulo: "Complete as frases usando as onomatopeias corretas."
+            });
+
+            edi.revela('_btn', 'revela', null, function () {
+                $('#bloqueio').fadeOut()
+            }, {});
+
+            $('.revela').peBalao({
+                top: 34,
+                left: -35,
+                scaleX: 1,
+                borda: '#ccc',
+                tamanhoBorda: 12,
+                scaleY: -1,
+                rotate: 90
+            });
+
+            var arrArrasta = [
+              {arrasta: 'atchim',     dataCorreta: '1', dataId: '1'},
+              {arrasta: 'créu',       dataCorreta: '2', dataId: '2'},
+              {arrasta: 'tchum',      dataCorreta: '3', dataId: '3'},
+              {arrasta: 'pá',         dataCorreta: '4', dataId: '4'},
+              {arrasta: 'blablablá',  dataCorreta: '5', dataId: '5'},
+              {arrasta: 'nhenhenhém', dataCorreta: '6', dataId: '6'}
+            ];
+
+            var texto = $('#texto').html();
+
+            for (var i = 0; i < arrArrasta.length; i++) {
+                var aux = '';
+                aux += '<span class="linha"></span>';
+
+                texto = texto.replace('[' + i + ']', '<div id="alvo' + i + '" class="alvo" data-correta="' + arrArrasta[i].dataCorreta + '">' + aux + '</div>');
+            }
+
+            $('#texto').html(texto);
+
+            arrArrasta.sort(function () {
+                return 0.5 - Math.random()
+            });
+
+
+            for (var i = 0; i < arrArrasta.length; i++) {
+                $('<div>')
+                  .addClass('arrasta fundoArrasta azulAlpha')
+                  .attr({
+                      'data-id': arrArrasta[i].dataId,
+                      id: 'arrasta' + (i + 1),
+                      'data-correta': arrArrasta[i].dataCorreta
+                  })
+                  .html(arrArrasta[i].arrasta)
+                  .appendTo('#arrasta');
+            }
+
+            var config = {
+                colorirFilho: true,
+                arrastaAbsolute: true,
+                reloadCorreta: true
+            };
+
+            edi2.arrasta('arrasta', 'alvo', function (a, b) {
+                b.css({top: 5})
+            }, function (a) {
+              if (a) {
+                $('#texto').fadeOut(function() {
+                  $(this).html(
+                    'Muito bem! Você compreendeu o que são onomatopeias ' +
+                    'e sabe identificá-las. Continue dedicando-se aos estudos.'
+                  ).css({
+                    color: '#9c0',
+                    fontStyle: 'italic'
+                  }).fadeIn();
+                });
+              }
+            }, config);
+
+            $('.arrasta').css({
+                margin: -5,
+                padding: 5
+            });
+        });
+    </script>
+
+    <style>
+
+        ._btn {
+            background: url(../img/licao04/32.png) no-repeat;
+            background-size: 100% 100%;
+            width: 271px;
+            height: 274px;
+            position: absolute;
+            left: 20px;
+            top: 78px;
+            cursor: pointer;
+            border-radius: 10px;
+            border: 7px solid #fff;
+            box-shadow: 0 0 5px rgba(0, 0, 0, 0.5);
+        }
+
+        .revela {
+            background: #fff;
+            width: 365px;
+            padding: 5px;
+            color: #666;
+            position: absolute;
+            left: 330px;
+            top: 85px;
+            text-align: center;
+            border: 1px solid #ccc;
+            border-radius: 10px;
+        }
+
+        .alvo {
+            display: inline-block;
+            width: 110px;
+            height: 18px;
+            border-bottom: 1px solid #999;
+        }
+
+        .arrasta {
+            padding: 5px;
+            margin-right: 10px;
+            margin-left: 10px;
+            display: inline-block;
+            color: #FFF;
+        }
+
+        #boxArrasta {
+            width: 400px;
+            height: 60px;
+            cursor: default;
+            top: 220px;
+            left: 315px;
+        }
+
+        #arrasta {
+            position: relative;
+            display: table-cell;
+            vertical-align: middle;
+            width: 400px;
+            height: 70px;
+        }
+
+        #texto {
+            font-size: 12px;
+        }
+
+        #texto i {
+            color: #FFCC00;
+        }
+
+        #bloqueio {
+            position: absolute;
+            background-color: #FFF;
+            width: 500px;
+            height: 120px;
+            cursor: default;
+            top: 280px;
+            left: 320px;
+            z-index: 10;
+        }
+    </style>
+</head>
+
+<body>
+<div class="_btn"></div>
+<div class="revela">
+  <div id="texto">
+    Mal abriu a janela e [0]! (= espirrou, resfriou-se).
+    Foi ele botar a mão no brinquedo eletrônico e [1]! (= quebrou).
+    A garota entrou na sala e nem [2] pra mim (= olhou, cumprimentou).
+    Pisou no assoalho encerado e [3]! ( = foi ao chão, caiu).
+    Cansei-me do [4] daquele vendedor. (= conversa fiada).
+    Chega desse [5]!  (= remungos, falatório, queixas).
+  </div>
+</div>
+<div id="boxArrasta" class="btn btn-default-hover">
+    <div id="arrasta"></div>
+</div>
+<div id="bloqueio"></div>
+</body>
+</html>

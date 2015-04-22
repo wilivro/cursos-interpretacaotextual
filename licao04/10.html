@@ -1,0 +1,285 @@
+<!doctype html>
+<html lang="pt-br">
+<head>
+    <title>Lição 04 Peça 10</title>
+    <meta charset="utf-8">
+    <script src="../wilib/js/lib/require.js"></script>
+    <script src="../wilib/js/app.js"></script>
+    <link rel="stylesheet" href="../wilib/css/font-awesome.css">
+    <link rel="stylesheet" href="../wilib/css/estilo.css">
+
+    <script>
+        require(['../wilib/js/lib/arrasta'], function (edi) {
+
+            edi.setConfig({
+                mascote: 'mascote',
+                titulo: 'Relacione as semelhanças sobre as quais se ' +
+                        'construíram as metáforas das frases a seguir ' +
+                        'pintando a alternativa correta.',
+                tempoFinal: 10,
+                qtdTelas: 4
+            });
+
+            var telas = [
+              {
+                texto: '1. Os catadores de papel são triste paisagem.',
+                textoAcertou: 'Muito bem! A metáfora “são triste paisagem” ' +
+                              'tem semelhança com a indicação de uma ' +
+                              'profissão sem prestígio.',
+                textoErrou: 'Atenção! Lembre-se que para existir metáfora se ' +
+                            'faz necessária uma relação de semelhança entre os termos. ',
+                arr: [
+                    {txt: 'Profissão sem prestígio.', dataCorreta: 1},
+                    {txt: 'Profissão com alto prestígio.', dataCorreta: 0}
+                ]
+              },{
+                texto: '2. Teu sorriso é uma aurora.',
+                textoAcertou: 'Muito bem! A metáfora aurora tem relação de ' +
+                              'semelhança com “sorriso alegre, lindo”.',
+                textoErrou: 'Atenção! Lembre-se que para existir metáfora se ' +
+                            'faz necessária uma relação de semelhança entre os termos. ',
+                arr: [
+                    {txt: 'Alegre, lindo.', dataCorreta: 1},
+                    {txt: 'Triste, feio.', dataCorreta: 0}
+                ]
+              },{
+                texto: '3. O hipopótamo é um bruto sapatão afogado.',
+                textoAcertou: 'Muito bem! A metáfora nesta frase tem relação de ' +
+                              'semelhança com o fato de o hipopótamo ser cinza e grande.',
+                textoErrou: 'Atenção! Lembre-se que para existir metáfora se ' +
+                            'faz necessária uma relação de semelhança entre os termos.',
+                arr: [
+                    {txt: 'Cinza e grande.', dataCorreta: 1},
+                    {txt: 'Branco e pequeno.', dataCorreta: 0}
+                ]
+              },{
+                texto: '4. Esse vendedor de carros é uma raposa.',
+                textoAcertou: 'Muito bem! A metáfora indicada na palavra raposa ' +
+                              'tem relação de semelhança com o termo esperto.',
+                textoErrou: 'Atenção! Lembre-se que para existir metáfora se faz ' +
+                            'necessária uma relação de semelhança entre os termos. ',
+                arr: [
+                    {txt: 'Esperto.', dataCorreta: 1},
+                    {txt: 'Ignorante.', dataCorreta: 0}
+                ]
+              },
+            ];
+
+            var arrArrasta = [
+                {arrasta: '', dataCorreta: '1', dataId: '1'}
+            ];
+
+            $('#txt').html(telas[edi.util.telaAtual].texto);
+
+            arrArrasta.sort(function () {
+                return 0.5 - Math.random()
+            });
+
+            for (var i = 0; i < arrArrasta.length; i++) {
+              $('<div>')
+                .addClass('arrasta')
+                .css({
+                    width: '102px',
+                    height: '65px',
+                })
+                .attr({
+                    'data-id': arrArrasta[i].dataId,
+                    id: 'arrasta'+(i+1),
+                    'data-correta': arrArrasta[i].dataCorreta
+                })
+                .html(arrArrasta[i].arrasta)
+                .appendTo('#arrasta');
+            }
+
+            var config = {
+                colorirFilho: true,
+                arrastaAbsolute: true,
+                reloadCorreta: true,
+                clone: false,
+                alvoFixo: false,
+                multAlvo: true,
+                target: false
+            };
+
+            var animacao = function(a, fps, stop){
+                var cont = 0;
+                var tempo = setInterval(function(){
+                    cont+=10;
+                    a.attr('width', cont);
+                    if(cont == stop)
+                        clearInterval(tempo);
+                }, 30/1000);
+            };
+
+            telas[edi.util.telaAtual].arr.sort(function () {
+                return 0.5 - Math.random()
+            });
+
+            for(var i = 0; i < telas[edi.util.telaAtual].arr.length; i++){
+                var alvo = $('<div>')
+                        .addClass('alvo')
+                        .attr({'data-correta': telas[edi.util.telaAtual].arr[i].dataCorreta})
+                        .appendTo('#boxTexto')
+
+                $('<div>').addClass('svg').appendTo(alvo)
+
+                $('<div>')
+                        .addClass('centraliza')
+                        .html(telas[edi.util.telaAtual].arr[i].txt)
+                        .appendTo(alvo)
+
+            };
+
+            edi.arrasta('arrasta', 'alvo', function (a, b, c) {
+
+                b.remove();
+
+                animacao(c.find('#Layer_2 rect'), 10000, 611);
+                c.css('color', '#DDD');
+
+                $('.arrasta').off();
+
+                c.find('#Layer_2 rect').attr('fill', '#9c0');
+
+            }, function (a) {
+              if (a) {
+                $('#msg')
+                  .html(telas[edi.util.telaAtual].textoAcertou)
+                  .fadeIn();
+                return;
+              }
+
+              $('#msg')
+                .html(telas[edi.util.telaAtual].textoErrou)
+                .css('color', 'red')
+                .fadeIn();
+            }, config);
+
+            $('#arrasta1')
+                    .css({
+                        top: '174px',
+                        left: '69px'
+                    })
+                    .attr('data-x', '69')
+                    .attr('data-y', '174')
+                    .load('../wilib/img/svg/pincel.svg', function(){
+                        $('#corPonta').attr('fill', '#9c0');
+                    });
+
+            $('<div>')
+                    .attr('id', 'mascote')
+                    .appendTo('#conteudo');
+
+            $('.svg').load('../wilib/img/svg/fundoPincel.svg', function(){
+                $('#Layer_2 rect')
+                        .attr({
+                            width: 0,
+                            height: 50
+                        });
+            });
+
+        });
+    </script>
+    <style>
+        .svg, .svg svg{
+            position: absolute;
+            width: 514px;
+            height: 48px;
+            display: block;
+        }
+
+        .alvo {
+            display: inline-block;
+            width: 514px;
+            height: 48px;
+            margin-bottom: 5px;
+        }
+        .arrasta {
+            padding: 5px;
+            margin-right: 10px;
+            margin-left: 10px;
+            display: inline-block;
+            color: #FFF;
+            width: 77px;
+            text-align: center;
+        }
+        #boxArrasta{
+            width: 180px;
+            height: 140px;
+            position: absolute;
+            cursor: default;
+            top: 144px;
+            left: 40px;
+            border: 2px solid #999;
+        }
+        #arrasta{
+            position: relative;
+            display: table-cell;
+            vertical-align: middle;
+            color: #666;
+            width: 600px;
+            height: 290px;
+        }
+        #boxTexto{
+            position: absolute;
+            width: 700px;
+            height: 240px;
+            text-align: left;
+            line-height: 30px;
+            color: #999;
+            top: 161px;
+            left: 250px;
+            border-radius: 10px;
+            padding-left: 20px;
+        }
+
+        .centraliza{
+            position: relative;
+            text-align: center;
+            display: table-cell;
+            vertical-align: middle;
+            width: 514px;
+            height: 48px;
+        }
+
+        #txt {
+            position: absolute;
+            width: 350px;
+            padding: 10px;
+            left: 20px;
+            top: 80px;
+            color: #666;
+            z-index: 100;
+        }
+
+        #msg {
+          position: absolute;
+          left: 30px;
+          top: 330px;
+          width: 400px;
+          font-size: 12px;
+          font-style: italic;
+          color: #9c0;
+          text-align: center;
+          display: none;
+        }
+
+    </style>
+
+</head>
+<body>
+
+<div id="txt">
+    ???????
+</div>
+<div id="boxArrasta" class="">
+    <div id="arrasta"></div>
+</div>
+<div id="boxTexto">
+
+</div>
+<div id="msg">
+
+</div>
+</body>
+</html>

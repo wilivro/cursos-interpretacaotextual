@@ -1,0 +1,217 @@
+<!doctype html>
+<html lang="pt-br">
+<head>
+    <title>Lição 01 Peça 34</title>
+    <meta charset="utf-8">
+    <script src="../wilib/js/lib/require.js"></script>
+    <script src="../wilib/js/app.js"></script>
+    <link rel="stylesheet" href="../wilib/css/font-awesome.css">
+    <link rel="stylesheet" href="../wilib/css/estilo.css">
+
+    <script>
+        require(['../wilib/js/lib/arrasta'], function (edi) {
+
+            edi.setConfig({
+                mascote: 'mascote',
+                titulo: 'Clique e arraste o pincel para pintar de verde a resposta correta,<br> levando em conta o texto lido da escritora Ruth Rocha.',
+                tempoFinal: 10
+            });
+
+            var arrArrasta = [
+                {arrasta: '', dataCorreta: '1', dataId: '1'}
+            ];
+
+            arrArrasta.sort(function () {
+                return 0.5 - Math.random()
+            });
+
+            for (var i = 0; i < arrArrasta.length; i++) {
+                $('<div>')
+                        .addClass('arrasta')
+                        .css({
+                            width: '102px',
+                            height: '65px'
+                        })
+                        .attr({
+                            'data-id': arrArrasta[i].dataId,
+                            id: 'arrasta'+(i+1),
+                            'data-correta': arrArrasta[i].dataCorreta
+                        })
+                        .html(arrArrasta[i].arrasta)
+                        .appendTo('#arrasta');
+            }
+
+            var config = {
+                colorirFilho: true,
+                arrastaAbsolute: true,
+                reloadCorreta: true,
+                clone: false,
+                alvoFixo: false,
+                multAlvo: true,
+                target: false
+            };
+
+            var animacao = function(a, fps, stop){
+                var cont = 0;
+                var tempo = setInterval(function(){
+                    cont+=10;
+                    a.attr('width', cont);
+                    if(cont == stop)
+                        clearInterval(tempo);
+                }, 30/1000);
+            };
+
+            var arr = [
+                {txt: 'Porque eles são os personagens principais da história narrada.', dataCorreta: 1},
+                {txt: 'Porque eles representam, respectivamente, o bem e o mal na história.', dataCorreta: 0},
+                {txt: 'Porque são os narradores da história.', dataCorreta: 0},
+                {txt: 'Porque ambos são personagens famosos de outras histórias.', dataCorreta: 0},
+                {txt: 'Porque representam a oposição homem-animal.', dataCorreta: 0}
+            ]
+
+            arr.sort(function () {
+                return 0.5 - Math.random()
+            });
+
+            for(var i = 0; i < arr.length; i++){
+                var alvo = $('<div>')
+                        .addClass('alvo')
+                        .attr({'data-correta': arr[i].dataCorreta})
+                        .appendTo('#boxTexto')
+
+                $('<div>').addClass('svg').appendTo(alvo)
+
+                $('<div>')
+                        .addClass('centraliza')
+                        .html(arr[i].txt)
+                        .appendTo(alvo)
+
+            };
+
+            edi.arrasta('arrasta', 'alvo', function (a, b, c) {
+
+                barraMsg(a?'Correto!<br> A história toda gira em torno desses dois personagens, sendo que a mulher tem menos importância no texto, já que não interfere no relacionamento do animal com a família; por ela ficaria tudo na mesma, até o fim. Assim, o título faz alusão aos dois personagens centrais.'
+                        :'Fique atento!<br> A história e responda corretamente a questão.')
+
+                b.remove();
+
+                animacao(c.find('#Layer_2 rect'), 10000, 611);
+                c.css('color', '#DDD');
+
+                $('.arrasta').off();
+
+                c.find('#Layer_2 rect').attr('fill', '#9c0');
+
+            }, function (a) {
+
+            }, config);
+
+            $('#arrasta1')
+                    .load('../wilib/img/svg/pincel.svg', function(){
+                        $('#corPonta').attr('fill', '#9c0');
+                    });
+
+            $('<div>')
+                    .attr('id', 'mascote')
+                    .appendTo('#conteudo');
+
+            $('.svg').load('../wilib/img/svg/fundoPincel.svg', function(){
+                $('#Layer_2 rect')
+                        .attr({
+                            width: 0,
+                            height: 50
+                        });
+            });
+
+            $('#txt').peBalao({scaleX: -1, left: 10})
+
+        });
+    </script>
+    <style>
+        .svg, .svg svg{
+            position: absolute;
+            width: 514px;
+            height: 48px;
+            display: block;
+        }
+
+        .alvo {
+            display: inline-block;
+            width: 514px;
+            height: 48px;
+            margin-bottom: 5px;
+        }
+        .arrasta {
+            margin-right: 10px;
+            margin-left: 10px;
+            display: inline-block;
+            color: #FFF;
+            width: 77px;
+            text-align: center;
+        }
+        #boxArrasta{
+            width: 150px;
+            height: 140px;
+            position: absolute;
+            cursor: default;
+            top: 210px;
+            left: 40px;
+            border: 2px solid #999;
+        }
+        #arrasta{
+            position: relative;
+            display: table-cell;
+            vertical-align: middle;
+            color: #666;
+            width: 150px;
+            height: 140px;
+        }
+        #boxTexto{
+            position: absolute;
+            width: 700px;
+            height: 240px;
+            text-align: left;
+            line-height: 30px;
+            color: #666;
+            top: 71px;
+            left: 250px;
+            border-radius: 10px;
+            padding-left: 20px;
+        }
+
+        .centraliza{
+            position: relative;
+            text-align: center;
+            display: table-cell;
+            vertical-align: middle;
+            width: 514px;
+            height: 48px;
+        }
+
+        #txt {
+            position: absolute;
+            width: 200px;
+            padding: 10px;
+            left: 20px;
+            top: 81px;
+            color: #666;
+            border: 1px solid #ccc;
+            border-radius: 10px;
+        }
+
+    </style>
+
+</head>
+<body>
+
+<div id="txt">
+    O texto recebe o título de O homem e a galinha. Por que a história recebe esse título?
+</div>
+<div id="boxArrasta">
+    <div id="arrasta"></div>
+</div>
+<div id="boxTexto">
+
+</div>
+</body>
+</html>

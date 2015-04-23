@@ -1,0 +1,148 @@
+<!doctype html>
+<html lang="pt-br">
+	<head>
+		<title>Lição 04 Peça 31</title>
+		<meta charset="utf-8">
+		<script src="../wilib/js/lib/require.js"></script>
+		<script src="../wilib/js/app.js"></script>
+
+    <link rel="stylesheet" href="../wilib/css/font-awesome.css">
+    <link rel="stylesheet" href="../wilib/css/estilo.css">
+
+		<script>
+			require(['../wilib/js/lib/alternativa_botao'], function (edi) {
+
+				edi.setConfig({
+          mascote: 'mascote',
+					titulo: "Leia o texto de Gilles Eduar – O telefone, e " +
+									"em <br>seguida responda corretamente a questão."
+				});
+
+        edi.alternativa_botao([
+					{texto: 'Au e Miau', dataCorreta: true},
+					{texto: 'Bip, bip, bip, bip', dataCorreta: false},
+					{texto: 'Triim... triim... triim...', dataCorreta: false}
+				], null, function(a) {
+					if (a) {
+						$('.msg').fadeIn();
+						return;
+					}
+
+					$('.msg').html(
+						'Atenção! Você precisa identificar quais as onomatopeias ' +
+						'usadas pelos personagens da história, para isso, precisa ' +
+						'identificar quem são os personagens. Pense um pouco mais.'
+					).css('color', 'red').fadeIn();
+				}, {
+					animacao: true,
+					btnBranco: true,
+					colunas: 1,
+					width: 230,
+					height: 25,
+					left: 410,
+					top: 165,
+					margin: '0px 0px'
+				});
+
+      });
+		</script>
+
+		<style>
+			#conteudo {
+				background: linear-gradient(#9BBBE3, #5A81B2);
+			}
+
+			.box {
+				position: absolute;
+				top: 85px;
+				padding: 5px;
+				font-size: 11px;
+			}
+
+			.box-left {
+				width: 250px;
+				left: 20px;
+				background: linear-gradient(#fff, #eee);
+				border-radius: 5px;
+				box-shadow: 0 2px 2px rgba(0, 0, 0, 0.2);
+			}
+
+			.box-right {
+				width: 250px;
+				left: 405px;
+			}
+
+			.box-right .topo {
+				position: relative;
+			}
+
+			.box-right .topo .icone {
+				position: absolute;
+				left: 0px;
+				top: 0px;
+			}
+
+			.box-right .topo .text {
+				position: absolute;
+				left: 64px;
+				color: #fff;
+			}
+
+			.msg {
+				display: none;
+				position: absolute;
+				left: 340px;
+				top: 326px;
+				width: 410px;
+				font-size: 12px;
+				font-style: italic;
+				color: #9c0;
+				text-align: center;
+			}
+		</style>
+	</head>
+
+	<body>
+		<div class="box box-left">
+			<div class="text">
+				<h4>O Telefone</h4>
+				<p>
+							-Triim...triim...triiim...
+					<br>-Au?
+					<br>-Alô? É você Rex?
+					<br>-Au!Au!
+					<br>-Ambrósio está?
+					<br>-Au.
+					<br>-Vá chamá-lo, por favor.
+					<br>-Au...
+					<br>-Alô, Ambrósio?
+					<br>-Miau.
+					<br>-Ambrósio, não esqueça de tomar seu remédio.
+					<br>-Miau.
+					<br>-Então um beijo, até já.
+					<br>-Bip, bip, bip, bip...
+					<br>
+					<span style="font-size: 10px; font-style: italic;">
+						(EDUAR,Gilles,In: Diálogos interessantíssimos)
+					</span>
+				</p>
+			</div>
+		</div>
+
+		<div class="box box-right">
+			<div class="topo">
+				<img class="icon" src="../wilib/img/svg/iconeInterrogacao.svg">
+				<span class="text">
+					Nesse texto, são usadas várias onomatopeias.
+					Quais identificam as personagens que participam do diálogo?
+				</span>
+			</div>
+		</div>
+
+		<div class="msg">
+			Parabéns! Os participantes do diálogo são o gato e o cachorro,
+			portanto, as onomatopeias que identificam
+			estes personagens são: Au e Miau.
+		</div>
+	</body>
+</html>

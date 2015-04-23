@@ -57,7 +57,14 @@
 
                 }
 
-                edi2.alternativa(btns, callback, null, config);
+                edi2.alternativa(btns, callback, function(a){
+                    if(a) {
+                        mensagem('<div style="width: 430px; font-size: 22px; display: inline-block">Correto! A resposta pode ser localizada, com clareza, no segundo período, onde se destaca a expressão sobrevivência e proliferação.</div>')
+                    }
+                    else {
+                        mensagem('<div style="width: 430px; font-size: 22px; display: inline-block">Atenção! Leia o texto com calma e procure compreender o que ele diz.</div>')
+                    }
+                }, config);
 
                 $('[data-edi = "alternativa"]').addClass('box-revela');
 

@@ -1,0 +1,100 @@
+<!doctype html>
+<html lang="pt-br">
+
+<head>
+    <title>Lição 01 Peça 19</title>
+    <meta charset="utf-8">
+    <script src="../wilib/js/lib/require.js"></script>
+    <script src="../wilib/js/app.js"></script>
+    <link rel="stylesheet" href="../wilib/css/font-awesome.css">
+    <link rel="stylesheet" href="../wilib/css/estilo.css">
+
+    <script>
+        require(['../wilib/js/lib/quebra-cabeca'], function (edi) {
+
+            edi.setConfig({
+                titulo: 'Monte o quebra-cabeça e leia o texto com atenção.'
+            });
+
+            var config = {
+                width: 321,
+                height: 219,
+                left: 5,
+                top: 50,
+                background: '#ccc',
+                numPecas: 2,
+                callBacks: [
+                    function () {
+                        $('.texto-01').fadeIn();
+                    },
+                    function () {
+                        $('#texto-02').fadeIn();
+                    },
+                    function () {
+                        $('#texto-03').fadeIn();
+                    }
+                ]
+            };
+
+            edi.quebraCabeca('../img/licao01/p40.png', function () {
+                setTimeout(function () {
+                    mensagem('<div style="width: 430px; font-size: 22px; display: inline-block">Muito Bem! No próximo exercício você deverá responder a questões referentes a este texto.</div>');
+                }, 5000)
+            }, config);
+
+        });
+    </script>
+
+    <style>
+        #texto {
+            width: 300px;
+            position: absolute;
+            left: 330px;
+            top: 70px;
+            font-size: 14px;
+            line-height: 1.4;
+            text-align: justify;
+            overflow: scroll;
+            display: none;
+            padding: 5px;
+            height: 300px;
+            color: #666;
+            z-index: 1;
+        }
+
+        .texto {
+            display: none;
+        }
+
+    </style>
+</head>
+
+<body>
+<div id="texto" class="texto-01">
+    <span class="texto texto-01">
+        <p class="bold" style="text-align: center">A FALA HUMANA E O CANTO DOS PÁSSAROS</p>
+        O passarinho recém-nascido pode aprender o canto típico de seus pais.
+        Mas, se entrar em contato com outra espécie, também aprenderá o jeito de cantar estranho. A princípio, o ser
+        humano recém-nascido também pode gravar perfeitamente sons de qualquer língua.
+
+    </span>
+    <span class="texto" id="texto-02">
+        Mais tarde, os filhotes de aves ficam desconfiados quando ouvem sons diferentes e tendem a só prestar atenção no
+        canto da sua espécie. O cérebro da criança também passa a só gravar sons
+        mais comuns – justamente os sons da sua língua.
+
+    </span>
+    <span class="texto" id="texto-03">
+        Pássaros e crianças, na etapa seguinte, repetem os sons dos adultos.
+Isso marcará o cérebro de ambos para sempre, criando conexões de neurônios. A criança, ao se tornar adulta, jamais perderá o sotaque de sua língua de origem.
+    </span>
+    <span class="texto" id="texto-04">
+        Experiências em que os cientistas tentaram ensinar cantos estranhos para pássaros maduros mostraram que, quando eles conseguem aprender, o “sotaque” estrangeiro também é inevitável.<br><br>
+
+<span class="bold" style="color: #000; font-size: 11px; float: right">(Superinteressante, jan. 1996.)</span>
+
+    </span>
+</div>
+
+</body>
+</html>

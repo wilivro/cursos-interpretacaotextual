@@ -1,0 +1,77 @@
+<!doctype html>
+<html lang="pt-br">
+	<head>
+    <title>Lição 01 Peça 40</title>
+		<meta charset="utf-8">
+		<script src="../wilib/js/lib/require.js"></script>
+		<script src="../wilib/js/app.js"></script>
+		<link rel="stylesheet" href="../wilib/css/font-awesome.css">
+		<link rel="stylesheet" href="../wilib/css/estilo.css">
+
+		<script>
+			require(['../wilib/js/lib/revela_seta'], function (edi) {
+
+				edi.setConfig({
+					mascote: 'mascote',
+					titulo: 'Clique sobre as setas e veja outros exemplos de sinestesia.'
+				});
+
+				var config = {
+					leftBtn: 20,
+					height: 250,
+					alturaFrase: 'auto',//use auto caso não tenha borda
+					larguraFrase: 500,
+					textAlign: 'left',
+					fontSize: 13,
+					lineHeight: 1,
+					paddingLeftTxt: 0,
+					top: 70,
+					tempoBloqueio: 2000,
+					borda: '',
+          posx: 650,
+          posy: 330
+				};
+
+				function callback () {}
+
+				var frases = [
+          '“Dirigiu-lhe uma palavra branca e fria como agradecimento”.',
+          '“Os carinhos de Godofredo não tinham mais gosto dos primeiros tempos”. (Autran Machado)',
+          '“As falas sentidas, que os olhos falavam Não quero, não posso, não devo contar”. (Casimiro de Abreu)',
+          '“O sol de outono caía com uma luz pálida e macia”.'
+				];
+
+
+				edi.revela_seta(frases, callback, function() {
+					$('#msg').fadeIn();
+				}, config);
+
+        $('.revela').each(function() {
+          $(this)
+            .css({border: '1px solid #666', borderRadius: 5})
+            .peBalao({scaleX: -1, scaleY: 1, top: 35, left: -35, borda: '#666', rotate: -90})
+        });
+			});
+		</script>
+
+		<style>
+			#msg {
+				position: absolute;
+				left: 150px;
+				top: 325px;
+				width: 370px;
+				color: #9c0;
+				font-style: italic;
+				text-align: center;
+				font-size: 13px;
+				display: none;
+			}
+		</style>
+	</head>
+
+	<body>
+		<div id="msg">
+      Muito bem! Sinestesia é a transferência de uma sensação sugerida por um sentido para outro sentido.
+		</div>
+	</body>
+</html>

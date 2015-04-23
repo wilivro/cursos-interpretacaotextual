@@ -1,0 +1,203 @@
+<!doctype html>
+<html lang="pt-br">
+<head>
+    <title>Liçao 01 Peça 21</title>
+    <meta charset="utf-8">
+    <script src="../wilib/js/lib/require.js"></script>
+    <script src="../wilib/js/app.js"></script>
+    <link type="text/css" rel="stylesheet" href="../wilib/css/font-awesome.css">
+    <link type="text/css" rel="stylesheet" href="../wilib/css/estilo.css">
+
+    <script>
+        require(['../wilib/js/lib/quebra-cabeca', '../wilib/js/lib/alternativa_botao'], function (edi, edi2) {
+
+            edi2.setConfig({
+                icone: "interrogacaoAzul",
+                titulo: "Monte o quebra-cabeça e em seguida arraste para os locais corretos as respostas que melhor respondem aos questionamentos sobre o poema de Fernando Pessoa.",
+                mascote: 'mascote',
+                qtdTelas: 2
+            });
+
+            var btns = [
+                [
+                    {texto: 'apesar das conquistas portuguesas.', dataCorreta: false},
+                    {texto: 'em virtude das conquistas portuguesas.', dataCorreta: true},
+                    {texto: 'para as conquistas portuguesas.', dataCorreta: false},
+                    {texto: 'antes das conquistas portuguesas.', dataCorreta: false},
+                    {texto: 'após as conquistas portuguesas.', dataCorreta: false}
+                ],
+                [
+                    {texto: 'a força moral de Portugal.', dataCorreta: false},
+                    {texto: 'a incoerência do sofrimento <br>diante das conquistas.', dataCorreta: false},
+                    {texto: 'a importância do sofrimento<br> para que o povo deixe de sofrer..', dataCorreta: false},
+                    {texto: 'a profunda união entre as<br> conquistas e o sofrimento do povo.', dataCorreta: true},
+                    {texto: 'a inutilidade das <br>conquistas portuguesas.', dataCorreta: false}
+                ]
+            ];
+
+            var arr = [
+                {
+                    quest: 'Segundo o poeta, o sofrimento do povo ocorreu:',
+                    msgT: 'Correto!<br> A locução prepositiva em virtude de introduz termo com valor de causa. O relacionamento das conquistas com o sofrimento do povo é exatamente de causa e efeito. O povo sofreu por causa das conquistas, pois muita gente não voltou pra casa.',
+                    msgF: 'Pense um pouco mais, releia o poema.'
+                },
+                {
+                    quest: 'A metáfora existente nos dois primeiros versos do poema estabelece:',
+                    msgT: 'Muito Bem!<br> A metáfora existe na comparação feita entre o sal do mar e as lágrimas do povo português. Há, pois, uma fusão entre o mar, que simboliza as conquistas, e as lágrimas, que simbolizam o sofrimento. O poeta quer passar a ideia de que não haveria conquistas sem o sofrimento do povo, as duas coisas estão intimamente associadas. ',
+                    msgF: 'Analise com calma todo o poema, e tente eliminar as respostas que você considera erradas para chegar mais facilmente a resposta correta.'
+                }
+            ];
+
+            $('#quest').html(arr[edi.telaAtual() - 1].quest);
+            $('.num').html(edi.telaAtual());
+
+            var config = {
+                tamanhoTexto: 14,
+                colunas: 1,
+                width: 320,
+                height: 20,
+                left: 390,
+                top: 135,
+                margin: '1px 5px',
+                padding: 5,
+                randomico: true,
+                display: 'block',
+                btnBranco: true,
+                animacao: true
+            };
+
+            edi2.alternativa_botao(btns[edi.telaAtual() - 1], null, function (a) {
+                barraMsg(a ? arr[edi.telaAtual() - 1].msgT : arr[edi.telaAtual() - 1].msgF, {height: 200})
+            }, config);
+
+            $('[data-edi="alternativa_botao"]').addClass('box-revela');
+
+            edi.setConfig({
+                titulo: 'Monte o quebra-cabeça e leia o texto com atenção.'
+            });
+
+            var config = {
+                width: 321,
+                height: 219,
+                left: 5,
+                top: 50,
+                background: '#ccc',
+                numPecas: 2
+            };
+
+            $('[data-edi="alternativa_botao"]').css({display: 'none'});
+
+            edi.quebraCabeca('../img/licao01/p40.png', function () {
+                $('#all, [data-edi="alternativa_botao"]').fadeIn();
+                $('[data-edi="quebraCabeca"]').fadeOut();
+            }, config);
+
+        });
+    </script>
+
+    <style>
+
+        #balao {
+            position: absolute;
+            background: #EFEFEF;
+            border-radius: 10px;
+            padding: 10px;
+            width: 270px;
+            color: #666;
+            box-shadow: -5px 5px rgba(0, 0, 0, 0.3);
+            left: 20px;
+            top: 78px;
+            font-size: 14px;
+        }
+
+        .bold {
+            font-size: 12px;
+            float: right;
+            color: #000;
+        }
+
+        .quest {
+            position: absolute;
+            top: 75px;
+            left: 400px;
+            width: 320px;
+            height: 50px;
+        }
+
+        #quest {
+            top: 0;
+            left: 0;
+            width: 320px;
+            height: 50px;
+            position: relative;
+            display: table-cell;
+            vertical-align: middle;
+            text-align: center;
+            color: #666;
+            font-size: 18px;
+        }
+
+        #num {
+            position: absolute;
+            top: 70px;
+            left: 340px;
+            border: solid 5px #aaa;
+            border-radius: 50px;
+            width: 50px;
+            height: 50px;
+            box-shadow: -2px 2px 5px rgba(0, 0, 0, 0.3);
+        }
+
+        .num {
+            position: relative;
+            display: table-cell;
+            vertical-align: middle;
+            text-align: center;
+            color: #666;
+            font-size: 35px;
+            width: 50px;
+            height: 50px;
+        }
+
+        #all {
+            display: none;
+        }
+
+    </style>
+</head>
+
+<body>
+<div id="all">
+    <div id="num" class="box-revela">
+        <div class="num"></div>
+    </div>
+
+    <div class="quest">
+        <div id="quest" class="box-revela"></div>
+    </div>
+
+    <div id="balao" class="box-revela italico">
+        Mar Português<br>
+        <br>
+        "Ó mar salgado, quanto do teu sal<br>
+        São lágrimas de Portugal!<br>
+        Por te cruzarmos, quantas mães choraram,<br>
+        Quantos filhos em vão rezaram!<br>
+        Quantas noivas ficaram por casar<br>
+        Para que fosses nosso, ó mar!<br>
+        Valeu a pena? Tudo vale a pena<br>
+        Se a alma não é pequena.<br>
+        Quem quer passar além do Bojador<br>
+        Tem que passar além da dor.<br>
+        Deus ao mar o perigo e o abismo deu,<br>
+        Mas nele é que espelhou o céu"<br>
+        <br>
+        <span class="bold">(Fernando Pessoa, in Mensagem)</span>
+
+
+    </div>
+</div>
+
+
+</body>
+</html>

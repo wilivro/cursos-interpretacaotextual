@@ -1,0 +1,70 @@
+<!doctype html>
+<html lang="pt-br">
+	<head>
+		<title>Lição 01 Peça 24</title>
+		<meta charset="utf-8">
+		<script src="../wilib/js/lib/require.js"></script>
+		<script src="../wilib/js/app.js"></script>
+		
+		<link rel="stylesheet" href="../wilib/css/font-awesome.css">
+		<link rel="stylesheet" href="../wilib/css/estilo.css">
+
+		<script>
+            $(function () {
+                require(['../wilib/js/lib/alternativa'], function (edi) {
+
+                    edi.setConfig({
+                        icone: 'interrogacaoAzul',
+                        titulo: 'Você conhece alguma modinha?<br> O que podemos definir como Modinha?<br> Clique sobre a alternativa correta.'
+                    });
+
+                    var alternativas = [
+                        {
+                            alternativa: 'Modinha é um estilo de roupa usado de acordo<br> com a moda estipulada pelo estado de São Paulo. ',
+                            correta: false
+                        },{
+                            alternativa: 'Modinha é o nome de uma poesia muito<br> famoso, escrita por Cecília Meirelles.',
+                            correta: false
+                        },{
+                            alternativa: 'Modinha é o nome de uma cidade do interior da Bahia.',
+                            correta: false
+                        },{
+                            alternativa: 'Modinha é um estilo musical originário de Portugal e muito usado pelos<br> seresteiros fazendo serenatas às altas horas da noite pelas ruas das cidades.',
+                            correta: true
+                        }
+                    ];
+
+                    var config = {
+                        posx: 15,
+                        posy: 115,
+                        aleatorio: true,
+                        tamanhoBox: 35,
+                        tamanhoBoxTexto: 600,
+                        marginBtns: 5
+                    }
+
+                    edi.alternativa(alternativas, function (acertou) {
+                    }, function (a) {
+                        barraMsg(a?'Parabéns!<br> Você conhece o conceito de Modinha.':'Tente novamente.<br> Modinha não é um estilo de roupa, muito<br> menos o nome de uma cidade da Bahia.' , {height: 100})
+                    }, config);
+
+                        $('#balao').peBalao({
+                            left: 10,
+                            tamanhoBorda: 15,
+                            borda: '#ccc'
+                        });
+
+                });
+            })
+		</script>
+
+		<style>
+
+
+		</style>
+	</head>
+
+	<body>
+
+	</body>
+</html>

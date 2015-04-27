@@ -21,20 +21,26 @@
 
 
             edi.arrasta('arrasta', 'alvo', function (a, b, c) {
-                barraMsg()
 
                 b.remove();
-
                 c.css({
                     background: 'url(../wilib/img/fotos/tinta-verd.png) no-repeat',
                     backgroundSize: '100% 100%',
                     backgroundPositionX: '-360px',
-                    color: '#fff',
+                    color: '#fff'
                 }).animate({
                     backgroundPositionX: '0px'
                 }, 80);
                 $('.arrasta').off();
-            }, null, {
+            }, function(a){
+                if(a) {
+                    barraMsg('Parabéns! Ao dizer que está com saudade de ficar bom,<br>o autor afirma, de maneira literária, que está doente. Isso elimina as<br> letras A e E. “Escrever é consequência natural.” Consequência de quê?<br> De ficar bom, ou seja, ficando bom, ele volta a escrever. Ele só não está escrevendo por estar doente. Daí o gabarito ser a letra C.', {zIndex: 1000});
+                }
+                else {
+                    barraMsg('Fique atento! Ao dizer que está com saudade de ficar bom,<br> o autor afirma, de maneira literária, que está...', {zIndex: 1000});
+                }
+
+            }, {
                 clone: true,
                 multAlvo: true,
                 target: false

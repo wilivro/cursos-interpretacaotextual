@@ -1,0 +1,132 @@
+<!-- Desenvolvedor: Micael Souza -->
+<!doctype html>
+<html lang="pt-br">
+
+<head>
+	<title>Lição 04 Peça 50</title> <!-- alt_f002 -->
+        <meta charset="utf-8">
+        <script src="../../js/lib/require.js"></script>
+        <script src="../../js/app.js"></script>
+        <link rel="stylesheet" href="../../css/font-awesome.css">
+        <link rel="stylesheet" href="../../css/meioAmbiente.css">
+
+	<script>
+		require(['../../js/lib/alternativa_botao'], function (edi) {
+
+			edi.setConfig({
+				titulo: 'Um cliente em potencial entrou no site de sua empresa. <br>Auxilie no atendimento a este cliente. <br>Leia a dúvida do cliente, depois clique no balão e responda.',
+        mascote: 'mascote',
+        tempoFinal: 10
+			});
+
+      //balões
+      var botoes = [
+
+          {texto: 'E-mail', dataCorreta: false},
+          {texto: 'Atendimento on-line', dataCorreta: true}
+
+      ];
+
+			edi.alternativa_botao(botoes, function (a, b) {
+          //cb
+      }, function (a) {
+        if (a)
+					$('#texto p').html(
+						'O programa de atendimento on-line fornece ao atendente a localidade ' +
+						'do cliente, isso ajuda a direcionar melhor as informações, caso seja ' +
+						'necessário um atendimento direcionado à compra e venda de mercadoria.'
+					);
+      }, {
+				width: 300,
+				height: 35,
+				left: 430,
+				top: 240,
+				btnBranco: true,
+				animacao: true,
+				tamanhoTexto: 14
+      });
+
+			$("#balao").peBalao({
+					scaleX: -1,
+					scaleY: -1,
+					top: 120,
+					left: 0
+			})
+
+			$("#balao").click(function() {
+				$('.alter-btn, #texto').fadeIn();
+			});
+
+			$('.alter-btn, #texto').hide();
+		});
+	</script>
+
+	<style>
+		.alter-btn {
+			width: 300px;
+			display: none;
+		}
+
+		#_btn {
+			position: absolute;
+			left: 0px;
+			top: 160px;
+		}
+
+		#balao {
+			position: absolute;
+			left: 250px;
+			top: 90px;
+			width: 150px;
+			height: 110px;
+			font-size: 13px;
+			background: #fff;
+			border: 1px solid #ccc;
+			text-align: center;
+			border-radius: 10px;
+			cursor: pointer;
+		}
+
+		#balao:hover {
+			box-shadow: 0 0 15px rgba(0, 0, 0, 0.3);
+		}
+
+		#texto {
+			position: absolute;
+			left: 435px;
+			top: 90px;
+			width: 290px;
+			height: 110px;
+			padding: 10px;
+			border: 1px solid #ccc;
+			border-radius: 10px;
+			text-align: center;
+			display: none;
+			font-size: 13px;
+		}
+
+		#texto p {
+			margin-top: 15px;
+		}
+	</style>
+</head>
+
+<body>
+</body>
+	<img id="_btn" src="../img/licao04/50.jpg">
+	<div id="balao">
+		<p>
+			Interessante este <br>
+			produto, mas <br>
+			continuo com <br>
+			tantas dúvidas... <br>
+			Como solucionar?
+		</p>
+	</div>
+	<div id="texto">
+		<p>
+			Neste caso, qual tipo de atendimento é mais rápido para atender
+			as necessidades deste cliente?
+		</p>
+	</div>
+</html>

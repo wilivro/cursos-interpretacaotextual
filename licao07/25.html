@@ -1,0 +1,107 @@
+<!--Desenvolvedor: Rodolfo Araujo -->
+<!doctype html>
+<html lang="pt-br">
+	<head>
+	<title>Lição 02 Peça 22</title>
+    <meta charset="utf-8">
+    <script src="../wilib/js/lib/require.js"></script>
+    <script src="../wilib/js/app.js"></script>
+    <link rel="stylesheet" href="../wilib/css/font-awesome.css">
+    <link rel="stylesheet" href="../wilib/css/estilo.css">
+
+    <script>
+        require(['../wilib/js/lib/quebra-cabeca'], function (edi) {
+
+            edi.setConfig({
+                titulo: 'Monte o quebra-cabeça e descubra uma nova ideia de conectivos. '
+            });
+
+            var config = {
+                width: 273,
+                height: 273,
+                left: 10,
+                top: 10,
+                background: '#ccc',
+                numPecas: 2,
+                callBacks: [
+                    function () {
+                        $('#texto-01').fadeIn();
+                    },
+                    function () {
+                        $('#texto-02').fadeIn();
+                    },
+                    function () {
+                        $('#texto-03').fadeIn();
+                    }
+                ]
+            };
+
+            edi.quebraCabeca('../img/licao07/p25.png', function () {
+                $('#texto-04').fadeIn();
+                $('#msgAcerto').fadeIn();
+            }, config);
+
+        });
+    </script>
+
+    <style>
+        #texto {
+            width: 270px;
+            position: absolute;
+            left: 310px;
+            top: 140px;
+            font-size: 14px;
+            line-height: 1.4;
+            z-index: 1000;
+            text-align: justify;
+        }
+
+        .texto {
+            display: none;
+        }
+
+        #italic {
+            font-style: italic;
+        }
+
+        #msgAcerto {
+          width: 150px;
+          height: 100px;
+          position: absolute;
+          padding: 5px;
+          left: 605px;
+          top: 160px;
+          padding-bottom: 15px;
+          font-size: 14px;
+          text-align: center;
+          font-weight: bold;
+          line-height: 16px;        
+          color: #9c0;
+          display: none;
+        }
+
+    </style>
+</head>
+
+<body>
+<div id="texto">
+    <span class="texto" id="texto-01">
+       - sentido de comparação ou conformidade.  <br><br>
+    </span>
+    <span class="texto" id="texto-02">
+        - analisa semelhanças e diferenças. <br><br>
+    </span>
+    <span class="texto" id="texto-03">
+        - alguns exemplos: segundo, conforme, igualmente, assim também.  <br><br>
+    </span>
+    <span class="texto" id="texto-04">
+        - outros exemplos: da mesma forma, tal qual, como, assim como. <br><br>
+    </span>
+</div>
+
+ <div id="msgAcerto" class="borda-pontilhado-verde arredondado">
+      <p>Excelente! Continue seus estudos e reforce o conhecimento de conectivos de comparação. </p>
+    </div>
+
+</body>
+</html>

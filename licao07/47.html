@@ -1,0 +1,41 @@
+<!-- Desenvolvedor: Rodolfo Araújo -->
+<!doctype html>
+<html lang="pt-br">
+
+<head>
+	<title>Lição 02 Peça 01</title>
+	<meta charset="utf-8">
+	<script src="../wilib/js/lib/require.js"></script>
+	<script src="../wilib/js/app.js"></script>
+	<link rel="stylesheet" href="../wilib/css/font-awesome.css">
+	<link rel="stylesheet" href="../wilib/css/estilo.css">
+
+	<script>
+		require(['../wilib/js/lib/reflita2'], function (edi) {
+
+			edi.setConfig({
+                enunciado: false
+			});
+
+            var texto = "Nesta lição estudamos coesão e coerência textual e também os conectores associados aos conceitos lógicos. <br> <br>" +
+                    "Aprendemos como é importante fazer uso dos conectores para torna um texto compreensivo. <br> <br> Aplique este conhecimento ao escrever textos variados buscando refletir sobre os sentidos de cada conector. <br> <br>" +
+                    "Continue determinado em aprender! Bons estudos!"
+
+			edi.reflita2(texto);
+		});
+	</script>
+    <style>
+        .balao-texto {
+            width: 400px !important;
+            right: 20px !important;
+        }
+        .balao-texto p {
+            text-align: justify;
+        }
+    </style>
+</head>
+
+<body>
+</body>
+
+</html>

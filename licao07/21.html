@@ -1,0 +1,77 @@
+<!-- Desenvolvedor: Micael Souza -->
+<!doctype html>
+<html lang="pt-br">
+	<head>
+        <title>rev_e003</title>
+		<meta charset="utf-8">
+        <script src="../wilib/js/lib/require.js"></script>
+        <script src="../wilib/js/app.js"></script>
+        <link rel="stylesheet" href="../wilib/css/font-awesome.css">
+        <link rel="stylesheet" href="../wilib/css/estilo.css">
+
+
+        <script>
+			require(['../wilib/js/lib/revela_interrogacao'], function (edi) {
+
+			edi.setConfig({
+        	icone: "exclamacao",
+            mascote: 'mascote',
+					titulo: "Temos também os conectivos que passam o sentido de certeza, ênfase. <br> Clique nos balões e descubra alguns deles: ",
+				});
+
+                var revelas = [
+                    "certamente",
+                    "sem dúvida",
+                    "inegavelmente",
+                    "com toda certeza",
+                    "por certo",
+                    "inquestionavelmente"
+                ];
+
+                var config = {
+                        fontSize: 13,
+                        img: '../img/licao07/p21.png',
+                        imgConfig: {
+                        width: '140',
+                        height: '160',
+                        left: 325,
+                        top: 70
+                    }
+                }
+
+				edi.revela_interrogacao(revelas, function (a) {
+//                    console.log('cb', a);
+                }, function (a) {
+                    $('#msgAcerto').fadeIn();
+                },config);
+			});
+		</script>
+        <style>
+
+            #msgAcerto {
+                width: 320px;
+                height: 50px;
+                position: absolute;
+                left: 240px;
+                top: 300px;
+                padding: 5px;
+                padding-bottom: 30px;
+                font-size: 14px;
+                text-align: center;
+                font-weight: bold;
+                line-height: 16px;              
+                color: #9c0;
+                display: none;
+             }
+
+        </style>
+	</head>
+
+	<body>
+        
+        <div id="msgAcerto" class="arredondado">
+            <p>Muito bem! Compreenda que são vários conectivos, porém você não precisa decorá-los e sim entender o sentido que eles passam. </p>
+        </div>
+
+	</body>
+</html>

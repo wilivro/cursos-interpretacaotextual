@@ -1,0 +1,111 @@
+<!-- Desenvolvedor: Danilo Thiago -->
+<!doctype html>
+<html lang="pt-br">
+
+<head>
+    <title>Lição 01 Peça 13</title> <!-- rev_af001 -->
+    <meta charset="utf-8">
+    <script src="../wilib/js/lib/require.js"></script>
+    <script src="../wilib/js/app.js"></script>
+    <link rel="stylesheet" href="../wilib/css/font-awesome.css">
+    <link rel="stylesheet" href="../wilib/css/estilo.css">
+
+    <script>
+        require(['../wilib/js/lib/caneta'], function (edi) {
+
+            edi.setConfig({
+                mascote: 'mascote',
+                titulo: 'Clique na caneta e veja um exemplo de conectivo de certeza e ênfase.'
+            });
+
+            var texto = "Carlos tirou nota baixa em português, certamente ele não estudou.";
+
+            edi.caneta(texto, function () {
+                $('#msgAcerto').fadeIn();
+                $('.img').fadeIn(1000);
+                $('#sublinhado').fadeIn(1000);
+            }, {
+                texto: {
+                    width: 480,
+                    position: 'absolute',
+                    left: 20,
+                    top: 40,
+                    fontSize: 18,
+                    textAlign: 'center',
+                    fontFamily: 'script',
+                    color: '#919191',
+                    lineHeight: 1.4,
+                    textShadow: '1px 1px 1px rgba(0, 0, 0, 0.1)'
+                }, caneta: {
+                    width: 150,
+                    posInicial: {x: 600, y: 10},
+                    posFinal: {x: 485, y: 30},
+                    ponta: 7,
+                    imagem: '../wilib/img/svg/caneta.svg',
+                    ajustePonta: {
+                        x: 0,
+                        y:0
+                    }
+                }
+            });
+        });
+    </script>
+    <style>
+
+    .img {
+        background: url(../img/licao07/p22.png) no-repeat;
+        background-size: 100% 100%;
+        width: 160px;
+        height: 160px;
+        position: absolute;
+        left: 210px;
+        top: 180px;
+        cursor: pointer;
+        border-radius: 10px;
+        border: 7px solid #fff;
+        box-shadow: 0 0 5px rgba(0, 0, 0, 0.5);
+        display: none;
+     }
+
+    #msgAcerto {
+        width: 160px;
+        height: 60px;
+        position: absolute;
+        left: 20px;
+        top: 210px;
+        padding: 5px;
+        padding-bottom: 30px;
+        font-size: 14px;
+        text-align: center;
+        font-weight: bold;
+        line-height: 16px;              
+        color: #9c0;
+        display: none;
+    }
+
+    #sublinhado {
+        position: absolute;
+        width: 77px;
+        height: 1px;
+        top: 146px;
+        left: 300px;
+        background-color: #999;
+        display: none
+    }
+
+    </style>
+</head>
+
+<body>
+
+    <div class="img"></div>
+
+    <div id="msgAcerto" class="borda-pontilhado-verde arredondado">
+        <p>Muito bem! Observe que o conetivo “certamente” dá ênfase ao contexto “ele não estudou”</p>
+    </div>
+
+    <div id="sublinhado"></div>
+
+</body>
+
+</html>

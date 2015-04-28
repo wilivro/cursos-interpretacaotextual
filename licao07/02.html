@@ -1,0 +1,116 @@
+<!-- Desenvolvedor: Rodolfo Araújo -->
+<!doctype html>
+<html lang="pt-br">
+<head>
+    <title>Lição 05 Peça 03</title> <!-- alt_b001 -->
+    <meta charset="utf-8">
+    <script src="../wilib/js/lib/require.js"></script>
+    <script src="../wilib/js/app.js"></script>
+    <link rel="stylesheet" href="../wilib/css/font-awesome.css">
+    <link rel="stylesheet" href="../wilib/css/estilo.css">
+
+    <script>
+        require(['../wilib/js/lib/alternativa_botao'], function (edi) {
+
+            edi.setConfig({
+                titulo: "De acordo com seus conhecimentos, como você definiria coesão? Clique sobre a alternativa correta.",
+                mascote: 'mascote'
+            });
+
+            var btns = [];
+
+            btns.push({
+                texto: "É a separação de palavras de um texto.",
+                dataCorreta: false
+            });
+
+            btns.push({
+                texto: "É a conexão estabelecida entre <br> as partes de um texto.",
+                dataCorreta: true
+            });
+
+            btns.push({
+                texto: "Palavras que apresentam mudanças <br> na estrutura das orações.",
+                dataCorreta: false
+            });
+
+            btns.push({
+                texto: "É a parte da oração que não <br> se liga aos demais.",
+                dataCorreta: false
+            });
+
+
+            var config = {
+                colunas: 1,
+                width: 380,
+                height: 35,
+                left: 190,
+                top: 80,
+                margin: 5,
+                tamanhoTexto: 14,
+                btnBranco: true,
+                randomico: true,
+                lineHeight: '1.4',
+                animacao: true
+            }
+
+            edi.alternativa_botao(btns, null, function(a) {
+                if (a) {
+                     $('#msgAcerto').fadeIn();
+                    } else {
+                     $('#msgErrado').fadeIn();
+                    }
+            }, config);
+        });
+    </script>
+
+    <style>
+
+        #msgAcerto {
+            width: 150px;
+            height: 85px;
+            position: absolute;
+            left: 12px;
+            top: 160px;
+            padding: 10px;
+            padding-bottom: 30px;
+            font-size: 14px;
+            text-align: center;
+            font-weight: bold;
+            line-height: 16px;              
+            color: #9c0;
+            display: none;
+            }
+
+         #msgErrado {
+            width: 150px;
+            height: 105px;
+            position: absolute;
+            left: 12px;
+            top: 145px;
+            padding: 10px;
+            padding-bottom: 30px;
+            font-size: 14px;
+            text-align: center;
+            font-weight: bold;
+            line-height: 16px;                  
+            color: #F00;
+            display: none;
+         }
+
+    </style>
+
+</head>
+
+<body>
+
+     <div id="msgAcerto" class="borda-pontilhado-verde arredondado">
+        <p>Excelente! Em palavras simples, coesão é a harmonia entre os elementos de um parágrafo.</p>
+     </div>
+
+    <div id="msgErrado" class="borda-pontilhado-vermelho arredondado">
+        <p>Atenção! A coesão não separa os elementos de um texto, pelo contrário ela unifica os termos. Tente novamente! </p>
+    </div>
+
+</body>
+</html>

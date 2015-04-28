@@ -1,0 +1,75 @@
+<!-- Desenvolvedor: Micael Souza -->
+<!doctype html>
+<html lang="pt-br">
+    <head>
+        <title>alt_d001</title>
+        <meta charset="utf-8">
+        <script src="../wilib/js/lib/require.js"></script>
+        <script src="../wilib/js/app.js"></script>
+
+        <link rel="stylesheet" href="../wilib/css/font-awesome.css">
+        <link rel="stylesheet" href="../wilib/css/estilo.css">
+
+        <!-- main -->
+        <script>
+            $(function () {
+                require(['../wilib/js/lib/alternativa'], function (edi) {
+
+                    edi.setConfig({ // configurando o EDI
+                        icone: 'exclamacao',
+                        titulo: 'Marque a alternativa em que há ligação entre os termos.'
+                    });
+
+                    var alternativas = [
+                        {
+                            alternativa: 'O solo do Nordeste é muito seco e aparentemente árido. Quando caem as chuvas, imediatamente brota a vegetação.',
+                            correta: false
+                        },{
+                            alternativa: ' Uma seca desoladora assolou a região Sul, principal celeiro do país. Vai faltar alimento e os preços vão disparar.',
+                            correta: true
+                        },{
+                            alternativa: 'O trânsito em São ficou completamente paralisado dia 15, das 14h às 18h, porque fortíssimas chuvas inundaram a cidade.',
+                            correta: false
+                        }
+                    ];
+
+                    var config = {
+                        posx: 120,
+                        posy: 145,
+                        aleatorio: true,
+                        tamanhoBoxTexto: 450,
+                        tamanhoBox: 35,
+                        marginBtns: 10
+                    }
+
+                    edi.alternativa(alternativas, function (acertou) {
+                        //                    log(acertou);
+                    }, function (a) {
+                    if (a) {
+                        barraMsg('Excelente! Esta é a única alternativa em que há ligação <br> entre os termos, esta ligação é feita pelo conectivo <span id="sublinhado">porque</span>.', {zIndex: 2002})
+                    } else {
+                        barraMsg('Atenção! Lembre-se, a ligação é feita para <br> dar continuidade ao sentido da frase. ', {zIndex:2002})
+                    }}, config); //iniciando o EDI
+
+                        $('#balao').peBalao({
+                            left: 10
+                        });
+
+
+                    $('#ico').iconeInterrogacaoAzul();
+                });
+            })
+        </script>
+
+        <style>
+            
+            #sublinhado {
+                text-decoration: underline;
+            }
+        </style>
+    </head>
+
+    <body>
+
+    </body>
+</html>

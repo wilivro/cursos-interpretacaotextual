@@ -1,0 +1,66 @@
+<!doctype html>
+<html lang="pt-br">
+<head>
+    <title>Lição 06 Peça 02</title>
+    <meta charset="utf-8">
+    <script src="../wilib/js/lib/require.js"></script>
+    <script src="../wilib/js/app.js"></script>
+    <link rel="stylesheet" href="../wilib/css/font-awesome.css">
+    <link rel="stylesheet" href="../wilib/css/estilo.css">
+
+    <script>
+        require(['../wilib/js/lib/alternativa_botao'], function (edi) {
+
+            edi.setConfig({
+                icone: "exclamacao",
+                titulo: "De acordo com seus conhecimentos, defina as figuras de construção.<br> Clique sobre a alternativa correta.",
+                mascote: 'mascoteVarinha'
+            });
+
+            var btns = [];
+
+            btns.push({
+                texto: "Palavras que não apresentam mudanças na<br> estrutura das orações, pois são invariáveis.",
+                dataCorreta: false
+            });
+
+            btns.push({
+                texto: "São representações de<br> imagens em construção.",
+                dataCorreta: true
+            });
+
+            btns.push({
+                texto: "Caracterizam-se por apresentar<br> uma mensagem desenhada.",
+                dataCorreta: false
+            });
+
+            btns.push({
+                texto: "Caracterizam-se por apresentar determinadas<br> mudanças na estrutura comum das orações.",
+                dataCorreta: false
+            });
+
+            var config = {
+                colunas: 1,
+                width: 380,
+                height: 35,
+                left: 190,
+                top: 80,
+                margin: '7px 7px 0 7px',
+                tamanhoTexto: 14,
+                btnBranco: true,
+                lineHeight: '1.4',
+                animacao: true
+            };
+
+            function callback(a) {
+                barraMsg(a?'Excelente! São recursos, que mudam a estrutura das orações.':'Atenção! As figuras de construção são recursos usados para modificar a estrutura das orações. Tente novamente!', {height: 100})
+            }
+
+            edi.alternativa_botao(btns, callback, null, config);
+        });
+    </script>
+</head>
+
+<body>
+</body>
+</html>

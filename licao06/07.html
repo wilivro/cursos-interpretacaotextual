@@ -1,0 +1,93 @@
+<!doctype html>
+<html lang="pt-br">
+
+<head>
+    <title>Lição 06 Peça 07</title>
+    <meta charset="utf-8">
+    <script src="../wilib/js/lib/require.js"></script>
+    <script src="../wilib/js/app.js"></script>
+    <link rel="stylesheet" href="../wilib/css/font-awesome.css">
+    <link rel="stylesheet" href="../wilib/css/estilo.css">
+
+    <script>
+        require(['../wilib/js/lib/quebra-cabeca'], function (edi) {
+
+            edi.setConfig({
+                titulo: 'Monte o quebra-cabeça e veja um exemplo de elipse.'
+            });
+
+            var arrPeca = [
+                {
+                    img: '../img/licao06/p07.jpg',
+                    txt: '<span class="texto" id="texto-01">' +
+                    'Rondó dos cavalinhos<br>[...]<br><br>' +
+                    'Os cavalinhos correndo,<br>E nós, cavalões, comendo...<br>' +
+                    '</span>' +
+                    '<span class="texto" id="texto-02">' +
+                    'O Brasil politicando,<br>Nossa! A poesia morrendo...<br>O sol tão claro lá fora,<br>' +
+                    '</span>' +
+                    '<span class="texto" id="texto-03">' +
+                    'O sol tão claro, Esmeralda,<br>E em minhalma — anoitecendo!<br><span class="texto flt" id="texto-04">Manuel Bandeira</span>' +
+                    '</span>'
+                }
+            ];
+
+            var config = {
+                width: 350,
+                height: 263,
+                left: 5,
+                top: 25,
+                background: '#ccc',
+                numPecas: 2,
+                callBacks: [
+                    function () {
+                        $('#texto-01').fadeIn();
+                    },
+                    function () {
+                        $('#texto-02').fadeIn();
+                    },
+                    function () {
+                        $('#texto-03').fadeIn();
+                    }
+                ]
+            };
+
+            edi.quebraCabeca(arrPeca[edi.telaAtual()-1].img, function () {
+                $('#texto-04').fadeIn();
+                barraMsg('Muito bem!<br> Podemos facilmente identificar o verbo estar, omitido em <br>todos os versos do contexto. Continue dedicando-se aos estudos!', {height: 100})
+            }, config);
+
+           $('#texto').html(arrPeca[edi.telaAtual()-1].txt)
+        });
+    </script>
+
+    <style>
+        #texto {
+            width: 240px;
+            position: absolute;
+            left: 370px;
+            top: 100px;
+            font-size: 14px;
+            line-height: 1.4;
+            color: #666;
+            text-align: justify;
+        }
+
+        .texto {
+            display: none;
+        }
+
+        .flt {
+            font-size: 14px;
+            float: right;
+            color: #000;
+        }
+    </style>
+</head>
+
+<body>
+<div id="texto">
+</div>
+
+</body>
+</html>

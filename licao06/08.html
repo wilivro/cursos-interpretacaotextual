@@ -1,0 +1,111 @@
+<!doctype html>
+<html lang="pt-br">
+<head>
+    <title>Lição 06 Peça 08</title>
+    <meta charset="utf-8">
+    <script src="../wilib/js/lib/require.js"></script>
+    <script src="../wilib/js/app.js"></script>
+    <link rel="stylesheet" href="../wilib/css/font-awesome.css">
+    <link rel="stylesheet" href="../wilib/css/estilo.css">
+
+    <script>
+        require(['../wilib/js/lib/revela'], function (edi) {
+
+            edi.setConfig({
+                icone: "exclamacao",
+                titulo: "Clique nas imagens e leia as explicações."
+            });
+
+            edi.revela('btn-revela', 'box-revela', null, function(){
+                barraMsg('Muito bem!<br> ' +
+                'Nos exemplos apresentados você pode ver que o verbo omitido em<br> nada altera o sentido da oração, por isso são exemplos de elipse.', {height: 100})
+            }, {
+                ocultarRev: true,
+                bloqueiaClickFinal: false,
+                tempoBloqueio: 7000
+            });
+
+            $('#rev-1').peBalao({
+                top: 40,
+                left: -35,
+                scaleX: -1,
+                scaleY: 1,
+                background: '#FFF',
+                borda: '#ccc',
+                tamanhoBorda: 9,
+                rotate: -90
+            });
+
+            $('#rev-2').peBalao({
+                top: 40,
+                left: -35,
+                scaleX: -1,
+                scaleY: 1,
+                background: '#FFF',
+                borda: '#ccc',
+                tamanhoBorda: 9,
+                rotate: -90
+            });
+        });
+    </script>
+
+    <style>
+        .container {
+            width: 100%;
+            margin-top: 15px;
+            float: left;
+        }
+
+        .btn-revela {
+            width: 180px;
+            height: 120px;
+            border: 7px solid #fff;
+            border-radius: 15px;
+            margin-left: 20px;
+            cursor: pointer;
+            float: left;
+            box-shadow: 0 0 5px rgba(0, 0, 0, 0.3);
+        }
+
+        .box-revela {
+            background-size: 100% 100% !important;
+            height: 120px;
+            margin: 7px 0 0 20px;
+            float: left;
+            border: 1px solid #ccc;
+            border-radius: 10px;
+            position: relative
+        }
+
+        .box-revela p {
+            height: 120px;
+            margin: 16px 10px 10px 18px;
+            font-size: 13px;
+        }
+    </style>
+</head>
+
+<body>
+<section class="container">
+    <img class="btn-revela" data-revela="0" src="../img/licao06/p08.1.jpg">
+
+    <div class="box-revela" id="rev-1" data-revela="0">
+        <p>
+            Sobre a mesa, apenas um copo de suco e uma maçã.<br><br>
+            •	Neste exemplo há a omissão do verbo haver.<br> Completa, a oração ficaria:<span class="bold italico"> Sobre a mesa,<br> havia apenas um copo de suco e uma maçã.</span>
+        </p>
+    </div>
+</section>
+
+<section class="container">
+    <img class="btn-revela" data-revela="1" src="../img/licao06/p08.2.jpg">
+
+    <div class="box-revela" id="rev-2" data-revela="1">
+        <p>
+            Na minha estante, livros e discos antigos.<br><br>
+            •	Nessa frase foi omitido o termo “há”. <br>A frase completa seria:<span class="bold italico"> Na minha estante<br> há livros e discos antigos.</span>
+        </p>
+    </div>
+</section>
+</body>
+</html>

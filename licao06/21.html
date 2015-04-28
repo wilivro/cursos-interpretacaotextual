@@ -1,0 +1,85 @@
+<!doctype html>
+<html lang="pt-br">
+<head>
+    <title>Lição 06 Peça 21</title>
+    <meta charset="utf-8">
+    <script src="../wilib/js/lib/require.js"></script>
+    <script src="../wilib/js/app.js"></script>
+    <link rel="stylesheet" href="../wilib/css/font-awesome.css">
+    <link rel="stylesheet" href="../wilib/css/estilo.css">
+
+    <script>
+        require(['../wilib/js/lib/quebra-cabeca'], function (edi) {
+
+            edi.setConfig({
+                titulo: 'Monte o quebra-cabeça e conheça o conceito de anáfora.'
+            });
+
+            var config = {
+                width: 439,
+                height: 188,
+                left: 175,
+                top: 10,
+                background: '#ccc',
+                numPecas: 2,
+                callBacks: [
+                    function () {
+                        $('#texto-01').fadeIn();
+                    },
+                    function () {
+                        $('#texto-02').fadeIn();
+                    },
+                    function () {
+                        $('#texto-03').fadeIn();
+                    }
+                ]
+            };
+
+            edi.quebraCabeca('../img/licao06/p21.jpg', function () {
+                $('#texto-04').fadeIn();
+            }, config);
+
+            ajuda({
+                width: 300
+            });
+        });
+    </script>
+
+    <style>
+        #texto {
+            width: 400px;
+            position: absolute;
+            left: 230px;
+            top: 280px;
+            font-size: 18px;
+            line-height: 1.4;
+            z-index: 1000;
+            text-align: justify;
+            color: #666;
+        }
+
+        .texto {
+            display: none;
+        }
+
+    </style>
+</head>
+
+<body>
+<div id="texto">
+    <span class="texto" id="texto-01">
+       É a repetição de uma ou mais palavras.<br>
+    </span>
+    <span class="texto" id="texto-02">
+       É utilizada para dar destaque a uma ideia.<br>
+    </span>
+    <span class="texto" id="texto-03">
+        É sempre vista no início de frases ou versos.<br>
+    </span>
+    <span class="texto" id="texto-04">
+        É muito comum em poemas e canções.
+    </span>
+</div>
+
+</body>
+</html>

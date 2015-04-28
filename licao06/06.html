@@ -1,0 +1,75 @@
+<!doctype html>
+<html lang="pt-br">
+<head>
+    <title>Lição 06 Peça 06</title>
+    <meta charset="utf-8">
+    <script src="../wilib/js/lib/require.js"></script>
+    <script src="../wilib/js/app.js"></script>
+
+    <link rel="stylesheet" href="../wilib/css/font-awesome.css">
+    <link rel="stylesheet" href="../wilib/css/estilo.css">
+
+    <script>
+        require(['../wilib/js/lib/revela'], function (edi) {
+
+            edi.setConfig({
+                icone: "exclamacao",
+                titulo: "Clique sobre a imagem para revelar o texto.",
+                mascote: 'mascote'
+            });
+
+            edi.revela('btn-revela', 'box-revela', function (btn, revela) {
+                //
+            }, function (btn) {
+                btn.animate({left: 10}, 1000);
+                setTimeout(function(){
+                    barraMsg('Muito bem!<br> Não se esqueça de que as palavras<br> omitidas devem ser facilmente identificadas.', {height: 100, zIndex: 110})
+                },5000);
+            }, {
+                piscar: false,
+                delay: 1000
+            });
+
+        });
+    </script>
+
+    <style>
+        .btn-revela {
+            background: url(../img/licao06/p06.jpg) no-repeat;
+            background-size: 100% 100%;
+            width: 210px;
+            height: 170px;
+            top: 140px;
+            left: 305px;
+            z-index: 100;
+            position: absolute;
+            cursor: pointer;
+        }
+
+        .box-revela {
+            width: 280px;
+            border: 1px solid #CCC;
+            border-radius: 15px;
+            font-size: 16px;
+            padding: 10px;
+            position: absolute;
+            line-height: 1.8;
+            text-align: justify;
+            text-shadow: 1px 1px 1px rgba(0, 0, 0, 0.2);
+            top: 110px;
+            left: 265px;
+            color: #666;
+
+        }
+    </style>
+</head>
+
+<body>
+<div class="btn-revela"></div>
+<div class="box-revela">
+    <span style="font-size:20px; color:#0ED2DA;">ELIPSE:</span><br>Quando percebemos a omissão de uma ou mais palavras
+    ou de um termo que não comprometa o sentido da frase. As palavras omitidas devem ser facilmente identificadas ou
+    subentendidas no contexto.
+</div>
+</body>
+</html>

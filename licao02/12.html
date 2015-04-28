@@ -1,0 +1,342 @@
+<!-- Desenvolvedor: Rodolfo Araújo -->
+<!doctype html>
+<html lang="pt-br">
+	<head>
+		<title>Lição 02 Peça 12</title>
+		<meta charset="utf-8">
+		<script src="../wilib/js/lib/require.js"></script>
+		<script src="../wilib/js/app.js"></script>
+
+        <link rel="stylesheet" href="../wilib/css/font-awesome.css">
+        <link rel="stylesheet" href="../wilib/css/estilo.css">
+
+		<script>
+			require(['../wilib/js/lib/revela'], function (edi) {
+
+				edi.setConfig({
+					titulo: "A professora Sara está ensinando dicas importantes de interpretação aos seus alunos, clique sobre os botões e revele essas dicas.",
+                    mascote: 'mascote'
+				});
+
+                edi.revela('_btn', 'revela', function () {
+                            $('#bloqueio').show()
+                        }, function(){
+                            $('#txt1').hide();
+                            $('#txt2').hide();
+                            $('#certo').fadeIn();
+                        }, {ocultarRev: true, tempoBloqueio: 1000}
+                        ,function () {
+                            log('geral: '+cont)
+                            $('#bloqueio').fadeOut();
+                            switch (cont){
+                                case 1:
+                                    $('#txt1').hide();
+                                    $('#txt2').show();
+                                    break;
+                                case 2:
+                                    $('#txt2').html('Clique na<br>Professora.');
+                                    $('#txt2').hide();
+                                    $('#txt1').show();
+                                    break;
+                                case 3:
+                                    $('#txt1').html('Clique nos<br>alunos.');
+                                    $('#txt2').hide();
+                                    $('#txt1').show();
+                                    break;
+                                case 4:
+                                    $('#txt1').hide();
+                                    $('#txt2').show();
+                                    break;
+
+                                case 5:
+                                    $('#txt2').hide();
+                                    $('#txt1').show();
+                                    break;
+
+                                case 6:
+                                    $('#txt1').hide();
+                                    $('#txt2').show();
+                                    break; 
+
+                                case 7:
+                                    $('#txt2').hide();
+                                    $('#txt1').hide();
+                                    $('#certo').fadeIn();
+                                    break;                            }
+                        });
+
+                $('#revela1').peBalao({
+                    top:34,
+                    left:-35,
+                    scaleX:1,
+                    scaleY:-1,
+                    rotate:90,
+                    borda: '#ccc'
+                });
+
+                $('#revela2').peBalao({
+                    left:10,
+                    scaleX:-1,
+                    scaleY:-1,
+                    rotate:180,
+                    borda: '#ccc'
+                });
+                
+                $('#revela3').peBalao({
+                    top: 25,
+                    left: 187,
+                    scaleX:1,
+                    scaleY:1,
+                    rotate:90,
+                    borda: '#ccc'
+                });
+
+                
+                $('#revela4').peBalao({
+                    left: 178,
+                    scaleY:-1,
+                    rotate:180,
+                    borda: '#ccc'
+                });
+                
+
+                $('#revela6').peBalao({
+                    left: 212,
+                    scaleY:-1,
+                    rotate:180,
+                    borda: '#ccc'
+                });
+
+                $('#revela5').peBalao({
+                    top:34,
+                    left:-35,
+                    scaleX:1,
+                    scaleY:-1,
+                    rotate:90,
+                    borda: '#ccc'
+                });
+
+                $('#revela7').peBalao({
+                    top: 25,
+                    left: 187,
+                    scaleX:1,
+                    scaleY:1,
+                    rotate:90,
+                    borda: '#ccc'
+                });
+
+
+                var canvas = "../wilib/canvas/objetos/professora";
+
+                require([canvas], function (canvas) {
+                    var professora = new canvas.professora();
+                    professora.obj.css({
+                        top: 70,
+                        left: 200
+                    }).appendTo('#conteudo');
+
+                    professora.clickProfessora = function () {
+                        if(cont == 0)
+                            $('#btn1').click();
+
+                        if(cont == 2)
+                            $('#btn3').click();
+
+                        if(cont == 4)
+                            $('#btn5').click();
+
+                        if(cont == 6)
+                            $('#btn7').click();
+
+                    }
+                    professora.clickAlunos = function () {
+                        if(cont == 1)
+                            $('#btn2').click();
+
+                        if(cont == 3)
+                            $('#btn4').click();
+
+                        if(cont == 5)
+                            $('#btn6').click();
+                    }
+                    professora.play();
+                });
+
+            });
+		</script>
+
+		<style>
+			.revela {
+				background: #fff;
+				padding: 5px;
+				position: absolute;
+				text-align: center;
+				border: 1px solid #ccc;
+				border-radius: 10px;
+			}
+
+			.revela p {
+				font-size: 12px;
+				line-height: 1.3;
+				font-weight: bold;
+				color: #838383;
+			}
+
+            #revela1{
+                top: 70px;
+                left: 330px;
+                width: 370px;
+                z-index: 1;
+            }
+
+            #revela2{
+                top: 300px;
+                left: 260px;
+                z-index: 1;
+            }
+
+            #revela3{
+                left: 20px;
+                top: 80px;
+                width: 200px;
+            }
+
+            #revela5{
+                top: 70px;
+                left: 330px;
+                width: 370px;
+                z-index: 1;
+            }
+
+            #bloqueio{
+                position: absolute;
+                width: 320px;
+                height: 315px;
+                top: 68px;
+                left: 190px;
+                z-index: 1;
+                display: none;
+            }
+
+            #revela4{
+                width: 320px;
+                left: 210px;
+                top: 300px;
+                z-index: 1;
+            }
+
+            #revela6{
+                width: 320px;
+                left: 210px;
+                top: 300px;
+                z-index: 1;
+            }
+
+            #revela7{
+                left: 20px;
+                top: 80px;
+                width: 200px;
+            }
+
+            .retangulo{
+                position: absolute;
+                left: 20px;
+                top: 90px;
+                text-align: center;
+                border: solid 1px #8CA8B8;
+                box-shadow: 1px 1px 1px rgba(66, 66, 66, .5);
+                font-size: 12px;
+                padding: 10px;
+                color: #666;
+            }
+
+            #certo{
+                position: absolute;
+                width: 200px;
+                height: 120px;
+                top: 90px;
+                left: 500px;
+                border-radius: 15px;
+                padding: 10px;
+                border: 2px dashed #9C0;
+                text-align: center;
+                color: #9C0;
+                display: none;
+            }
+
+		</style>
+	</head>
+
+	<body>
+
+       <!--  <div class="retangulo">
+            Aline explicava para seus<br>
+            alunos alguns exemplos de<br>
+            como usar os pronomes.
+        </div> -->
+
+        <div id="txt1" class="retangulo" style="top: 200px; left: 70px">
+            Clique na<br>
+            Professora.
+        </div>
+
+        <div id="txt2" class="retangulo" style="display: none; top: 180px; left: 470px">
+            Clique nos<br>
+            alunos.
+        </div>
+
+        <div id="bloqueio"></div>
+
+		<div id="btn1" class="_btn" data-revela="1"></div>
+		<div id="btn2" class="_btn" data-revela="2"></div>
+		<div id="btn3" class="_btn" data-revela="3"></div>
+		<div id="btn4" class="_btn" data-revela="4"></div>
+        <div id="btn5" class="_btn" data-revela="5"></div>
+        <div id="btn6" class="_btn" data-revela="6"></div>
+        <div id="btn7" class="_btn" data-revela="7"></div>
+
+        <div id="revela1" class="revela" data-revela="1">
+			<p>
+                Hoje vamos estudar um pouco sobre interpretação de textos. <br> Às vezes, o autor sugere uma ideia, faz uma suposição <br> sem fundamento, nesses casos, vocês devem procurar <br> um fundamento lógico para resolver a questão.
+			</p>
+		</div>
+
+        <div id="revela2" class="revela alunos" data-revela="2">
+			<p>
+               Então, devemos ter cuidado com as questões voltadas para dados superficiais, não é mesmo?
+			</p>
+		</div>
+
+        <div id="revela3" class="revela" data-revela="3">
+			<p>
+              Sim, isso mesmo! Precisamos ler com atenção e relacionar a questão a dados que já conhecemos isso significa que devemos raciocinar logicamente.
+			</p>
+		</div>
+
+        <div id="revela4" class="revela alunos" data-revela="4">
+			<p>
+            Então, não devemos procurar a verdade <br> exata dentro da resposta?
+			</p>
+		</div>
+
+        <div id="revela5" class="revela" data-revela="5">
+            <p>
+                Correto! Devemos procurar a opção que melhor <br> se enquadra no sentido do texto.
+            </p>
+        </div>
+
+        <div id="revela6" class="revela alunos" data-revela="6">
+            <p>
+               Verdade! Às vezes a semelhança e o significado das palavras denunciam a resposta correta.
+            </p>
+        </div>
+
+        <div id="revela7" class="revela" data-revela="7">
+            <p>
+                Sim, precisamos estar atentos, e ler é fundamental para interpretar bem!
+            </p>
+        </div>
+
+        <div id="certo">Excelente! Leia sempre com atenção os textos, as questões e as alternativas de resposta e busque associar as alternativas a ideia central do autor.</div>
+	</body>
+</html>

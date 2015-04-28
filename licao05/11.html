@@ -1,0 +1,73 @@
+<!-- Desenvolvedor: Danilo Thiago -->
+<!doctype html>
+<html lang="pt-br">
+
+<head>
+    <title>Lição 01 Peça 33</title> <!-- rev_ad001 -->
+    <meta charset="utf-8">
+    <script src="../wilib/js/lib/require.js"></script>
+    <script src="../wilib/js/app.js"></script>
+    <link rel="stylesheet" href="../wilib/css/font-awesome.css">
+    <link rel="stylesheet" href="../wilib/css/estilo.css">
+
+    <script>
+        require(['../wilib/js/lib/quebra-cabeca'], function (edi) {
+
+            edi.setConfig({
+                titulo: 'Monte o quebra-cabeça e veja uma propaganda onde a <br> figura assonância foi utilizada.',
+                qtdTelas: 1
+            });
+
+            var arrPeca = [
+                {
+                    img: '../img/licao05/p11.png',
+                }
+            ];
+
+            var config = {
+                width: 290,
+                height: 141,
+                left: 230,
+                top: 60,
+                background: '#ccc',
+                numPecas: 2,
+                callBacks: []
+            };
+
+            edi.quebraCabeca(arrPeca[edi.telaAtual()-1].img, function () {
+                $('#msgAcerto').fadeIn();
+            }, config);
+
+           $('#texto').html(arrPeca[edi.telaAtual()-1].txt)
+        });
+    </script>
+
+    <style>
+
+    #msgAcerto {
+        width: 310px;
+        height: 55px;
+        position: absolute;
+        left: 220px;
+        top: 285px;
+        padding: 0px;
+        padding-bottom: 30px;
+        font-size: 14px;
+        text-align: center;
+        font-weight: bold;
+        line-height: 16px;              
+        color: #9c0;
+        display: none;
+    }
+
+    </style>
+</head>
+
+<body>
+    <div id="msgAcerto" class="borda-pontilhado-verde arredondado">
+        <p>Muito bem! Você conheceu outra figura de som, a assonância, continuaremos nossos estudos sobre as figuras de linguagem, falando agora sobre as figuras de pensamento.</p>
+     </div>
+</div>
+
+</body>
+</html>

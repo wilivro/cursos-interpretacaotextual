@@ -1,0 +1,64 @@
+<!-- Desenvolvedor: Micael Souza -->
+<!doctype html>
+<html lang="pt-br">
+
+<head>
+	<title>Lição 01 Peça 31</title>
+	<meta charset="utf-8">
+	<script src="../wilib/js/lib/require.js"></script>
+	<script src="../wilib/js/app.js"></script>
+
+	<link rel="stylesheet" href="../wilib/css/font-awesome.css">
+	<link rel="stylesheet" href="../wilib/css/estilo.css">
+
+	<!-- main -->
+	<script>
+		require(['../wilib/js/lib/quebra-cabeca'], function (edi) {
+
+			edi.setConfig({ // configurando o EDI
+				icone: 'exclamacao',
+				titulo: 'Monte o quebra-cabeça e conheça outra figura de pensamento. FALTA IMAGEM'
+			});
+
+            var config = {
+                width: 300,
+                height: 240,
+                left: 248,
+                top: 30,
+                background: '#ccc',
+                numPecas: 2,
+            };
+
+			edi.quebraCabeca('../img/licao05/p04.png', function() {
+				$('#msgAcerto').fadeIn();
+			}, config);
+		});
+	</script>
+	<style>
+		#msgAcerto {
+            width: 180px;
+            height: 80px;
+            position: absolute;
+            left: 12px;
+            top: 160px;
+            padding: 10px;
+            padding-bottom: 30px;
+            font-size: 14px;
+            text-align: center;
+            font-weight: bold;
+            line-height: 16px;              
+            color: #9c0;
+            display: none;
+         }
+	</style>
+</head>
+
+<body>
+
+	<div id="msgAcerto" class="borda-pontilhado-verde arredondado">
+        <p>Muito bem! Você conheceu a hipérbole, cuja finalidade é a de engrandecer ou diminuir exageradamente a verdade dos fatos.</p>
+     </div>
+
+</body>
+
+</html>

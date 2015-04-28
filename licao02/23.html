@@ -1,0 +1,177 @@
+<!--Desenvolvedor: Rodolfo Araujo -->
+<!doctype html>
+<html lang="pt-br">
+	<head>
+		<title>Lição 02 Peça 23</title>
+		<meta charset="utf-8">
+		<script src="../wilib/js/lib/require.js"></script>
+		<script src="../wilib/js/app.js"></script>
+		<link rel="stylesheet" href="../wilib/css/font-awesome.css">
+		<link rel="stylesheet" href="../wilib/css/estilo.css">
+
+		<!-- main -->
+		<script>
+
+			require(['../wilib/js/lib/alternativa_boliche'], function (edi) {
+				
+				edi.setConfig({// configurando o EDI
+					icone: 'exclamacao',
+					titulo: 'Vamos jogar boliche? Responda corretamente as questões e aprenda a diferença entre Conotação e Denotação.',
+
+				});
+				
+				var btns = {
+                    tela1:{
+                        texto:'Palavra com significação restrita.',
+                        btns:[
+                            {texto: 'CONOTAÇÃO', dataCorreta: false},
+                            {texto: 'DENOTAÇÃO', dataCorreta: true},
+                        ],
+                    },
+                    tela2:{
+                        texto:'Palavra com significação ampla.',
+                        btns:[
+                            {texto: 'CONOTAÇÃO', dataCorreta: true},
+                            {texto: 'DENOTAÇÃO', dataCorreta: false},
+                        ],
+                    },
+                    tela3:{
+                        texto:'Veja o exemplo a seguir e diga se é conotação ou denotação. <br> Ex: Entrar nisso é uma roubada.',
+                        btns:[
+                            {texto: 'CONOTAÇÃO', dataCorreta: true},
+                            {texto: 'DENOTAÇÃO', dataCorreta: false},
+                        ],
+                    }
+                };
+
+				var config = {
+					width: 150,
+					height: 50,
+					left: 225,
+					top: 150,
+					colunas: 2,
+					margin: 5,
+					padding: 5
+				};
+				
+				var callback = function (a) {
+					//$('.btn').fadeOut();
+					if(a){
+						$('#certo'+edi.telaAtual()).fadeIn();	
+					}
+					else
+						$('#errado'+edi.telaAtual()).fadeIn();	
+				}
+				
+
+                edi.alternativa_boliche(btns, callback, config);//iniciando o EDI
+              
+			});
+		</script>
+		
+		<style>
+			#conteudo {
+				height: 315px;
+			}
+
+			#grifado {
+				font-weight: bold;
+			}
+
+			.bordaVerde{
+				position: absolute;
+				color: #9c0;
+				border: 2px dashed #9c0;
+				text-align: center;
+				background-color: #FFF;
+				z-index: 1;
+				display: none;
+			}
+			#certo1{
+				top: 268px;
+				left: 150px;
+				width: 429px;
+				height: 30px;
+				padding: 30px;
+			}
+
+			#certo2{
+				top: 268px;
+				left: 130px;
+				width: 500px;
+				height: 30px;
+				padding: 20px;
+			}
+
+			#certo3{
+				top: 258px;
+				left: 130px;
+				width: 500px;
+				height: 50px;
+				padding: 20px;
+			}
+
+
+			#errado1{
+				position: absolute;
+				top: 268px;
+				left: 150px;
+				width: 439px;
+				height: 40px;
+				padding: 20px 20px;
+				color: #F00;
+				border: 2px dashed #F00;
+				text-align: center;
+				background-color: #FFF;
+				z-index: 1;
+				display: none;
+			}
+
+			#errado2{
+				position: absolute;
+				top: 258px;
+				left: 150px;
+				width: 439px;
+				height: 5 0px;
+				padding: 20px 20px;
+				color: #F00;
+				border: 2px dashed #F00;
+				text-align: center;
+				background-color: #FFF;
+				z-index: 1;
+				display: none;
+			}
+
+			#errado3{
+				position: absolute;
+				top: 258px;
+				left: 150px;
+				width: 439px;
+				height: 50px;
+				padding: 20px 20px;
+				color: #F00;
+				border: 2px dashed #F00;
+				text-align: center;
+				background-color: #FFF;
+				z-index: 1;
+				display: none;
+			}
+
+		</style>
+	</head>
+	
+	<body>
+
+		<div id="certo1" class="arredondado bordaVerde">Correto! Você está indo muito bem! Continue assim!</div>
+
+		<div id="certo2" class="arredondado bordaVerde">Correto! Você marcou mais pontos!</div>
+
+		<div id="certo3" class="arredondado bordaVerde">Muito bem! Você compreendeu bem os conceitos <br> de conotação e denotação.</div>
+
+		<div id="errado1" class="arredondado">Você errou! Volte aos exercícios anteriores e reveja os conceitos de conotação e denotação. Tente novamente!</div>
+		<div id="errado2" class="arredondado">Você errou! Fique atento aos estudos, <br> retorne as lições anteriores.</div>
+		<div id="errado3" class="arredondado">Você errou! Volte à página 20 e refaça seus estudos para entender melhor esses dois conceitos.</div>
+
+
+	</body>
+</html>

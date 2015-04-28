@@ -1,0 +1,60 @@
+<!-- Desenvolvedor: Danilo Thiago -->
+<!doctype html>
+<html lang="pt-br">
+
+<head>
+	<title>Lição 01 Peça 06</title> <!-- alt_f002 -->
+        <meta charset="utf-8">
+        <script src="../wilib/js/lib/require.js"></script>
+        <script src="../wilib/js/app.js"></script>
+        <link rel="stylesheet" href="../wilib/css/font-awesome.css">
+        <link rel="stylesheet" href="../wilib/css/estilo.css">
+
+	<script>
+		require(['../wilib/js/lib/alternativa_balao'], function (edi) {
+
+			edi.setConfig({
+				titulo: 'Clique sobre o balão onde a definição de apóstrofe está correta.',
+                mascote: 'mascote',
+                tempoFinal: 10
+			});
+
+            //balões
+            var baloes = [
+
+                {texto: 'A apóstrofe é a figura de linguagem que consiste em interromper a narração para dirigir a palavra a pessoas ausentes ou ao leitor.', dataCorreta: true},
+                {texto: 'A apóstrofe é a figura de linguagem que consiste em uma oposição entre os termos de uma frase.', dataCorreta: false},
+                {texto: 'A apóstrofe é a figura de linguagem que se caracteriza pela emissão de sons, como por exemplo: Pluft! Catapumba! Toc-toc!', dataCorreta: false},
+                {texto: 'A apóstrofe é a figura de linguagem que surge da necessidade do falante ou escritor dar mais ênfase à comunicação.', dataCorreta: false}
+
+            ];
+
+			edi.alternativa_balao(baloes, function (a, b) {
+                //cb
+            }, function (a) {
+                if (a) {
+                    barraMsg('Muito bem! No cotidiano, a apóstrofe é bastante utilizada. Ela está presente nas orações religiosas: “Pai nosso, que estás no céu...”; nos discursos políticos: “Povo de Juazeiro! É com grande alegria...”, e em situações diversas: “Minha Nossa Senhora, o que foi isso?!”; “Valha-me Deus, que eu não posso mais com esse menino”.')
+                } else {
+                    barraMsg('Atenção! No cotidiano, a apóstrofe é bastante utilizada. Ela está presente nas orações religiosas: “Pai nosso, que estás no céu...”; nos discursos políticos: “Povo de Juazeiro! É com grande alegria...”, e em situações diversas: “Minha Nossa Senhora, o que foi isso?!”; “Valha-me Deus, <br> que eu não posso mais com esse menino”.')
+                }
+
+            }, {
+                top: 0,
+                left: 80,
+                width: 300,
+                height: 150,
+                margin: '0 60px 0 0',
+                fontSize: 12,
+                leftPerson: -65,
+                topPerson: 43,
+                topIco: 0,
+                leftIco: -7
+            });
+		});
+	</script>
+</head>
+
+<body>
+</body>
+
+</html>

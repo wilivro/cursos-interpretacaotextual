@@ -1,0 +1,110 @@
+<!-- Desenvolvedor: Leandro Fortaleza -->
+<!doctype html>
+<html lang="pt-br">
+
+<head>
+	<title>Lição 01 Peça 18</title>
+	<meta charset="utf-8">
+	<script src="../wilib/js/lib/require.js"></script>
+	<script src="../wilib/js/app.js"></script>
+
+	<link rel="stylesheet" href="../wilib/css/font-awesome.css">
+	<link rel="stylesheet" href="../wilib/css/estilo.css">
+
+	<!-- main -->
+	<script>
+		require(['../wilib/js/lib/ligar'], function (edi) {
+
+			edi.setConfig({ // configurando o EDI
+                mascote: 'mascote',
+                icone: 'exclamacao',
+                titulo: 'Que hipérbole a imagem a seguir apresenta? Ligue-a corretamente ao seu significado.',
+                enunciado: 'vertical'
+			});
+
+            var ligas = [
+                {conteudo: '<img src="../img/licao05/p36_1.png">', dataCorreta: 1, cor: '#8BC959'}
+            ];
+
+            var alvos = [
+                {conteudo: 'Chorou rios de lágrimas.', dataCorreta: 1},
+                {conteudo: 'A mulher chora em demasia.', dataCorreta: 0},
+                {conteudo: 'Homem não chora.', dataCorreta: 0},
+                {conteudo: 'Depois da tempestade vem a bonança.', dataCorreta: 0}
+            ];
+
+			edi.ligar(ligas, alvos, function (a, b, c) {
+				//callback
+				//a:booleano = acertou/errou
+				//b:elementoHTML = liga
+				//c:elementoHTML = alvo
+			}, function (a) {
+				if (a) {
+          $("#certo").fadeIn();
+        };
+				
+			}, {
+				ligaFixo: false,
+        erros: true,
+				fontSize: 10,
+				liga: {
+          width: 210,
+          height: 'auto',
+          left: 20,
+          top: 125,
+          paddingTop: 5,
+          paddingBottom: 5,
+          marginBottom: 20,
+          textAlign: 'center'
+      	},
+        alvo: {
+          width: 150,
+          height: 'none',
+          left: 470,
+          top: 100,
+          paddingTop: 6,
+          paddingBottom: 6,
+          marginBottom: 30,
+          textAlign: 'center'
+        }
+			});
+		});
+	</script>
+
+	<style>
+        #conteudo {
+            background: radial-gradient(#fff, #fdfdfd);
+        }
+        #certo{
+        	position: absolute;
+				  height: 300px;
+				  background-color: rgba(255, 255, 255, 0.8);
+				  border-radius: 15px;
+				  border: 2px solid #999;
+				  width: 176px;
+				  top: 42px;
+				  left: 250px;
+				  z-index: 400;
+				  display: none;
+        }
+
+        #texto{
+        	position: relative;
+        	display: table-cell;
+        	padding: 0 5px;
+        	vertical-align: middle;
+        	text-align: center;
+					height: 300px;
+					width: 176px;
+					color: #9C0;
+        }
+	</style>
+</head>
+
+<body>
+	<div id="certo">
+		<div id="texto">Muito bem! Você conheceu a figura de linguagem hipérbole, veremos agora a figura ironia. Fique atento!</div>
+	</div>
+</body>
+
+</html>

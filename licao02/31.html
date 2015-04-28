@@ -1,0 +1,95 @@
+<!-- Desenvolvedor: Rodolfo Araujo -->
+<!doctype html>
+<html lang="pt-br">
+	<head>
+        <title>Lição 02 Peça 31</title>
+        <meta charset="utf-8">
+        <script src="../wilib/js/lib/require.js"></script>
+        <script src="../wilib/js/app.js"></script>
+        <link rel="stylesheet" href="../wilib/css/font-awesome.css">
+        <link rel="stylesheet" href="../wilib/css/estilo.css">
+
+		<script>
+			require(['../wilib/js/lib/alternativa_vf'], function (edi) {
+				
+				edi.setConfig({
+        icone: "interrogacaoAzul",
+        mascote: 'mascote',
+				titulo: "Existe diferença entre interpretar e compreender, você sabe quais são? <br> Marque I para o que significa Interpretar e C para o que significa Compreender."
+				});
+				
+				var alternativas  = [];
+				
+				alternativas.push({
+					texto: 'Explicar, comentar, julgar, tirar conclusões, deduzir.',
+					dataCorreta: true
+				});
+				
+				alternativas.push({
+					texto: 'Entendimento, atenção ao que realmente está escrito.',
+					dataCorreta: false
+				});
+												
+				edi.alternativa_vf(alternativas, function (a) {
+
+                }, function (a) {
+							   if (a) {
+										$('#msgAcerto').fadeIn();
+									} else {
+										$('#msgErrado').fadeIn();
+									}
+                }, {
+                		width: 700,
+                    left: 120,
+                    top: 100,
+                    margin: '0 0 15px 0',
+                    textoBtn: ['I', 'C']
+                });
+			});
+		</script>
+		<style>
+		 #msgAcerto {
+				width: 450px;
+				height: 60px;
+				position: absolute;
+				left: 150px;
+				top: 290px;
+				padding-bottom: 10px;
+				font-size: 14px;
+				text-align: center;
+				font-weight: bold;
+				line-height: 16px;				
+				color: #9c0;
+				display: none;
+			}
+
+			#msgErrado {
+				width: 450px;
+				height: 60px;
+				position: absolute;
+				left: 160px;
+				top: 290px;
+				padding-bottom: 10px;
+				font-size: 14px;
+				text-align: center;
+				font-weight: bold;
+				line-height: 16px;					
+				color: #F00;
+				display: none;
+			}
+
+		</style>
+	</head>
+	
+	<body>
+
+		<div id="msgAcerto" class="borda-pontilhado-verde arredondado">
+			<p>Parabéns! Interpretar significa: explicar, comentar, julgar, tirar conclusões e deduzir, enquanto, Compreender denota: entendimento, atenção ao que realmente está escrito.</p>
+		</div>
+
+		<div id="msgErrado" class="borda-pontilhado-vermelho arredondado">
+			<p>Atenção! Interpretar significa: explicar, comentar, julgar, tirar conclusões e deduzir, enquanto, Compreender denota: entendimento, atenção ao que realmente está escrito.</p>
+		</div>
+
+	</body>
+</html>

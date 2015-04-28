@@ -1,0 +1,105 @@
+<!-- Desenvolvedor: Rodolfo Araújo -->
+<!doctype html>
+<html lang="pt-br">
+<head>
+    <title>Lição 05 Peça 03</title> <!-- alt_b001 -->
+    <meta charset="utf-8">
+    <script src="../wilib/js/lib/require.js"></script>
+    <script src="../wilib/js/app.js"></script>
+    <link rel="stylesheet" href="../wilib/css/font-awesome.css">
+    <link rel="stylesheet" href="../wilib/css/estilo.css">
+
+    <script>
+        require(['../wilib/js/lib/alternativa_botao'], function (edi) {
+
+            edi.setConfig({
+                titulo: "Você conheceu a figura de pensamento hipérbole, de acordo com os conhecimentos adquiridos neste curso responda <br> corretamente qual é o conceito desta figura.",
+                mascote: 'mascote'
+            });
+
+            var btns = [];
+
+            btns.push({
+                texto: "Hipérbole é uma figura de linguagem, classificada como <br> figura de som, que consiste em exprimir os sons da natureza.",
+                dataCorreta: false
+            });
+
+            btns.push({
+                texto: "Hipérbole é uma figura de linguagem, classificada como <br> figura de pensamento, que consiste em exagerar uma ideia com  <br>finalidade expressiva. É um exagero intencional na expressão.",
+                dataCorreta: true
+            });
+
+            var config = {
+                colunas: 1,
+                width: 520,
+                height: 65,
+                left: 120,
+                top: 100,
+                margin: 5,
+                tamanhoTexto: 14,
+                btnBranco: true,
+                randomico: false,
+                lineHeight: '1.4',
+                animacao: true
+            }
+
+            edi.alternativa_botao(btns, null, function(a) {
+                if (a) {
+                     $('#msgAcerto').fadeIn();
+                    } else {
+                     $('#msgErrado').fadeIn();
+                    }
+            }, config);
+        });
+    </script>
+
+    <style>
+
+        #msgAcerto {
+            width: 250px;
+            height: 28px;
+            position: absolute;
+            left: 252px;
+            top: 310px;
+            padding: 5px;
+            padding-bottom: 30px;
+            font-size: 14px;
+            text-align: center;
+            font-weight: bold;
+            line-height: 16px;              
+            color: #9c0;
+            display:none;
+            }
+
+         #msgErrado {
+            width: 300px;
+            height: 28px;
+            position: absolute;
+            left: 252px;
+            top: 310px;
+            padding: 5px;
+            padding-bottom: 30px;
+            font-size: 14px;
+            text-align: center;
+            font-weight: bold;
+            line-height: 16px;                  
+            color: #F00;
+            display: none;
+         }
+
+    </style>
+
+</head>
+
+<body>
+
+     <div id="msgAcerto" class="borda-pontilhado-verde arredondado">
+        <p>Muito bem! A hipérbole consiste no exagero de uma expressão.</p>
+     </div>
+
+    <div id="msgErrado" class="borda-pontilhado-vermelho arredondado">
+        <p>Atenção! Lembre-se que a hipérbole consiste em exagerar determinada expressão. </p>
+    </div>
+
+</body>
+</html>

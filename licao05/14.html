@@ -1,0 +1,68 @@
+<!-- Desenvolvedor: Danilo Thiago -->
+<!doctype html>
+<html lang="pt-br">
+<head>
+    <title>Lição 01 Peça 08</title> <!-- rev_ae001 -->
+    <meta charset="utf-8">
+    <script src="../wilib/js/lib/require.js"></script>
+    <script src="../wilib/js/app.js"></script>
+    <link rel="stylesheet" href="../wilib/css/font-awesome.css">
+    <link rel="stylesheet" href="../wilib/css/estilo.css">
+
+    <script>
+        require(['../wilib/js/lib/revela_carrosel'], function (edi) {
+
+            edi.setConfig({
+                mascote: 'mascote',
+                titulo: 'Clique sobre os círculos para revelar as palavras que completam a explicação.'
+            });
+
+            var config = {
+                topTexto: 60,
+                textAlign: 'left'
+            };
+
+            var cavalinhos = ['aproximação', 'opostos', 'estabelece', 'conceitos', 'isolada'];
+
+            var frase = 'Ocorre antítese quando há uma {0} de palavras ou expressões de sentidos {1}. O contraste que se {2} serve, essencialmente, para dar uma ênfase aos {3} envolvidos que não se conseguiria com a exposição {4} dos mesmos. ';
+
+            edi.revela_carrosel(cavalinhos, frase, null, function() {
+                $('#msgAcerto').fadeIn();
+            }, config);
+
+        });
+    </script>
+    <style>
+        .box{
+            margin-top: 13px;
+            background: #F7F7F7;
+            border-radius: 10px;
+            box-shadow: -6px 6px rgba(200,200,200,1);
+        }
+
+        #msgAcerto {
+            width: 280px;
+            height: 70px;
+            position: absolute;
+            left: 55px;
+            top: 275px;
+            padding: 10px;
+            padding-bottom: 30px;
+            font-size: 14px;
+            text-align: center;
+            font-weight: bold;
+            line-height: 16px;              
+            color: #9c0;
+            display: none;
+            z-index: 10;
+        }
+    </style>
+</head>
+<body>
+    <div id="msgAcerto" class="arredondado">
+        <p>Excelente! Veja alguns exemplos de antítese: Viverei para sempre ou morrerei tentando/ Do riso se fez o pranto/ Hoje fez sol, ontem, porém, choveu muito.</p>
+     </div>
+</body>
+</html>
+
+

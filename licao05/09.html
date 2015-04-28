@@ -1,0 +1,147 @@
+<!--Desenvolvedor: Rodolfo Araujo -->
+<!doctype html>
+<html lang="pt-br">
+	<head>
+		<title>Lição 02 Peça 27</title>
+		<meta charset="utf-8">
+		<script src="../wilib/js/lib/require.js"></script>
+		<script src="../wilib/js/app.js"></script>
+		<link rel="stylesheet" href="../wilib/css/font-awesome.css">
+		<link rel="stylesheet" href="../wilib/css/estilo.css">
+
+		<!-- main -->
+		<script>
+
+			require(['../wilib/js/lib/alternativa_boliche'], function (edi) {
+				
+				edi.setConfig({// configurando o EDI
+					icone: 'exclamacao',
+					titulo: 'Clique em CERTO se os exemplos a seguir expressarem a figura assonância e ERRADO se representarem outras figuras.',
+
+				});
+				
+				var btns = {
+                    tela1:{
+                        texto:'1. “É a moda <br> da menina muda <br> da menina trombuda <br> que muda de modos <br> e dá medo”. <br> (Cecília Meireles)',
+                        btns:[
+                            {texto: 'CERTO', dataCorreta: true},
+                            {texto: 'FALSO', dataCorreta: false},
+                        ],
+                    },
+                    tela2:{
+                        texto:'Eu estou sempre dando murro em ponta de faca.',
+                        btns:[
+                            {texto: 'CERTO', dataCorreta: false},
+                            {texto: 'FALSO', dataCorreta: true},
+                        ],
+                    }
+                };
+
+				var config = {
+					width: 150,
+					height: 50,
+					left: 225,
+					top: 150,
+					boliche: false,
+					colunas: 2,
+					margin: 5,
+					padding: 5
+				};
+				
+				var callback = function (a) {
+					//$('.btn').fadeOut();
+					if(a){
+						$('#certo'+edi.telaAtual()).fadeIn();	
+					}
+					else
+						$('#errado'+edi.telaAtual()).fadeIn();	
+				}
+				
+
+                edi.alternativa_boliche(btns, callback, config);//iniciando o EDI
+              
+			});
+		</script>
+		
+		<style>
+			#conteudo {
+				height: 315px;
+			}
+
+			#grifado {
+				font-weight: bold;
+			}
+
+			.bordaVerde{
+				position: absolute;
+				color: #9c0;
+				border: 2px dashed #9c0;
+				text-align: center;
+				background-color: #FFF;
+				z-index: 1;
+				display: none;
+			}
+			#certo1{
+				top: 268px;
+				left: 150px;
+				width: 429px;
+				height: 50px;
+				padding: 20px;
+			}
+
+			#certo2{
+				top: 268px;
+				left: 130px;
+				width: 500px;
+				height: 50px;
+				padding: 20px;
+			}
+
+
+
+			#errado1{
+				position: absolute;
+				top: 268px;
+				left: 150px;
+				width: 439px;
+				height: 40px;
+				padding: 20px 20px;
+				color: #F00;
+				border: 2px dashed #F00;
+				text-align: center;
+				background-color: #FFF;
+				z-index: 1;
+				display: none;
+			}
+
+			#errado2{
+				position: absolute;
+				top: 258px;
+				left: 150px;
+				width: 439px;
+				height: 40px;
+				padding: 20px 20px;
+				color: #F00;
+				border: 2px dashed #F00;
+				text-align: center;
+				background-color: #FFF;
+				z-index: 1;
+				display: none;
+			}
+
+
+		</style>
+	</head>
+	
+	<body>
+
+		<div id="certo1" class="arredondado bordaVerde">Parabéns! Nos versos acima, a assonância se apresenta através de consoantes iguais e vogais distintas (moda, muda, modos, medo).</div>
+		<div id="certo2" class="arredondado bordaVerde">Atenção! Observe nos versos acima, o uso de consoantes iguais e vogais distintas (moda, muda, modos, medo). Que figura esse estilo representa? Tente novamente!</div>
+
+
+		<div id="errado1" class="arredondado">Parabéns! A frase acima, não é assonância, mas uma metáfora, que estudamos na lição 4.</div>
+		<div id="errado2" class="arredondado">Atenção! Lembre-se de nossos estudos sobre figuras de palavras na lição 4.</div>
+
+
+	</body>
+</html>

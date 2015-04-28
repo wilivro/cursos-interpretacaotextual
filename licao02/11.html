@@ -1,0 +1,157 @@
+<!-- Desenvolvedor: Rodolfo Araújo -->
+<!doctype html>
+<html lang="pt-br">
+	<head>
+        <title>Lição 02 Peça 11</title>
+		<meta charset="utf-8">
+		<script src="../wilib/js/lib/require.js"></script>
+		<script src="../wilib/js/app.js"></script>
+
+        <link rel="stylesheet" href="../wilib/css/font-awesome.css">
+        <link rel="stylesheet" href="../wilib/css/estilo.css">
+
+		<script>
+			require(['../wilib/js/lib/revela','../wilib/js/lib/alternativa_botao'], function (edi, edi2) {
+
+				edi2.setConfig({
+                    icone: "exclamacao",
+                    mascote: 'mascote',
+					titulo: "<span style='font-size:13px;'>João participou de um concurso para a Prefeitura da cidade onde mora. Na parte de interpretação de textos, deparou-se com uma questão que tinha duas alternativas de resposta muito parecidas. Clique sobre o balão para revelar a dúvida de João, e em seguida, responda corretamente.</span>",
+                    tempoFinal: 10
+				});
+
+                var btns = [];
+
+                btns.push({
+                    texto: "<div class='txt'>João deve marcar as duas <br> opções,  tendo em vista, que  <br> ambas parecem corretas.</div>",
+                    dataCorreta: false
+                });
+
+                btns.push({
+                    texto: "<div class='txt'>João deve escolher a opção <br> mais completa, mais exata, que <br> contém mais informações. </div>",
+                    dataCorreta: true
+                });
+
+                var config = {
+                    colunas: 1,
+                    width: 310,
+                    height: 65,
+                    left: 420,
+                    top: 180,
+                    margin: 5,
+                    tamanhoTexto: 14,
+                    btnBranco: true,
+                    lineHeight: '1.4',
+                    animacao: true
+                }
+
+                function callback (a) {
+
+                }
+
+                edi2.alternativa_botao(btns, callback, function(a) {
+                    if (a) {
+                         $('#msgAcerto').fadeIn();
+                        } else {
+                         $('#msgErrado').fadeIn();
+                        }
+                }, config);
+
+                $('[data-edi = "alternativa_botao"]').addClass('box-revela');
+
+				edi.revela('btn-revela', 'box-revela', function (btn, revela) {
+
+				}, function (btn) {
+				}, {});
+
+				$('.btn-revela').transition({
+                    transform: 'scale(1)',
+                    top: 90,
+					left: 240
+				}, 1000).peBalao({
+                    scaleY: -1, scaleX: -1, top: 92, tamanhoBorda: 12
+                });
+			});
+		</script>
+
+		<style>
+
+            #img{
+                position: absolute;
+                top: 100px;
+                left: 15px;
+                width: 210px;
+                height: 283px;
+                background-size: 100% 100%;
+            }
+            .btn-revela{
+                -webkit-transform: scale(0.1);
+                -moz-transform: scale(0.1);
+                -ms-transform: scale(0.1);
+                transform: scale(0.1);
+                text-align: center;
+                border-radius: 10px;
+                border: solid 1px #E2E2E2;
+                position: absolute;
+                top: 200px;
+                left: 180px;
+                width: auto;
+                height: auto;
+                color: rgb(128, 126, 126);
+                padding: 20px;
+                font-size: 16px;
+            }
+
+            #msgAcerto {
+            width: 150px;
+            height: 130px;
+            position: absolute;
+            left: 240px;
+            top: 200px;
+            padding: 10px;
+            padding-bottom: 30px;
+            font-size: 12px;
+            text-align: center;
+            font-weight: bold;
+            line-height: 16px;              
+            color: #9c0;
+            display: none;
+            }
+
+         #msgErrado {
+            width: 130px;
+            height: 100px;
+            position: absolute;
+            left: 260px;
+            top: 220px;
+            padding: 10px;
+            padding-bottom: 30px;
+            font-size: 12px;
+            text-align: center;
+            font-weight: bold;
+            line-height: 16px;                  
+            color: #F00;
+            display: none;
+         }
+
+		</style>
+	</head>
+
+	<body>
+
+		<div class="btn-revela">
+            E agora? Qual opção é a correta?  <br> 
+            Como João deve proceder nesse caso?
+		</div>
+
+    <div id="msgAcerto" class="borda-pontilhado-verde arredondado">
+        <p>Excelente! Quando em uma determinada questão surgirem duas alternativas muito parecidas, escolha a mais completa, a que melhor responde a questão; Leia com calma e analise com atenção!</p>
+     </div>
+
+    <div id="msgErrado" class="borda-pontilhado-vermelho arredondado">
+        <p>Atenção! Observe que em provas deste tipo geralmente só existe uma alternativa correta. Leia com calma e analise com atenção!</p>
+    </div>
+
+        <img id="img" src="../img/licao02/p11.png" width="200"/>
+	</body>
+</html>

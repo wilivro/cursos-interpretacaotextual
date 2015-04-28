@@ -1,0 +1,148 @@
+<!-- Desenvolvedor: Rodolfo Araujo -->
+<!doctype html>
+<html lang="pt-br">
+	<head>
+		<title>Lição 02 Peça 37</title>
+		<meta charset="utf-8">
+		<script src="../wilib/js/lib/require.js"></script>
+		<script src="../wilib/js/app.js"></script>
+		
+		<link rel="stylesheet" href="../wilib/css/font-awesome.css">
+		<link rel="stylesheet" href="../wilib/css/estilo.css">
+
+		<script>
+            $(function () {
+                require(['../wilib/js/lib/alternativa'], function (edi) {
+
+                    edi.setConfig({
+                        icone: 'interrogacaoAzul',
+                        titulo: 'O título da matéria chama atenção para um dado importante. Que dado é esse? Clique sobre a alternativa correta.'
+                    });
+
+                    var alternativas = [
+                        {
+                            alternativa: 'Que o número de leitores subiu 9,1% em quatro anos.',
+                            correta: false
+                        },{
+                            alternativa: 'Que o número de leitores caiu 9,1% em quatro anos.',
+                            correta: true
+                        },{
+                            alternativa: 'Que o número de leitores caiu 4,0% em nove anos.',
+                            correta: false
+                        },{
+                            alternativa: 'Que o número de leitores subiu 4,0% em nove anos.',
+                            correta: false
+                        }
+                    ];
+
+                    var config = {
+                        posx: 15,
+                        posy: 125,
+                        aleatorio: true,
+                        tamanhoBox: 35,
+                        tamanhoBoxTexto: 600,
+                        marginBtns: 5
+                    }
+
+                    edi.alternativa(alternativas, function (acertou) {
+                    }, function (a) {
+                    if (a) {
+                         $('#msgAcerto').fadeIn();
+                        } else {
+                         $('#msgErrado').fadeIn();
+                        }
+                    }, config);
+
+                        $('#balao').peBalao({
+                            left: 10,
+                            tamanhoBorda: 15,
+                            borda: '#ccc'
+                        });
+
+                });
+            })
+		</script>
+
+		<style>
+        
+        #msgAcerto {
+            width: 130px;
+            height: 150px;
+            position: absolute;
+            left: 570px;
+            top: 180px;
+            padding: 10px;
+            font-size: 14px;
+            text-align: center;
+            font-weight: bold;
+            line-height: 16px;              
+            color: #9c0;
+            display: none;
+        }
+
+         #msgErrado {
+            width: 150px;
+            height: 165px;
+            position: absolute;
+            left: 555px;
+            top: 180px;
+            padding: 10px;
+            font-size: 14px;
+            text-align: center;
+            font-weight: bold;
+            line-height: 16px;                  
+            color: #F00;
+            display: none;
+         }
+
+        #img {
+            position: absolute;
+            left: 600px;
+            top: 100px;
+            width: 85px;
+            height: 60px;
+            background-size: 100% 100%;
+            background-image: url(../img/licao02/p37.png);
+            z-index: 10;
+        }
+
+        #link {
+            color: #4E9BF0;
+            font-weight: bold;
+            font-style: italic;
+        }
+
+        #link:hover {
+            color: #2169B9
+        }
+
+        #font {
+            font-size: 12px;
+            position: absolute;
+            font-weight: bold;
+            font-style: italic;   
+            left: 595px;
+            top: 155px; 
+            z-index: 11;
+        }
+
+		</style>
+	</head>
+
+	<body>
+        
+    <div id="msgAcerto" class="borda-pontilhado-verde arredondado">
+        <p>Muito bem! Você leu com atenção. O título é um dos elementos principais de um texto, pois indica sobre o quê será falado.</p>
+    </div>
+
+    <div id="msgErrado" class="borda-pontilhado-vermelho arredondado">
+        <p>Atenção! Você não leu com atenção. A leitura cuidadosa, atenta, reflexiva e observadora deve fazer parte dos seus estudos. Releia a matéria novamente para responder a questão com exatidão.</p>
+    </div>
+
+     <div class="center">
+        <a id="link" href="http://g1.globo.com/educacao/noticia/2012/03/numero-de-leitores-caiu-91-no-pais-em-quatro-anos-segundo-pesquisa.html" 
+        target="_blank"><span id="font">Acesse o link aqui.</span> <div id="img"></div> </a>
+    </div>
+
+	</body>
+</html>

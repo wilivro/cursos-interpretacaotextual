@@ -1,0 +1,132 @@
+<!-- Desenvolvedor: Micael Souza -->
+<!doctype html>
+<html lang="pt-br">
+	<head>
+		<title>alt_d001</title>
+		<meta charset="utf-8">
+		<script src="../wilib/js/lib/require.js"></script>
+		<script src="../wilib/js/app.js"></script>
+
+		<link rel="stylesheet" href="../wilib/css/font-awesome.css">
+		<link rel="stylesheet" href="../wilib/css/estilo.css">
+
+		<!-- main -->
+		<script>
+            $(function () {
+                require(['../wilib/js/lib/alternativa'], function (edi) {
+
+                    edi.setConfig({ // configurando o EDI
+                        icone: 'exclamacao',
+                        titulo: 'Leia a questão abaixo e responda corretamente relacionando as <br> frases à figura de linguagem gradação.'
+                    });
+
+                    var alternativas = [
+                        {
+                            alternativa: '...batem, torturam, mutilam, asfixiam, enforcam, escamam as unhas e devastam <br> os cabelos, castram e matam... (p.95)',
+                            correta: false
+                        },{
+                            alternativa: '...e ainda assim lutamos, brigamos, guerrilhamos, rasgamos nossas veias para que <br> nosso sangue adube esta terra que tanto amamos... (p.94)',
+                            correta: false
+                        },{
+                            alternativa: '...os laudos falam em infartos, derrames, ataques cardíacos, cânceres <br> tenebrosos, embolias, esquizofrenias agudas, stresses e desajustes. (p.95)',
+                            correta: true
+                        },{
+                            alternativa: '...estas servem apenas para destruir o homem, para arrasá-lo, aniquilá-lo, <br> reduzi-lo a um nada teledirigido... (p.94)',
+                            correta: false
+                        },{
+                            alternativa: 'Nada disso: simplesmente desejamos a justiça, almejamos a liberdade, sofremos <br> pela paz, morremos pela verdade... (p.94)',
+                            correta: false
+                        }
+                    ];
+
+                    var config = {
+                        posx: 180,
+                        posy: 100,
+                        aleatorio: false,
+                        tamanhoBox: 35,
+                        tamanhoBoxTexto: 650,
+                        tamanhoFonteTexto: 13,
+                        marginBtns: 5
+                    }
+
+                    edi.alternativa(alternativas, function (acertou) {
+                        //                    log(acertou);
+                    }, function (a) {
+                        if (a) {
+                            barraMsg('Muito bem! A alternativa correta é a letra C, pois no caso as ideias estão dispostas em ordem decrescente (anticlímax), pois começa do mais grave: “infartos” e vai para o mais leve: “desajustes”.', {zIndex:2002})
+                        } else{
+                            barraMsg('Atenção! Lembre-se na gradação as ideias devem estar dispostas em ordem crescente ou decrescente. Pense um pouco mais!', {zIndex:2002})
+                        };                      
+                    }, config); //iniciando o EDI
+
+                        $('#balao').peBalao({
+                            left: 10
+                        });
+
+
+                    $('#ico').iconeInterrogacaoAzul();
+                });
+            })
+		</script>
+
+		<style>
+			#balao {
+/*				background: url(../img/balao_seta_top.png) no-repeat;*/
+				border: 1px solid #ccc;
+				background: #fff;
+				width: 140px;
+				height: 245px;
+				position: absolute;
+				left: 10px;
+				top: 100px;
+				font-size: 11px;
+				text-align: center;
+				font-weight: 700;
+				line-height: 1.2;
+				border-radius: 10px;
+				color: #48A2D4;
+			}
+
+			#ico {
+				margin: 10px 0;
+                height: 59px;
+                position: relative;
+			}
+
+            #ico img {
+                left: 45px;
+            }
+
+			#msg {
+				width: 550px;
+				position: absolute;
+				bottom: 10px;
+				left: 10px;
+				font-size: 13px;
+				text-align: center;
+				font-weight: 700;
+				line-height: 3.2;
+				color: #8DE91B;
+				display: none;
+			}
+
+			#bl {
+				background: #fff;
+				width: 100px;
+				height: 100px;
+				position: absolute;
+				left: 10px;
+				top: 90px;
+				border: 1px solid;
+			}
+		</style>
+	</head>
+
+	<body>
+		<div id="balao">
+            <div id="ico"></div>
+			<p>(UDESC 2008) Gradação é uma figura de pensamento que consiste em dispor as ideias em ordem crescente (clímax) ou decrescente (anticlímax). Assinale, dentre os textos abaixo, extraídos da obra Relatos de sonhos e lutas, a alternativa que não apresenta exemplo de gradação.</p>
+		</div>
+
+	</body>
+</html>

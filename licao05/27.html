@@ -1,0 +1,141 @@
+<!-- Desenvolvedor: Danilo Thiago -->
+<!doctype html>
+<html lang="pt-br">
+<head>
+    <title>Lição 08 Peça 38</title>
+    <meta charset="utf-8">
+    <script src="../wilib/js/lib/require.js"></script>
+    <script src="../wilib/js/app.js"></script>
+    <link rel="stylesheet" href="../wilib/css/font-awesome.css">
+     <link rel="stylesheet" href="../wilib/css/estilo.css">
+
+    <script>
+        require(['../wilib/js/lib/alternativa_botao'], function (edi) {
+
+            edi.setConfig({
+                titulo: "Responda a pergunta de Edu.",
+                mascote: 'mascote'
+            });
+
+            var btns = [];
+
+            btns.push({
+                texto: "Sim",
+                dataCorreta: true
+            });
+
+            btns.push({
+                texto: "Não",
+                dataCorreta: false
+            });
+
+            var config = {
+                width: 110,
+                height: 35,
+                left: 390,
+                top: 120,
+                margin: '12px 12px 0 12px',
+                tamanhoTexto: 14,
+                btnBranco: true,
+                randomico: false,
+                lineHeight: '1.4',
+                animacao: true
+            };
+
+            edi.alternativa_botao(btns, null, function(a) {
+            if (a) {
+                $('#msgAcerto').fadeIn();
+            } else{
+                $('#msgErrado').fadeIn();
+            };
+            }, config);
+
+            $('#balao').peBalao({
+                background:'#FFF',
+                borda:'#666',
+                tamanhoBorda: 12,
+                top:142,
+                left:10,
+                scaleX:-1.1,
+                scaleY:-1.1,
+                corBorda:'#000',
+                rotate:0
+            });
+        });
+    </script>
+    <style>
+        #balao {
+            position: absolute;
+            top: 90px;
+            left: 80px;
+            border-radius: 40px;
+            border: 1px solid #666;
+            padding: 10px;
+            width: 250px;
+            height: 110px;
+            font-size: 14px;
+            color: #666;
+        }
+        .middle {
+            position: relative;
+            text-align: center;
+            vertical-align: middle;
+            display: table-cell;
+            height: 110px;
+        }
+        #garoto {
+            position: absolute;
+            top: 205px;
+            left: 20px;
+        }
+
+        #msgAcerto {
+            width: 320px;
+            height: 70px;
+            position: absolute;
+            left: 360px;
+            top: 265px;
+            padding: 3px;
+            font-size: 12px;
+            text-align: center;
+            font-weight: bold;
+            line-height: 16px;              
+            color: #9c0;
+            display: none;
+        }
+
+        #msgErrado {
+            width: 320px;
+            height: 70px;
+            position: absolute;
+            left: 360px;
+            top: 265px;
+            padding: 3px;
+            font-size: 12px;
+            text-align: center;
+            font-weight: bold;
+            line-height: 16px;              
+            color: #F00;
+            display: none;
+        }
+    </style>
+</head>
+
+<body>
+    <div id="balao">
+        <div class="middle">
+            - O eufemismo é muitas vezes utilizado com um sentido pejorativo e inadequado, geralmente em frases que se referem à morte?
+        </div>
+    </div>
+    <img id="garoto" src="../wilib/img/svg/garoto_camisa_xadrez.svg" width="100"/>
+
+    <div id="msgAcerto" class="borda-pontilhado-verde arredondado">
+        <p>Muito bem! Frases como "Ir para a terra dos pés juntos", "Comer capim pela raiz", "Vestir o paletó de madeira", são eufemismos e são indelicadas ao mesmo tempo.</p>
+    </div>
+
+    <div id="msgErrado" class="borda-pontilhado-vermelho arredondado">
+        <p>Atenção! Frases como "Ir para a terra dos pés juntos", "Comer capim pela raiz", "Vestir o paletó de madeira", são eufemismos e são indelicadas ao mesmo tempo.</p>
+    </div>
+
+</body>
+</html>

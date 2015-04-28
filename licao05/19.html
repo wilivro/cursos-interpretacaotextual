@@ -1,0 +1,53 @@
+<!-- Desenvolvedor: Danilo Thiago -->
+<!doctype html>
+<html lang="pt-br">
+  <head>
+    <title>Lição 01 Peça 42</title>
+    <meta charset="utf-8">
+    <script src="../wilib/js/lib/require.js"></script>
+    <script src="../wilib/js/app.js"></script>
+    <link type="text/css" rel="stylesheet" href="../wilib/css/font-awesome.css">
+    <link rel="stylesheet" href="../wilib/css/estilo.css">
+
+    <style type="text/css">
+    </style>
+    <script>
+      require(['../wilib/js/lib/slide_vertical'], function (edi) {
+
+        edi.setConfig({
+          titulo: "Clique sobre as barras para revelar os textos.",
+          mascote: 'mascote',
+          icone: "interrogacaoAzul"
+        });
+
+        var slides = [
+          {
+            btn: '',
+            txt: 'Apóstrofe consiste na "invocação" de alguém ou de alguma coisa personificada, de acordo com o objetivo do discurso que pode ser poético, sagrado ou profano.',
+            img: '../img/licao05/p19_1.png'
+          },
+          {
+            btn: '',
+            txt: 'Caracteriza-se pelo chamamento do receptor da mensagem, seja ele <br> imaginário ou não. A introdução da apóstrofe interrompe a linha de  <br> pensamento do discurso, destacando-se assim a entidade a que se dirige <br> e a ideia que se pretende pôr em evidência com tal invocação.  ',
+            img: '../img/licao05/p19_2.png'
+          },
+          {
+            btn: '',
+            txt: 'Realiza-se por meio do vocativo. Exemplos: Moça, que fazes aí parada? "Pai Nosso, que estais no céu..." ',
+            img: '../img/licao05/p19_3.png'
+          }
+        ];
+
+        edi.slide_vertical(slides, function() {
+
+        }, function() {
+          barraMsg('Correto! Você aprendeu sobre a figura de pensamento apóstrofe, continue seus estudos de forma atenta e reflexiva!', {zIndex:2002})
+        }, {showNumber: true});
+      });
+    </script>
+  </head>
+
+  <body>
+
+  </body>
+</html>

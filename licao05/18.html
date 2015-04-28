@@ -1,0 +1,170 @@
+<!-- Desenvolvedor: Rodolfo Araujo -->
+<!doctype html>
+<html lang="pt-br">
+<head>
+    <title>Lição 02 Peça 19</title>
+    <meta charset="utf-8">
+    <script src="../wilib/js/lib/require.js"></script>
+    <script src="../wilib/js/app.js"></script>
+    <link rel="stylesheet" href="../wilib/css/font-awesome.css">
+    <link rel="stylesheet" href="../wilib/css/estilo.css">
+
+    <script>
+        require(['../wilib/js/lib/arrasta'], function (edi) {
+
+            edi.setConfig({
+                mascote: 'mascote',
+                titulo: 'Arraste as palavras que faltam para completar a sentença e conheça o conceito da figura de pensamento apóstrofe.',
+                tempoFinal: 20
+            });          
+
+            var arrArrasta = [
+                {arrasta: 'apóstrofe', dataCorreta: '1', dataId: '1'},
+                {arrasta: 'palavra', dataCorreta: '2', dataId: '2'},
+                {arrasta: 'ausentes', dataCorreta: '3', dataId: '3'},
+                {arrasta: 'vocativo', dataCorreta: '4', dataId: '4'}
+            ];
+
+            var texto = $('#boxTexto').html();
+
+            for (var i = 0; i < arrArrasta.length; i++) {
+                var aux = '';
+                aux += '<span class="linha"></span>';
+
+                texto = texto.replace('[' + i + ']', '<div id="alvo' + i + '" class="alvo" data-correta="'+arrArrasta[i].dataCorreta+'">' + aux + '</div>');
+            }
+
+            $('#boxTexto').html(texto);
+
+            arrArrasta.sort(function () {
+                return 0.5 - Math.random()
+            });
+
+
+            for (var i = 0; i < arrArrasta.length; i++) {
+                $('<div>')
+                        .addClass('arrasta fundoArrasta azulAlpha')
+                        .attr({
+                            'data-id': arrArrasta[i].dataId,
+                            id: 'arrasta'+(i+1),
+                            'data-correta': arrArrasta[i].dataCorreta
+                        })
+                        .html(arrArrasta[i].arrasta)
+                        .appendTo('#arrasta');
+            }
+
+            var config = {
+                colorirFilho: true,
+                arrastaAbsolute: true,
+                reloadCorreta: true,
+                alvoFixo: true
+            };
+
+            edi.arrasta('arrasta', 'alvo', function (a, b) {
+                b.css({top: 5})
+            }, function (a) {
+                if(a)
+                    $('#msgAcerto').fadeIn();
+                    $('#boxTexto').html('' +
+                            '<div style="position: absolute; color: #818181; height: 180px; font-size: 16px; width: 440px; left: 25px; top: 38px;">' +
+                            'A apóstrofe é a figura de linguagem que ' +
+                            'consiste em interromper a narração para ' +
+                            'dirigir a palavra a pessoas ausentes ou ' +
+                            'ao leitor. Sintaticamente, a apóstrofe  ' +
+                            'exerce a função de vocativo dentro de uma sentença.' +
+                            ' </div>')
+            }, config);
+
+            $('.arrasta').css({
+                margin: -5,
+                padding: 5
+            });
+
+            $('<div>')
+                    .attr('id', 'mascote')
+                    .appendTo('#conteudo');
+        });
+    </script>
+    <style>
+        .alvo {
+            display: inline-block;
+            width: 110px;
+            height: 25px;
+            border-bottom: 1px solid #999;
+        }
+        .arrasta {
+            padding: 5px;
+            margin-right: 10px;
+            margin-left: 10px;
+            display: inline-block;
+            color: #FFF;
+        }
+        #boxArrasta{
+            padding-top: 5px;
+            width: 650px;
+            height: 55px;
+            cursor: default;
+            top: 235px;
+            left: 50px;
+        }
+        #arrasta{
+            position: relative;
+            display: table-cell;
+            vertical-align: middle;
+            width: 650px;
+            height: 60px;
+        }
+        #boxTexto{
+            position: absolute;
+            width: 400px;
+            height: 240px;
+            text-align: center;
+            line-height: 30px;
+            color: #999;
+            top: 98px;
+            left: 225px;
+            border-radius: 10px;
+            padding-left: 20px;
+        }
+        #img{
+            position: absolute;
+            left: 20px;
+            top: 90px;
+            background: url(../wilib/img/svg/ruiva.svg);
+            background-size: 100% 100%;
+            width: 200px;
+            height: 200px;
+        }
+
+        #msgAcerto {
+            width: 650px;
+            height: 155px;
+            position: absolute;
+            left: 63px;
+            top: 305px;
+            font-size: 14px;
+            text-align: center;
+            font-weight: bold;
+            line-height: 15px;              
+            color: #fff;
+            display: none;
+        }
+
+    </style>
+
+</head>
+<body>
+<div id="boxArrasta" class="btn btn-default-hover">
+    <div id="arrasta"></div>
+</div>
+<div id="img"></div>
+<div id="boxTexto">
+    A [0] é a figura de linguagem que consiste em interromper a narração para dirigir a [1] a pessoas [2] ou ao leitor. Sintaticamente, a apóstrofe exerce a função de [3] dentro de uma sentença.
+</div>
+
+<div id="msgAcerto" class="arredondado">
+    <p>Muito bem! É assim denominado o chamamento do receptor da mensagem, seja ele de natureza imaginária ou não. É utilizada para dar ênfase à expressão.</p>
+</div>
+
+</body>
+</html>

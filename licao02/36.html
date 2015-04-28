@@ -1,0 +1,93 @@
+<!-- Desenvolvedor: Rodolfo Araujo -->
+<!doctype html>
+<html lang="pt-br">
+
+<head>
+    <title>Lição 02 Peça 36</title>
+	<meta charset="utf-8">
+    <script src="../wilib/js/lib/require.js"></script>
+    <script src="../wilib/js/app.js"></script>
+    <link rel="stylesheet" href="../wilib/css/font-awesome.css">
+    <link rel="stylesheet" href="../wilib/css/estilo.css">
+
+	<script>
+		require(['../wilib/js/lib/edi'], function (edi) {
+
+			var config = {
+				titulo: 'Clique sobre o link a seguir, e leia uma reportagem do G1 Educação, que fala sobre os índices de leitores no Brasil. Fique atento, pois você responderá algumas questões baseadas nessa leitura.',
+                mascote: 'mascote'
+			};
+
+			edi.iniciar(config);
+          
+			$('#link').click(function () {
+				$(this).off('click');
+				$('#msgAcerto').fadeIn();
+				edi.finalizar();
+			});
+            edi.util.removeLoading();
+		});
+	</script>
+
+	<style>
+		#img {
+			position: absolute;
+			left: 175px;
+			top: -100px;
+			width: 400px;
+			height: 100px;
+			background-size: 100% 100%;
+			background-image: url(../img/licao02/p36.png);
+		}
+
+		#link {
+			color: #4E9BF0;
+			font-weight: bold;
+			font-style: italic;
+		}
+
+		#link:hover {
+			color: #2169B9
+		}
+
+    .center{
+        width: 788px;
+        text-align: center;
+        position: absolute;
+        left: 0;
+        top: 260px;
+    }
+
+    #msgAcerto {
+        width: 530px;
+        height: 50px;
+        position: absolute;
+        left: 100px;
+        top: 280px;
+        padding: 10px;
+        padding-bottom: 30px;
+        font-size: 14px;
+        text-align: center;
+        font-weight: bold;
+        line-height: 16px;              
+        color: #9c0;
+        display: none;
+     }
+
+	</style>
+</head>
+
+<body>
+
+	<div class="center">
+        <a id="link" href="http://g1.globo.com/educacao/noticia/2012/03/numero-de-leitores-caiu-91-no-pais-em-quatro-anos-segundo-pesquisa.html" 
+        target="_blank"> <div id="img"></div> </a>
+	</div>
+
+	<div id="msgAcerto" class="borda-pontilhado-verde arredondado">
+        <p>Excelente! Por meio desta leitura você conheceu como anda o processo de leitura e o desenvolvimento dos leitores brasileiros. No próximo exercício você responderá algumas questões relacionadas a esta reportagem.</p>
+    </div>
+
+</body>
+
+</html>

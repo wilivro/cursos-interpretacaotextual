@@ -1,0 +1,64 @@
+<!-- Desenvolvedor: Rodolfo Araújo -->
+<!doctype html>
+<html lang="pt-br">
+<head>
+    <title>Lição 05 Peça 03</title> <!-- alt_b001 -->
+    <meta charset="utf-8">
+    <script src="../wilib/js/lib/require.js"></script>
+    <script src="../wilib/js/app.js"></script>
+    <link rel="stylesheet" href="../wilib/css/font-awesome.css">
+    <link rel="stylesheet" href="../wilib/css/estilo.css">
+
+    <script>
+        require(['../wilib/js/lib/alternativa_botao'], function (edi) {
+
+            edi.setConfig({
+                titulo: "Clique sobre a alternativa onde a definição da <br> figura de pensamento antítese está correta.",
+                mascote: 'mascote'
+            });
+
+            var btns = [];
+
+            btns.push({
+                texto: "É a aproximação de palavras ou expressões de <br> sentidos opostos. O contraste que se estabelece serve para dar <br> uma ênfase aos conceitos envolvidos, o que não ocorreria <br> com a exposição isolada dos mesmos.",
+                dataCorreta: true
+            });
+
+            btns.push({
+                texto: "É assim denominada o chamamento do receptor da <br> mensagem, seja ele de natureza imaginária ou não. É utilizada para <br> dar ênfase à expressão e realiza-se por meio do vocativo.",
+                dataCorreta: false
+            });
+
+
+            var config = {
+                colunas: 1,
+                width: 500,
+                height: 85,
+                left: 120,
+                top: 100,
+                margin: 5,
+                tamanhoTexto: 14,
+                btnBranco: true,
+                randomico: true,
+                lineHeight: '1.4',
+                animacao: true
+            }
+
+            edi.alternativa_botao(btns, null, function(a) {
+                if (a) {
+                     barraMsg('Muito bem! Antítese consiste na utilização de dois <br> termos que contrastam entre si.')
+                    } else {
+                     barraMsg('Atenção! Antítese consiste na utilização de <br> dois termos que contrastam entre si.')
+                    };
+            }, config);
+        });
+    </script>
+
+    <style>
+   </style>
+
+</head>
+
+<body>
+</body>
+</html>

@@ -1,0 +1,216 @@
+<!doctype html>
+<html lang="pt-br">
+<head>
+    <title>arr_m003</title>
+    <meta charset="utf-8">
+    <script src="../wilib/js/lib/require.js"></script>
+    <script src="../wilib/js/app.js"></script>
+    <link rel="stylesheet" href="../wilib/css/font-awesome.css">
+     <link rel="stylesheet" href="../wilib/css/estilo.css">
+
+    <script>
+        require(['../wilib/js/lib/arrasta'], function (edi) {
+
+            edi.setConfig({
+                icone: false,
+                mascote: false,
+                titulo: ''
+            });
+
+            var arrArrasta = [
+                {arrasta: 'significa ', dataCorreta: '1', dataId: '1'},
+                {arrasta: 'inanimados ', dataCorreta: '2', dataId: '2'},
+                {arrasta: 'características ', dataCorreta: '3', dataId: '3'},
+                {arrasta: 'irracionais', dataCorreta: '4', dataId: '4'}
+            ];
+
+            arrArrasta.sort(function () {
+                return 0.5 - Math.random()
+            });
+
+            for (var i = 0; i < arrArrasta.length; i++) {
+                $('<div>')
+                        .addClass('arrasta azulAlpha')
+                        .attr({
+                            id: 'arrasta'+(i+1),
+                            'data-correta': arrArrasta[i].dataCorreta,
+                            'data-id': arrArrasta[i].dataId
+                        })
+                        .html(arrArrasta[i].arrasta)
+                        .appendTo('#arrasta');
+            }
+
+            $('<div>')
+                    .css({
+                        position: 'relative',
+                        width: 400,
+                        height: 240,
+                        lineHeight: '20px',
+                        display: 'table-cell',
+                        verticalAlign: 'middle',
+                        fontSize: 14,
+                        fontColor: '#999',
+                        fontWeight: 'bold'
+                    })
+                    .appendTo('#boxTexto')
+                    .html(
+                            'Prosopopeia (ou personificação) <div class="alvo" data-correta="1"></div> atribuir<br>' +
+                            'a seres <div class="alvo" data-correta="2"></div> (sem vida) <div class="alvo" data-correta="3"></div> de seres' +
+                            'animados ou atribuir características humanas a seres <div class="alvo" data-correta="4"></div>.'
+            );
+
+            var config = {
+                colorirFilho: true,
+                arrastaAbsolute: true,
+                reloadCorreta: true
+            };
+
+            edi.arrasta('arrasta', 'alvo', function (a, b) {
+                    b.css({
+                        margin: 0,
+                        padding: 0
+                    }).removeClass('azulAlpha');
+            }, function(){
+                $('#msgAcerto').fadeIn();
+            }, config);
+
+            $('<div>')
+                    .attr('id', 'mascote')
+                    .appendTo('#conteudo');
+
+            var pathMascote = "../wilib/canvas/objetos/mascote";
+            require([pathMascote], function (canvas) {
+                var mascote = new canvas.mascote();
+                mascote.obj.css({
+                    top: 319,
+                    left: 20
+                }).appendTo('#dv_titulo');
+                mascote.play();
+            });
+
+            var balao = $('<div>')
+                    .css({
+                        position: 'absolute',
+                        width: 250,
+                        height: 180,
+                        top: 120,
+                        left: 10,
+                        backgroundColor: '#FFF',
+                        border: 'solid 1px  #E2E2E2',
+                        borderRadius: 10
+                    })
+                    .attr('id', 'balao')
+                    .appendTo('#conteudo')
+
+
+            var icone = $('<div>')
+                    .css({
+                        position: 'absolute',
+                        top: 60
+                    })
+                    .iconeExclamacao(true)
+                    .appendTo('#balao')
+
+            var texto = $('<p>')
+                    .css({
+                        position: 'absolute',
+                        top: 15,
+                        left: 80,
+                        width: 150,
+                        textAlign: 'center',
+                        lineHeight: '18px',
+                        color: '#8CA8B8'
+                    })
+                    .html('Complete a sentença com as palavras corretas e conheça o significado da figura de linguagem prosopopeia.')
+                    .appendTo('#balao')
+
+            $("#balao").peBalao({
+                scaleX: -1,
+                scaleY: -1,
+                top: 189,
+                left: 40
+            });
+
+        });
+    </script>
+    <style>
+        .titulo {
+            position: relative;
+            color: #FFF;
+            float: left;
+            font-size: 22px;
+            font-style: italic;
+            margin-left: -75px;
+        }
+        .alvo {
+            display: inline-block;
+            width: 90px;
+            height: 15px;
+            border-bottom: 1px solid #999;
+        }
+        .arrasta {
+            padding: 5px;
+            width: auto;
+            color: #FFF;
+            display: inline-block;
+        }
+        #boxArrasta{
+            width: 470px;
+            height: 30px;
+            cursor: default;
+            top: 240px;
+            left: 265px;
+        }
+
+        #arrasta{
+            text-align: center;
+            position: relative;
+            width: 470px;
+            height: 30px;
+            vertical-align: middle;
+            display: table-cell;
+        }
+
+        #boxTexto{
+            position: absolute;
+            width: 430px;
+            height: 240px;
+            top: 45px;
+            left: 300px;
+            border-radius: 10px;
+            padding-left: 20px;
+            background-color: #FFF;
+            box-shadow: 2px 3px 0 0 rgba(0,0,0,.1);
+        }
+
+        #msgAcerto {
+            width: 220px;
+            height: 120px;
+            position: absolute;
+            left: 422px;
+            top: 190px;
+            padding: 5px;
+            padding-bottom: 30px;
+            font-size: 14px;
+            text-align: center;
+            font-weight: bold;
+            line-height: 16px;              
+            color: #9c0;
+            display:none;
+        }
+
+    </style>
+
+</head>
+<body>
+    <div id="boxArrasta" class="btn btn-default-hover">
+        <div id="arrasta"></div>
+    </div>
+    <div id="boxTexto"></div>
+
+    <div id="msgAcerto" class="arredondado">
+            <p>Muito bem! Prosopopeia é uma figura de linguagem usada para tornar mais dramática à comunicação.</p>
+        </div>
+
+</body>
+</html>

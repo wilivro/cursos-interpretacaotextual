@@ -1,0 +1,100 @@
+<!--Desenvolvedor: Rodolfo Araujo -->
+<!doctype html>
+<html lang="pt-br">
+<head>
+    <title>Lição 02 Peça 28</title>
+    <meta charset="utf-8">
+    <script src="../wilib/js/lib/require.js"></script>
+    <script src="../wilib/js/app.js"></script>
+    <link rel="stylesheet" href="../wilib/css/font-awesome.css">
+    <link rel="stylesheet" href="../wilib/css/estilo.css">
+
+    <script>
+			require(['../wilib/js/lib/alternativa_b06'], function (edi) {
+
+				edi.setConfig({
+          icone: "interrogacaoAzul",
+					titulo: "Clique sobre as palavras que representam o que o candidato <br> a interpretação de textos precisa fazer.",
+					mascote: 'mascote'
+				});
+
+				var alternativa = [
+					{texto:'Identificar', dataCorreta: true},
+					{texto:'Formatar', dataCorreta: false},
+					{texto:'Rabiscar', dataCorreta: false},
+					{texto:'Desenhar', dataCorreta: false},
+	        {texto:'Comentar', dataCorreta: true},
+	        {texto:'Pintar', dataCorreta: false},
+	        {texto:'Resumir', dataCorreta: true},
+					{texto:'Parafrasear', dataCorreta: true},
+					{texto:'Rasurar', dataCorreta: false},
+					{texto:'Corrigir', dataCorreta: false},
+					{texto:'Ignorar', dataCorreta: false}
+				];
+
+				var config = {
+            width: 110,
+            height: 38,
+            margin: '0px 13px 10px 10px',
+            left: 150,
+            top: 50,
+        }
+
+				edi.alternativa_b06(alternativa,null,function(a) {
+					if (a) {
+					$('#msgAcerto').fadeIn();
+				} else {
+					$('#msgErrado').fadeIn();
+				}
+				},config);
+			});
+		</script>
+		<style>
+			.botoes {
+				cursor: pointer;
+			}
+
+			#msgAcerto {
+				width: 350px;
+				height: 60px;
+				position: absolute;
+				left: 220px;
+				top: 305px;
+				padding: 3px;
+				font-size: 12px;
+				text-align: center;
+				font-weight: bold;
+				line-height: 16px;				
+				color: #9c0;
+				display: none;
+			}
+
+			#msgErrado {
+				width: 350px;
+				height: 60px;
+				position: absolute;
+				left: 220px;
+				top: 305px;
+				padding: 3px;
+				font-size: 12px;
+				text-align: center;
+				font-weight: bold;
+				line-height: 16px;				
+				color: #F00;
+				display: none;
+			}
+		</style>
+	</head>
+	<body>
+
+		<div id="msgAcerto" class="borda-pontilhado-verde arredondado">
+			<p>Muito bem! Para interpretar e compreender bem um texto nós precisamos Identificar, Comentar, Resumir e Parafrasear.</p>
+		</div>
+
+		<div id="msgErrado" class="borda-pontilhado-vermelho arredondado">
+			<p>Você errou! Lembre-se que estamos falando sobre interpretar <br> e compreender um texto.</p>
+		</div>
+
+
+	</body>
+</html>

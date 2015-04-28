@@ -1,0 +1,147 @@
+<!-- Desenvolvedor: Rodolfo Araújo -->
+<!doctype html>
+<html lang="pt-br">
+<head>
+    <title>Lição 02 Peça 03</title>
+    <meta charset="utf-8">
+    <script src="../wilib/js/lib/require.js"></script>
+    <script src="../wilib/js/app.js"></script>
+    <link rel="stylesheet" href="../wilib/css/font-awesome.css">
+    <link rel="stylesheet" href="../wilib/css/estilo.css">
+
+    <script>
+        require(['../wilib/js/lib/revela_slide'], function (edi) {
+
+            edi.setConfig({
+                icone: 'exclamacao',
+                titulo: 'Clique sobre os personagens e leia o diálogo.'
+            });
+
+            function callback(a, b) {
+                b.parent().css('box-shadow', '0 0 0 3px #8CA8B8');
+            }
+
+            function calbackFinal() {
+                mensagem('Muito Bem! Para que haja uma boa interpretação precisamos relacionar o que sabemos com o que nos é apresentado pelo autor do texto. Se não lemos, não <br> temos conteúdo para argumentar, e desta forma, <br> compreender o texto. Leia mais!')
+            }
+
+            edi.revela_slide('.revela', callback, calbackFinal, {});
+
+
+            $('.revelaEsquerda').each(function () {
+                $(this).peBalao({
+                    top: 81,
+                    left: 220,
+                    scaleX: -1,
+                    scaleY: -1,
+                    rotate: 0
+                });
+            });
+
+            $('.revelaDireito').each(function () {
+                $(this).peBalao({
+                    top: 86,
+                    left: 20,
+                    scaleX: 1,
+                    scaleY: -1,
+                    rotate: 0
+                });
+            });
+
+            $('#rev-04').each(function () {
+                $(this).peBalao({
+                    top: 86,
+                    left: 10,
+                    scaleX: 1,
+                    scaleY: -1,
+                    rotate: 0
+                });
+            });
+
+        });
+    </script>
+
+    <style>
+        i {
+            font-style: italic;
+            font-weight: bold;
+        }
+
+        .revela {
+            border: 1px solid #ccc;
+            padding: 10px 10px 10px 10px;
+            font-size: 14px;
+            line-height: 1.3;
+            border-radius: 10px;
+            background: #fff;
+            text-shadow: 1px 1px 1px rgba(0, 0, 0, 0.2);
+            text-align: center;
+            position: absolute;
+            bottom: 200px;
+        }
+
+        #rev-01  {
+            left: 20px;
+            top: 120px;
+            padding-top: 15px;
+            width: 320px;
+            height: 44px;
+        }
+
+        #rev-02 {
+            left: 320px;
+            top: 100px;
+            width: 420px;
+            padding-top: 15px;
+            height: 50px;
+        }
+
+        #rev-03  {
+            left: 30px;
+            top: 120px;
+            width: 320px;
+            padding-top: 10px;
+            height: 49px;
+        }
+
+        #rev-04 {
+            width: 370px;
+            left: 300px;
+            top: 95px;
+            height: 55px;
+        }
+
+       
+        .person {
+            width: 280px;
+            height: 200px;
+            position: absolute;
+            left: 200px;
+            top: 200px;
+        }
+
+
+    </style>
+</head>
+
+<body>
+<img src="../wilib/img/svg/personagens.svg" class="person" id="person-03">
+
+<p class="revelaEsquerda revela" id="rev-01">
+    João é verdade que a interpretação <br> amplia os horizontes? 
+</p>
+
+<p class="revelaDireito revela" id="rev-02">
+    Sim, Maria. E essa ampliação acontece justamente quando há leitura. Somos partes de nossos escritos, de nossos pensamentos, de nossas histórias, muitas vezes contadas por outros. 
+</p>
+
+<p class="revelaEsquerda revela" id="rev-03">
+    É verdade! Quantas vezes já li ideias e pensamentos de outras pessoas e pensei no quanto tudo tinha relação com o que eu pensava...
+</p>
+
+<p class="revela" id="rev-04">
+    Com certeza, várias vezes, isso aconteceu comigo também. Temos aí a confirmação de que nossos pensamentos têm relação com os pensamentos dos autores.
+</p>
+
+</body>
+</html>

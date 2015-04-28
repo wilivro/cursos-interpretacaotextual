@@ -1,0 +1,98 @@
+<!-- Desenvolvedor: Rodolfo Araújo -->
+<!doctype html>
+<html lang="pt-br">
+<head>
+    <title>Lição 05 Peça 03</title> <!-- alt_b001 -->
+    <meta charset="utf-8">
+    <script src="../wilib/js/lib/require.js"></script>
+    <script src="../wilib/js/app.js"></script>
+    <link rel="stylesheet" href="../wilib/css/font-awesome.css">
+    <link rel="stylesheet" href="../wilib/css/estilo.css">
+
+		<script>
+			require(['../wilib/js/lib/revela'], function (edi) {
+
+				edi.setConfig({
+          icone: "exclamacao",
+					titulo: "Clique sobre a imagem para revelar a explicação.",
+					mascote: 'mascote'
+				});
+
+				edi.revela('btn-revela', 'box-revela', function (btn, revela) {
+					//
+				}, function (btn) {
+					$('#msgAcerto').fadeIn();
+					btn.animate({left: 10}, 1000);
+				}, {
+					piscar: false,
+					delay: 1000
+				});//iniciando o EDI
+
+			});
+		</script>
+
+		<style>
+			.btn-revela {
+				background: url(../img/licao05/p24.png) no-repeat;
+				background-size: 100% 100%;
+				width: 200px;
+				height: 210px;
+				top: 120px;
+				left: 290px;
+				z-index: 100;
+				position: absolute;
+				cursor: pointer;
+			}
+
+			.box-revela {
+        width: 280px;
+        border: 1px solid #ccc;
+        border-radius: 15px;
+        font-size: 12px;
+        padding: 10px;
+        position: absolute;
+        line-height: 1.8;
+        text-align: left;
+        text-shadow: 1px 1px 1px rgba(0, 0, 0, 0.2);
+        top: 120px;
+        left: 245px;
+      }
+
+      #msgAcerto {
+        width: 150px;
+        height: 125px;
+        position: absolute;
+        left: 572px;
+        top: 150px;
+        padding: 10px;
+        padding-bottom: 30px;
+        font-size: 14px;
+        text-align: center;
+        font-weight: bold;
+        line-height: 16px;              
+        color: #9c0;
+        display: none;
+       }
+
+		</style>
+	</head>
+
+	<body>
+		<div class="btn-revela"></div>
+		<div class="box-revela">
+				Há quem confunda paradoxo com antítese. Apesar de serem parecidas, elas se diferenciam por que no paradoxo a oposição se funde num mesmo referente, criando um efeito de contradição: <br><br>
+
+				“A explosiva descoberta
+				Ainda me atordoa.
+				Estou cego e vejo.
+				Arranco os olhos e vejo”. <br><br>
+
+				(Carlos Drummond de Andrade)
+
+		</div>
+
+		 <div id="msgAcerto" class="borda-pontilhado-verde arredondado">
+        <p>Muito bem! Paradoxo é a figura de linguagem que consiste em empregar palavras que, mesmo opostas quanto ao sentido se fundem num mesmo enunciado.</p>
+     </div>
+	</body>
+</html>

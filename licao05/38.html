@@ -1,0 +1,186 @@
+<!-- Desenvolvedor: Rodolfo Araújo -->
+<!doctype html>
+<html lang="pt-br">
+<head>
+    <title>Lição 02 Peça 03</title>
+    <meta charset="utf-8">
+    <script src="../wilib/js/lib/require.js"></script>
+    <script src="../wilib/js/app.js"></script>
+    <link rel="stylesheet" href="../wilib/css/font-awesome.css">
+    <link rel="stylesheet" href="../wilib/css/estilo.css">
+
+    <script>
+        require(['../wilib/js/lib/revela_slide'], function (edi) {
+
+            edi.setConfig({
+                icone: 'exclamacao',
+                titulo: 'Clique sobre os botões para acompanhar a aula sobre a figura ironia.'
+            });
+
+            function callback(a, b) {
+                b.parent().css('box-shadow', '0 0 0 3px #8CA8B8');
+            }
+
+            function calbackFinal() {
+                barraMsg('Excelente! Você conheceu o conceito da figura de linguagem ironia, continue seus estudos com atenção!')
+            }
+
+            edi.revela_slide('.revela', callback, calbackFinal, {});
+
+            $('#conteudo').css('width', '708px');
+            $('#conteudo').css('height', '234px');
+
+            $('#alunos').animate({top: '230px', width: '298px', height:'338px'}, 1500, function(){
+               $('#balao').animate({'opacity': '1'}, 500);
+            });
+
+            $('#balao').peBalao({
+                top: 50,
+                left: 278,
+                scaleX: 1.4,
+                scaleY: 2.1,
+                rotate: 90,
+                background: 'rgba(204,204,204, 0.6)',
+                borda:'#E2E2E2',
+                tamanhoBorda: 10
+            });
+
+            $('.revelaEsquerda').each(function () {
+                $(this).peBalao({
+                    top: 91,
+                    left: 220,
+                    scaleX: 1,
+                    scaleY: -1,
+                    rotate: 0
+                });
+            });
+
+            $('.revelaDireito').each(function () {
+                $(this).peBalao({
+                    top: 100,
+                    left: 265,
+                    scaleX: 1.4,
+                    scaleY: 2.1,
+                    rotate: 90
+                });
+            });
+
+        });
+    </script>
+
+    <style>
+        i {
+            font-style: italic;
+            font-weight: bold;
+        }
+
+        #balao{
+            position: absolute;
+            width: 274px;
+            height: 90px;
+            top: 100px;
+            left: 50px;
+            background-color: rgba(204,204,204, 0.6);
+            border: 1px solid #E6E6E6;
+            border-radius: 10px;
+            opacity: 0;
+        }
+
+        .revela {
+            border: 1px solid #ccc;
+            padding: 10px 10px 10px 10px;
+            font-size: 14px;
+            line-height: 1.3;
+            border-radius: 10px;
+            background: #fff;
+            text-shadow: 1px 1px 1px rgba(0, 0, 0, 0.2);
+            text-align: center;
+            position: absolute;
+            bottom: 200px;
+        }
+
+        #rev-01  {
+            left: 20px;
+            top: 125px;
+            padding-top: 5px;
+            width: 320px;
+            height: 64px;
+        }
+
+        #rev-02  {
+            left: 60px;
+            top: 80px;
+            width: 260px;
+            padding-top: 15px;
+            height: 90px;
+        }
+
+        #alunos {
+            position: absolute;
+            width: 498px;
+            height: 538px;
+            left: 250px;
+            top: 400px;
+            background-size: 100% 100%;
+            background-image: url(../wilib/img/fotos/alunos.png);
+        }
+
+       
+        #professora{
+            position: absolute;
+            width: 73px;
+            height: 266px;
+            top: 160px;
+            left: 360px;
+            background-size: 100% 100%;
+            background-image: url(../wilib/img/svg/professora03.svg);
+        }
+
+        #quadro{
+            position: absolute;
+            width: 568px;
+            height: 209px;
+            top: 120px;
+            left: 110px;
+            background-image: url(../wilib/img/svg/quadro.svg);
+        }
+
+        #conteudo{
+            background: #F7F7F7;
+            width: 749px;
+            box-shadow: -6px 6px rgba(200,200,200,1);
+            border: 40px inset #CCC;
+        }
+
+        #btn-prev {
+            left: 180px !important;
+        }
+      
+    </style>
+</head>
+
+<body>
+
+<div id="quadro"></div>
+<div id="professora"></div>
+<div id="alunos"></div>
+
+<p class="revela" id="balao">
+    Ironia consiste em dizer o contrário do que se pretende ou em satirizar, questionar certo tipo de pensamento com a intenção de ridicularizá-lo, ou ainda em ressaltar algum aspecto passível de crítica. 
+</p>
+
+
+<p class="revelaEsquerda revela" id="rev-01">
+    A ironia deve ser muito bem construída para que cumpra a sua finalidade; mal construída, pode passar uma ideia exatamente oposta à desejada pelo emissor, não é professora?
+</p>
+
+<p class="revelaDireito revela" id="rev-02">
+Sim, isso mesmo! Veja os exemplos: <br>
+
+“Como você foi bem na última prova, não tirou nem a nota mínima!” <br>
+“Parece um anjinho aquele menino, briga com todos que estão por perto.”
+
+</p>
+
+</body>
+</html>

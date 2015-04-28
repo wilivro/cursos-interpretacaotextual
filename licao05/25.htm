@@ -1,0 +1,157 @@
+
+<!-- Desenvolvedor: Rodolfo Araújo -->
+<!doctype html>
+<html lang="pt-br">
+
+<head>
+	<title>Lição 02 Peça 02</title>
+        <meta charset="utf-8">
+        <script src="../wilib/js/lib/require.js"></script>
+        <script src="../wilib/js/app.js"></script>
+        <link rel="stylesheet" href="../wilib/css/font-awesome.css">
+        <link rel="stylesheet" href="../wilib/css/estilo.css">
+
+	<script>
+		require(['../wilib/js/lib/alternativa_img'], function (edi) {
+
+			edi.setConfig({
+				icone: 'exclamacao',
+        mascote: 'mascote',
+				titulo: 'Clique sobre a imagem que representa um paradoxo.',
+                tempoFinal: 15
+			});
+
+			var imgs = [
+				{
+					src: '../img/licao05/p25_1.png',
+					dataCorreta: true,
+					texto: '',
+					textoConfig: {
+						width: 100,
+						height: 200,
+						left: 10,
+						top: 85,
+						setaLeft: 55,
+						fontSize: 12,
+						lineHeight: 1,
+						pMarginTop: 40
+					}
+				},
+        {
+					src: '../img/licao05/p25_2.png',
+					dataCorreta: false,
+					texto: '',
+					textoConfig: {
+						width: 100,
+						height: 200,
+						left: -5,
+						top: 85,
+						setaLeft: 85,
+						fontSize: 12,
+						lineHeight: 1,
+						pMarginTop: 35
+					}
+				},
+        {
+					src: '../img/licao05/p25_3.png',
+					dataCorreta: false,
+					texto: '',
+					textoConfig: {
+						width: 100,
+						height: 100,
+						left: -75,
+						top: 85,
+						setaLeft: 85,
+						fontSize: 12,
+						lineHeight: 1,
+						pMarginTop: 22
+					}
+				},
+				{
+					src: '../img/licao05/p25_4.png',
+					dataCorreta: false,
+					texto: '',
+					textoConfig: {
+						width: 100,
+						height: 100,
+						left: -75,
+						top: 85,
+						setaLeft: 85,
+						fontSize: 12,
+						lineHeight: 1,
+						pMarginTop: 22
+					}
+				}
+			];
+
+			var config = {
+				width: 160,
+				height: 150,
+				left: 40,
+				top: 100,
+				colunas: 7,
+				margin: 5,
+				padding: 5,
+				fontSize: 11
+			};
+
+			function callback(a) {
+				if (a) {
+					$('#msgAcerto').fadeIn();
+				} else{
+					$('#msgErrado').fadeIn();
+			};
+		}
+
+			edi.alternativa_img(imgs, callback, null, config);
+		});
+	</script>
+    <style>
+
+    #msgAcerto {
+				width: 450px;
+				height: 70px;
+				position: absolute;
+				left: 160px;
+				top: 285px;
+				padding: 3px;
+				font-size: 12px;
+				text-align: center;
+				font-weight: bold;
+				line-height: 16px;				
+				color: #9c0;
+				display: none;
+			}
+
+			#msgErrado {
+				width: 450px;
+				height: 60px;
+				position: absolute;
+				left: 160px;
+				top: 295px;
+				padding: 3px;
+				font-size: 12px;
+				text-align: center;
+				font-weight: bold;
+				line-height: 16px;				
+				color: #F00;
+				display: none;
+			}
+
+    </style>
+</head>
+
+<body>
+
+	<div id="msgAcerto" class="borda-pontilhado-verde arredondado">
+			<p>Excelente! Um paradoxo é uma declaração aparentemente verdadeira que leva a uma contradição lógica, ou a uma situação que contradiz a intuição comum, como na imagem da flor nascendo entre as pedras. As demais imagens são metáforas.</p>
+		</div>
+
+		<div id="msgErrado" class="borda-pontilhado-vermelho arredondado">
+			<p>Atenção! Um paradoxo é uma declaração aparentemente verdadeira que leva a uma contradição lógica, ou a uma situação que contradiz a intuição comum.</p>
+		</div>
+
+
+</body>
+
+</html>

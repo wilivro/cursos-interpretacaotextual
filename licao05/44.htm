@@ -1,0 +1,66 @@
+<!doctype html>
+<html lang="pt-br">
+<head>
+    <title>rev_aa001</title>
+    <meta charset="utf-8">
+    <script src="../wilib/js/lib/require.js"></script>
+    <script src="../wilib/js/app.js"></script>
+    <link rel="stylesheet" href="../wilib/css/font-awesome.css">
+     <link rel="stylesheet" href="../wilib/css/estilo.css">
+
+    <!-- main -->
+    <script>
+        require(['../wilib/js/lib/revela_bolas'], function (edi) {
+
+            edi.setConfig({// configurando o EDI
+                icone: 'exclamacao',
+                titulo: 'Clique nos círculos e conheça alguns exemplos de prosopopeia.'
+            });
+
+            var arrRevela = [
+                {texto:'Árvores pedem socorro. ', cor: '#0000CC'},
+                {texto:'O jardim olhava as crianças sem <br> dizer nada.', cor:'#99CCFF'},
+                {texto:'A raposa disse <br> algo que convenceu <br> o corvo.', cor: '#99CC00'},
+                {texto:'As árvores <br> são imbecis: se <br> despem justamente <br> quando começa <br> o inverno.', cor: '#FF99FF'},
+                {texto:'“Hoje  a cobiça assentou-se no lugar da equidade.” (Alexandre Herculano).', cor: '#FFCC33'},
+                {texto:'“La fora, no jardim <br> que o luar acaricia, um repuxo apunhala a alma da solidão.” (Olegário Mariano).', cor: '#FF0000'}
+            ];
+
+            var config = {
+                tempoBloqueio: 1000,
+                width: 780,
+                height: 312,
+                larguraBola: 170,
+                alturaBola: 140,
+                fontSize: '14px',
+                marginLeft: 25,
+                marginRight: 25,
+                marginBottom: 12,
+                borderRadius: '50%',
+            }
+
+            edi.revela_bolas(arrRevela,null, function () {
+                barraMsg('Muito bem!  Através desse recurso os poetas fazem os seres inanimados agirem e sentirem como pessoas humanas, intensificando <br>assim a força dramática da descrição.')
+            }, config);
+
+        });
+    </script>
+</head>
+<style>
+    #revela{
+        position: absolute;
+        top: 120px;
+        left: 3px;
+        width: 84px;
+        height: 160px;
+        color: #9c0;
+        border: 2px dashed #9c0;
+        text-align: center;
+        padding: 20px;
+        border-radius: 10px;
+        display: none;
+    }
+</style>
+<body>
+</body>
+</html>

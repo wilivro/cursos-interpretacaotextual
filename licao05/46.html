@@ -1,0 +1,69 @@
+<!-- Desenvolvedor: Danilo Thiago -->
+<!doctype html>
+<html lang="pt-br">
+	<head>
+		<title>alt_d002</title>
+		<meta charset="utf-8">
+		<script src="../wilib/js/lib/require.js"></script>
+		<script src="../wilib/js/app.js"></script>
+		
+		<link rel="stylesheet" href="../wilib/css/font-awesome.css">
+		 <link rel="stylesheet" href="../wilib/css/estilo.css">
+
+		<script>
+            $(function () {
+                require(['../wilib/js/lib/alternativa'], function (edi) {
+
+                    edi.setConfig({
+                        icone: 'interrogacaoAzul',
+                        titulo: 'Clique sobre a alternativa onde o autor NÃO utiliza a <br> figura de linguagem prosopopeia.'
+                    });
+
+                    var alternativas = [
+                        {
+                            alternativa: '“A luminosidade sorria no ar: exatamente isto. Era um suspiro do mundo.” <br> (Clarice Lispector).',
+                            correta: false
+                        },{
+                            alternativa: '“As palavras não nascem amarradas, elas saltam, se beijam, se dissolvem…” (Drummond).',
+                            correta: false
+                        },{
+                            alternativa: '“Quando essa não-palavra morde a isca, alguma coisa se escreveu.” <br> (Clarice Lispector).',
+                            correta: false
+                        },{
+                            alternativa: '“A poesia vai à esquina comprar jornal”. (Ferreira Gullar).',
+                            correta: false
+                        },{
+                            alternativa: '“Meu nome é Severino, Não tenho outro de pia”. (João Cabral de Melo Neto).',
+                            correta: true
+                        }
+                    ];
+
+                    var config = {
+                        posx: 15,
+                        posy: 85,
+                        aleatorio: true,
+                        tamanhoBox: 35,
+                        tamanhoBoxTexto: 600,
+                        marginBtns: 5
+                    }
+
+                    edi.alternativa(alternativas, function (acertou) {
+                    }, function (a) {
+                        if (a) {
+                             barraMsg('Excelente! A alternativa correta é a letra E, porque não atribui <br> nenhuma  característica humana a seres irracionais.')
+                        } else{
+                             barraMsg('Atenção! Lembre-se que a prosopopeia atribui <br> características humanas a seres irracionais.')
+                        };
+                       
+                    }, config);
+
+               });
+            })
+		</script>
+
+		<style>
+		</style>
+	</head>
+	<body>
+	</body>
+</html>

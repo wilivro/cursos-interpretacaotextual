@@ -1,0 +1,91 @@
+<!-- Desenvolvedor: Rodolfo Araújo -->
+<!doctype html>
+<html lang="pt-br">
+<head>
+    <title>Lição 02 Peça 05</title> <!-- alt_b001 -->
+    <meta charset="utf-8">
+    <script src="../wilib/js/lib/require.js"></script>
+    <script src="../wilib/js/app.js"></script>
+    <link rel="stylesheet" href="../wilib/css/font-awesome.css">
+    <link rel="stylesheet" href="../wilib/css/estilo.css">
+
+    <script>
+        require(['../wilib/js/lib/alternativa_botao'], function (edi) {
+
+            edi.setConfig({
+                titulo: "O que você faz quando encontra muitas palavras desconhecidas em um texto? Clique sobre o personagem que expressa à opção correta.",
+                mascote: 'mascote'
+            });
+
+            var btns = [];
+
+            btns.push({
+                texto: "Paro a leitura, pois não <br> estou entendendo nada!",
+                dataCorreta: true
+            });
+
+            btns.push({
+                texto: "Leio sem dar importância <br> às palavras estranhas!",
+                dataCorreta: false
+            });
+
+            btns.push({
+                texto: "Leio todo texto até <br> o fim, sem interromper!",
+                dataCorreta: false
+            });
+
+            var config = {
+                colunas: 1,
+                width: 300,
+                height: 35,
+                left: 190,
+                top: 80,
+                margin: 18,
+                tamanhoTexto: 14,
+                btnBranco: true,
+                randomico: false,
+                lineHeight: '1.4',
+                animacao: true
+            }
+
+            edi.alternativa_botao(btns, null, null, config);
+        });
+    </script>
+
+    <style>
+
+        #edu {
+            position: absolute;
+            left: 50px;
+            top: 70px;
+            width: 118px;
+            height: 100px;
+            background-size: 100%;
+            background-repeat: no-repeat;
+            background-image: url(../wilib/img/svg/edu.svg);
+            z-index: 10;
+        }
+
+        #fred {
+            position: absolute;
+            left: 35px;
+            top: 270px;
+            width: 118px;
+            height: 100px;
+            background-size: 100%;
+            background-repeat: no-repeat;
+            background-image: url(../wilib/img/fotos/fred.png);
+            z-index: 10;
+        }
+
+    </style>
+
+</head>
+
+<body>
+
+    <div id="edu"></div>
+    <div id="fred"></div>
+
+</body>
+</html>

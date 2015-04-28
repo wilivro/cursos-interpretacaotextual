@@ -1,0 +1,116 @@
+<!-- Desenvolvedor: Rodolfo Araújo -->
+<!doctype html>
+<html lang="pt-br">
+<head>
+    <title>Lição 05 Peça 03</title> <!-- alt_b001 -->
+    <meta charset="utf-8">
+    <script src="../wilib/js/lib/require.js"></script>
+    <script src="../wilib/js/app.js"></script>
+    <link rel="stylesheet" href="../wilib/css/font-awesome.css">
+    <link rel="stylesheet" href="../wilib/css/estilo.css">
+
+    <script>
+        require(['../wilib/js/lib/alternativa_botao'], function (edi) {
+
+            edi.setConfig({
+                titulo: "De acordo com seus conhecimentos prévios clique sobre a alternativa que melhor define a figura aliteração.",
+                mascote: 'mascote'
+            });
+
+            var btns = [];
+
+            btns.push({
+                texto: "A aliteração consiste na repetição de um fonema.",
+                dataCorreta: true
+            });
+
+            btns.push({
+                texto: "Aliteração consiste na omissão de um fonema.",
+                dataCorreta: false
+            });
+
+            btns.push({
+                texto: "Aliteração é uma figura de construção.per!",
+                dataCorreta: false
+            });
+
+            btns.push({
+                texto: "Aliteração é uma figura de palavra.",
+                dataCorreta: false
+            });
+
+
+            var config = {
+                colunas: 1,
+                width: 380,
+                height: 35,
+                left: 190,
+                top: 80,
+                margin: 5,
+                tamanhoTexto: 14,
+                btnBranco: true,
+                randomico: false,
+                lineHeight: '1.4',
+                animacao: true
+            }
+
+            edi.alternativa_botao(btns, null, function(a) {
+                if (a) {
+                     $('#msgAcerto').fadeIn();
+                    } else {
+                     $('#msgErrado').fadeIn();
+                    }
+            }, config);
+        });
+    </script>
+
+    <style>
+
+        #msgAcerto {
+            width: 150px;
+            height: 165px;
+            position: absolute;
+            left: 12px;
+            top: 130px;
+            padding: 10px;
+            padding-bottom: 30px;
+            font-size: 14px;
+            text-align: center;
+            font-weight: bold;
+            line-height: 16px;              
+            color: #9c0;
+            display: none;
+            }
+
+         #msgErrado {
+            width: 150px;
+            height: 175px;
+            position: absolute;
+            left: 12px;
+            top: 125px;
+            padding: 10px;
+            padding-bottom: 30px;
+            font-size: 14px;
+            text-align: center;
+            font-weight: bold;
+            line-height: 16px;                  
+            color: #F00;
+            display: none;
+         }
+
+    </style>
+
+</head>
+
+<body>
+
+     <div id="msgAcerto" class="borda-pontilhado-verde arredondado">
+        <p>Excelente!  A figura aliteração consiste na repetição de consoantes como recurso para intensificação do ritmo ou como efeito sonoro significativo. Exemplos: Três pratos de trigo para três tigres tristes.</p>
+     </div>
+
+    <div id="msgErrado" class="borda-pontilhado-vermelho arredondado">
+        <p>Atenção! A figura aliteração consiste na repetição de consoantes como recurso para intensificação do ritmo ou como efeito sonoro significativo. Exemplos: Três pratos de trigo para três tigres tristes. Tente novamente!</p>
+    </div>
+
+</body>
+</html>

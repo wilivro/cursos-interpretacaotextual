@@ -1,0 +1,140 @@
+<!-- Desenvolvedor: Rodolfo Araújo -->
+<!doctype html>
+<html lang="pt-br">
+	<head>
+		<title>Lição 02 Peça 40</title>
+		<meta charset="utf-8">
+		<script src="../wilib/js/lib/require.js"></script>
+		<script src="../wilib/js/app.js"></script>
+	  <link rel="stylesheet" href="../wilib/css/font-awesome.css">
+	  <link rel="stylesheet" href="../wilib/css/estilo.css">
+
+		<!-- main -->
+		<script>
+			require(['../wilib/js/lib/alternativa_botao'], function (edi) {
+
+				edi.setConfig({// configurando o EDI
+          icone: "exclamacao",
+					titulo: "Precisamos estar atentos a leituras de todas as áreas do conhecimento, porque algumas extrapolam ao que está escrito. Clique sobre a imagem para revelar um exemplo disso, e responda a questão apresentada.",
+				});
+
+				var btns = [
+					{
+						texto: 'os portugueses.',
+						dataCorreta: false
+					},{
+						texto: 'os negros.',
+						dataCorreta: false
+					},{
+						texto: 'os índios.',
+						dataCorreta: true
+					},{
+						texto: 'tanto os índios quanto aos negros.',
+						dataCorreta: false
+					},{
+						texto: 'a miscigenação de portugueses e índios.',
+						dataCorreta: false
+					},
+				];
+
+				var config = {
+					colunas: 1,
+					width: 360,
+					height: 26,
+					left: 380,
+					top: 70,
+					margin: 5,
+					tamanhoTexto: 14,
+					btnBranco: true,
+					lineHeight: '1.0',
+					animacao: true
+				}
+
+				function callback (a) {
+					if (a) {
+						mensagem(
+							'Muito bem! Apesar do autor não ter citado o nome dos índios, é possível ' +
+							'concluir pelas características apresentadas no texto. Essa resposta exige <br> ' +
+							'conhecimento que extrapola o texto, ou seja, <br> vai além daquilo que você ' +
+							'leu, tem relação <br> com sua leitura de mundo!'
+						);
+						return;
+					}
+
+					mensagem(
+						'Atenção! Releia o texto e tente fazer associações ' +
+						'com o que você conhece da história do Brasil.'
+					);
+				}
+
+				edi.alternativa_botao(btns, null, callback, config);//iniciando o EDI
+
+				$(".balao").peBalao({
+						scaleX: -1,
+						scaleY: 1,
+						top: 2,
+						left: 0
+				});
+
+				$('.balao, .alter-btn').hide();
+
+
+				$('#_btn').click(function() {
+
+					$('#texto-titulo').html(
+						'Concluo do texto que os antigos moradores da terra eram:'
+					);
+
+					$(this).fadeOut(function() {
+						$('.balao, .alter-btn').fadeIn();
+					});
+
+				});
+			});
+		</script>
+
+		<style>
+			.alter-btn {
+				width: 250px;
+			}
+
+			.balao {
+				position: absolute;
+				left: 10px;
+				top: 90px;
+				width: 350px;
+				height: 260px;
+				border: 1px solid #ccc;
+				border-radius: 5px;
+				padding: 5px;
+				font-size: 10px;
+			}
+
+			.balao img {
+				width: 150px;
+				margin-left: 85px;
+				margin-top: 10px;
+			}
+
+			#_btn {
+				position: absolute;
+				top: 150px;
+				left: 290px;
+				width: 200px;
+				cursor: pointer;
+			}
+
+			#_btn:hover {
+				opacity: 0.6;
+			}
+		</style>
+	</head>
+
+	<body>
+		<img id="_btn" src="../img/licao02/p40.png"/>
+		<div class="balao">
+			Pode dizer-se que a presença do negro representou sempre fator obrigatório no desenvolvimento dos latifúndios coloniais. Os antigos moradores da terra foram, eventualmente, prestimosos colaboradores da indústria extrativa, na caça, na pesca, em determinados ofícios mecânicos e na criação do gado. Dificilmente se acomodavam, porém, ao trabalho acurado e metódico que exige a exploração dos canaviais. Sua tendência espontânea era para as atividades menos sedentárias e que pudessem exercer-se sem regularidade forçada e sem vigilância e fiscalização de estranhos. <br> (Sérgio Buarque de Holanda, in Raízes)
+			<img src="../img/licao02/p40.png">
+		</div>
+	</body>
+</html>

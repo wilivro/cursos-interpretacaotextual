@@ -1,0 +1,105 @@
+<!-- Desenvolvedor: Micael Souza -->
+<!doctype html>
+<html lang="pt-br">
+
+<head>
+	<title>Lição 01 Peça 66</title>
+	<meta charset="utf-8">
+	<script src="../wilib/js/lib/require.js"></script>
+	<script src="../wilib/js/app.js"></script>
+
+	<link rel="stylesheet" href="../wilib/css/font-awesome.css">
+	<link rel="stylesheet" href="../wilib/css/estilo.css">
+
+	<!-- main -->
+	<script>
+		require(['../wilib/js/lib/revela_slide'], function (edi) {
+
+			edi.setConfig({ // configurando o EDI
+				icone: 'exclamacao',
+				titulo: 'Clique sobre as setas e revele o conceito da figura assonância.',
+				mascote: 'mascote'
+			});
+
+			function callback(a, b) {
+				b.parent().css('box-shadow', '0 0 0 3px #8CA8B8');
+			}
+
+			function callbackFinal () {
+				console.log('cbfinal')
+			}
+
+			edi.revela_slide('.revela', callback, function(){
+                barraMsg('Muito bem! Veja o exemplo: “Pássaro da lua/que queres cantar/nessa terra tua/sem flor e sem mar?” (Cecília Meireles). Nesses versos, a assonância se apresenta na repetição da vogal tônica “e” (queres, nessa, terra, sem), nas vogais “ua” (lua, tua) e na vogal “a” (pássaro, cantar, mar).');
+            });
+
+            $('#rev-01').peBalao({
+                top:68,
+                left:200,
+                scaleX:-1,
+                scaleY:-1,
+                rotate:0
+            });
+
+            $('#rev-03').peBalao({
+                top:85,
+                left:240,
+                scaleX:-1,
+                scaleY:-1,
+                rotate:0
+            });
+		});
+	</script>
+
+	<style>
+        i {
+            font-style: italic;
+            font-weight: bold;
+        }
+
+        .revela {
+            border: 1px solid #ccc;
+            padding: 10px 25px;
+            font-size: 14px;
+            line-height: 1.3;
+            border-radius: 10px;
+            background: #fff;
+            text-shadow: 1px 1px 1px rgba(0, 0, 0, 0.2);
+            text-align: center;
+            position: absolute;
+            bottom: 200px;
+        }
+
+        #rev-01 {left: 20px}
+        #rev-03 {left: 250px}
+
+        .person {
+            width: 110px;
+            height: 150px;
+            position: absolute;
+            left: 10px;
+            top: 200px;
+        }
+
+        #person-01 {left: 150px}
+        #person-03 {left: 435px}
+	</style>
+</head>
+
+<body>
+    <img src="../wilib/img/svg/personagem_001.svg" class="person" id="person-01">
+    <img src="../wilib/img/svg/personagem_002.svg" class="person" id="person-03">
+
+    <p class="revela" id="rev-01">
+        A assonância funciona como complemento melódico do verso, <br>
+        na medida em que as vogais são acusticamente sons musicais.
+    </p>
+
+    <p class="revela" id="rev-03">
+        Frequentemente, a assonância tem um efeito de rima  <br>
+        quando é usada, por exemplo, para fazer <br> corresponder vogais em versos finais.
+    </p>
+
+</body>
+</html>
+

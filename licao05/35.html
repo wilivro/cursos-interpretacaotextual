@@ -1,0 +1,71 @@
+<!-- Desenvolvedor: Rodolfo Araújo -->
+<!doctype html>
+<html lang="pt-br">
+	<head>
+        <title>Lição 02 Peça 10</title>
+        <meta charset="utf-8">
+        <script src="../wilib/js/lib/require.js"></script>
+        <script src="../wilib/js/app.js"></script>
+        <link rel="stylesheet" href="../wilib/css/font-awesome.css">
+        <link rel="stylesheet" href="../wilib/css/estilo.css">
+
+		<script>
+			require(['../wilib/js/lib/alternativa_vf'], function (edi) {
+				
+				edi.setConfig({
+        icone: "interrogacaoAzul",
+        mascote: 'mascote',
+				titulo: "Clique em V para as frases que apresentam hipérbole e F para as frases que representam outras figuras de linguagem."
+				});
+				
+				var alternativas  = [];
+				
+				alternativas.push({
+					texto: '“Já falei mil vezes com esse menino e ele não me obedece”.',
+					dataCorreta: true
+				});
+				
+				alternativas.push({
+					texto: '“Vai passar um ônibus pro Inferno, mas não passa o do Novo Juazeiro”.',
+					dataCorreta: true
+				});
+				
+				alternativas.push({
+					texto: '“Faz umas dez horas que essa menina penteia esse cabelo”.',
+					dataCorreta: true
+				});
+
+				alternativas.push({
+					texto: '“A roupa dela está tão curta que daqui a pouco ela está andando pelada na rua”.',
+					dataCorreta: true
+				});
+
+				alternativas.push({
+					texto: '“Já faz séculos que esse menino não toma banho, que, quando ele tirar essa roupa, ela vai sair correndo gritando: Me lava, por favor!”',
+					dataCorreta: true
+				});
+				
+				edi.alternativa_vf(alternativas, function (a) {
+
+                }, function (a) {
+                	if (a) {
+                		barraMsg('Muito bem! Todas as alternativas são verdadeiras, <br> representam a figura de linguagem hipérbole.')
+                	} else {
+                		barraMsg('Atenção! Lembre-se que a hipérbole apresenta exagero.')
+                	}
+
+                }, {
+                    left: 40,
+                    top: 20,
+                    margin: '0 0 15px 0'
+                });
+			});
+		</script>
+		<style>
+
+		</style>
+	</head>
+	
+	<body>
+	</body>
+</html>

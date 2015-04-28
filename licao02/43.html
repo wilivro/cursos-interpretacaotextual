@@ -1,0 +1,183 @@
+<!-- Desenvolvedor: Rodolfo Araujo -->
+<!doctype html>
+<html lang="pt-br">
+	<head>
+		<title>Lição 02 Peça 43</title>
+		<meta charset="utf-8">
+		<script src="../wilib/js/lib/require.js"></script>
+		<script src="../wilib/js/app.js"></script>
+
+		<link rel="stylesheet" href="../wilib/css/font-awesome.css">
+		<link rel="stylesheet" href="../wilib/css/estilo.css">
+
+		<!-- main -->
+		<script>
+            $(function () {
+                require(['../wilib/js/lib/alternativa'], function (edi) {
+
+                    edi.setConfig({ // configurando o EDI
+                        icone: 'exclamacao',
+                        titulo: 'Observe a frase a seguir e marque a opção que demonstra a paráfrase da frase original. Lembrando que paráfrase é: a reescrita <br> do texto sem perda de sentido original.'
+                    });
+
+                    var alternativas = [
+                        {
+                            alternativa: 'Parado em um sinal de trânsito hoje cedo, numa esquina, próximo a uma porta, eu olhei para uma loira e ela também me olhou.',
+                            correta: false
+                        },{
+                            alternativa: 'Hoje cedo, eu estava parado em um sinal de trânsito, quando ao olhar para uma esquina, meus olhos deram com os olhos de uma loirona.',
+                            correta: false
+                        },{
+                            alternativa: 'Hoje cedo, estava eu parado em um sinal de trânsito quando vi, numa esquina, próxima a uma porta, uma louraça a me olhar.',
+                            correta: true
+                        },{
+                            alternativa: 'Estava eu hoje cedo parado em um sinal de trânsito, quando olho na esquina, próximo a uma porta, vejo uma loiraça a me olhar também.',
+                            correta: false
+                        }
+                    ];
+
+                    var config = {
+                        posx: 180,
+                        posy: 90,
+                        aleatorio: true,
+                        tamanhoBox: 35,
+                        tamanhoBoxTexto: 450,
+                        marginBtns: 5,
+                        tamanhoFonteTexto: 14,
+                    }
+
+                    edi.alternativa(alternativas, function (acertou) {
+                        //                    log(acertou);
+                    }, function (a) {
+                    if (a) {
+                			$('#msgAcerto').fadeIn();
+              			} else {
+                			$('#msgErrado').fadeIn();
+                		}
+                    }, config); //iniciando o EDI
+
+                        $('#balao').peBalao({
+                            left: 10
+                        });
+
+
+                    $('#ico').iconeInterrogacaoAzul();
+                });
+            })
+		</script>
+
+		<style>
+			#balao {
+/*				background: url(../img/balao_seta_top.png) no-repeat;*/
+				border: 1px solid #ccc;
+				background: #fff;
+				width: 140px;
+				height: 240px;
+				position: absolute;
+				left: 10px;
+				top: 100px;
+				font-size: 13px;
+				text-align: center;
+				font-weight: 700;
+				line-height: 1.2;
+				border-radius: 10px;
+				color: #48A2D4;
+			}
+
+			#ico {
+				margin: 20px 0;
+        height: 59px;
+        position: relative;
+			}
+
+      #ico img {
+          left: 45px;
+      }
+
+			#msg {
+				width: 550px;
+				position: absolute;
+				bottom: 10px;
+				left: 10px;
+				font-size: 13px;
+				text-align: center;
+				font-weight: 700;
+				line-height: 3.2;
+				color: #8DE91B;
+				display: none;
+			}
+
+			#seta {
+				height: 40px;
+				float: left;
+			}
+
+			#bl {
+				background: #fff;
+				width: 100px;
+				height: 100px;
+				position: absolute;
+				left: 10px;
+				top: 90px;
+				border: 1px solid;
+			}
+
+			#grifado { 
+				font-weight: bold;
+				font-size: 10px;
+			}
+
+			#msgAcerto {
+				width: 350px;
+				height: 50px;
+				position: absolute;
+				left: 320px;
+				top: 315px;
+				padding-bottom: 10px;
+				font-size: 14px;
+				text-align: center;
+				font-weight: bold;
+				line-height: 16px;				
+				color: #9c0;
+				display: none;
+			}
+
+			#msgErrado {
+				width: 360px;
+				height: 50px;
+				position: absolute;
+				left: 300px;
+				top: 315px;
+				padding-bottom: 10px;
+				font-size: 14px;
+				text-align: center;
+				font-weight: bold;
+				line-height: 16px;					
+				color: #F00;
+				display: none;
+			}
+
+
+		</style>
+	</head>
+
+	<body>
+		<div id="balao">
+    <div id="ico"></div>
+			<p>Estava eu hoje cedo, parado em um sinal de trânsito, quando olho na esquina, próximo a uma porta, uma loirona a me olhar e eu <br> olhava também. <span id="grifado"> <br> <br>(Concurso TRE/ SC – 2005) </span></div>
+
+		<div id="msg">
+			<img id="seta" src="../wilib/img/fotos/seta-dir.png">
+			<p>A biosfera provavelmente apareceu há 3,5 bilhões de anos.</p>
+		</div>
+
+		<div id="msgAcerto" class="borda-pontilhado-verde arredondado">
+			<p>Muito bem!  A letra C é a paráfrase correta, pois não modifica o sentido do texto original.</p>
+		</div>
+
+		<div id="msgErrado" class="borda-pontilhado-vermelho arredondado">
+			<p>Atenção! A paráfrase não pode modificar o sentido do <br> texto original, releia as opções.</p>
+		</div>
+
+	</body>
+</html>

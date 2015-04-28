@@ -1,0 +1,157 @@
+<!-- Desenvolvedor: Danilo Thiago -->
+<!doctype html>
+<html lang="pt-br">
+<head>
+    <title>Lição 01 Peça 24</title>
+    <meta charset="utf-8">
+    <script src="../wilib/js/lib/require.js"></script>
+    <script src="../wilib/js/app.js"></script>
+    <link rel="stylesheet" href="../wilib/css/font-awesome.css">
+    <link rel="stylesheet" href="../wilib/css/estilo.css">
+
+    <script>
+        require(['../wilib/js/lib/arrasta'], function (edi) {
+
+            edi.setConfig({
+                mascote: 'mascote',
+                titulo: 'Arraste as frases para as colunas corretas, observando os exemplos de ironia usados na fala e na literatura.'
+            });
+
+            var arrArrasta = [
+                {arrasta: 'Você parece realmente um santinho digno do altar.', dataCorreta: '0', dataId: '1'},
+                {arrasta: '"... Marcela amou-me durante quinze meses e onze contos de réis..." (M. de Assis).', dataCorreta: '1', dataId: '2'},
+                {arrasta: 'Seu café está ótimo: fraco, frio e sem açúcar.', dataCorreta: '0', dataId: '3'},
+                {arrasta: '"Moça linda bem tratada, / três séculos de família, /burra como uma porta: / um amor!" (Mário de Andrade).', dataCorreta: '1', dataId: '4'},
+                {arrasta: '"A excelente dona Inácia era mestra na arte de judiar crianças." (Monteiro Lobato).', dataCorreta: '1', dataId: '5'},
+                {arrasta: 'Não é encantador o trânsito de São Paulo?', dataCorreta: '0', dataId: '6'},
+                {arrasta: 'Muito competente aquele candidato! Construiu viadutos que ligam nenhum lugar a lugar nenhum.', dataCorreta: '0', dataId: '7'}
+            ];
+
+            arrArrasta.sort(function () {
+                return 0.5 - Math.random()
+            });
+
+            for (var i = 0; i < arrArrasta.length; i++) {
+                $('<div>')
+                        .addClass('arrasta fundoArrasta azulAlpha')
+                        .attr({
+                            'data-id': arrArrasta[i].dataId,
+                            id: 'arrasta' + (i + 1),
+                            'data-correta': arrArrasta[i].dataCorreta
+                        })
+                        .html(arrArrasta[i].arrasta)
+                        .appendTo('#boxArrasta');
+            }
+
+            var config = {
+                colorirFilho: true,
+                arrastaAbsolute: true,
+                destroy: true,
+                alvoFixo: true,
+                target: false,
+                multAlvo: true
+            };
+
+            edi.arrasta('arrasta', 'alvo', function (correta, b) {
+                if (correta) {
+                    $(b).parent().css({
+                        height: 'auto'
+                    });
+                }
+            }, function (correta) {
+                if (correta) {
+                    $('#boxArrasta').fadeOut(500);
+                    $('#msfFinal').fadeIn(1500);
+                }
+            }, config);
+
+        });
+    </script>
+    <style>
+        #msfFinal{
+            display: none;
+        }
+
+        #boxArrasta {
+            width: 480px;
+            height: 260px;
+            cursor: default;
+            padding: 15px;
+            text-align: center;
+            left: 50px;
+            top: 5px;
+        }
+
+        .alvo {
+            position: absolute;
+            top: 68px;
+            left: 647px;
+            width: 80px;
+            height: 101px;
+            padding: 30px;
+            border-style: solid;
+            border-width: 0 0 1px 1px;
+            border-radius: 5px 5px 0 5px;
+            text-align: center;
+        }
+
+        .alvo i {
+            font-size: 80px;
+        }
+
+        .arrasta {
+            display: inline-block;
+            text-align: center;
+            margin: 2px 0;
+            width: 480px;
+            color: #fff;
+        }
+
+        .ct {
+            position: absolute;
+            width: 300px;
+            top: 60px;
+            left: 30px;
+        }
+
+        .ct p {
+            font-size: 18px;
+            color: #9c0;
+            text-shadow: 1px 1px 1px #000;
+        }
+    </style>
+
+</head>
+<body>
+
+<div id="boxArrasta" class="btn btn-default-hover"></div>
+
+<div class="alvo" data-correta="1">
+    <i class="fa fa-thumbs-o-up"></i>
+
+    <p>POSITIVAS</p>
+</div>
+
+<div class="alvo" style="top:230px" data-correta="0">
+    <i class="fa fa-thumbs-o-down"></i>
+
+    <p>NEGATIVAS</p>
+</div>
+<div id="msfFinal">
+    <div id="pos" class="ct">
+        <p>Exemplos de ironia na fala:</p>
+        - Você parece realmente um santinho digno do altar.<br><br>
+        - Seu café está ótimo: fraco, frio e sem açúcar.<br><br>
+        - Não é encantador o trânsito de São Paulo?<br><br>
+        - Muito competente aquele candidato! Construiu viadutos que ligam nenhum lugar a lugar nenhum.
+    </div>
+
+    <div id="neg" class="ct" style="left: 330px;">
+        <p>Exemplos de ironia em Literatura:</p>
+        - "... Marcela amou-me durante quinze meses e onze contos de réis..." (M. de Assis).<br><br>
+        - "Moça linda bem tratada, / três séculos de família, /burra como uma porta: / um amor!" (Mário de Andrade).<br><br>
+        - "A excelente dona Inácia era mestra na arte de judiar crianças." (Monteiro Lobato).<br>
+    </div>
+</div>
+</body>
+</html>

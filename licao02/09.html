@@ -1,0 +1,74 @@
+<!-- Desenvolvedor: Rodolfo Araújo -->
+<!doctype html>
+<html lang="pt-br">
+<head>
+  <title>Lição 02 Peça 09</title>
+  <meta charset="utf-8">
+  <script src="../wilib/js/lib/require.js"></script>
+  <script src="../wilib/js/app.js"></script>
+
+  <link rel="stylesheet" href="../wilib/css/font-awesome.css">
+   <link rel="stylesheet" href="../wilib/css/estilo.css">
+
+  <script>
+  require(['../wilib/js/lib/revela_pergaminho'], function (edi) {
+
+    edi.setConfig({
+      icone: 'exclamacao',
+      titulo: 'Clique sobre os pergaminhos e saiba como devemos proceder ao interpretar um texto que ainda não dominamos.',
+      mascote: 'mascote',
+      tempoFinal: 15
+    });
+
+    var pergaminhos = [
+      "Devemos reler o texto quantas vezes forem necessárias.",
+      "Centralizar cada questão ao pedaço ou parte do texto correspondente."
+    ];
+
+    var config = {
+      textoMarginTop: 10,
+      width: 130,
+      height: 185,
+      left: 220,
+      top: 110,
+      fontSize: 12
+    };
+
+    edi.revela_pergaminho(pergaminhos, function () {
+      //
+    }, function () {
+      $('#msgAcerto').fadeIn();
+    }, config);
+
+  });
+  </script>
+
+  <style>
+
+    #msgAcerto {
+      width: 160px;
+      height: 180px;
+      position: absolute;
+      left: 580px;
+      top: 130px;
+      padding: 10px;
+      font-size: 16px;
+      text-align: center;
+      font-weight: bold;
+      line-height: 16px;        
+      color: #9c0;
+      display: none;
+      z-index: 5;
+    }
+
+  </style>
+</head>
+
+<body>
+
+   <div id="msgAcerto" class="borda-pontilhado-verde arredondado">
+      <p>Parabéns! Sempre que tiver dúvida volte ao texto, releia-o, releia as partes separadas, busque as informações em parágrafos específicos, que falem sobre o tema da questão.</p>
+    </div>
+
+</body>
+</html>

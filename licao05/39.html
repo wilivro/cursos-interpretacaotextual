@@ -1,0 +1,144 @@
+<!--Desenvolvedor: Rodolfo Araujo -->
+<!doctype html>
+<html lang="pt-br">
+	<head>
+		<title>Lição 02 Peça 27</title>
+		<meta charset="utf-8">
+		<script src="../wilib/js/lib/require.js"></script>
+		<script src="../wilib/js/app.js"></script>
+		<link rel="stylesheet" href="../wilib/css/font-awesome.css">
+		<link rel="stylesheet" href="../wilib/css/estilo.css">
+
+		<!-- main -->
+		<script>
+
+			require(['../wilib/js/lib/alternativa_boliche'], function (edi) {
+				
+				edi.setConfig({// configurando o EDI
+					icone: 'exclamacao',
+					titulo: 'Marque CERTO para as frases onde foi usada a figura de pensamento ironia, e ERRADO para as frases que não apresentam esta figura.',
+
+				});
+				
+				var btns = {
+                    tela1:{
+                        texto:'Veja que belo serviço você fez!',
+                        btns:[
+                            {texto: 'CERTO', dataCorreta: true},
+                            {texto: 'ERRADO', dataCorreta: false},
+                        ],
+                    },
+                    tela2:{
+                        texto:'Você, realmente, é muito esperto.',
+                        btns:[
+                            {texto: 'CERTO', dataCorreta: true},
+                            {texto: 'ERRADO', dataCorreta: false},
+                        ],
+                    }
+                };
+
+				var config = {
+					width: 150,
+					height: 50,
+					left: 225,
+					top: 150,
+					boliche: false,
+					colunas: 2,
+					margin: 5,
+					padding: 5
+				};
+				
+				var callback = function (a) {
+					//$('.btn').fadeOut();
+					if(a){
+						$('#certo'+edi.telaAtual()).fadeIn();	
+					}
+					else
+						$('#errado'+edi.telaAtual()).fadeIn();	
+				}
+				
+
+                edi.alternativa_boliche(btns, callback, config);//iniciando o EDI
+              
+			});
+		</script>
+		
+		<style>
+			#conteudo {
+				height: 315px;
+			}
+
+			#grifado {
+				font-weight: bold;
+			}
+
+			.bordaVerde{
+				position: absolute;
+				color: #9c0;
+				border: 2px dashed #9c0;
+				text-align: center;
+				background-color: #FFF;
+				z-index: 1;
+				display: none;
+			}
+			#certo1{
+				top: 268px;
+				left: 150px;
+				width: 460px;
+				height: 75px;
+				padding: 10px;
+			}
+
+			#certo2{
+				top: 260px;
+				left: 135px;
+				width: 480px;
+				height: 95px;
+				padding: 5px;
+			}
+
+			#errado1{
+				position: absolute;
+				top: 268px;
+				left: 150px;
+				width: 460px;
+				height: 80px;
+				padding: 10px 10px;
+				color: #F00;
+				border: 2px dashed #F00;
+				text-align: center;
+				background-color: #FFF;
+				z-index: 1;
+				display: none;
+			}
+
+			#errado2{
+				position: absolute;
+				top: 260px;
+				left: 150px;
+				width: 460px;
+				height: 100px;
+				padding: 5px 5px;
+				color: #F00;
+				border: 2px dashed #F00;
+				text-align: center;
+				background-color: #FFF;
+				z-index: 1;
+				display: none;
+			}
+
+	</style>
+	</head>
+	
+	<body>
+
+		<div id="certo1" class="arredondado bordaVerde">Muito bem! Embora esta expressão contenha a ideia de que a pessoa fez um bonito serviço, a ideia de beleza é desmentida pela ênfase dada ao termo [belo], evidenciando que a intenção do falante é oposta aquela que está expressa na frase.</div>
+
+		<div id="certo2" class="arredondado bordaVerde">Muito bem! Esta frase, aparentemente, não contém nenhuma ironia. Mas, dependendo da situação em que ela é utilizada, da entonação que se der às palavras, ela pode ser altamente irônica. Este é um aspecto bastante importante da ironia: o fato de ela não estar nas palavras em si, mas "por trás" das palavras.</div>
+
+		<div id="errado1" class="arredondado">Errado! Embora esta expressão contenha a ideia de que a pessoa fez um bonito serviço, a ideia de beleza é desmentida pela ênfase dada ao termo [belo], evidenciando que a intenção do falante é oposta aquela que está expressa na frase.</div>
+
+		<div id="errado2" class="arredondado">Errado! Esta frase, aparentemente, não contém nenhuma ironia. Mas, dependendo da situação em que ela é utilizada, da entonação que se der às palavras, ela pode ser altamente irônica. Este é um aspecto bastante importante da ironia: o fato de ela não estar nas palavras em si, mas "por trás" das palavras.</div>
+
+	</body>
+</html>

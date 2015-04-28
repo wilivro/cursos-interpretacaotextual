@@ -1,0 +1,180 @@
+<!-- Desenvolvedor: Rodolfo Araujo -->
+<!doctype html>
+<html lang="pt-br">
+<head>
+    <title>Lição 02 Peça 38</title>
+    <meta charset="utf-8">
+
+    <script src="../wilib/js/lib/require.js"></script>
+    <script src="../wilib/js/app.js"></script>
+    <link rel="stylesheet" href="../wilib/css/font-awesome.css">
+    <link rel="stylesheet" href="../wilib/css/estilo.css">
+
+    <script>
+        require(['../wilib/js/lib/arrasta'], function (edi) {
+
+            edi.setConfig({
+                titulo: 'De acordo com a matéria do G1 sobre o número de leitores no Brasil, quem lê mais, homens ou mulheres? Arraste o campeão para o topo do pódio.',
+                mascote: 'mascote',
+                tempoFinal: 10
+            });
+
+            var arrArrasta = [
+                {arrasta: 'Homens', dataCorreta: 1},
+                {arrasta: 'Mulheres', dataCorreta: 2}
+            ];
+
+            arrArrasta.sort(function () {
+                return 0.5 - Math.random()
+            });
+
+            for (var i = 0; i < arrArrasta.length; i++) {
+
+                $('<div>')
+                        .addClass('arrasta barra')
+                        .attr({
+                            'data-correta': arrArrasta[i].dataCorreta
+                        })
+                        .html(arrArrasta[i].arrasta)
+                        .appendTo('#boxArrasta');
+            }
+
+            var config = {
+                alvoFixo: false
+            };
+
+            edi.arrasta('arrasta', 'alvo', function (a, b) {
+                if(a){
+                    $('#alvoPodium').css({top: 165});
+                    $('#txt').css({color: '#9C0'}).html(b.html())
+                } else {
+                    $('#alvoPodium').css({top: 165});
+                }
+
+            }, function(a) {
+             if (a) {
+             $('#msgAcerto').fadeIn();
+            } else {
+             $('#msgErrado').fadeIn();
+            }
+            }, config);
+
+
+        });
+
+    </script>
+
+    <style>
+        .barra{
+            background: url(../wilib/img/svg/retangulo.svg);
+            width: 239px;
+            height: 45px;
+            margin: 5px;
+            text-align: center;
+            line-height: 40px;
+        }
+        #boxArrasta{
+            position: absolute;
+            top: 200px;
+        }
+
+        #podium{
+            background: url(../wilib/img/svg/podium.svg);
+            width: 459px;
+            height: 155px;
+            position: absolute;
+            top: 202px;
+            left: 310px;
+        }
+        #alvoPodium{
+            width: 239px;
+            height: 45px;
+            position: absolute;
+            top: 158px;
+            left: 381px;
+        }
+
+        #msgAcerto {
+            width: 540px;
+            height: 60px;
+            position: absolute;
+            left: 90px;
+            top: 80px;
+            padding-bottom: 10px;
+            font-size: 14px;
+            text-align: center;
+            font-weight: bold;
+            line-height: 16px;              
+            color: #9c0;
+            display: none;
+        }
+
+         #msgErrado {
+            width: 540px;
+            height: 40px;
+            position: absolute;
+            left: 90px;
+            top: 90px;
+            padding-bottom: 10px;
+            font-size: 14px;
+            text-align: center;
+            font-weight: bold;
+            line-height: 16px;                  
+            color: #F00;
+            display: none;
+         }
+
+         #img {
+            position: absolute;
+            left: 650px;
+            top: 100px;
+            width: 85px;
+            height: 60px;
+            background-size: 100% 100%;
+            background-image: url(../img/licao02/p37.png);
+            z-index: 10;
+        }
+
+        #link {
+            color: #4E9BF0;
+        }
+
+        #link:hover {
+            color: #2169B9;
+        }
+
+        #font {
+            font-size: 12px;
+            position: absolute;
+            font-weight: bold;
+            font-style: italic;   
+            left: 645px;
+            top: 155px; 
+            z-index: 11;
+        }
+
+
+    </style>
+</head>
+
+<body>
+
+    <div id="alvoPodium" class="alvo" data-correta="2"></div>
+    <div id="podium"></div>
+    <div id="boxArrasta"></div>
+
+    <div id="msgAcerto" class="borda-pontilhado-verde arredondado">
+        <p>Excelente! De acordo com a pesquisa, as mulheres são maioria. 57% das mulheres lêem um livro a cada três meses. Sua resposta correta mostra que você está cada vez mais preparado para interpretação de textos, pois demonstra uma leitura atenta!</p>
+    </div>
+
+    <div id="msgErrado" class="borda-pontilhado-vermelho arredondado">
+        <p>Atenção! Releia novamente a pesquisa, busque essa informação dentro do texto.</p>
+    </div>
+
+    <div class="center">
+        <a id="link" href="http://g1.globo.com/educacao/noticia/2012/03/numero-de-leitores-caiu-91-no-pais-em-quatro-anos-segundo-pesquisa.html" 
+        target="_blank"><span id="font">Acesse o link aqui.</span> <div id="img"></div> </a>
+    </div>
+
+</body>
+</html>

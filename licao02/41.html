@@ -1,0 +1,118 @@
+<!-- Desenvolvedor: Rodolfo Araujo -->
+<!doctype html>
+<html lang="pt-br">
+
+<head>
+	<title>Lição 02 Peça 41</title>
+	<meta charset="utf-8">
+	<script src="../wilib/js/lib/require.js"></script>
+	<script src="../wilib/js/app.js"></script>
+
+	<link rel="stylesheet" href="../wilib/css/font-awesome.css">
+	<link rel="stylesheet" href="../wilib/css/estilo.css">
+
+	<!-- main -->
+	<script>
+		require(['../wilib/js/lib/ligar'], function (edi) {
+
+			edi.setConfig({ // configurando o EDI
+                mascote: 'mascote',
+                icone: 'exclamacao',
+                titulo: 'Outro cuidado importante está relacionado ao uso das vírgulas. Leia as frases e ligue-as às explicações corretas.',
+                enunciado: 'vertical'
+			});
+
+            var ligas = [
+                {conteudo: 'Só, o Diego da M110 fez <br> o trabalho de artes.', dataCorreta: 0, cor: '#8BC959'},
+                {conteudo: 'Só o Diego da M110 fez <br> o trabalho de artes.', dataCorreta: 1, cor: '#FF0000'},
+                {conteudo: 'Marcão, canta  Garçom, de Reginaldo Rossi.', dataCorreta: 2, cor: '#0089FF'}
+            ];
+
+            var alvos = [
+                {conteudo: 'Diego fez sozinho o <br> trabalho de artes.', dataCorreta: 0},
+                {conteudo: 'Marcão é chamado para cantar <br> a música Garçom <br> de Reginaldo Rossi.', dataCorreta: 2},
+                {conteudo: 'Apenas o Diego fez o <br> trabalho de artes.', dataCorreta: 1}
+            ];
+
+			edi.ligar(ligas, alvos, function (a, b, c) {
+				//callback
+				//a:booleano = acertou/errou
+				//b:elementoHTML = liga
+				//c:elementoHTML = alvo
+			}, function (a) {
+				if (a) {
+      			$('#msgAcerto').fadeIn();
+    			} else {
+      			$('#msgErrado').fadeIn();
+      		}
+			}, {
+				fontSize: 10,
+				erros: true,
+				ligaFixo: false,
+
+        alvo: {
+            width: 175,
+            height: 40,
+            paddingTop: 6,
+            paddingBottom: 6,
+            marginBottom: 5,
+            left: 440,
+            top: 130,
+            textAlign: 'center'
+        }
+      });            
+		});
+	</script>
+
+	<style>
+        #conteudo {
+            background: radial-gradient(#fff, #fdfdfd);
+        }
+
+        #msgAcerto {
+				width: 350px;
+				height: 60px;
+				position: absolute;
+				left: 130px;
+				top: 20px;
+				padding-bottom: 10px;
+				font-size: 14px;
+				text-align: center;
+				font-weight: bold;
+				line-height: 16px;				
+				color: #9c0;
+				display: none;
+			}
+
+			#msgErrado {
+				width: 360px;
+				height: 50px;
+				position: absolute;
+				left: 130px;
+				top: 40px;
+				padding-bottom: 10px;
+				font-size: 14px;
+				text-align: center;
+				font-weight: bold;
+				line-height: 16px;					
+				color: #F00;
+				display: none;
+			}
+
+	</style>
+</head>
+
+<body>
+
+	<div id="msgAcerto" class="borda-pontilhado-verde arredondado">
+			<p>Parabéns! Você conseguiu entender mesmo com a vírgula colocada de forma errada o sentido das frases, continue com essa dedicação!</p>
+		</div>
+
+		<div id="msgErrado" class="borda-pontilhado-vermelho arredondado">
+			<p>Você errou! A cada vírgula você deve fazer uma pausa para dar sentido ao que está lendo. Tente novamente!</p>
+		</div>
+
+
+</body>
+
+</html>

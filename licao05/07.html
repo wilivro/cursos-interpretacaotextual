@@ -1,0 +1,104 @@
+<!doctype html>
+<html lang="pt-br">
+	<head>
+		<title>Alternativa Botao</title>
+		<meta charset="utf-8">
+		<script src="../wilib/js/lib/require.js"></script>
+		<script src="../wilib/js/app.js"></script>
+		<link rel="stylesheet" href="../wilib/css/estilo.css">
+		<link rel="stylesheet" href="../wilib/css/font-awesome.css">
+		 <link rel="stylesheet" href="../wilib/css/estilo.css">
+		
+		<!-- main -->
+		<script>
+			require(['../wilib/js/lib/alternativa_botao_asterisco'], function (edi) {
+				
+				edi.setConfig({// configurando o EDI
+					icone: 'exclamacao',
+					titulo: 'Estudaremos a seguir sobre a figura assonância. Você sabe o que indica o uso desta figura? Clique sobre a definição correta levando em <br> consideração seus conhecimentos prévios.',
+					qtdTelas: 1//Se for multi tela, colcoar o valor do length do array 
+				});
+
+				var config = {
+
+				};
+
+				function callback () {
+					
+				}	
+				
+				var btns = [];
+
+				btns.push([
+					{texto: 'Apenas a frase A<br>está correta.', dataCorreta: true},
+					{texto: 'Apenas a frase B<br>está correta.', dataCorreta: false},
+					{texto: 'As duas frases<br>estão corretas.', dataCorreta: false}
+				]);
+
+				var textos = [];
+				textos.push([
+					{topico: 'A', texto: 'A assonância consiste na repetição da vogal tônica ou vocábulos com consoantes iguais e vogais distintas.'},
+					{topico: 'B', texto: 'A figura assonância consiste na repetição de consoantes como recurso para intensificação do ritmo ou como efeito sonoro significativo. '}
+				]);
+
+
+				edi.alternativa_botao_asterisco(btns, textos, function(a) {
+					if (a) {
+             $('#msgAcerto').fadeIn();
+            } else {
+             $('#msgErrado').fadeIn();
+          };
+				}, null, config);//iniciando o EDI
+
+			});
+		</script>
+		
+		<style>
+
+					#msgAcerto {
+            width: 350px;
+            height: 28px;
+            position: absolute;
+            left: 152px;
+            top: 310px;
+            padding: 5px;
+            padding-bottom: 30px;
+            font-size: 14px;
+            text-align: center;
+            font-weight: bold;
+            line-height: 16px;              
+            color: #9c0;
+            display: none;
+            }
+
+         #msgErrado {
+            width: 300px;
+            height: 28px;
+            position: absolute;
+            left: 180px;
+            top: 310px;
+            padding: 5px;
+            padding-bottom: 30px;
+            font-size: 14px;
+            text-align: center;
+            font-weight: bold;
+            line-height: 16px;                  
+            color: #F00;
+            display: none;
+         }
+
+		</style>
+	</head>
+	
+	<body>
+
+     <div id="msgAcerto" class="arredondado">
+        <p>Muito bem! Assonância é uma figura estilística de repetição sonora que consiste numa harmonização de sons vocálicos.</p>
+     </div>
+
+    <div id="msgErrado" class="arredondado">
+        <p>Atenção! Assonância é uma figura estilística de repetição sonora que consiste numa harmonização de sons vocálicos.</p>
+    </div>
+
+	</body>
+</html>

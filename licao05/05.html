@@ -1,0 +1,111 @@
+<!-- Desenvolvedor: Rodolfo Araujo -->
+<!doctype html>
+<html lang="pt-br">
+	<head>
+        <title>Lição 02 Peça 31</title>
+        <meta charset="utf-8">
+        <script src="../wilib/js/lib/require.js"></script>
+        <script src="../wilib/js/app.js"></script>
+        <link rel="stylesheet" href="../wilib/css/font-awesome.css">
+        <link rel="stylesheet" href="../wilib/css/estilo.css">
+
+		<script>
+			require(['../wilib/js/lib/alternativa_vf'], function (edi) {
+				
+				edi.setConfig({
+        icone: "interrogacaoAzul",
+        mascote: 'mascote',
+				titulo: "Observe os exemplos a seguir e marque A para os exemplos que expressam aliteração e F para os exemplos que expressam outras figuras de linguagem."
+				});
+				
+				var alternativas  = [];
+				
+				alternativas.push({
+					texto: 'Três pratos de trigo para três tigres tristes.',
+					dataCorreta: true
+				});
+				
+				alternativas.push({
+					texto: 'Ele prefere cinema; eu, teatro.',
+					dataCorreta: false
+				});
+
+				alternativas.push({
+					texto: 'O rato roeu a roupa do rei de Roma.',
+					dataCorreta: true
+				});
+
+				alternativas.push({
+					texto: 'Os sinos faziam blem, blem, blem, blem.',
+					dataCorreta: false
+				});
+
+				alternativas.push({
+					texto: '"Vozes veladas, veludosas vozes...”',
+					dataCorreta: true
+				});
+												
+				edi.alternativa_vf(alternativas, function (a) {
+
+        }, function (a) {
+			   if (a) {
+						$('#msgAcerto').fadeIn();
+					} else {
+						$('#msgErrado').fadeIn();
+					}
+        }, {
+        		width: 700,
+            left: 100,
+            top: 30,
+            margin: '0 0 15px 0',
+            textoBtn: ['A', 'F']
+        });
+
+			});
+		</script>
+		<style>
+		 #msgAcerto {
+				width: 170px;
+				height: 160px;
+				position: absolute;
+				left: 580px;
+				top: 150px;
+				padding-bottom: 10px;
+				font-size: 14px;
+				text-align: center;
+				font-weight: bold;
+				line-height: 16px;				
+				color: #9c0;
+				display: none;
+			}
+
+			#msgErrado {
+				width: 170px;
+				height: 160px;
+				position: absolute;
+				left: 580px;
+				top: 150px;
+				padding-bottom: 10px;
+				font-size: 14px;
+				text-align: center;
+				font-weight: bold;
+				line-height: 16px;					
+				color: #F00;
+				display: none;
+			}
+
+		</style>
+	</head>
+	
+	<body>
+
+		<div id="msgAcerto" class="borda-pontilhado-verde arredondado">
+			<p>Muito bem! Você compreendeu o conceito da figura aliteração. As demais figuras representam a figura zeugma que estudaremos na próxima lição e onomatopeia que estudamos na lição 4. </p>
+		</div>
+
+		<div id="msgErrado" class="borda-pontilhado-vermelho arredondado">
+			<p>Atenção! Você compreendeu o conceito da figura aliteração. As demais figuras representam a figura zeugma que estudaremos na próxima lição e onomatopeia que estudamos na lição 4. </p>
+		</div>
+
+	</body>
+</html>

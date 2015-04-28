@@ -1,0 +1,130 @@
+<!-- Desenvolvedor: Micael Souza -->
+<!doctype html>
+<html lang="pt-br">
+    <head>
+        <title>alt_d001</title>
+        <meta charset="utf-8">
+        <script src="../wilib/js/lib/require.js"></script>
+        <script src="../wilib/js/app.js"></script>
+
+        <link rel="stylesheet" href="../wilib/css/font-awesome.css">
+        <link rel="stylesheet" href="../wilib/css/estilo.css">
+
+        <!-- main -->
+        <script>
+            $(function () {
+                require(['../wilib/js/lib/alternativa'], function (edi) {
+
+                    edi.setConfig({ // configurando o EDI
+                        icone: 'exclamacao',
+                        titulo: 'Leia atentamente a frase abaixo e marque a alternativa onde ocorre o mesmo recurso expressivo de natureza semântica.'
+                    });
+
+                    var alternativas = [
+                        {
+                            alternativa: 'Meu coração / não sei por quê / Bate feliz / quando te vê.',
+                            correta: false
+                        },{
+                            alternativa: 'Há tanta vida lá fora / Aqui dentro, sempre / Como uma onda no mar.',
+                            correta: true
+                        },{
+                            alternativa: 'Brasil, mau Brasil brasileiro, / Meu mulato inzoneiro, / Vou cantar-te nos meus versos.',
+                            correta: false
+                        },{
+                            alternativa: 'Se lembra da fogueira, / Se lembra dos balões, Se lembra dos luares dos sertões?',
+                            correta: false
+                        },{
+                            alternativa: 'Meu bem querer, / É segredo, é sagrado, / Está sacramentado / Em meu coração.',
+                            correta: false
+                        }
+                    ];
+
+                    var config = {
+                        posx: 180,
+                        posy: 85,
+                        aleatorio: true,
+                        tamanhoBoxTexto: 450,
+                        tamanhoBox: 35,
+                        marginBtns: 5
+                    }
+
+                    edi.alternativa(alternativas, function (acertou) {
+                        //                    log(acertou);
+                    }, function (a) {
+                    if (a) {
+                        barraMsg('Muito bem! Na frase ocorre uma antítese, configurada no emprego das expressões antônimas “independência política” e “ cativeiro pessoal”. Esse recurso expressivo de natureza semântica também corre em “lá fora” e “aqui dentro” da frase da alternativa “b”. Portanto, a alternativa b é a correta.', {zIndex: 2002})
+                    } else {
+                        barraMsg('Atenção! Observe que na frase apresentada ocorre uma antítese, uma oposição de um termo a outro, sendo assim, que frase apresenta a mesma característica? Pense um pouco mais!', {zIndex:2002})
+                    }}, config); //iniciando o EDI
+
+                        $('#balao').peBalao({
+                            left: 10
+                        });
+
+
+                    $('#ico').iconeInterrogacaoAzul();
+                });
+            })
+        </script>
+
+        <style>
+            #balao {
+/*              background: url(../img/balao_seta_top.png) no-repeat;*/
+                border: 1px solid #ccc;
+                background: #fff;
+                width: 140px;
+                height: 190px;
+                position: absolute;
+                left: 10px;
+                top: 100px;
+                font-size: 13px;
+                text-align: center;
+                font-weight: 700;
+                line-height: 1.2;
+                border-radius: 10px;
+                color: #48A2D4;
+            }
+
+            #ico {
+                margin: 20px 0;
+                height: 59px;
+                position: relative;
+            }
+
+            #ico img {
+                left: 45px;
+            }
+
+            #msg {
+                width: 550px;
+                position: absolute;
+                bottom: 10px;
+                left: 10px;
+                font-size: 13px;
+                text-align: center;
+                font-weight: 700;
+                line-height: 3.2;
+                color: #8DE91B;
+                display: none;
+            }
+
+            #bl {
+                background: #fff;
+                width: 100px;
+                height: 100px;
+                position: absolute;
+                left: 10px;
+                top: 90px;
+                border: 1px solid;
+            }
+        </style>
+    </head>
+
+    <body>
+        <div id="balao">
+            <div id="ico"></div>
+            <p>“(…) data da nossa independência política, e do meu primeiro cativeiro pessoal”.</p>
+        </div>
+
+    </body>
+</html>

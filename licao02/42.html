@@ -1,0 +1,176 @@
+<!-- Desenvolvedor: Rodolfo Araujo -->
+<!doctype html>
+<html lang="pt-br">
+	<head>
+		<title>Lição 02 Peça 42</title>
+		<meta charset="utf-8">
+		<script src="../wilib/js/lib/require.js"></script>
+		<script src="../wilib/js/app.js"></script>
+		
+		<link rel="stylesheet" href="../wilib/css/font-awesome.css">
+		<link rel="stylesheet" href="../wilib/css/estilo.css">
+		
+		<!-- main -->
+		<script>
+			require(['../wilib/js/lib/alternativa_botao'], function (edi) {
+				
+				edi.setConfig({// configurando o EDI
+					icone: false,
+					enunciado: false,
+					titulo: '',
+					qtdTelas: 1
+				});
+				
+				var textoPergunta = [
+					'É correto afirmar que, desafiar as regras é uma atitude própria do adolescente das escolas privadas. E esse é o grande desafio <br> do professor moderno? ',
+					];
+
+				$('#num').html(edi.telaAtual);
+				$('.texto').find('p').html(textoPergunta[edi.telaAtual-1]);
+
+				var btns = [
+				[
+					{texto: 'Não, porque em nenhum momento <br> é mencionado que a escola  <br>  seja da rede privada.', dataCorreta: true},
+					{texto: 'Sim, porque podemos entender  <br> que nas entrelinhas,  foi  <br> isso que o entrevistado quis dizer.', dataCorreta: false}
+				],
+
+				];
+			
+				var config = {
+					width: 350,
+					height: 100,
+					left: 400,
+					top: 130,
+					colunas: 1,
+					margin: '0 0 10px 0',
+					padding: 5,
+          display: 'block',
+					btnBranco: true,
+					animacao: true,
+					tamanhoTexto: 16
+				};
+				
+				function callback (a) {
+                   
+				}
+
+				edi.alternativa_botao(btns[edi.telaAtual-1], callback, null, config);//iniciando o EDI
+
+				});
+		</script>
+		
+		<style>
+			#conteudo {
+				position: absolute;
+
+				width: 790px !important ;
+	
+				background: #9bbbe3; /* Old browsers */
+				background: -moz-linear-gradient(top,  #9bbbe3 1%, #5b82b4 100%); /* FF3.6+ */
+				background: -webkit-gradient(linear, left top, left bottom, color-stop(1%,#9bbbe3), color-stop(100%,#5b82b4)); /* Chrome,Safari4+ */
+				background: -webkit-linear-gradient(top,  #9bbbe3 1%,#5b82b4 100%); /* Chrome10+,Safari5.1+ */
+				background: -o-linear-gradient(top,  #9bbbe3 1%,#5b82b4 100%); /* Opera 11.10+ */
+				background: -ms-linear-gradient(top,  #9bbbe3 1%,#5b82b4 100%); /* IE10+ */
+				background: linear-gradient(to bottom,  #9bbbe3 1%,#5b82b4 100%); /* W3C */
+				filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#9bbbe3', endColorstr='#5b82b4',GradientType=0 ); /* IE6-9 */
+			}
+			
+			.texto {
+				width: 200px;
+				height: 168px;
+				padding: 0 20px;
+				position: absolute;
+				left: 470px;
+				top: 5px;
+				}
+			
+			.texto p {
+				font-size: 14px;
+				margin: 20px 0 0 0;
+				text-align: center;
+				line-height: 1.1;
+				color: #fff;
+				width: 235px;
+			}
+			
+			#num {
+				width: 50px;
+				display: block;
+				height: 50px;
+				text-align: center;
+				line-height: 50px;
+				font-size: 35px;
+				background: #1C8FD0;
+				border: 4px solid #fff;
+				border-radius: 50%;
+				position: absolute;
+				left: 410px;
+				top: 20px;
+				color:#fff;
+			}
+			
+			.btn-sem-estilo {
+				box-shadow: 0 0 0 0;
+			}
+
+			.btn-sem-estilo-acertou {
+				background-color: #0060B6 !important;
+			}
+
+			#noticia {
+				position: absolute;
+				width: 350px;
+				height: 110px;
+
+				left: 10px;
+				top: 150px;
+
+				z-index: 10;
+
+				font-size: 14px;
+				line-height: 18px;
+
+				padding: 15px;
+
+				background-color: #fff;
+			}
+
+			#grifado { 
+				font-weight: bold;
+				font-size: 10px;
+			}
+
+			#enunciado {
+				position: absolute;							
+
+				top: 55px;
+				left: 50px;
+
+				font-size: 18px;
+				font-style: italic;
+				z-index: 12;
+				color: #fff;				
+
+			}
+
+
+		</style>
+	</head>
+	
+	<body>
+		<div class="texto">			
+			<p>
+				
+			</p>
+		</div>
+
+		<div id="noticia">
+			“Sempre fez parte do desafio do magistério administrar adolescente com hormônios em ebulição e com o desejo natural da idade de desafiar as regras. A diferença é que, hoje, em muitos casos, a relação comercial entre a escola e os pais se sobrepõe à autoridade do professor.” <span id="grifado">(VEJA, p. 63, 11 maio 2005.)</span>
+		</div>   
+
+		<div id="num"></div>
+
+		<div id="enunciado">  Leia o seguinte trecho extraído da  <br> revista Veja e responda corretamente.   </div>  	
+
+	</body>
+</html>

@@ -1,0 +1,111 @@
+<!--Desenvolvedor: Rodolfo Araujo -->
+<!doctype html>
+<html lang="pt-br">
+	<head>
+		<title>Lição 02 Peça 27</title>
+		<meta charset="utf-8">
+		<script src="../wilib/js/lib/require.js"></script>
+		<script src="../wilib/js/app.js"></script>
+		<link rel="stylesheet" href="../wilib/css/font-awesome.css">
+		<link rel="stylesheet" href="../wilib/css/estilo.css">
+
+		<!-- main -->
+		<script>
+
+			require(['../wilib/js/lib/alternativa_boliche'], function (edi) {
+				
+				edi.setConfig({// configurando o EDI
+					icone: 'exclamacao',
+					titulo: 'Aprenderemos neste exercício sobre a figura de linguagem “paradoxo”. Você sabe o que significa esta palavra? Clique sobre VERDADEIRO se a definição a seguir estiver correta e sobre FALSO se estiver errada.',
+
+				});
+				
+				var btns = {
+                    tela1:{
+                        texto:'Paradoxo é o oposto do que alguém pensa ser a verdade ou o contrário a uma opinião admitida como válida. Um paradoxo consiste em uma ideia incrível, contrária do que se espera. Também pode representar a ausência de nexo ou lógica.',
+                        btns:[
+                            {texto: 'VERDADEIRO', dataCorreta: true},
+                            {texto: 'FALSO', dataCorreta: false},
+                        ],
+                    }                    
+                };
+
+				var config = {
+					width: 150,
+					height: 50,
+					left: 225,
+					top: 150,
+					boliche: false,
+					colunas: 2,
+					margin: 5,
+					padding: 5
+				};
+				
+				var callback = function (a) {
+					//$('.btn').fadeOut();
+					if(a){
+						$('#certo'+edi.telaAtual()).fadeIn();	
+					}
+					else
+						$('#errado'+edi.telaAtual()).fadeIn();	
+				}
+				
+
+                edi.alternativa_boliche(btns, callback, config);//iniciando o EDI
+              
+			});
+		</script>
+		
+		<style>
+			#conteudo {
+				height: 315px;
+			}
+
+			#grifado {
+				font-weight: bold;
+			}
+
+			.bordaVerde{
+				position: absolute;
+				color: #9c0;
+				border: 2px dashed #9c0;
+				text-align: center;
+				background-color: #FFF;
+				z-index: 1;
+				display: none;
+			}
+			#certo1{
+			 top: 268px;
+			 left: 100px;
+			 width: 559px;
+			 height: 80px;
+			 padding: 10px;
+			}
+
+
+			#errado1{
+				position: absolute;
+				top: 264px;
+				left: 90px;
+				width: 569px;
+				height: 76px;
+				padding: 15px 15px;
+				color: #F00;
+				border: 2px dashed #F00;
+				text-align: center;
+				background-color: #FFF;
+				z-index: 1;
+				display: none;
+			}
+
+		</style>
+	</head>
+	
+	<body>
+
+		<div id="certo1" class="arredondado bordaVerde">Excelente! Paradoxo vem do latim (paradoxum) e do grego (paradoxos). O prefixo “para” quer dizer contrário a, ou oposto de, e o sufixo “doxa” quer dizer opinião. O paradoxo muitas vezes depende de uma suposição da linguagem falada, visual ou matemática, porque modela a realidade descrita.</div>
+
+		<div id="errado1" class="arredondado">Atenção! Paradoxo vem do latim (paradoxum) e do grego (paradoxos). O prefixo “para” quer dizer contrário a, ou oposto de, e o sufixo “doxa” quer dizer opinião. O paradoxo muitas vezes depende de uma suposição da linguagem falada, visual ou matemática, porque modela a realidade descrita.</div>
+
+	</body>
+</html>

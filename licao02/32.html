@@ -1,0 +1,97 @@
+<!-- Desenvolvedor: Rodolfo Araujo -->
+<!doctype html>
+<html lang="pt-br">
+  <head>
+    <title>Lição 02 Peça 32</title>
+    <meta charset="utf-8">
+    <script src="../wilib/js/lib/require.js"></script>
+    <script src="../wilib/js/app.js"></script>
+      <link type="text/css" rel="stylesheet" href="../wilib/css/font-awesome.css">
+      <link rel="stylesheet" href="../wilib/css/estilo.css">
+
+    <style type="text/css">
+    </style>
+    <script>
+      require(['../wilib/js/lib/slide_vertical'], function (edi) {
+
+        edi.setConfig({
+          titulo: "É muito comum, a ocorrência de erros de interpretação. Clique sobre as barras e conheça os erros mais comuns.",
+          mascote: 'mascote',
+          icone: "interrogacaoAzul"
+        });
+
+        var slides = [
+          {
+            txt: "<span id='negrito'>Extrapolação</span> - Ocorre quando se sai do contexto, <br>"+
+                 "acrescentado ideias que não estão no texto, quer por <br>"+
+                 "conhecimento prévio do tema quer pela imaginação.",
+            img: "../img/licao02/p32_1.png"
+          },
+          {
+            txt: "<span id='negrito'>Redução</span> - É o oposto da extrapolação. Dá-se atenção <br>"+
+                 "apenas a um aspecto, esquecendo que um texto é um <br>"+
+                 "conjunto de ideias, o que pode ser insuficiente para o total  <br>"+
+                 "entendimento do tema desenvolvido.",
+            img: "../img/licao02/p32_2.png"
+          },
+          {
+            txt: "<span id='negrito'>Contradição</span> - O texto apresenta  ideias contrárias às do <br>"+
+                 "candidato, fazendo-o tirar conclusões equivocadas  e,  <br>"+
+                 "consequentemente, errando a questão.",
+            img: "../img/licao02/p32_3.png"
+          },
+          {
+            txt: "<span id='negrito'>Observação</span> -  Muitos pensam que há a visão do escritor e <br>"+
+                 "a visão do leitor. Pode ser que existam, mas numa prova <br>"+
+                 "de  concurso ou Enem, o que deve ser levado em   <br>"+
+                 "consideração é o que o autor diz e não nossa opinião. ",
+            img: "../img/licao02/p32_4.png"
+          },
+          {
+            txt: "<span id='negrito'>Coesão</span>  - é o emprego de mecanismo de sintaxe que <br>"+
+                 "relacionam palavras, orações, frases e/ou parágrafos <br>"+
+                 "canentre si. Há uma relação correta entre o que se vai dizer e  <br>"+
+                 "o que já foi dito.",
+            img: "../img/licao02/p32_5.png"
+          }
+        ];
+
+        edi.slide_vertical(slides, function() {
+          console.log('cb');
+        }, function() {
+          $('#msgAcerto').fadeIn();
+        });
+      });
+    </script>
+    <style>
+      #negrito {
+        font-weight: bold;
+      }
+
+      #msgAcerto {
+        width: 450px;
+        height: 50px;
+        position: absolute;
+        left: 200px;
+        top: 320px;
+        font-size: 16px;
+        text-align: center;
+        font-weight: bold;
+        line-height: 16px;        
+        color: #9c0;
+        display: none;
+        z-index: 5;
+      }
+
+    </style>
+  </head>
+
+  <body>
+
+     <div id="msgAcerto" class="arredondado">
+      <p>Muito bem! Conhecendo os erros, você tem mais chances de acertar. Fique atento! </p>
+    </div>
+    
+
+  </body>
+</html>

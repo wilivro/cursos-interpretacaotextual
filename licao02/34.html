@@ -1,0 +1,77 @@
+<!-- Desenvolvedor: Rodolfo Araujo -->
+<!doctype html>
+<html lang="pt-br">
+<head>
+    <title>Lição 02 Peça 34</title>
+    <meta charset="utf-8">
+    <script src="../wilib/js/lib/require.js"></script>
+    <script src="../wilib/js/app.js"></script>
+    <link rel="stylesheet" href="../wilib/css/font-awesome.css">
+    <link rel="stylesheet" href="../wilib/css/estilo.css">
+
+    <script>
+			require(['../wilib/js/lib/caca_palavras'], function (edi) {
+
+				edi.setConfig({
+	        icone: "interrogacaoAzul",
+	        mascote: 'mascote',
+	        titulo: "Uma boa maneira de testar nosso vocabulário e nosso raciocínio lógico é jogar caça-palavras. Vamos experimentar? <br> Encontrem  no quadro as palavras enumeradas abaixo.",
+        });
+
+				var frase = '';
+						frase += '1 - {0} <br><br>';
+						frase += '2 - {1} <br><br>';
+						frase += '3 - {2} <br><br>';
+						frase += '4 - {3} <br><br>';
+						frase += '5 - {4}';
+
+				var palavras = [
+					'Curiosidade',
+					'Investigação',
+					'Vocabulário',
+					'Leitura',
+					'Interpretação'
+				];
+				edi.caca_palavras(13, 13, palavras, frase, function () {
+                	$('#msgAcerto').fadeIn();
+            });
+		});
+
+
+		</script>
+		<style>
+
+		.box2 {
+			font-size: 12px !important;
+			line-height: 20px;
+		}
+		
+	    #msgAcerto {
+        width: 380px;
+        height: 250px;
+        position: absolute;
+        left: 345px;
+        top: 175px;
+        padding: 10px;
+        font-size: 14px;
+        text-align: center;
+        line-height: 18px;              
+        color: #9c0;
+        display: none;
+        background-color: #fff;
+        z-index: 10;
+        opacity: 0.8;
+      }
+
+		</style>
+	</head>
+
+	<body>
+
+
+        <div id="msgAcerto" class="borda-pontilhado-verde arredondado">
+            <p>Muito bem! Através do exercício com palavras cruzadas você aumenta sua cultura, seu vocabulário e ainda amplia seu raciocínio lógico, tornando-o mais rápido e eficiente!</p>
+        </div>
+
+	</body>
+</html>

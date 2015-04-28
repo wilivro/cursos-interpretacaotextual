@@ -1,0 +1,41 @@
+<!-- Desenvolvedor: Rodolfo Araújo -->
+<!doctype html>
+<html lang="pt-br">
+
+<head>
+	<title>Lição 02 Peça 01</title>
+	<meta charset="utf-8">
+	<script src="../wilib/js/lib/require.js"></script>
+	<script src="../wilib/js/app.js"></script>
+	<link rel="stylesheet" href="../wilib/css/font-awesome.css">
+	<link rel="stylesheet" href="../wilib/css/estilo.css">
+
+	<script>
+		require(['../wilib/js/lib/reflita2'], function (edi) {
+
+			edi.setConfig({
+      enunciado: false
+			});
+
+            var texto = "Nesta lição estudamos sobre as figuras de linguagem. <br> <br>" +
+                    "Começamos pelas figuras de som e depois passamos para as figuras de pensamento. <br> <br>" +
+                    "Na próxima lição estudaremos outras figuras de linguagem conhecidas como figuras de construção. Continue seus estudos de forma atenta e dedicada, você obterá excelentes resultados!"
+
+			edi.reflita2(texto);
+		});
+	</script>
+    <style>
+        .balao-texto {
+            width: 400px !important;
+            right: 20px !important;
+        }
+        .balao-texto p {
+            text-align: justify;
+        }
+    </style>
+</head>
+
+<body>
+</body>
+
+</html>

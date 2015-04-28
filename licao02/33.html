@@ -1,0 +1,173 @@
+<!-- Desenvolvedor: Rodolfo Araujo -->
+<!doctype html>
+<html lang="pt-br">
+<head>
+    <title>Lição 02 Peça 33</title>
+    <meta charset="utf-8">
+    <script src="../wilib/js/lib/require.js"></script>
+    <script src="../wilib/js/app.js"></script>
+    <link rel="stylesheet" href="../wilib/css/font-awesome.css">
+    <link rel="stylesheet" href="../wilib/css/estilo.css">
+
+    <script>
+        require(['../wilib/js/lib/arrasta'], function (edi) {
+
+            edi.setConfig({
+                mascote: 'mascote',
+                titulo: 'Carlos e João chegaram a uma conclusão sobre interpretação de textos. Complete o diálogo deles arrastando as palavras para os locais corretos.',
+                tempoFinal: 20
+            });
+
+            var arrArrasta = [
+                {arrasta: 'hábito', dataCorreta: '1', dataId: '1'},
+                {arrasta: 'gostar', dataCorreta: '2', dataId: '2'},
+                {arrasta: 'melhor', dataCorreta: '3', dataId: '3'},
+                {arrasta: 'funcionamento', dataCorreta: '4', dataId: '4'},
+                {arrasta: 'palavras', dataCorreta: '5', dataId: '5'},
+                {arrasta: 'impressão', dataCorreta: '6', dataId: '6'},
+                {arrasta: 'ler', dataCorreta: '7', dataId: '7'},
+                {arrasta: 'vocabulário', dataCorreta: '8', dataId: '8'}
+            ];
+
+            var texto = $('#boxTexto').html();
+
+            for (var i = 0; i < arrArrasta.length; i++) {
+                    var aux = '';
+                    for (var j = 0; j < arrArrasta[i].arrasta.length; j++) {
+                        aux += '_';
+                    };
+                texto = texto.replace('{' + i + '}', '<div class="alvo" data-correta="'+arrArrasta[i].dataCorreta+'">' + aux + '</div>');
+            }
+
+            $('#boxTexto').html(texto);
+
+            arrArrasta.sort(function () {
+                return 0.5 - Math.random()
+            });
+
+
+            for (var i = 0; i < arrArrasta.length; i++) {
+                $('<div>')
+                        .addClass('arrasta fundoArrasta azulAlpha')
+                        .attr({
+                            'data-id': arrArrasta[i].dataId,
+                            id: 'arrasta' + (i + 1),
+                            'data-correta': arrArrasta[i].dataCorreta
+                        })
+                        .html(arrArrasta[i].arrasta)
+                        .appendTo('#arrasta');
+            }
+
+            var config = {
+                colorirFilho: true,
+                arrastaAbsolute: true,
+                reloadCorreta: true,
+                alvoFixo: true
+            };
+
+            edi.arrasta('arrasta', 'alvo', function (a, b, c) {
+                if(a){
+                    c.html(b.css({display: 'flex'}))
+                }
+            }, function (a) {
+                    $('#msgAcerto').fadeIn();
+            }, config);
+
+            $('.arrasta').css({
+                margin: -5,
+                padding: 5
+            });
+
+            $('<div>')
+                    .attr('id', 'mascote')
+                    .appendTo('#conteudo');
+
+            $('.b1').peBalao({scaleX: 1.3, scaleY: -1.3, top: 104, left: 180, borda: '#666'});
+            $('.b2').peBalao({scaleX: -1.3, scaleY: -1.3, top: 104, left: 180, borda: '#666'});
+        });
+    </script>
+    <style>
+        .alvo {
+            display: inline-block;
+        }
+
+        .arrasta {
+            padding: 5px;
+            margin-right: 10px;
+            margin-left: 10px;
+            display: inline-block;
+            color: #FFF;
+        }
+
+        #boxArrasta {
+            padding-top: 5px;
+            width: 650px;
+            height: 55px;
+            cursor: default;
+            top: 240px;
+            left: 50px;
+        }
+
+        #arrasta {
+            position: relative;
+            display: table-cell;
+            vertical-align: middle;
+            width: 650px;
+            height: 60px;
+        }
+
+        .balao {
+            position: absolute;
+            padding: 10px;
+            border: solid 1px #666;
+            border-radius: 10px;
+            top: 75px;
+            text-align: center;
+            left: 10px;
+            font-size: 13px;
+            height: 70px;
+        }
+
+        #msgAcerto {
+            width: 650px;
+            height: 155px;
+            position: absolute;
+            left: 64px;
+            top: 308px;
+            font-size: 14px;
+            text-align: center;
+            font-weight: bold;
+            line-height: 15px;              
+            color: #fff;
+            display: none;
+        }
+
+</style>
+
+</head>
+<body>
+
+<div id="boxTexto">
+    <span class="balao b1" style="width: 300px; top: 85px;">
+        Carlos, nós precisamos criar o {0} da leitura e o gosto por ela. Quando passamos a {1} de alguma coisa, compreendemos {2} seu {3}.
+    </span>
+    <span class="balao b2" style="width: 420px; top: 85px; left: 340px;">
+        Verdade! As {4} tornam-se familiares a nós. Não podemos nos deixar pela falsa {5} de que {6} não faz diferença. Devemos ler tudo o que nos interessar. Sem contar que nosso {7} aumentará muito!
+    </span>
+
+    <img src="../wilib/img/svg/personagem1.svg" width="100" style="position: absolute; left: 220px; top: 190px;"/>
+    <img src="../wilib/img/svg/personagem2.svg" width="110" style="position: absolute; left: 420px; top: 190px;" alt=""/>
+    <div id="personagem1"></div>
+    <div id="personagem2"></div>
+
+    <div id="boxArrasta" class="btn btn-default-hover">
+        <div id="arrasta"></div>
+    </div>
+
+    <div id="msgAcerto" class="arredondado">
+            <p>Muito bem! Com o hábito de ler sobre tudo, aos poucos nos tornaremos mais seletos e passaremos a ler sobre assuntos que nos acrescentarão conhecimento além de diversão. Mas independente de qualquer coisa, leia sempre, leia muito, leia sobre tudo!</p>
+    </div>
+
+</div>
+</body>
+</html>

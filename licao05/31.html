@@ -1,0 +1,126 @@
+<!-- Desenvolvedor: Micael Souza -->
+<!doctype html>
+<html lang="pt-br">
+
+<head>
+	<title>Lição 01 Peça 66</title>
+	<meta charset="utf-8">
+	<script src="../wilib/js/lib/require.js"></script>
+	<script src="../wilib/js/app.js"></script>
+
+	<link rel="stylesheet" href="../wilib/css/font-awesome.css">
+	<link rel="stylesheet" href="../wilib/css/estilo.css">
+
+	<!-- main -->
+	<script>
+		require(['../wilib/js/lib/revela_slide'], function (edi) {
+
+			edi.setConfig({ // configurando o EDI
+				icone: 'exclamacao',
+				titulo: 'Clique sobre os botões e revele a explicação sobre a figura de linguagem gradação.',
+				mascote: 'mascote'
+			});
+
+			function callback(a, b) {
+				b.parent().css('box-shadow', '0 0 0 3px #8CA8B8');
+			}
+
+			function callbackFinal () {
+				console.log('cbfinal')
+			}
+
+			edi.revela_slide('.revela', callback, function(){
+                $('#msgAcerto').fadeIn();
+            });
+
+            $('#rev-01').peBalao({
+                top:86,
+                left:200,
+                scaleX:-1,
+                scaleY:-1,
+                rotate:0
+            });
+
+            $('#rev-03').peBalao({
+                top:68,
+                left:240,
+                scaleX:-1,
+                scaleY:-1,
+                rotate:0
+            });
+		});
+	</script>
+
+	<style>
+        i {
+            font-style: italic;
+            font-weight: bold;
+        }
+
+        .revela {
+            border: 1px solid #ccc;
+            padding: 10px 25px;
+            font-size: 14px;
+            line-height: 1.3;
+            border-radius: 10px;
+            background: #fff;
+            text-shadow: 1px 1px 1px rgba(0, 0, 0, 0.2);
+            text-align: center;
+            position: absolute;
+            bottom: 200px;
+        }
+
+        #rev-01 {left: 20px}
+        #rev-03 {left: 250px}
+
+        .person {
+            width: 110px;
+            height: 150px;
+            position: absolute;
+            left: 10px;
+            top: 200px;
+        }
+
+        #msgAcerto {
+            width: 130px;
+            height: 80px;
+            position: absolute;
+            left: 590px;
+            top: 235px;
+            padding: 10px;
+            font-size: 12px;
+            text-align: center;
+            font-weight: bold;
+            line-height: 16px;              
+            color: #9c0;
+            display: none;
+        }
+
+        #person-01 {left: 150px}
+        #person-03 {left: 435px}
+	</style>
+</head>
+
+<body>
+    <img src="../wilib/img/svg/personagem_001.svg" class="person" id="person-01">
+    <img src="../wilib/img/svg/personagem_002.svg" class="person" id="person-03">
+
+    <p class="revela" id="rev-01">
+        Gradação é uma figura de estilo, relacionada com a enumeração, onde <br>
+        são expostas determinadas ideias de forma crescente <br>
+        (em direção a um clímax) ou decrescente (anticlímax).
+    </p>
+
+    <p class="revela" id="rev-03">
+        Mas muitas vezes a gradação pode acontecer assim: no <br>
+        começo do texto se põe uma coisa e no final termina a frequência.
+    </p>
+
+    <div id="msgAcerto" class="borda-pontilhado-verde arredondado">
+        Parabéns! Você conheceu o conceito da figura gradação, vamos exercitar esse conhecimento.
+    </div>
+
+
+</body>
+</html>
+

@@ -1,0 +1,69 @@
+<!--Desenvolvedor: Danilo Thiago-->
+<!doctype html>
+<html lang="pt-br">
+	<head>
+        <title>Lição 02 Peça 25</title>
+        <meta charset="utf-8">
+		<script src="../wilib/js/lib/require.js"></script>
+		<script src="../wilib/js/app.js"></script>
+        <link rel="stylesheet" href="../wilib/css/font-awesome.css">
+        <link rel="stylesheet" href="../wilib/css/estilo.css">
+
+		<script>
+			require(['../wilib/js/lib/revela_num_slider'], function (edi) {
+
+				edi.setConfig({
+                    mascote: 'mascote',
+                    icone: 'interrogacaoAzul',
+					titulo: 'Clique sobre os botões e conheça exemplos de eufemismo.'
+				});
+				var botoes = [];
+
+                //1
+                botoes.push({
+                    texto: '"Você é desprovido de beleza." <br> (Para não chamar a pessoa de feia).'
+                });
+
+                //2
+                botoes.push({
+                    texto: '"Você faltou com a verdade." <br> (Para não chamar o indivíduo de mentiroso).'
+                });
+
+                //3
+                botoes.push({
+                    texto: '"Ele virou uma estrelinha." <br> (Em vez de morreu).'
+                });
+
+                //4
+                botoes.push({
+                    texto: '"Ele subtraiu o celular do idoso no ônibus." <br> (Em vez de dizer que roubou).'
+                });
+
+                //5
+                botoes.push({
+                    texto: '"Ele vivia de caridade pública." <br> (Para não falar esmolas).'
+                });
+
+                //6
+                botoes.push({
+                    texto: '"Ele foi morar junto com Deus." <br> (Para não falar que morreu).'
+                });
+
+
+                edi.revela_num_slider(botoes, function () {
+
+                }, function() {
+            barraMsg('Muito bem! Com esses exemplos você pode entender melhor <br> como a figura eufemismo é utilizada.', {zIndex:2002})
+                },{ tamanhoFonteTexto: 13, showNum: true, espacoSetas: 350, tamanhoBoxTexto: 410, leftGeral: -20,});
+
+    		});
+		</script>
+
+		<style>
+		</style>
+	</head>
+
+	<body>
+
+	</body>
+</html>

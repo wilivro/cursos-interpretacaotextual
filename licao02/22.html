@@ -1,0 +1,110 @@
+<!--Desenvolvedor: Rodolfo Araujo -->
+<!doctype html>
+<html lang="pt-br">
+	<head>
+	<title>Lição 02 Peça 22</title>
+    <meta charset="utf-8">
+    <script src="../wilib/js/lib/require.js"></script>
+    <script src="../wilib/js/app.js"></script>
+    <link rel="stylesheet" href="../wilib/css/font-awesome.css">
+    <link rel="stylesheet" href="../wilib/css/estilo.css">
+
+    <script>
+        require(['../wilib/js/lib/quebra-cabeca'], function (edi) {
+
+            edi.setConfig({
+                titulo: 'Monte o quebra-cabeças e veja exemplos de denotação e conotação.'
+            });
+
+            var config = {
+                width: 273,
+                height: 273,
+                left: 10,
+                top: 10,
+                background: '#ccc',
+                numPecas: 2,
+                callBacks: [
+                    function () {
+                        $('#texto-01').fadeIn();
+                    },
+                    function () {
+                        $('#texto-02').fadeIn();
+                    },
+                    function () {
+                        $('#texto-03').fadeIn();
+                    }
+                ]
+            };
+
+            edi.quebraCabeca('../img/licao02/p22.png', function () {
+                $('#texto-04').fadeIn();
+                $('#msgAcerto').fadeIn();
+            }, config);
+
+            ajuda({
+                width: 300
+            });
+        });
+    </script>
+
+    <style>
+        #texto {
+            width: 270px;
+            position: absolute;
+            left: 330px;
+            top: 140px;
+            font-size: 14px;
+            line-height: 1.4;
+            z-index: 1000;
+            text-align: justify;
+        }
+
+        .texto {
+            display: none;
+        }
+
+        #italic {
+            font-style: italic;
+        }
+
+        #msgAcerto {
+          width: 150px;
+          height: 180px;
+          position: absolute;
+          padding: 5px;
+          left: 605px;
+          top: 130px;
+          padding-bottom: 15px;
+          font-size: 14px;
+          text-align: center;
+          font-weight: bold;
+          line-height: 16px;        
+          color: #9c0;
+          display: none;
+        }
+
+    </style>
+</head>
+
+<body>
+<div id="texto">
+    <span class="texto" id="texto-01">
+        Denotação – Sentido real <br><br>
+    </span>
+    <span class="texto" id="texto-02">
+        Ex: O pássaro <span id="italic">voava</span> pelo céu da cidade. <br> <span id="italic">Relampejou</span> durante a noite. <br><br>
+    </span>
+    <span class="texto" id="texto-03">
+        Conotação – Sentido figurado <br><br>
+    </span>
+    <span class="texto" id="texto-04">
+        Ex: O carro <span id="italic">voava</span> pelas ruas da cidade. <br> Seus olhos <span id="italic">relampejaram</span> de ódio.
+    </span>
+</div>
+
+ <div id="msgAcerto" class="borda-pontilhado-verde arredondado">
+      <p>Muito bem! Perceba como as mesmas palavras foram usadas de maneira diferente nos dois exemplos. <br> Os verbos voar e relampejar para serem entendidos na conotação precisam do contexto da frase para ser entendidos.</p>
+    </div>
+
+</body>
+</html>

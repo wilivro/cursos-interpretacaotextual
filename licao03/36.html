@@ -1,0 +1,149 @@
+<!-- Desenvolvedor: Leandro Fortaleza -->
+<!doctype html>
+<html lang="pt-br">
+	<head>
+		<title>Lição 04 Peça 16</title>
+		<meta charset="utf-8">
+		<script src="../wilib/js/lib/require.js"></script>
+		<script src="../wilib/js/app.js"></script>
+
+        <link rel="stylesheet" href="../wilib/css/font-awesome.css">
+        <link rel="stylesheet" href="../wilib/css/estilo.css">
+
+		<script>
+			require(['../wilib/js/lib/edi', '../wilib/js/lib/canvas-load'], function (edi) {
+
+				edi.iniciar({
+					titulo: "<span style='line-height: 15px; font-size: 14px;'>Pedro é universitário, ele cursa “direito”, para conseguir seu diploma ele deverá estudar muito, para isso, precisa da sua ajuda e do seu conhecimento. A cada resposta correta ele subirá um degrau rumo ao seu objetivo de se tornar um grande advogado! Responda se as frases são  Conotativas ou Denotativas clicando sobre a opção correta.</span>",
+                    espacamento: '15px'
+
+				});
+
+                document.querySelector('#canvas').canvasLoad('../canvas/licao03/subindoescada_1');
+
+                edi.util.removeLoading();
+                // $('.btn').css({
+                //     'pointer-events': 'none'
+                // });
+            });
+		</script>
+		<style>
+            #canvas{
+                position: absolute;
+                top: 68px;
+                background-color:#D4D4D4;
+                z-index: -1;
+            }
+
+            .btn2{
+                position: relative;
+                display: inline-block;
+                background-color: #F00;
+            }
+
+            .btnBlack {
+                border-radius: 50px;
+                box-shadow: 
+                            0 0 1px 4px rgba(255, 255, 255, 1),
+                      inset 0 10px 1px 1px rgba(255, 255, 255, 0.2);
+                background: linear-gradient(#9c0, #B7F7AA);
+                height: 40px;
+                width: 40px;
+                position: absolute;
+                z-index: 1;
+                top: 200px;
+                left: 372px;
+                cursor: pointer;
+            }
+
+            .btnBlack i {
+                position: absolute;
+                font-size: 30px;
+                color: rgba(255, 255, 255, 0.8);
+                top: 6px;
+                left: 12px
+            }
+
+            #play{
+                width: 788px;
+                height: 315px;
+                background-color: rgba(0, 0, 0, 0.9);
+                display: none;
+            }
+
+            #texto{
+                position: absolute;
+                width: 390px;
+                height: 202px;
+                top: 100px;
+                left: 387px;
+                border: 2px solid #FFF;
+                background-color: rgba(0,0,0,0.8);
+                border-radius: 15px;
+                color: #FFF;
+                text-align: center;
+            }
+
+            #central{
+                position: relative;
+                width: 390px;
+                height: 80px;
+                display: table-cell;
+                vertical-align: middle;
+            }
+
+            #btns{
+                position: absolute;
+                width: 390px;
+                height: 230px;
+                top: 203px;
+                left: 387px;
+                color: #FFF;
+                text-align: center;
+            }
+
+            .btn{
+                position: relative;
+                width: 100px;
+                height: 60px;
+                display: inline-block;
+            }
+
+            #btn1, #btn2{
+                position: relative;
+                width: 100px;
+                height: 60px;
+                display: table-cell;
+                vertical-align: middle;
+            }
+
+		</style>
+	</head>
+	<body>
+        <canvas id="canvas" width="788" height="383"></canvas>
+        <div id="play">
+            <div id="btnAvanca" class="btn2 btnBlack">
+                <i class="fa fa-play"></i>
+            </div>
+        </div>
+
+        <div id="texto">
+            <div id="central">A Praça da Sé fica no coração de São Paulo.</div>
+        </div>
+
+        <div id="btns">
+            <div class="btn">
+                <div id="btn1" class="botao" data-correta="C">
+                    Conotativa
+                </div>
+            </div>
+
+            <div class="btn">
+                <div id="btn2" class="botao" data-correta="D">
+                    Denotativa
+                </div>
+            </div>
+
+        </div>
+	</body>
+</html>

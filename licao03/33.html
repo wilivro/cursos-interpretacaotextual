@@ -7,13 +7,13 @@
     <script src="../wilib/js/lib/require.js"></script>
     <script src="../wilib/js/app.js"></script>
     <link rel="stylesheet" href="../wilib/css/font-awesome.css">
-    <link rel="stylesheet" href="../wilib/css/meioAmbiente.css">
+    <link rel="stylesheet" href="../wilib/css/estilo.css">
 
     <script>
         require(['../wilib/js/lib/alternativa_botao'], function (edi) {
 
             edi.setConfig({
-                titulo: 'Que tal testar seu conhecimento? Responda corretamente as questões sobre Denotação e Conotação.',
+                titulo: 'Clique sobre as imagens, observe-as com muita atenção e faça associações corretas, tomando como base seus estudos sobre Conotação e Denotação.',
                 mascote: 'mascote',
                 qtdTelas: 3
             });
@@ -21,42 +21,39 @@
             if (edi.telaAtual == 1) {
                 var texto = 'Assinale o segmento em que NÃO foram usadas palavras em sentido figurado:';
 
-                var correto = "Muito bem! O sentido figurado é utilizado em palavras conotativas, neste caso, o exercício pede a identificação da frase que não usou a conotação, mas sim, a denotação, o sentido real da palavra.";
-                var errado = "Atenção! Lembre-se, que Conotação é o sentido figurado e Denotação o significado real da palavra. Caso ainda tenha dúvidas retorne aos exercícios anteriores. ";
+                var correto = "Muito bem! O sentido usado na frase é o conotativo. ";
+                var errado = "Atenção! Associe a imagem à frase correta.";
 
                 var btns = [
-                    {texto: 'Lendo o futuro no passado dos políticos(...)', dataCorreta: false},
-                    {texto: 'As fontes é que iam beber em seus ouvidos.', dataCorreta: false},
-                    {texto: 'Eram 75 linhas que jorravam na máquina de escrever com regularidade mecânica.', dataCorreta: false},
-                    {texto: 'Antes do meio-dia, a coluna estava pronta.', dataCorreta: true}
+                    {texto: 'João, trabalhador assalariado do Brasil.', dataCorreta: false},
+                    {texto: 'João sem braço.', dataCorreta: true},
+                    {texto: 'João vai com os outros.', dataCorreta: false}
                 ];
             }
 
             if (edi.telaAtual == 2) {
                 var texto = 'Assinale a alternativa cujo termo grifado NÃO é linguagem conotativa:';
 
-                var correto = "Muito bem! Você compreendeu bem os dois conceitos apresentados, e conseguiu identificar a diferença no exercício proposto.";
-                var errado = "Atenção! O exercício pede que você identifique a frase que não é linguagem conotativa. Conotação é o significado figurado das palavras. Tente novamente!";
+                var correto = "Muito bem! Este é o ditado popular correto!";
+                var errado = "Atenção! A frase correta é um dito popular, tente novamnete!";
 
                 var btns = [
-                    {texto: '“... mas um defunto autor, para quem a campa foi outro berço ”', dataCorreta: false},
-                    {texto: '“Acresce que chovia - peneirava - uma chuvinha miúda, triste”', dataCorreta: false},
-                    {texto: '“A natureza parece estar chorando a perda irreparável ...”', dataCorreta: false},
-                    {texto: '“... no discurso que proferiu à beira da minha cova.”', dataCorreta: true}
+                    {texto: 'Água mole em pedra dura, tanto bate até que fura.', dataCorreta: false},
+                    {texto: 'Fazendo tempestade em copo d’água.', dataCorreta: true},
+                    {texto: 'Navio naufragando.', dataCorreta: false}
                 ];
             }
 
              if (edi.telaAtual == 3) {
                 var texto = 'O item em que o termo sublinhado está empregado no sentido denotativo é:'
 
-                var correto = "Muito bem! Neste exercício você precisou identificar o sentido denotativo, e fez isso com muita segurança. Parabéns!";
-                var errado = "Atenção! O sentido Denotativo é o sentido real da palavra, aquele do dicionário, não é subjetivo e nem figurado. Pense um pouco mais!";
+                var correto = "Muito bem! Mas lembre-se! Não devemos chamar as pessoas desta maneira.";
+                var errado = "Atenção! Associe a imagem à frase correta.";
 
                 var btns = [
-                    {texto: '“Além dos ganhos econômicos, a nova realidade rendeu frutos políticos.”', dataCorreta: false},
-                    {texto: '“...com percentuais capazes de causar inveja ao presidente.”', dataCorreta: true},
-                    {texto: '“Os genéricos estão abrindo as portas do mercado...”', dataCorreta: false},
-                    {texto: '“...a indústria disparou gordos investimentos.”', dataCorreta: false}
+                    {texto: 'Homem melancia.', dataCorreta: false},
+                    {texto: 'Homem sem cérebro.', dataCorreta: false},
+                    {texto: 'Cabeça de melancia.', dataCorreta: true}
                 ];
             }
 
@@ -66,7 +63,7 @@
                 width: 440,
                 height: 40,
                 left: 300,
-                top: 100,
+                top: 115,
                 tamanhoTexto: 16,
                 colunas: 1,
                 margin: '0 0 10px 0',
@@ -106,10 +103,13 @@
 
             edi.alternativa_botao(btns, callback, null, config);
 
-            $('.texto').peBalao();
-            $('#num').iconeInterrogacaoAzul(true);
+            //$('.texto').peBalao();
+            //$('#num').iconeInterrogacaoAzul(true);
             //.html(edi.telaAtual);
-            $('.texto').find('p').html(texto);
+            //$('.texto').find('p').html(texto);
+            $('<img>')
+                .attr('src', '../img/licao03/peca33_'+edi.telaAtual+'.png')
+                .appendTo('#foto');
         });
     </script>
 
@@ -129,6 +129,25 @@
             top: 85px;
             border-radius: 5px;
             border: 1px solid #E2E2E2;
+            text-align: center;
+        }
+
+        img{
+            border-radius: 10px;
+        }
+
+        #foto{
+            position: relative;
+            display: table-cell;
+            vertical-align: middle;
+            width: 150px;
+            height: 268px;
+        }
+
+        #fotoCentral{
+            height: 20px;
+            width: 20px;
+            display: inline-block;
         }
 
         .texto p {
@@ -156,9 +175,8 @@
 
 <body>
 <div class="texto">
-    <span id="num"></span>
-
-    <p></p>
+    <div id="foto">
+    </div>
 </div>
 </body>
 </html>

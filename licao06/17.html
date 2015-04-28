@@ -1,0 +1,53 @@
+<!doctype html>
+<html lang="pt-br">
+	<head>
+        <title>Lição 06 Peça 17</title>
+        <meta charset="utf-8">
+        <script src="../wilib/js/lib/require.js"></script>
+        <script src="../wilib/js/app.js"></script>
+        <link rel="stylesheet" href="../wilib/css/font-awesome.css">
+        <link rel="stylesheet" href="../wilib/css/estilo.css">
+
+		<script>
+			require(['../wilib/js/lib/alternativa_vf'], function (edi) {
+				
+				edi.setConfig({
+                    icone: "interrogacaoAzul",
+                    mascote: 'mascote',
+					titulo: "Marque V para as orações que representam<br> silepse de número e F para as que não representam."
+				});
+				
+				var alternativas  = [];
+				
+				alternativas.push({
+					texto: 'Essa gente está furiosa e com medo dos acontecimentos.',
+					dataCorreta: false
+				});
+				
+				alternativas.push({
+					texto: '“O tempo é uma cadeira ao sol, e nada mais”(Carlos Drummond de Andrade)',
+					dataCorreta: false
+				});
+				
+				alternativas.push({
+					texto: 'O pessoal foi correndo para reunião, porém todos chegaram atrasados.',
+					dataCorreta: true
+				});
+
+				edi.alternativa_vf(alternativas, function (a) {
+
+                }, function (a) {
+					barraMsg(a?'Muito bem!<br> Somente nesta alternativa é que temos o verbo (chegaram)<br> concordando com a ideia de plural subentendida na palavra <br>anterior (o pessoal). Esta sim é uma silepse de número.':'Atenção!<br> Lembre-se que a silepse de número é uma palavra ou<br> termo que concorda com uma ideia subentendida.', {height: 100})
+				}, {
+                    left: 60,
+                    top: 80,
+                    margin: '0 0 15px 0'
+                });
+			});
+		</script>
+	</head>
+	
+	<body>
+
+	</body>
+</html>

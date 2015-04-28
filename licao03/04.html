@@ -1,0 +1,80 @@
+<!-- Desenvolvedor: Leandro Fortaleza -->
+<!doctype html>
+<html lang="pt-br">
+	<head>
+		<title>Lição 04 Peça 16</title>
+		<meta charset="utf-8">
+		<script src="../wilib/js/lib/require.js"></script>
+		<script src="../wilib/js/app.js"></script>
+
+        <link rel="stylesheet" href="../wilib/css/font-awesome.css">
+        <link rel="stylesheet" href="../wilib/css/estilo.css">
+
+		<script>
+			require(['../wilib/js/lib/comparaTexto'], function (edi) {
+
+				edi.setConfig({
+					titulo: "Observe nos exemplos a seguir, qual o significado da palavra “cara”, e digite corretamente no espaço qual seu conceito correto. Denotação ou Conotação?",
+                    mascote: 'mascote'
+				});
+
+                var cont = 0;
+
+                edi.comparaTexto(".resp", function(a){
+                    cont++;
+                    if(cont == 2)
+                        mensagem("<div style='width: 620px; display:inline-block; font-size: 26px;'>Excelente! No primeiro exemplo, a palavra cara significa “rosto”. Já no segundo exemplo, a palavra “cara” é usada em sentido mais amplo, e por uma série de associações, podemos dizer que está indicando um sujeito, uma pessoa, um individuo.</div>");
+                }, null, {validarAcentos: true,
+                    validarPontos: true,
+                    upCaser: true,
+                    lowerCaser: true,});
+            });
+		</script>
+		<style>
+            input{
+                z-index: 10;
+            }
+            #textos{
+                position: absolute;
+                top: 170px;
+                left: 270px;
+                width: 440px;
+                background: linear-gradient(to bottom, #FFF, #DDD);
+                border: 2px solid #D5D5D5;
+                box-shadow: 2px;
+                border-radius: 15px;
+                padding: 20px 30px;
+                color: #666;
+            }
+            #inputs{
+                position: absolute;
+                top: 190px;
+                left: 596px;
+                width: 50px;
+                text-align: center;
+            }
+
+            #imgs{
+                position: absolute;
+                top: 131px;
+                left: 13px;
+                border-radius: 15px;
+                border: 2px solid #D5D5D5;
+            }
+
+		</style>
+	</head>
+
+	<body>
+        <div id="textos">
+            <div class="txt" style="margin-bottom: 30px;">A menina está com a cara toda pintada.</div>
+            <div class="txt">Aquele cara parece suspeito.</div>
+        </div>
+        <div id="inputs">
+            <input class="resp" id="1" style="margin-bottom: 30px;" data-correta="Denotação" tabindex="2">
+            <input class="resp" id="2" data-correta="Conotação" tabindex="1">
+        </div>
+
+        <img id="imgs" src="../img/licao03/p04.png"  width="240">
+	</body>
+</html>

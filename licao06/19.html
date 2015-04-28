@@ -1,0 +1,78 @@
+<!doctype html>
+<html lang="pt-br">
+<head>
+    <title>Lição 06 Peça 19</title>
+    <meta charset="utf-8">
+    <script src="../wilib/js/lib/require.js"></script>
+    <script src="../wilib/js/app.js"></script>
+    <link rel="stylesheet" href="../wilib/css/font-awesome.css">
+    <link rel="stylesheet" href="../wilib/css/estilo.css">
+
+    <script>
+        require(['../wilib/js/lib/arrasta_numero'], function (edi) {
+
+            edi.setConfig({
+                icone: 'exclamacao',
+                titulo: 'Ligue às frases a figura de construção correta.',
+                mascote: 'mascote'
+            });
+
+            var arrastas = [];
+
+            arrastas.push({
+                arrasta: 'Silepse de gênero',
+                alvo: 'A população chegou agitada ao comício, levavam cartazes e apitos.'
+            });
+
+            arrastas.push({
+                arrasta: 'Silepse de número',
+                alvo: 'O problema é que os três queremos comemorar aniversário no mesmo dia.'
+            });
+
+            arrastas.push({
+                arrasta: 'Silepse de pessoa',
+                alvo: 'Vossa excelência está preocupado.'
+            });
+
+            var config = {
+                embaralhar: false,
+                arrastaConfig: {
+                    width: 260,
+                    height: 96,
+                    left: 10,
+                    top: 10,
+                    tamanhoArrasta: 50,
+                    numeroLineHeight: 1.7,
+                    fontSize: 13,
+                    textAlign: 'left'
+                },
+                alvoConfig: {
+                    width: 320,
+                    height: 96,
+                    fontSize: 11,
+                    left: 445,
+                    top: 10,
+                    textAlign: 'left'
+                },
+                reloadCorreta: true
+            };
+
+            edi.arrasta_numero(arrastas, function (a) {
+
+            }, function (a) {
+                barraMsg(a ? 'Parabéns!<br> Você associou corretamente <br>os conceitos apresentados.' : 'Atenção!<br> Reveja os conceitos apresentados<br> anteriormente e tente novamente. ', {height: 120})
+            }, config);
+
+        });
+    </script>
+
+    <style>
+        #conteudo {
+            background: #fdfdfd;
+        }
+    </style>
+</head>
+
+<body>
+</body>
+</html>

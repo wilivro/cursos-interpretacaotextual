@@ -1,0 +1,146 @@
+<!doctype html>
+<html lang="pt-br">
+<head>
+    <title>Lição 06 Peça 05</title>
+    <meta charset="utf-8">
+    <script src="../wilib/js/lib/require.js"></script>
+    <script src="../wilib/js/app.js"></script>
+    <link rel="stylesheet" href="../wilib/css/font-awesome.css">
+    <link rel="stylesheet" href="../wilib/css/estilo.css">
+
+    <script>
+        require(['../wilib/js/lib/arrasta'], function (edi) {
+
+            edi.setConfig({
+                icone: 'interrogacaoAzul',
+                mascote: 'mascote',
+                titulo: 'Arraste a definição para o local correto:'
+            });
+
+            var texto = [
+                {texto: 'É a omissão de uma ou mais palavras, sem que comprometa o sentido da frase e que fique facilmente subentendida no contexto.', dataCorreta: 1},
+                {texto: 'É o aparecimento de que uma ou mais palavras que modifica o sentido da frase.', dataCorreta: 0}
+            ]
+
+            texto.sort(function () {
+                return 0.5 - Math.random()
+            });
+
+            for (var i = 0; i < texto.length; i++) {
+                var div = $('<div>')
+                        .css({
+                            position: 'relative',
+                            display: 'table-cell',
+                            'vertical-align': 'middle',
+                            width: '220px',
+                            height: '75px'
+                        })
+                        .html(texto[i].texto)
+
+                $('<div>')
+                        .css('margin','5px')
+                        .attr('data-correta', texto[i].dataCorreta)
+                        .addClass('arrasta')
+                        .addClass('azulAlpha')
+                        .append(div)
+                        .appendTo('#arrastas')
+            }
+
+            var config = {
+                colorirFilho: true,
+                cb: function () {
+                    $('<img>').attr({
+                        src:"../wilib/img/svg/seta.svg",
+                        style: "transform: rotate(90deg); left: 168px"
+                    }).appendTo('#ctAlvo');
+
+                    $('<img>').attr({
+                        src:"../wilib/img/svg/seta.svg",
+                        style: "transform: rotate(-90deg); left: 574px"
+                    }).appendTo('#ctAlvo');
+                }
+            };
+
+            edi.arrasta('arrasta', 'alvo', function (a, b, c) {
+                b.removeClass('azulAlpha');
+            }, function(a){
+                barraMsg(a?'Parabéns!<br> A elipse ocorre pela omissão de determinados termos,<br> embora reconhecíveis no contexto.':'Atenção!<br> A elipse não modifica o sentido<br> no contexto. Apenas omite as palavras.', {height: 100});
+            }, config);
+
+            $('.arrasta').css({
+                margin: -5,
+                padding: 5
+            });
+
+        });
+    </script>
+    <style>
+        #ctAlvo {
+            width: 788px;
+            text-align: center;
+        }
+
+        #ctAlvo p {
+            margin: 20px 0 0 0;
+            color: #6D9DB8;
+            font-size: 50px;
+        }
+
+        #ctAlvo > div
+        {
+            position: absolute;
+            margin: 10px 0 0 0;
+            margin-left: 50%;
+            left: -115px;
+            border: 1px solid #C7D9E4;
+            height: 86px;
+            width: 229px;
+        }
+
+        #ctAlvo img {
+            position: absolute;
+            top: 30px;
+        }
+
+        #ctArrasta {
+            position: absolute;
+            top: 280px;
+            margin-left: 50%;
+            left: -350px;
+            width: 750px;
+            height: 85px;
+        }
+        #arrastas{
+            position: relative;
+            display: table-cell;
+            vertical-align: middle;
+            width: 750px;
+            height: 85px;
+        }
+
+        .arrasta {
+            display: inline-block;
+            width: 220px;
+            text-align: center;
+            height: 65px;
+            font-size: 13px;
+            color: #FFF;
+        }
+
+
+    </style>
+
+</head>
+<body>
+<div id="ctAlvo">
+    <p>ELIPSE</p>
+
+    <div class="alvo" data-correta="1"></div>
+
+</div>
+
+<div id="ctArrasta" class="btn btn-default-hover">
+    <div id="arrastas"></div>
+</div>
+</body>
+</html>

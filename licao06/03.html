@@ -1,0 +1,106 @@
+<!doctype html>
+<html lang="pt-br">
+<head>
+    <title>Lição 06 Peça 03</title>
+    <meta charset="utf-8">
+    <script src="../wilib/js/lib/require.js"></script>
+    <script src="../wilib/js/app.js"></script>
+    <link type="text/css" rel="stylesheet" href="../wilib/css/font-awesome.css">
+    <link type="text/css" rel="stylesheet" href="../wilib/css/estilo.css">
+
+    <script>
+        require(['../wilib/js/lib/revela'], function (edi) {
+
+            edi.setConfig({
+                titulo: "Clique sobre a imagem para revelar o texto.",
+                mascote: 'mascote'
+            });
+
+            edi.revela('btn-revela', 'box-revela',null, function (btn) {
+                btn.animate({left: 20, width: 200, top: 155}, 1000);
+                setTimeout(function(){
+                    barraMsg('Muito bem!<br> Quando há uma mudança desta sequência lógica, seja ela por repetição, inversão ou omissão é justamente nesta circunstância que as figuras de construção se manifestam. Elas se encontram presentes na linguagem de nosso cotidiano de forma geral.', {height: 120})
+                },5000)
+            },{piscar:false});
+
+            var x = 0;
+
+            function removeBarra() {
+                setTimeout(function () {
+                    $('#barra' + x).animate({height: 0}, 1000, function () {
+                        $(this).remove()
+                    });
+                    if (!!$('#barra' + x).length)
+                        removeBarra();
+                    x++;
+                }, 50)
+            }
+
+            for (var i = 0; i < 15; i++) {
+                $('<div>').attr('id', 'barra' + i).css({left: 34 * i}).addClass('barra').appendTo('#ct');
+                if (i == 14)
+                    removeBarra();
+            }
+
+            $('.box-revela').peBalao({scaleX: -1.5, scaleY: 1.5, borda: '#CCC', rotate: -89, left: -38, top: 40})
+        });
+    </script>
+
+    <style>
+        .btn-revela {
+            position: absolute;
+            left: 210px;
+            top: 80px;
+            cursor: pointer;
+            z-index: 1;
+        }
+
+        .box-revela {
+            width: 330px;
+            border: 1px solid #CCC;
+            border-radius: 15px;
+            font-size: 14px;
+            padding: 0 20px;
+            position: absolute;
+            line-height: 1.8;
+            text-align: left;
+            color: #666;
+            text-shadow: 1px 1px 1px rgba(0, 0, 0, 0.2);
+            top: 95px;
+            left: 250px;
+        }
+
+        #ct {
+            position: absolute;
+            top: 75px;
+            left: 200px;
+            z-index: 2000;
+        }
+
+        .barra {
+            position: absolute;
+            width: 35px;
+            background: #FFF;
+            height: 334px;
+        }
+    </style>
+</head>
+
+<body>
+<img class="btn-revela" src="../img/licao06/p03.jpg" alt=""/>
+
+<div id="ct">
+</div>
+<div class="box-revela">
+    <p>
+        As figuras de construção se caracterizam por apresentarem algum tipo de modificação na estrutura da oração. Para isto vamos começar entendendo o sentido convencional da estrutura sintática da nossa língua, que se perfaz da seguinte sequência:
+        sujeito + predicado + complemento.<br>
+        Observe o exemplo:<br>
+        <span class="bold" style="color: #9C0;">        SUJEITO     +           PREDICADO                +        COMPLEMENTO
+
+        ELES                CHEGARAM  ATRASADOS                À REUNIÃO.</span>
+
+    </p>
+</div>
+</body>
+</html>

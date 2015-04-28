@@ -1,0 +1,413 @@
+<!-- Desenvolvedor: Leandro Fortaleza -->
+<!doctype html>
+<html lang="pt-br">
+	<head>
+		<title>Lição 04 Peça 16</title>
+		<meta charset="utf-8">
+		<script src="../wilib/js/lib/require.js"></script>
+		<script src="../wilib/js/app.js"></script>
+        <script src="../js/sub7_2.js"></script>
+        <link rel="stylesheet" href="../wilib/css/font-awesome.css">
+        <link rel="stylesheet" href="../wilib/css/estilo.css">
+
+		<script>
+            require(['../wilib/js/lib/edi'], function(edi) {
+
+                edi.iniciar({
+                    titulo: "Clique sobre o botão e observe um trecho da canção “Dois rios”, de<br>Samuel Rosa, Lô Borges e Nando Reis. Note a caracterização do sol:<br>ele foi aplicado conotativamente..",
+                    mascote: 'mascote'
+                });
+
+                mascara = function(texto, settings, callBack) {
+
+                    var config = {
+
+                        tempo: 200,
+                        cor: '#330099',
+                        div: '#reset',
+                        fonte: 'trebuchet_ms'
+
+                    }
+
+                    if (settings) {
+                        $.extend(config, settings);
+                    }
+
+                    $(config.div).fadeOut();
+                    $('#reset400').fadeOut(); // esconde o botão reset
+                    texto.css('color', $('#slider').css('color')); //pega a cor original do texto 
+
+
+                    var str = texto.html(); //pega o texto a ser mascarado
+                    var contador = 0; //da os id's certos para os enunciado q tiverem <div>
+                    var aux = ""; // variavel que irar adicionar a tag <span> a cada letra
+                    var num = config.tempo; //criação da variável só para facilitar o calculo
+
+                    tempoMascara = str.length * num + 1000;
+                    testeTags = true; //variavel usada para ajudar na detecção de tags no texto
+
+                    for (var x = 0; x < str.length; x++) {
+                        contador++;
+                        if (str.charAt(x) == "<") {
+                            testeTags = false;
+                        }
+
+                        if (str.charAt(x) == ">") {
+                            testeTags = true;
+                        }
+
+                        if (!testeTags || str.charAt(x) == ">") {
+                            contador--;
+                            aux += str.charAt(x);
+                        }
+
+                        if (testeTags && str.charAt(x) != ">") {
+                            aux += '<span id=mascara' + contador + ' ">' + str.charAt(x) + '</span>';
+                        }
+
+                    }
+                    texto.html(aux);
+
+
+                    var cont = 0;
+
+                    var tempo = setInterval(function() {
+
+                        //aux += str.charAt(cont)
+                        $('#mascara' + cont).css('color', config.cor).addClass('pintado'); //mudando a cor de letra em letra
+
+
+                        if (cont == contador) { //condição para parar o setInterval
+                            if ($(config.div) != undefined) {
+                                $(config.div).fadeIn(); //mostra o botão reset
+                                $('#reset400').fadeIn();
+                            }
+
+                            texto.html(str).css('color', config.cor);
+
+                            clearInterval(tempo);
+
+                            if ( !! callBack)
+                                callBack();
+
+                            //p.bloqueiaClick(0, true); //liberta os botões
+                        }
+
+                        cont++;
+
+
+                    }, config.tempo);
+
+                    return tempo; //var mask = peca.mascara($(id_div), { tempo: 120,cor:'#00F' })} retorno usado pra dar Stop na mascara;
+
+                }
+
+                var subtitle = function(subJSON, offSet) {
+
+                    var meuSom = document.getElementById("meuSom");
+
+                    var pointer = 0;
+                    var show = null;
+                    var nextSub = subJSON[0];
+                    //music.setPosition(480);
+                    $(".prev").html("&nbsp");
+                    $(".show").html("&nbsp");
+                    $(".next").html(nextSub.txt);
+                    //$(".next").html(show.txt);
+
+                    var next = function(pointer) {
+                        show = nextSub;
+                        if(!!subJSON[pointer])
+                            nextSub = subJSON[pointer]
+                        else{
+                            console.log("alo vo");
+                            next = function(){};
+                            $('.slideShow').fadeOut(1000);
+                            $('#texto').fadeIn(1000);
+                            barraMsg("Excelente! Note que a expressão “dois rios inteiros” também foi empregada conotativamente e compõe um dos elementos básicos para a interpretação da letra.", {height: 80});
+                            edi.finalizar();
+                            return;
+                        }
+                        if (show.play) {
+                            play(p, show.play);
+                        }
+                        //exportRoot.children[0].stop();
+                        $(".prev").animate({
+                            top: "-=20"
+                        }, 100, function() {
+                            $(this).remove()
+                        });
+
+                        $(".show").removeClass("show").animate({
+                            top: "-=25",
+                            fontSize: "18px"
+                        }, 100, function() {
+                            $(this).addClass("prev");
+
+                        })
+                        $(".next").animate({
+                            top: "-=20",
+                            fontSize: "22px"
+                        }, 100, function() {
+                            $(this).addClass("show").removeClass("next");
+                            var _tempo = ((nextSub.start - show.start) * 60000 - offSet) / $(this).html().length;
+                            _tempo = (show.duration * 60000 - offSet) / $(this).html().length;
+                            mascara($(this), {
+                                tempo: _tempo,
+                                cor: "#FF0"
+                            });
+                        })
+                        $("<div>").addClass("line next").css("display", "none").html(nextSub.txt).appendTo(".subtitle").fadeIn();
+
+                    }
+
+
+                    $(".btnPlay").click(function() {
+                        $(".btnPlay").remove();
+
+                        meuSom.play();
+
+                        var musicInverval = setInterval(function() {
+
+                            timeLine = meuSom.currentTime / 60;
+
+                            //console.log(createjs.Ticker.getTime());
+                            if (pointer < sub7.length) {
+
+                                if (timeLine >= nextSub.start) {
+                                    next(++pointer);
+                                }
+                                    
+                            } else {
+                                clearInterval(musicInverval);
+                            }
+                        }, 100);
+                    })
+
+                }
+
+                var WaitForPlay = function() {
+                    var playSeta = $("<div>")
+                        .css({
+                            position: 'relative',
+                            width: 0,
+                            height: 0,
+                            left: "22px",
+                            top: "15px",
+                            borderTop: "10px solid transparent",
+                            borderBottom: "10px solid transparent",
+                            borderLeft: "10px solid #FFF",
+                        })
+                    var playDiv = $("<div>")
+                        .attr("id", "btnPlay")
+                        .addClass("btnPlay")
+                        .css({
+                            position: "absolute",
+                            width: "50px",
+                            height: "50px",
+                            borderRadius: "50px",
+                            backgroundImage: "linear-gradient(to bottom, #00cc66,#009966 130%)",
+                            opacity: 0.5,
+                            margin: "-50px",
+                            left: "418px",
+                            top: "175px",
+                            cursor: "pointer"
+                        })
+                        .append(playSeta).prependTo(".slideShow")
+                        .mouseenter(function() {
+                            $("#btnPlay").css({
+                                opacity: 1
+                            })
+                        })
+                        .mouseleave(function() {
+                            $("#btnPlay").css({
+                                opacity: 0.5
+                            })
+                        });
+
+                    $("<div>")
+                        .attr("id", "WaitForPlay")
+                        .addClass("btnPlay")
+                        .css({
+                            position: "relative",
+                            width: "100%",
+                            height: "100%",
+                            background: "gray",
+                            opacity: "0.5",
+                            cursor: "pointer"
+                        }).prependTo(".slideShow")
+                        .mouseenter(function() {
+                            $("#btnPlay").css({
+                                opacity: 1
+                            })
+                        })
+                        .mouseleave(function() {
+                            $("#btnPlay").css({
+                                opacity: 0.5
+                            })
+                        });
+                }
+                WaitForPlay();
+                subtitle(sub7,500);
+            edi.util.removeLoading();
+        });
+		</script>
+
+		<style>
+
+            .subtitle
+            {
+                position:relative;
+                top:220px;
+                left:50%;
+                margin-left: -250px;
+                height: 70px;
+                background: transparent;
+                border-radius: 20px;
+                text-align: center;
+            }
+            .fundoSub
+            {
+                position: absolute;
+                width: 100%;
+                height: 100%;
+                left:-250px;
+                background: gray;
+                opacity: 0.6;
+            }
+            .line
+            {
+                position: absolute;
+                width: 500px;
+                top:45px;
+                text-align: center;
+                margin: 5px;
+                font-size: 18px;
+                color:white;
+                opacity: 0.6;
+            }
+            .line.show
+            {
+                font-size: 22px;
+                margin: 0px;
+                opacity:1;
+            }
+            .slideShow
+            {
+                position: relative;
+                width: 789px;
+                height: 315px;
+            }
+            .slide
+            {
+                position: absolute;
+                width: 100%;
+                height: 100%;
+                display: none;
+            }
+            #foto{
+                position: absolute;
+                width: 788px;
+                height: 315px;
+                background-size: 100%;
+                background-position: 0px;
+                z-index: -1;
+                background-image: url(../img/licao03/peca06.jpg);
+            }
+
+            #texto{
+                position: absolute;
+                left: 157px;
+                top: 110px;
+                width: 410px;
+                height: 202px;
+                padding: 30px 0 0 53px;
+                border: 2px solid #FFF;
+                border-radius: 15px;
+                display: none;
+                background-color: rgba(0, 0, 0, 0.8);
+            }
+
+            #cetral{
+                position: relative;
+                width: 410px;
+                height: 180px;
+                display: table-cell;
+                vertical-align: middle;
+            }
+
+            td{
+                color: #FFF;
+                padding-right: 20px;
+            }
+		</style>
+	</head>
+
+	<body>
+        <div id="foto"></div>
+        <audio id="meuSom">
+          <source src="../audio/doisRios.ogg" type="audio/ogg">
+          <source src="../audio/doisRios.mp3" type="audio/mpeg">
+        </audio>
+
+        <div class="slideShow">
+        <div class="slide" style="position:absolute;width:100%;height:100%"></div>
+            <section class="subtitle" >
+                <div class="fundoSub"></div>
+                <div class="line prev"></div>
+                <div class="line show"></div>
+                <div class="line next"></div>
+            </section>
+        </div>
+
+        <div id="texto">
+            <div id="central">
+
+                <table style="width:100%">
+
+                    <tr>
+                        <td>
+                            O sol é o pé e a mão<br>
+                            O sol é a mãe e o pai<br>
+                            Dissolve a escuridão<br>
+                        </td>
+
+                        <td>
+                            Eu vi também<br>
+                            Só pra poder entender<br>
+                            Na voz a vida ouvi dizer<br>
+
+                        </td>
+                    </tr>
+
+                    <tr>
+                        <td>
+                            O sol se põe se vai<br>
+                            E após se pôr<br>
+                            O sol renasce no Japão<br>
+                        </td>
+                        <td>
+                            Que os braços sentem<br>
+                            E os olhos vêem<br>
+                            Que os lábios beijam<br>
+                            Dois rios inteiros<br>
+                            Sem direção<br>
+                        </td>
+                    </tr>
+
+                </table>
+
+
+
+               
+               
+              
+               
+
+               
+
+            </div>
+        </div>
+
+	</body>
+</html>

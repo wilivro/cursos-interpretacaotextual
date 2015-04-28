@@ -1,0 +1,150 @@
+<!doctype html>
+<html lang="pt-br">
+<head>
+    <title>arr_a001</title>
+    <meta charset="utf-8">
+    <script src="../wilib/js/lib/require.js"></script>
+    <script src="../wilib/js/app.js"></script>
+    <link rel="stylesheet" href="../wilib/css/font-awesome.css">
+    <link rel="stylesheet" href="../wilib/css/estilo.css">
+
+    <script>
+        require(['../wilib/js/lib/arrasta'], function (edi) {
+
+            edi.setConfig({
+                icone: 'interrogacaoAzul',
+                mascote: 'mascote',
+                titulo: 'Arraste para o centro da página a frase em que o termo sublinhado está empregado no sentido denotativo.'
+            });
+
+            var texto = [
+                {texto: '“Além dos ganhos econômicos, a nova realidade rendeu frutos políticos.” ', dataCorreta: 0},
+                {texto: '“...com percentuais capazes de causar inveja ao presidente.” ', dataCorreta: 1},
+                {texto: '“Os genéricos estão abrindo as portas do mercado...” ', dataCorreta: 0},
+                {texto: '“...a indústria disparou gordos investimentos.” ', dataCorreta: 0},
+                {texto: '“Colheu uma revelação surpreendente:...” ', dataCorreta: 0}
+            ]
+
+            texto.sort(function () {
+                return 0.5 - Math.random()
+            });
+
+            for (var i = 0; i < texto.length; i++) {
+                var div = $('<div>')
+                        .css({
+                            position: 'relative',
+                            display: 'table-cell',
+                            'vertical-align': 'middle',
+                            width: '130px',
+                            height: '75px'
+                        })
+                        .html(texto[i].texto)
+
+                $('<div>')
+                        .css('margin','5px')
+                        .attr('data-correta', texto[i].dataCorreta)
+                        .addClass('arrasta')
+                        .addClass('azulAlpha')
+                        .append(div)
+                        .appendTo('#arrastas')
+            }
+
+            var config = {
+                colorirFilho: true,
+                cb: function () {
+                    $('<img>').attr({
+                        src:"../wilib/img/svg/seta.svg",
+                        style: "transform: rotate(90deg); left: 168px"
+                    }).appendTo('#ctAlvo');
+
+                    $('<img>').attr({
+                        src:"../wilib/img/svg/seta.svg",
+                        style: "transform: rotate(-90deg); left: 574px"
+                    }).appendTo('#ctAlvo');
+                }
+            };
+
+            edi.arrasta('arrasta', 'alvo', function (a, b, c) {
+                b.removeClass('azulAlpha');
+                b.find('div').css('width', '260px');
+            }, function(a){
+               barraMsg(a?'Muito bem! Você compreendeu bem nossa<br>lição sobre denotação e conotação!':'Atenção! Reveja os exercícios anteriores onde estudamos os <br>conceitos de denotação e conotação e refaça este exercício.', {height: 80});
+            }, config);
+
+            $('.arrasta').css({
+                margin: -5,
+                padding: 5
+            });
+
+        });
+    </script>
+    <style>
+        #ctAlvo {
+            width: 788px;
+            text-align: center;
+        }
+
+        #ctAlvo p {
+            margin: 40px 0 0 0;
+            color: #6D9DB8;
+            font-size: 22px;
+        }
+
+        #ctAlvo > div
+        {
+            position: absolute;
+            margin: 10px 0 0 0;
+            margin-left: 50%;
+            left: -100px;
+            border: 1px solid #C7D9E4;
+            height: 75px;
+            width: 200px;
+        }
+
+        #ctAlvo img {
+            position: absolute;
+            top: 30px;
+        }
+
+        #ctArrasta {
+            position: absolute;
+            top: 280px;
+            margin-left: 50%;
+            left: -390px;
+            width: 765px;
+            height: 85px;
+        }
+        #arrastas{
+            position: relative;
+            display: table-cell;
+            vertical-align: middle;
+            width: 780px;
+            height: 85px;
+        }
+
+        .arrasta {
+            display: inline-block;
+            width: 130px;
+            text-align: center;
+            height: 65px;
+            font-size: 13px;
+            color: #FFF;
+        }
+
+
+    </style>
+
+</head>
+<body>
+<div id="ctAlvo">
+    <p>Sentido Denotativo</p>
+
+    <div class="alvo" data-correta="1"></div>
+
+</div>
+
+<div id="ctArrasta" class="btn btn-default-hover">
+    <div id="arrastas"></div>
+</div>
+</body>
+</html>

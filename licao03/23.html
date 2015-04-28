@@ -1,0 +1,173 @@
+<!-- Desenvolvedor: Leandro Fortaleza -->
+<!doctype html>
+<html lang="pt-br">
+<head>
+    <title>Lição 08 Peça 38</title>
+    <meta charset="utf-8">
+    <script src="../wilib/js/lib/require.js"></script>
+    <script src="../wilib/js/app.js"></script>
+    <link rel="stylesheet" href="../wilib/css/font-awesome.css">
+    <link rel="stylesheet" href="../wilib/css/estilo.css">
+
+    <script>
+        require(['../wilib/js/lib/alternativa_botao'], function (edi) {
+
+            edi.setConfig({
+                titulo: "Vamos ajudar o Fred a identificar nas orações a seguir se os termos grifados estão no sentido Denotativo ou Conotativo clicando sobre a alternativa correta.",
+                mascote: 'mascote',
+                qtdTelas: 4
+            });
+
+            var btns = [];
+
+            var correto = "Excelente! Você já é capaz de identificar em um texto se as frases estão escritas em sentido conotativo ou denotativo. Muito bem!";
+            var errado = "Atenção! Perceba a diferença entre conotação e denotação: Conotação é o uso da palavra em sentido figurado. Denotação é o uso da palavra em seu sentido real, conforme seu significado do dicionário.";
+
+
+            if (edi.telaAtual == 1) {
+
+                $('.middle').html('“O amor é fogo que arde sem se ver.”');
+                var btns = [
+                    {texto: 'Conotação', dataCorreta: true},
+                    {texto: 'Denotação', dataCorreta: false}
+                ];
+            }
+
+            if (edi.telaAtual == 2) {
+
+                $('.middle').html('Meu pai virou uma fera.');
+                var btns = [
+                    {texto: 'Conotação', dataCorreta: true},
+                    {texto: 'Denotação', dataCorreta: false}
+                ];
+            }
+
+            if (edi.telaAtual == 3) {
+
+                $('.middle').html('Meu avô fez uma cirurgia de coração.');
+                var btns = [
+                    {texto: 'Conotação', dataCorreta: false},
+                    {texto: 'Denotação', dataCorreta: true}
+                ];
+            }
+
+            if (edi.telaAtual == 4) {
+                $('.middle').html('Notícias apontam que a fera fugiu do zoológico.');
+                var btns = [
+                    {texto: 'Conotação', dataCorreta: false},
+                    {texto: 'Denotação', dataCorreta: true}
+                ];
+            }
+
+     
+            var config = {
+                width: 160,
+                height: 35,
+                left: 370,
+                top: 120,
+                margin: '12px 12px 0 12px',
+                tamanhoTexto: 14,
+                btnBranco: true,
+                randomico: false,
+                lineHeight: '1.4',
+                animacao: true
+            };
+
+            edi.alternativa_botao(btns, function(a){
+                if(a){
+                    $('#finali').html('Excelente! Você já é capaz de identificar em um texto se as frases estão escritas em sentido conotativo ou denotativo. Muito bem!');
+                    $('#txtFinal').fadeIn();
+                }
+                else{
+                    $('#finali').html('Atenção! Perceba a diferença entre conotação e denotação: Conotação é o uso da palavra em sentido figurado. Denotação é o uso da palavra em seu sentido real, conforme seu significado do dicionário.');
+                    $('#txtFinal').removeClass('certo').addClass('errado').fadeIn();
+                }
+
+            }, function(){
+
+            }, config);
+
+            $('#balao').peBalao({
+                background:'#FFF',
+                borda:'#666',
+                tamanhoBorda: 12,
+                top:142,
+                left:10,
+                scaleX:-1.1,
+                scaleY:-1.1,
+                corBorda:'#000',
+                rotate:0
+            });
+        });
+    </script>
+    <style>
+        #balao {
+            position: absolute;
+            top: 90px;
+            left: 80px;
+            border-radius: 40px;
+            border: 1px solid #666;
+            padding: 10px;
+            width: 250px;
+            height: 110px;
+            font-size: 14px;
+            color: #666;
+        }
+
+        .certo {
+            position: absolute;
+            display: none;
+            top: 240px;
+            left: 430px;
+            border-radius: 40px;
+            border: 2px dashed #9c0;
+            padding: 10px;
+            width: 250px;
+            height: 110px;
+            font-size: 14px;
+            color: #9c0;
+        }
+
+        .errado {
+            position: absolute;
+            display: none;
+            top: 240px;
+            left: 430px;
+            border-radius: 40px;
+            border: 2px dashed #F00;
+            padding: 10px;
+            width: 250px;
+            height: 110px;
+            font-size: 14px;
+            color: #F00;
+        }
+        .middle {
+            position: relative;
+            text-align: center;
+            vertical-align: middle;
+            display: table-cell;
+            height: 110px;
+            width: 250px;
+        }
+        #garoto {
+            position: absolute;
+            top: 205px;
+            left: 20px;
+        }
+    </style>
+</head>
+
+<body>
+    <div id="balao">
+        <div class="middle">
+        </div>
+    </div>
+
+    <div id="txtFinal" class="certo">
+        <div class="middle" id="finali">
+            Os instrumentos típicos para o uso sustentável dos recursos podem ser sintetizados através de algumas ferramentas, tais como: O Princípio dos 3 R’s, Reduzir, Reutilizar e Reciclar.
+        </div>
+    </div>
+    <img id="garoto" src="../wilib/img/svg/garoto_camisa_xadrez.svg" width="100"/>
+</body>
+</html>

@@ -1,0 +1,154 @@
+<!-- Desenvolvedor: Leandro Fortaleza -->
+<!doctype html>
+<html lang="pt-br">
+	<head>
+		<title>Lição 04 Peça 16</title>
+		<meta charset="utf-8">
+		<script src="../wilib/js/lib/require.js"></script>
+		<script src="../wilib/js/app.js"></script>
+
+        <link rel="stylesheet" href="../wilib/css/font-awesome.css">
+        <link rel="stylesheet" href="../wilib/css/estilo.css">
+
+		<script>
+			require(['../wilib/js/lib/comparaTexto'], function (edi) {
+
+				edi.setConfig({
+					titulo: "Clique sobre as imagens para revelar as frases, e em seguida, digite Denotação se o significado for Denotativo ou Conotação, se o significado for Conotativo.",
+                    mascote: 'mascote'
+				});
+
+                edi.comparaTexto(".resp", function(a){
+                    if(a.attr('id') == 'in1') {
+                        a.remove();
+                        $('.txt1').css({
+                            marginBottom: '30px',
+                            marginTop: '-9px',
+                            marginLeft: '210px'
+                        })
+                        .html('<div class="txtAux">"A cobra picou o homem."</div><br>Muito bem! Essa frase tem um sentido denotativo, percebemos isso, ao observar o contexto em que a palavra “cobra” está inserida, neste caso é um contexto real.');
+                    }
+                    else{
+                        a.remove();
+                        $('.txt').css({
+                            marginBottom: '30px',
+                            marginTop: '-9px',
+                            marginLeft: '210px'
+                        })
+                        .html('<div class="txtAux">"Essa mulher é uma cobra."</div><br>Muito bem! Essa frase tem um sentido conotativo, quando observamos o contexto em que a palavra “cobra” está inserida, neste caso, num sentido figurado.');
+                    }
+                        console.log("naoooa");                
+                    
+                }, null, {validarAcentos: true,
+                    validarPontos: true,
+                    upCaser: true,
+                    lowerCaser: true,});
+            });
+		</script>
+		<style>
+            input{
+                z-index: 10;
+            }
+            .txtAux{
+                font-weight: bold;
+                font-style: italic;
+            }
+            #textos{
+                position: absolute;
+              top: 78px;
+              left: 100px;
+              height: 107px;
+              width: 540px;
+              background: linear-gradient(to bottom, #FFF, #DDD);
+              border: 2px solid #D5D5D5;
+              box-shadow: 2px;
+              border-radius: 15px;
+              padding: 20px 30px;
+              color: #666;
+            }
+
+            #textos2{
+                position: absolute;
+              top: 240px;
+              left: 100px;
+              height: 95px;
+              width: 540px;
+              background: linear-gradient(to bottom, #FFF, #DDD);
+              border: 2px solid #D5D5D5;
+              box-shadow: 2px;
+              border-radius: 15px;
+              padding: 20px 30px;
+              color: #666;
+            }
+            #inputs{
+                position: absolute;
+                top: 190px;
+                left: 596px;
+                width: 50px;
+                text-align: center;
+            }
+
+            #img1{
+                position: absolute;
+                top: 89px;
+                left: 113px;
+                border-radius: 15px;
+                border: 2px solid #D5D5D5;
+            }
+
+            #img2{
+                position: absolute;
+                top: 245px;
+                left: 113px;
+                border-radius: 15px;
+                border: 2px solid #D5D5D5;
+            }
+
+            .txt{
+                margin-left: 260px;
+                margin-bottom: 30px;
+            }
+
+            .txt1{
+                margin-left: 260px;
+                margin-bottom: 30px;
+            }
+
+            #in1{
+                position: absolute;
+                left: 404px;;
+                top: 142px;
+            }
+
+            #in2{
+                position: absolute;
+                left: 407px;;
+                top: 298px;
+            }
+
+            input{
+                border: 1px solid #000;
+            }
+
+		</style>
+	</head>
+
+	<body>
+        <div id="textos">
+            <div class="txt1" style="margin-bottom: 30px;">A cobra picou o homem.</div>
+        </div>
+
+        <div id="textos2">
+            <div class="txt" style="margin-bottom: 30px;">Essa mulher é uma cobra.</div>
+        </div>
+
+        
+        <input class="resp" id="in1" data-correta="Denotação" tabindex="2">
+        <input class="resp" id="in2" data-correta="Conotação" tabindex="1">
+      
+
+        <img id="img1" src="../img/licao03/peca13_1.png" width="150">
+        <img id="img2" src="../img/licao03/peca13_2.png" width="150">
+
+	</body>
+</html>

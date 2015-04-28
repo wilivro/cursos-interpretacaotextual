@@ -1,0 +1,179 @@
+<!-- Desenvolvedor: Leandro Fortaleza -->
+<!doctype html>
+<html lang="pt-br">
+
+<head>
+	<title>Lição 04 Peça 50</title> <!-- alt_f002 -->
+        <meta charset="utf-8">
+        <script src="../wilib/js/lib/require.js"></script>
+        <script src="../wilib/js/app.js"></script>
+        <link rel="stylesheet" href="../wilib/css/font-awesome.css">
+        <link rel="stylesheet" href="../wilib/css/estilo.css">
+
+	<script>
+		require(['../wilib/js/lib/alternativa_botao'], function (edi) {
+
+			edi.setConfig({
+				titulo: 'Clique sobre a imagem revele o texto e<br>em seguida responda corretamente as questões.',
+        mascote: 'mascote',
+        tempoFinal: 10,
+        qtdTelas:3
+			});
+
+			if(edi.telaAtual==1){
+				var correto = "Muito bem! O tema central do texto é a Lua.";
+				var errado = "Errado! Observe a imagem e o releia o texto novamente.";
+				$('#central').html('Qual o tema central do texto?');
+				var botoes = [
+
+	          {texto: 'Falar sobre a Terra.', dataCorreta: false},
+	          {texto: 'Falar sobre a Lua.', dataCorreta: true},
+	          {texto: 'Falar sobre o Universo.', dataCorreta: false}
+
+	      ];
+			}
+
+			if(edi.telaAtual==2){
+				var correto = "Muito bem! A linguagem utilizada é a Conotação.";
+				var errado = "Errado! Releia o texto e observe o sentido das palavras.";
+				$('#central').html('Que linguagem o texto utiliza?');
+				var botoes = [
+
+	          {texto: 'Denotativa', dataCorreta: false},
+	          {texto: 'Conotativa', dataCorreta: true},
+	          {texto: 'Nenhuma', dataCorreta: false}
+
+	      ];
+
+			}
+
+			if(edi.telaAtual==3){
+				var correto = "Muito bem! A segunda alternativa é a correta, pois a palavra<br>lua está expressa em sentido real.";
+				var errado = "Errado! Denotação é o sentido real da palavra, o sentido do dicionário. Tente novamente!";
+				$('#central').html('Qual seria o sentido Denotativo da palavra Lua?');
+				var botoes = [
+
+	          {texto: '“Tu és a lua, linda, branca iluminada...”', dataCorreta: false},
+	          {texto: 'Lua, satélite natural da Terra.', dataCorreta: true},
+	          {texto: '“...Tu és a Lua, minha Lua brilhante Minha inspiração, meu sonho, Que me invade e me fascina a cada instante.”', dataCorreta: false}
+
+	      ];
+
+			}
+
+      //balões
+      
+
+			edi.alternativa_botao(botoes, function (a, b) {
+          //cb
+      }, function (a) {
+        barraMsg(a?correto:errado, {height: 80})
+      }, {
+				width: 300,
+				height: 35,
+				left: 430,
+				top: 170,
+				btnBranco: true,
+				animacao: true,
+				tamanhoTexto: 14,
+				colunas: 1
+      });
+
+			$("#borda").click(function() {
+				$('.alter-btn, #texto').fadeIn();
+			});
+
+			$('.alter-btn, #texto').hide();
+		});
+	</script>
+
+	<style>
+		.alter-btn {
+			width: 300px;
+			display: none;
+		}
+
+		#_btn {
+			position: absolute;
+			left: 10px;
+			top: 99px;
+			border-radius: 15px;
+		}
+
+		#balao {
+			position: absolute;
+			left: 250px;
+			top: 75px;
+			width: 150px;
+			height: 110px;
+			font-size: 13px;
+			line-height: 20px;
+			text-align: left;
+			border-radius: 10px;
+			cursor: pointer;
+			color: #666;
+		}
+
+		#texto {
+			position: absolute;
+			left: 435px;
+			top: 90px;
+			width: 290px;
+			height: 50px;
+			padding: 10px;
+			border: 1px solid #ccc;
+			border-radius: 10px;
+			text-align: center;
+			display: none;
+			font-size: 13px;
+		}
+
+		#borda{
+			position: absolute;
+		  width: 393px;
+		  height: 284px;
+		  top: 83px;
+		  left: 4px;
+		  border-radius: 15px;
+		  border: 2px solid #CCC;
+		  cursor: pointer;
+		}
+
+		#central{
+			position: relative;
+			width: 290px;
+			height: 50px;
+			display: table-cell;
+			vertical-align: middle;
+		}
+	</style>
+</head>
+
+<body>
+</body>
+	<img id="_btn" src="../img/licao03/peca18.png" width="230">
+
+	
+	<div id="balao">
+		<p>
+			A lua<br>
+			Tu és a lua, linda, branca iluminada,<br>
+			E como ela é minha namorada, que vejo, admiro<br>
+			E me ilumina toda noite;<br>
+			Tu és a Lua, minha Lua brilhante<br>
+			Minha inspiração, meu sonho,<br>
+			Que me invade e me fascina a cada instante.<br>
+			(Úrsula Íris)
+		</p>
+	</div>
+	<div id="borda"></div>
+	<div id="texto">
+		<div id="central">
+
+			Neste caso, qual tipo de atendimento é mais rápido para atender
+			as necessidades deste cliente?
+
+		</div>
+		</p>
+	</div>
+</html>

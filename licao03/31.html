@@ -1,30 +1,36 @@
-<!-- Desenvolvedor: Danilo Thiago -->
+<!-- Desenvolvedor: Leandro Fortaleza -->
 <!doctype html>
 <html lang="pt-br">
-<head>
-    <title>rev_n004</title>
-    <meta charset="utf-8">
-    <script src="../wilib/js/lib/require.js"></script>
-    <script src="../wilib/js/app.js"></script>
-    <link type="text/css" rel="stylesheet" href="../wilib/css/font-awesome.css">
-    <link type="text/css" rel="stylesheet" href="../wilib/css/meioAmbiente.css">
+	<head>
+        <title>Lição 02 Peça 11</title>
+		<meta charset="utf-8">
+		<script src="../wilib/js/lib/require.js"></script>
+		<script src="../wilib/js/app.js"></script>
 
-    <script>
-        require(['../wilib/js/lib/revela'], function (edi) {
+        <link rel="stylesheet" href="../wilib/css/font-awesome.css">
+        <link rel="stylesheet" href="../wilib/css/estilo.css">
 
-            edi.setConfig({
-                titulo: "Clique sobre a palavra ambiguidade e revele a imagem. ",
-                mascote: 'mascote'
-            });
+		<script>
+			require(['../wilib/js/lib/revela'], function (edi) {
 
-            edi.revela('btn-revela', 'box-revela',null, function (btn) {
-                btn.animate({left: 20, width: 200, top: 185}, 1000);
-                $('#msgAcerto').fadeIn();
-            },{piscar:false});
+				edi.setConfig({
+                    icone: "exclamacao",
+					titulo: "Clique sobre a imagem e saiba mais sobre ambiguidade. ",
+					mascote: 'mascote'
+				});
 
-            var x = 0;
+				edi.revela('btn-revela', 'box-revela', function (btn, revela) {
+					//
+				}, function (btn) {
+					btn.animate({left: 50}, 1000);
+				}, {
+					piscar: false,
+					delay: 1000
+				});//iniciando o EDI
 
-            function removeBarra() {
+				var x = 0;
+
+				function removeBarra() {
                 setTimeout(function () {
                     $('#barra' + x).animate({height: 0}, 500, function () {
                         $(this).remove()
@@ -41,32 +47,26 @@
                     removeBarra();
             }
             
-        });
-    </script>
+			});
+		</script>
 
-    <style>
-        .btn-revela {
-            position: absolute;
-            left: 180px;
-            top: 150px;
-            cursor: pointer;
-            z-index: 1;
-        }
+		<style>
+			.btn-revela {
+				background: url(../img/licao03/p31.png) no-repeat;
+				background-size: 100% 100%;
+				width: 233px;
+				height: 279px;
+				top: 80px;
+				left: 278px;
+				z-index: 100;
+				position: absolute;
+				cursor: pointer;
+			}
 
-        .box-revela {
-            width: 250px;
-            height: 230px;
+			 #ct {
             position: absolute;
-            top: 110px;
-            left: 250px;
-            background: url(../img/licao03/p31.png) no-repeat;
-            background-size: 100% 100%;
-        }
-
-        #ct {
-            position: absolute;
-            top: 149px;
-            left: 180px;
+            top: 79px;
+            left: 278px;
             z-index: 2000;
         }
 
@@ -74,38 +74,34 @@
             position: absolute;
             width: 15px;
             background: #FFF;
-            height: 134px;
+            height: 300px;
         }
 
-        #msgAcerto {
-            width: 150px;
-            height: 200px;
-            position: absolute;
-            left: 580px;
-            top: 120px;
-            padding:10px;
-            font-size: 12px;
-            text-align: center;
-            font-weight: bold;
-            line-height: 16px;              
-            color: #9c0;
-            display: none;
-        }
-    </style>
-</head>
 
-<body>
-<img class="btn-revela" src="../img/fotos/inglaterra.png" alt=""/>
+			.box-revela {
+                width: 280px;
+                border: 1px solid #ccc;
+                border-radius: 15px;
+                font-size: 12px;
+                padding: 10px;
+                position: absolute;
+                line-height: 1.8;
+                text-align: left;
+                text-shadow: 1px 1px 1px rgba(0, 0, 0, 0.2);
+                top: 143px;
+                left: 335px;
 
-<div id="ct">
-</div>
+            }
+		</style>
+	</head>
 
-<div id="imagem" class="box-revela"></div>
+	<body>
+		<div class="btn-revela"></div>
+		<div id="ct"></div>
 
+		<div class="box-revela">
 
-<div id="msgAcerto" class="arredondado borda-pontilhado-verde">
-            <p>Parabéns! Como já vimos a AMBIGUIDADE TEXTUAL ocorre quando a leitura do texto oferece ao seu leitor mais de uma interpretação, seja pela ordem das palavras, estrutura da frase ou inadequação ao contexto. A imagem apresenta diversos significados, depende da forma que a observamos.</p>
-        </div>
-
-</body>
+            Como já vimos a AMBIGUIDADE TEXTUAL ocorre quando a leitura do texto oferece ao seu leitor mais de uma interpretação, seja pela ordem das palavras, estrutura da frase ou inadequação ao contexto. A imagem apresenta diversos significados, depende da forma que a observamos.
+		</div>
+	</body>
 </html>

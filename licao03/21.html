@@ -1,0 +1,254 @@
+<!doctype html>
+<html lang="pt-br">
+<head>
+    <title>arr_c005</title>
+    <meta charset="utf-8">
+    <script src="../wilib/js/lib/require.js"></script>
+    <script src="../wilib/js/app.js"></script>
+    <link rel="stylesheet" href="../wilib/css/font-awesome.css">
+    <link rel="stylesheet" href="../wilib/css/estilo.css">
+
+    <script>
+        require(['../wilib/js/lib/arrasta'], function (edi) {
+
+            edi.setConfig({
+                mascote: 'mascote',
+                titulo: 'Leia os provérbios e responda pintando a alternativa correta.',
+                tempoFinal: 10
+            });
+
+            var arrArrasta = [
+                {arrasta: '', dataCorreta: '1', dataId: '1'}
+            ];
+
+            arrArrasta.sort(function () {
+                return 0.5 - Math.random()
+            });
+
+            for (var i = 0; i < arrArrasta.length; i++) {
+                $('<div>')
+                        .addClass('arrasta')
+                        .css({
+                            width: '102px',
+                            height: '65px',
+                        })
+                        .attr({
+                            'data-id': arrArrasta[i].dataId,
+                            id: 'arrasta'+(i+1),
+                            'data-correta': arrArrasta[i].dataCorreta
+                        })
+                        .html(arrArrasta[i].arrasta)
+                        .appendTo('#arrasta');
+            }
+
+            var config = {
+                colorirFilho: true,
+                arrastaAbsolute: true,
+                reloadCorreta: true,
+                clone: false,
+                alvoFixo: false,
+                multAlvo: true,
+                target: false
+            };
+
+            var animacao = function(a, fps, stop){
+                var cont = 0;
+                var tempo = setInterval(function(){
+                    cont+=10;
+                    a.attr('width', cont);
+                    if(cont == stop)
+                        clearInterval(tempo);
+                }, 30/1000);
+            };
+
+            var arr = [
+                {txt: 'solidariedade- aparência- vingança- dissimulação.', dataCorreta: 0},
+                {txt: 'cooperação – aparência- punição- adaptação.', dataCorreta: 0},
+                {txt: 'egoísmo- ambição- vingança- falsificação.', dataCorreta: 0},
+                {txt: 'solidão – prudência- punição – adaptação.', dataCorreta: 1}
+                
+            ]
+
+            var arr2 = [
+                {txt: 'Uma andorinha só não faz verão.'},
+                {txt: 'Nem tudo que reluz é ouro.'},
+                {txt: 'Quem semeia ventos, colhe tempestades.'},
+                {txt: 'Quem não tem cão caça com gato.'}
+                
+            ]
+
+            arr.sort(function () {
+                return 0.5 - Math.random()
+            });
+
+            for(var i = 0; i < arr.length; i++){
+                var alvo = $('<div>')
+                        .addClass('alvo')
+                        .attr({'data-correta': arr[i].dataCorreta})
+                        .appendTo('#boxTexto')
+
+                $('<div>').addClass('svg').appendTo(alvo)
+
+                $('<div>')
+                        .addClass('centraliza')
+                        .html(arr[i].txt)
+                        .appendTo(alvo)
+
+            };
+
+            for(var i = 0; i < arr2.length; i++){
+                var alvo = $('<div>')
+                        .appendTo('#boxTexto2')
+
+                $('<div>')
+                        .addClass('centraliza')
+                        .html(arr2[i].txt)
+                        .appendTo(alvo)
+
+            };
+
+            edi.arrasta('arrasta', 'alvo', function (a, b, c) {
+
+                barraMsg(a?'Muito bem! O provérbio “Uma andorinha só não faz verão”, fala sobre solidão. “Nem tudo que reluz é ouro”, indica a necessidade de prudência, pois nem todos são confiáveis. “Quem semeia ventos, colhe tempestades”, sugere punição, pois toda ação tem uma reação. “Quem não tem cão caça com gato”, indica adaptação, pois precisamos nos adaptar com o que temos. Parabéns!'
+                        :'Errado! Leia com atenção e procure compreender o sentido Conotativo de cada frase, o que elas querem dizer? Tente novamente.', {height: 130})
+
+                b.remove();
+
+                animacao(c.find('#Layer_2 rect'), 10000, 611);
+                c.css('color', '#DDD');
+
+                $('.arrasta').off();
+
+                c.find('#Layer_2 rect').attr('fill', '#9c0');
+
+            }, function (a) {
+
+            }, config);
+
+            $('#arrasta1')
+                    .css({
+                        top: '194px',
+                        left: '314px'
+                    })
+                    .attr('data-x', '314')
+                    .attr('data-y', '194')
+                    .load('../wilib/img/svg/pincel.svg', function(){
+                        $('#corPonta').attr('fill', '#9c0');
+                    });
+
+            $('<div>')
+                    .attr('id', 'mascote')
+                    .appendTo('#conteudo');
+
+            $('.svg').load('../wilib/img/svg/fundoPincel.svg', function(){
+                $('#Layer_2 rect')
+                        .attr({
+                            width: 0,
+                            height: 50
+                        });
+            });
+
+        });
+    </script>
+    <style>
+        .svg, .svg svg{
+            position: absolute;
+            width: 317px;
+            height: 48px;
+            display: block;
+        }
+
+        .alvo {
+            display: inline-block;
+            width: 317px;
+            height: 48px;
+            margin-bottom: 5px;
+        }
+        .arrasta {
+            padding: 5px;
+            margin-right: 10px;
+            margin-left: 10px;
+            display: inline-block;
+            color: #FFF;
+            width: 77px;
+            text-align: center;
+        }
+        #boxArrasta{
+              width: 130px;
+              height: 120px;
+              position: absolute;
+              cursor: default;
+              top: 174px;
+              left: 312px;
+              border: 2px solid #999;
+        }
+        #arrasta{
+            position: relative;
+            display: table-cell;
+            vertical-align: middle;
+            color: #666;
+            width: 600px;
+            height: 90px;
+        }
+        #boxTexto{
+            position: absolute;
+            width: 304px;
+            height: 240px;
+            text-align: left;
+            line-height: 30px;
+            color: #999;
+            top: 101px;
+            left: 450px;
+            font-size: 14px;
+            border-radius: 10px;
+            padding-left: 20px;
+        }
+
+        #boxTexto2{
+            position: absolute;
+            width: 304px;
+            height: 240px;
+            text-align: left;
+            line-height: 30px;
+            color: #999;
+            top: 101px;
+            left: -30px;
+            font-size: 14px;
+            border-radius: 10px;
+            padding-left: 20px;
+        }
+
+        .centraliza{
+            position: relative;
+            text-align: center;
+            display: table-cell;
+            vertical-align: middle;
+            width: 514px;
+            height: 48px;
+        }
+
+        #txt {
+          position: absolute;
+          width: 150px;
+          padding: 10px;
+          left: 295px;
+          text-align: center;
+          top: 90px;
+          color: #666;
+        }
+
+    </style>
+
+</head>
+<body>
+
+<div id="txt">
+    As ideias centrais dos provérbios ao lado são na ordem:
+</div>
+<div id="boxArrasta" class="">
+    <div id="arrasta"></div>
+</div>
+<div id="boxTexto"></div>
+<div id="boxTexto2"></div>
+</body>
+</html>

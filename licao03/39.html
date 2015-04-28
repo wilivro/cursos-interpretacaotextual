@@ -1,0 +1,93 @@
+<!-- Desenvolvedor: Leandro Fortaleza -->
+<!doctype html>
+<html lang="pt-br">
+
+<head>
+	<title>Lição 01 Peça 06</title> <!-- alt_f002 -->
+        <meta charset="utf-8">
+        <script src="../wilib/js/lib/require.js"></script>
+        <script src="../wilib/js/app.js"></script>
+        <link rel="stylesheet" href="../wilib/css/font-awesome.css">
+        <link rel="stylesheet" href="../wilib/css/estilo.css">
+
+	<script>
+		require(['../wilib/js/lib/alternativa_botao'], function (edi) {
+
+			edi.setConfig({
+				titulo: 'Prova do (ENEM-2005). O termo (ou expressão) destacado que está empregado em seu sentido próprio, denotativo ocorre em qual opção? ',
+                mascote: 'mascote',
+                tempoFinal: 10
+			});
+
+            //balões
+            var baloes = [
+
+                {texto: '“(...) É de laço e de nó De gibeira o jiló Dessa vida, cumprida a sol (...)” (Renato Teixeira. Romaria. Kuarup Discos. setembro de 1992.)', dataCorreta: false},
+                {texto: '“Protegendo os inocentes é que Deus, sábio demais, põe cenários diferentes nas impressões digitais.” (Maria N. S. Carvalho. Evangelho da Trova. /s.n.b.) ', dataCorreta: false},
+                {texto: 'Às vezes tenho a impressão de que<br>a bateria dele não acaba. ', dataCorreta: false},
+                {texto: '“O dicionário-padrão da língua e os dicionários unilíngues são os tipos mais comuns de dicionários...” (Maria T. Camargo Biderman. O dicionário-padrão da língua. Alfa (28), 2743, 1974 Supl.', dataCorreta: true},
+                
+                {texto: '“Humorismo é a arte de fazer cócegas no raciocínio dos outros. Há duas espécies de humorismo: o trágico e o cômico. O trágico é o que não consegue fazer rir; o cômico é o que é verdadeiramente trágico para se fazer.” (Leon Eliachar. www.mercadolivre.com.br <http://www.mercadolivre.com.br>. acessado em julho de 2005.)', dataCorreta: false}
+
+            ];
+
+			edi.alternativa_botao(baloes, function (a, b) {
+                //cb
+            }, function (a) {
+                //cbfinal
+                if(a)
+                    $('#txtFinal').animate({top: '229px'}, 800)
+                else{
+                    $('#txtFinal').css({
+                        border: '2px dashed #F00',
+                        color: '#F00'
+                    }).find('div').html("Atenção! Lembre-se que a questão pede que você marque a alternativa em que o sentido denotativo ocorre, tente novamente!");
+                    $('#txtFinal').animate({top: '229px'}, 800)
+                }
+            }, {
+                top: 70,
+                left: 5,
+                width: 243,
+                height: 120,
+                margin: '0 10px 0 0',
+                fontSize: 12,
+                leftPerson: -65,
+                topPerson: 43,
+                topIco: 0,
+                leftIco: -7,
+            });
+		});
+	</script>
+    <style type="text/css">
+        #txtFinal{
+          position: absolute;
+          top: 389px;
+          left: 529px;
+          width: 229px;
+          height: 126px;
+          border-radius: 15px;
+          color: #9C0;
+          text-align: center;
+          border: 2px dashed #9C0;
+          padding: 10px;
+          z-index: 2;
+        }
+        #central{
+            position: relative;
+            width: 226px;
+            height: 126px;
+            display: table-cell;
+            vertical-align: middle;
+        }
+    </style>
+</head>
+
+<body>
+
+    <div id="txtFinal">
+        <div id="central">Excelente! Você foi capaz de resolver uma questão que caiu na prova de Enem do ano de 2005, isso significa que você está cada vez mais preparado para interpretar textos.
+        </div>
+    </div>
+</body>
+
+</html>

@@ -1,0 +1,219 @@
+<!-- Desenvolvedor: Leandro Fortaleza -->
+<!doctype html>
+<html lang="pt-br">
+<head>
+    <title>arr_c005</title>
+    <meta charset="utf-8">
+    <script src="../wilib/js/lib/require.js"></script>
+    <script src="../wilib/js/app.js"></script>
+    <link rel="stylesheet" href="../wilib/css/font-awesome.css">
+    <link rel="stylesheet" href="../wilib/css/estilo.css">
+
+    <script>
+        require(['../wilib/js/lib/arrasta'], function (edi) {
+
+            edi.setConfig({
+                mascote: 'mascote',
+                titulo: 'Pinte a alternativa cuja frase apresenta palavras em sentido figurado.',
+                tempoFinal: 10
+            });
+
+            var arrArrasta = [
+                {arrasta: '', dataCorreta: '1', dataId: '1'}
+            ];
+
+           
+
+            arrArrasta.sort(function () {
+                return 0.5 - Math.random()
+            });
+
+
+            for (var i = 0; i < arrArrasta.length; i++) {
+                $('<div>')
+                        .addClass('arrasta')
+                        .css({
+                            width: '102px',
+                            height: '65px',
+                        })
+                        .attr({
+                            'data-id': arrArrasta[i].dataId,
+                            id: 'arrasta'+(i+1),
+                            'data-correta': arrArrasta[i].dataCorreta
+                        })
+                        .html(arrArrasta[i].arrasta)
+                        .appendTo('#arrasta');
+            }
+
+            var config = {
+                colorirFilho: true,
+                arrastaAbsolute: true,
+                reloadCorreta: true,
+                clone: false,
+                alvoFixo: false,
+                multAlvo: true,
+                target: false
+                //destroy: true
+            };
+
+            var animacao = function(a, fps, stop){
+                var cont = 0; 
+                var tempo = setInterval(function(){
+                    cont+=10;
+                    a.attr('width', cont);
+                    if(cont == stop)
+                        clearInterval(tempo);
+                }, 30/1000);
+            }
+
+            edi.arrasta('arrasta', 'alvo', function (a, b, c) {
+                barraMsg(a?'Muito bem! A frase que apresenta um sentido figurado é a primeira opção.':'Atenção! Observe que Conotação é um sentido figurado, e não corresponde ao significado do dicionário.')
+                //$(c).find('.arrasta').remove();
+                b.remove();
+                animacao(c.find('#Layer_2 rect'), 10000, 611)
+                c.css('color', '#DDD');
+
+                $('.arrasta').off();
+
+                c.find('#Layer_2 rect').attr('fill', '#9c0');
+
+            }, function (a) {
+                
+            }, config);
+
+            $('#arrasta1').css({
+                top: '174px',
+                left: '69px'
+            })
+            .attr('data-x', '69')
+            .attr('data-y', '174')
+
+            $('<div>')
+                    .attr('id', 'mascote')
+                    .appendTo('#conteudo');
+
+            $('.svg').load('../wilib/img/svg/fundoPincel.svg', function(){
+                $('#Layer_2 rect').attr('height', '50px');
+                $('#Layer_2 rect').attr('width', '0');
+            });
+
+            $('#arrasta1').load('../wilib/img/svg/pincel.svg', function(){
+                $('#corPonta').attr('fill', '#9c0');
+            });
+
+
+
+            
+        });
+    </script>
+    <style>
+        .svg, .svg svg{
+            position: absolute;
+            width: 514px;
+            height: 48px;
+            display: block;
+        }
+
+        .alvo {
+            display: inline-block;
+            width: 514px;
+            height: 48px;
+            margin-bottom: 5px;
+        }
+        .arrasta {
+            padding: 5px;
+            margin-right: 10px;
+            margin-left: 10px;
+            display: inline-block;
+            color: #FFF;
+            width: 77px;
+            text-align: center;
+        }
+        #boxArrasta{
+              width: 180px;
+              height: 140px;
+              position: absolute;
+              cursor: default;
+              top: 144px;
+              left: 40px;
+              border: 2px solid #999;
+        }
+        #arrasta{
+            position: relative;
+            display: table-cell;
+            vertical-align: middle;
+            color: #666;
+            width: 600px;
+            height: 290px;
+        }
+        #boxTexto{
+            position: absolute;
+            width: 700px;
+            height: 240px;
+            text-align: left;
+            line-height: 30px;
+            color: #999;
+            top: 71px;
+            left: 250px;
+            border-radius: 10px;
+            padding-left: 20px;
+        }
+
+        .centraliza{
+            position: relative;
+            text-align: center;
+            display: table-cell;
+            vertical-align: middle;
+            width: 514px;
+            height: 48px;
+        }
+
+    </style>
+
+</head>
+<body>
+<div id="boxArrasta" class="">
+    <div id="arrasta"></div>
+</div>
+<div id="boxTexto">
+
+    <div class="alvo" data-correta="1">
+        <div class="svg"></div>
+        <div class="centraliza">
+            O homem procura novos caminhos na tentativa de fixar suas raízes.
+        </div>
+    </div>
+
+    <div class="alvo" data-correta="0">
+        <div class="svg"></div>
+        <div class="centraliza">
+            “Mas lá, no ano dois mil, tudo pode acontecer. Hoje, não.”
+        </div>
+    </div>
+
+    <div class="alvo" data-correta="0">
+        <div class="svg"></div>
+        <div class="centraliza">
+            “... os planejadores fizeram dele a meta e o ponto de partida.”
+        </div>
+    </div>
+
+    <div class="alvo" data-correta="0">
+        <div class="svg"></div>
+        <div class="centraliza">
+            “Pode estabelecer regras que conduzam a um viver tranquilo...”
+        </div>
+    </div>
+
+    <div class="alvo" data-correta="0">
+        <div class="svg"></div>
+        <div class="centraliza">
+             “Evidentemente, (...) as transformações serão mais rápidas.”
+        </div>
+    </div>
+
+
+
+</div>
+</body>
+</html>

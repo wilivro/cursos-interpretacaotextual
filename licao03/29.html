@@ -1,0 +1,147 @@
+<!doctype html>
+<html lang="pt-br">
+<head>
+    <title>Lição 04 Peça 04</title>
+    <meta charset="utf-8">
+    <script src="../wilib/js/lib/require.js"></script>
+    <script src="../wilib/js/app.js"></script>
+    <link rel="stylesheet" href="../wilib/css/font-awesome.css">
+    <link rel="stylesheet" href="../wilib/css/estilo.css">
+
+    <script>
+        require(['../wilib/js/lib/arrasta', '../wilib/js/lib/alternativa_botao'], function (edi, edi2) {
+
+            edi.setConfig({
+                titulo: 'Arraste as partes da quadrinha para a posição correta e,<br>em seguida responda qual foi a linguagem usada?',
+                mascote: 'mascote',
+                tempoFinal: 15
+            });
+
+            var config = {
+                randomico: true,
+                width: 320,
+                height: 40,
+                left: 15,
+                top: 114,
+                tamanhoTexto: 16,
+                colunas: 1,
+                margin: '0 0 10px 0',
+                padding: 5,
+                display: 'block',
+                btnBranco: true,
+                animacao: true
+            };
+
+            var btns = [
+                    {texto: 'Denotação', dataCorreta: false},
+                    {texto: 'Conotação', dataCorreta: false},
+                    {texto: 'Ambíguo', dataCorreta: true}
+                  ];
+
+            edi.arrasta('arrasta', 'alvo',null, function (a, b, c) {
+
+              if (a) {
+                $('.alter-btn').fadeIn();
+                $('#arrasta').fadeOut();
+              }
+
+            },{alvoFixo: true, target:false});
+
+             edi2.alternativa_botao(btns, function(a){
+              mensagem(a?'Muito bem! A linguagem usada foi a Ambiguidade, pois quando o texto possui o que chamamos de duplo sentido dizemos que o termo é ambíguo.':'Atenção! Neste caso, o termo possui duplo sentido, por tanto, não será denotativo nem conotativo.')
+             }, null, config);
+
+            $('.alter-btn').css('display','none');
+
+        });
+
+    </script>
+
+    <style>
+      #arrasta {
+        position: absolute;
+        left: 80px;
+        top: 114px;
+        padding: 46px 20px;
+        width: 189px;
+        height: 219px;
+        background-size: 100% 100%;
+        background: url(../wilib/img/svg/04.svg) no-repeat;
+      }
+
+      .arrasta {
+        width: 179px;
+        font-size: 10px;
+        text-align: center;
+        line-height: 1;
+        margin-top: 10px;
+
+      }
+
+      #alvo {
+        position: absolute;
+        left: 450px;
+        top: 90px;
+        width: 292px;
+        height: 292px;
+        background-size: 100% 100%;
+      }
+
+      .alvo {
+        height: 50px;
+        width: 93px;
+        z-index: 1;
+
+      }
+
+      #alvo1{
+        position: absolute;
+        top: 80px;
+        left: 450px;
+      }
+
+      #alvo2{
+        position: absolute;
+        top: 105px;
+        left: 486px;
+      }
+
+      #alvo3{
+        position: absolute;
+        top: 93px;
+        left: 602px;
+      }
+
+      #img{
+        position: absolute;
+        top: 81px;
+        left: 450px;
+      }
+    </style>
+</head>
+
+<body>
+  <div id="arrasta">
+    <div class="arrasta" data-correta="1">
+      Você tem pastel<br>de um real?
+      <br><br>
+    </div>
+    <div class="arrasta" data-correta="2">
+      Tenho sim!
+      <br><br>
+    </div>
+    <div class="arrasta" data-correta="3">
+      Aqui!
+      <br><br>
+    </div>
+  </div>
+
+  
+  <div id="alvo1" class="alvo" data-correta="1"></div>
+  <div id="alvo2" class="alvo" data-correta="2"></div>
+  <div id="alvo3" class="alvo" data-correta="3"></div>
+
+  <img id="img" src="../img/licao03/peca29.png" width="529">
+  
+</body>
+</html>

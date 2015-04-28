@@ -1,0 +1,62 @@
+<!-- Desenvolvedor: Leandro FOrtaleza -->
+<!doctype html>
+<html lang="pt-br">
+<head>
+    <title>Lição 02 Peça 26</title>
+    <meta charset="utf-8">
+    <script src="../wilib/js/lib/require.js"></script>
+    <script src="../wilib/js/app.js"></script>
+    <link rel="stylesheet" href="../wilib/css/font-awesome.css">
+    <link rel="stylesheet" href="../wilib/css/estilo.css">
+
+    <script>
+        require(['../wilib/js/lib/revela_r01b'], function (edi) {
+
+            edi.setConfig({
+                icone: "exclamacao",
+                titulo: "Clique sobre as pastas e revele as explicações.",
+                mascote: 'mascote'
+            });
+
+            var arrRevela = [
+                    'Sentido literal (ou denotativo) é o significado básico das palavras, expressões e enunciados da língua.',
+                    'Sentido figurado (ou conotativo) é aquele que as palavras, expressões e enunciados adquirem em situações particulares de uso, quando o contexto exige que o falante/leitor perceba que o sentido literal foi modificado, e as palavras e expressões ganham um novo significado. ',
+            ];
+
+            edi.revela_r01b(arrRevela, null, function(){
+                $('#txtFinal').fadeIn();
+            });
+
+        });
+    </script>
+    <style type="text/css">
+        #txtFinal{
+          position: absolute;
+          top: 139px;
+          left: 569px;
+          width: 168px;
+          height: 126px;
+          border-radius: 15px;
+          color: #9C0;
+          text-align: center;
+          border: 2px dashed #9C0;
+          padding: 10px;
+          z-index: 2;
+          display: none;
+        }
+        #central{
+            position: relative;
+            width: 226px;
+            height: 126px;
+            display: table-cell;
+            vertical-align: middle;
+        }
+    </style>
+</head>
+<body>
+     <div id="txtFinal">
+        <div id="central">Muito bem!  Neste exercício você relembrou conceitos apresentados nesta lição, continue atento e perseverante!
+        </div>
+    </div>
+</body>
+</html>

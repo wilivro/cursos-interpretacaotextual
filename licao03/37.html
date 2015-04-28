@@ -1,0 +1,151 @@
+<!doctype html>
+<html lang="pt-br">
+	<head>
+        <title>arr_d002</title>
+		<meta charset="utf-8">
+		<script src="../wilib/js/lib/require.js"></script>
+		<script src="../wilib/js/app.js"></script>
+        <link rel="stylesheet" href="../wilib/css/font-awesome.css">
+        <link rel="stylesheet" href="../wilib/css/estilo.css">
+
+		<script>
+			require(['../wilib/js/lib/arrasta'], function (edi) {
+
+				edi.setConfig({
+                    mascote: 'mascote',
+					titulo: 'Complete as frases com sentido conotativo usando as palavras do quadro.'
+				});
+
+                var arrArrasta = [
+                    {arrasta: 'Sardinha', dataCorreta: '1'},
+                    {arrasta: 'Cobra', dataCorreta: '2'},
+                    {arrasta: 'Burro', dataCorreta: '3'},
+                    {arrasta: 'Bruxa', dataCorreta: '4'},
+                    {arrasta: 'Gato', dataCorreta: '5'}
+                ];
+
+                var texto = $('#boxTexto').html();
+
+                arrArrasta.sort(function () {
+                    return 0.5 - Math.random()
+                });
+
+                for (var i = 0; i < arrArrasta.length; i++) {
+                    var spn = $('<span>')
+                            .addClass('arrasta')
+                            .attr('data-correta', arrArrasta[i].dataCorreta)
+                            .html(arrArrasta[i].arrasta)
+
+                    $('<div>')
+                            .css({padding:10, paddingTop:5, width: 140,  display: 'inline-block'})
+                            .html(spn)
+                            .appendTo('#boxArrasta');
+
+                    texto = texto.replace('[' + arrArrasta[i].dataCorreta + ']', '<div id="alvo' + i + '" class="alvo linha" data-correta="'+arrArrasta[i].dataCorreta+'"></div>');
+
+                    $('#boxTexto').html(texto);
+                }
+
+                var config = {
+                    alvoFixo: true,
+                    colorirFilho: true,
+                    corTexto: '#FFF',
+                    animacaoFundoArrasta: true,
+                    gradiente: 'corGradiente-claro'
+                };
+
+                edi.arrasta('arrasta', 'alvo', function (a, b, c) {
+                    if(a){
+                        b.css({padding: 0, margin: 0,  top: -2});
+                        c.css({width: 'auto', border: 'none'}).html(b)
+                    }
+                }, function(){
+                      $('#txtFinal').fadeIn();
+                }, config);
+                
+			});
+		</script>
+        <style>
+            #postit{
+                position: absolute;
+                width: 220px;
+                height: 300px;
+                left: 0px;
+                top: -50px;
+            }
+            #taxinha{
+                position: absolute;
+                width: 30px;
+                top: -50px;
+                left: 95px;
+            }
+            .linha{
+                width: 120px;
+                height: 10px;
+                border-bottom: solid 1px #FFF;
+                display: inline-block;
+            }
+            #arrasta{
+                width: 200px;
+            }
+            .alvo{
+                height: 20px;
+                text-align: center;
+            }
+
+            #boxTexto{
+                position: absolute;
+                width: 450px;
+                height: 170px;
+                box-shadow: 0 0 2px 4px rgba(255,255,255,.5);
+                top: 115px;
+                left: 260px;
+                text-align: center;
+                font-size: 16px;
+                color: #FFF;
+                background-color: rgba(0,0,0,0.3);
+                padding: 20px;
+                border: solid 1px #FFF;
+                border-radius: 10px;
+                line-height: 34px;
+            }
+            #boxArrasta{
+                position: absolute;
+                top: 130px;
+                left: 20px;
+                width: 218px;
+                text-align: center;
+            }
+            #txtFinal{
+                  position: absolute;
+                  top: 135px;
+                  left: 39px;
+                  width: 150px;
+                  height: 160px;
+                  border-radius: 15px;
+                  color: #9C0;
+                  text-align: center;
+                  border: 2px dashed #9C0;
+                  padding: 10px;
+                  display: none;
+            }
+        </style>
+	</head>
+	<body>
+        <img src="../wilib/img/bg/bg_cortica.svg" width="788"/>
+        <div id="boxArrasta">
+            <img id="postit" src="../wilib/img/svg/postit_branco.svg" alt=""/>
+            <img id="taxinha" src="../wilib/img/svg/taxinha.svg" alt=""/>
+        </div>
+
+
+        <div id="boxTexto">
+            O ônibus parecia uma lata de [1]<br>
+            A [2] da Joana me atacou pelas costas.<br>
+            Eu não sou [3] de carga para levar tanto peso!<br>
+            A [4] está solta!<br>
+            Joaquim é um [5] !
+        </div>
+        <div id="txtFinal">Muito bem! Você compreendeu muito bem o conceito de denotação, será mais fácil interpretar textos com esse conceito definido!</div>
+	</body>
+</html>

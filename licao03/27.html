@@ -1,0 +1,110 @@
+<!-- Desenvolvedor: Leandro Fortaleza -->
+<!doctype html>
+<html lang="pt-br">
+<head>
+    <title>rev_l002</title>
+    <meta charset="utf-8">
+    <script src="../wilib/js/lib/require.js"></script>
+    <script src="../wilib/js/app.js"></script>
+
+    <link rel="stylesheet" href="../wilib/css/font-awesome.css">
+    <link rel="stylesheet" href="../wilib/css/estilo.css">
+
+    <script>
+        require(['../wilib/js/lib/edi'], function (edi) {
+
+            edi.iniciar({
+                icone: 'exclamacao',
+                titulo: 'Perceba a diferença entre Conotação e Denotação clicando na tabela e revelando os conceitos de cada um.',
+                mascote: 'mascote'
+            });
+
+            $('td')
+                    .mouseover(function () {
+                        
+                        if (!$(this).find('span').hasClass('hide') && !$(this).hasClass('ok'))
+                            $(this).css({opacity:.5})
+                    })
+                    .mouseleave(function(){
+                        $(this).css({opacity:1})
+                    })
+                    .click(function () {
+                        log($(this).find('span').hasClass('hide'))
+                        if ($(this).find('span').hasClass('hide')) {
+
+                            $(this).find('span').fadeIn();
+                            $(this).find('.hide').removeClass('hide')
+                            if (!$('.hide').length)
+                                edi.finalizar(null, null, function(){
+                                    barraMsg('Muito bem! Por meio deste quadro comparativo você<br>poderá identificar a diferença entre denotação e conotação.',{height: 80});
+                                } );
+                        }
+                    })
+
+            edi.util.removeLoading();
+
+        });
+    </script>
+    <style>
+        table {
+            position: absolute;
+            top: 109px;
+            left: 184px;
+        }
+
+        th, td {
+            border: solid 1px #8CA8B8;
+            font-size: 14px;
+            text-align: center;
+            cursor: pointer;
+            height: 40px;
+            width: 204px;
+        }
+
+        tr > td {
+            color: #9C0;
+            background-color: #EEE;
+        }
+
+        tr > td:first-of-type {
+            color: #FFF;
+            background-color: #0060B6;
+            display: table-cell;
+            vertical-align: middle;
+        }
+
+        .hide {
+            display: none;
+        }
+
+        .verdeEscuro{
+            background-color:#6da4d5;
+            color: #FFF;
+        }
+    </style>
+</head>
+<body>
+<table>
+    <tr>
+        <td><span class="hide">DENOTAÇÃO</span></td>
+        <td class="verdeEscuro"><span class="hide">CONOTAÇÃO</span></td>
+    </tr>
+    <tr>
+        <td><span class="hide">Palavra com<br>significação restrita</span></td>
+        <td class="verdeEscuro"><span class="hide">Palavra com significação ampla</span></td>
+    </tr>
+    <tr>
+        <td><span class="hide">Palavra com sentido <br>comum do dicionário</span></td>
+        <td class="verdeEscuro"><span class="hide">Palavra cujos sentidos extrapolam o sentido comum</span></td>
+    </tr>
+    <tr>
+        <td><span class="hide">Palavra usada de<br> modo automatizado</span></td>
+        <td class="verdeEscuro"><span class="hide">Palavra usada de<br>modo criativo</span></td>
+    </tr>
+    <tr>
+        <td><span class="hide">Linguagem comum</span></td>
+        <td class="verdeEscuro"><span class="hide">Linguagem rica e expressiva</span></td>
+    </tr>
+</table>
+</body>
+</html>

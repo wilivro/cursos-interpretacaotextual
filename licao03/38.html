@@ -1,0 +1,86 @@
+<!-- Desenvolvedor: Leandro Fortaleza -->
+<!doctype html>
+<html lang="pt-br">
+	<head>
+        <title>Lição 01 Peça 25</title>
+        <meta charset="utf-8">
+        <script src="../wilib/js/lib/require.js"></script>
+        <script src="../wilib/js/app.js"></script>
+        <link rel="stylesheet" href="../wilib/css/font-awesome.css">
+        <link rel="stylesheet" href="../wilib/css/estilo.css">
+
+		<script>
+			require(['../wilib/js/lib/alternativa_vf'], function (edi) {
+				
+				edi.setConfig({
+                    icone: "interrogacaoAzul",
+                    mascote: 'mascote',
+					titulo: "Clique em D para frases com sentido denotativo e<br>em C para frases com sentido Conotativo."
+				});
+				
+				var alternativas  = [];
+				
+				alternativas.push({
+					texto: 'O monstro foi capturado por um grupo de Bombeiros.',
+					dataCorreta: true
+				});
+				
+				alternativas.push({
+					texto: 'Paulo Coelho é um monstro da literatura moderna.',
+					dataCorreta: false
+				});
+				
+				alternativas.push({
+					texto: 'Mário está nadando no ouro.',
+					dataCorreta: false
+				});
+
+				alternativas.push({
+					texto: 'O burro auxilia o homem.',
+					dataCorreta: true
+				});
+				
+				alternativas.push({
+					texto: 'A rosa desabrochou.',
+					dataCorreta: true
+				});
+
+				alternativas.push({
+					texto: 'Ela é uma rosa de tão bonita.',
+					dataCorreta: false
+				});
+				edi.alternativa_vf(alternativas, function (a) {
+
+        }, function (a) {
+        	if(a)
+        		$('#txtFinal').fadeIn();
+        }, {
+        		width: 700,
+            left: 4,
+            top: 5,
+            margin: '0 0 15px 0',
+            textoBtn: ['D', 'C']
+        });
+			});
+		</script>
+		<style type="text/css">
+			#txtFinal{
+        position: absolute;
+			  top: 125px;
+			  left: 550px;
+			  width: 210px;
+			  height: 180px;
+			  border-radius: 15px;
+			  color: #9C0;
+			  text-align: center;
+			  border: 2px dashed #9C0;
+			  padding: 10px;
+			  display: none;
+      }
+		</style>
+	</head>
+	
+	<body>
+		<div id="txtFinal">Excelente! Com os conceitos de denotação e conotação bem claros, você conseguirá interpretar com mais eficiência, pois uma das maiores dificuldades ao interpretar é compreender o sentido em que as palavras foram escritas.</div>
+	</body>
+</html>

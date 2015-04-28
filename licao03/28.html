@@ -1,0 +1,135 @@
+<!-- Desenvolvedor: Leandro Fortaleza -->
+<!doctype html>
+<html lang="pt-br">
+
+<head>
+	<title>Lição 04 Peça 50</title> <!-- alt_f002 -->
+        <meta charset="utf-8">
+        <script src="../wilib/js/lib/require.js"></script>
+        <script src="../wilib/js/app.js"></script>
+        <link rel="stylesheet" href="../wilib/css/font-awesome.css">
+        <link rel="stylesheet" href="../wilib/css/estilo.css">
+
+	<script>
+		require(['../wilib/js/lib/alternativa_botao'], function (edi) {
+
+			edi.setConfig({
+				titulo: 'Leia a quadrinha a seguir e responda corretamente.',
+        mascote: 'mascote',
+        tempoFinal: 10
+			});
+
+      //balões
+      var botoes = [
+
+          {texto: 'Conotativo', dataCorreta: false},
+          {texto: 'Denotativo', dataCorreta: true}
+
+      ];
+
+			edi.alternativa_botao(botoes, function (a, b) {
+          //cb
+      }, function (a) {
+        if (a)
+					$('#texto').css('border','2px dashed #9c0').css('color','#9c0').html(
+						'Muito bem! A linguagem usada foi a denotação, pois a palavra “torcer” teve seu significado de dicionário mantido.'
+					).fadeIn();
+				else
+					$('#texto').css('border','2px dashed #F00').css('color','#F00').css('height', '57px').html(
+						'Você errou! Observe o uso da palavra “torcer”, como ela é usada?'
+					).fadeIn();
+      }, {
+				width: 300,
+				height: 35,
+				left: 430,
+				top: 200,
+				colunas: 1,
+				btnBranco: true,
+				animacao: true,
+				tamanhoTexto: 14
+      });
+
+			$("#balao").peBalao({
+					scaleX: -1,
+					scaleY: -1,
+					top: 112,
+					left: 0,
+					tamanhoBorda: 25
+			})
+
+			// $("#balao").click(function() {
+			// 	$('.alter-btn, #texto').fadeIn();
+			// });
+
+
+		});
+	</script>
+
+	<style>
+		.alter-btn {
+			width: 300px;
+			display: none;
+		}
+
+		#btn {
+			position: absolute;
+			left: 0px;
+			top: 160px;
+		  left: 10px;
+		  top: 96px;
+		}
+
+		#balao {
+			position: absolute;
+			left: 350px;
+			top: 79px;
+			width: 152px;
+			height: 80px;
+			font-size: 13px;
+			background: #fff;
+			border: 1px solid #ccc;
+			text-align: center;
+			border-radius: 10px;
+			padding: 10px;
+			cursor: pointer;
+		}
+
+		#balao:hover {
+			box-shadow: 0 0 15px rgba(0, 0, 0, 0.3);
+		}
+
+		#texto {
+			position: absolute;
+		  left: 556px;
+		  top: 82px;
+		  width: 150px;
+		  height: 87px;
+		  padding: 10px;
+		  border: 1px solid #CCC;
+		  border-radius: 10px;
+		  text-align: center;
+		  display: none;
+		  font-size: 13px;
+		}
+
+		#texto p {
+			margin-top: 15px;
+		}
+	</style>
+</head>
+
+<body>
+</body>
+	<img id="btn" src="../img/licao03/peca28.png" width="335px">
+	<div id="balao">
+		<p>
+			Qual a linguagem utilizada pelo vendedor nesta quadrinha?
+		</p>
+	</div>
+	<div id="texto">
+		<p>
+			Neste caso, qual tipo de atendimento é mais rápido para atender
+			as necessidades deste cliente?
+		</p>
+	</div>
+</html>

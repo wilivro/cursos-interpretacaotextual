@@ -1,0 +1,77 @@
+<!-- Desenvolvedor: Leandro Fortaleza -->
+<!doctype html>
+<html lang="pt-br">
+	<head>
+		<title>Lição 04 Peça 16</title>
+		<meta charset="utf-8">
+		<script src="../wilib/js/lib/require.js"></script>
+		<script src="../wilib/js/app.js"></script>
+
+        <link rel="stylesheet" href="../wilib/css/font-awesome.css">
+        <link rel="stylesheet" href="../wilib/css/estilo.css">
+
+		<script>
+			require(['../wilib/js/lib/edi', '../wilib/js/lib/canvas-load'], function (edi) {
+
+				edi.iniciar({
+					titulo: "Clique no botão iniciar e assista a explicação da professora Débora."
+				});
+
+                document.querySelector('#canvas').canvasLoad('../canvas/licao03/professoraanima');
+
+                edi.util.removeLoading();
+
+            });
+		</script>
+		<style>
+            #canvas{
+                position: absolute;
+                top: 0px;
+                z-index: -1;
+            }
+
+            .btn2{
+                position: relative;
+                display: inline-block;
+                background-color: #F00;
+            }
+
+            .btnBlack {
+                border-radius: 50px;
+                box-shadow: 
+                            0 0 1px 4px rgba(255, 255, 255, 1),
+                      inset 0 10px 1px 1px rgba(255, 255, 255, 0.2);
+                background: linear-gradient(#9c0, #B7F7AA);
+                height: 40px;
+                width: 40px;
+                position: absolute;
+                z-index: 1;
+                top: 200px;
+                left: 372px;
+                cursor: pointer;
+            }
+
+            .btnBlack i {
+                position: absolute;
+                font-size: 30px;
+                color: rgba(255, 255, 255, 0.8);
+                top: 6px;
+                left: 12px
+            }
+
+            #play{
+                width: 788px;
+                height: 315px;
+                background-color: rgba(0, 0, 0, 0.9);
+            }
+		</style>
+	</head>
+	<body>
+        <canvas id="canvas" width="788" height="383"></canvas>
+        <div id="play">
+            <div id="btnAvanca" class="btn2 btnBlack">
+                <i class="fa fa-play"></i>
+            </div>
+        </div>
+	</body>
+</html>

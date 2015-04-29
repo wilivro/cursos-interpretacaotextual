@@ -6,35 +6,34 @@
         <script src="../wilib/js/lib/require.js"></script>
         <script src="../wilib/js/app.js"></script>
         <link rel="stylesheet" href="../wilib/css/font-awesome.css">
-        <link rel="stylesheet" href="../wilib/css/meioAmbiente.css">
+        <link rel="stylesheet" href="../wilib/css/estilo.css">
 
 	<script>
 		require(['../wilib/js/lib/alternativa_balao'], function (edi) {
 
 			edi.setConfig({
-				titulo: 'Clique na frase em que o pensamento da personagem está correto:',
+				titulo: 'Marque a alternativa em que o texto seja um exemplo de anáfora.',
                 mascote: 'mascote',
                 tempoFinal: 10
 			});
 
-            //balões
             var baloes = [
 
-                {texto: '“O tempo cobre o chão de verde manto,<br>Que já coberto foi de neve fria,<br><br>E em mim converte em choro o doce canto.”<br><span class="bold">Luís Vaz de Camões</span>', dataCorreta: true},
-                {texto: 'A poluição da terra, da água e<br>do ar não chega a níveis tão altos.', dataCorreta: false},
-                {texto: 'A educação ambiental nas empresas não tem um papel muito relevante em relação aos funcionários.', dataCorreta: false},
-                {texto: 'Mudar as atitudes e a cultura de<br>uma organização é uma tarefa fácil.', dataCorreta: false}
+                {texto: '“O tempo cobre o chão de verde manto, Que já coberto foi de neve fria, E em mim converte em choro o doce canto.”<br> <span class="bold">Luís Vaz de Camões</span>', dataCorreta: false},
+                {texto: 'Tem mais samba no encontro que na espera Tem mais samba a maldade que a ferida...<br> <span class="bold">Chico Buarque</span>', dataCorreta: true},
+                {texto: '"Minha terra tem palmeiras, Onde canta o Sabiá; As aves, que aqui gorjeiam, Não gorjeiam como lá.” <span class="bold">Carmen Miranda</span>', dataCorreta: false},
+                {texto: 'Quero para mim o espírito desta frase, transformada a forma para a casar com o que eu sou: Viver não é necessário; o que é necessário é criar.<br><span class="bold">Fernando Pessoa</span>', dataCorreta: false}
 
             ];
 
 			edi.alternativa_balao(baloes, function (a, b) {
-                //cb
+
             }, function (a) {
-                //cbfinal
+                barraMsg(a?'Correto!<br>Esta alternativa é anáfora, pois contém<br> repetição de palavras no início das frases.':'Atenção!<br>Retorne a explicação da figura de linguagem anáfora e<br> relembre este conceito antes de tentar responder novamente.',{height: 100})
             }, {
                 top: 0,
                 left: 80,
-                width: 300,
+                width: 305,
                 height: 150,
                 margin: '0 60px 0 0',
                 fontSize: 12,

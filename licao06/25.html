@@ -12,13 +12,16 @@
         require(['../wilib/js/lib/arrasta'], function (edi) {
 
             edi.setConfig({
-                titulo: 'Arraste até o meio das setas a definição, segundo<br> seus conhecimentos, sobre a figura de linguagem zeugma.',
+                titulo: 'Através de seu raciocínio lógico, arraste até o meio das setas<br> a definição correta para a figura de linguagem polissíndeto.',
                 mascote: 'mascote',
                 tempoFinal: 15
             });
 
             edi.arrasta('arrasta', 'alvo', function (a, b, c) {
-                barraMsg(a ? 'Parabéns!<br>A zeugma é facilmente subentendida<br>no contexto com a repetição.' : 'Atenção!<br>A zeugma não é uma repetição da <br>palavra escrita, mas sim subentendida.', {height: 100, wait:0});
+                barraMsg(a ? 'Correto!<br> Polissíndeto utiliza o excesso de elementos de ligação<br> para enfatizar a ideia de acréscimo ou de sucessão.' : 'Você errou!<br> Use seu raciocínio lógico para responder.<br> Você não conhece o conceito de polissíndeto, mas conhece<br> o de silepse e de zeugma, portanto, tente encontrar a<br> resposta correta, através da eliminação. ', {
+                    height: 150,
+                    wait: 0
+                });
             });
 
 
@@ -79,16 +82,13 @@
 <body>
 <div id="arrasta">
     <div class="arrasta" data-correta="0">
-        A zeugma ocorre quando há omissão de uma ou mais palavras já expressas anteriormente.
-        <br><br>
-    </div>
-    <div class="arrasta" data-correta="1">
-        A zeugma ocorre quando há aparecimento de palavras com duplo sentido.
-        <br><br>
+        É a concordância de um termo feita com outro subentendido.
     </div>
     <div class="arrasta" data-correta="0">
-        A zeugma é a palavra que se repete no contexto várias vezes.
-        <br><br>
+        É a omissão da palavra, já expressa anteriormente.
+    </div>
+    <div class="arrasta" data-correta="1">
+        É a repetição de um conectivo entre termos ou orações.
     </div>
 </div>
 

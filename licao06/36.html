@@ -1,7 +1,7 @@
 <!doctype html>
 <html lang="pt-br">
 <head>
-    <title>Lição 06 Peça 14</title>
+    <title>Lição 06 Peça 36</title>
     <meta charset="utf-8">
     <script src="../wilib/js/lib/require.js"></script>
     <script src="../wilib/js/app.js"></script>
@@ -13,18 +13,17 @@
 
             edi.setConfig({
                 mascote: 'mascote',
-                titulo: 'Arraste as palavras e complete o conceito que define as figuras de construção.',
+                titulo: 'Outra figura de linguagem que estudaremos nesta lição é o hipérbato.<br> Complete a explicação de Paula e conheça esta figura.',
                 tempoFinal: 20
             });
 
             var arrArrasta = [
-                {arrasta: 'concordância', dataCorreta: '1', dataId: '1'},
-                {arrasta: 'explícito', dataCorreta: '2', dataId: '2'},
-                {arrasta: 'ideia', dataCorreta: '3', dataId: '3'},
-                {arrasta: 'transmitir', dataCorreta: '4', dataId: '4'},
-                {arrasta: 'palavras', dataCorreta: '5', dataId: '5'}
+                {arrasta: 'Hipérbato', dataCorreta: '1', dataId: '1'},
+                {arrasta: 'inversão', dataCorreta: '2', dataId: '2'},
+                {arrasta: 'acentuada', dataCorreta: '3', dataId: '3'},
+                {arrasta: 'termos', dataCorreta: '4', dataId: '4'}
             ];
-
+            $('.balao').html('{0} é uma {1} mais complexa ou<br> mais {2} da ordem direta dos {3} na oração.')
             var texto = $('#boxTexto').html();
 
             for (var i = 0; i < arrArrasta.length; i++) {
@@ -68,9 +67,13 @@
                 }
             }, function (a) {
 
-                if(a) $('.balao'). html('Silepse é a concordância de um termo feita com outro subentendido, e não com o que está explícito na oração, ou seja, a concordância é feita com a ideia que se quer transmitir e não com as palavras.')
+                if(a) $('.balao'). html('Hipérbato é uma inversão mais complexa ou<br> mais acentuada da ordem direta dos termos na oração.')
 
-                barraMsg('Muito bem!<br> Siga em frente para aprofundar o conhecimento da silepse<br> de gênero, de número e de pessoa. Continue seus estudos!', {height: 100});
+                barraMsg('Excelente!<br> ' +
+                'Hipérbato consiste na inversão brusca da posição normal dos termos<br>' +
+                ' de uma oração ou das orações de um período. Observe o exemplo no<br>' +
+                ' verso de Camões: <span class="italico" style="color: #9c0">“Da lua os claros raios rutilavam”</span> Na ordem direta<br>' +
+                ' seria: “Os claros raios da lua rutilavam”', {height: 150});
             }, config);
 
             $('.arrasta').css({
@@ -125,7 +128,7 @@
             height: 220px;
             font-size: 16px;
             color: #666;
-            line-height: 20px;
+            line-height: 30px;
         }
 
         #boxTexto {
@@ -142,7 +145,7 @@
 
 </head>
 <body>
-<img src="../img/licao06/p14.jpg" width="200" style="margin: 12px 5px; border-radius: 10px;"/>
+<img src="../wilib/img/svg/ruiva.svg" width="200" style="margin: 12px 5px; border-radius: 10px;"/>
 
 <div id="boxArrasta" class="btn btn-default-hover">
     <div id="arrasta"></div>
@@ -150,8 +153,7 @@
 
 <div id="boxTexto">
     <div class="balao">
-        Silepse é a {0} de um termo feita com outro subentendido, e não com o que está {1} na oração, ou
-        seja, a concordância é feita com a {2} que se quer {3} e não com as {4}.
+
     </div>
 </div>
 

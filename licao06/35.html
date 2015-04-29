@@ -1,0 +1,58 @@
+<!doctype html>
+<html lang="pt-br">
+	<head>
+        <title>Lição 05 Peça 35</title>
+        <meta charset="utf-8">
+        <script src="../wilib/js/lib/require.js"></script>
+        <script src="../wilib/js/app.js"></script>
+        <link rel="stylesheet" href="../wilib/css/font-awesome.css">
+        <link rel="stylesheet" href="../wilib/css/estilo.css">
+
+		<script>
+			require(['../wilib/js/lib/alternativa_vf'], function (edi) {
+				
+				edi.setConfig({
+                    icone: "interrogacaoAzul",
+                    mascote: 'mascote',
+					titulo: "Marque A para as frases onde aparece anacoluto <br>e N para as que não apresentam a figura anacoluto."
+				});
+				
+				var alternativas  = [];
+				
+				alternativas.push({
+					texto: '"Sobre a cama, cobertores e lençóis limpos."',
+					dataCorreta: false
+				});
+				
+				alternativas.push({
+					texto: '“Essas crianças de hoje, não se pode confiar nelas” (Aníbal Machado).',
+					dataCorreta: true
+				});
+				
+				alternativas.push({
+					texto: '"Tristeza não tem fim, felicidade sim" (Vinícius de Moraes)',
+					dataCorreta: false
+				});
+
+				alternativas.push({
+					texto: '“Eu, não me importa a desonra do mundo” (Camilo Castelo Branco). ',
+					dataCorreta: true
+				});
+				
+				edi.alternativa_vf(alternativas, function (a) {
+
+                }, function (a) {
+					barraMsg(a?'Parabéns!<br> Você conseguiu entender o<br> conceito de anacoluto.':'Você errou!<br> Lembre-se, que anacoluto é a quebra da estrutura<br> normal da oração. Tente novamente.', {height: 150})
+                }, {
+                    left: 60,
+                    top: 50,
+                    margin: '0 0 15px 0'
+                });
+			});
+		</script>
+	</head>
+	
+	<body>
+
+	</body>
+</html>

@@ -1,0 +1,107 @@
+<!doctype html>
+<html lang="pt-br">
+<head>
+    <title>Lição 06 Peça 33</title>
+    <meta charset="utf-8">
+    <script src="../wilib/js/lib/require.js"></script>
+    <script src="../wilib/js/app.js"></script>
+    <link rel="stylesheet" href="../wilib/css/font-awesome.css">
+    <link rel="stylesheet" href="../wilib/css/estilo.css">
+
+    <script>
+        require(['../wilib/js/lib/revela_slide'], function (edi) {
+
+            edi.setConfig({
+                icone: 'exclamacao',
+                titulo: 'Clique nas setas e leia a explicação da professora.'
+            });
+
+            function callback(a, b) {
+                b.parent().css('box-shadow', '0 0 0 3px #8CA8B8');
+            }
+
+            function calbackFinal() {
+                barraMsg('Muito bem!<br> No exemplo vemos que, a oração foi interrompida e um <br>termo ou expressão que parecia ser essencial à sentença<br> ficou solta. Em seu lugar, foi colocada outra palavra.<br> Este é mais um exemplo de figura de linguagem.', {height: 150})
+            }
+
+            edi.revela_slide('.revela', callback, calbackFinal, {
+                tempoBloqueio: 5000,
+                btnPrevConfig: {
+                    left: 280,
+                    top: 280
+                },
+                btnNextConfig: {
+                    left: 455,
+                    top: 280
+                }
+            });
+        });
+    </script>
+
+    <style>
+        i {
+            font-style: italic;
+            font-weight: bold;
+        }
+
+        .revela {
+            width: 270px;
+            font-size: 13px;
+            line-height: 1.3;
+            text-shadow: 1px 1px 1px rgba(0, 0, 0, 0.2);
+            position: absolute;
+            top: 130px;
+            left: 260px;
+            text-align: center;
+        }
+
+        .img {
+            width: 350px;
+            height: 240px;
+            position: absolute;
+            left: -440px;
+            top: -15px;
+            border: 5px solid #fff;
+            border-radius: 10px;
+            box-shadow: 0px 1px 3px 0px rgba(0, 0, 0, 0.3);
+        }
+
+        .float {
+            float: left;
+            margin-left: -200px;
+        }
+
+        .destaque {
+            text-decoration: underline;
+            color: #1C7C94;
+        }
+
+    </style>
+</head>
+
+<body>
+<p class="revela" id="rev-01">
+    <img class="float" src="../wilib/img/svg/professora.svg" width="200"/>
+    O anacoluto ocorre quando há uma interrupção
+    brusca da estrutura regular<br> da oração.
+</p>
+
+<p class="revela" id="rev-02">
+    <img class="float" src="../wilib/img/svg/aluno.svg" wifdth="200"/>
+    E se coloca uma palavra<br> ou expressão no lugar?
+</p>
+
+<p class="revela" id="rev-03">
+    <img class="float" src="../wilib/img/svg/professora.svg" width="200"/>
+    Sim, porém esta expressão não tem ligação com os outros termos, por isso ela fica “solta” no contexto.
+</p>
+
+<p class="revela" id="rev-04">
+    <img class="float" src="../wilib/img/svg/professora.svg" width="200"/>
+    O anacoluto torna-se muito mais compreensível quando observamos exemplos, veja:<br><br>
+    <span class="destaque">Eu, toda vez que chego você<br> me chama pra conversar.</span>
+
+</p>
+</body>
+
+</html>

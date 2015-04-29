@@ -1,0 +1,157 @@
+<!doctype html>
+<html lang="pt-br">
+<head>
+    <title>Lição 06 Peça 32</title>
+    <meta charset="utf-8">
+    <script src="../wilib/js/lib/require.js"></script>
+    <script src="../wilib/js/app.js"></script>
+    <link rel="stylesheet" href="../wilib/css/font-awesome.css">
+    <link rel="stylesheet" href="../wilib/css/estilo.css">
+
+    <script>
+        require(['../wilib/js/lib/arrasta'], function (edi) {
+
+            edi.setConfig({
+                icone: 'interrogacaoAzul',
+                titulo: 'Arraste as frases para a ordem correta e leia o verso de Tomás Antônio Gonzaga.',
+                mascote: 'mascote',
+                tempoFinal: 15
+            });
+
+            var arrArrasta = [
+                {arrasta: '“Erguem os colos, voltam as cabeças,', dataCorreta: '1'},
+                {arrasta: 'Param o ledo canto: ', dataCorreta: '2'},
+                {arrasta: 'Move-se o tronco, o vento se suspende;” ', dataCorreta: '3'}
+            ];
+
+            arrArrasta.sort(function () {
+                return 0.5 - Math.random()
+            });
+
+            for (var i = 0; i < arrArrasta.length; i++) {
+                $('<div>')
+                        .addClass('arrasta')
+                        .attr('data-correta', arrArrasta[i].dataCorreta)
+                        .html(arrArrasta[i].arrasta)
+                        .appendTo('#boxArrasta');
+            }
+
+            var config = {
+                alvoFixo: true,
+                animacaoFundoArrasta: true,
+                colorirFilho: true,
+                arrastaAbsolute: true,
+                gradiente: 'corGradiente-claro'
+            };
+
+            edi.arrasta('arrasta', 'alvo', function (a, b, c) {
+            }, function () {
+
+                $('#texto').css({
+                    border: '1px solid #999',
+                    fontSize: 15,
+                    height: 160,
+                    lineHeight: '20px'
+                }).html('“Erguem os colos, voltam as cabeças,<br>Param o ledo canto:<br>Move-se o tronco, o vento se suspende;”')
+                $('.alvo').remove();
+
+                $('#boxArrasta').html('Muito bem!<br> Observe a falta de conectivo ligando os termos,<br> este é um exemplo de assíndeto. Com o conectivo ficaria:<br> “Erguem os olhos e voltam ás cabeças; param o ledo canto,<br> move-se o tronco e o vento se suspende;”')
+            }, config);
+
+        });
+
+    </script>
+
+    <style>
+
+        #boxBox{
+            position: absolute;
+            margin-left: 50%;
+            left: -300px;
+            width: 600px;
+            height: 110px;
+            top: 240px;
+        }
+        #boxArrasta {
+            position: relative;
+            border: solid 1px #A7B9C3;
+            background: rgba(140, 168, 184, 0.1);
+            vertical-align: middle;
+            display: table-cell;
+            width: 600px;
+            height: 135px;
+            cursor: default;
+            text-align: center;
+            font-size: 18px;
+            color: #999;
+        }
+
+        .arrasta {
+            display: inline-block;
+            width: 530px;
+            text-align: center;
+            margin: 0;
+            font-size: 14px;;
+            color:#999;
+        }
+
+        #boxTexto {
+            position: absolute;
+            top: 70px;
+            left: -300px;
+            width: 600px;
+            height: 170px;
+            margin-left: 50%;
+        }
+
+        #texto {
+            position: relative;
+            display: table-cell;
+            vertical-align: middle;
+            text-align: center;
+            font-size: 18px;
+            color: #999;
+            width: 600px;
+            height: 170px;
+        }
+
+        .alvo {
+            display: inline-block;
+            width: 550px;
+            height: 25px;
+            margin: 1px 0;
+            padding: 0;
+            border: 1px solid #999;
+        }
+
+        #boxTexto .fa{
+            position: relative;
+            padding: 2px;
+            display: inline-block;
+            color: #9C0;
+            top: -10px;
+        }
+
+
+
+    </style>
+</head>
+
+<body>
+<section id="boxBox">
+    <div id="boxArrasta"></div>
+</section>
+
+<div id="ponto"></div>
+
+<div id="boxTexto">
+    <div id="texto">
+    <span class="fa fa-angle-double-right" style="font-weight: bold; font-size: 23px"></span><div id="alvo1" class="alvo" data-correta="1"></div><span class="fa fa-plus"></span>
+    <span class="fa fa-plus"></span><div id="alvo2" class="alvo" data-correta="2"></div><span class="fa fa-plus"></span>
+    <span class="fa fa-plus"></span><div id="alvo5" class="alvo" data-correta="3"></div><span class="fa fa-angle-double-left" style="font-weight: bold; font-size: 23px"></span>
+    </div>
+</div>
+
+
+</body>
+</html>

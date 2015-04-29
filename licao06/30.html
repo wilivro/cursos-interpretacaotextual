@@ -6,14 +6,14 @@
     <script src="../wilib/js/lib/require.js"></script>
     <script src="../wilib/js/app.js"></script>
     <link rel="stylesheet" href="../wilib/css/font-awesome.css">
-    <link rel="stylesheet" href="../wilib/css/meioAmbiente.css">
+    <link rel="stylesheet" href="../wilib/css/estilo.css">
 
     <script>
         require(['../wilib/js/lib/revela_carrosel'], function (edi) {
 
             edi.setConfig({
                 mascote: 'mascote',
-                titulo: 'Clique nos círculos e saiba mais sobre o novo comportamento<br>das empresas em relação ao meio ambiente:'
+                titulo: 'Clique nos círculos para visualizar as palavras que completam a sentença.'
             });
 
             var config = {
@@ -21,11 +21,12 @@
                 textAlign: 'left'
             };
 
-            var cavalinhos = ['novo', 'empresarial', 'práticas', 'condições do ambiente', 'atuam'];
+            var cavalinhos = ['Assíndeto', 'ausência', 'conectivo', 'prescreve', 'vírgula'];
 
-            var frase = 'Esse “{0} comportamento” acabou recebendo o<br>nome de sustentabilidade {1}. Desta forma,<br>as empresas acabaram definindo um conjunto de<br>{2} que procuram demonstrar o seu respeito e a<br>sua preocupação com as {3} e da<br>sociedade em que estão inseridas ou onde {4}.';
+            var frase = '{0} ocorre quando há {1} de {2} ligando termos ou orações, quando a gramática normativa o {3}. Normalmente, estes termos vêm separados por {4}.';
 
             edi.revela_carrosel(cavalinhos, frase, null, function() {
+                barraMsg('Excelente!<br> Este é o conceito de assíndeto, continue seus estudos.', {height: 100})
             }, config);
 
         });

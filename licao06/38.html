@@ -1,7 +1,7 @@
 <!doctype html>
 <html lang="pt-br">
 	<head>
-		<title>Lição 06 Peça 27</title>
+		<title>Lição 06 Peça 38</title>
 		<meta charset="utf-8">
 		<script src="../wilib/js/lib/require.js"></script>
 		<script src="../wilib/js/app.js"></script>
@@ -14,34 +14,36 @@
 
                     edi.setConfig({
                         icone: 'interrogacaoAzul',
-                        titulo: 'Marque as alternativas que indicam exemplos de polissíndeto.'
+                        titulo: 'Marque a alternativa em que se perceba um exemplo de hipérbole:'
                     });
 
                     var alternativas = [
                         {
-                            alternativa: '“Trabalha e teima, e lima, e sofre, e sua!” (Olavo Bilac)',
-                            correta: true
-                        },{
-                            alternativa: '“Maria gosta de Matemática, eu de Português, a maioria gosta é de inglês.”',
+                            alternativa: 'A casa de João é grande.',
                             correta: false
                         },{
-                            alternativa: '“Não canto, nem danço, nem escrevo, nem desenho.”',
+                            alternativa: '"Não te esqueças daquele amor ardente que já nos olhos meus tão puro viste.” (Luiz Vaz de Camões)',
                             correta: true
+                        },{
+                            alternativa: 'O pássaro tem seu canto suave e alegra nossos dias.',
+                            correta: false
                         }
                     ];
 
                     var config = {
-                        posx: 70,
-                        posy: 140,
+                        posx: 15,
+                        posy: 125,
                         aleatorio: true,
                         tamanhoBox: 35,
                         tamanhoBoxTexto: 600,
                         marginBtns: 5
-                    };
+                    }
 
                     edi.alternativa(alternativas, function (acertou) {
                     }, function (a) {
-                        barraMsg(a?'Excelente!<br> A frase de Maria é um exemplo de zeugma.':'Atenção!<br> Relembre que polissíndeto é a repetição constante<br> de um conectivo entre as orações ou termos,<br> utilizados para dar destaque a uma ideia.', {height: 100})
+                        barraMsg(a?'Muito bem!<br> ' +
+                        'Esta é a única alternativa correta em que Camões usa de<br>' +
+                        ' hipérbole para escrever versos em seu poema Alma minha gentil.':'Atenção!<br> Esta alternativa não é um exemplo de hipérbole,<br> analise as alternativas com mais atenção e tente novamente. ', {height: 150})
                     }, config);
 
                         $('#balao').peBalao({

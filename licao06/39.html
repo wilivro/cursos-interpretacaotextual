@@ -1,7 +1,7 @@
 <!doctype html>
 <html lang="pt-br">
 <head>
-    <title>Lição 06 Peça 14</title>
+    <title>Lição 06 Peça 39</title>
     <meta charset="utf-8">
     <script src="../wilib/js/lib/require.js"></script>
     <script src="../wilib/js/app.js"></script>
@@ -13,17 +13,22 @@
 
             edi.setConfig({
                 mascote: 'mascote',
-                titulo: 'Arraste as palavras e complete o conceito que define as figuras de construção.',
+                titulo: 'Arraste as palavras e complete os versos de Fagundes Farela:',
                 tempoFinal: 20
             });
 
             var arrArrasta = [
-                {arrasta: 'concordância', dataCorreta: '1', dataId: '1'},
-                {arrasta: 'explícito', dataCorreta: '2', dataId: '2'},
-                {arrasta: 'ideia', dataCorreta: '3', dataId: '3'},
-                {arrasta: 'transmitir', dataCorreta: '4', dataId: '4'},
-                {arrasta: 'palavras', dataCorreta: '5', dataId: '5'}
+                {arrasta: 'nauta', dataCorreta: '1', dataId: '1'},
+                {arrasta: 'grito', dataCorreta: '2', dataId: '2'},
+                {arrasta: 'mar', dataCorreta: '3', dataId: '3'},
+                {arrasta: 'pedra', dataCorreta: '4', dataId: '4'},
+                {arrasta: 'dores', dataCorreta: '5', dataId: '5'}
             ];
+
+            $('.balao').html('“Amo do {0} o doloroso {1}<br>' +
+            'Em frágil prancha sobre o {2} de horrores,<br>' +
+            'Porque meu seio se tornou, {3}<br>' +
+            'Porque minh’alma descorou de  {4}.”')
 
             var texto = $('#boxTexto').html();
 
@@ -67,10 +72,12 @@
                     c.html(b.css({display: 'flex'}))
                 }
             }, function (a) {
-
-                if(a) $('.balao'). html('Silepse é a concordância de um termo feita com outro subentendido, e não com o que está explícito na oração, ou seja, a concordância é feita com a ideia que se quer transmitir e não com as palavras.')
-
-                barraMsg('Muito bem!<br> Siga em frente para aprofundar o conhecimento da silepse<br> de gênero, de número e de pessoa. Continue seus estudos!', {height: 100});
+                barraMsg('Excelente!<br>' +
+                ' No primeiro verso do poema “amo do nauta o doloroso grito”,<br>' +
+                ' podemos perceber a alteração brusca da posição normal dos<br>' +
+                ' termos, que seria “amo o grito doloroso do nauta”. Esta<br>' +
+                ' mudança brusca em termos, palavras ou orações, é chamada<br>' +
+                ' de HIPÉRBATO. Continue seus estudos.', {height: 200});
             }, config);
 
             $('.arrasta').css({
@@ -100,20 +107,19 @@
 
         #boxArrasta {
             position: absolute;
-            padding-top: 5px;
-            width: 650px;
-            height: 55px;
+            width: 150px;
+            height: 250px;
             cursor: default;
-            top: 300px;
-            left: 50px;
+            top: 95px;
+            left: 600px;
         }
 
         #arrasta {
             position: relative;
             display: table-cell;
             vertical-align: middle;
-            width: 650px;
-            height: 60px;
+            width: 150px;
+            height: 250px;
         }
 
         .balao {
@@ -122,37 +128,32 @@
             text-align: center;
             display: table-cell;
             width: 500px;
-            height: 220px;
+            height: 240px;
             font-size: 16px;
             color: #666;
-            line-height: 20px;
+            line-height: 30px;
         }
 
-        #boxTexto {
+        #boxTexto{
             position: absolute;
-            top: 70px;
-            left: 220px;
+            top: 95px;
+            left: 50px;
             width: 500px;
-            height: 230px;
+            height: 240px;
             text-align: center;
-            border-radius: 10px;
+            border-radius: 10px;;
         }
 
     </style>
 
 </head>
 <body>
-<img src="../img/licao06/p14.jpg" width="200" style="margin: 12px 5px; border-radius: 10px;"/>
-
 <div id="boxArrasta" class="btn btn-default-hover">
     <div id="arrasta"></div>
 </div>
 
 <div id="boxTexto">
-    <div class="balao">
-        Silepse é a {0} de um termo feita com outro subentendido, e não com o que está {1} na oração, ou
-        seja, a concordância é feita com a {2} que se quer {3} e não com as {4}.
-    </div>
+    <div class="balao"></div>
 </div>
 
 

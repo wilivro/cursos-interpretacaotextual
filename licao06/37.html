@@ -1,0 +1,112 @@
+
+<!doctype html>
+<html lang="pt-br">
+<head>
+    <title>Lição 06 Peça 37</title>
+    <meta charset="utf-8">
+    <script src="../wilib/js/lib/require.js"></script>
+    <script src="../wilib/js/app.js"></script>
+    <link type="text/css" rel="stylesheet" href="../wilib/css/font-awesome.css">
+    <link type="text/css" rel="stylesheet" href="../wilib/css/estilo.css">
+
+    <script>
+        require(['../wilib/js/lib/revela'], function (edi) {
+
+            edi.setConfig({
+                titulo: "Clique na imagem e descubra mais um exemplo de silepse de pessoa.",
+                mascote: 'mascote'
+            });
+
+            edi.revela('btn-revela', 'box-revela',null, function (btn) {
+                btn.animate({left: 20, width: 200, top: 155}, 1000);
+                setTimeout(function(){
+                    barraMsg('Muito bem!<br> ' +
+                    'Você pode perceber que a ordem direta seria<br> ' +
+                    'a mais correta, pela gramática a ser usada, <br>' +
+                    'porém a colocação do autor dá destaque às <br>' +
+                    'palavras, se tornando um belo hino <br>' +
+                    'Nacional, você não acha?', {height: 150})
+                },5000)
+            },{piscar:false});
+
+            var x = 0;
+
+            function removeBarra() {
+                setTimeout(function () {
+                    $('#barra' + x).animate({height: 0}, 1000, function () {
+                        $(this).remove()
+                    });
+                    if (!!$('#barra' + x).length)
+                        removeBarra();
+                    x++;
+                }, 50)
+            }
+
+            for (var i = 0; i < 15; i++) {
+                $('<div>').attr('id', 'barra' + i).css({left: 34 * i}).addClass('barra').appendTo('#ct');
+                if (i == 14)
+                    removeBarra();
+            }
+
+            $('.box-revela').peBalao({scaleX: -1.5, scaleY: 1.5, borda: '#CCC', rotate: -89, left: -38, top: 40})
+        });
+    </script>
+
+    <style>
+        .btn-revela {
+            position: absolute;
+            left: 190px;
+            top: 90px;
+            cursor: pointer;
+            z-index: 1;
+        }
+
+        .box-revela {
+            border: 1px solid #CCC;
+            border-radius: 15px;
+            font-size: 14px;
+            padding: 20px 20px;
+            position: absolute;
+            line-height: 1.8;
+            text-align: left;
+            color: #666;
+            text-shadow: 1px 1px 1px rgba(0, 0, 0, 0.2);
+            top: 95px;
+            left: 250px;
+        }
+
+        #ct {
+            position: absolute;
+            top: 70px;
+            left: 180px;
+            z-index: 2000;
+        }
+
+        .barra {
+            position: absolute;
+            width: 35px;
+            background: #FFF;
+            height: 334px;
+        }
+    </style>
+</head>
+
+<body>
+<img class="btn-revela" src="../img/licao06/p37.jpg" width="400"/>
+
+<div id="ct">
+</div>
+<div class="box-revela">
+    <p>
+        “E o sol da Liberdade, em raios fúlgidos,<br>
+        Brilhou no céu da Pátria nesse instante”.<br><br>
+
+        Em ordem direta seria: O sol da Liberdade<br>
+        brilhou em raios fúlgidos no céu da Pátria<br>
+        nesse instante.
+
+
+    </p>
+</div>
+</body>
+</html>

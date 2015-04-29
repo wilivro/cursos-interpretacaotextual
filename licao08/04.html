@@ -1,0 +1,89 @@
+<!doctype html>
+<html lang="pt-br">
+
+<head>
+  <title>Lição 04 Peça 03</title>
+  <meta charset="utf-8">
+  <script src="../wilib/js/lib/require.js"></script>
+  <script src="../wilib/js/app.js"></script>
+
+  <link rel="stylesheet" href="../wilib/css/font-awesome.css">
+  <link rel="stylesheet" href="../wilib/css/estilo.css">
+
+  <!-- main -->
+  <script>
+  require(['../wilib/js/lib/revela_slide'], function (edi) {
+
+    edi.setConfig({ // configurando o EDI
+      icone: 'exclamacao',
+      titulo: 'Clique nos botões e observe a explicação da professora.'
+    });
+
+    function callback(a, b) {
+      b.parent().css('box-shadow', '0 0 0 3px #8CA8B8');
+    }
+
+    function calbackFinal () {
+      barraMsg(
+        'Muito Bem! A partir dos próximos exercícios aprenderemos<br>sobre os tipos de texto. Fique atento!', {height: 80}
+      );
+    }
+
+    edi.revela_slide('.revela', callback, calbackFinal, {
+      tempoBloqueio: 5000,
+      btnPrevConfig: {
+        left: 360,
+        top: 280
+      },
+      btnNextConfig: {
+        left: 555,
+        top: 280
+      }
+    });
+  });
+  </script>
+
+  <style>
+  i {
+    font-style: italic;
+    font-weight: bold;
+  }
+
+  .revela {
+    width: 270px;
+    font-size: 13px;
+    line-height: 1.3;
+    text-shadow: 1px 1px 1px rgba(0, 0, 0, 0.2);
+    position: absolute;
+    top: 130px;
+    left: 360px;
+  }
+
+  .img{
+    width: 266px;
+    height: 265px;
+    position: absolute;
+    left: 10px;
+    top: 80px;
+    border: 5px solid #fff;
+    border-radius: 10px;
+    box-shadow: 0px 1px 3px 0px rgba(0, 0, 0, 0.3);
+  }
+</style>
+</head>
+
+<body>
+  <img class="img" src="../img/licao04/03.png">
+  <p class="revela" id="rev-01">
+    Professora: -Paulo perceba como é importante compreender a estrutura de um texto não só para escrevê-lo, mas principalmente para interpretá-lo.
+  </p>
+  <p class="revela" id="rev-02">
+    Carlinhos: -Sim, professora. Ao reconhecer as partes de um texto, introdução, desenvolvimento e conclusão, podemos entender melhor o que ele quer dizer.
+  </p>
+  <p class="revela" id="rev-03">
+    Professora: -Isso mesmo! Lembre-se: Ao escrever precisa organizar suas ideias desta maneira, para que seja compreendido, e ao ler, precisa identificar estas partes do texto para melhor compreendê-lo.
+  </p>
+
+</body>
+
+</html>

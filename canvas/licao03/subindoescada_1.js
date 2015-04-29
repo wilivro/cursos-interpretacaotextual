@@ -389,6 +389,7 @@ lib.properties = {
 					setTimeout(function(){
 						require(["../wilib/js/lib/edi"],function(edi){
 					   edi.finalizar();
+					   barraMsg('Excelente! Pedro está formado! O próximo será você,<br>continue dedicando-se aos estudos!', {height: 80})
 					  });
 					},1500);
 				}

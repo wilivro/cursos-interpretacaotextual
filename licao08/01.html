@@ -1,0 +1,40 @@
+<!-- Desenvolvedor: Leandro Fortaleza -->
+<!doctype html>
+<html lang="pt-br">
+
+<head>
+	<title>Lição 01 Peça 01</title>
+	<meta charset="utf-8">
+	<script src="../wilib/js/lib/require.js"></script>
+	<script src="../wilib/js/app.js"></script>
+	<link rel="stylesheet" href="../wilib/css/font-awesome.css">
+	<link rel="stylesheet" href="../wilib/css/estilo.css">
+
+	<script>
+		require(['../wilib/js/lib/reflita2'], function (edi) {
+
+			edi.setConfig({
+                enunciado: false
+			});
+
+            var texto = " Nesta lição aprenderemos como elaborar um texto a partir de sua intenção discursiva, tendo por base determinada estrutura.  <br><br>" +
+                    "Vamos entender que, dependendo de como é organizado estruturalmente, podemos enquadrá-lo em uma tipologia textual, ou seja, a forma como um texto se apresenta, com determinadas características e peculiaridades.<br><br>" +
+                    "Basicamente, estudaremos os seguintes tipos textuais: Descrição, narração, discurso, dissertação! <br><br>";
+			edi.reflita2(texto);
+		});
+	</script>
+    <style>
+        .balao-texto {
+            width: 400px !important;
+            right: 20px !important;
+        }
+        .balao-texto p {
+            text-align: justify;
+        }
+    </style>
+</head>
+
+<body>
+</body>
+
+</html>

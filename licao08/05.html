@@ -1,0 +1,50 @@
+<!-- Desenvolvedor: Leandro Fortaleza -->
+<!doctype html>
+<html lang="pt-br">
+
+<head>
+	<title>Lição 01 Peça 31</title>
+	<meta charset="utf-8">
+	<script src="../wilib/js/lib/require.js"></script>
+	<script src="../wilib/js/app.js"></script>
+
+	<link rel="stylesheet" href="../wilib/css/font-awesome.css">
+	<link rel="stylesheet" href="../wilib/css/estilo.css">
+
+	<!-- main -->
+	<script>
+		require(['../wilib/js/lib/quebra-cabeca'], function (edi) {
+
+			edi.setConfig({ // configurando o EDI
+				enunciado: 'vertical',
+				icone: 'exclamacao',
+				titulo: 'Monte o quebra-cabeça:'
+			});
+
+            var config = {
+                width: 481,
+                height: 361,
+                left: 80,
+                top: 10,
+                background: '#ccc',
+                numPecas: 2,
+            };
+
+			edi.quebraCabeca('../img/licao08/peca05.png', function(){
+				mensagem(
+        '<div style="width:650px">Excelente! Começaremos nossos<br>estudos pela narrativa ou<br>narração, esteja atento!</div>', {height: 80, top: 0}
+      	);
+      	$('#msgFinalMain')
+      		.css('top','0')
+      		.css('width','720px')
+      		.css('height','383px');
+			}, config);
+		});
+	</script>
+</head>
+
+<body>
+
+</body>
+
+</html>

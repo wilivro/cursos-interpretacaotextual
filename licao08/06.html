@@ -1,0 +1,102 @@
+<!-- Desenvolvedor: Leandro Fortaleza -->
+<!doctype html>
+<html lang="pt-br">
+	<head>
+		<title>alt_d002</title>
+		<meta charset="utf-8">
+		<script src="../wilib/js/lib/require.js"></script>
+		<script src="../wilib/js/app.js"></script>
+		
+		<link rel="stylesheet" href="../wilib/css/font-awesome.css">
+		<link rel="stylesheet" href="../wilib/css/estilo.css">
+
+		<script>
+            $(function () {
+                require(['../wilib/js/lib/alternativa'], function (edi) {
+
+                    edi.setConfig({
+                        icone: 'interrogacaoAzul',
+                        titulo: 'De acordo com seus conhecimentos, qual o conceito correto de narração?<br>Clique sobre a alternativa que melhor define este tipo textual.'
+                    });
+
+                    var alternativas = [
+                        {
+                            alternativa: 'Narrar consiste em relatar fatos.',
+                            correta: true
+                        },{
+                            alternativa: 'É a tentativa de fazer o leitor visualizar aquilo que está sendo descrito.',
+                            correta: false
+                        },{
+                            alternativa: 'Caracteriza-se por ser um texto em prosa, que busca expor, defender, discutir uma ideia.',
+                            correta: false
+                        }
+                    ];
+
+                    var config = {
+                        posx: 15,
+                        posy: 145,
+                        largura: 100,
+                        aleatorio: true,
+                        tamanhoBox: 35,
+                        tamanhoBoxTexto: 400,
+                        marginBtns: 5,
+
+                    }
+
+                    edi.alternativa(alternativas, function (acertou) {
+                    }, function (a) {
+                        $('#certo').fadeIn();
+                        if (!a){
+
+                            $('#certo')
+                                .css({
+                                    border: '2px dashed #F00'
+                                })
+                            $('#texto').css('color', '#f00').html('Atenção! A narração costuma ser um tipo de composição com dinamismo, possuindo, normalmente, verbos indicativos de ações.');
+                        }
+                    }, config);
+
+                        $('#balao').peBalao({
+                            left: 10,
+                            tamanhoBorda: 15,
+                            borda: '#ccc'
+                        });
+
+                });
+            })
+		</script>
+
+		<style>
+            #certo{
+                position: absolute;
+                height: 300px;
+                background-color: rgba(255, 255, 255,0.8);
+                border-radius: 15px;
+                border: 2px dashed #9c0;
+                width: 176px;
+                top: 74px;
+                left: 571px;
+                z-index: 400;
+                display: none;
+            }
+
+            #texto{
+                position: relative;
+                display: table-cell;
+                padding: 0 5px;
+                vertical-align: middle;
+                text-align: center;
+                height: 300px;
+                width: 176px;
+                color: #9C0;
+            }
+
+		</style>
+	</head>
+
+	<body>
+        <div id="certo">
+            <div id="texto">Excelente! A narração costuma ser um tipo de composição com dinamismo, possuindo, normalmente, verbos indicativos de ações.</div>
+        </div>
+	</body>
+</html>

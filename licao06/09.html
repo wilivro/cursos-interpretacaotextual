@@ -1,0 +1,67 @@
+<!doctype html>
+<html lang="pt-br">
+<head>
+    <title>Lição 06 Peça 09</title>
+    <meta charset="utf-8">
+    <script src="../wilib/js/lib/require.js"></script>
+    <script src="../wilib/js/app.js"></script>
+    <link rel="stylesheet" href="../wilib/css/font-awesome.css">
+    <link rel="stylesheet" href="../wilib/css/estilo.css">
+
+    <script>
+        require(['../wilib/js/lib/alternativa_botao'], function (edi) {
+
+            edi.setConfig({
+                titulo: "Clique sobre a alternativa cuja frase é um exemplo de elipse.",
+                mascote: 'mascote'
+            });
+
+            var btns = [];
+
+            btns.push({
+                texto: "Ana perdeu as chaves da sua casa.",
+                dataCorreta: false
+            });
+
+            btns.push({
+                texto: "Eles corriam em direção a ponte.",
+                dataCorreta: false
+            });
+
+            btns.push({
+                texto: "As rosas florescem em maio,<br> as margaridas em agosto.",
+                dataCorreta: true
+            });
+
+            btns.push({
+                texto: "O buquê de rosas vermelhas está a venda.",
+                dataCorreta: false
+            });
+
+            var config = {
+                colunas: 1,
+                width: 380,
+                height: 35,
+                left: 190,
+                top: 70,
+                margin: '12px 12px 0 12px',
+                tamanhoTexto: 14,
+                btnBranco: true,
+                randomico: true,
+                lineHeight: '1.4',
+                animacao: true
+            };
+
+            edi.alternativa_botao(btns, null, function(a){
+                barraMsg(a?'Muito bem!<br> ' +
+                'Nesta alternativa há omissão da palavra <br>florescem, mas o termo fica subentendido.':'Atenção!<br> Retorne a explicação da figura de linguagem elipse e <br>relembre este conceito antes de tentar responder novamente.', {height:100, wait:0})
+            }, config);
+        });
+    </script>
+
+</head>
+
+<body>
+
+</body>
+</html>

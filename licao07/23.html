@@ -1,0 +1,134 @@
+<!-- Desenvolvedor: Danilo Thiago -->
+<!doctype html>
+<html lang="pt-br">
+<head>
+    <title>Lição 02 Peça 42</title>
+    <meta charset="utf-8">
+    <script src="../wilib/js/lib/require.js"></script>
+    <script src="../wilib/js/app.js"></script>
+    <link type="text/css" rel="stylesheet" href="../wilib/css/font-awesome.css">
+    <link type="text/css" rel="stylesheet" href="../wilib/css/estilo.css">
+
+    <script>
+        require(['../wilib/js/lib/revela', '../wilib/js/lib/alternativa_botao'], function (edi, edi2) {
+
+            edi2.setConfig({
+                icone: "interrogacaoAzul",
+                titulo: "Leia a frase atentamente: “ <span id='sublinhado'>Se</span> você encontrar o professor, dê-lhe o recado”. <br> Qual sentido o conectivo em destaque está transmitindo? <br> Clique no botão abaixo e responda. ",
+                mascote: 'mascote'
+            });
+
+            var btns = [
+                {texto: 'Adição e continuação', dataCorreta: false},
+                {texto: 'Condição e hipótese', dataCorreta: true},
+                {texto: 'Certeza e ênfase', dataCorreta: false},
+            ];
+
+            var config = {
+                tamanhoTexto: 14,
+                width: 400,
+                height: 30,
+                left: 180,
+                top: 100,
+                colunas: 1,
+                margin: '0 0 10px 0',
+                padding: 5,
+                display: 'block',
+                btnBranco: true,
+                animacao: true
+            };
+
+            btns.sort(function () {
+                return 0.5 - Math.random()
+            });
+
+            edi2.alternativa_botao(btns, null, function(a) {
+                if (a) {
+                 $('#msgAcerto').fadeIn();
+                } else {
+                 $('#msgErrado').fadeIn();
+           }}, config);
+
+            $('[data-edi="alternativa_botao"]').addClass('box-revela');
+
+            var botao = $('<div>')
+                    .addClass('btn-revela')
+                    .css({
+                        background: 'url(../wilib/img/svg/interrogacao.svg) no-repeat',
+                        backgroundSize: '100% 100%',
+                        width: 800,
+                        height: 700,
+                        zIndex: 100,
+                        position: 'absolute',
+                        left: 20,
+                        top: -135,
+                        cursor: 'pointer'
+                    })
+                    .appendTo('#conteudo');
+
+            edi.revela('btn-revela', 'box-revela', null, function (btn) {
+                btn.fadeOut();
+            }, {
+                piscar: false
+            });
+
+            botao.transition({
+                width: 81,
+                height: 79,
+                top: 180,
+                left: 355,
+                rotate: '-360deg'
+            }, 1000);
+        });
+    </script>
+    <style>
+        #sublinhado {
+            text-decoration: underline;
+        }
+
+        #msgAcerto {
+            width: 320px;
+            height: 35px;
+            position: absolute;
+            left: 215px;
+            top: 300px;
+            padding: 5px;
+            padding-bottom: 30px;
+            font-size: 14px;
+            text-align: center;
+            font-weight: bold;
+            line-height: 16px;              
+            color: #9c0;
+            display: none;
+         }
+
+         #msgErrado {
+            width: 320px;
+            height: 50px;
+            position: absolute;
+            left: 220px;
+            top: 293px;
+            padding: 5px;
+            padding-bottom: 30px;
+            font-size: 14px;
+            text-align: center;
+            font-weight: bold;
+            line-height: 16px;                  
+            color: #F00;
+            display: none;
+         }
+    </style>
+</head>
+
+<body>
+
+    <div id="msgAcerto" class="borda-pontilhado-verde arredondado">
+        <p>Excelente! Você já é capaz de identificar um conectivo de condição e hipótese “se”. </p>
+    </div>
+
+    <div id="msgErrado" class="borda-pontilhado-vermelho arredondado">
+        <p>Atenção! O conectivo em destaque “se” não passa a ideia de certeza e nem de continuação. Use seu raciocínio lógico e tente novamente.</p>
+    </div>
+
+</body>
+</html>

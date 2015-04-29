@@ -1,0 +1,68 @@
+<!doctype html>
+<html lang="pt-br">
+	<head>
+		<title>Lição 06 Peça 13</title>
+		<meta charset="utf-8">
+		<script src="../wilib/js/lib/require.js"></script>
+		<script src="../wilib/js/app.js"></script>
+		<link rel="stylesheet" href="../wilib/css/font-awesome.css">
+		<link rel="stylesheet" href="../wilib/css/estilo.css">
+
+		<script>
+            $(function () {
+                require(['../wilib/js/lib/alternativa'], function (edi) {
+
+                    edi.setConfig({
+                        icone: 'interrogacaoAzul',
+                        titulo: 'Marque as alternativas em que a frase é um exemplo de zeugma.'
+                    });
+
+                    var alternativas = [
+                        {
+                            alternativa: 'Gosto da minha casa e do meu carro também.',
+                            correta: true
+                        },{
+                            alternativa: 'O meu pai era paulista. Meu avô, pernambucano.<br> O meu bisavô, mineiro. Meu tataravô, baiano.',
+                            correta: true
+                        },{
+                            alternativa: 'Na casa dela só havia móveis antigos;<br> na minha, só móveis modernos.',
+                            correta: true
+                        },{
+                            alternativa: 'O carro foi para o mecânico e<br> só será devolvido no sábado.',
+                            correta: false
+                        }
+                    ];
+
+                    var config = {
+                        posx: 15,
+                        posy: 105,
+                        aleatorio: true,
+                        tamanhoBox: 35,
+                        tamanhoBoxTexto: 430,
+                        marginBtns: 5
+                    }
+
+
+                    edi.alternativa(alternativas, function (acertou) {
+                    }, function (a) {
+                        barraMsg(a?'Correto!<br> As três alternativas são exemplo de zeugma,<br> pois a palavra fica subentendida no contexto.':'Atenção!<br> Nesta alternativa não há nenhuma<br> palavra subentendida no contexto.', {height: 100})
+                    }, config);
+                        $('#balao').peBalao({
+                            left: 10,
+                            tamanhoBorda: 15,
+                            borda: '#ccc'
+                        });
+                });
+            })
+		</script>
+
+		<style>
+
+
+		</style>
+	</head>
+
+	<body>
+
+	</body>
+</html>

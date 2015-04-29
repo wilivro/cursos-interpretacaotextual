@@ -1,0 +1,158 @@
+<!doctype html>
+<html lang="pt-br">
+<head>
+    <title>Lição 06 Peça 04</title>
+    <meta charset="utf-8">
+    <script src="../wilib/js/lib/require.js"></script>
+    <script src="../wilib/js/app.js"></script>
+    <link rel="stylesheet" href="../wilib/css/font-awesome.css">
+    <link rel="stylesheet" href="../wilib/css/estilo.css">
+
+    <script>
+        require(['../wilib/js/lib/arrasta'], function (edi) {
+
+            edi.setConfig({
+                mascote: 'mascote',
+                titulo: 'Arraste as palavras e complete o conceito que define as figuras de construção.',
+                tempoFinal: 20
+            });
+
+            var arrArrasta = [
+                {arrasta: 'sujeito', dataCorreta: '1', dataId: '1'},
+                {arrasta: 'complemento', dataCorreta: '2', dataId: '2'},
+                {arrasta: 'construção', dataCorreta: '3', dataId: '3'},
+                {arrasta: 'mudança', dataCorreta: '4', dataId: '4'},
+                {arrasta: 'figuras', dataCorreta: '5', dataId: '5'},
+                {arrasta: 'Elipse', dataCorreta: '6', dataId: '6'}
+            ];
+
+            var texto = $('#boxTexto').html();
+
+            for (var i = 0; i < arrArrasta.length; i++) {
+                var aux = '';
+                for (var j = 0; j < arrArrasta[i].arrasta.length; j++) {
+                    aux += '_';
+                }
+                ;
+                texto = texto.replace('{' + i + '}', '<div class="alvo" data-correta="' + arrArrasta[i].dataCorreta + '">' + aux + '</div>');
+            }
+
+            $('#boxTexto').html(texto);
+
+            arrArrasta.sort(function () {
+                return 0.5 - Math.random()
+            });
+
+
+            for (var i = 0; i < arrArrasta.length; i++) {
+                $('<div>')
+                        .addClass('arrasta fundoArrasta azulAlpha')
+                        .attr({
+                            'data-id': arrArrasta[i].dataId,
+                            id: 'arrasta' + (i + 1),
+                            'data-correta': arrArrasta[i].dataCorreta
+                        })
+                        .html(arrArrasta[i].arrasta)
+                        .appendTo('#arrasta');
+            }
+
+            var config = {
+                colorirFilho: true,
+                arrastaAbsolute: true,
+                reloadCorreta: true,
+                alvoFixo: true
+            };
+
+            edi.arrasta('arrasta', 'alvo', function (a, b, c) {
+                if (a) {
+                    c.html(b.css({display: 'flex'}))
+                }
+            }, function (a) {
+                barraMsg('Muito bem!<br> Vamos continuar estudando as figuras de construção,<br> analisando cada uma em particular, começando pela elipse.<br> Bom estudo!', {height: 100});
+            }, config);
+
+            $('.arrasta').css({
+                margin: -5,
+                padding: 5
+            });
+
+            $('<div>')
+                    .attr('id', 'mascote')
+                    .appendTo('#conteudo');
+
+        });
+    </script>
+    <style>
+        .alvo {
+            display: inline-block;
+        }
+
+        .arrasta {
+            padding: 5px;
+            margin-right: 10px;
+            margin-left: 10px;
+            display: inline-block;
+            color: #FFF;
+            font-size: 16px;;
+        }
+
+        #boxArrasta {
+            position: absolute;
+            width: 150px;
+            height: 250px;
+            cursor: default;
+            top: 95px;
+            left: 600px;
+        }
+
+        #arrasta {
+            position: relative;
+            display: table-cell;
+            vertical-align: middle;
+            width: 150px;
+            height: 250px;
+        }
+
+        .balao {
+            position: relative;
+            vertical-align: middle;
+            text-align: center;
+            display: table-cell;
+            width: 500px;
+            height: 240px;
+            font-size: 16px;
+            color: #666;
+            line-height: 20px;
+        }
+
+        #boxTexto{
+            position: absolute;
+            top: 95px;
+            left: 50px;
+            width: 500px;
+            height: 240px;
+            text-align: center;
+            border-radius: 10px;;
+        }
+
+    </style>
+
+</head>
+<body>
+<div id="boxArrasta" class="btn btn-default-hover">
+    <div id="arrasta"></div>
+</div>
+
+<div id="boxTexto">
+    <div class="balao">
+       <div style="text-align: left"> Como você já viu, os termos das orações em português obedecem a uma sequência lógica: <br><br></div>
+        {0} + predicado + {1}.<br><br>
+        <div style="text-align: left"> E quando as figuras de {2} se manifestam, ocorre uma {3} nesta sequência.<br><br>
+        Dentre os exemplos dessas {4} está a {5}, que será mais aprofundada em nosso próximo exercício.</div>
+
+    </div>
+</div>
+
+
+</body>
+</html>

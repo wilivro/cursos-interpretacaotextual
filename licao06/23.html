@@ -1,0 +1,53 @@
+<!doctype html>
+<html lang="pt-br">
+<head>
+	<title>Lição 06 Peça 23</title>
+        <meta charset="utf-8">
+        <script src="../wilib/js/lib/require.js"></script>
+        <script src="../wilib/js/app.js"></script>
+        <link rel="stylesheet" href="../wilib/css/font-awesome.css">
+        <link rel="stylesheet" href="../wilib/css/meioAmbiente.css">
+
+	<script>
+		require(['../wilib/js/lib/alternativa_balao'], function (edi) {
+
+			edi.setConfig({
+				titulo: 'Clique na frase em que o pensamento da personagem está correto:',
+                mascote: 'mascote',
+                tempoFinal: 10
+			});
+
+            //balões
+            var baloes = [
+
+                {texto: '“O tempo cobre o chão de verde manto,<br>Que já coberto foi de neve fria,<br><br>E em mim converte em choro o doce canto.”<br><span class="bold">Luís Vaz de Camões</span>', dataCorreta: true},
+                {texto: 'A poluição da terra, da água e<br>do ar não chega a níveis tão altos.', dataCorreta: false},
+                {texto: 'A educação ambiental nas empresas não tem um papel muito relevante em relação aos funcionários.', dataCorreta: false},
+                {texto: 'Mudar as atitudes e a cultura de<br>uma organização é uma tarefa fácil.', dataCorreta: false}
+
+            ];
+
+			edi.alternativa_balao(baloes, function (a, b) {
+                //cb
+            }, function (a) {
+                //cbfinal
+            }, {
+                top: 0,
+                left: 80,
+                width: 300,
+                height: 150,
+                margin: '0 60px 0 0',
+                fontSize: 12,
+                leftPerson: -65,
+                topPerson: 43,
+                topIco: 0,
+                leftIco: -7
+            });
+		});
+	</script>
+</head>
+
+<body>
+</body>
+
+</html>

@@ -1,0 +1,124 @@
+<!-- Desenvolvedor: Micael Souza -->
+<!doctype html>
+<html lang="pt-br">
+    <head>
+        <title>alt_d001</title>
+        <meta charset="utf-8">
+        <script src="../wilib/js/lib/require.js"></script>
+        <script src="../wilib/js/app.js"></script>
+
+        <link rel="stylesheet" href="../wilib/css/font-awesome.css">
+        <link rel="stylesheet" href="../wilib/css/estilo.css">
+
+        <!-- main -->
+        <script>
+            $(function () {
+                require(['../wilib/js/lib/alternativa'], function (edi) {
+
+                    edi.setConfig({ // configurando o EDI
+                        icone: 'exclamacao',
+                        titulo: '<span style="font-size:14px;">Leia a questão a seguir e responda corretamente: (CONSULPLAN – 2010 – Prefeitura de Congonhas – MG – Técnico de Laboratório – Informática) “- Pois é, não jogo futebol, <span id="sublinhado">mas</span> tenho alma de artilheiro…” a palavra destacada anteriormente exprime ideia de:</span>'
+                    });
+
+                    var alternativas = [
+                        {
+                            alternativa: 'Escolha.',
+                            correta: false
+                        },{
+                            alternativa: 'Contraste, oposição.',
+                            correta: true
+                        },{
+                            alternativa: 'Finalidade.',
+                            correta: false
+                        },{
+                            alternativa: 'Explicação.',
+                            correta: false
+                        },{
+                            alternativa: 'Soma, adição.',
+                            correta: false
+                        }
+                    ];
+
+                    var config = {
+                        posx: 120,
+                        posy: 75,
+                        aleatorio: true,
+                        tamanhoBoxTexto: 450,
+                        tamanhoBox: 35,
+                        marginBtns: 10
+                    }
+
+                    edi.alternativa(alternativas, function (acertou) {
+                        //                    log(acertou);
+                    }, function (a) {
+                        if (a) {
+                         $('#msgAcerto').fadeIn();
+                        } else {
+                         $('#msgErrado').fadeIn();
+                    }}, config); //iniciando o EDI
+
+                        $('#balao').peBalao({
+                            left: 10
+                        });
+
+
+                    $('#ico').iconeInterrogacaoAzul();
+                });
+            })
+        </script>
+
+        <style>
+            
+            #sublinhado {
+                text-decoration: underline;
+            }
+
+            #msgAcerto {
+                width: 320px;
+                height: 35px;
+                position: absolute;
+                left: 390px;
+                top: 180px;
+                padding: 5px;
+                padding-bottom: 30px;
+                font-size: 14px;
+                text-align: center;
+                font-weight: bold;
+                line-height: 16px;              
+                color: #9c0;
+                display: none;
+             }
+
+             #msgErrado {
+                width: 320px;
+                height: 50px;
+                position: absolute;
+                left: 390px;
+                top: 180px;
+                padding: 5px;
+                padding-bottom: 30px;
+                font-size: 14px;
+                text-align: center;
+                font-weight: bold;
+                line-height: 16px;                  
+                color: #F00;
+                display: none;
+             }
+
+        </style>
+    </head>
+
+    <body>
+
+
+    <div id="msgAcerto" class="borda-pontilhado-verde arredondado">
+        <p>Muito bem! O conectivo “mas” passa a ideia de contraste, oposição.  </p>
+    </div>
+
+    <div id="msgErrado" class="borda-pontilhado-vermelho arredondado">
+        <p>Você errou! Observe que o conector em destaque é “mas” e através do seu raciocínio lógico tente responder corretamente.</p>
+    </div>
+
+
+    </body>
+</html>

@@ -1,0 +1,81 @@
+<!-- Desenvolvedor: Micael Souza -->
+<!doctype html>
+<html lang="pt-br">
+    <head>
+        <title>alt_d001</title>
+        <meta charset="utf-8">
+        <script src="../wilib/js/lib/require.js"></script>
+        <script src="../wilib/js/app.js"></script>
+
+        <link rel="stylesheet" href="../wilib/css/font-awesome.css">
+        <link rel="stylesheet" href="../wilib/css/estilo.css">
+
+        <!-- main -->
+        <script>
+            $(function () {
+                require(['../wilib/js/lib/alternativa'], function (edi) {
+
+                    edi.setConfig({ // configurando o EDI
+                        icone: 'exclamacao',
+                        titulo: 'Leia a questão a seguir e clique sobre a resposta correta. (FCC 2007) O emprego do elemento sublinhado compromete a coerência da frase:'
+                    });
+
+                    var alternativas = [
+                        {
+                            alternativa: 'Cada época tem os adolescentes que merece, <span id="sublinhado">pois</span> estes são influenciados pelos valores socialmente dominantes.',
+                            correta: false
+                        },{
+                            alternativa: 'Os jovens perderam a capacidade de sonhar alto, por <span id="sublinhado">conseguinte</span> alguns ainda resistem ao pragmatismo moderno.',
+                            correta: true
+                        },{
+                            alternativa: 'Nos tempos modernos, sonhar faz muita falta ao adolescente, <span id="sublinhado">bem como</span> alimentar a confiança em sua própria capacidade criativa.',
+                            correta: false
+                        },{
+                            alternativa: '<span id="sublinhado">A menos que</span> se mudem alguns paradigmas culturais, as gerações seguintes serão tão conformistas quanto a atual.',
+                            correta: false
+                        },{
+                            alternativa: 'Há quem fique desanimado com os jovens de hoje, <span id="sublinhado">porquanto</span> parece faltar-lhes a capacidade de sonhar mais alto.',
+                            correta: false
+                        }
+                    ];
+
+                    var config = {
+                        posx: 120,
+                        posy: 75,
+                        aleatorio: true,
+                        tamanhoBoxTexto: 450,
+                        tamanhoBox: 35,
+                        marginBtns: 10
+                    }
+
+                    edi.alternativa(alternativas, function (acertou) {
+                        //                    log(acertou);
+                    }, function (a) {
+                    if (a) {
+                        barraMsg('Muito bem! A resposta é a letra B - O conectivo “por conseguinte” dá a ideia de consequência, o que não é o caso da correlação entre estas duas frases, ou seja, uma não é consequência da outra.  Neste caso, o conectivo adequado seria uma ideia de oposição (sugestão: embora)', {zIndex: 2002})
+                    } else {
+                        barraMsg('Atenção! A expressão “Por conseguinte” dá a ideia de consequência e não de oposição. Comprometendo assim a coerência. Pense nisso e tente outra vez.', {zIndex:2002})
+                    }}, config); //iniciando o EDI
+
+                        $('#balao').peBalao({
+                            left: 10
+                        });
+
+
+                    $('#ico').iconeInterrogacaoAzul();
+                });
+            })
+        </script>
+
+        <style>
+            
+            #sublinhado {
+                text-decoration: underline;
+            }
+        </style>
+    </head>
+
+    <body>
+
+    </body>
+</html>

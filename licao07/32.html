@@ -1,0 +1,140 @@
+<!doctype html>
+<html lang="pt-br">
+<head>
+    <title>Lição 06 Peça 11</title>
+    <meta charset="utf-8">
+    <script src="../wilib/js/lib/require.js"></script>
+    <script src="../wilib/js/app.js"></script>
+    <link type="text/css" rel="stylesheet" href="../wilib/css/font-awesome.css">
+    <link type="text/css" rel="stylesheet" href="../wilib/css/estilo.css">
+
+    <script>
+        require(['../wilib/js/lib/revela'], function (edi) {
+
+            edi.setConfig({
+                titulo: "Clique nos botões e descubra os exemplos de Zeugma.",
+                tempoFinal: 15
+            });
+
+            edi.revela('clique', 'revela', function (a, b) {
+                a.remove();
+            }, function () {
+                barraMsg('Muito bem,<br> a zeugma é a omissão da palavra, já<br> expressa anteriormente. Continue seus estudos!', {height: 100})
+            }, {tempoBloqueio: 0});
+
+        });
+    </script>
+
+    <style>
+        .tamanhoClique {
+            position: absolute;
+            left: 310px;
+            width: 150px;
+            height: 40px;
+            z-index: 1;;
+            margin: 3px;
+            margin-top: 10px;
+        }
+
+        .tamanhoRevela {
+            position: absolute;
+            left: 50px;
+            width: 650px;
+            height: 60px;
+        }
+
+        .texto {
+            position: relative;
+            vertical-align: middle;
+            text-align: center;
+            display: table-cell;
+            width: 150px;
+            left: 0px;
+        }
+
+        #ct {
+            position: absolute;
+            top: 70px;
+            left: 0;
+            width: 788px;
+            height: 383px;
+        }
+
+        .inline {
+            width: 788px;
+            height: 75px;
+        }
+
+        #middle {
+            display: table-cell;
+            vertical-align: middle;
+            position: relative;
+            text-align: center;
+            height: 315px;
+
+        }
+    </style>
+</head>
+
+<body>
+<div id="ct">
+    <div id="middle">
+
+
+        <div class="inline">
+            <div class="btn btn-default tamanhoClique clique" data-revela="1">
+                <div class="texto tamanhoClique">
+                    CLIQUE
+                </div>
+            </div>
+            <div class="btn btn-default-hover tamanhoRevela revela" data-revela="1">
+                <div class="texto tamanhoRevela" style="width: 650px;">
+                    Meus amigos adoram praia, e eu também.
+                </div>
+            </div>
+        </div>
+
+        <div class="inline">
+            <div class="btn btn-default tamanhoClique clique" data-revela="2">
+                <div class="texto tamanhoClique">
+                    CLIQUE
+                </div>
+            </div>
+            <div class="btn btn-default-hover tamanhoRevela revela" data-revela="2">
+                <div class="texto tamanhoRevela" style="width: 650px;">
+                    Eu gosto de morango e de melancia também.
+                </div>
+            </div>
+        </div>
+
+        <div class="inline">
+            <div class="btn btn-default tamanhoClique clique" data-revela="3">
+                <div class="texto tamanhoClique">
+                    CLIQUE
+                </div>
+            </div>
+            <div class="btn btn-default-hover tamanhoRevela revela" data-revela="3">
+                <div class="texto tamanhoRevela" style="width: 650px;">
+                    Eu chego cedo sempre, só não quando estou sem carro.
+                </div>
+            </div>
+        </div>
+
+        <div class="inline">
+            <div class="btn btn-default tamanhoClique clique" data-revela="4">
+                <div class="texto tamanhoClique">
+                    CLIQUE
+                </div>
+            </div>
+            <div class="btn btn-default-hover tamanhoRevela revela" data-revela="4">
+                <div class="texto tamanhoRevela" style="width: 650px;">
+                    Eu chego cedo sempre, só não quando estou sem carro.
+                </div>
+            </div>
+        </div>
+
+    </div>
+</div>
+
+</body>
+</html>

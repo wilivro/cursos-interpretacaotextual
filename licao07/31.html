@@ -1,0 +1,156 @@
+<!--Desenvolvedor: Danilo Thiago-->
+<!doctype html>
+<html lang="pt-br">
+<head>
+    <title>arr_a002</title>
+    <meta charset="utf-8">
+    <script src="../../js/lib/require.js"></script>
+    <script src="../../js/app.js"></script>
+    <link rel="stylesheet" href="../../css/font-awesome.css">
+    <link rel="stylesheet" href="../../css/meioAmbiente.css">
+
+    <script>
+        require(['../../js/lib/arrasta'], function (edi) {
+
+            edi.setConfig({
+                mascote: 'mascote',
+                titulo: 'Arraste até o meio das setas a definição<br>correta para: <span style="font-whieght: bold; font-style:italic">Alimentos Transgênicos</span>.'
+            });
+
+            var texto = [
+                {texto: 'Os alimentos transgênicos são alimentos modificados<br>geneticamente em laboratórios com o objetivo de<br>conseguir melhorar a qualidade do produto. ', dataCorreta: 1},
+                {texto: 'Alimentos transgênicos são alimentos importados.', dataCorreta: 0},
+                {texto: 'Alimentos transgênicos são os alimentos<br>orgânicos, produzidos naturalmente e que não<br>sofrem nenhuma alteração genética.', dataCorreta: 0}
+            ]
+
+            texto.sort(function () {
+                return 0.5 - Math.random()
+            });
+
+            for (var i = 0; i < texto.length; i++) {
+                var div = $('<div>')
+                        .css({
+                            position: 'relative',
+                            display: 'table-cell',
+                            'vertical-align': 'middle',
+                            width: '320px',
+                            height: '75px'
+                        })
+                        .html(texto[i].texto)
+
+                $('<div>')
+                        .css('margin','5px')
+                        .attr('data-correta', texto[i].dataCorreta)
+                        .addClass('arrasta')
+                        .addClass('azulAlpha')
+                        .append(div)
+                        .appendTo('#arrastas')
+            }
+
+            var config = {
+                colorirFilho: true,
+                cb: function () {
+                    var top = 250, left= 80;
+
+                    $('<img>').attr({
+                        src:"../../img/svg/seta.svg",
+                        style: "height: 100px; top:"+top+"px; left: "+(400+left)+"px"
+                    }).appendTo('#ctAlvo');
+
+                    $('<img>').attr({
+                        src:"../../img/svg/seta.svg",
+                        style: "height: 100px; top:"+top+"px; left: "+(440+left)+"px"
+                    }).appendTo('#ctAlvo');
+                    $('<img>').attr({
+                        src:"../../img/svg/seta.svg",
+                        style: "height: 100px; top:"+top+"px; left: "+(480+left)+"px"
+                    }).appendTo('#ctAlvo');
+
+                    $('<img>').attr({
+                        src:"../../img/svg/seta.svg",
+                        style: "height: 100px; top:"+top+"px; left: "+(520+left)+"px"
+                    }).appendTo('#ctAlvo');
+                }
+            };
+
+            edi.arrasta('arrasta', 'alvo', function (a, b, c) {
+                b.removeClass('azulAlpha');
+            }, null, config);
+
+            $('.arrasta').css({
+                margin: -5,
+                padding: 5
+            })
+
+        });
+    </script>
+    <style>
+        #ctAlvo {
+            width: 788px;
+            text-align: center;
+        }
+
+        #ctAlvo p {
+            margin: 40px 0 0 0;
+            color: #6D9DB8;
+            font-size: 22px;
+        }
+
+        #ctAlvo > div
+        {
+            position: absolute;
+            margin: 10px 0 0 0;
+            left: 385px;
+            top: 140px;
+            border: 1px solid #C7D9E4;
+            height: 75px;
+            width: 325px;
+        }
+
+        #ctAlvo img {
+            position: absolute;
+            top: 30px;
+        }
+
+        #ctArrasta {
+            position: absolute;
+            top: 80px;
+            left: 0px;
+            width: 340px;
+            height: 275px;
+        }
+        #arrastas{
+            position: relative;
+            display: table-cell;
+            vertical-align: middle;
+            width: 700px;
+            height: 85px;
+        }
+
+        .arrasta {
+            display: inline-block;
+            width: 320px;
+            text-align: center;
+            padding: 15px 0 0 0;
+            height: 65px;
+            font-size: 13px;
+            color: #FFF;
+        }
+
+
+    </style>
+
+</head>
+<body>
+
+<div id="ctAlvo">
+
+    <div class="alvo revela" data-correta="1"></div>
+
+</div>
+
+<div id="ctArrasta" class="btn btn-default-hover">
+    <div id="arrastas"></div>
+</div>
+</body>
+</html>

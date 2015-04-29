@@ -1,0 +1,52 @@
+<!doctype html>
+<html lang="pt-br">
+<head>
+    <title>Lição 06 Peça 15</title>
+    <meta charset="utf-8">
+    <script src="../wilib/js/lib/require.js"></script>
+    <script src="../wilib/js/app.js"></script>
+    <link type="text/css" rel="stylesheet" href="../wilib/css/font-awesome.css">
+    <link type="text/css" rel="stylesheet" href="../wilib/css/estilo.css">
+
+    <style type="text/css">
+    </style>
+    <script>
+        require(['../wilib/js/lib/slide_vertical'], function (edi) {
+
+            edi.setConfig({
+                titulo: "Clique sobre as barras azuis e confira os exemplos de silepse:",
+                mascote: 'mascote',
+                icone: "interrogacaoAzul"
+            });
+
+            var slides = [
+                {
+                    btn: 'BARRA AZUL',
+                    txt: 'De gênero = “São Paulo é cheia de surpresas”.<br> São Paulo é um substantivo masculino, porém a concordância não é feita com o substantivo, mas sim com a ideia de “a cidade de São Paulo” por isso a palavra cheia está no feminino.',
+                    img: '../img/licao06/p15.1.jpg'
+                },
+                {
+                    btn: 'BARRA AZUL',
+                    txt: 'De número = “O pessoal ficou apavorado e saíram correndo”.<br> O verbo sair (saíram) concorda com a ideia de plural subentendida na palavra pessoal.',
+                    img: '../img/licao06/p15.2.jpg'
+                },
+                {
+                    btn: 'BARRA AZUL',
+                    txt: 'De pessoa = “Os brasileiros gostamos de futebol”.<br> O verbo gostar (gostamos) concorda com a com a primeira pessoa do plural, indicando que a pessoa que fala se inclui no sujeito (nós, os brasileiros).',
+                    img: '../img/licao06/p15.3.jpg'
+                }
+            ];
+
+            edi.slide_vertical(slides, function () {
+
+            }, function () {
+                barraMsg('Muito bem!<br> Lembre-se, a silepse pode ser<br> de gênero, de número ou de pessoa.', {height: 100})
+            }, {showNumber: true, tempoBloqueio:5000});
+        });
+    </script>
+</head>
+
+<body>
+
+</body>
+</html>

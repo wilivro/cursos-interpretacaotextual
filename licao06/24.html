@@ -1,0 +1,143 @@
+<!doctype html>
+<html lang="pt-br">
+	<head>
+        <title>Lição 06 Peça 24</title>
+		<meta charset="utf-8">
+		<script src="../wilib/js/lib/require.js"></script>
+		<script src="../wilib/js/app.js"></script>
+
+        <link rel="stylesheet" href="../wilib/css/font-awesome.css">
+        <link rel="stylesheet" href="../wilib/css/meioAmbiente.css">
+
+		<script>
+            require(['../wilib/js/lib/edi'], function (edi) {
+
+                edi.iniciar({
+                    icone: 'exclamacao',
+                    mascote: 'mascote',
+                    titulo: 'Clique nos pontos de interrogação e saiba mais.'
+                });
+
+                var revela = ['20', '12', 'proteção', 'custos', 'empresa', 'revertido', 'futuro', 'gerar', 'econômicos'], objetivos = [];
+
+                var texto = 'Em uma pesquisa realizada com [20] empresas, [12]<br>' +
+                        'confiam que as medidas de [proteção] ambiental<br>' +
+                        'representam [custos] adicionais para a [empresa], mas<br>' +
+                        'que isto pode ser [revertido] no [futuro] e 8 acreditam<br>' +
+                        'que estas medidas podem [gerar] ganhos [econômicos].'
+
+                for (var i = 0; i < revela.length; i++) {
+                    texto = texto.replace('[' + revela[i] + ']', '<span id="box-revela'+i+'" class="box-revela">'+revela[i]+'</span>');
+                    objetivos.push(0);
+                }
+
+                $('#texto').html(texto);
+
+                for (var i = 0; i < revela.length; i++) {
+                    console.log($('#box-revela'+i)[0].offsetWidth);
+
+                    var teste = $('<div>')
+                            .addClass('btn-revela')
+                            .attr({
+                                id: 'btn-revela'+i,
+                                'data-revela': i
+                            })
+                            .css({
+                                cursor: 'pointer',
+                                position: 'absolute',
+                                top: $('#box-revela'+i)[0].offsetTop-5,
+                                left: ($('#box-revela'+i)[0].offsetLeft-5)+($('#box-revela'+i)[0].offsetWidth/2-10),
+                                width: 20,
+                                height: 20,
+                                display: 'inline-block'
+                            })
+                            .appendTo('#texto');
+
+                    teste
+                            .iconeInterrogacaoAzul(true, {tamanhoAnimacao: 30, tamanho: 20})
+                            .click(function(){
+
+                                objetivos.pop();
+                                var revela = $('#box-revela'+$(this).attr('data-revela')).attr('id');
+
+                                if (!!licao.config.WIQUADRO)
+                                    Wiquadro.api.addInteration(1, $(this).attr('id'), revela, 'T');
+
+                                if(!objetivos.length)
+                                    edi.finalizar()
+
+                                $(this).fadeOut();
+                                $('#'+revela).animate({opacity:1},1000)
+
+                            })
+                }
+                edi.util.removeLoading();
+                ajuda({width: 100});
+            });
+
+		</script>
+
+		<style>
+
+            .box-revela {
+                color: #9c0;
+                opacity: 0;
+            }
+            #texto{
+                position: absolute;
+                left: 200px;
+                top: 130px;
+                text-align: center;
+                line-height: 25px;
+                color: #666;
+            }
+            #boxAjuda{
+                z-index: 1;
+                position: absolute;
+                top: 335px;
+                border-radius: 15px;
+                left: 10px;
+                width: 120px;
+                height: 35px;
+                border: 1px solid #6ba8e5;
+                background: #b8e1fc; /* Old browsers */
+                background: -moz-linear-gradient(-45deg,  #b8e1fc 0%, #6ba8e5 42%, #6ba8e5 42%, #6ba8e5 60%, #bdf3fd 100%); /* FF3.6+ */
+                background: -webkit-gradient(linear, left top, right bottom, color-stop(0%,#b8e1fc), color-stop(42%,#6ba8e5), color-stop(42%,#6ba8e5), color-stop(60%,#6ba8e5), color-stop(100%,#bdf3fd)); /* Chrome,Safari4+ */
+                background: -webkit-linear-gradient(-45deg,  #b8e1fc 0%,#6ba8e5 42%,#6ba8e5 42%,#6ba8e5 60%,#bdf3fd 100%); /* Chrome10+,Safari5.1+ */
+                background: -o-linear-gradient(-45deg,  #b8e1fc 0%,#6ba8e5 42%,#6ba8e5 42%,#6ba8e5 60%,#bdf3fd 100%); /* Opera 11.10+ */
+                background: -ms-linear-gradient(-45deg,  #b8e1fc 0%,#6ba8e5 42%,#6ba8e5 42%,#6ba8e5 60%,#bdf3fd 100%); /* IE10+ */
+                background: linear-gradient(135deg,  #b8e1fc 0%,#6ba8e5 42%,#6ba8e5 42%,#6ba8e5 60%,#bdf3fd 100%); /* W3C */
+                filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#b8e1fc', endColorstr='#bdf3fd',GradientType=1 ); /* IE6-9 fallback on horizontal gradient */
+            }
+
+            #boxAjuda i {
+                margin: 5px;
+                color: rgba(255, 255, 255, .8);
+                background-color: rgba(255, 0, 0, .8);
+                padding: 3px 3px 2px 3px;
+                border-radius: 20px;
+                border: 1px solid rgba(250, 255, 255, .8);
+                box-shadow: 1px 1px 2px #000;
+            }
+
+            #boxAjuda p {
+                width: 50px;
+                margin-top: 5px;
+                display: inline-block;
+                text-align: center;
+                color: #FFF;
+            }
+
+		</style>
+	</head>
+
+	<body>
+		<div class="btn-revela"></div>
+		<div id="texto"></div>
+
+        <div id="boxAjuda">
+            <i class="fa fa-asterisk"></i>
+            <P class="ajuda" data-ajuda="que é contrário">revertido</P>
+        </div>
+	</body>
+</html>

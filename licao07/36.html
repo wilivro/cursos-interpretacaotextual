@@ -1,0 +1,104 @@
+<!-- Desenvolvedor: Rodolfo Araújo -->
+<!doctype html>
+<html lang="pt-br">
+	<head>
+        <title>Lição 02 Peça 10</title>
+        <meta charset="utf-8">
+        <script src="../wilib/js/lib/require.js"></script>
+        <script src="../wilib/js/app.js"></script>
+        <link rel="stylesheet" href="../wilib/css/font-awesome.css">
+        <link rel="stylesheet" href="../wilib/css/estilo.css">
+
+		<script>
+			require(['../wilib/js/lib/alternativa_vf'], function (edi) {
+				
+				edi.setConfig({
+        icone: "interrogacaoAzul",
+        mascote: 'mascote',
+				titulo: "Clique em V para afirmativas verdadeiras e em F para afirmativas falas no que diz respeito à interpretação de textos."
+				});
+				
+				var alternativas  = [];
+				
+				alternativas.push({
+					texto: 'Ao responder questões de interpretação de textos, devemos verificar com atenção <br> e cuidado, o enunciado de cada questão.',
+					dataCorreta: true
+				});
+				
+				alternativas.push({
+					texto: 'Não é necessário ler muitas vezes um texto para interpretá-lo.',
+					dataCorreta: false
+				});
+				
+				alternativas.push({
+					texto: 'Fique atento aos vocabulários: Não, correta, incorreta, certa, errada, falsa, <br> verdadeira, exceto, etc. Essas palavras determinam o que deve ser respondido, <br> mas muitas vezes dificultam a resposta. ',
+					dataCorreta: true
+				});
+
+				alternativas.push({
+					texto: 'Devemos discordar do autor e responder as questões de <br> acordo com nossas opiniões. ',
+					dataCorreta: false
+				});
+				
+				edi.alternativa_vf(alternativas, function (a) {
+
+                }, function (a) {
+                	if (a) {
+                		$('#msgAcerto').fadeIn();
+                	} else {
+                		$('#msgErrado').fadeIn();
+                	}
+
+                }, {
+                    left: 40,
+                    top: 20,
+                    margin: '0 0 15px 0'
+                });
+			});
+		</script>
+		<style>
+
+		#msgAcerto {
+				width: 250px;
+				height: 50px;
+				position: absolute;
+				left: 320px;
+				top: 310px;
+				padding-bottom: 10px;
+				font-size: 16px;
+				text-align: center;
+				font-weight: bold;
+				line-height: 16px;				
+				color: #9c0;
+				display: none;
+			}
+
+			#msgErrado {
+				width: 450px;
+				height: 50px;
+				position: absolute;
+				left: 250px;
+				top: 310px;
+				padding-bottom: 10px;
+				font-size: 16px;
+				text-align: center;
+				font-weight: bold;
+				line-height: 16px;					
+				color: #F00;
+				display: none;
+			}
+
+		</style>
+	</head>
+	
+	<body>
+		<div id="msgAcerto" class="borda-pontilhado-verde arredondado">
+			<p>Muito bem! Você está atento aos nossos estudos. Continue assim!</p>
+		</div>
+
+		<div id="msgErrado" class="borda-pontilhado-vermelho arredondado">
+			<p>Atenção! Lembre-se de nossos estudos até aqui. Releia as alternativas novamente e responda com coerência!</p>
+		</div>
+
+	</body>
+</html>

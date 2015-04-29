@@ -1,0 +1,59 @@
+<!-- Desenvolvedor: Micael Souza -->
+<!doctype html>
+<html lang="pt-br">
+
+<head>
+    <title>arr_f002</title>
+    <meta charset="utf-8">
+    <script src="../../js/lib/require.js"></script>
+    <script src="../../js/app.js"></script>
+    <link rel="stylesheet" href="../../css/font-awesome.css">
+    <link rel="stylesheet" href="../../css/meioAmbiente.css">
+
+    <script>
+        require(['../../js/lib/arrasta_img'], function (edi) {
+
+            edi.setConfig({
+                titulo: 'Leve até cada imagem seu bioma correspondente:',
+            });
+
+            var arrastas = [
+                {
+                    img: '../img/fotos/44.1.png',
+                    txt: 'Bioma Amazônia'
+                },
+                {
+                    img: '../img/fotos/44.2.png',
+                    txt: 'Bioma Pampas'
+                },
+                {
+                    img: '../img/fotos/44.3.png',
+                    txt: 'Bioma Pantanal'
+                },
+                {
+                    img: '../img/fotos/44.4.png',
+                    txt: 'Bioma Mata Atlântica'
+                },
+                {
+                    img: '../img/fotos/44.5.png',
+                    txt: 'Bioma Cerrado'
+                },
+                {
+                    img: '../img/fotos/44.6.png',
+                    txt: 'Bioma Caatinga'
+                },
+            ];
+
+            edi.arrasta_img(arrastas, function (a, b, c) {
+                //
+            }, function () {
+                //
+            });
+        });
+    </script>
+</head>
+
+<body>
+</body>
+
+</html>

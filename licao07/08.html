@@ -1,0 +1,123 @@
+<!-- Desenvolvedor: Leandro Fortaleza -->
+<!doctype html>
+<html lang="pt-br">
+<head>
+    <title>Lição 01 Peça 16</title>
+    <meta charset="utf-8">
+    <script src="../wilib/js/lib/require.js"></script>
+    <script src="../wilib/js/app.js"></script>
+    <link rel="stylesheet" href="../wilib/css/font-awesome.css">
+    <link rel="stylesheet" href="../wilib/css/estilo.css">
+
+    <script>
+        require(['../wilib/js/lib/alternativa_botao'], function (edi) {
+
+            edi.setConfig({
+                titulo: 'Ao entrarmos em contato com os tipos de texto precisamos considerar a produção do texto baseada em alguns fatores, clique nas alternativas que expressam esses fatores.',
+                mascote: 'mascote',
+            });
+
+            
+            var texto = 'Todos precisam pensar e agir de forma comprometida com <span id="resposta">_______________</span>.';
+
+            var btns = [
+                {texto: 'O propósito da mensagem - para quê?', dataCorreta: true},
+                {texto: 'Não gosto de escrever.', dataCorreta: false},
+                {texto: 'A organização das informações - como?', dataCorreta: true},
+                {texto: 'Não gosto muito de ler.', dataCorreta: false},
+                {texto: 'O público leitor - para quem?', dataCorreta: true}
+            ];
+            
+
+            var config = {
+                randomico: true,
+                width: 360,
+                height: 20,
+                left: 400,
+                top: 90,
+                tamanhoTexto: 16,
+                colunas: 1,
+                margin: '0 0 10px 0',
+                padding: 5,
+                display: 'block',
+                btnBranco: true,
+                animacao: true
+            };
+
+            function callback(a, b) {
+
+                if (a) {
+                    $('#resposta')
+                            .html(b[0].outerText)
+                            .css({
+                                color: 'green',
+                                textDecoration: 'underline',
+                                display: 'none'
+                            }).fadeIn();
+                }
+                
+            }
+
+            edi.alternativa_botao(btns, callback, function(a){
+                barraMsg(a?'Excelente! A partir daí focalizaremos a coerência da organização textual, que necessita estar presente nas partes em que o texto se divide.':'Atenção! Pense um pouco mais. Para escrever precisamos levar em consideração alguns fatores importantes, analise as alternativas com atenção.', {height: 80});
+            }, config);
+
+            $('#num').html(edi.telaAtual);
+            $('.texto').find('p').html(texto);
+        });
+    </script>
+
+    <style>
+        #conteudo {
+            background: radial-gradient(#fff, #eee);
+            height: 315px;
+        }
+
+        .texto {
+            background: #fff;
+            padding: 0 20px;
+            position: absolute;
+            left: 20px;
+            top: 85px;
+        }
+
+        .texto p {
+            margin: 140px 0 0 0;
+            text-align: center;
+            line-height: 1.3;
+        }
+
+        #num {
+            width: 50px;
+            display: block;
+            height: 50px;
+            text-align: center;
+            line-height: 50px;
+            font-size: 35px;
+            border: 4px solid #666;
+            border-radius: 50%;
+            position: absolute;
+            left: 140px;
+            top: 50px;
+        }
+
+        .btn-sem-estilo {
+            box-shadow: 0 0 0 0;
+        }
+
+        img{
+            position: absolute;
+            left: 30px;
+            top: 2px;
+            border-radius: 15px;
+            border: 1px solid #999;
+        }
+    </style>
+</head>
+
+<body>
+<div class="texto">
+    <img src="../img/licao08/peca02.png" alt="" width="280">
+</div>
+</body>
+</html>

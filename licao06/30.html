@@ -1,0 +1,46 @@
+<!doctype html>
+<html lang="pt-br">
+<head>
+    <title>Lição 06 Peça 30</title>
+    <meta charset="utf-8">
+    <script src="../wilib/js/lib/require.js"></script>
+    <script src="../wilib/js/app.js"></script>
+    <link rel="stylesheet" href="../wilib/css/font-awesome.css">
+    <link rel="stylesheet" href="../wilib/css/meioAmbiente.css">
+
+    <script>
+        require(['../wilib/js/lib/revela_carrosel'], function (edi) {
+
+            edi.setConfig({
+                mascote: 'mascote',
+                titulo: 'Clique nos círculos e saiba mais sobre o novo comportamento<br>das empresas em relação ao meio ambiente:'
+            });
+
+            var config = {
+                topTexto: 60,
+                textAlign: 'left'
+            };
+
+            var cavalinhos = ['novo', 'empresarial', 'práticas', 'condições do ambiente', 'atuam'];
+
+            var frase = 'Esse “{0} comportamento” acabou recebendo o<br>nome de sustentabilidade {1}. Desta forma,<br>as empresas acabaram definindo um conjunto de<br>{2} que procuram demonstrar o seu respeito e a<br>sua preocupação com as {3} e da<br>sociedade em que estão inseridas ou onde {4}.';
+
+            edi.revela_carrosel(cavalinhos, frase, null, function() {
+            }, config);
+
+        });
+    </script>
+    <style>
+        .box{
+            margin-top: 13px;
+            background: #F7F7F7;
+            border-radius: 10px;
+            box-shadow: -6px 6px rgba(200,200,200,1);
+        }
+    </style>
+</head>
+<body>
+</body>
+</html>
+
+

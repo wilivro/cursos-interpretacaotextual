@@ -1,0 +1,210 @@
+<!-- Desenvolvedor: Danilo Thiago -->
+<!doctype html>
+<html lang="pt-br">
+<head>
+    <title>Lição 02 Peça 44</title>
+    <meta charset="utf-8">
+    <script src="../wilib/js/lib/require.js"></script>
+    <script src="../wilib/js/app.js"></script>
+
+    <link rel="stylesheet" href="../wilib/css/font-awesome.css">
+    <link rel="stylesheet" href="../wilib/css/estilo.css">
+
+    <script>
+        require(['../wilib/js/lib/revela', '../wilib/js/lib/arrasta'], function (edi, edi2) {
+
+            edi.setConfig({
+                titulo: "Clique na imagem e arraste as palavras para completar o exemplo abaixo.",
+                mascote: 'mascote'
+            });
+
+            edi.revela('_btn', 'revela', null, function () {
+                $('#bloqueio').fadeOut()
+            }, {});
+
+            $('.revela').peBalao({
+                top: 34,
+                left: -35,
+                scaleX: 1,
+                borda: '#ccc',
+                tamanhoBorda: 12,
+                scaleY: -1,
+                rotate: 90
+            });
+
+            var arrArrasta = [
+                {arrasta: 'porque', dataCorreta: '1', dataId: '1'},
+                {arrasta: 'Porém', dataCorreta: '2', dataId: '2'},
+                {arrasta: 'uma vez que', dataCorreta: '3', dataId: '3'}
+            ];
+
+            var texto = $('#texto').html();
+
+            for (var i = 0; i < arrArrasta.length; i++) {
+                var aux = '';
+                aux += '<span class="linha"></span>';
+
+                texto = texto.replace('[' + i + ']', '<div id="alvo' + i + '" class="alvo" data-correta="' + arrArrasta[i].dataCorreta + '">' + aux + '</div>');
+            }
+
+            $('#texto').html(texto);
+
+            arrArrasta.sort(function () {
+                return 0.5 - Math.random()
+            });
+
+
+            for (var i = 0; i < arrArrasta.length; i++) {
+                $('<div>')
+                        .addClass('arrasta fundoArrasta azulAlpha')
+                        .attr({
+                            'data-id': arrArrasta[i].dataId,
+                            id: 'arrasta' + (i + 1),
+                            'data-correta': arrArrasta[i].dataCorreta
+                        })
+                        .html(arrArrasta[i].arrasta)
+                        .appendTo('#arrasta');
+            }
+
+            var config = {
+                colorirFilho: true,
+                arrastaAbsolute: true,
+                reloadCorreta: true
+            };
+
+            edi2.arrasta('arrasta', 'alvo', function (a, b) {
+                b.css({top: 5})
+            }, function (a) {
+                if (a) {
+                    $('#msgAcerto').fadeIn();
+                };                
+            }, config);
+
+            $('.arrasta').css({
+                margin: -5,
+                padding: 5
+            });
+        });
+    </script>
+
+    <style>
+
+        ._btn {
+            background: url(../img/licao07/p05.png) no-repeat;
+            background-size: 100% 100%;
+            width: 271px;
+            height: 274px;
+            position: absolute;
+            left: 20px;
+            top: 78px;
+            cursor: pointer;
+            border-radius: 10px;
+            border: 7px solid #fff;
+            box-shadow: 0 0 5px rgba(0, 0, 0, 0.5);
+        }
+
+        .revela {
+            background: #fff;
+            width: 365px;
+            padding: 5px;
+            color: #666;
+            position: absolute;
+            left: 330px;
+            top: 125px;
+            text-align: center;
+            border: 1px solid #ccc;
+            border-radius: 10px;
+        }
+
+        .alvo {
+            display: inline-block;
+            width: 110px;
+            height: 18px;
+            border-bottom: 1px solid #999;
+        }
+
+        .arrasta {
+            padding: 5px;
+            margin-right: 10px;
+            margin-left: 10px;
+            display: inline-block;
+            color: #FFF;
+        }
+
+        #boxArrasta {
+            width: 400px;
+            height: 60px;
+            cursor: default;
+            top: 220px;
+            left: 315px;
+        }
+
+        #arrasta {
+            position: relative;
+            display: table-cell;
+            vertical-align: middle;
+            width: 400px;
+            height: 70px;
+        }
+
+        #texto {
+            font-size: 12px;
+        }
+
+        #texto i {
+            color: #FFCC00;
+        }
+
+        #bloqueio {
+            position: absolute;
+            background-color: #FFF;
+            width: 500px;
+            height: 120px;
+            cursor: default;
+            top: 280px;
+            left: 320px;
+            z-index: 10;
+        }
+
+        #msgAcerto {
+            width: 400px;
+            height: 85px;
+            position: absolute;
+            left: 322px;
+            top: 275px;
+            padding: 10px;
+            padding-bottom: 30px;
+            font-size: 14px;
+            text-align: center;
+            font-weight: bold;
+            line-height: 16px;              
+            color: #fff;
+            display: none;
+            }
+    </style>
+</head>
+
+<body>
+<div class="_btn"></div>
+<div class="revela">
+    <div id="texto">
+        “Os sem-terra fizeram um protesto em Brasília contra a política agrária do país, [0] consideram injusta a atual distribuição de terras. [1] o ministro da Agricultura considerou a manifestação um ato de rebeldia, [2] o projeto de Reforma Agrária pretende assentar milhares de sem-terra.”
+    </div>
+</div>
+<div id="boxArrasta" class="btn btn-default-hover">
+    <div id="arrasta"></div>
+</div>
+
+     <div id="msgAcerto" class="arredondado">
+        <p>Correto! Note que as palavras arrastadas, são conectores que têm o papel de ligar as partes do texto. Podemos dizer que são elas, as responsáveis pela coesão do texto. </p>
+    </div>
+
+<div id="bloqueio"></div>
+</body>
+</html>
+
+
+
+
+
+

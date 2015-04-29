@@ -1,0 +1,181 @@
+<!doctype html>
+<html lang="pt-br">
+<head>
+    <title>Lição 06 Peça 04</title>
+    <meta charset="utf-8">
+    <script src="../wilib/js/lib/require.js"></script>
+    <script src="../wilib/js/app.js"></script>
+    <link rel="stylesheet" href="../wilib/css/font-awesome.css">
+    <link rel="stylesheet" href="../wilib/css/estilo.css">
+
+    <script>
+        require(['../wilib/js/lib/arrasta'], function (edi) {
+
+            edi.setConfig({
+                mascote: 'mascote',
+                titulo: 'Arraste os conectores que completam o sentido <br> das frases para dentro dos parênteses.',
+                tempoFinal: 20
+            });
+
+            var arrArrasta = [
+                {arrasta: 'desde que', dataCorreta: '1', dataId: '1'},
+                {arrasta: 'por isso', dataCorreta: '2', dataId: '2'},
+                {arrasta: 'embora', dataCorreta: '3', dataId: '3'},
+                {arrasta: 'porque', dataCorreta: '4', dataId: '4'}
+            ];
+
+            var texto = $('#boxTexto').html();
+
+            for (var i = 0; i < arrArrasta.length; i++) {
+                var aux = '';
+                for (var j = 0; j < arrArrasta[i].arrasta.length; j++) {
+                    aux += '_';
+                }
+                ;
+                texto = texto.replace('{' + i + '}', '<div class="alvo" data-correta="' + arrArrasta[i].dataCorreta + '">' + aux + '</div>');
+            }
+
+            $('#boxTexto').html(texto);
+
+            arrArrasta.sort(function () {
+                return 0.5 - Math.random()
+            });
+
+
+            for (var i = 0; i < arrArrasta.length; i++) {
+                $('<div>')
+                        .addClass('arrasta fundoArrasta azulAlpha')
+                        .attr({
+                            'data-id': arrArrasta[i].dataId,
+                            id: 'arrasta' + (i + 1),
+                            'data-correta': arrArrasta[i].dataCorreta
+                        })
+                        .html(arrArrasta[i].arrasta)
+                        .appendTo('#arrasta');
+            }
+
+            var config = {
+                colorirFilho: true,
+                arrastaAbsolute: true,
+                reloadCorreta: true,
+                alvoFixo: true
+            };
+
+            edi.arrasta('arrasta', 'alvo', function (a, b, c) {
+                if (a) {
+                    c.html(b.css({display: 'flex'}))
+                }
+            }, function (a) {
+                $('#msgAcerto').fadeIn();
+            }, config);
+
+            $('.arrasta').css({
+                margin: -5,
+                padding: 5
+            });
+
+            $('<div>')
+                    .attr('id', 'mascote')
+                    .appendTo('#conteudo');
+
+        });
+    </script>
+    <style>
+        .alvo {
+            display: inline-block;
+        }
+
+        .arrasta {
+            padding: 5px;
+            margin-right: 10px;
+            margin-left: 10px;
+            display: inline-block;
+            color: #FFF;
+            font-size: 16px;;
+        }
+
+        #boxArrasta {
+            position: absolute;
+            width: 150px;
+            height: 250px;
+            cursor: default;
+            top: 95px;
+            left: 600px;
+        }
+
+        #arrasta {
+            position: relative;
+            display: table-cell;
+            vertical-align: middle;
+            width: 150px;
+            height: 250px;
+        }
+
+        .balao {
+            position: relative;
+            vertical-align: middle;
+            text-align: center;
+            display: table-cell;
+            width: 500px;
+            height: 240px;
+            font-size: 16px;
+            color: #666;
+            line-height: 20px;
+        }
+
+        #boxTexto{
+            position: absolute;
+            top: 95px;
+            left: 50px;
+            width: 500px;
+            height: 240px;
+            text-align: center;
+            border-radius: 10px;;
+        }
+
+        #msgAcerto {
+            width: 140px;
+            height: 85px;
+            position: absolute;
+            left: 612px;
+            top: 165px;
+            padding: 10px;
+            padding-bottom: 30px;
+            font-size: 14px;
+            text-align: center;
+            font-weight: bold;
+            line-height: 16px;              
+            color: #fff;
+            display: none;
+        }
+
+    </style>
+
+</head>
+<body>
+<div id="boxArrasta" class="btn btn-default-hover">
+    <div id="arrasta"></div>
+</div>
+
+<div id="boxTexto">
+    <div class="balao">
+Minha mãe me ensinava a ler e escrever <br> ({0}) eu tinha quatro anos. <br><br>
+
+Uma boa parte das crianças mora muito longe, vai à escola com fome, ({1}) ocorre o grande número de desistências. <br><br>
+
+
+Elas convivem com João há dez anos e, ({2}) o conheçam, não sabem se gosta de futebol. <br><br>
+
+Depois do surgimento da internet, tem-se a impressão de que o mundo diminuiu de tamanho, ({3}) as distâncias <br> parecem não existir mais.
+
+
+    </div>
+</div>
+
+<div id="msgAcerto" class="arredondado">
+    <p>Muito bem! Você conseguiu entender que o uso dos conectivos serve para dar clareza ao texto. </p>
+</div>
+
+
+</body>
+</html>

@@ -1,0 +1,73 @@
+<!doctype html>
+<html lang="pt-br">
+	<head>
+		<title>Lição 01 Peça 27</title>
+		<meta charset="utf-8">
+		<script src="../wilib/js/lib/require.js"></script>
+		<script src="../wilib/js/app.js"></script>
+		
+		<link rel="stylesheet" href="../wilib/css/font-awesome.css">
+		<link rel="stylesheet" href="../wilib/css/meioAmbiente.css">
+
+		<script>
+            $(function () {
+                require(['../wilib/js/lib/alternativa'], function (edi) {
+
+                    edi.setConfig({
+                        icone: 'interrogacaoAzul',
+                        titulo: 'Assinale as alternativas corretas.<br><span class="bold italico">Quais as principais ameaças à biodiversidade?</span>'
+                    });
+
+                    var alternativas = [
+                        {
+                            alternativa: 'Poluição',
+                            correta: true
+                        },{
+                            alternativa: 'Uso excessivo dos recursos naturais',
+                            correta: true
+                        },{
+                            alternativa: 'Expansão da fronteira agrícola em detrimento dos habitats naturais',
+                            correta: true
+                        },{
+                            alternativa: 'Expansão urbana e industrial',
+                            correta: true
+                        },{
+                            alternativa: 'Preservação das florestas nativas',
+                            correta: false
+                        }
+                    ];
+
+                    var config = {
+                        posx: 15,
+                        posy: 85,
+                        aleatorio: true,
+                        tamanhoBox: 35,
+                        tamanhoBoxTexto: 600,
+                        marginBtns: 5
+                    }
+
+                    edi.alternativa(alternativas, function (acertou) {
+                    }, function (a) {
+                        if (a) $('#msg').fadeIn();
+                    }, config);
+
+                        $('#balao').peBalao({
+                            left: 10,
+                            tamanhoBorda: 15,
+                            borda: '#ccc'
+                        });
+
+                });
+            })
+		</script>
+
+		<style>
+
+
+		</style>
+	</head>
+
+	<body>
+
+	</body>
+</html>

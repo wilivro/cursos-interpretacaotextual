@@ -1,0 +1,94 @@
+<!doctype html>
+<html lang="pt-br">
+<head>
+    <title>Lição 06 Peça 29</title>
+    <meta charset="utf-8">
+    <script src="../wilib/js/lib/require.js"></script>
+    <script src="../wilib/js/app.js"></script>
+    <link rel="stylesheet" href="../wilib/css/font-awesome.css">
+    <link rel="stylesheet" href="../wilib/css/estilo.css">
+
+    <script>
+        require(['../wilib/js/lib/revela', '../wilib/js/lib/alternativa_botao'], function (edi, edi2) {
+
+            edi2.setConfig({
+                icone: "exclamacao",
+                titulo: "Observe as frases a seguir e marque a opção que define a figura de linguagem utilizada para escrevê-las.",
+                mascote: 'mascoteVarinha'
+            });
+
+            var btns = [];
+
+            btns.push({
+                texto: "Zeugma",
+                dataCorreta: false
+            });
+
+            btns.push({
+                texto: "Assíndeto",
+                dataCorreta: false
+            });
+
+            btns.push({
+                texto: "Polissíndeto",
+                dataCorreta: false
+            });
+
+            btns.push({
+                texto: "pleonasmo",
+                dataCorreta: true
+            });
+
+            var config = {
+                colunas: 1,
+                randomico: true,
+                width: 280,
+                height: 35,
+                left: 340,
+                top: 85,
+                margin: '7px 7px 0 7px',
+                tamanhoTexto: 14,
+                btnBranco: true,
+                lineHeight: '1.4',
+                animacao: true
+            };
+
+            function callback(a) {
+                barraMsg(a?'Muito bem!<br> Assíndeto que nestes exemplos caracterizam-se justamente<br> pela omissão do conectivo “e” entre os termos da oração.':
+                        'Atenção!<br> Você já conhece as figuras de linguagem elipse, zeugma e <br>polissíndeto. Porém nenhuma destas alternativas se caracteriza<br> pela omissão de conectivos entre os termos ou orações.', {height: 150})
+            }
+
+            edi2.alternativa_botao(btns, callback, null, config);
+
+
+            $('.alter-btn').addClass('revela');
+            edi.revela('_btn', 'revela', null, null, {piscar: false});
+        });
+    </script>
+</head>
+<style>
+    #txt {
+        position: absolute;
+        top: 75px;
+        left: 5px;
+        padding: 10px 15px;
+        border-radius: 10px;
+        border: 1px solid #ccc;
+        color: #666;
+        width: 286px;
+        font-size: 14px;
+        background: #fff;
+        z-index: -1;
+    }
+</style>
+<body>
+<div id="txt" class="revela">“Chovia uma triste chuva de resignação.” (Manuel Bandeira)<br><br>
+    “Ó, mar salgado, quanto do teu sal<br>
+    São lágrimas de Portugal!” (Fernando Pessoa)<br><br>
+    “Me sorri um sorriso pontual e me beija com a boca de hortelã.”
+    (Chico Buarque)
+
+</div>
+<img class="_btn" src="../wilib//img/svg/caneta.svg" width="200" style="margin: 140px 105px;"/>
+</body>
+</html>

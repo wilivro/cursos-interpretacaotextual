@@ -1,0 +1,42 @@
+
+<!doctype html>
+<html lang="pt-br">
+<head>
+    <title>Lição 06 Peça 22</title>
+    <meta charset="utf-8">
+    <script src="../wilib/js/lib/require.js"></script>
+    <script src="../wilib/js/app.js"></script>
+    <link type="text/css" rel="stylesheet" href="../wilib/css/font-awesome.css">
+    <link type="text/css" rel="stylesheet" href="../wilib/css/estilo.css">
+
+    <script>
+        require(['../wilib/js/lib/revela_a03'], function (edi) {
+
+            edi.setConfig({
+                titulo: "Clique na partitura e conheça um poema, onde Carlos Drummond<br> de Andrade utiliza de anáfora para dar ênfase a uma ideia.",
+                mascote: 'mascote'
+            });
+            var arrText = [
+                'Se você gritasse,',
+                'se você gemesse,',
+                'se você tocasse',
+                'a valsa vienense,',
+                'se você dormisse,',
+                'se você cansasse,',
+                'se você morresse…',
+                'Mas você não morre,',
+                'você é duro, José!'
+            ];
+
+            edi.revela_a03(arrText, null, function(){
+                barraMsg('Excelente!<br> Neste poema temos versos sucessivos iniciados com a<br> conjunção condicional “se”. Este é um exemplo de anáfora.', {height: 150})
+            });
+        });
+
+    </script>
+</head>
+
+<body>
+</div>
+</body>
+</html>

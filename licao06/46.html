@@ -1,0 +1,203 @@
+    <!doctype html>
+    <html lang="pt-br">
+    <head>
+    <title>Lição 06 Peça 46</title>
+    <meta charset="utf-8">
+    <script src="../wilib/js/lib/require.js"></script>
+    <script src="../wilib/js/app.js"></script>
+    <link rel="stylesheet" href="../wilib/css/font-awesome.css">
+    <link rel="stylesheet" href="../wilib/css/estilo.css">
+
+    <script>
+        $(function () {
+            require(['../wilib/js/lib/arrasta'], function (edi) {
+
+                edi.setConfig({
+                    titulo: 'Arraste as frases para as imagens adequadas.',
+                    tempoFinal: 20,
+                    mascote: 'mascote'
+                });
+
+                var arrArrasta = [
+                    {
+                        alvo: '../img/licao06/p41.jpg',
+                        arrasta: 'Os sonhos, não devemos<br> nos abdicar deles.',
+                        dataCorreta: 1
+                    },
+                    {
+                        alvo: '../img/licao06/p41.jpg',
+                        arrasta: 'Vi com meus próprios olhos.',
+                        dataCorreta: 2
+                    },
+                    {
+                        alvo: '../img/licao06/p41.jpg',
+                        arrasta: 'Vi com meus próprios olhos.',
+                        dataCorreta: 3
+                    },
+                    {
+                        alvo: '../img/licao06/p41.jpg',
+                        arrasta: '“Do tamarindo a flor abriu-se, há pouco.”(Gonçalves Dias)',
+                        dataCorreta: 4
+                    }
+                ];
+
+                for (var i = 0; i < arrArrasta.length; i++) {
+                    var ct = $('<div>')
+                            .css({
+                                display: 'inline-block',
+                                textAlign: 'center',
+                                width: 230,
+                                height: 155,
+                                margin: '3px 5px -5px 5px'
+                            })
+                            .appendTo('#middle');
+
+                    var posFixo = $('<div>')
+                            .css({
+                                position: 'absolute',
+                                textAlign: 'center',
+                                width: 230,
+                                height: 155
+                            })
+                            .appendTo(ct);
+
+                    $('<img>')
+                            .attr({
+                                src: '../img/licao06/p41.jpg',
+                                width: 220
+                            })
+                            .appendTo(posFixo);
+
+                    var ctAlvo = $('<div>')
+                            .css({
+                                display: 'inline-block',
+                                border: '1px solid #666',
+                                width: 220,
+                                height: 50
+                            })
+                            .appendTo(posFixo);
+
+                    $('<div>')
+                            .addClass('alvo')
+                            .css({
+                                position: 'relative',
+                                top: 0,
+                                left: 0,
+                                width: 220,
+                                height: 50,
+                                verticalAlign: 'middle',
+                                textAlign: 'center',
+                                display: 'table-cell'
+                            })
+                            .attr({
+                                'data-correta': arrArrasta[i].dataCorreta
+                            })
+                            .appendTo(ctAlvo);
+
+                }
+
+                arrArrasta.sort(function () {
+                    return 0.5 - Math.random()
+                });
+
+                for (var i = 0; i < arrArrasta.length; i++) {
+
+                    var arrasta = $('<div>')
+                            .addClass('arrasta')
+                            .css({
+                                display: 'inline-block',
+                                width: 240,
+                                height: 50
+                            })
+                            .attr('data-correta', arrArrasta[i].dataCorreta)
+                            .appendTo('#arrasta');
+
+                    var middle = $('<div>')
+                            .css({
+                                verticalAlign: 'middle',
+                                textAlign: 'center',
+                                display: 'table-cell',
+                                color: '#666',
+                                width: 240,
+                                height: 50
+                            })
+                            .html(arrArrasta[i].arrasta)
+                            .appendTo(arrasta);
+                }
+
+                var config = {
+                    colorirFilho: true,
+                    arrastaAbsolute: true,
+                    cb: function(){
+                        ajuda({linkColor: '#3D86CF', width: 125, top: 25, left: 5});
+                    }
+                };
+
+                edi.arrasta('arrasta', 'alvo', function (a, b, c) {
+                    b
+                            .removeClass('imagem')
+                            .css({
+                                margin: 0
+                            })
+                            .find('div').off().transition({
+                                scale: 1
+                            });
+                }, function(a){
+                    barraMsg(a?'Excelente!<br> Você já é capaz de identificar as figuras <br>de linguagem através de exemplos.':
+                            'Atenção!<br> Perceba a diferença entre as alternativas e<br> relacione-as com as figura de linguagem <br>estudas anteriormente.', {height: 150})
+                }, config);
+
+            });
+
+        });
+
+    </script>
+
+    <style>
+        #ctArrasta {
+            position: absolute;
+            border: solid 1px #A7B9C3;
+            width: 300px;
+            height: 300px;
+            top: 68px;
+            left: 488px;
+        }
+
+        #arrasta {
+            position: relative;
+            display: table-cell;
+            vertical-align: middle;
+            text-align: center;
+            background-color: rgba(197, 211, 219, 0.1);
+            width: 275px;
+            height: 270px;
+            padding: 15px 12px 15px 12px;
+        }
+        #ctContainer {
+            position: absolute;
+            width: 488px;
+            height: 315px;
+        }
+
+        #middle {
+            position: relative;
+            vertical-align: middle;
+            text-align: center;
+            display: table-cell;
+            width: 488px;
+            height: 315px;
+        }
+    </style>
+</head>
+
+<body>
+<div id="ctArrasta">
+    <div id="arrasta"></div>
+</div>
+
+<div id="ctContainer">
+    <div id="middle"></div>
+</div>
+
+</body>
+</html>

@@ -1,0 +1,100 @@
+<!doctype html>
+<html lang="pt-br">
+<head>
+    <title>Lição 06 Peça 28</title>
+    <meta charset="utf-8">
+    <script src="../wilib/js/lib/require.js"></script>
+    <script src="../wilib/js/app.js"></script>
+    <link rel="stylesheet" href="../wilib/css/font-awesome.css">
+    <link rel="stylesheet" href="../wilib/css/estilo.css">
+
+    <script>
+        require(['../wilib/js/lib/arrasta'], function (edi) {
+
+            edi.setConfig({
+                icone: 'exclamacao',
+                titulo: 'Arraste os fragmentos para completar as frases.',
+                mascote: 'mascote',
+                tempoFinal: 10
+            });
+
+            var arrArrasta = [
+                {img: '../img/', arrasta: '... essencial no desenvolvimento<br>do sujeito cidadão.', dataCorreta: '1'},
+                {arrasta: '... de um sujeito cidadão<br>ecologicamente orientado.', dataCorreta: '2'}
+            ];
+
+            arrArrasta.sort(function () {
+                return 0.5 - Math.random()
+            });
+
+            for (var i = 0; i < arrArrasta.length; i++) {
+                $('<div>')
+                  .addClass('arrasta')
+                  .attr('data-correta', arrArrasta[i].dataCorreta)
+                  .html(arrArrasta[i].arrasta)
+                  .appendTo('#arrasta');
+            }
+
+            var config = {
+                animacaoFundoArrasta: true,
+                colorirFilho: true
+            };
+
+            edi.arrasta('arrasta', 'alvo', function (a, b, c) {
+                if (a) {
+                    b.css({
+                        top: -2,
+                        marginLeft: -5
+                    });
+                    c.css({
+                    });
+                }
+            }, null, config);
+
+        });
+    </script>
+
+    <style>
+        #ctArrasta {
+            position: absolute;
+            top: 75px;
+            left: 490px;
+            width: 250px;
+            height: 270px;
+            padding: 10px;
+        }
+
+        #arrasta {
+            width: 210px;
+            height: 270px;
+            text-align: center;
+            cursor: default;
+            position: relative;
+            display: table-cell;
+            vertical-align: middle;
+        }
+
+        .arrasta {
+            padding: 5px;
+            width: 210px;
+            margin: 10px 0 40px 8px;
+            text-align: center;
+            color: #fff;
+            font-size: 14px;
+        }
+
+
+    </style>
+</head>
+
+<body>
+<div id="ctArrasta" class="btn btn-default-hover">
+    <div id="arrasta"></div>
+</div>
+
+<div id="ctImgs">
+    <div id="imgs"></div>
+</div>
+
+</body>
+</html>

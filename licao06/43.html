@@ -1,0 +1,145 @@
+<!doctype html>
+<html lang="pt-br">
+	<head>
+        <title>Lição 06 Peça 43</title>
+		<meta charset="utf-8">
+		<script src="../wilib/js/lib/require.js"></script>
+		<script src="../wilib/js/app.js"></script>
+        <link rel="stylesheet" href="../wilib/css/font-awesome.css">
+        <link rel="stylesheet" href="../wilib/css/estilo.css">
+
+		<script>
+			require(['../wilib/js/lib/revela','../wilib/js/lib/alternativa_botao'], function (edi, edi2) {
+
+				edi2.setConfig({
+                    icone: "exclamacao",
+                    mascote: 'mascote',
+					titulo: "Observe a imagem a seguir, e marque a que figura de linguagem ela corresponde.",
+                    tempoFinal: 10
+				});
+
+                var btns = [];
+
+                btns.push({
+                    texto: "Polissíndeto",
+                    dataCorreta: false
+                });
+
+                btns.push({
+                    texto: "Anacoluto",
+                    dataCorreta: false
+                });
+
+                btns.push({
+                    texto: "Pleonasmo",
+                    dataCorreta: true
+                });
+
+                var config = {
+                    colunas: 1,
+                    width: 200,
+                    height: 35,
+                    left: 400,
+                    top: 140,
+                    margin: '7px 7px 0 100px',
+                    tamanhoTexto: 14,
+                    btnBranco: true,
+                    lineHeight: '1.4',
+                    animacao: true
+                };
+
+                edi2.alternativa_botao(btns, null, function(a) {
+                    if (a) {
+                        $('#msgAcerto').fadeIn();
+                    } else{
+                        $('#msgErrado').fadeIn();
+                    };
+                }, config);
+
+                $('[data-edi = "alternativa_botao"]')
+                        .css({width: 100})
+                        .attr('data-revela','0')
+                        .addClass('box-revela');
+
+				edi.revela('btn-revela', 'box-revela', function (btn, revela) {
+
+				}, function (btn) {
+				}, {ordenado: true});
+
+			});
+		</script>
+
+		<style>
+
+            .img{
+                position: absolute;
+                top: 73px;
+                left: 20px;
+                width: 350px;
+                height: 220px;
+                border: 7px solid #fff;
+                border-radius: 15px;
+                margin-left: 20px;
+                cursor: pointer;
+                float: left;
+                box-shadow: 0 0 5px rgba(0, 0, 0, 0.3);
+            }
+
+            .texto{
+                position: absolute;
+                color: #666;
+                width: 467px;
+                text-align: center;
+                left: 360px;
+                top: 72px;
+            }
+
+            #msgAcerto {
+                width: 400px;
+                height: 60px;
+                position: absolute;
+                left: 17px;
+                top: 315px;
+                padding: 3px;
+                font-size: 12px;
+                text-align: center;
+                line-height: 16px;
+                color: #9c0;
+                display: none;
+            }
+
+            #msgErrado {
+                width: 400px;
+                height: 70px;
+                position: absolute;
+                left: 17px;
+                top: 315px;
+                padding: 3px;
+                font-size: 12px;
+                text-align: center;
+                line-height: 16px;
+                color: #F00;
+                display: none;
+            }
+
+
+		</style>
+	</head>
+
+	<body>
+
+        <img class="btn-revela img" data-revela="0" src="../img/licao03/p45.png" />
+        <p class="box-revela texto" data-revela="0">
+            Qual a linguagem utilizada, literal ou figurada?
+        </p>
+
+        <div id="msgAcerto" class="arredondado">
+            <p>Muito bem!  Neste exercício você relembrou o conceito de Pleonasmo.</p>
+        </div>
+
+        <div id="msgErrado" class="arredondado">
+            <p>Você errou! Relembre os conceitos estudados, e refaça o exercício.</p>
+        </div>
+
+   	</body>
+</html>

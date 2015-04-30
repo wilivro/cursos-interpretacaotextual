@@ -1,0 +1,56 @@
+<!doctype html>
+<html lang="pt-br">
+<head>
+    <title>Lição 06 Peça 45</title>
+    <meta charset="utf-8">
+    <script src="../wilib/js/lib/require.js"></script>
+    <script src="../wilib/js/app.js"></script>
+    <link rel="stylesheet" href="../wilib/css/font-awesome.css">
+    <link rel="stylesheet" href="../wilib/css/estilo.css">
+
+    <script>
+        require(['../wilib/js/lib/caneta'], function (edi) {
+
+            edi.setConfig({
+                mascote: 'mascote',
+                titulo: 'Clique na caneta e relembre alguns conceitos estudados até aqui.'
+            });
+
+            var texto = "Anacoluto é a quebra da estrutura normal da oração com a introdução de uma palavra ou expressão sem ligação com os demais termos, vamos exercitar. " +
+                    "Hipérbato é uma inversão mais complexa ou mais acentuada da ordem direta dos termos na oração. " +
+                    "Assíndeto ocorre quando há ausência de conectivo ligando termos ou orações, quando a gramática normativa o prescreve. Normalmente, estes termos vêm separados por vírgula.";
+
+            edi.caneta(texto, function () {
+                barraMsg('Muito bem!<br> Você relembrou de alguns conceitos que <br>te ajudará no próximo exercício.', {height: 100})
+            }, {
+                texto: {
+                    width: 480,
+                    position: 'absolute',
+                    left: 20,
+                    top: 40,
+                    fontSize: 18,
+                    textAlign: 'center',
+                    fontFamily: 'script',
+                    color: '#919191',
+                    lineHeight: 1.4,
+                    textShadow: '1px 1px 1px rgba(0, 0, 0, 0.1)'
+                }, caneta: {
+                    width: 150,
+                    posInicial: {x: 600, y: 10},
+                    posFinal: {x: 485, y: 30},
+                    ponta: 7,
+                    imagem: '../wilib/img/svg/caneta.svg',
+                    ajustePonta: {
+                        x: 0,
+                        y:0
+                    }
+                }
+            });
+        });
+    </script>
+</head>
+
+<body>
+</body>
+
+</html>

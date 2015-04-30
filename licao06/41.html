@@ -1,0 +1,92 @@
+<!doctype html>
+<html lang="pt-br">
+<head>
+    <title>Lição 06 Peça 41</title>
+    <meta charset="utf-8">
+    <script src="../wilib/js/lib/require.js"></script>
+    <script src="../wilib/js/app.js"></script>
+    <link rel="stylesheet" href="../wilib/css/font-awesome.css">
+    <link rel="stylesheet" href="../wilib/css/estilo.css">
+
+    <script>
+        require(['../wilib/js/lib/quebra-cabeca'], function (edi) {
+
+            edi.setConfig({
+                titulo: 'Monte o quebra-cabeça e conheça o conceito de anáfora.'
+            });
+
+            var config = {
+                width: 439,
+                height: 188,
+                left: 175,
+                top: 5,
+                background: '#ccc',
+                numPecas: 2,
+                callBacks: [
+                    function () {
+                        $('#texto-01').fadeIn();
+                    },
+                    function () {
+                        $('#texto-02').fadeIn();
+                    },
+                    function () {
+                        $('#texto-03').fadeIn();
+                    }
+                ]
+            };
+
+            edi.quebraCabeca('../img/licao06/p41.jpg', function () {
+                $('#texto-04').fadeIn();
+                barraMsg('Muito bem!<br> Você conheceu o conceito da figura de linguagem<br> pleonasmo. Continue dedicando-se aos estudos.', {height: 100, wait: 5})
+            }, config);
+
+        });
+    </script>
+
+    <style>
+        #texto {
+            width: 340px;
+            position: absolute;
+            left: 230px;
+            top: 265px;
+            font-size: 14px;
+            line-height: 1.4;
+            z-index: 1000;
+            text-align: center;
+            color: #666;
+        }
+
+        .texto {
+            display: none;
+        }
+
+    </style>
+</head>
+
+<body>
+<div id="texto">
+    <span class="texto" id="texto-01">
+
+Consiste no uso de termos diferentes ao mesmo tempo, porém com o mesmo sentido.<br>
+
+    </span>
+    <span class="texto" id="texto-02">
+
+É usada para realçar uma ideia ou deixá-la mais clara.<br>
+
+Trata-se de uma redundância de significado.<br>
+
+    </span>
+    <span class="texto" id="texto-03">
+      Trata-se de uma redundância de significado.<br>
+    </span>
+    <span class="texto" id="texto-04">
+
+Tem como objetivo dar mais expressividade ao texto.
+
+
+    </span>
+</div>
+
+</body>
+</html>

@@ -1,0 +1,161 @@
+<!doctype html>
+<html lang="pt-br">
+<head>
+    <title>Lição 06 Peça 44</title>
+    <meta charset="utf-8">
+    <script src="../wilib/js/lib/require.js"></script>
+    <script src="../wilib/js/app.js"></script>
+    <link rel="stylesheet" href="../wilib/css/font-awesome.css">
+    <link rel="stylesheet" href="../wilib/css/estilo.css">
+
+    <script>
+        require(['../wilib/js/lib/arrasta'], function (edi) {
+
+            edi.setConfig({
+                mascote: 'mascote',
+                titulo: 'Arraste o conceito até a imagem correspondente.',
+                tempoFinal: 20
+            });
+
+            var arrArrasta = [
+                {arrasta: 'Pleonasmo', dataCorreta: '1', dataId: '1'},
+                {arrasta: 'Anáfora', dataCorreta: '2', dataId: '2'}
+            ];
+          
+            arrArrasta.sort(function () {
+                return 0.5 - Math.random()
+            });
+
+
+            for (var i = 0; i < arrArrasta.length; i++) {
+                $('<div>')
+                        .addClass('arrasta fundoArrasta azulAlpha')
+                        .attr({
+                            'data-id': arrArrasta[i].dataId,
+                            id: 'arrasta' + (i + 1),
+                            'data-correta': arrArrasta[i].dataCorreta
+                        })
+                        .html(arrArrasta[i].arrasta)
+                        .appendTo('#arrasta');
+            }
+
+            var config = {
+                colorirFilho: true,
+                arrastaAbsolute: true,
+                reloadCorreta: true,
+            };
+
+            edi.arrasta('arrasta', 'alvo', function (a, b, c) {
+            }, function (a) {
+                barraMsg(a?'Excelente!<br> Você já é capaz de identificar as<br> figuras de linguagem através de exemplos.':
+                'Atenção!<br> Perceba a diferença entre as alternativas e<br> relacione-as com as figura de linguagem <br>estudas anteriormente.', {height: 150});
+            }, config);
+
+            $('.arrasta').css({
+                margin: -5,
+                padding: 5
+            });
+
+            $('<div>')
+                    .attr('id', 'mascote')
+                    .appendTo('#conteudo');
+
+        });
+    </script>
+    <style>
+        .alvo {
+            display: inline-block;
+        }
+
+        .arrasta {
+            padding: 5px;
+            margin-right: 10px;
+            margin-left: 10px;
+            display: inline-block;
+            color: #FFF;
+            font-size: 16px;;
+        }
+
+        #boxArrasta {
+            position: absolute;
+            padding-top: 5px;
+            width: 650px;
+            height: 55px;
+            cursor: default;
+            top: 300px;
+            left: 50px;
+        }
+
+        #arrasta {
+            position: relative;
+            display: table-cell;
+            vertical-align: middle;
+            width: 650px;
+            height: 60px;
+        }
+
+        .balao {
+            position: relative;
+            vertical-align: middle;
+            text-align: center;
+            display: table-cell;
+            width: 788px;
+            height: 200px;
+            font-size: 16px;
+            color: #666;
+            line-height: 30px;
+        }
+
+        #boxTexto {
+            position: absolute;
+            top: 68px;
+            left: 0;
+            width: 788px;
+            height: 240px;
+            text-align: center;
+            border-radius: 10px;
+        }
+
+        .ct {
+            display: inline-block;
+            text-align: center;
+            width: 200px;
+            height: 200px;
+        }
+
+        .alvo {
+            display: inline-block;
+            border: 1px solid #666;
+            width: 150px;
+            height: 30px;
+        }
+
+    </style>
+
+</head>
+<body>
+
+<div id="boxArrasta" class="btn btn-default-hover">
+    <div id="arrasta"></div>
+</div>
+
+<div id="boxTexto">
+    <div class="balao">
+        <div class="ct">
+            <div style="position: absolute; width: 200px;">
+                <img src="../img/licao06/p44.1.jpg" width="150" style="display:inline-block;"/>
+                <div class="alvo" data-correta="2"></div>
+            </div>
+        </div>
+        <div class="ct">
+            <div style="position: absolute; width: 200px;">
+                <img src="../img/licao06/p44.2.jpg" width="200" style="display:inline-block;margin-top: 60px"/>
+                <div class="alvo" data-correta="1"></div>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+</body>
+</html>

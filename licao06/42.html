@@ -1,0 +1,125 @@
+<!doctype html>
+<html lang="pt-br">
+	<head>
+		<title>Lição 06 Peça 42</title>
+		<meta charset="utf-8">
+		<script src="../wilib/js/lib/require.js"></script>
+		<script src="../wilib/js/app.js"></script>
+        <link rel="stylesheet" href="../wilib/css/font-awesome.css">
+        <link rel="stylesheet" href="../wilib/css/estilo.css">
+
+		<script>
+			require(['../wilib/js/lib/revela'], function (edi) {
+				
+				edi.setConfig({
+                    icone: "exclamacao",
+					titulo: "Conheça os exemplos de pleonasmo clicando nas imagens a seguir."
+				});
+				
+				edi.revela('btn-rev', 'box-rev', function (a) {
+					//callback
+				}, function(){
+                    barraMsg('Excelente!<br> Note que pleonasmo é a repetição de<br> um termo para realçar seu sentido.', {height: 100, wait: 5})
+                }, {
+					ocultarRev: true,
+					tempoBloqueio: 10000,
+					bloqueiaClickFinal: false
+				});//iniciando o EDI
+				
+				$('.box-rev[data-revela="0"]').peBalao({
+					top:30,
+					left:-35,
+					scaleX:1.1,
+					scaleY:-1.4,
+                    tamanhoBorda: 22,
+					rotate: 90
+				});
+				
+				$('.box-rev[data-revela="1"]').peBalao({
+                    top:30,
+                    left:-35,
+                    scaleX:1.1,
+                    scaleY:-1.4,
+                    tamanhoBorda: 22,
+                    rotate: 90
+				});
+				
+				$('.box-rev[data-revela="2"]').peBalao({
+                    top:30,
+                    left:-35,
+                    scaleX:1.1,
+                    scaleY:-1.4,
+                    tamanhoBorda: 22,
+                    rotate: 90
+				});
+				
+			});
+			
+		</script>
+		
+		<style>
+			.btn-rev {
+				width: 180px;
+				height: 80px;
+				position: absolute;
+				border: 7px solid #fff;
+				box-shadow: 0 0 5px rgba(0, 0, 0, 0.3);
+				border-radius: 10px;
+				left: 20px;
+				cursor: pointer;
+			}
+			
+			.btn-rev[data-revela="0"] {
+				top: 80px;
+			}
+			
+			.btn-rev[data-revela="1"] {
+				top: 180px;
+			}
+			
+			.btn-rev[data-revela="2"] {
+				top: 280px;
+			}
+			
+			.box-rev {
+				position: absolute;
+				background: #fff;
+				border: 1px solid #ccc;
+				padding: 20px 40px;
+				border-radius: 10px;
+				left: 250px;
+				font-size: 14px;
+				text-align: center;
+                width: 300px;
+			}
+			
+			.box-rev[data-revela="0"] {
+				top: 80px;
+			}
+			
+			.box-rev[data-revela="1"] {
+				top: 180px;
+			}
+			
+			.box-rev[data-revela="2"] {
+				top: 280px;
+			}
+		</style>
+	</head>
+	
+	<body>
+		<img class="btn-rev" data-revela="0" src="../img/licao06/p42.3.jpg">
+		<img class="btn-rev" data-revela="1" src="../img/licao06/p42.2.jpg">
+		<img class="btn-rev" data-revela="2" src="../img/licao06/p42.1.jpg">
+		
+		<div class="box-rev" data-revela="0">
+            Quem puxa, puxa para fora. Assim também como quem desce, desce para baixo.
+		</div>
+		<div class="box-rev" data-revela="1">
+            Se a opinião é minha ela já é pessoal.
+		</div>
+		<div class="box-rev" data-revela="2">
+            Se é gelo já é gelado.
+		</div>
+	</body>
+</html>

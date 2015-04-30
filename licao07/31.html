@@ -4,23 +4,23 @@
 <head>
     <title>arr_a002</title>
     <meta charset="utf-8">
-    <script src="../../js/lib/require.js"></script>
-    <script src="../../js/app.js"></script>
-    <link rel="stylesheet" href="../../css/font-awesome.css">
-    <link rel="stylesheet" href="../../css/meioAmbiente.css">
+    <script src="../wilib/js/lib/require.js"></script>
+    <script src="../wilib/js/app.js"></script>
+    <link rel="stylesheet" href="../wilib/css/font-awesome.css">
+    <link rel="stylesheet" href="../wilib/css/estilo.css">
 
     <script>
-        require(['../../js/lib/arrasta'], function (edi) {
+        require(['../wilib/js/lib/arrasta'], function (edi) {
 
             edi.setConfig({
                 mascote: 'mascote',
-                titulo: 'Arraste até o meio das setas a definição<br>correta para: <span style="font-whieght: bold; font-style:italic">Alimentos Transgênicos</span>.'
+                titulo: 'Arraste até o meio das setas o exemplo onde há conectivo de dúvida.'
             });
 
             var texto = [
-                {texto: 'Os alimentos transgênicos são alimentos modificados<br>geneticamente em laboratórios com o objetivo de<br>conseguir melhorar a qualidade do produto. ', dataCorreta: 1},
-                {texto: 'Alimentos transgênicos são alimentos importados.', dataCorreta: 0},
-                {texto: 'Alimentos transgênicos são os alimentos<br>orgânicos, produzidos naturalmente e que não<br>sofrem nenhuma alteração genética.', dataCorreta: 0}
+                {texto: 'Amanhã é provável que comecem a chamar os convocados.', dataCorreta: 1},
+                {texto: 'Minha camisa furou e tenho que comprar uma nova.', dataCorreta: 0},
+                {texto: 'O Carro é novo, mas só dá problema.', dataCorreta: 0}
             ]
 
             texto.sort(function () {
@@ -50,24 +50,24 @@
             var config = {
                 colorirFilho: true,
                 cb: function () {
-                    var top = 250, left= 80;
+                    var top = 270, left= 80;
 
                     $('<img>').attr({
-                        src:"../../img/svg/seta.svg",
+                        src:"../wilib/img/svg/seta.svg",
                         style: "height: 100px; top:"+top+"px; left: "+(400+left)+"px"
                     }).appendTo('#ctAlvo');
 
                     $('<img>').attr({
-                        src:"../../img/svg/seta.svg",
+                        src:"../wilib/img/svg/seta.svg",
                         style: "height: 100px; top:"+top+"px; left: "+(440+left)+"px"
                     }).appendTo('#ctAlvo');
                     $('<img>').attr({
-                        src:"../../img/svg/seta.svg",
+                        src:"../wilib/img/svg/seta.svg",
                         style: "height: 100px; top:"+top+"px; left: "+(480+left)+"px"
                     }).appendTo('#ctAlvo');
 
                     $('<img>').attr({
-                        src:"../../img/svg/seta.svg",
+                        src:"../wilib/img/svg/seta.svg",
                         style: "height: 100px; top:"+top+"px; left: "+(520+left)+"px"
                     }).appendTo('#ctAlvo');
                 }
@@ -75,7 +75,13 @@
 
             edi.arrasta('arrasta', 'alvo', function (a, b, c) {
                 b.removeClass('azulAlpha');
-            }, null, config);
+            }, function(a) {
+                if (a) {
+                   barraMsg('Muito bem! Você foi capaz de compreender que o conectivo de dúvida está presente nesta frase, “é provável”.', {height: 80});
+                } else{
+                    barraMsg('Atenção! Os conectivos “e” e “mas” não passam o sentido de dúvida ao contexto. Reflita e tente novamente.', {height: 80});
+                };
+            }, config);
 
             $('.arrasta').css({
                 margin: -5,
@@ -101,10 +107,11 @@
             position: absolute;
             margin: 10px 0 0 0;
             left: 385px;
-            top: 140px;
+            top: 170px;
             border: 1px solid #C7D9E4;
             height: 75px;
             width: 325px;
+            z-index: 5;
         }
 
         #ctAlvo img {
@@ -137,6 +144,16 @@
             color: #FFF;
         }
 
+         #img {
+            background: url(../img/licao07/p31.png) no-repeat;
+            background-size: 100% 100%;
+            width: 111px;
+            height: 114px;
+            position: absolute;
+            left: 490px;
+            top: 70px;
+            cursor: pointer;
+        }
 
     </style>
 
@@ -152,5 +169,8 @@
 <div id="ctArrasta" class="btn btn-default-hover">
     <div id="arrastas"></div>
 </div>
+
+<div id="img"></div>
+
 </body>
 </html>

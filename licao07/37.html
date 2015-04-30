@@ -4,25 +4,26 @@
 	<head>
         <title>Lição 02 Peça 11</title>
 		<meta charset="utf-8">
-		<script src="../../js/lib/require.js"></script>
-		<script src="../../js/app.js"></script>
+		<script src="../wilib/js/lib/require.js"></script>
+		<script src="../wilib/js/app.js"></script>
 
-        <link rel="stylesheet" href="../../css/font-awesome.css">
-        <link rel="stylesheet" href="../../css/meioAmbiente.css">
+        <link rel="stylesheet" href="../wilib/css/font-awesome.css">
+        <link rel="stylesheet" href="../wilib/css/estilo.css">
 
 		<script>
-			require(['../../js/lib/revela'], function (edi) {
+			require(['../wilib/js/lib/revela'], function (edi) {
 
 				edi.setConfig({
-                    icone: "exclamacao",
-					titulo: "Clique na imagem e conheça algumas vantagens das<br> empresas que colocam em prática a consciência ecológica:",
+         icone: "exclamacao",
+					titulo: "Clique sobre a imagem para revelar o texto.",
 					mascote: 'mascote'
 				});
 
 				edi.revela('btn-revela', 'box-revela', function (btn, revela) {
 					//
 				}, function (btn) {
-					btn.animate({left: 50}, 1000);
+					btn.animate({left: 20}, 1000);
+					$('#msgAcerto').fadeIn();
 				}, {
 					piscar: false,
 					delay: 1000
@@ -33,40 +34,65 @@
 
 		<style>
 			.btn-revela {
-				background: url(../../img/svg/interrogacao.svg) no-repeat;
+				background: url(../img/licao07/p37.png) no-repeat;
 				background-size: 100% 100%;
-				width: 81px;
-				height: 79px;
-				top: 180px;
-				left: 355px;
+				width: 287px;
+				height: 207px;
+				top: 130px;
+				left: 210px;
 				z-index: 100;
 				position: absolute;
 				cursor: pointer;
+				z-index: 1;
 			}
 
 			.box-revela {
-                width: 280px;
-                border: 1px solid #ccc;
-                border-radius: 15px;
-                font-size: 12px;
-                padding: 10px;
-                position: absolute;
-                line-height: 1.8;
-                text-align: left;
-                text-shadow: 1px 1px 1px rgba(0, 0, 0, 0.2);
-                top: 90px;
-                left: 235px;
+        width: 280px;
+        border: 1px solid #ccc;
+        border-radius: 15px;
+        font-size: 12px;
+        padding: 10px;
+        position: absolute;
+        line-height: 1.8;
+        text-align: left;
+        text-shadow: 1px 1px 1px rgba(0, 0, 0, 0.2);
+        top: 170px;
+        left: 340px;
+     }
 
-            }
+     	#msgAcerto {
+				width: 350px;
+				height: 60px;
+				position: absolute;
+				left: 320px;
+				top: 290px;
+				padding-bottom: 10px;
+				font-size: 16px;
+				text-align: center;
+				font-weight: bold;
+				line-height: 16px;				
+				color: #9c0;
+				display: none;
+				z-index: 5;
+			}
+
+			#sublinhado {
+				text-decoration: underline;
+			}
+
 		</style>
 	</head>
 
 	<body>
 		<div class="btn-revela"></div>
-		<div class="box-revela">
-            <span style="font-size:15px; color:#0ED2DA;">Redução de riscos:</span> as empresas que possuem consciência ecológica têm condições de reduzir seus riscos ambientais evitando, assim, causar danos ao meio ambiente, patrimônios, funcionários e comunidade. Estão livres de multas, sanções e imagem negativa perante o mercado.<br>
-			<span style="font-size:15px; color:#0ED2DA;">Redução de custos:</span> com práticas de gestão ambiental é possível analisar as perdas, deduções de desperdício e eliminar toda forma de degradação, com isso reduzindo custos com matéria-prima, tempo e mão de obra.
 
+		<div class="box-revela">
+			Os principais conectivos que expressam a ideia de propósito e finalidade são: “a fim de que”, “com o fim de”, “para que”, “com o propósito de”.
 		</div>
+
+		<div id="msgAcerto" class="borda-pontilhado-verde arredondado">
+			<p>Muito bem! Veja o exemplo na frase: Explicou tudo para que não errassem mais. O termo em destaque passa a ideia de intenção. </p>
+		</div>
+
 	</body>
 </html>

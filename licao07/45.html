@@ -13,7 +13,7 @@
         require(['../wilib/js/lib/alternativa_botao'], function (edi) {
 
             edi.setConfig({
-                titulo: 'Marque a alternativa em que o conectivo dá sentido <br> de causa ou consequência à frase.',
+                titulo: 'Leia a charge a seguir e marque a alternativa que corresponde a ideia expressa no conectivo em destaque.',
                 mascote: 'mascote',
             });
 
@@ -21,15 +21,16 @@
 
 
             var btns = [
-                {texto: 'Poucas pessoas conseguem <br> realizar este jogo e ter êxito.', dataCorreta: false},
-                {texto: 'A cada jogada um erro cometido, <br> então tento novamente.', dataCorreta: true}
+                {texto: 'Resumo, conclusão ', dataCorreta: false},
+                {texto: 'Restrição, oposição ', dataCorreta: true},
+                {texto: 'Adição, continuação ', dataCorreta: false}
             ];
             
 
             var config = {
                 randomico: true,
                 width: 360,
-                height: 40,
+                height: 20,
                 left: 400,
                 top: 140,
                 tamanhoTexto: 16,
@@ -57,9 +58,9 @@
 
             edi.alternativa_botao(btns, callback, function(a){
                 if (a) {
-                    barraMsg('Excelente! A opção correta é a segunda alternativa, pois o conectivo “então” passa a ideia de consequência.', {height: 80});
+                    barraMsg('Muito bem!  O conectivo “mas” passa o sentido de restrição, e também poderia ser substituído pelo termo “porém”.', {height: 80});
                 } else{
-                    barraMsg('Você errou! Observe o conectivo sublinhado e reflita <br> qual a ideia que ele está passando.', {height: 80});
+                    barraMsg('Atenção! Releia com atenção, reflita e tente novamente.', {height: 80});
                 };
 
             }, config);
@@ -119,7 +120,7 @@
 
 <body>
 <div class="texto">
-    <img src="../img/licao07/p19.png" alt="" width="280">
+    <img src="../img/licao07/p45.png" alt="" width="280">
 </div>
 </body>
 </html>

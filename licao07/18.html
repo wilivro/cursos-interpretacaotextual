@@ -14,7 +14,7 @@
 
             edi.setConfig({
                 mascote: 'mascote',
-                titulo: 'Clique nos círculos para visualiza os conectivos que completam as frases e reflita sobre o seu sentido. '
+                titulo: 'Clique nas circunferências e confira alguns conectivos que passam <br> a ideia de causa e consequência.'
             });
 
             var config = {
@@ -22,12 +22,12 @@
                 textAlign: 'left'
             };
 
-            var cavalinhos = ['com o propósito de', 'porém', 'para que', 'Principalmente', 'a fim de que'];
+            var cavalinhos = ['de fato', 'por isso', 'pois', 'uma vez que', 'então', 'de tal forma que'];
 
-            var frase = 'Tentou várias vezes {0} passar no Enem, {1} não conseguiu. <br><br>  Câmeras, vigias e cassetetes, tudo {2} tenhas segurança. {3} depois do acontecido. <br><br> Te dei estudos {4} conseguisse um bom emprego.';
+            var frase = 'CAUSA E CONSEQUÊNCIA: <br> <br> - {0} , <br> - {1} , <br> - {2} , <br> - {3} , <br> - {4} , <br> - {5} , <br> ';
 
             edi.revela_carrosel(cavalinhos, frase, null, function() {
-                barraMsg('Muito bem! Os conectivos “com o propósito de” “para que” e “ a fim de que“ expressam a ideia de propósito e finalidade. O termo “porém expressa oposição, ou ressalva. Já o “principalmente” expressa prioridade.', {height: 80});
+                $('#msgAcerto').fadeIn();    
             }, config);
 
         });
@@ -39,9 +39,30 @@
             border-radius: 10px;
             box-shadow: -6px 6px rgba(200,200,200,1);
         }
+
+        #msgAcerto {
+            width: 120px;
+            height: 80px;
+            position: absolute;
+            left: 220px;
+            top: 200px;
+            padding: 5px;
+            font-size: 14px;
+            text-align: center;
+            font-weight: bold;
+            line-height: 16px;              
+            color: #9c0;
+            display: none;
+            z-index: 5;
+        }
     </style>
 </head>
 <body>
+
+    <div id="msgAcerto" class="borda-pontilhado-verde arredondado">
+        <p>Muito bem! Agora vamos praticar um pouco. Continue seus estudos.</p>
+    </div>
+
 </body>
 </html>
 

@@ -3,24 +3,24 @@
 <head>
     <title>arr_a001</title>
     <meta charset="utf-8">
-    <script src="../../js/lib/require.js"></script>
-    <script src="../../js/app.js"></script>
-    <link rel="stylesheet" href="../../css/font-awesome.css">
-    <link rel="stylesheet" href="../../css/meioAmbiente.css">
+    <script src="../wilib/js/lib/require.js"></script>
+    <script src="../wilib/js/app.js"></script>
+    <link rel="stylesheet" href="../wilib/css/font-awesome.css">
+    <link rel="stylesheet" href="../wilib/css/estilo.css">
 
     <script>
-        require(['../../js/lib/arrasta'], function (edi) {
+        require(['../wilib/js/lib/arrasta'], function (edi) {
 
             edi.setConfig({
                 icone: 'interrogacaoAzul',
                 mascote: 'mascote',
-                titulo: 'Arraste a definição para o local correto:'
+                titulo: 'Arraste para dentro do quadrado os conectivos que expressam a ideia de prioridade e relevância.'
             });
 
             var texto = [
-                {texto: 'Conjunto de mudanças tecnológicas com profundo impacto no processo produtivo em nível econômico e social.', dataCorreta: 1},
-                {texto: 'Conjunto de benefícios tecnológicas com profundo impacto no processo produtivo em nível econômico e social.', dataCorreta: 0},
-                {texto: 'Conjunto de mudanças tecnológicas com leve impacto no processo produtivo em<br>nível econômico.', dataCorreta: 0}
+                {texto: 'Principalmente, sobretudo, antes de mais nada, primeiramente, acima de tudo, em primeiro lugar.', dataCorreta: 1},
+                {texto: 'Quer dizer, isto é, ou seja, por exemplo.', dataCorreta: 0},
+                {texto: 'Quem sabe, é provável, talvez, possivelmente.', dataCorreta: 0}
             ]
 
             texto.sort(function () {
@@ -51,12 +51,12 @@
                 colorirFilho: true,
                 cb: function () {
                     $('<img>').attr({
-                        src:"../../img/svg/seta.svg",
+                        src:"../wilib/img/svg/seta.svg",
                         style: "transform: rotate(90deg); left: 168px"
                     }).appendTo('#ctAlvo');
 
                     $('<img>').attr({
-                        src:"../../img/svg/seta.svg",
+                        src:"../wilib/img/svg/seta.svg",
                         style: "transform: rotate(-90deg); left: 574px"
                     }).appendTo('#ctAlvo');
                 }
@@ -64,7 +64,9 @@
 
             edi.arrasta('arrasta', 'alvo', function (a, b, c) {
                 b.removeClass('azulAlpha');
-            }, null, config);
+            }, function(a) {
+                barraMsg('Muito bem! Você aprendeu um novo exemplo de conectivos. Continue estudando com atenção.', {height: 80});
+            }, config);
 
             $('.arrasta').css({
                 margin: -5,
@@ -91,6 +93,7 @@
             margin: 10px 0 0 0;
             margin-left: 50%;
             left: -100px;
+            top:185px;
             border: 1px solid #C7D9E4;
             height: 75px;
             width: 200px;
@@ -126,13 +129,23 @@
             color: #FFF;
         }
 
+        #img {
+            background: url(../img/licao07/p35.png) no-repeat;
+            background-size: 100% 100%;
+            width: 218px;
+            height: 118px;
+            position: absolute;
+            left: 290px;
+            top: 70px;
+            cursor: pointer;
+        }
 
     </style>
 
 </head>
 <body>
 <div id="ctAlvo">
-    <p>Revolução Industrial</p>
+    <p></p>
 
     <div class="alvo" data-correta="1"></div>
 
@@ -141,5 +154,8 @@
 <div id="ctArrasta" class="btn btn-default-hover">
     <div id="arrastas"></div>
 </div>
+
+<div id="img"></div>
+
 </body>
 </html>

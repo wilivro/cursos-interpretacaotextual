@@ -14,7 +14,7 @@
 
             edi.setConfig({
                 icone: 'exclamacao',
-                titulo: 'Clique nos personagens e aprenda mais com João e Maria.'
+                titulo: 'Clique sobre os personagens e leia o diálogo.'
             });
 
             function callback(a, b) {
@@ -22,7 +22,7 @@
             }
 
             function calbackFinal() {
-                mensagem('Parabéns! Perceba que não é tão difícil quando <br> você usa as dicas que recebeu em suas interpretações.')
+                mensagem('Muito bem! Continue seus estudos e aprenda <br> mais sobre os conectivos.')
             }
 
             edi.revela_slide('.revela', callback, calbackFinal, {});
@@ -78,27 +78,7 @@
                 });
             });
 
-            $('#rev-06').each(function () {
-                $(this).peBalao({
-                    top: 100,
-                    left: 10,
-                    scaleX: 1,
-                    scaleY: -1,
-                    rotate: 0
-                });
-            });
-
-            $('#rev-07').each(function () {
-                $(this).peBalao({
-                    top: 89,
-                    left: 210,
-                    scaleX: -1,
-                    scaleY: -1,
-                    rotate: 0
-                });
-            });
-
-        });
+       });
     </script>
 
     <style>
@@ -123,17 +103,17 @@
         #rev-01  {
             left: 20px;
             top: 100px;
-            padding-top: 10px;
+            padding-top: 30px;
             width: 340px;
-            height: 65px;
+            height: 45px;
         }
 
         #rev-02 {
             left: 320px;
             top: 80px;
             width: 420px;
-            padding-top: 10px;
-            height: 70px;
+            padding-top: 20px;
+            height: 60px;
         }
 
         #rev-03  {
@@ -148,7 +128,8 @@
             width: 370px;
             left: 300px;
             top: 95px;
-            height: 64px;
+            padding-top: 18px;
+            height: 57px;
         }
 
         #rev-05  {
@@ -157,22 +138,6 @@
             width: 320px;
             padding-top: 14px;
             height: 50px;
-        }
-
-        #rev-06 {
-            width: 370px;
-            left: 300px;
-            top: 85px;
-            padding-top: 14px;
-            height: 65px;
-        }
-
-        #rev-07  {
-            left: 30px;
-            top: 110px;
-            width: 320px;
-            padding-top: 20px;
-            height: 48px;
         }
 
         .person {
@@ -191,34 +156,24 @@
 <img src="../wilib/img/svg/personagens.svg" class="person" id="person-03">
 
 <p class="revelaEsquerda revela" id="rev-01">
-    João, assistindo às aulas da professora Sara tenho aprendido muito sobre interpretação de textos, mas ainda me sinto insegura ao responder questões de interpretação.
+    Max você conhece os conectivos?
 </p>
 
 <p class="revelaDireito revela" id="rev-02">
-   Isso é normal Maria, mas não deixe que o desespero tire sua concentração. Leia bem todo o texto e as questões antes de responder, marque o que considerar importante, pois podem ser possíveis respostas.
+   São todas as palavras ou expressões que servem <br> para estabelecer elos, certo?
 </p>
 
 <p class="revela" id="rev-03">
-    Sim, tenho feito isso, mas ainda me sinto insegura com a leitura. 
+   Isso mesmo, e também para criar relações entre segmentos do texto. 
 </p>
 
 <p class="revela" id="rev-04">
-    Procure dentro do texto as respostas para as expressões “o que”, “quem”, “quando”, “onde”, “por que”, “como”, “para que”, “para quem”, entre outras. É uma forma de conversar com o texto e deixar a leitura mais clara e fácil.
+    Eles devem ser usados de forma consciente e adequados para tornar um texto compreensivo.
 </p>
 
 <p class="revela" id="rev-05">
-    Farei isso. Em alguns momentos fico tão nervosa que as respostas estão na própria questão, mas não consigo perceber!
+    Muito bem, eles são muitos, mas você <br> não precisa decorá-los, é só entender <br> qual a ideia que eles passam.
 </p>
-
-<p class="revela" id="rev-06">
-    Sempre acontece isso, colocam nas alternativas as mesmas palavras da questão, usando sinônimos para nos confundir, mas se analisarmos com calma nós veremos que está tudo ali. 
-</p>
-
-<p class="revela" id="rev-07">
-    Obrigada João! Conversar com você me ajudou muito, me sinto mais preparada para o concurso que farei amanhã!
-</p>
-
-
 
 </body>
 </html>

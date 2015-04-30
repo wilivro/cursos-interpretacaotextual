@@ -4,53 +4,80 @@
 <head>
     <title>Lição 01 Peça 11</title> <!-- alt_b001 -->
     <meta charset="utf-8">
-    <script src="../../js/lib/require.js"></script>
-    <script src="../../js/app.js"></script>
-    <link rel="stylesheet" href="../../css/font-awesome.css">
-    <link rel="stylesheet" href="../../css/meioAmbiente.css">
+    <script src="../wilib/js/lib/require.js"></script>
+    <script src="../wilib/js/app.js"></script>
+    <link rel="stylesheet" href="../wilib/css/font-awesome.css">
+    <link rel="stylesheet" href="../wilib/css/estilo.css">
 
     <script>
-        require(['../../js/lib/alternativa_botao'], function (edi) {
+        require(['../wilib/js/lib/alternativa_botao'], function (edi) {
 
             edi.setConfig({
-                titulo: "Assinale a alternativa que corresponde ao significado<br>da sigla I.S.E., índice criado pela BOVESPA em 2005:",
+                titulo: "Marque as alternativas em que o conectivo usado, expressa a ideia de esclarecimento e ilustração.",
                 mascote: 'mascote'
             });
 
             var btns = [];
 
             btns.push({
-                texto: "Índice de Sustentabilidade Empresarial",
+                texto: "Minha mãe está grávida <span id='sublinhado'>e</span> <br> tem comido pouco.",
+                dataCorreta: false
+            });
+
+            btns.push({
+                texto: "Carlos vai comprar um carro, <br> <span id='sublinhado'>quer dizer</span>, quando tiver dinheiro.",
                 dataCorreta: true
             });
 
             btns.push({
-                texto: "Índice de Sustentabilidade Ecológica",
+                texto: "Fui assistir ao jogo, <span id='sublinhado'>porém</span> <br> não encontrei lugar ao seu lado.",
                 dataCorreta: false
             });
 
             btns.push({
-                texto: "Índice de Serviços Ecológicos",
+                texto: "Ana quer comprar um vestido, <br> <span id='sublinhado'>porém</span> não sabe qual.",
                 dataCorreta: false
             });
 
+            btns.push({
+                texto: "Claudio é meu vizinho, <span id='sublinhado'>ou seja</span>, <br> ele mora bem próximo da minha casa.",
+                dataCorreta: true
+            });
+
+            btns.push({
+                texto: "Estudo todos os dias, <br> <span id='sublinhado'>mas</span> ainda tenho dúvidas.",
+                dataCorreta: false
+            });
+
+
             var config = {
-                colunas: 4,
-                width: 380,
+                colunas: 2,
+                width: 340,
                 height: 35,
-                left: 190,
+                left: 30,
                 top: 120,
                 margin: '12px 12px 0 12px',
                 tamanhoTexto: 14,
                 btnBranco: true,
-                randomico: true,
+                randomico: false,
                 lineHeight: '1.4',
                 animacao: true
             }
 
-            edi.alternativa_botao(btns, null, null, config);
+            edi.alternativa_botao(btns, null, function(a) {
+                if (a) {
+                    barraMsg('Excelente! Nas duas alternativas os conectivos em destaque passam a ideia de esclarecimento e ilustração.', {height: 80});
+                } else{
+                    barraMsg('Atenção! Os conectivos em destaque passam a ideia de adição, restrição e oposição. Reveja os exemplos e tente novamente.', {height: 80});
+                };
+            }, config);
         });
     </script>
+    <style>
+    #sublinhado {
+        text-decoration: underline;
+    }
+    </style>
 
 </head>
 

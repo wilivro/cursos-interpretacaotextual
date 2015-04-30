@@ -1,0 +1,126 @@
+<!doctype html>
+<html lang="pt-br">
+<head>
+  <title>Lição 04 Peça 16</title>
+  <meta charset="utf-8">
+  <script src="../wilib/js/lib/require.js"></script>
+  <script src="../wilib/js/app.js"></script>
+  <link rel="stylesheet" href="../wilib/css/font-awesome.css">
+  <link rel="stylesheet" href="../wilib/css/estilo.css">
+
+  <script>
+    require(['../wilib/js/lib/arrasta'], function (edi) {
+
+      edi.setConfig({
+          mascote: 'mascote',
+          tempoFinal: 10,
+          titulo: 'Os conectivos de oposição, adversidade e restrição' +
+                  'passam a ideia de diferença e contradição. ' +
+                  'Pinte os termos que indicam esse sentido.'
+      });
+
+      edi.arrasta('arrasta', 'alvo', function(a, b, c) {
+        b.remove();
+          c.css({
+          background: 'url(../wilib/img/fotos/tinta-verd.png) no-repeat',
+          backgroundSize: '100% 100%',
+          backgroundPositionX: '360px',
+          color: '#fff'
+        }).animate({
+          backgroundPositionX: '0px'
+        }, 80);
+      }, function(a) {
+        if (a) {
+          barraMsg('Muito bem! Você compreendeu o sentido dos conectivos de oposição, adversidade e restrição.', {height: 80, zIndex:2002});
+        };        
+      }, {
+        clone: true,
+        multAlvo: true,
+        target: false
+      });
+
+      $('.arrasta')
+      .load('../wilib/img/svg/pincel.svg', function(){
+          $('#corPonta').attr('fill', '#9c0');
+      });
+
+    });
+  </script>
+
+  <style>
+    .box {
+      position: absolute;
+      left: 90px;
+      top: 120px;
+      width: 600px;
+      height: 250px;
+      border-radius: 5px;
+      border: 1px solid #eee;
+      box-shadow: 0 2px rgba(0, 0, 0, 0.2);
+      background: linear-gradient(#fff, #eee);
+    }
+
+    .arrastas {
+      position: absolute;
+      left: 240px;
+      top: -40px;
+      width: 100px;
+      height: 100px;
+      border-radius: 5px;
+      border: 1px solid #eee;
+      box-shadow: 0 2px rgba(0, 0, 0, 0.2);
+      background: linear-gradient(#fff, #eee);
+    }
+
+    .arrasta {
+      position: absolute;
+      left: 5px;
+      top: 15px;
+      width: 90px;
+      height: 70px;
+      background-size: 100% 100%;
+    }
+
+    .alvos {
+      position: absolute;
+      left: 20px;
+      top: 70px;
+      width: 550px;
+      display: table;
+    }
+
+    .alvo {
+      position: relative;
+      float: left;
+      width: 160px;
+      padding: 10px;
+      text-align: center;
+      font-size: 13px;
+    }
+  </style>
+</head>
+<body>
+  <div class="box">
+    <div class="arrastas">
+      <div class="arrasta" data-correta="1"></div>
+    </div>
+
+    <div class="alvos">
+      <div class="alvo" data-correta="1">Pelo contrário</div>
+      <div class="alvo" data-correta="1">Entretanto</div>
+      <div class="alvo" data-correta="1">Exceto</div>
+      <div class="alvo" data-correta="1">todavia</div>
+      <div class="alvo" data-correta="0">ainda mais</div>
+      <div class="alvo" data-correta="0">por isso</div>
+      <div class="alvo" data-correta="0">também</div>
+      <div class="alvo" data-correta="1">embora</div>
+      <div class="alvo" data-correta="1">mas</div>
+      <div class="alvo" data-correta="1">porém</div>
+      <div class="alvo" data-correta="0">e</div>
+      <div class="alvo" data-correta="1">contudo</div>
+    </div>
+  </div>
+</body>
+</html>
+<!-- ../wilib/img/svg/fundoPincel.svg -->
+<!-- ../wilib/img/svg/pincel.svg -->

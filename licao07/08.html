@@ -13,19 +13,17 @@
         require(['../wilib/js/lib/alternativa_botao'], function (edi) {
 
             edi.setConfig({
-                titulo: 'Ao entrarmos em contato com os tipos de texto precisamos considerar a produção do texto baseada em alguns fatores, clique nas alternativas que expressam esses fatores.',
+                titulo: 'Observe a imagem a seguir, que mensagem ela está passando? Marque a alternativa correta. Leve em consideração seu raciocínio lógico e seus conhecimentos prévios.',
                 mascote: 'mascote',
             });
 
-            
-            var texto = 'Todos precisam pensar e agir de forma comprometida com <span id="resposta">_______________</span>.';
+            var texto = '';
+
 
             var btns = [
-                {texto: 'O propósito da mensagem - para quê?', dataCorreta: true},
-                {texto: 'Não gosto de escrever.', dataCorreta: false},
-                {texto: 'A organização das informações - como?', dataCorreta: true},
-                {texto: 'Não gosto muito de ler.', dataCorreta: false},
-                {texto: 'O público leitor - para quem?', dataCorreta: true}
+                {texto: 'Coerência ', dataCorreta: false},
+                {texto: 'Coesão ', dataCorreta: false},
+                {texto: 'Incoerência ', dataCorreta: true}
             ];
             
 
@@ -34,7 +32,7 @@
                 width: 360,
                 height: 20,
                 left: 400,
-                top: 90,
+                top: 140,
                 tamanhoTexto: 16,
                 colunas: 1,
                 margin: '0 0 10px 0',
@@ -59,7 +57,12 @@
             }
 
             edi.alternativa_botao(btns, callback, function(a){
-                barraMsg(a?'Excelente! A partir daí focalizaremos a coerência da organização textual, que necessita estar presente nas partes em que o texto se divide.':'Atenção! Pense um pouco mais. Para escrever precisamos levar em consideração alguns fatores importantes, analise as alternativas com atenção.', {height: 80});
+                if (a) {
+                    barraMsg('Correto! A imagem não passa nenhuma mensagem, pois o aviso não significa nada. Isso se torna uma incoerência, ou seja, quando não há coerência.', {height: 80});
+                } else{
+                    barraMsg('Você errou! Use seu raciocínio lógico para responder. A imagem passa alguma mensagem? Pense e tente novamente.', {height: 80});
+                };
+
             }, config);
 
             $('#num').html(edi.telaAtual);
@@ -117,7 +120,7 @@
 
 <body>
 <div class="texto">
-    <img src="../img/licao08/peca02.png" alt="" width="280">
+    <img src="../img/licao07/p08.png" alt="" width="280">
 </div>
 </body>
 </html>

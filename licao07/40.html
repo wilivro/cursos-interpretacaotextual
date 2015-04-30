@@ -1,145 +1,110 @@
+
 <!doctype html>
 <html lang="pt-br">
 <head>
-    <title>arr_a001</title>
+    <title>Lição 06 Peça 25</title>
     <meta charset="utf-8">
-    <script src="../../js/lib/require.js"></script>
-    <script src="../../js/app.js"></script>
-    <link rel="stylesheet" href="../../css/font-awesome.css">
-    <link rel="stylesheet" href="../../css/meioAmbiente.css">
+    <script src="../wilib/js/lib/require.js"></script>
+    <script src="../wilib/js/app.js"></script>
+    <link rel="stylesheet" href="../wilib/css/font-awesome.css">
+    <link rel="stylesheet" href="../wilib/css/estilo.css">
 
     <script>
-        require(['../../js/lib/arrasta'], function (edi) {
+        require(['../wilib/js/lib/arrasta'], function (edi) {
 
             edi.setConfig({
-                icone: 'interrogacaoAzul',
+                titulo: 'Arraste até o meio das setas a frase em que o conectivo <br> expressa a ideia de resumo e conclusão.',
                 mascote: 'mascote',
-                titulo: 'Arraste a definição para o local correto:'
+                tempoFinal: 15
             });
-
-            var texto = [
-                {texto: 'Conjunto de mudanças tecnológicas com profundo impacto no processo produtivo em nível econômico e social.', dataCorreta: 1},
-                {texto: 'Conjunto de benefícios tecnológicas com profundo impacto no processo produtivo em nível econômico e social.', dataCorreta: 0},
-                {texto: 'Conjunto de mudanças tecnológicas com leve impacto no processo produtivo em<br>nível econômico.', dataCorreta: 0}
-            ]
-
-            texto.sort(function () {
-                return 0.5 - Math.random()
-            });
-
-            for (var i = 0; i < texto.length; i++) {
-                var div = $('<div>')
-                        .css({
-                            position: 'relative',
-                            display: 'table-cell',
-                            'vertical-align': 'middle',
-                            width: '200px',
-                            height: '75px'
-                        })
-                        .html(texto[i].texto)
-
-                $('<div>')
-                        .css('margin','5px')
-                        .attr('data-correta', texto[i].dataCorreta)
-                        .addClass('arrasta')
-                        .addClass('azulAlpha')
-                        .append(div)
-                        .appendTo('#arrastas')
-            }
-
-            var config = {
-                colorirFilho: true,
-                cb: function () {
-                    $('<img>').attr({
-                        src:"../../img/svg/seta.svg",
-                        style: "transform: rotate(90deg); left: 168px"
-                    }).appendTo('#ctAlvo');
-
-                    $('<img>').attr({
-                        src:"../../img/svg/seta.svg",
-                        style: "transform: rotate(-90deg); left: 574px"
-                    }).appendTo('#ctAlvo');
-                }
-            };
 
             edi.arrasta('arrasta', 'alvo', function (a, b, c) {
-                b.removeClass('azulAlpha');
-            }, null, config);
-
-            $('.arrasta').css({
-                margin: -5,
-                padding: 5
+                if (a) {
+                    barraMsg('Excelente! O conectivo “portanto” expressa a ideia de fechar o assunto e apresenta um ponto de vista. Este é um exemplo de resumo e conclusão.', {height: 80});
+                } else{
+                    barraMsg('Atenção! Você já conhece os conectivos que passam a ideia de oposição.Use seu conhecimento lógico, reflita e tente novamente. ', {height: 80});
+                };
             });
 
+
         });
+
     </script>
+
     <style>
-        #ctAlvo {
-            width: 788px;
-            text-align: center;
-        }
-
-        #ctAlvo p {
-            margin: 40px 0 0 0;
-            color: #6D9DB8;
-            font-size: 22px;
-        }
-
-        #ctAlvo > div
-        {
+        #arrasta {
             position: absolute;
-            margin: 10px 0 0 0;
-            margin-left: 50%;
-            left: -100px;
-            border: 1px solid #C7D9E4;
-            height: 75px;
-            width: 200px;
-        }
-
-        #ctAlvo img {
-            position: absolute;
-            top: 30px;
-        }
-
-        #ctArrasta {
-            position: absolute;
-            top: 280px;
-            margin-left: 50%;
-            left: -350px;
-            width: 700px;
-            height: 85px;
-        }
-        #arrastas{
-            position: relative;
-            display: table-cell;
-            vertical-align: middle;
-            width: 700px;
-            height: 85px;
+            left: 10px;
+            top: 100px;
+            padding: 20px;
+            width: 225px;
+            height: 180px;
+            background: url(../wilib/img/svg/04.svg) no-repeat;
+            background-size: 100% 100%;
         }
 
         .arrasta {
-            display: inline-block;
-            width: 190px;
+            width: 220px;
+            height: 50px;
+            font-size: 12px;
             text-align: center;
-            height: 65px;
-            font-size: 13px;
-            color: #FFF;
+            line-height: 1;
+            margin-top: 10px;
         }
 
+        #alvo {
+            position: absolute;
+            left: 450px;
+            top: 90px;
+            width: 292px;
+            height: 292px;
+            background: url(../wilib/img/svg/04.1.svg) no-repeat;
+            background-size: 100% 100%;
+        }
+
+        .ctalvo {
+            position: absolute;
+            left: 0;
+            top: 120px;
+            width: 292px;
+            height: 50px;
+            border: 1px solid #ccc;
+        }
+
+        .alvo {
+            position: relative;
+            width: 292px;
+            height: 50px;
+            vertical-align: middle;
+        }
+
+        #sublinhado {
+            text-decoration: underline;
+        }
 
     </style>
-
 </head>
+
 <body>
-<div id="ctAlvo">
-    <p>Revolução Industrial</p>
-
-    <div class="alvo" data-correta="1"></div>
-
+<div id="arrasta">
+    <div class="arrasta" data-correta="0">
+        <span id="sublinhado">Embora</span> soubesse a resposta, não consegui falar.
+        <br><br>
+    </div>
+    <div class="arrasta" data-correta="1">
+        Não fez a atividade, <span id="sublinhado">portanto</span> ficará com menção insatisfatória no boletim.
+        <br><br>
+    </div>
+    <div class="arrasta" data-correta="0">
+        Não fiz a atividade, <span id="sublinhado">mas</span> <br> estudei para o teste.
+        <br><br>
+    </div>
 </div>
 
-<div id="ctArrasta" class="btn btn-default-hover">
-    <div id="arrastas"></div>
+<div id="alvo">
+    <div class="ctalvo">
+        <div class="alvo" data-correta="1"></div>
+    </div>
 </div>
 </body>
 </html>

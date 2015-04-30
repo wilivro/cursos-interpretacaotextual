@@ -16,24 +16,26 @@
 			edi.setConfig({
         	icone: "exclamacao",
             mascote: 'mascote',
-					titulo: "Temos também os conectivos que passam o sentido de certeza, ênfase. <br> Clique nos balões e descubra alguns deles: ",
+					titulo: "Clique nas interrogações e descubra os conectivos que expressam a ideia de lugar, proximidade e distância.",
 				});
 
                 var revelas = [
-                    "certamente",
-                    "sem dúvida",
-                    "inegavelmente",
-                    "com toda certeza",
-                    "por certo",
-                    "inquestionavelmente"
+                    "Próximo a ",
+                    "Perto de ",
+                    "Além",
+                    "Aqui",
+                    "Acolá",
+                    "Onde",
+                    "Aonde",
+                    "Em que"
                 ];
 
                 var config = {
                         fontSize: 13,
-                        img: '../img/licao07/p21.png',
+                        img: '../img/licao07/p34.png',
                         imgConfig: {
                         width: '140',
-                        height: '160',
+                        height: '200',
                         left: 325,
                         top: 70
                     }
@@ -42,36 +44,16 @@
 				edi.revela_interrogacao(revelas, function (a) {
 //                    console.log('cb', a);
                 }, function (a) {
-                    $('#msgAcerto').fadeIn();
+                     barraMsg('Muito bem! Mas lembrem-se, estes conectivos são os principais, temos outros como: este, esta, isto, esse, essa, isso, aquele, aquela, aquilo. Todos passam a ideia de lugar, proximidade e distância.', {height: 100})
                 },config);
 			});
 		</script>
         <style>
-
-            #msgAcerto {
-                width: 320px;
-                height: 50px;
-                position: absolute;
-                left: 240px;
-                top: 300px;
-                padding: 5px;
-                padding-bottom: 30px;
-                font-size: 14px;
-                text-align: center;
-                font-weight: bold;
-                line-height: 16px;              
-                color: #9c0;
-                display: none;
-             }
 
         </style>
 	</head>
 
 	<body>
         
-        <div id="msgAcerto" class="arredondado">
-            <p>Muito bem! Compreenda que são vários conectivos, porém você não precisa decorá-los e sim entender o sentido que eles passam. </p>
-        </div>
-
-	</body>
+    </body>
 </html>

@@ -13,26 +13,94 @@
 
             edi.setConfig({
                 icone: 'exclamacao',
-                titulo: 'Arraste os fragmentos para completar as frases.',
-                mascote: 'mascote',
+                titulo: 'Arraste as frases para as imagens adequadas.',
                 tempoFinal: 10
             });
 
             var arrArrasta = [
-                {img: '../img/', arrasta: '... essencial no desenvolvimento<br>do sujeito cidadão.', dataCorreta: '1'},
-                {arrasta: '... de um sujeito cidadão<br>ecologicamente orientado.', dataCorreta: '2'}
+                {img: '../img/licao06/p41.jpg', arrasta: 'As ondas vão e vem, e vão,<br> e são como o tempo.<br>(Sereia – Lulu Santos)', dataCorreta: '1'},
+                {img: '../img/licao06/p41.jpg', arrasta: 'Via o futuro em mágicos espelhos,<br>Tua bela visão o enfeitiçava.<br>Álvares de Azevedo', dataCorreta: '2'},
+                {img: '../img/licao06/p41.jpg', arrasta: 'Meus amigos adoram <br>cinema, e eu também.', dataCorreta: '3'},
+                {img: '../img/licao06/p41.jpg', arrasta: 'Nem um minuto se passa, Nem um <br>inseto esvoaça, Nem uma brisa<br> perpassa Sem uma lembrança aqui;<br> Fagundes Varela', dataCorreta: '4'}
             ];
+
+            for(var x = 0; x<arrArrasta.length; x++){
+                var ct = $('<div>')
+                        .css({
+                            position: 'relative',
+                            display: 'inline-block',
+                            border: '1px solid #666',
+                            width: 230,
+                            height: 140,
+                            margin: '6px 8px 3px 5px',
+                            borderRadius: 10
+                        })
+                        .appendTo('#imgs');
+
+                var posFixo = $('<div>')
+                        .css({
+                            position: 'absolute',
+                            top:0,
+                            left: 0,
+                            width: 230,
+                            height: 140
+                        })
+                        .appendTo(ct);
+
+                $('<img>')
+                        .css({
+                            display: 'inline-block',
+                            marginTop: 5
+                        })
+                        .attr({
+                            src: arrArrasta[x].img,
+                            width: 145
+                        })
+                        .appendTo(posFixo);
+
+                $('<div>')
+                        .addClass('alvo')
+                        .attr({
+                            'data-correta': arrArrasta[x].dataCorreta
+                        })
+                        .css({
+                            display: 'inline-block',
+                            width: 200,
+                            height: 60,
+                            border: '1px solid #666',
+                            borderRadius: 10
+                        })
+                        .appendTo(posFixo);
+            }
 
             arrArrasta.sort(function () {
                 return 0.5 - Math.random()
             });
 
             for (var i = 0; i < arrArrasta.length; i++) {
+                var ct = $('<div>')
+                        .addClass('arrasta')
+                        .attr({'data-correta': arrArrasta[i].dataCorreta})
+                        .css({
+                            display: 'inline-block',
+                            width: 250,
+                            height: 70
+                        })
+                        .appendTo('#arrasta');
+
                 $('<div>')
-                  .addClass('arrasta')
-                  .attr('data-correta', arrArrasta[i].dataCorreta)
-                  .html(arrArrasta[i].arrasta)
-                  .appendTo('#arrasta');
+                        .css({
+                            position: 'relative',
+                            display: 'table-cell',
+                            verticalAlign: 'middle',
+                            textAlign: 'center',
+                            width: 250,
+                            height: 65,
+                            fontSize: 14,
+                            color: '#fff'
+                        })
+                        .html(arrArrasta[i].arrasta)
+                        .appendTo(ct)
             }
 
             var config = {
@@ -41,15 +109,11 @@
             };
 
             edi.arrasta('arrasta', 'alvo', function (a, b, c) {
-                if (a) {
-                    b.css({
-                        top: -2,
-                        marginLeft: -5
-                    });
-                    c.css({
-                    });
-                }
-            }, null, config);
+                b.css({height: 60}).find('div').css({fontSize: 10, color: '#9c0'})
+            }, function(a){
+                barraMsg(a?'Excelente!<br> Você já é capaz de identificar as figuras<br> de linguagem através de exemplos.':
+                        'Atenção!<br> Perceba a diferença entre as alternativas e relacione-as<br> com as figura de linguagem estudas anteriormente.', {height: 100})
+            }, config);
 
         });
     </script>
@@ -57,33 +121,36 @@
     <style>
         #ctArrasta {
             position: absolute;
-            top: 75px;
+            top: 70px;
             left: 490px;
             width: 250px;
-            height: 270px;
-            padding: 10px;
+            height: 300px;
+            padding: 0 10px;
         }
 
         #arrasta {
-            width: 210px;
-            height: 270px;
-            text-align: center;
-            cursor: default;
             position: relative;
-            display: table-cell;
             vertical-align: middle;
-        }
-
-        .arrasta {
-            padding: 5px;
-            width: 210px;
-            margin: 10px 0 40px 8px;
+            display: table-cell;
             text-align: center;
-            color: #fff;
-            font-size: 14px;
+            width: 250px;
+            height: 300px;
         }
 
+        #ctImgs {
+            position: absolute;
+            width: 500px;
+            height: 314px;
+        }
 
+        #imgs {
+            position: relative;
+            vertical-align: middle;
+            display: table-cell;
+            text-align: center;
+            width: 500px;
+            height: 314px;
+        }
     </style>
 </head>
 

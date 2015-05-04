@@ -1,0 +1,54 @@
+<!doctype html>
+<html lang="pt-br">
+<head>
+    <title>Lição 09 Peça 10</title>
+    <meta charset="utf-8">
+    <script src="../wilib/js/lib/require.js"></script>
+    <script src="../wilib/js/app.js"></script>
+    <link rel="stylesheet" href="../wilib/css/font-awesome.css">
+    <link rel="stylesheet" href="../wilib/css/estilo.css">
+
+    <script>
+        require(['../wilib/js/lib/alternativa_b06'], function (edi) {
+
+            edi.setConfig({
+                icone: "interrogacaoAzul",
+                titulo: "Leia atentamente a frase: “Ele é muito diligente com o serviço”.<br> Qual das palavras abaixo tem o mesmo significado que a palavra em destaque?",
+                mascote: 'mascote'
+            });
+
+            var alternativa = [
+                {texto: 'Cuidadoso', dataCorreta: true},
+                {texto: 'Atrasado', dataCorreta: false},
+                {texto: 'Ocioso', dataCorreta: false},
+                {texto: 'Aplicado', dataCorreta: true},
+                {texto: 'Arrogante', dataCorreta: false},
+                {texto: 'Zeloso', dataCorreta: false},
+                {texto: 'Preguiçoso', dataCorreta: false},
+                {texto: 'Malandro', dataCorreta: false},
+                {texto: 'Desleixado', dataCorreta: false},
+                {texto: 'Ativo', dataCorreta: true},
+                {texto: 'Dedicado', dataCorreta: true},
+                {texto: 'Largado', dataCorreta: false},
+                {texto: 'Relaxado', dataCorreta: false},
+                {texto: 'Agressivo', dataCorreta: false},
+                {texto: 'Madraço', dataCorreta: false},
+                {texto: 'Eficiente', dataCorreta: true}
+            ];
+
+
+            edi.alternativa_b06(alternativa, null, function (a) {
+                barraMsg(a ? 'Correto!<br> Todas as palavras, em azul, podem ser usadas para substituir<br> a palavra diligente, sem que modifique o sentido do contexto.<br> Exemplo: “Ele é muito <span style="text-decoration: underline">dedicado</span> com o serviço”.' :
+                        'Atenção!<br> As palavras, em vermelho, não correspondem<br> ao significado de “diligente”.<br> Tente novamente!', {height: 150})
+            }, {
+                width: 176,
+                height: 38,
+                margin: '0px 13px 10px 10px',
+                left: 0,
+                top: 73
+            });
+
+        });
+    </script>
+</head>
+</html>

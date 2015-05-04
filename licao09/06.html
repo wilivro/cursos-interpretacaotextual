@@ -1,0 +1,108 @@
+<!doctype html>
+<html lang="pt-br">
+<head>
+    <title>Lição 09 Peça 06</title>
+    <meta charset="utf-8">
+    <script src="../wilib/js/lib/require.js"></script>
+    <script src="../wilib/js/app.js"></script>
+    <link rel="stylesheet" href="../wilib/css/font-awesome.css">
+    <link rel="stylesheet" href="../wilib/css/estilo.css">
+
+    <script>
+        require(['../wilib/js/lib/arrasta'], function (edi) {
+
+            edi.setConfig({
+                titulo: 'Arraste até o meio das setas a palavra que melhor se encaixa na seguinte frase:<br> O relatório não tem efeito obrigatório, apenas persuasivo, ou seja __________.',
+                mascote: 'mascote',
+                tempoFinal: 15
+            });
+
+            edi.arrasta('arrasta', 'alvo', function (a, b, c) {
+                c.css({marginTop: 10});
+                barraMsg(false ? 'Parabéns!<br> A palavra convincente traduz o significado de<br> “persuasivo”, ou seja, aquele que tem força para convencer.'
+                        : 'Atenção!<br> A alternativa correta é a que expressa o mesmo <br>significado da palavra persuasivo. Tente novamente.', {height: 100, wait:0});
+            });
+
+
+
+        });
+
+    </script>
+
+    <style>
+        #arrasta {
+            position: absolute;
+            left: 10px;
+            top: 100px;
+            padding: 20px;
+            width: 225px;
+            height: 180px;
+            background: url(../wilib/img/svg/04.svg) no-repeat;
+            background-size: 100% 100%;
+        }
+
+        .arrasta {
+            width: 220px;
+            height: 30px;
+            font-size: 18px;
+            text-align: center;
+            line-height: 1;
+            margin-top: 10px;
+        }
+
+        #alvo {
+            position: absolute;
+            left: 450px;
+            top: 90px;
+            width: 292px;
+            height: 292px;
+            background: url(../wilib/img/svg/04.1.svg) no-repeat;
+            background-size: 100% 100%;
+        }
+
+        .ctalvo {
+            position: absolute;
+            left: 0;
+            top: 120px;
+            width: 292px;
+            height: 50px;
+            border: 1px solid #ccc;
+        }
+
+        .alvo {
+            position: relative;
+            width: 292px;
+            height: 50px;
+            vertical-align: middle;
+        }
+
+    </style>
+</head>
+
+<body>
+<div id="arrasta">
+    <div class="arrasta" data-correta="0">
+        Divertir
+        <br><br>
+    </div>
+    <div class="arrasta" data-correta="0">
+        Tirar a atenção
+        <br><br>
+    </div>
+    <div class="arrasta" data-correta="1">
+        Convincente
+        <br><br>
+    </div>
+    <div class="arrasta" data-correta="0">
+        Destrutivo
+        <br><br>
+    </div>
+</div>
+
+<div id="alvo">
+    <div class="ctalvo">
+        <div class="alvo" data-correta="1"></div>
+    </div>
+</div>
+</body>
+</html>

@@ -1,0 +1,126 @@
+<!doctype html>
+<html lang="pt-br">
+
+<head>
+    <title>Lição 09 Peça 12</title>
+    <meta charset="utf-8">
+    <script src="../wilib/js/lib/require.js"></script>
+    <script src="../wilib/js/app.js"></script>
+    <link rel="stylesheet" href="../wilib/css/font-awesome.css">
+    <link rel="stylesheet" href="../wilib/css/estilo.css">
+
+    <script>
+        require(['../wilib/js/lib/alternativa_botao'], function (edi) {
+
+            edi.setConfig({
+                titulo: 'Um cliente em potencial entrou no site de sua empresa. <br>Auxilie no atendimento a este cliente. <br>Leia a dúvida do cliente, depois clique no balão e responda.',
+                mascote: 'mascote',
+                tempoFinal: 10
+            });
+
+            //balões
+            var botoes = [
+
+                {texto: 'Grosseiro', dataCorreta: false},
+                {texto: 'Educado', dataCorreta: true}
+
+            ];
+
+            edi.alternativa_botao(botoes, function (a, b) {
+                //cb
+            }, function (a) {
+                barraMsg(a?'Muito bem!<br> Ao observar que o dono faz a pergunta de <br>forma a ser prestativo, nota-se que ele foi educado.'
+                        : 'Atenção!<br> Lembre-se que o dono faz a pergunta de forma a <br>ser prestativo, pronto para servir a hospede.', {height: 100})
+            }, {
+                colunas: 1,
+                width: 300,
+                height: 35,
+                left: 430,
+                top: 240,
+                btnBranco: true,
+                animacao: true,
+                tamanhoTexto: 14
+            });
+
+            $("#balao").peBalao({
+                scaleX: -1,
+                scaleY: -1,
+                top: 120,
+                left: 0
+            })
+
+            $("#balao").click(function () {
+                $('.alter-btn, #texto').fadeIn();
+            });
+
+            $('.alter-btn, #texto').hide();
+        });
+    </script>
+
+    <style>
+        .alter-btn {
+            width: 300px;
+            display: none;
+        }
+
+        #_btn {
+            position: absolute;
+            left: 100px;
+            top: 160px;
+        }
+
+        #balao {
+            position: absolute;
+            left: 250px;
+            top: 90px;
+            width: 150px;
+            height: 95px;
+            font-size: 13px;
+            background: #fff;
+            border: 1px solid #ccc;
+            text-align: center;
+            border-radius: 10px;
+            cursor: pointer;
+            padding-top: 15px;
+        }
+
+        #balao:hover {
+            box-shadow: 0 0 15px rgba(0, 0, 0, 0.3);
+        }
+
+        #texto {
+            position: absolute;
+            left: 435px;
+            top: 90px;
+            width: 290px;
+            height: 110px;
+            padding: 10px;
+            border: 1px solid #ccc;
+            border-radius: 10px;
+            text-align: center;
+            display: none;
+            font-size: 13px;
+        }
+
+        #texto p {
+            margin-top: 25px;
+        }
+    </style>
+</head>
+
+<body>
+</body>
+<img id="_btn" src="../img/licao09/p12.png">
+
+<div id="balao">
+    <p>
+        O dono da pousada perguntou solícito: <br>“O que deseja?”
+    </p>
+</div>
+<div id="texto">
+    <p>
+        Sabendo que solícito significa prestativo, prestimoso, pronto para servir. Qual o tom de <br>voz que ele usou ao
+        dizer “o que deseja?”
+    </p>
+</div>
+</html>

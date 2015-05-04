@@ -1,0 +1,170 @@
+<!doctype html>
+<html lang="pt-br">
+<head>
+    <title>Lição 09 Peça 09</title>
+    <meta charset="utf-8">
+    <script src="../wilib/js/lib/require.js"></script>
+    <script src="../wilib/js/app.js"></script>
+    <link rel="stylesheet" href="../wilib/css/font-awesome.css">
+    <link rel="stylesheet" href="../wilib/css/estilo.css">
+
+    <script>
+        require(['../wilib/js/lib/arrasta'], function (edi) {
+
+            edi.setConfig({// configurando o EDI
+                icone: 'exclamacao',
+                titulo: 'Desembaralhe as palavras e forme a frase, dando <br>um novo significado para a palavra intrigante.',
+                mascote: 'mascoteVarinha'
+            });
+
+            var arrArrasta = [
+                {arrasta: 'O', dataCorreta: '2'},
+                {arrasta: 'assassinato', dataCorreta: '6'},
+                {arrasta: 'do', dataCorreta: '7'},
+                {arrasta: 'empresário', dataCorreta: '1'},
+                {arrasta: 'foi', dataCorreta: '4'},
+                {arrasta: 'um', dataCorreta: '5'},
+                {arrasta: 'caso', dataCorreta: '6'},
+                {arrasta: 'muito', dataCorreta: '7'},
+                {arrasta: 'interessante', dataCorreta: '8'}
+            ];
+
+            var texto = '{0} {1} {2} {3}<br>{4} {5} {6} {7} {8}.';
+
+            for (var i = 0; i < arrArrasta.length; i++) {
+                var aux = '';
+                for (var j = 0; j < arrArrasta[i].arrasta.length; j++) {
+                    aux += '_';
+                };
+                texto = texto.replace('{' + i + '}', '<div class="alvo" data-correta="'+arrArrasta[i].dataCorreta+'">' + aux + '</div>');
+            }
+
+            $('#boxTexto').html(texto);
+
+            arrArrasta.sort(function () {
+                return 0.5 - Math.random()
+            });
+
+            for (var i = 0; i < arrArrasta.length; i++) {
+                $('<div>')
+                        .addClass('arrasta')
+                        .attr('data-correta', arrArrasta[i].dataCorreta)
+                        .html(arrArrasta[i].arrasta)
+                        .appendTo('#boxArrasta');
+            }
+
+            var config = {
+                alvoFixo: true,
+                colorirFilho: true
+            };
+
+            edi.arrasta('arrasta', 'alvo', function (a, b, c) {
+                if(a){
+                    c.html(b.css({display: 'flex'}))
+                }
+            }, function (a) {
+                barraMsg('Parabéns!<br> Observe que a palavra interessante substitui o significado<br> da palavra intrigante. Assim também como poderiam <br>ser usadas as palavras: curioso ou desconfiante.', {zIndex: 2002, height: 150})
+            }, config);
+            $('.arrasta').css({
+                margin: -5,
+                padding: 5
+            });
+
+           $("#ico").iconeInterrogacao(true, {imagem: '../img/licao09/p09.jpg',  widthFinal: 181, heightFinal: 129,});
+
+            $('#balao').peBalao({
+                scaleX: -1,
+                left: 40
+            });
+
+        });
+
+    </script>
+
+    <style>
+        #boxArrasta {
+            position: relative;
+            border: solid 1px #A7B9C3;
+            background: rgba(140, 168, 184, 0.1);
+            display: table-cell;
+            vertical-align: middle;
+            width: 350px;
+            height: 80px;
+            cursor: default;
+            text-align: center;
+            padding: 20px 20px 20px 0px;
+        }
+
+        #boxTexto {
+            font-size: 20px;
+            width: 470px;
+            position: absolute;
+            top: 120px;
+            left: 330px;
+            line-height: 30px;
+            text-align: center;
+        }
+
+        .alvo {
+            display: inline-block;
+            margin: 0 5px
+        }
+
+        .arrasta {
+            display: inline-block;
+            margin: 0 10px;
+        }
+
+        #boxBox{
+            position: absolute;
+            top: 230px;
+            left: 380px;
+        }
+
+        #balao{
+            position: absolute;
+            top: 100px;
+            left: 20px;
+            width: 250px;
+            height: 250px;
+            border: solid 1px  #E2E2E2;
+            background-color: #FFF;
+            border-radius: 10px;
+            text-align: center;
+        }
+
+        #ico{
+            position: absolute;
+            width: 71px;
+            height: 79px;
+            left: 35px;
+            top: 60px;
+        }
+        #ponto{
+            position: absolute;
+            width: 2px;
+            height: 2px;
+            top: 401px;
+            background-color: #F00;
+        }
+    </style>
+</head>
+
+<body>
+<section id="boxBox">
+    <div id="boxArrasta"></div>
+</section>
+
+<div id="balao">
+    <div id="ico"></div>
+</div>
+
+<div id="ponto"></div>
+
+<div id="boxTexto">
+
+</div>
+
+
+</body>
+</html>

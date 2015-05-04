@@ -1,0 +1,44 @@
+<!doctype html>
+<html lang="pt-br">
+<head>
+    <title>Lição 09 Peça 11</title>
+    <meta charset="utf-8">
+    <script src="../wilib/js/lib/require.js"></script>
+    <script src="../wilib/js/app.js"></script>
+    <link rel="stylesheet" href="../wilib/css/font-awesome.css">
+    <link rel="stylesheet" href="../wilib/css/estilo.css">
+    <script>
+        require(['../wilib/js/lib/revela_carrosel'], function (edi) {
+
+            edi.setConfig({
+                icone: 'exclamacao',
+                titulo: 'Leia a frase: O <span class="italico" style="text-decoration: underline">danado</span> sumiu o dia inteiro, pra não ficar de castigo.<br>' +
+                'Clique nas circunferências e descubra qual o significado da palavra em destaque.'
+            });
+
+            var config = {
+                topTexto: 60,
+                posx: 390,
+                txt: 'Danado',
+                ocultarTxt: false,
+                link: true,
+                bloqueioLink: 5000
+            };
+
+            var cavalinhos = [
+                'Esperto', 'Malandro', 'Arteiro', 'Levado', 'Travesso'
+            ];
+
+            edi.revela_carrosel(cavalinhos, null, null, function() {
+                barraMsg('Parabéns!<br> Com tantos significados é mais fácil conhecer o <br>verdadeiro sentido da frase. Continue seus estudos!', {height: 150})
+            }, config);
+
+        });
+    </script>
+</head>
+<body>
+
+</body>
+</html>
+
+

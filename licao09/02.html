@@ -1,0 +1,83 @@
+<!doctype html>
+<html lang="pt-br">
+<head>
+    <title>Lição 09 Peça 02</title>
+    <meta charset="utf-8">
+    <script src="../wilib/js/lib/require.js"></script>
+    <script src="../wilib/js/app.js"></script>
+    <link rel="stylesheet" href="../wilib/css/font-awesome.css">
+    <link rel="stylesheet" href="../wilib/css/estilo.css">
+
+    <script>
+        require(['../wilib/js/lib/alternativa_botao'], function (edi) {
+
+            edi.setConfig({
+                icone: "exclamacao",
+                titulo: "Observe a imagem abaixo, leia a frase e<br>responda qual o significado da palavra em destaque.",
+                mascote: 'mascoteVarinha'
+            });
+
+            var btns = [];
+
+            btns.push({
+                texto: "desagradável",
+                dataCorreta: false
+            });
+
+            btns.push({
+                texto: "incômoda",
+                dataCorreta: false
+            });
+
+            btns.push({
+                texto: "confortável",
+                dataCorreta: true
+            });
+
+            btns.push({
+                texto: "repugnante",
+                dataCorreta: false
+            });
+
+            var config = {
+                colunas: 1,
+                randomico: true,
+                width: 380,
+                height: 35,
+                left: 280,
+                top: 85,
+                margin: '7px 7px 0 7px',
+                tamanhoTexto: 14,
+                btnBranco: true,
+                lineHeight: '1.4',
+                animacao: true
+            };
+
+            function callback(a) {
+                barraMsg(a?'Muito bem!<br> Aconchegante significa confortável, agradável e acolhedor. ':'Atenção!<br> A palavra em destaque é “aconchegante”, leia com<br> atenção a frase e perceba a que se refere esta palavra.', {height: 100})
+            }
+
+            edi.alternativa_botao(btns, callback, null, config);
+
+            $('#txt').peBalao({borda: '#ccc', tamanhoBorda: 10, scaleX: -1.1, scaleY: -1.1, top: 72, left: 80})
+        });
+    </script>
+</head>
+<style>
+    #txt {
+        position: absolute;
+        top: 80px;
+        left: 20px;
+        padding: 10px 20px;
+        border-radius: 10px;
+        border: 1px solid #ccc;
+        color: #666;
+        width: 180px;
+        text-align: center;
+    }
+</style>
+<body>
+<div id="txt">A sua casa é <span style="text-decoration: underline">aconchegante!</span></div>
+<img src="../img/licao09/p02.jpg" width="230" style="margin: 100px 25px"/>
+</body>
+</html>

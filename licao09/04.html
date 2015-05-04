@@ -1,0 +1,132 @@
+<!doctype html>
+<html lang="pt-br">
+<head>
+    <title>Lição 09 Peça 04</title>
+    <meta charset="utf-8">
+    <script src="../wilib/js/lib/require.js"></script>
+    <script src="../wilib/js/app.js"></script>
+    <link rel="stylesheet" href="../wilib/css/font-awesome.css">
+    <link rel="stylesheet" href="../wilib/css/estilo.css">
+
+    <script>
+        require(['../wilib/js/lib/arrasta'], function (edi) {
+
+            edi.setConfig({
+                mascote: 'mascote',
+                tempoFinal: 10,
+                titulo: 'Pinte as palavras que apresentam o mesmo significado de arrogante.'
+            });
+
+
+            edi.arrasta('arrasta', 'alvo', function (a, b, c) {
+
+                b.remove();
+                c.css({
+                    background: 'url(../wilib/img/fotos/tinta-verd.png) no-repeat',
+                    backgroundSize: '100% 100%',
+                    backgroundPositionX: '-360px',
+                    color: '#fff'
+                }).animate({
+                    backgroundPositionX: '0px'
+                }, 80);
+
+            }, function(a){
+                if(a) {
+                    barraMsg('Muito bem!<br> Por meio deste exercício você conheceu outras<br> palavras que transmitem o significado de “arrogante”.<br><br>' +
+                    'Veja o exemplo: Aquele individuo é <span style="text-decoration: underline">prepotente</span> pois usa e<br> abusa da sua autoridade sobrejugando os outros.', {height: 200, zIndex: 1000});
+                }
+            }, {
+                clone: true,
+                multAlvo: true,
+                target: false
+            });
+
+            $('#arrasta').load('../wilib/img/svg/pincel.svg', function () {
+                $('#arrasta').find('svg').attr({
+                    width: 90
+                });
+                $('#corPonta').attr({
+                    fill: '#9c0'
+                });
+            });
+
+
+        });
+    </script>
+
+    <style>
+        .box {
+            position: absolute;
+            left: 190px;
+            top: 110px;
+            width: 400px;
+            height: 255px;
+            border-radius: 5px;
+            border: 1px solid #eee;
+            box-shadow: 0 2px rgba(0, 0, 0, 0.2);
+            background: linear-gradient(#fff, #eee);
+        }
+
+        .arrastas {
+            position: absolute;
+            left: 160px;
+            top: -40px;
+            width: 100px;
+            height: 100px;
+            border-radius: 5px;
+            border: 1px solid #eee;
+            box-shadow: 0 2px rgba(0, 0, 0, 0.2);
+            background: linear-gradient(#fff, #eee);
+        }
+
+        .arrasta {
+            position: absolute;
+            left: 5px;
+            top: 15px;
+            width: 90px;
+            height: 70px;
+        }
+
+        .alvos {
+            position: absolute;
+            left: 40px;
+            top: 100px;
+            width: 365px;
+            display: table;
+            text-align: center;
+        }
+
+        .alvo {
+            position: relative;
+            display: inline-block;
+            width: 80px;
+            padding: 10px 20px 10px 10px;
+            text-align: center;
+            font-size: 13px;
+            color: #666;
+        }
+
+    </style>
+</head>
+<body>
+
+<div class="box">
+    <div class="arrastas">
+        <div id="arrasta" class="arrasta" data-correta="1"></div>
+    </div>
+
+    <div class="alvos">
+        <div class="alvo" data-correta="1">orgulhoso</div>
+        <div class="alvo" data-correta="1">prepotente</div>
+        <div class="alvo" data-correta="0">carinhoso</div>
+        <div class="alvo" data-correta="0">modesto</div>
+        <div class="alvo" data-correta="1">mal-educado</div>
+        <div class="alvo" data-correta="1">insolente</div>
+        <div class="alvo" data-correta="0">humilde</div>
+        <div class="alvo" data-correta="1">soberbo</div>
+        <div class="alvo" data-correta="0">acanhado</div>
+    </div>
+</div>
+
+</body>
+</html>

@@ -1,0 +1,58 @@
+<!doctype html>
+<html lang="pt-br">
+<head>
+    <title>Lição 09 Peça 07</title>
+    <meta charset="utf-8">
+    <script src="../wilib/js/lib/require.js"></script>
+    <script src="../wilib/js/app.js"></script>
+    <link rel="stylesheet" href="../wilib/css/font-awesome.css">
+    <link rel="stylesheet" href="../wilib/css/estilo.css">
+
+    <script>
+        require(['../wilib/js/lib/memoria'], function (edi) {
+
+            edi.setConfig({
+                icone: 'exclamacao',
+                titulo: 'Vamos jogar um jogo da memória diferente?<br> Relacione cada palavra ao seu significado.',
+                mascote:'mascote'
+            });
+
+            var carta = [];
+
+            carta.push({img: '',bg:'#00b070', texto: 'Agradar', cartaBranca:false, dataCorreta: 1});
+            carta.push({img: '',bg:'#00b070', texto: 'Satisfazer,<br> parecer', cartaBranca:false, dataCorreta: 1});
+
+            carta.push({img: '',bg:'#4f81bd', texto: 'Agradar', cartaBranca:false, dataCorreta: 2});
+            carta.push({img: '',bg:'#4f81bd', texto: 'Pegar,<br> prender', cartaBranca:false, dataCorreta: 2});
+
+            carta.push({img: '',bg:'#e36c3e', texto: 'Cordial', cartaBranca:false, dataCorreta: 3});
+            carta.push({img: '',bg:'#e36c3e', texto: 'Afetuoso,<br> amoroso', cartaBranca:false, dataCorreta: 3});
+
+            carta.push({img: '',bg:'#c0504d', texto: 'Maravilhoso', cartaBranca:false, dataCorreta: 4});
+            carta.push({img: '',bg:'#c0504d', texto: 'Deslumbrante', cartaBranca:false, dataCorreta: 4});
+
+            carta.push({img: '',bg:'#ffc000', texto: 'Obsessão', cartaBranca:false, dataCorreta: 5});
+            carta.push({img: '',bg:'#ffc000', texto: 'Perseguição,<br> ideia', cartaBranca:false, dataCorreta: 5});
+
+            carta.push({img: '',bg:'#ff0000', texto: 'Que brilha,<br> tem luz', cartaBranca:false, dataCorreta: 6});
+            carta.push({img: '',bg:'#ff0000', texto: 'Reluzente', cartaBranca:false, dataCorreta: 6});
+
+            carta.push({img: '',bg:'#000000', texto: 'Temerário ', cartaBranca:false, dataCorreta: 7});
+            carta.push({img: '',bg:'#000000', texto: 'Imprudente', cartaBranca:false, dataCorreta: 7});
+
+
+            edi.memoria(carta, function () {
+            }, function () {
+                barraMsg('Muito bem! <br>Você foi capaz de compreender<br> o significado de cada palavra.', {height: 100});
+            }, {width: 110});
+
+        });
+    </script>
+    <style>
+
+    </style>
+</head>
+<body>
+
+</body>
+</html>

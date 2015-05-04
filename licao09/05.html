@@ -1,0 +1,61 @@
+<!doctype html>
+<html lang="pt-br">
+	<head>
+        <title>Lição 09 Peça 05</title>
+        <meta charset="utf-8">
+        <script src="../wilib/js/lib/require.js"></script>
+        <script src="../wilib/js/app.js"></script>
+        <link rel="stylesheet" href="../wilib/css/font-awesome.css">
+        <link rel="stylesheet" href="../wilib/css/estilo.css">
+
+		<script>
+			require(['../wilib/js/lib/alternativa_vf'], function (edi) {
+				
+				edi.setConfig({
+                    icone: "interrogacaoAzul",
+                    mascote: 'mascote',
+					titulo: "Observe a imagem e marque V para as palavras que expressam<br> o significado desta imagem e F para as que não expressam."
+				});
+				
+				var alternativas  = [];
+				
+				alternativas.push({
+					texto: 'fidelidade',
+					dataCorreta: true
+				});
+				
+				alternativas.push({
+					texto: 'felicidade',
+					dataCorreta: true
+				});
+				
+				alternativas.push({
+					texto: 'cumplicidade',
+					dataCorreta: true
+				});
+
+				alternativas.push({
+					texto: 'imparcialidade',
+					dataCorreta: false
+				});
+				
+				edi.alternativa_vf(alternativas, function (a) {
+
+                }, function (a) {
+					barraMsg(a?'Muito bem!<br> A única palavra que não expressa o <br>verdadeiro sentido da imagem é imparcialidade.':
+							'Atenção!<br> Observe a feição, o gesto de um para<br> com o outro e, responda corretamente. ', {height: 150});
+                }, {
+                    left: 340,
+                    top: 50,
+                    margin: '0 0 15px 0'
+                });
+
+
+			});
+		</script>
+	</head>
+	
+	<body>
+		<img style="position: absolute" src="../img/licao09/p05.png" width="383"/>
+	</body>
+</html>

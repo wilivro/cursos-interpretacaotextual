@@ -1,0 +1,174 @@
+<!-- Desenvolvedor: Micael Souza -->
+<!doctype html>
+<html lang="pt-br">
+<head>
+    <title>arr_c008</title>
+    <meta charset="utf-8">
+    <script src="../wilib/js/lib/require.js"></script>
+    <script src="../wilib/js/app.js"></script>
+    <link rel="stylesheet" href="../wilib/css/font-awesome.css">
+    <link rel="stylesheet" href="../wilib/css/estilo.css">
+
+    <script>
+        require(['../wilib/js/lib/arrasta'], function (edi) {
+
+            edi.setConfig({
+                mascote: 'mascote',
+                titulo: 'Arraste as frases que apresentam a figura de linguagem prosopopeia <br> para dentro dos retângulos.'
+            });
+
+            var arrArrasta = [
+                {arrasta: 'Minha boca é túmulo.', dataCorreta: '0', dataId: '1'},
+                {arrasta: 'O carro dele é rápido como um avião.', dataCorreta: '0', dataId: '2'},
+                {arrasta: 'O céu está mostrando sua face mais bela.', dataCorreta: '1', dataId: '3'},
+                {arrasta: 'Suou muito para conseguir a casa própria.', dataCorreta: '0', dataId: '4'},
+                {arrasta: 'O cão mostrou grande sisudez.', dataCorreta: '1', dataId: '5'},
+                {arrasta: 'Ele chorou rios de lágrimas.', dataCorreta: '0', dataId: '6'}
+            ];
+
+            arrArrasta.sort(function () {
+                return 0.5 - Math.random()
+            });
+
+            for (var i = 0; i < arrArrasta.length; i++) {
+                $('<div>')
+                        .addClass('arrasta fundoArrasta azulAlpha')
+                        .attr({
+                            'data-id': arrArrasta[i].dataId,
+                            id: 'arrasta' + (i + 1),
+                            'data-correta': arrArrasta[i].dataCorreta,
+                        })
+                        .html(arrArrasta[i].arrasta)
+                        .appendTo('#arrasta');
+            }
+
+            var config = {
+                colorirFilho: true,
+                alvoFixo: false,
+                reloadCorreta: true,
+                gradiente: 'corGradiente-claro',
+                multAlvo: false,
+                target: true
+            };
+
+            edi.arrasta('arrasta', 'alvo', function (a, b, c) {
+                
+            }, function(a) {
+                if (a) {
+                    barraMsg('Muito bem! Você compreendeu o sentido da figura prosopopeia, as outras frases apresentam figuras como metáfora, comparação e hipérbole. ', {height: 80, zIndex:2002});
+                };
+            }, config);
+
+            $('.arrasta').css({
+                margin: -5,
+                padding: 0
+            })
+
+            $('<div>')
+                    .attr('id', 'mascote')
+                    .appendTo('#conteudo');
+        });
+    </script>
+    <style>
+
+        #boxArrasta {
+            position: relative;
+            border: solid 1px #A7B9C3;
+            background: rgba(140, 168, 184, 0.1);
+            display: table-cell;
+            vertical-align: middle;
+            width: 230px;
+            height: 280px;
+            cursor: default;
+            text-align: center;
+            padding: 20px 20px 20px 0px;
+        }
+
+        #boxBox{
+            position: absolute;
+            top: 68px;
+            left: 0px;
+        }
+
+
+        #arrasta {
+            position: relative;
+            display: table-cell;
+            width: 470px;
+            height: 60px;
+            top: 40px;
+        }
+
+        .arrasta {
+            padding: 5px;
+            margin-right: 5px;
+            margin-left: 5px;
+            display: inline-block;
+            color: #999;
+            font-size: 12px;
+            margin: 10px 50px;
+            top: -15px;
+            left: -40px;
+            width: auto;
+        }
+
+        .containerAlvo {
+            position: absolute;
+            left: 270px;
+            top: 180px;
+            width: 490px;
+
+        }
+
+        .alvo {
+            width: 470px;
+            height: 20px;
+            position: relative;
+            border: 1px solid #B8C3C4;
+            background: #fff;
+            margin:5px;
+            padding: 10px;
+            display: inline-block;
+        }
+
+        #txt {
+            position: absolute;
+            width: 200px;
+            padding: 10px;
+            left: 460px;
+            top: 110px;
+            color: #999;
+            font-style: italic;
+        }
+
+    </style>
+
+</head>
+<body>
+
+<section id="boxBox">
+    <div id="boxArrasta"></div>
+    
+</section>
+
+<div id="arrasta"></div>
+
+<div class="containerAlvo">
+
+    <div class="alvo" data-correta="1"></div>
+
+    <div class="alvo" data-correta="1"></div>
+
+</div>
+
+
+<div id="txt">
+    PROSOPOPEIA
+</div>
+
+
+</div>
+
+</div>
+</body>
+</html>

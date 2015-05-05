@@ -1,0 +1,88 @@
+<!-- Desenvolvedor: Danilo Thiago -->
+<!doctype html>
+<html lang="pt-br">
+	<head>
+        <title>Lição 01 Peça 52</title>
+		<meta charset="utf-8">
+		<script src="../wilib/js/lib/require.js"></script>
+		<script src="../wilib/js/app.js"></script>
+		<link rel="stylesheet" href="../wilib/css/font-awesome.css">
+		<link rel="stylesheet" href="../wilib/css/estilo.css">
+		
+		<script>
+			require(['../wilib/js/lib/revela_seta'], function (edi) {
+				
+				edi.setConfig({
+					mascote: 'mascote',
+					titulo: 'Saiba agora quais são os conectivos que expressam a ideia de resumo e conclusão. ',
+					enunciado: 'vertical'
+				});
+
+				var config = {
+					top: 5,
+					left: 10,
+					bloqueiaClickFinal: true,
+					tempoBloqueio: 5000,
+					width: 700,
+					height: 380,
+					alturaFrase: 'auto',//use auto caso não tenha borda
+					larguraFrase: 640,
+					paddingLeftTxt: -25,
+					textAlign: 'left',
+					borda: ''
+				}
+
+				function callback () {}
+
+				var frases = [];
+
+				frases.push('Em síntese');
+				frases.push('Enfim');
+				frases.push('Portanto');
+				frases.push('Logo');
+				frases.push('Em resumo');
+				frases.push('Em suma');
+				frases.push('Dessa forma');
+				frases.push('Assim');
+
+				edi.revela_seta(frases, callback, function (){ 
+					$('#msgAcerto').fadeIn();
+				}, config);
+
+			});
+		</script>
+		
+		<style>
+
+
+       #sublinhado {
+       	text-decoration: underline;
+       }
+
+       #msgAcerto {
+          width: 150px;
+          height: 80px;
+          position: absolute;
+          padding: 5px;
+          left: 250px;
+          top: 140px;
+          padding-bottom: 25px;
+          font-size: 14px;
+          text-align: center;
+          font-weight: bold;
+          line-height: 16px;        
+          color: #9c0;
+          display: none;
+        }
+
+		</style>
+	</head>
+	
+	<body>
+
+     <div id="msgAcerto" class="borda-pontilhado-verde arredondado">
+      <p>Muito bem! Você aprendeu mais uma ideia de conectivo. Prossiga em seus estudos.</p>
+    </div>
+
+	</body>
+</html>

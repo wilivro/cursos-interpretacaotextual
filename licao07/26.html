@@ -1,0 +1,180 @@
+<!doctype html>
+<html lang="pt-br">
+<head>
+    <title>Lição 01 Peça 15</title>
+    <meta charset="utf-8">
+    <script src="../wilib/js/lib/require.js"></script>
+    <script src="../wilib/js/app.js"></script>
+    <link rel="stylesheet" href="../wilib/css/font-awesome.css">
+    <link rel="stylesheet" href="../wilib/css/estilo.css">
+
+    <script>
+        require(['../wilib/js/lib/revela'], function (edi) {
+
+            edi.setConfig({
+                icone: "exclamacao",
+                titulo: "Clique nos botões e conheça alguns exemplos de frases <br> com conectivos de comparação e conformidade."
+            });
+
+            var condicao = true;
+
+            edi.revela('btn', 'box-revela', null, function(){
+                if(condicao){
+                     barraMsg('Excelente! Observe que em todos os exemplos o conectivo em destaque passa a ideia de conformidade ou comparação.', {height: 80});
+                    condicao = false;
+                }
+
+            }, {
+                ocultarRev: true,
+                bloqueiaClickFinal: false,
+               // tempoBloqueio: 5000
+            });//iniciando o EDI
+
+            $('#rev-1').peBalao({
+                top: 20,
+                left: -40,
+                scaleX: -1,
+                scaleY: 1,
+                background: '#FFF',
+                borda: '#ccc',
+                tamanhoBorda: 20,
+                rotate: -90
+            });
+
+            $('#rev-2').peBalao({
+                top: 40,
+                left: -40,
+                scaleX: -1,
+                scaleY: 1,
+                background: '#FFF',
+                borda: '#ccc',
+                tamanhoBorda: 20,
+                rotate: -90
+            });
+
+            $('#rev-3').peBalao({
+                top: 70,
+                left: -40,
+                scaleX: -1,
+                scaleY: 1,
+                background: '#FFF',
+                borda: '#ccc',
+                tamanhoBorda: 20,
+                rotate: -90
+            });
+
+            $('#rev-4').peBalao({
+                top: 150,
+                left: -40,
+                scaleX: 1,
+                scaleY: 1,
+                background: '#FFF',
+                borda: '#ccc',
+                tamanhoBorda: 20,
+                rotate: -90
+            });
+        });
+    </script>
+
+    <style>
+        .botoes {
+            width: 350px;
+            height: 45px;
+            margin-top: 15px;
+            display: block;
+            background-color: #8A9EA9;
+        }
+
+        .btn-revela {
+            width: 350px;
+            height: 50px;
+            border: 7px solid #fff;
+            border-radius: 15px;
+            margin-left: 20px;
+            cursor: pointer;
+            float: left;
+            box-shadow: 0 0 5px rgba(0, 0, 0, 0.3);
+        }
+
+        .box-revela {
+            position: absolute;
+            width: 200px;
+            height: 150px;
+            left: 400px;
+            padding: 10px;
+            top: 80px;
+            border: 5px solid #fff;
+            box-shadow: 0px 1px 13px 0px rgba(0, 0, 0, 0.8);
+            border-radius: 10px;
+            /*font-size: 13px;*/
+        }
+
+        .texto{
+            position: relative;
+            width: 200px;
+            height: 150px;
+            display: table-cell;
+            vertical-align: middle;
+            text-align: center;
+        }
+
+        .titulo{
+            position: relative;
+            width: 350px;
+            height: 45px;
+            display: table-cell;
+            vertical-align: middle;
+        }
+
+        #sublinhado {
+            text-decoration: underline;
+        }
+
+    </style>
+</head>
+
+<body>
+<div class="box-revela" id="rev-1" data-revela="0">
+    <div class="texto">
+       Ex: Escrever este texto é mais fácil <span id="sublinhado">do que</span> eu pensava.
+    </div>
+</div>
+
+<div class="box-revela" id="rev-2" data-revela="1" style="top: 130px;">
+    <div class="texto">
+        Ex: <span id="sublinhado">Conforme</span> declarei, o texto não está escrito na íntegra.
+    </div>
+</div>
+
+<div class="box-revela" id="rev-3" data-revela="2" style="top: 180px; width:270px">
+    <div class="texto" style="width:270px">
+        Ex: Gosto de sapato <span id="sublinhado">assim <br> como</span> de bolsa.
+
+    </div>
+</div>
+
+<div class="box-revela" id="rev-4" data-revela="3" style="top: 190px; width:270px">
+    <div class="texto" style="width:270px">
+       Ex: Caros amigos, <span id="sublinhado">segundo</span> <br> o comunicado não haverá <br> jogo amanhã.
+
+    </div>
+</div>
+
+<section class="botoes btn" data-revela="0">
+    <div class="titulo">Do que</div>
+</section>
+
+<section class="botoes btn" data-revela="1">
+    <div class="titulo">Conforme</div>
+</section>
+
+<section class="botoes btn" data-revela="2">
+    <div class="titulo">Assim como</div>
+</section>
+
+<section class="botoes btn" data-revela="3">
+    <div class="titulo">Segundo</div>
+</section>
+
+</body>
+</html>

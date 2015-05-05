@@ -1,0 +1,216 @@
+<!-- Desenvolvedor: Micael Souza -->
+<!doctype html>
+<html lang="pt-br">
+<head>
+    <title>arr_c008</title>
+    <meta charset="utf-8">
+    <script src="../wilib/js/lib/require.js"></script>
+    <script src="../wilib/js/app.js"></script>
+    <link rel="stylesheet" href="../wilib/css/font-awesome.css">
+    <link rel="stylesheet" href="../wilib/css/estilo.css">
+
+    <script>
+        require(['../wilib/js/lib/arrasta'], function (edi) {
+
+            edi.setConfig({
+                mascote: 'mascote',
+                titulo: 'Agora que você já conhece dois tipos de conectivos, arraste cada um <br> para o sentido que ele passa.'
+            });
+
+            var arrArrasta = [
+                {arrasta: 'e', dataCorreta: '1', dataId: '1'},
+                {arrasta: 'de fato', dataCorreta: '2', dataId: '2'},
+                {arrasta: 'por isso', dataCorreta: '2', dataId: '3'},
+                {arrasta: 'de tal forma que', dataCorreta: '2', dataId: '4'},
+                {arrasta: 'nem', dataCorreta: '1', dataId: '5'},
+                {arrasta: 'já que', dataCorreta: '2', dataId: '6'},
+                {arrasta: 'também', dataCorreta: '1', dataId: '7'},
+                {arrasta: 'bem como', dataCorreta: '1', dataId: '8'},
+                 {arrasta:'além disso', dataCorreta: '1', dataId: '9'},
+                {arrasta: 'ainda mais', dataCorreta: '1', dataId: '10'},
+                {arrasta: 'então', dataCorreta: '2', dataId: '11'},
+                {arrasta: 'uma vez que', dataCorreta: '2', dataId: '12'}
+
+            ];
+
+            arrArrasta.sort(function () {
+                return 0.5 - Math.random()
+            });
+
+            for (var i = 0; i < arrArrasta.length; i++) {
+                $('<div>')
+                        .addClass('arrasta fundoArrasta azulAlpha')
+                        .attr({
+                            'data-id': arrArrasta[i].dataId,
+                            id: 'arrasta' + (i + 1),
+                            'data-correta': arrArrasta[i].dataCorreta,
+                        })
+                        .html(arrArrasta[i].arrasta)
+                        .appendTo('#arrasta');
+            }
+
+            var config = {
+                colorirFilho: true,
+                arrastaAbsolute: true,
+                alvoFixo: true,
+                multAlvo: true
+            };
+
+            edi.arrasta('arrasta', 'alvos-container', function (a, b, c) {
+                if (a) {
+                    $(b).parent().css({
+                        height: 'auto'
+                    });
+                }
+            }, function(a) {
+                if (a) {
+                    $('#msgAcerto').fadeIn();
+                } else{
+                    $('#msgErrado').fadeIn();
+                };
+            }, config);
+
+            $('.arrasta').css({
+                margin: -5,
+                padding: 5
+            })
+
+            $('<div>')
+                    .attr('id', 'mascote')
+                    .appendTo('#conteudo');
+        });
+    </script>
+    <style>
+
+        .imagem {
+            background: url(../img/licao07/p20.png) no-repeat;
+            background-size: 100% 100%;
+            width: 235px;
+            height: 185px;
+            position: absolute;
+            left: 15px;
+            top: 168px;
+            cursor: pointer;
+            border-radius: 10px;
+            border: 7px solid #fff;
+            box-shadow: 0 0 5px rgba(0, 0, 0, 0.5);
+        }
+
+        #boxArrasta {
+            width: 760px;
+            height: 70px;
+            cursor: default;
+            top: 10px;
+            left: -5px;
+        }
+
+        #arrasta {
+            position: relative;
+            display: table-cell;
+            width: 760px;
+            height: 10px;
+            top: 10px;
+        }
+
+        .arrasta {
+            padding: 5px;
+            display: inline-block;
+            color: #FFF;
+            width: auto;
+            margin: 0 25px;
+            text-align: center;
+            font-size: 12px;
+        }
+
+        .containerAlvo {
+            position: absolute;
+            left: 280px;
+            top: 160px;
+            width: 490px;
+
+        }
+
+        #alvos {
+            width: 200px;
+            height: 180px;
+            position: relative;
+            border: 5px solid #fff;
+            box-shadow: 0 0 5px rgba(0, 0, 0, 0.3), inset 0 0 5px rgba(0, 0, 0, 0.3);
+            background: #fff;
+            border-radius: 5px;
+            margin:5px;
+            padding: 10px;
+            display: inline-block;
+        }
+
+        .alvos-inner {
+            width: 100%;
+            text-align: center;
+            margin-top: 5px;
+            font-size: 14px;
+            font-style: italic;
+        }
+
+        .alvos-container {
+            position: absolute;
+            width: 90%;
+            height: 150px;
+            top: 35px;
+        }
+
+        #msgAcerto {
+            width: 350px;
+            height: 85px;
+            position: absolute;
+            left: 200px;
+            top: 75px;
+            padding: 10px;
+            padding-bottom: 30px;
+            font-size: 16px;
+            text-align: center;
+            font-weight: bold;
+            line-height: 16px;              
+            color: #fff;
+            display: none;
+        }
+
+    </style>
+
+</head>
+<body>
+
+<div class="imagem"></div>
+
+<div id="boxArrasta" class="btn btn-default-hover">
+    <div id="arrasta"></div>
+</div>
+
+<div class="containerAlvo">
+
+    <div id="alvos">
+        <div class="alvos-inner">
+            Adição e continuação.
+            <div class="alvos-container" data-correta="1"></div>
+        </div>
+     </div>
+
+    <div id="alvos">
+        <div class="alvos-inner">
+            Causa e consequência.
+            <div class="alvos-container" data-correta="2"></div>
+        </div>
+     </div>
+
+</div>
+
+
+<div id="msgAcerto" class="arredondado">
+    <p>Ótimo! Você compreendeu o sentido que cada conectivo passa. Prossiga em seus estudos.</p>
+</div>
+
+
+</div>
+
+</div>
+</body>
+</html>

@@ -1,0 +1,225 @@
+<!-- Desenvolvedor: Micael Souza -->
+<!doctype html>
+<html lang="pt-br">
+<head>
+    <title>arr_c008</title>
+    <meta charset="utf-8">
+    <script src="../wilib/js/lib/require.js"></script>
+    <script src="../wilib/js/app.js"></script>
+    <link rel="stylesheet" href="../wilib/css/font-awesome.css">
+    <link rel="stylesheet" href="../wilib/css/estilo.css">
+
+    <script>
+        require(['../wilib/js/lib/arrasta'], function (edi) {
+
+            edi.setConfig({
+                mascote: 'mascote',
+                titulo: 'Arraste as frases para o sentido que o conectivo expressa.'
+            });
+
+            var arrArrasta = [
+                {arrasta: 'Tenho uma casa e um carro, assim como você.', dataCorreta: '3', dataId: '3'},
+                {arrasta: 'Se você me der um beijo eu não conto seus <br> segredos.', dataCorreta: '2', dataId: '2'},
+                {arrasta: 'Tenho um carro, porém não tenho garagem.', dataCorreta: '4', dataId: '4'},
+                {arrasta: 'Sem dúvida, amanhã lhe entrego o trabalho.', dataCorreta: '1', dataId: '1'}
+            ];
+
+            arrArrasta.sort(function () {
+                return 0.5 - Math.random()
+            });
+
+            for (var i = 0; i < arrArrasta.length; i++) {
+                $('<div>')
+                        .addClass('arrasta fundoArrasta azulAlpha')
+                        .attr({
+                            'data-id': arrArrasta[i].dataId,
+                            id: 'arrasta' + (i + 1),
+                            'data-correta': arrArrasta[i].dataCorreta,
+                        })
+                        .html(arrArrasta[i].arrasta)
+                        .appendTo('#arrasta');
+            }
+
+            var config = {
+                colorirFilho: true,
+                arrastaAbsolute: true,
+                alvoFixo: false,
+                multAlvo: true
+            };
+
+            edi.arrasta('arrasta', 'alvos-container', function (a, b, c) {
+                if (a) {
+                    $(b).parent().css({
+                        height: 'auto'
+                    });
+                }
+            }, function(a) {
+                if (a) {
+                    $('#msgAcerto').fadeIn();
+                } else{
+                    $('#msgErrado').fadeIn();
+                };
+            }, config);
+
+            $('.arrasta').css({
+                margin: -5,
+                padding: 5
+            })
+
+            $('<div>')
+                    .attr('id', 'mascote')
+                    .appendTo('#conteudo');
+        });
+    </script>
+    <style>
+        #boxArrasta {
+            width: 230px;
+            height: 270px;
+            cursor: default;
+            top: 20px;
+            left: 0px;
+        }
+
+        #arrasta {
+            position: relative;
+            display: table-cell;
+            width: 470px;
+            height: 60px;
+            top: 40px;
+        }
+
+        .arrasta {
+            padding: 5px;
+            margin-right: 5px;
+            margin-left: 5px;
+            display: inline-block;
+            color: #FFF;
+            width: 200px;
+        }
+
+        .containerAlvo {
+            position: absolute;
+            left: 270px;
+            top: 90px;
+            width: 490px;
+
+        }
+
+        #alvos {
+            width: 200px;
+            height: 100px;
+            position: relative;
+            border: 5px solid #fff;
+            box-shadow: 0 0 5px rgba(0, 0, 0, 0.3), inset 0 0 5px rgba(0, 0, 0, 0.3);
+            background: #fff;
+            border-radius: 5px;
+            margin:5px;
+            padding: 10px;
+            display: inline-block;
+        }
+
+        .alvos-inner {
+            width: 100%;
+            text-align: center;
+            margin-top: 5px;
+            font-size: 14px;
+            font-style: italic;
+        }
+
+        .alvos-container {
+            position: absolute;
+            width: 90%;
+            height: 60px;
+            top: 45px;
+        }
+
+        #msgAcerto {
+            width: 190px;
+            height: 85px;
+            position: absolute;
+            left: 22px;
+            top: 175px;
+            padding: 10px;
+            padding-bottom: 30px;
+            font-size: 16px;
+            text-align: center;
+            font-weight: bold;
+            line-height: 16px;              
+            color: #fff;
+            display: none;
+        }
+
+        #msgErrado {
+            width: 190px;
+            height: 85px;
+            position: absolute;
+            left: 22px;
+            top: 175px;
+            padding: 10px;
+            padding-bottom: 30px;
+            font-size: 16px;
+            text-align: center;
+            font-weight: bold;
+            line-height: 16px;              
+            color: #fff;
+            display: none;
+        }
+
+
+    </style>
+
+</head>
+<body>
+<div id="boxArrasta" class="btn btn-default-hover">
+    <div id="arrasta"></div>
+</div>
+
+<div class="containerAlvo">
+
+    <div id="alvos">
+        <div class="alvos-inner">
+            Certeza e ênfase
+            <div class="alvos-container" data-correta="1"></div>
+        </div>
+     </div>
+
+    <div id="alvos">
+        <div class="alvos-inner">
+            Condição e hipótese
+            <div class="alvos-container" data-correta="2"></div>
+        </div>
+     </div>
+
+    <div id="alvos">
+        <div class="alvos-inner">
+             Comparação e conformidade
+            <div class="alvos-container" data-correta="3"></div>
+        </div>
+     </div>
+
+    <div id="alvos">
+        <div class="alvos-inner">
+            Oposição, contraste e restrição
+            <div class="alvos-container" data-correta="4"></div>
+        </div>
+     </div>
+
+</div>
+
+
+     <div id="msgAcerto" class="arredondado">
+        <p>Excelente! Você compreendeu todos os conectivos estudados <br> até aqui.</p>
+    </div>
+
+
+     <div id="msgErrado" class="arredondado">
+        <p>Atenção! Lembre-se que os conectivos expressam ideia. Reflita e tente novamente.</p>
+    </div>
+
+
+
+</div>
+
+</div>
+</body>
+</html>

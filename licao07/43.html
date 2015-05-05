@@ -1,0 +1,102 @@
+<!-- Desenvolvedor: Micael Souza -->
+<!doctype html>
+<html lang="pt-br">
+	<head>
+		<title>01</title>
+		<meta charset="utf-8">
+		<script src="../wilib/js/lib/require.js"></script>
+		<script src="../wilib/js/app.js"></script>
+        <link rel="stylesheet" href="../wilib/css/font-awesome.css">
+        <link rel="stylesheet" href="../wilib/css/estilo.css">
+		
+		<!-- main -->
+		<script>
+			require(['../wilib/js/lib/alternativa_botao'], function (edi) {
+				
+				edi.setConfig({// configurando o EDI
+                    icone: "exclamacao",
+					titulo: "Observe a questão a seguir e responda corretamente clicando sobre a alternativa correta. (FUMARC – 2011 – PRODEMGE – Analista de Tecnologia da Informação).",
+				});
+				
+				var btns = [];
+				
+				btns.push({
+					texto: "adversidade – causa – tempo.",
+					dataCorreta: false
+				});
+				
+				btns.push({
+					texto: "consequência – tempo – adversidade.",
+					dataCorreta: false
+				});
+				
+				btns.push({
+					texto: "tempo – adversidade – adição.",
+					dataCorreta: true
+				});
+				
+				btns.push({
+					texto: "adição – adversidade – tempo.",
+					dataCorreta: false
+				});
+				
+				var config = {
+					colunas: 1,
+					width: 330,
+					height: 35,
+					left: 340,
+					top: 70,
+					margin: '12px 12px 0 12px',
+					tamanhoTexto: 14,
+					btnBranco: true,
+					lineHeight: '1.4',
+					animacao: true
+				}
+				
+				function callback (a) {
+					
+				}
+				
+				edi.alternativa_botao(btns, callback, function (a) {
+                    if (a) {
+                        barraMsg('Parabéns! Você já é capaz de resolver uma questão de concurso. Isso prova que você compreendeu os conteúdos ensinados até aqui.', {height: 80, zIndex:2002});
+                    } else{
+                        barraMsg('Atenção! Você já estudos vários conectivos. Volte ao texto, leia com atenção e reflita qual a ideia que estes conectivos expressam.', {height: 80, zIndex:2002});
+                    };
+                }, config);//iniciando o EDI
+			});
+		</script>
+
+        <style>
+
+            #balao {
+                border: 1px solid #ccc;
+                background: #fff;
+                width: 260px;
+                height: 160px;
+                position: absolute;
+                left: 20px;
+                top: 140px;
+                font-size: 14px;
+                text-align: center;
+                line-height: 1.4;
+                border-radius: 10px;
+                color: #999;
+                padding:10px;
+            }
+
+            #sublinhado {
+                text-decoration: underline;
+            }
+
+        </style>
+	</head>
+	
+	<body>
+
+    <div id="balao">            
+        <p>No trecho “<span id="sublinhado">Ao tempo de</span> Pilatos e de James Joyce, a linguagem virtual estava longe”. <span id="sublinhado">Mas</span>, <span id="sublinhado">além da</span> realidade física, da palavra impressa, ela servia de símbolo da identidade e da perenidade da comunicação. Os termos grifados acima têm, respectivamente, a equivalência de:</p>
+    </div>
+
+	</body>
+</html>

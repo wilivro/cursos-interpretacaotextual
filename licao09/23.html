@@ -1,0 +1,295 @@
+<!doctype html>
+<html lang="pt-br">
+<head>
+    <title>Lição 09 Peça 23</title>
+    <meta charset="utf-8">
+    <script src="../wilib/js/lib/require.js"></script>
+    <script src="../wilib/js/app.js"></script>
+    <link rel="stylesheet" href="../wilib/css/font-awesome.css">
+    <link rel="stylesheet" href="../wilib/css/estilo.css">
+
+    <script>
+        require(['../wilib/js/lib/revela'], function (edi) {
+
+            edi.setConfig({
+                icone: "exclamacao",
+                titulo: "Clique nos botões para revelar as palavras e responda corretamente. Na frase: “Toda saudade é a presença  da  ausência de alguém, de algum lugar, de algo enfim”(Gilberto Gil) o termo em destaque transmite sentido de ausência:"
+            });
+            edi.root.objetivos.push(0)
+            console.log(edi.root.objetivos)
+            var palavra = 'INDIFERENTE||||||||||||SENTIDA';
+
+            var arrPalavra = palavra.split('');
+
+            var ct = '#ctBtns';
+
+            for (var i = 0; i < arrPalavra.length; i++) {
+                if (arrPalavra[i] == '|') {
+                    $('<div>')
+                            .css({
+                                width: 500,
+                                height: 30,
+                                marginTop: 10,
+                                display: 'inline-block'
+                            })
+                            .attr('id', 'ct' + i)
+                            .appendTo(ct)
+                    ct = '#ct' + i;
+                }
+
+                if (arrPalavra[i] != '|') {
+                    var ctDiv = $('<div>')
+                            .css({
+                                display: 'inline-block'
+                            })
+                            .appendTo(ct)
+
+                    var btn = $('<div>')
+                            .attr('data-revela', i)
+                            .addClass((arrPalavra[i] != ' ') ? 'btns botao btn btn-default' : 'btnH')
+                            .appendTo(ctDiv);
+
+                    var ctP = $('<div>')
+                            .appendTo(btn);
+
+                    $('<p>')
+                            .css({
+                                display: 'none',
+                                fontWeight: 'bold',
+                                margin: 0
+                            })
+                            .attr('data-revela', i)
+                            .addClass('revela')
+                            .html(arrPalavra[i])
+                            .appendTo(ctP)
+                }
+
+            }
+
+            function seta(top, left, rotate, tamanho) {
+
+                var balao = $('<div>')
+                        .addClass('seta')
+                        .css({
+                            position: 'absolute',
+                            top: top,
+                            left: left
+                        })
+                        .appendTo('#conteudo');
+
+                var dv_seta = $('<div>')
+                        .addClass('clique')
+                        .css({
+                            position: 'absolute',
+                            top: 0,
+                            width: 40,
+                            height: '25px',
+                            cursor: 'pointer'
+                        })
+                        .appendTo(balao);
+
+
+                var dv_trianguloSombra = $('<div>')
+                        .addClass('trianguloSombra')
+                        .css({
+                            'float': 'right',
+                            'margin-left': '-21px',
+                            'margin-top': '-2px',
+                            'border-color': 'transparent transparent transparent #ccc',
+                            'border-width': '13px',
+                            'border-style': 'solid'
+                        })
+                        .appendTo(dv_seta);
+
+                var triangulo = $('<div>')
+                        .addClass('triangulo')
+                        .css({
+                            'float': 'right',
+                            'margin-left': '-21px',
+                            'margin-top': '1px',
+                            'border-color': ' transparent transparent transparent #FF9933',
+                            'border-width': '10px',
+                            'border-style': 'solid'
+                        })
+                        .appendTo(dv_seta);
+
+                var dv_retangulo = $('<div>')
+                        .addClass('retangulo')
+                        .css({
+                            'float': 'left',
+                            'border-top': '1px solid #ccc',
+                            'border-bottom': '1px solid #ccc',
+                            'border-left': '1px solid #ccc',
+                            'background-color': '#FF9933',
+                            'width': '14px',
+                            'margin-top': '6px',
+                            'height': '8px'
+                        })
+                        .appendTo(dv_seta);
+
+                balao.css({rotate: (!!rotate ? rotate : '')});
+
+                dv_seta.transition({
+                    width: (90 + (!!tamanho ? tamanho : 0))
+                }, 500);
+
+                dv_retangulo.transition({
+                    width: (64 + (!!tamanho ? tamanho : 0)),
+                    backgroundColor: '#9c0'
+                }, 500);
+
+                triangulo.transition({
+                    'border-color': ' transparent transparent transparent #9c0'
+                }, 500);
+
+            }
+
+
+            edi.revela('botao', 'revela', function (a) {
+                a.removeClass('btn-default').addClass('btn-hover');
+            }, function () {
+                $('#x').animate({
+                    fontSize: 150
+                }, function () {
+                    $('#x').animate({
+                        fontSize: 100
+                    }, function () {
+
+                        function clique (condicao) {
+                            $('.botao').off();
+                            barraMsg(condicao?'Muito bem!<br> A ausência sentida substitui o termo “presença da<br> ausência” sem modificar o sentido no contexto.'
+                                    :'Atenção!<br> Observe o trecho: “presença da ausência”, se a ausência <br>se faz presente é porque ela é... ( tente novamente).', {height: 150, wait: 0});
+                            edi.root.objetivos.pop();
+                            edi.root.objetivos.push(condicao?1:2);
+                            edi.root.finalizar();
+                        }
+
+                        $('<div>')
+                                .attr({
+                                    id: 'btn1'
+                                })
+                                .addClass('botao')
+                                .css({
+                                    position: 'absolute',
+                                    top: 120,
+                                    left: 109,
+                                    width: 564,
+                                    height: 42,
+                                    cursor: 'pointer'
+//                                    background: 'rgba(0,0,0,0.5)'
+                                })
+                                .click(function(){
+                                   clique(false);
+                                })
+                                .mouseover(function(){
+                                    seta(151, 763, -180);
+                                    seta(129, 19, 0);
+                                })
+                                .mouseleave(function () {
+                                    $('.seta').remove();
+                                })
+                                .appendTo('#conteudo');
+
+                        $('<div>')
+                                .attr({
+                                    id: 'btn2',
+                                })
+                                .addClass('botao')
+                                .css({
+                                    position: 'absolute',
+                                    top: 285,
+                                    left: 213,
+                                    width: 356,
+                                    height: 42,
+                                    cursor: 'pointer'
+//                                    background: 'rgba(0,0,0,0.5)'
+                                })
+                                .click(function(){
+                                    clique(true);
+                                })
+                                .mouseover(function(){
+                                    seta(293, 125, 0);
+                                    seta(315, 656, -180);
+                                })
+                                .mouseleave(function () {
+                                    $('.seta').remove();
+                                })
+                                .appendTo('#conteudo');
+                    });
+                })
+            }, {tempoBloqueio: 0});
+
+
+
+
+
+
+        });
+    </script>
+
+    <style>
+        #ctBtns {
+            position: absolute;
+            text-align: center;
+        }
+
+        #ctBtns:first-child {
+            position: relative;
+            width: 770px;
+            height: 315px;
+            display: table-cell;
+            vertical-align: middle;
+            text-align: center;
+        }
+
+        .btnH {
+            width: 30px;
+            height: 30px;
+        }
+
+        .btns div {
+            position: relative;
+            display: table-cell;
+            vertical-align: middle;
+            width: 30px;
+            height: 30px;
+        }
+
+        #ctX {
+            position: absolute;
+            top: 145px;
+            font-size: 100px;
+            color: #F00;
+            left: 318px;
+            width: 150px;
+            height: 150px;
+        }
+
+        #middleX {
+            position: relative;
+            vertical-align: middle;
+            text-align: center;
+            display: table-cell;
+            width: 150px;
+            height: 150px;
+        }
+
+        #x {
+            display: block;
+            font-size: 0;
+        }
+
+
+    </style>
+</head>
+
+<body>
+<div id="ctBtns"></div>
+<div id="ctX">
+    <div id="middleX">
+        <i id="x" class="fa fa-times"></i>
+    </div>
+</div>
+
+</body>
+</html>

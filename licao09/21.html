@@ -1,0 +1,129 @@
+<!doctype html>
+<html lang="pt-br">
+	<head>
+        <title>Lição 09 Peça 15</title>
+		<meta charset="utf-8">
+		<script src="../wilib/js/lib/require.js"></script>
+		<script src="../wilib/js/app.js"></script>
+        <link rel="stylesheet" href="../wilib/css/font-awesome.css">
+        <link rel="stylesheet" href="../wilib/css/estilo.css">
+
+		<script>
+			require(['../wilib/js/lib/revela','../wilib/js/lib/alternativa_botao'], function (edi, edi2) {
+
+				edi2.setConfig({
+                    icone: "exclamacao",
+                    mascote: 'mascote',
+					titulo: "Leia o texto, clique na imagem e resolva o exercício.",
+                    tempoFinal: 10
+				});
+
+                var btns = [];
+
+                btns.push({
+                    texto: "Em princípio pelo<br> mercado de trabalho",
+                    dataCorreta: false
+                });
+
+                btns.push({
+                    texto: "Iniciando pelo<br> mercado de trabalho",
+                    dataCorreta: true
+                });
+
+                var config = {
+                    animacao: true,
+                    top: 160,
+                    width: 340,
+                    btnBranco: true,
+                    colunas: 1,
+                    margin: 1,
+                    height: 30,
+                    randomico: true,
+                    left: 285
+
+                };
+
+                function callback (a) {
+
+                }
+                edi2.alternativa_botao(btns, callback, function (a) {
+                   barraMsg(a?'Muito bem!<br> “A começar” passa o sentido de que muitos assuntos<br> serão discutidos, porém o primeiro será o mercado de <br> trabalho.Nesse caso o termo “iniciando” tem o mesmo <br> significado do que está em destaque.<br> Parabéns!'
+                           :'Errado!<br> Leia com atenção e procure compreender o sentido do texto.<br> Tente novamente.', {height: 200})
+                }, config);
+
+                $('[data-edi = "alternativa_botao"]').addClass('box-revela');
+
+				edi.revela('btn-revela', 'box-revela', function () {
+
+                }, function (btn) {
+
+				}, {ocultarBtn: true});
+
+
+			});
+		</script>
+
+		<style>
+
+            #img{
+                position: absolute;
+                top: 90px;
+                left: 280px;
+                text-align: center;
+                border-radius: 10px;
+                border: solid 1px #E2E2E2;
+                color: #807E7E;
+                padding: 10px;
+                font-size: 16px;
+            }
+
+            .img {
+                margin-bottom: 10px;
+                margin-left: 20px;
+            }
+
+            #txt {
+                position: absolute;
+                top: 85px;
+                left: 5px;
+                font-size: 14px;
+                height: 260px;
+                width: 250px;
+                color: #666;
+                padding: 10px;
+                border-radius: 10px;
+            }
+
+            #frase {
+                position: absolute;
+                width: 215px;
+                top: 250px;
+                left: 290px;
+                font-size: 16px;
+                color: #666;
+            }
+
+            .bold {
+                font-size: 11px;
+                float: right;
+                color: #000;
+            }
+
+		</style>
+	</head>
+	<body>
+    <div id="txt" class="box-revela">
+        <img class="img" src="../img/licao09/p21.jpg" width="200"/><br>
+        “A começar pelo mercado de trabalho.” Das alterações feitas na passagem acima, aquela que não altera o sentido da frase é:
+    </div>
+
+
+    <div class="btn-revela">
+    <img id="img" src="../img/licao09/p21.jpg" width="200"/>
+
+    <div id="frase">
+        “A começar pelo mercado de trabalho. Estima-se que um emprego em  uma  fábrica  de  carros  gera, indiretamente, 46 outros empregos”.<br>   <span class="bold">(Quatro Rodas, março/99)</span>
+    </div>
+    </div>
+	</body>
+</html>

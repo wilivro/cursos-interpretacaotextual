@@ -1,0 +1,116 @@
+<!doctype html>
+<html lang="pt-br">
+	<head>
+        <title>Lição 09 Peça 19</title>
+		<meta charset="utf-8">
+		<script src="../wilib/js/lib/require.js"></script>
+		<script src="../wilib/js/app.js"></script>
+        <link rel="stylesheet" href="../wilib/css/font-awesome.css">
+        <link rel="stylesheet" href="../wilib/css/estilo.css">
+
+		<script>
+			require(['../wilib/js/lib/revela','../wilib/js/lib/alternativa_botao'], function (edi, edi2) {
+
+				edi2.setConfig({
+                    icone: "exclamacao",
+                    mascote: 'mascote',
+					titulo: "Clique na imagem, leia a pergunta e selecione a alternativa correta.",
+                    tempoFinal: 10
+				});
+
+                var btns = [];
+
+                btns.push({
+                    texto: "treinador atento",
+                    dataCorreta: false
+                });
+
+                btns.push({
+                    texto: "adestrador frio",
+                    dataCorreta: false
+                });
+
+                btns.push({
+                    texto: "treinador qualificado",
+                    dataCorreta: false
+                });
+
+                btns.push({
+                    texto: "adestrador consciente",
+                    dataCorreta: true
+                });
+
+                var config = {
+                    colunas: 1,
+                    width: 250,
+                    height: 35,
+                    left: 400,
+                    top: 80,
+                    margin: '7px 7px 0 100px',
+                    tamanhoTexto: 14,
+                    btnBranco: true,
+                    lineHeight: '1.4',
+                    animacao: true
+                };
+
+                function callback (a) {}
+
+                edi2.alternativa_botao(btns, callback, function(a){
+                    barraMsg(a?'Correto!<br> Um adestrador consciente, que respeita os animais.'
+                            :'Atenção!<br> Atento e qualificado não são os requisitos para se ter <br>respeito pelos animais, mais do que isto, é preciso ser <br>consciente pelas suas ações!', {height: 100});
+                }, config);
+
+                $('[data-edi = "alternativa_botao"]').addClass('box-revela');
+
+				edi.revela('btn-revela', 'box-revela', function () {
+                    $('.quest').transition({
+                        transform: 'scale(1)',
+                        top: 205,
+                        left: 272
+                    }, 1000);
+				}, function () {
+
+				}, {});
+
+
+			});
+		</script>
+
+		<style>
+
+            #img{
+                position: absolute;
+                top: 130px;
+                left: 15px;
+            }
+            .quest{
+                -webkit-transform: scale(0);
+                -moz-transform: scale(0);
+                -ms-transform: scale(0);
+                transform: scale(0);
+                text-align: center;
+                border-radius: 10px;
+                border: solid 1px #E2E2E2;
+                position: absolute;
+                top: 100px;
+                left: 250px;
+                height: auto;
+                color: rgb(128, 126, 126);
+                padding: 10px;
+                font-size: 16px;
+                width: 200px;
+            }
+
+		</style>
+	</head>
+
+	<body>
+
+
+		<div class="quest" >
+            O autor do texto é um:
+
+        </div>
+        <img  class="btn-revela" id="img" src="../img/licao09/p18.jpg" width="250"/>
+	</body>
+</html>

@@ -1,0 +1,115 @@
+<!doctype html>
+<html lang="pt-br">
+<head>
+    <title>Lição 09 Peça 17</title>
+    <meta charset="utf-8">
+    <script src="../wilib/js/lib/require.js"></script>
+    <script src="../wilib/js/app.js"></script>
+    <link rel="stylesheet" href="../wilib/css/font-awesome.css">
+    <link rel="stylesheet" href="../wilib/css/estilo.css">
+
+    <script>
+        require(['../wilib/js/lib/alternativa_botao'], function (edi) {
+
+            edi.setConfig({
+                titulo: "Selecione a alternativa correta.<br>Infere-se do texto que a atividade inicial do autor foi:",
+                mascote: 'mascote'
+            });
+
+            var btns = [];
+
+            btns.push({
+                texto: "agradável",
+                dataCorreta: false
+            });
+
+            btns.push({
+                texto: "duradoura",
+                dataCorreta: true
+            });
+
+            btns.push({
+                texto: "simples",
+                dataCorreta: false
+            });
+
+            btns.push({
+                texto: "honesta",
+                dataCorreta: false
+            });
+
+            var config = {
+                colunas: 1,
+                width: 210,
+                height: 35,
+                left: 390,
+                top: 75,
+                margin: '12px 12px 0 12px',
+                tamanhoTexto: 14,
+                btnBranco: true,
+                randomico: false,
+                lineHeight: '1.4',
+                animacao: true
+            };
+
+            edi.alternativa_botao(btns, null, function(a){
+                barraMsg(a?'Muito bem!<br> O termo “passei a vida” dá a ideia<br> de muito tempo, uma atividade duradoura.'
+                :'Atenção!<br> Observe o termo “passei a vida” e reflita<br> qual o seu sentido no contexto.',{height: 100})
+            }, config);
+
+            $('#balao').peBalao({
+                background:'#FFF',
+                borda:'#666',
+                tamanhoBorda: 12,
+                top:142,
+                left:10,
+                scaleX:-1.1,
+                scaleY:-1.1,
+                corBorda:'#000',
+                rotate:0
+            });
+        });
+    </script>
+    <style>
+        #balao {
+            position: absolute;
+            top: 90px;
+            left: 80px;
+            border-radius: 40px;
+            border: 1px solid #666;
+            padding: 10px;
+            width: 250px;
+            height: 110px;
+            font-size: 14px;
+            color: #666;
+        }
+        .middle {
+            position: relative;
+            text-align: center;
+            vertical-align: middle;
+            display: table-cell;
+            height: 110px;
+        }
+        #garoto {
+            position: absolute;
+            top: 245px;
+            left: 0;
+        }
+
+        .bold {
+            font-size: 11px;
+            float: right;
+            color: #000;
+        }
+    </style>
+</head>
+
+<body>
+    <div id="balao">
+        <div class="middle">
+        Passei a vida atrás de eleitores<br> e agora busco os leitores.<span class="bold">(José Sarney, na Veja, dez/97)</span>
+        </div>
+    </div>
+    <img id="garoto" src="../img/licao09/p15.jpg" width="200"/>
+</body>
+</html>

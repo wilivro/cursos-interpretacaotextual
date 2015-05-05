@@ -1,0 +1,98 @@
+<!doctype html>
+<html lang="pt-br">
+<head>
+    <title>Lição 09 Peça 24</title>
+    <meta charset="utf-8">
+    <script src="../wilib/js/lib/require.js"></script>
+    <script src="../wilib/js/app.js"></script>
+    <link rel="stylesheet" href="../wilib/css/font-awesome.css">
+    <link rel="stylesheet" href="../wilib/css/estilo.css">
+
+    <script>
+        require(['../wilib/js/lib/alternativa_botao'], function (edi) {
+
+            edi.setConfig({
+                titulo: 'Leia a charge e depois responda qual o verdadeiro sentido da frase.',
+                mascote: 'mascote'
+            });
+
+            var btns = [
+                {texto: 'Carrega a onda ou a onda nos carrega.', dataCorreta: false},
+                {texto: 'Estar na onda, praticando um esporte,<br>antes que ela se “quebre” na beira da praia.', dataCorreta: true},
+                {texto: 'A onda iria pegar os dois garotos,<br> antes que eles mesmos a pegassem.', dataCorreta: false}
+            ];
+
+            var config = {
+                randomico: true,
+                width: 360,
+                height: 20,
+                left: 380,
+                top: 130,
+                tamanhoTexto: 16,
+                colunas: 1,
+                margin: '0 0 10px 0',
+                padding: 5,
+                display: 'block',
+                btnBranco: true,
+                animacao: true
+            };
+
+            function callback(a, b) {
+
+                if (a) {
+                    $('#resposta')
+                            .html(b[0].outerText)
+                            .css({
+                                color: 'green',
+                                textDecoration: 'underline',
+                                display: 'none'
+                            }).fadeIn();
+                }
+                
+            }
+
+            edi.alternativa_botao(btns, callback, function(a){
+                barraMsg(a?'Muito bem!<br> “Pegar onda” é uma expressão usada pelas<br> pessoas que praticam o esporte surf.':'Atenção!<br> O termo usado é uma expressão usada<br> pelas pessoas que praticam um esporte.', {height: 100, wait: 0});
+            }, config);
+
+            $('#num').html(edi.telaAtual);
+            $('.texto').find('p').html(texto);
+        });
+    </script>
+
+    <style>
+        #conteudo {
+            background: radial-gradient(#fff, #eee);
+            height: 315px;
+        }
+
+        .texto {
+            background: #fff;
+            padding: 0 20px;
+            position: absolute;
+            left: 20px;
+            top: 85px;
+        }
+
+        .texto p {
+            margin: 140px 0 0 0;
+            text-align: center;
+            line-height: 1.3;
+        }
+
+        img{
+            position: absolute;
+            left: 30px;
+            top: 2px;
+            border-radius: 15px;
+            border: 1px solid #999;
+        }
+    </style>
+</head>
+
+<body>
+<div class="texto">
+    <img src="../img/licao09/p24.jpg" alt="" width="280">
+</div>
+</body>
+</html>

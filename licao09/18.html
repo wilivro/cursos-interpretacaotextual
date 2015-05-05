@@ -1,0 +1,113 @@
+<!doctype html>
+<html lang="pt-br">
+	<head>
+        <title>Lição 09 Peça 18</title>
+		<meta charset="utf-8">
+		<script src="../wilib/js/lib/require.js"></script>
+		<script src="../wilib/js/app.js"></script>
+        <link rel="stylesheet" href="../wilib/css/font-awesome.css">
+        <link rel="stylesheet" href="../wilib/css/estilo.css">
+
+		<script>
+			require(['../wilib/js/lib/revela','../wilib/js/lib/alternativa_botao'], function (edi, edi2) {
+
+				edi2.setConfig({
+                    icone: "exclamacao",
+                    mascote: 'mascote',
+					titulo: "Clique na imagem, leia a frase e responda a pergunta corretamente.",
+                    tempoFinal: 10
+				});
+
+                var btns = [];
+
+                btns.push({
+                    texto: "fé",
+                    dataCorreta: false
+                });
+
+                btns.push({
+                    texto: "respeito",
+                    dataCorreta: true
+                });
+
+                btns.push({
+                    texto: "solidariedade",
+                    dataCorreta: false
+                });
+
+                var config = {
+                    colunas: 1,
+                    width: 200,
+                    height: 35,
+                    left: 400,
+                    top: 120,
+                    margin: '7px 7px 0 100px',
+                    tamanhoTexto: 14,
+                    btnBranco: true,
+                    lineHeight: '1.4',
+                    animacao: true
+                };
+
+                function callback (a) {
+
+                }
+
+                edi2.alternativa_botao(btns, callback, function(a){
+                    barraMsg(a?'Muito bem!<br> O autor, ao dizer que os animais “não são obrigados”,<br> expressa o respeito pela natureza deles.'
+                            :'Atenção!<br> Observe a posição do autor perante os animais, ele relata<br> que os animais não são obrigados a fazer o que vai contra a<br> natureza deles. Reflita sobre o texto e tente novamente.', {height: 150})
+                }, config);
+
+                $('[data-edi = "alternativa_botao"]').addClass('box-revela');
+
+				edi.revela('btn-revela', 'box-revela', function () {
+                    $('.quest').transition({
+                        transform: 'scale(1)',
+                        top: 125,
+                        left: 272
+                    }, 1000);
+				}, function () {
+
+				}, {});
+
+			});
+		</script>
+
+		<style>
+
+            #img{
+                position: absolute;
+                top: 130px;
+                left: 15px;
+            }
+            .quest{
+                -webkit-transform: scale(0);
+                -moz-transform: scale(0);
+                -ms-transform: scale(0);
+                transform: scale(0);
+                text-align: center;
+                border-radius: 10px;
+                border: solid 1px #E2E2E2;
+                position: absolute;
+                top: 100px;
+                left: 250px;
+                height: auto;
+                color: rgb(128, 126, 126);
+                padding: 10px;
+                font-size: 16px;
+                width: 200px;
+            }
+
+		</style>
+	</head>
+
+	<body>
+
+
+		<div class="quest" >
+            Os animais que eu treino não são obrigados a fazer o que vai contra a natureza deles. (Gilberto Miranda, na Folha de São Paulo, 23/2/96).
+            O sentimento que melhor define a posição do autor perante os animais é:
+
+        </div>
+        <img  class="btn-revela" id="img" src="../img/licao09/p18.jpg" width="250"/>
+	</body>
+</html>

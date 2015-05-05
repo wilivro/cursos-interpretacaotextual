@@ -1,0 +1,85 @@
+<!doctype html>
+<html lang="pt-br">
+<head>
+    <title>Liçao 09 Peça 22</title>
+    <meta charset="utf-8">
+    <script src="../wilib/js/lib/require.js"></script>
+    <script src="../wilib/js/app.js"></script>
+    <link type="text/css" rel="stylesheet" href="../wilib/css/font-awesome.css">
+    <link type="text/css" rel="stylesheet" href="../wilib/css/estilo.css">
+
+    <script>
+        require(['../wilib/js/lib/quebra-cabeca', '../wilib/js/lib/alternativa_botao'], function (edi, edi2) {
+
+            edi2.setConfig({
+                icone: "interrogacaoAzul",
+                titulo: "Monte o quebra cabeça, leia a charge e responda a pergunta:<br>Qual o sentido que a palavra grifada tem no texto?",
+                mascote: 'mascote',
+                qtdTelas: 1
+            });
+
+            var btns = [
+                [
+                    {texto: 'Culpar', dataCorreta: false},
+                    {texto: 'Dispensar', dataCorreta: true},
+                    {texto: 'Nomear', dataCorreta: false},
+                    {texto: 'Enviar', dataCorreta: false}
+                ]
+            ];
+
+            var arr = [
+                {
+                    msgT: 'Muito bem!<br> Despachar tem o mesmo sentido de dispensar,<br> ou na linguagem popular, “mandar embora”. ',
+                    msgF: 'Resposta incorreta!<br> Leia atentamente a charge e responda <br>qual o sentido da palavra “despachar”.'
+                }
+            ];
+
+            $('.num').html(edi.telaAtual());
+
+            var config = {
+                tamanhoTexto: 14,
+                colunas: 1,
+                width: 220,
+                height: 20,
+                left: 490,
+                top: 135,
+                margin: '1px 5px',
+                padding: 5,
+                randomico: true,
+                display: 'block',
+                btnBranco: true,
+                animacao: true
+            };
+
+            edi2.alternativa_botao(btns[edi.telaAtual() - 1], null, function (a) {
+                barraMsg(a ? arr[edi.telaAtual() - 1].msgT : arr[edi.telaAtual() - 1].msgF, {height: 100})
+            }, config);
+
+            $('[data-edi="alternativa_botao"]').addClass('box-revela');
+
+            edi.setConfig({
+                titulo: 'Monte o quebra-cabeça e leia o texto com atenção.'
+            });
+
+            var config = {
+                width: 422,
+                height: 266,
+                left: 5,
+                top: 25,
+                background: '#ccc',
+                numPecas: 2
+            };
+
+            $('[data-edi="alternativa_botao"]').css({display: 'none'});
+
+            edi.quebraCabeca('../img/licao09/p22.png', function () {
+                $('#all, [data-edi="alternativa_botao"]').fadeIn();
+                $('[data-edi="quebraCabeca"]').css({width: 0})
+            }, config);
+
+        });
+    </script>
+</head>
+<body>
+</body>
+</html>

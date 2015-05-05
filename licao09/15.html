@@ -1,0 +1,133 @@
+<!doctype html>
+<html lang="pt-br">
+	<head>
+        <title>Lição 09 Peça 15</title>
+		<meta charset="utf-8">
+		<script src="../wilib/js/lib/require.js"></script>
+		<script src="../wilib/js/app.js"></script>
+        <link rel="stylesheet" href="../wilib/css/font-awesome.css">
+        <link rel="stylesheet" href="../wilib/css/estilo.css">
+
+		<script>
+			require(['../wilib/js/lib/revela','../wilib/js/lib/alternativa_botao'], function (edi, edi2) {
+
+				edi2.setConfig({
+                    icone: "exclamacao",
+                    mascote: 'mascote',
+					titulo: "Clique na imagem para revelar o problema, e em seguida, responda a questão:",
+                    tempoFinal: 10
+				});
+
+                var btns = [];
+
+                btns.push({
+                    texto: "esportiva",
+                    dataCorreta: false
+                });
+
+                btns.push({
+                    texto: "intelectual",
+                    dataCorreta: false
+                });
+
+                btns.push({
+                    texto: "profissional",
+                    dataCorreta: true
+                });
+
+                btns.push({
+                    texto: "sentimental",
+                    dataCorreta: false
+                });
+
+                var config = {
+                    animacao: true,
+                    width: 300,
+                    btnBranco: true,
+                    colunas: 1,
+                    margin: 1,
+                    height: 30,
+                    top: 105,
+                    randomico: true,
+                    left: 285
+
+                };
+
+                function callback (a) {
+
+                }
+                $('#txt').peBalao({scaleX: -1, left: 30});
+                edi2.alternativa_botao(btns, callback, function (a) {
+                   barraMsg(a?'Muito bem!<br> A resposta correta é profissional.'
+                           :'Atenção!<br> Leia novamente o texto e observe a que<br> mudança de vida Sarney se refere.', {height: 100})
+                }, config);
+
+                $('[data-edi = "alternativa_botao"]').addClass('box-revela');
+
+				edi.revela('btn-revela', 'box-revela', function () {
+
+                }, function (btn) {
+
+				}, {ocultarBtn: true});
+
+
+			});
+		</script>
+
+		<style>
+
+            #img{
+                position: absolute;
+                top: 110px;
+                left: 280px;
+                text-align: center;
+                border-radius: 10px;
+                border: solid 1px #E2E2E2;
+                color: #807E7E;
+                padding: 10px;
+                font-size: 16px;
+            }
+
+            .img {
+                margin-top: 10px;
+                margin-left: 20px;
+                box-shadow: 5px 5px 5px rgba(0, 0, 0, 0.5);
+                border-radius: 5px;
+            }
+
+            #txt {
+                position: absolute;
+                top: 85px;
+                left: 5px;
+                font-size: 14px;
+                height: 260px;
+                width: 250px;
+                color: #666;
+                padding: 10px;
+                border: 1px solid #ccc;
+                border-radius: 10px;
+            }
+
+            .bold {
+                font-size: 11px;
+                float: right;
+                color: #000;
+            }
+
+		</style>
+	</head>
+
+    <div id="txt" class="box-revela">
+        “Passei a vida atrás de eleitores e agora busco os leitores.”<br>
+
+        <span class="bold">(José Sarney, na Veja, dez/97)</span><br><br>
+        <span style="display: inline-block">Deduz-se pelo texto uma mudança na vida:</span>
+
+        <img class="img" src="../img/licao09/p15.jpg" width="200"/>
+
+    </div>
+
+	<body>
+        <img id="img" class="btn-revela" src="../img/licao09/p15.jpg" width="200"/>
+	</body>
+</html>

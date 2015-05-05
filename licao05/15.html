@@ -1,0 +1,181 @@
+<!-- Desenvolvedor: Micael Souza -->
+<!doctype html>
+<html lang="pt-br">
+<head>
+    <title>arr_c008</title>
+    <meta charset="utf-8">
+    <script src="../wilib/js/lib/require.js"></script>
+    <script src="../wilib/js/app.js"></script>
+    <link rel="stylesheet" href="../wilib/css/font-awesome.css">
+    <link rel="stylesheet" href="../wilib/css/estilo.css">
+
+    <script>
+        require(['../wilib/js/lib/arrasta'], function (edi) {
+
+            edi.setConfig({
+                mascote: 'mascote',
+                titulo: 'Arraste os exemplos de antítese para os espaços ao lado.'
+            });
+
+            var arrArrasta = [
+                {arrasta: '"O mito é o nada que é tudo." ', dataCorreta: '1', dataId: '1'},
+                {arrasta: 'Depois de muito sofrimento, entregou a alma ao Senhor.', dataCorreta: '0', dataId: '2'},
+                {arrasta: 'O corpo é grande e a alma é pequena.', dataCorreta: '1', dataId: '3'},
+                {arrasta: 'Deus! Ó Deus! Onde estás que não respondes?', dataCorreta: '0', dataId: '4'},
+                {arrasta: '"Quando um muro separa, uma ponte une."', dataCorreta: '1', dataId: '5'},
+                {arrasta: '"Menino do Rio / Calor que provoca arrepio..."', dataCorreta: '0', dataId: '6'},
+                {arrasta: 'Felicidade e tristeza tomaram conta de sua alma.', dataCorreta: '1', dataId: '6'}
+            ];
+
+            arrArrasta.sort(function () {
+                return 0.5 - Math.random()
+            });
+
+            for (var i = 0; i < arrArrasta.length; i++) {
+                $('<div>')
+                        .addClass('arrasta fundoArrasta azulAlpha')
+                        .attr({
+                            'data-id': arrArrasta[i].dataId,
+                            id: 'arrasta' + (i + 1),
+                            'data-correta': arrArrasta[i].dataCorreta,
+                        })
+                        .html(arrArrasta[i].arrasta)
+                        .appendTo('#arrasta');
+            }
+
+            var config = {
+                colorirFilho: true,
+                alvoFixo: false,
+                reloadCorreta: true,
+                gradiente: 'corGradiente-claro',
+                multAlvo: false,
+                target: true
+            };
+
+            edi.arrasta('arrasta', 'alvo', function (a, b, c) {
+                
+            }, function(a) {
+                if (a) {
+                    barraMsg('Muito bem! Para ser considerada antítese, a figura precisa apresentar uma oposição ou um contraste a outro termo presente na frase.', {height: 80, zIndex:2002});
+                } else {
+                    barraMsg('Você errou! Para ser considerada antítese, a figura precisa apresentar uma oposição ou um contraste a outro termo presente na frase.', {height: 80, zIndex:2002});
+                };
+            }, config);
+
+            $('.arrasta').css({
+                margin: -5,
+                padding: 0
+            })
+
+            $('<div>')
+                    .attr('id', 'mascote')
+                    .appendTo('#conteudo');
+        });
+    </script>
+    <style>
+
+        #boxArrasta {
+            position: relative;
+            border: solid 1px #A7B9C3;
+            background: rgba(140, 168, 184, 0.1);
+            display: table-cell;
+            vertical-align: middle;
+            width: 280px;
+            height: 280px;
+            cursor: default;
+            text-align: center;
+            padding: 20px 20px 20px 0px;
+        }
+
+        #boxBox{
+            position: absolute;
+            top: 68px;
+            left: 0px;
+        }
+
+
+        #arrasta {
+            position: relative;
+            display: table-cell;
+            width: 470px;
+            height: 60px;
+            top: 40px;
+        }
+
+        .arrasta {
+            padding: 5px;
+            margin-right: 5px;
+            margin-left: 5px;
+            display: inline-block;
+            color: #999;
+            font-size: 11px;
+            margin: 8px 50px;
+            top: -15px;
+            left: -40px;
+            width: auto;
+        }
+
+        .containerAlvo {
+            position: absolute;
+            left: 340px;
+            top: 140px;
+            width: 490px;
+
+        }
+
+        .alvo {
+            width: 370px;
+            height: 20px;
+            position: relative;
+            border: 1px solid #B8C3C4;
+            background: #fff;
+            margin:5px;
+            padding: 10px;
+            display: inline-block;
+        }
+
+        #txt {
+            position: absolute;
+            width: 200px;
+            padding: 10px;
+            left: 520px;
+            top: 90px;
+            color: #999;
+            font-style: italic;
+        }
+
+    </style>
+
+</head>
+<body>
+
+<section id="boxBox">
+    <div id="boxArrasta"></div>
+    
+</section>
+
+<div id="arrasta"></div>
+
+<div class="containerAlvo">
+
+    <div class="alvo" data-correta="1"></div>
+
+    <div class="alvo" data-correta="1"></div>
+
+    <div class="alvo" data-correta="1"></div>
+
+    <div class="alvo" data-correta="1"></div>
+
+</div>
+
+
+<div id="txt">
+    ANTÍTESES
+</div>
+
+
+</div>
+
+</div>
+</body>
+</html>

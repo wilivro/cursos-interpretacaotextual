@@ -1,0 +1,63 @@
+<!doctype html>
+<html lang="pt-br">
+<head>
+    <title>Lição 06 Peça 27</title>
+    <meta charset="utf-8">
+    <script src="../wilib/js/lib/require.js"></script>
+    <script src="../wilib/js/app.js"></script>
+    <link rel="stylesheet" href="../wilib/css/font-awesome.css">
+    <link rel="stylesheet" href="../wilib/css/estilo.css">
+
+    <script>
+        require(['../wilib/js/lib/caca_palavras'], function (edi) {
+
+            edi.setConfig({
+                mascote: 'mascote',
+                titulo: "Ache nas quadrinhas os sentidos passados<br> pela palavra “apunhalado” visto na questão anterior?"
+            });
+
+            var frase = '<div class="circ">1</div> {0} <br>' +
+                        '<div class="circ">2</div> {1} <br>' +
+                        '<div class="circ">3</div> {2} <br>' +
+                        '<div class="circ">4</div> {3} ';
+
+            var palavras = [
+                'Ofender',
+                'Trair',
+                'Magoar',
+                'Afligir'
+            ];
+            edi.caca_palavras(15, 15, palavras, frase, function () {
+                barraMsg('Ótimo!<br> Estes são os significados para a palavra<br> apunhalado, dando o verdadeiro sentido a<br> expressão “apunhalado pelas costas”.', {height: 150})
+            });
+        });
+    </script>
+    <style>
+
+        #frase {
+            text-align: left;
+        }
+
+        .circ {
+            width: 40px;
+            height: 40px;
+            border: 1px solid #666;
+            border-radius: 20px;
+            line-height: 40px;
+            text-align: center;
+            font-size: 25px;
+            color: #000;
+            display: inline-block;
+            margin: 0 10px 10px 0 ;
+            box-shadow: 2px 2px 1px rgba(0,0,0,0.5);
+        }
+        .palavras {
+            display: inline-block;
+        }
+    </style>
+</head>
+
+<body>
+
+</body>
+</html>

@@ -1,0 +1,95 @@
+<!doctype html>
+<html lang="pt-br">
+<head>
+    <title>Lição 09 Peça 39</title>
+    <meta charset="utf-8">
+    <script src="../wilib/js/lib/require.js"></script>
+    <script src="../wilib/js/app.js"></script>
+    <link rel="stylesheet" href="../wilib/css/font-awesome.css">
+    <link rel="stylesheet" href="../wilib/css/estilo.css">
+
+    <script>
+        require(['../wilib/js/lib/alternativa_pn'], function (edi) {
+
+            edi.setConfig({
+                icone: "exclamacao",
+                titulo: "Como o Cebolinha aparece nos três quadrinhos?<br>Assinale o ícone de positivo para as respostas<br> corretas e o ícone de negativo para as respostas erradas."
+            });
+
+            var alternativas = [];
+
+            alternativas.push({
+                texto: 'Caminhando na direção da escola',
+                dataCorreta: false
+            });
+
+            alternativas.push({
+                texto: 'Querendo pintar Mônica',
+                dataCorreta: false
+            });
+
+            alternativas.push({
+                texto: 'Vestindo-se como um pintor de quadros ',
+                dataCorreta: true
+            });
+
+            alternativas.push({
+                texto: 'Voltando alegremente da aula de música',
+                dataCorreta: false
+            });
+
+            alternativas.push({
+                texto: 'Com aquarela e pincéis nas mãos ',
+                dataCorreta: true
+            });
+
+            edi.alternativa_pn(alternativas, function (a, btn) {
+                var $texto = btn.parent().parent().find('.texto');
+
+                if (a) {
+                    if (btn.hasClass('btn-true')) btn.css({color: 'green'});
+                    else btn.css({color: 'red'});
+
+                    $texto.css({color: 'green'})
+                }
+                else{
+                   $texto.css({color: 'red'})
+                }
+            }, function (a) {
+                barraMsg(a?'Muito bem!<br> Você entendeu muito bem o conceito da tirinha.'
+                :'Atenção! <br>Lembre-se que se precisar, você pode<br> retornar à tirinha clicando no ícone.', {height: 150, wait: 0, zIndex : 2002})
+
+            }, {	left: 150, top: 50});
+
+            $('#img')
+                    .click(function () {
+                        $(this).transition({
+                            width: 600,
+                            left: 73
+                        })
+                    })
+                    .mouseleave(function () {
+                        $('#img').css({
+                            top: 80,
+                            left: 10,
+                            width: 100
+                        })
+                    });
+
+        });
+    </script>
+    <style>
+        #img {
+            position: absolute;
+            top: 80px;
+            left: 10px;
+            width: 100px;
+            cursor: pointer;
+            z-index: 2000;
+        }
+    </style>
+</head>
+<body>
+<img id="img" src="../img/licao09/p36.png" width="100"/>
+</body>
+</html>

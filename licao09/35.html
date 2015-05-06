@@ -1,0 +1,118 @@
+<!doctype html>
+<html lang="pt-br">
+<head>
+    <title>Lição 09 Peça 35</title>
+    <meta charset="utf-8">
+    <script src="../wilib/js/lib/require.js"></script>
+    <script src="../wilib/js/app.js"></script>
+    <link rel="stylesheet" href="../wilib/css/font-awesome.css">
+    <link rel="stylesheet" href="../wilib/css/estilo.css">
+
+    <script>
+        require(['../wilib/js/lib/revela', '../wilib/js/lib/alternativa_botao'], function (edi, edi2) {
+
+            edi2.setConfig({
+                icone: "exclamacao",
+                mascote: 'mascote',
+                titulo: "Levando em conta a seguinte fala do texto: “Não trabalho com pedestre”,<br> o termo destacado da última tira refere-se a pessoas que:",
+                tempoFinal: 10,
+            });
+
+            var pergutna = [
+                '',
+                ''
+            ];
+
+            var msgs = [
+                {
+                    msgT: 'Muito bem!<br> Todo cidadão que caminha<br> a pé é considerado um pedestre.',
+                    msgF: 'Atenção! <br>De acordo com o dicionário informal, pedestre<br> é todo aquele que está andando por uma via,<br> pense um pouco mais e responda novamente.'
+                }
+            ];
+
+            $('#pergunta').html(pergutna[edi.root.util.telaAtual]);
+
+            var btns = [
+                [
+                    {texto: "Andam <br>de ônibus", dataCorreta: false},
+                    {texto: "Passeiam<br> de bicicleta", dataCorreta: false},
+                    {texto: "Caminham<br> a pé", dataCorreta: true},
+                    {texto: "Viajam <br>de carro", dataCorreta: false}
+
+                ]
+            ];
+
+            var config = {
+                animacao: true,
+                width: 180,
+                btnBranco: true,
+                colunas: 4,
+                margin: 1,
+                height: 25,
+                top: 300,
+                left: 20,
+                randomico: true
+
+            };
+
+            function callback(a) {
+
+            }
+
+            edi2.alternativa_botao(btns[edi.root.util.telaAtual], callback, function (a) {
+                barraMsg(a?msgs[edi.root.util.telaAtual].msgT:msgs[edi.root.util.telaAtual].msgF, {height: 150, wait: 0});
+            }, config);
+
+            $('[data-edi = "alternativa_botao"]').addClass('box-revela');
+
+            edi.revela('btn-revela', 'box-revela', function () {
+
+            }, function (btn) {
+                btn
+                        .transition({
+                            width: 400,
+                            left: 180
+                        }, 750)
+                        .off();
+            }, {});
+
+            $('#img').click();
+
+        });
+    </script>
+
+    <style>
+
+        #img {
+            position: absolute;
+            top: 80px;
+            left: 80px;
+            text-align: center;
+            border-radius: 10px;
+            border: solid 1px #E2E2E2;
+            color: #807E7E;
+            padding: 10px;
+            font-size: 16px;
+        }
+
+        #pergunta {
+            position: absolute;
+            top: 285px;
+            left: 0;
+            font-size: 16px;
+            color: #666;
+            text-align: center;
+            width: 788px;
+        }
+
+
+    </style>
+</head>
+<body>
+<div id="txt" class="box-revela">
+    <div id="pergunta"></div>
+</div>
+
+<img id="img" class="btn-revela" src="../img/licao09/p32.jpg" width="600"/>
+</body>
+</html>

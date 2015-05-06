@@ -1,0 +1,116 @@
+<!doctype html>
+<html lang="pt-br">
+	<head>
+		<title>Lição 09 Peça 41</title>
+		<meta charset="utf-8">
+		<script src="../wilib/js/lib/require.js"></script>
+		<script src="../wilib/js/app.js"></script>
+		<link rel="stylesheet" href="../wilib/css/font-awesome.css">
+		<link rel="stylesheet" href="../wilib/css/estilo.css">
+
+		<script>
+			require(['../wilib/js/lib/alternativa'], function (edi) {
+
+				edi.setConfig({
+					tipo: 'mascote_pensando',
+					icone: 'exclamacao',
+					titulo: 'Clique no ícone em destaque para ver a tirinha e observe a primeira <br>fala com muita atenção: “É muita areia pro meu caminhão”.<br> Este termo pode ser substituído por qual outro?',
+				});
+				
+				var alternativas = [
+					{
+						alternativa: '“Quer namorar comigo?”',
+						correta: false
+					},{
+						alternativa: '“Você é muito bonita para mim!”',
+						correta: true
+					},{
+						alternativa: '“Você é muito simpática!”',
+						correta: false
+					},{
+						alternativa: '“Você é muito especial!”',
+						correta: false
+					}	
+				];
+				
+				var config = {
+					posx: 280,
+					posy: 110,
+					aleatorio: true,
+					tamanhoBox: 35,
+					marginBtns: 5
+				}
+
+				edi.alternativa(alternativas, function (acertou) {
+					//                    log(acertou);
+				}, function (a) {
+					barraMsg(a?'Muito Bem!<br> Esta é a expressão que dá o verdadeiro<br> significado do termo destacado na tirinha.'
+							:'Atenção!<br> Observe a linguagem usada pelo autor na <br>primeira tirinha e tente novamente.', {height: 150, wait: 0});
+				}, config);
+
+				$('#balao').peBalao({
+					left: 0,
+					top: 1
+				});
+
+				$('#img')
+						.click(function () {
+							$(this).transition({
+								width: 600,
+								left: 73
+							})
+						})
+						.mouseleave(function () {
+							$('#img').css({
+								top: 80,
+								left: 170,
+								width: 100
+							})
+						});
+			});
+		</script>
+
+		<style>
+			#balao {
+				border: 1px solid #ccc;
+				background: #fff;
+				width: 140px;
+				height: 190px;
+				position: absolute;
+				left: 10px;
+				top: 85px;
+				font-size: 13px;
+				text-align: center;
+				font-weight: 700;
+				line-height: 1.2;
+				border-radius: 10px;
+				color: #48A2D4;
+			}
+			
+			#ico {
+				margin: 10px 0;
+			}
+
+			#img {
+				position: absolute;
+				top: 80px;
+				left: 170px;
+				width: 100px;
+				cursor: pointer;
+				z-index: 2000;
+			}
+
+		</style>
+	</head>
+
+	<body>
+
+	<img id="img" src="../img/licao09/p41.png" width="100"/>
+	
+		<div id="balao">
+			<img id="ico" src="../wilib/img/fotos/botao_interroga.png">
+			<p>Como é nomeado o<br>conjunto de sistemas<br>vivos (compostos<br>pelos seres e pelo<br>ambiente) do planeta?</p>
+		</div>
+
+	</body>
+</html>

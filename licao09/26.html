@@ -1,0 +1,114 @@
+<!doctype html>
+<html lang="pt-br">
+	<head>
+        <title>Lição 09 Peça 26</title>
+		<meta charset="utf-8">
+		<script src="../wilib/js/lib/require.js"></script>
+		<script src="../wilib/js/app.js"></script>
+        <link rel="stylesheet" href="../wilib/css/font-awesome.css">
+        <link rel="stylesheet" href="../wilib/css/estilo.css">
+
+		<script>
+			require(['../wilib/js/lib/revela','../wilib/js/lib/alternativa_botao'], function (edi, edi2) {
+
+				edi2.setConfig({
+                    icone: "exclamacao",
+                    mascote: 'mascote',
+					titulo: "Leia a charge com atenção, clique na imagem e responda as perguntas.",
+                    tempoFinal: 10
+				});
+
+                var btns = [];
+
+                btns.push({
+                    texto: "A comparação entre o <br>porco-espinho e o cidadão,<br> sendo que o porco-espinho <br>teria mais espinhos.",
+                    dataCorreta: false
+                });
+
+                btns.push({
+                    texto: "O cidadão que fica feliz com<br> todas as facadas que levou.",
+                    dataCorreta: false
+                });
+
+                btns.push({
+                    texto: "O cidadão, indignado pelas<br> várias ofensas que sofreu por<br> quem menos esperava.",
+                    dataCorreta: true
+                });
+
+                var config = {
+                    colunas: 1,
+                    width: 300,
+                    height: 50,
+                    left: 330,
+                    top: 120,
+                    margin: '7px 7px 0 100px',
+                    tamanhoTexto: 14,
+                    btnBranco: true,
+                    lineHeight: '1.4',
+                    animacao: true
+                };
+
+                function callback (a) {
+                    barraMsg(a?'Muito Bem!<br> A charge relata a indignação<br> do cidadão, sofrendo por ofensas. <br>Observe a imagem facial do homem.'
+                            :'Atenção!<br> Observe a imagem facial do homem <br>e despois tente novamente.', {height: 100});
+                }
+
+                edi2.alternativa_botao(btns, null, callback, config);
+
+                $('[data-edi = "alternativa_botao"]').addClass('box-revela');
+
+				edi.revela('revela', 'box-revela', function (btn, revela) {
+
+				}, function (btn) {
+				}, {});
+
+			});
+		</script>
+
+		<style>
+
+            #img{
+                position: absolute;
+                top: 114px;
+                left: 15px;
+            }
+            .btn-revela{
+                -webkit-transform: scale(0.1);
+                -moz-transform: scale(0.1);
+                -ms-transform: scale(0.1);
+                transform: scale(0.1);
+                text-align: center;
+                border-radius: 10px;
+                border: solid 1px #E2E2E2;
+                position: absolute;
+                top: 200px;
+                left: 180px;
+                width: auto;
+                height: auto;
+                color: rgb(128, 126, 126);
+                padding: 20px;
+                font-size: 16px;
+            }
+
+            #pergunta {
+                position: absolute;
+                top: 90px;
+                left: 445px;
+                font-size: 16px;
+                color: #666;
+            }
+
+		</style>
+	</head>
+
+	<body>
+
+        <div id="pergunta" class="box-revela">
+            Qual o sentido que a frase transmite?
+        </div>
+
+        <div class="revela">
+            <img id="img"  src="../img/licao09/p26.jpg" width="400"/>
+        </div>
+	</body>
+</html>

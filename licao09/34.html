@@ -1,0 +1,123 @@
+<!doctype html>
+<html lang="pt-br">
+<head>
+    <title>Lição 09 Peça 34</title>
+    <meta charset="utf-8">
+    <script src="../wilib/js/lib/require.js"></script>
+    <script src="../wilib/js/app.js"></script>
+    <link rel="stylesheet" href="../wilib/css/font-awesome.css">
+    <link rel="stylesheet" href="../wilib/css/estilo.css">
+
+    <script>
+        require(['../wilib/js/lib/arrasta'], function (edi) {
+
+            edi.setConfig({
+                titulo: 'Observe o segundo quadro da tira. Nesta fala do menino o autor utiliza<br> um duplo ponto de exclamação. O que o autor deseja reforçar?<br> Arraste a alternativa correta até o topo do pódio.',
+                mascote: 'mascote',
+                tempoFinal: 10
+            });
+
+            var arrArrasta = [
+                {arrasta: 'A irritação <br>com o trabalho.', dataCorreta: 1},
+                {arrasta: 'O desinteresse<br> pela venda.', dataCorreta: 2},
+                {arrasta: 'O apelo <br>para vender.', dataCorreta: 3},
+                {arrasta: 'A pressa <br>em vender.', dataCorreta: 4}
+            ];
+
+            arrArrasta.sort(function () {
+                return 0.5 - Math.random()
+            });
+
+            for (var i = 0; i < arrArrasta.length; i++) {
+
+                $('<div>')
+                        .addClass('arrasta barra')
+                        .attr({
+                            'data-correta': arrArrasta[i].dataCorreta
+                        })
+                        .html(arrArrasta[i].arrasta)
+                        .appendTo('#boxArrasta');
+            }
+
+            edi.arrasta('arrasta', 'alvo', function (a, b) {
+                $('#alvoPodium').css({top: 190});
+                $('#txt').css({color: '#9C0'}).html(b.html())
+            }, function (a) {
+                barraMsg(a ? 'Muito bem!<br> O autor ao utilizar um duplo ponto<br> de exclamação deseja reforçar o<br> apelo do menino em vender.'
+                        : 'Atenção!<br> Ao utilizar um duplo ponto de exclamação<br> o autor pretende reforçar a necessidade do <br>personagem e, fazer com que o leitor compreenda<br> a função daquela fala. ', {
+                    height: 150,
+                    wait: 0
+                })
+            });
+
+            $('#img')
+                    .click(function () {
+                        $(this).transition({
+                            width: 600,
+                            left: 73
+                        })
+                    })
+                    .mouseleave(function () {
+                        $('#img').css({
+                            top: 90,
+                            left: 20,
+                            width: 100
+                        })
+                    })
+
+        });
+
+    </script>
+
+    <style>
+        .barra {
+            background: url(../wilib/img/svg/retangulo.svg);
+            background-size: 100% 100%;
+            width: 220px;
+            height: 40px;
+            margin: 5px;
+            text-align: center;
+            line-height: 15px;
+        }
+
+        #boxArrasta {
+            position: absolute;
+            top: 170px;
+        }
+
+        #podium {
+            background: url(../wilib/img/svg/podium.svg);
+            width: 459px;
+            height: 155px;
+            position: absolute;
+            top: 228px;
+            left: 310px;
+        }
+
+        #alvoPodium {
+            width: 239px;
+            height: 45px;
+            position: absolute;
+            top: 183px;
+            left: 381px;
+        }
+
+        #img {
+            position: absolute;
+            top: 90px;
+            left: 20px;
+            width: 100px;
+            cursor: pointer;
+            z-index: 1;
+        }
+    </style>
+</head>
+
+<body>
+<div id="alvoPodium" class="alvo" data-correta="3"></div>
+<img id="podium" src="../wilib/img/svg/podium.svg" alt=""/>
+
+<div id="boxArrasta"></div>
+<img id="img" src="../img/licao09/p32.jpg"/>
+</body>
+</html>

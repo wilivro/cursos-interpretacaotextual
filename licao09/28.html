@@ -1,0 +1,142 @@
+<!doctype html>
+<html lang="pt-br">
+	<head>
+        <title>Lição 09 Peça 28</title>
+		<meta charset="utf-8">
+		<script src="../wilib/js/lib/require.js"></script>
+		<script src="../wilib/js/app.js"></script>
+        <link rel="stylesheet" href="../wilib/css/font-awesome.css">
+        <link rel="stylesheet" href="../wilib/css/estilo.css">
+
+		<script>
+			require(['../wilib/js/lib/revela','../wilib/js/lib/alternativa_vf'], function (edi, edi2) {
+
+				edi2.setConfig({
+                    icone: "exclamacao",
+                    mascote: 'mascote',
+					titulo: "Leia a fala de Gilberto Gil e em seguida clique<br> na imagem para visualizar e responder a questão:",
+                    tempoFinal: 10
+				});
+
+                var btns = [];
+
+                btns.push({
+                    texto: "que leva ao desespero.",
+                    dataCorreta: false
+                });
+
+                btns.push({
+                    texto: "que transmite coisas boas.",
+                    dataCorreta: true
+                });
+
+                btns.push({
+                    texto: "que só se suporta com fé.",
+                    dataCorreta: false
+                });
+
+                btns.push({
+                    texto: "que ninguém deseja.",
+                    dataCorreta: false
+                });
+
+                var config = {
+                    width: 400,
+                    btnBranco: true,
+                    colunas: 1,
+                    margin: 5,
+                    height: 45,
+                    top: 90,
+                    left: 300
+
+                };
+
+                function callback (a) {
+
+                }
+                $('.txt').peBalao({scaleX: -1, scaleY: -1, top: 82, left: 230});
+                edi2.alternativa_vf(btns, callback, function (a) {
+                    barraMsg(a?'Muito bem!<br> Gilberto Gil transmite coisas boas<br> com o trecho: “mas que se guardou no coração”.'
+                    :'Atenção!<br> Leia atentamente a fala do autor e descubra<br> qual o verdadeiro sentido ele dá a saudade.', {height: 150})
+
+                }, config);
+
+                $('[data-edi = "alternativa_vf"]').addClass('box-revela');
+
+				edi.revela('btn-revela', 'box-revela', function () {
+
+                }, function (btn) {
+
+				}, {ocultarBtn: true});
+
+			});
+		</script>
+
+		<style>
+
+            #img{
+                position: absolute;
+                top: 180px;
+                left: 280px;
+                text-align: center;
+                border-radius: 10px;
+                border: solid 1px #E2E2E2;
+                color: #807E7E;
+                padding: 10px;
+                font-size: 16px;
+            }
+
+            .img {
+                margin-top: 18px;
+                box-shadow: 5px 5px 5px rgba(0, 0, 0, 0.5);
+                border-radius: 5px;
+            }
+
+            #txt, .txt {
+                position: absolute;
+                top: 85px;
+                left: 5px;
+                text-align: center;
+                height: 260px;
+                width: 180px;
+                color: #666;
+                padding: 25px 10px 0px 10px ;
+                border: 1px solid #ccc;
+                border-radius: 10px;
+                font-size: 14px;
+            }
+
+            .txt {
+                top: 75px;
+                left: 200px;
+                width: 380px;
+                height: auto;
+                padding: 10px;
+            }
+
+            #pergunta {
+                position: absolute;
+                top: 0px;
+                left: 245px;
+                font-size: 16px;
+                color: #666;
+                width: 320px;
+            }
+
+
+        </style>
+	</head>
+
+    <body>
+<div class="btn-revela" >
+    <div class="txt">“Toda saudade é um capuz transparente que veda e ao mesmo tempo traz a visão do que não se pode ver porque se deixou pra trás, mas que se guardou no coração.”</div>
+    <img id="img" src="../img/licao09/p28.jpg" width="200"/>
+</div>
+
+    <div id="txt" class="box-revela">
+        <div id="pergunta">Marque V quando for verdadeira e F quando<br> for falsa. Para o autor, a saudade é algo:</div>
+        “Toda saudade é um capuz transparente que veda e ao mesmo tempo traz a visão do que não se pode ver porque se deixou pra trás, mas que se guardou no coração.”
+        <img class="img" src="../img/licao09/p28.jpg" width="150"/>
+    </div>
+    </body>
+</html>

@@ -1,0 +1,112 @@
+<!doctype html>
+<html lang="pt-br">
+<head>
+    <title>Lição 09 Peça 31</title>
+    <meta charset="utf-8">
+    <script src="../wilib/js/lib/require.js"></script>
+    <script src="../wilib/js/app.js"></script>
+    <link rel="stylesheet" href="../wilib/css/font-awesome.css">
+    <link rel="stylesheet" href="../wilib/css/estilo.css">
+
+    <script>
+        require(['../wilib/js/lib/revela', '../wilib/js/lib/alternativa_botao'], function (edi, edi2) {
+
+            edi2.setConfig({
+                icone: "exclamacao",
+                mascote: 'mascote',
+                titulo: "Clique na tirinha, leia as opções e descubra <br>por qual o motivo ela se torna engraçada.",
+                tempoFinal: 10
+            });
+
+            var btns = [];
+
+            btns.push({
+                texto: "aceita logo<br> a oferta do homem.",
+                dataCorreta: false
+            });
+
+            btns.push({
+                texto: "discute o preço<br> das balas com o homem.",
+                dataCorreta: false
+            });
+
+            btns.push({
+                texto: "oferece a sua <br>mercadoria aos gritos. ",
+                dataCorreta: true
+            });
+
+            btns.push({
+                texto: "negocia o preço<br> da sua mercadoria.",
+                dataCorreta: false
+            });
+
+            var config = {
+                animacao: true,
+                width: 250,
+                btnBranco: true,
+                colunas: 2,
+                margin: 1,
+                height: 25,
+                top: 275,
+                left: 150,
+                randomico: true
+
+            };
+
+            function callback(a) {
+
+            }
+
+            edi2.alternativa_botao(btns, callback, function (a) {
+                barraMsg(a?'Muito bem, você acertou!<br> Por meio das imagens, podemos perceber que o menino está gritando. Analisando gramaticalmente percebemos que através da pontuação também é possível perceber a entonação do diálogo, o autor utilizou pontos de exclamação para dar ênfase à conversa.'
+                        :'Atenção!<br> Observe os gestos e o tipo de pontuação utilizada no diálogo<br> para dar entonação à conversa e, responda corretamente.', {height: 150});
+            }, config);
+
+            $('[data-edi = "alternativa_botao"]').addClass('box-revela');
+
+            edi.revela('btn-revela', 'box-revela', function () {
+
+            }, function (btn) {
+
+            }, {ocultarBtn: true});
+
+
+        });
+    </script>
+
+    <style>
+
+        #img {
+            position: absolute;
+            top: 80px;
+            left: 80px;
+            text-align: center;
+            border-radius: 10px;
+            border: solid 1px #E2E2E2;
+            color: #807E7E;
+            padding: 10px;
+            font-size: 16px;
+        }
+
+        .img {
+            margin-left: 170px;
+            box-shadow: 5px 5px 5px rgba(0, 0, 0, 0.5);
+            border-radius: 5px;
+        }
+
+        .bold {
+            font-size: 11px;
+            float: right;
+            color: #000;
+        }
+
+    </style>
+</head>
+<body>
+<div id="txt" class="box-revela">
+    <img class="img" src="../img/licao09/p32.jpg" width="465"/>
+</div>
+
+<img id="img" class="btn-revela" src="../img/licao09/p32.jpg" width="600"/>
+</body>
+</html>

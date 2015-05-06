@@ -1,0 +1,134 @@
+<!doctype html>
+<html lang="pt-br">
+	<head>
+        <title>Lição 09 Peça 29</title>
+		<meta charset="utf-8">
+		<script src="../wilib/js/lib/require.js"></script>
+		<script src="../wilib/js/app.js"></script>
+        <link rel="stylesheet" href="../wilib/css/font-awesome.css">
+        <link rel="stylesheet" href="../wilib/css/estilo.css">
+
+		<script>
+			require(['../wilib/js/lib/revela','../wilib/js/lib/alternativa_botao'], function (edi, edi2) {
+
+				edi2.setConfig({
+                    icone: "exclamacao",
+                    mascote: 'mascote',
+					titulo: "Clique sobre a imagem e depois selecione a<br> alternativa correta, segundo o texto de Gilberto Gil:",
+                    tempoFinal: 10
+				});
+
+                var btns = [];
+
+                btns.push({
+                    texto: "Sente-se saudade de<br> pessoas, e não de coisas.",
+                    dataCorreta: false
+                });
+
+                btns.push({
+                    texto: "As coisas ruins podem<br> transformar-se em coisas boas.",
+                    dataCorreta: true
+                });
+
+                btns.push({
+                    texto: "A saudade, como um capuz,<br> não nos permite ver com <br>clareza a situação que vivemos.",
+                    dataCorreta: false
+                });
+
+                btns.push({
+                    texto: "As coisas boas podem <br>transformar-se em coisas ruins.",
+                    dataCorreta: false
+                });
+
+                var config = {
+                    animacao: true,
+                    top: 120,
+                    width: 340,
+                    btnBranco: true,
+                    colunas: 1,
+                    margin: 1,
+                    height: 30,
+                    randomico: true,
+                    left: 285
+
+                };
+
+                function callback (a) {
+
+                }
+                edi2.alternativa_botao(btns, callback, function (a) {
+                   barraMsg(a?'Excelente!<br> Perceba como o autor revela que as coisas<br> ruins podem se tornar em coisas boas.'
+                           :'Você errou!<br> Volte ao texto, reflita e tente novamente. ', {height: 100})
+                }, config);
+
+                $('[data-edi = "alternativa_botao"]').addClass('box-revela');
+
+				edi.revela('btn-revela', 'box-revela', function () {
+
+                }, function (btn) {
+
+				}, {ocultarBtn: true});
+
+
+			});
+		</script>
+
+		<style>
+
+            #img{
+                position: absolute;
+                top: 90px;
+                left: 280px;
+                text-align: center;
+                border-radius: 10px;
+                border: solid 1px #E2E2E2;
+                color: #807E7E;
+                padding: 10px;
+                font-size: 16px;
+            }
+
+            .img {
+                margin-bottom: 10px;
+                margin-left: 1px;
+            }
+
+            #txt {
+                position: absolute;
+                top: 85px;
+                left: 10px;
+                font-size: 14px;
+                height: 260px;
+                width: 250px;
+                color: #666;
+                padding: 10px;
+                border-radius: 10px;
+                text-align: center;
+            }
+
+            #frase {
+                position: absolute;
+                width: 215px;
+                top: 250px;
+                left: 280px;
+                font-size: 16px;
+                color: #666;
+                text-align: center;
+            }
+		</style>
+	</head>
+	<body>
+    <div id="txt" class="box-revela">
+        <img class="img" src="../img/licao09/p21.jpg" width="200"/><br>
+        “Toda saudade é um capuz transparente que veda e ao mesmo tempo traz a visão do que não se pode ver porque se deixou pra trás, mas que se guardou no coração.”
+    </div>
+
+
+    <div class="btn-revela">
+    <img id="img" src="../img/licao09/p21.jpg" width="200"/>
+
+    <div id="frase">
+        “Toda saudade é um capuz transparente que veda e ao mesmo tempo traz a visão do que não se pode ver porque se deixou pra trás, mas que se guardou no coração.”
+    </div>
+    </div>
+	</body>
+</html>

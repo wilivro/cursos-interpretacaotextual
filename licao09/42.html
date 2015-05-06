@@ -1,0 +1,85 @@
+<!doctype html>
+<html lang="pt-br">
+	<head>
+        <title>Lição 09 Peça 42</title>
+        <meta charset="utf-8">
+        <script src="../wilib/js/lib/require.js"></script>
+        <script src="../wilib/js/app.js"></script>
+        <link rel="stylesheet" href="../wilib/css/font-awesome.css">
+        <link rel="stylesheet" href="../wilib/css/estilo.css">
+
+		<script>
+			require(['../wilib/js/lib/alternativa_vf'], function (edi) {
+				
+				edi.setConfig({
+                    icone: "interrogacaoAzul",
+                    mascote: 'mascote',
+					titulo: "Leia a charge atentamente e responda (V) para verdadeiro e (F) para falso.<br> Sobre os efeitos de humor da tirinha, pode-se afirmar que:"
+				});
+				
+				var alternativas  = [];
+				
+				alternativas.push({
+					texto: 'Mafalda emprega o mesmo valor semântico para o vocábulo “indicador” no primeiro e no último quadrinho.',
+					dataCorreta: true
+				});
+				
+				alternativas.push({
+					texto: 'Mafalda não sabe a importância do dedo indicador.',
+					dataCorreta: false
+				});
+				
+				alternativas.push({
+					texto: 'Mafalda ainda não sabe exatamente o significado da expressão “indicador de desemprego”',
+					dataCorreta: true
+				});
+
+				alternativas.push({
+					texto: 'Apesar de ser uma criança, Mafalda já percebe as injustas relações de trabalho estabelecidas entre patrões e operários.',
+					dataCorreta: false
+				});
+				
+				edi.alternativa_vf(alternativas, function (a) {
+
+                }, function (a) {
+					barraMsg(a?'Muito Bem!<br> Mafalda, apesar de ser uma criança, já percebe as<br> injustas relações de trabalho entre patrões e operários<br> e faz uma analogia interessante entre o uso do dedo<br> indicador, que expressa à ideia de autoritarismo, e um elemento da <br>análise da situação econômica de um país, o indicador de desemprego.'
+							:'Atenção!<br> Mafalda faz uso do seu dedo indicador para expressar a ideia<br> de autoritarismo, estabelecendo uma relação entre ele e a situação <br>econômica de um país. Atente-se para esta questão e responda novamente.', {zIndex: 2002, wait: 0, height: 200});
+                }, {
+					width: 590,
+                    left: 150,
+                    top: 50,
+                    margin: '0 0 15px 0'
+                });
+
+				$('#img')
+						.click(function () {
+							$(this).transition({
+								width: 260,
+								left: 73
+							})
+						})
+						.mouseleave(function () {
+							$('#img').css({
+								top: 80,
+								left: 10,
+								width: 100
+							})
+						});
+			});
+		</script>
+		<style>
+			#img {
+				position: absolute;
+				top: 80px;
+				left: 10px;
+				width: 100px;
+				cursor: pointer;
+				z-index: 2000;
+			}
+		</style>
+	</head>
+	
+	<body>
+	<img id="img" src="../img/licao09/p42.jpg" width="100"/>
+	</body>
+</html>

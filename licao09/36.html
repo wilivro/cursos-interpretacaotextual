@@ -1,0 +1,129 @@
+<!doctype html>
+<html lang="pt-br">
+	<head>
+		<title>Lição 09 Peça 36</title>
+		<meta charset="utf-8">
+		<script src="../wilib/js/lib/require.js"></script>
+		<script src="../wilib/js/app.js"></script>
+		<link rel="stylesheet" href="../wilib/css/font-awesome.css">
+		<link rel="stylesheet" href="../wilib/css/estilo.css">
+
+		<script>
+            $(function () {
+                require(['../wilib/js/lib/alternativa'], function (edi) {
+
+                    edi.setConfig({
+                        icone: 'exclamacao',
+                        titulo: 'De acordo com a pergunta, escolha a alternativa correta:',
+						enunciado: 'vertical'
+                    });
+
+                    var alternativas = [
+                        {
+                            alternativa: 'o contrário de escuro',
+                            correta: false
+                        },{
+                            alternativa: 'o contrário de pode',
+                            correta: false
+                        },{
+                            alternativa: 'o mesmo que pode',
+                            correta: true
+                        },{
+                            alternativa: 'o mesmo que escuro',
+                            correta: false
+                        }
+                    ];
+
+                    var config = {
+                        posx: 280,
+                        posy: 180,
+                        aleatorio: true,
+                        tamanhoBox: 30,
+                        marginBtns: 5
+                    }
+
+                    edi.alternativa(alternativas, function (acertou) {
+
+                    }, function (a) {
+                        barraMsg(a?'Muito Bem!<br> Você compreendeu o significado da palavra,<br> pois dentro do contexto o termo <br>“claro” tem o sentido “de que pode”.'
+								:'Atenção!<br> Você deve analisar o significado do termo <br>“claro” dentro do contexto. Tente novamente.', {height: 150, wait: 0})
+                    }, config); //iniciando o EDI
+
+                        $('#balao').peBalao({
+                            left: -36,
+							scaleX: 1.2,
+							scaleY: -1.2,
+							top: 170,
+							rotate: 90,
+							tamanhoBorda: 14,
+							borda: '#ccc'
+                        });
+
+
+                    $('#ico').iconeInterrogacaoAzul();
+                });
+            })
+		</script>
+
+		<style>
+			#balao {
+/*				background: url(../img/balao_seta_top.png) no-repeat;*/
+				border: 1px solid #ccc;
+				background: #fff;
+				width: 140px;
+				height: 190px;
+				position: absolute;
+				left: 20px;
+				top: 180px;
+				font-size: 13px;
+				text-align: center;
+				font-weight: 700;
+				line-height: 1.2;
+				border-radius: 10px;
+				color: #48A2D4;
+			}
+
+			#ico {
+				margin: 20px 0;
+                height: 59px;
+                position: relative;
+			}
+
+            #ico img {
+                left: 45px;
+            }
+
+			#msg {
+				width: 550px;
+				position: absolute;
+				bottom: 10px;
+				left: 10px;
+				font-size: 13px;
+				text-align: center;
+				font-weight: 700;
+				line-height: 3.2;
+				color: #8DE91B;
+				display: none;
+			}
+
+			#seta {
+				height: 40px;
+				float: left;
+			}
+
+		</style>
+	</head>
+
+	<body>
+	<img style="margin-left: 80px" src="../img/licao09/p36.png" width="450"/>
+		<div id="balao">
+            <div id="ico"></div>
+			<p>A palavra <span style="text-decoration: underline;">claro</span>, no segundo quadrinho, significa:</p>
+		</div>
+
+		<div id="msg">
+			<img id="seta" src="../wilib/img/fotos/seta-dir.png">
+			<p>A biosfera provavelmente apareceu há 3,5 bilhões de anos.</p>
+		</div>
+	</body>
+</html>

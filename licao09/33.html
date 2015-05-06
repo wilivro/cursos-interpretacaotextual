@@ -1,0 +1,129 @@
+<!doctype html>
+<html lang="pt-br">
+<head>
+    <title>Lição 09 Peça 31</title>
+    <meta charset="utf-8">
+    <script src="../wilib/js/lib/require.js"></script>
+    <script src="../wilib/js/app.js"></script>
+    <link rel="stylesheet" href="../wilib/css/font-awesome.css">
+    <link rel="stylesheet" href="../wilib/css/estilo.css">
+
+    <script>
+        require(['../wilib/js/lib/revela', '../wilib/js/lib/alternativa_botao'], function (edi, edi2) {
+
+            edi2.setConfig({
+                icone: "exclamacao",
+                mascote: 'mascote',
+                titulo: "Clique na tirinha, leia as opções e descubra <br>por qual o motivo ela se torna engraçada.",
+                tempoFinal: 10,
+                qtdTelas: 2
+            });
+
+            var pergutna = [
+                '1.	Qual foi o recurso utilizado na tira para apresentar a fala dos personagens?',
+                '2.	A fala do menino, no último quadro da tira, sugere um tipo de sentimento, que sentimento é esse? '
+            ];
+
+            var msgs = [
+                {
+                    msgT: 'Excelente!<br>O que caracteriza os diálogos nas<br> tirinhas são os balões onde estão <br>dispostos os textos.',
+                    msgF: 'Atenção!<br> Repare como estão dispostos os <br>diálogos e, responda corretamente.'
+                },
+                {
+                    msgT: 'Muito bem! <br>O sentimento demonstrado pelo menino<br> é de aborrecimento, podemos perceber isso,<br> observando sua fisionomia.',
+                    msgF: 'Resposta incorreta!<br> Observe a fisionomia do menino.'
+                }
+            ];
+
+            $('#pergunta').html(pergutna[edi.root.util.telaAtual]);
+
+            var btns = [
+                [
+                    {texto: "O gesto", dataCorreta: false},
+                    {texto: "A cor", dataCorreta: false},
+                    {texto: "O balão", dataCorreta: true},
+                    {texto: "O tipo de letra", dataCorreta: false}
+
+                ],
+                [
+                    {texto: "aborrecimento", dataCorreta: true},
+                    {texto: "bondade", dataCorreta: false},
+                    {texto: "preconceito", dataCorreta: false},
+                    {texto: "inveja", dataCorreta: false}
+
+                ]
+            ];
+
+            var config = {
+                animacao: true,
+                width: 180,
+                btnBranco: true,
+                colunas: 4,
+                margin: 1,
+                height: 25,
+                top: 320,
+                left: 20,
+                randomico: true
+
+            };
+
+            function callback(a) {
+
+            }
+
+            edi2.alternativa_botao(btns[edi.root.util.telaAtual], callback, function (a) {
+                barraMsg(a?msgs[edi.root.util.telaAtual].msgT:msgs[edi.root.util.telaAtual].msgF, {height: 150, wait: 0});
+            }, config);
+
+            $('[data-edi = "alternativa_botao"]').addClass('box-revela');
+
+            edi.revela('btn-revela', 'box-revela', function () {
+
+            }, function (btn) {
+                btn
+                        .transition({
+                            width: 400,
+                            left: 180
+                        }, 750)
+                        .off();
+            }, {});
+
+
+        });
+    </script>
+
+    <style>
+
+        #img {
+            position: absolute;
+            top: 80px;
+            left: 80px;
+            text-align: center;
+            border-radius: 10px;
+            border: solid 1px #E2E2E2;
+            color: #807E7E;
+            padding: 10px;
+            font-size: 16px;
+        }
+
+        #pergunta {
+            position: absolute;
+            top: 285px;
+            left: 0;
+            font-size: 16px;
+            color: #666;
+            text-align: center;
+            width: 788px;
+        }
+
+
+    </style>
+</head>
+<body>
+<div id="txt" class="box-revela">
+    <div id="pergunta"></div>
+</div>
+
+<img id="img" class="btn-revela" src="../img/licao09/p32.jpg" width="600"/>
+</body>
+</html>

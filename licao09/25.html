@@ -1,0 +1,72 @@
+<!doctype html>
+<html lang="pt-br">
+<head>
+    <title>Lição 09 Peça 25</title>
+    <meta charset="utf-8">
+    <script src="../wilib/js/lib/require.js"></script>
+    <script src="../wilib/js/app.js"></script>
+    <link rel="stylesheet" href="../wilib/css/font-awesome.css">
+    <link rel="stylesheet" href="../wilib/css/estilo.css">
+
+    <script>
+        require(['../wilib/js/lib/arrasta_mais_menos'], function (edi) {
+            edi.setConfig({
+                mascote: 'mascote',
+                titulo: "Arraste o círculo 1 para os significados de<br> insolente e o círculo 2 para os significados de valoroso.",
+            });
+
+            alvos = [
+                {txt: "ARROGANTE", dataCorreta: '1'},
+                {txt: "CORAJOSO", dataCorreta: '2'},
+                {txt: "DESAFORADO", dataCorreta: '1'},
+                {txt: "DESAGRADÁVEL", dataCorreta: '1'},
+                {txt: "VALIOSO", dataCorreta: '2'},
+                {txt: "BRAVO ", dataCorreta: '2'},
+                {txt: "DESTEMIDO", dataCorreta: '2'},
+                {txt: "ABUSADO", dataCorreta: '1'}
+            ];
+
+            edi.arrasta_mais_menos(alvos, function () {
+                // cb
+            }, function (a) {
+                barraMsg(a?'Parabéns!<br>Você conseguiu compreender<br> os significados das palavras.'
+                        :'Atenção!<br> Você deve associar a palavra<br> ao sentido que ela transmite.', {height: 100})
+            }, {
+                sinal: false,
+                textoMais: 'SIGNIFICADOS DE INSOLENTE',
+                textoMenos: 'SIGNIFICADOS DE VALOROSO',
+                alvo: {
+                    width: 240,
+                    height: 77,
+                    left: 302,
+                    top: 0,
+                    qtdX: 2,
+                    margin: 0,
+                    fontSize: 13,
+                    textAlign: 'center',
+                    color: '#666'
+                }
+            });
+        });
+    </script>
+
+    <style media="screen">
+        .circ {
+            width: 10px;
+            border-radius: 50%;
+            text-align: center
+        }
+
+        .circ span {
+            margin: 5px;
+        }
+
+        .m span {
+            margin: 7px;
+        }
+    </style>
+</head>
+<body>
+
+</body>
+</html>

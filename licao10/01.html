@@ -1,0 +1,35 @@
+<!doctype html>
+<html lang="pt-br">
+
+<head>
+	<title>Lição 10 Peça 01</title>
+	<meta charset="utf-8">
+	<script src="../wilib/js/lib/require.js"></script>
+	<script src="../wilib/js/app.js"></script>
+	<link rel="stylesheet" href="../wilib/css/estilo.css">
+	<link rel="stylesheet" href="../wilib/css/font-awesome.css">
+
+	<!-- main -->
+	<script>
+		require(['../wilib/js/lib/reflita2'], function (edi) {
+
+			edi.setConfig({ // configurando o EDI
+        enunciado: false
+			});
+
+      var texto = 'Nesta lição vamos exercitar nossa capacidade de raciocinar ' +
+			'logicamente ao interpretar textos variados. <br><br>Veremos textos de diversos ' +
+			'gêneros, desde os mais simples a textos mais complexos. <br><br>No entanto, ' +
+			'de acordo com seus estudos até esta lição você se preparou para ' +
+			'conseguir interpretar textos com autonomia. <br><br>Fique atento! ' +
+			'Leia com paciência e atenção, você é capaz! '
+
+			edi.reflita2(texto, null, {mascote: 1});
+		});
+	</script>
+</head>
+
+<body>
+</body>
+
+</html>

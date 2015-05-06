@@ -1,0 +1,245 @@
+<!doctype html>
+<html lang="pt-br">
+<head>
+    <title>arr_i001</title>
+    <meta charset="utf-8">
+    <script src="../wilib/js/lib/require.js"></script>
+    <script src="../wilib/js/app.js"></script>
+    <link rel="stylesheet" href="../wilib/css/font-awesome.css">
+    <link rel="stylesheet" href="../wilib/css/estilo.css">
+     <style>
+
+        #quadroArrastas{
+            position: absolute;
+            width: 87px;
+            top: 110px;
+            left: 220px;
+            padding: 10px;
+            height: 223px;
+            border: 1px solid #E2E2E2;
+            border-radius: 12px;
+            text-align: center;
+        }
+
+        #quadroAlvo{
+            position: absolute;
+            width: 200px;
+            top: 100px;
+            left: 9px;
+            padding: 10px;
+            height: 245px;
+            border: 1px solid #E2E2E2;
+            border-radius:12px;
+            text-align: center;
+            background-color: #FFF;
+        }
+
+        #cabeca{
+            position: relative;
+            height: 27px;
+            width: 43px;
+            background-image: url(../wilib/img/svg/partes_mascote/mc_rosto.svg);
+            background-repeat: no-repeat;
+            -webkit-transform: scale(1);
+        }
+
+        #lupa{
+            position: relative;
+            height: 40px;
+            width: 63px;
+            background-image: url(../wilib/img/svg/partes_mascote/mc_lupa.svg);
+        }
+
+        #chapeu{
+            position: relative;
+            height: 32px;
+            width: 59px;
+            background-image: url(../wilib/img/svg/partes_mascote/mc_chapeu.svg);
+        }
+
+        #mapa{
+            position: relative;
+            height: 82px;
+            width: 92px;
+            background-image: url(../wilib/img/svg/partes_mascote/mc_mapa.svg);
+        }
+
+        #corpo{
+            position: relative;
+            top: 36px;
+            height: 187px;
+            width: 119px;
+            background-image: url(../wilib/img/svg/partes_mascote/mc_corpo.svg);
+        }
+
+        .estiloComum{
+            background-size: 100%;
+            display: inline-block;
+            margin-bottom: 10px;
+        }
+
+        #texto{
+            position: absolute;
+            width: 350px;
+            height: 315px;
+            top: 68px;
+            left: 350px;
+            display: block;
+            vertical-align: middle;
+        }
+
+        #ficaTexto{
+            position: relative;
+            width: 350px;
+            height: 315px;
+            line-height: 22px;
+            vertical-align: middle;
+            display: table-cell;
+            text-align: center;
+
+        }
+
+        .msg {
+  				position: absolute;
+  				left: 390px;
+  				top: 317px;
+  				width: 260px;
+  				font-size: 12px;
+  				font-style: italic;
+  				color: #9c0;
+  				text-align: center;
+  				display: none;
+  			}
+
+    </style>
+
+    <!-- main -->
+    <script>
+        require(['../wilib/js/lib/arrasta'], function (edi) {
+
+            edi.setConfig({// configurando o EDI
+                icone: 'exclamacao',
+                titulo: 'Monte o mascote e revele o texto.'
+            });
+
+            var texto = [
+              'CÃO E HOMEM <br>',
+              'Se você recolher um cachorro que morre de fome e o tornar próspero, <br>',
+              'ele não o morderá. É esta aí a diferença principal entre um cão e um homem. <br>',
+              '<br>(Mark Twain)'
+            ];
+
+            for (var i = 0; i < texto.length; i++) {
+                var dv_texto = $('<div>')
+                    .attr('id', 'revela'+i)
+                    .css({
+                        display: 'inline',
+                        opacity: '0'
+                    })
+                    .appendTo('#ficaTexto')
+                    .html(texto[i]);
+            };
+
+
+            var config = {
+                alvoFixo: false,
+                corTexto: 'green',
+                gradiente: 'corGradiente',
+                centraliza: true,
+                append: true,
+                destroy: false,
+                arrastaAbsolute: true,
+                colorirFilho: false,
+                animacaoFundoArrasta: false, //Animação para o fundo do div que vai ser arrastado
+                reloadCorreta: false,
+                multAlvo: true,
+                clone: false,
+                target: false
+            };
+
+            var revela = 0;
+
+            edi.arrasta('arrasta', 'alvo', function (a, b, c) {
+                if (a) {
+                    $('#revela'+revela).animate({opacity:'1'});
+                    revela++;
+                    b.off();
+                    b.appendTo('#conteudo');
+                    b.css({
+                        position: 'absolute',
+                        top: b.attr('dataTop'),
+                        left: b.attr('dataLeft'),
+                        width: b.attr('dataLarguraDepois'),
+                        height: b.attr('dataAlturaDepois')
+                    });
+                }
+
+                $('.msg').fadeIn();
+            }, function(){$('#quadroArrastas').transition({left: '-=110px'},500)}, config);
+
+
+            $('.arrasta').each(function(index, el) {
+                $(this).attr('dataPosxAtual', $(this).css('left'));
+                $(this).attr('dataPosyAtual', $(this).css('top'));
+                $(this).attr('dataLarguraAtual', $(this).width());
+                $(this).attr('dataAlturaAtual', $(this).height());
+
+                $(this).attr('dataPosxDepois', parseInt($(this).css('left'))-$(this).width()/2);
+                $(this).attr('dataPosyDepois', parseInt($(this).css('top'))-$(this).height()/2);
+                $(this).attr('dataLarguraDepois', $(this).width()*2);
+                $(this).attr('dataAlturaDepois', $(this).height()*2);
+            });
+
+                $('.arrasta').mouseover(function(ev) {
+                    var posy = parseInt($(this).css('top'));
+                    y = posy;
+                    posy -= $(this).width()/2;
+                    var posx = parseInt($(this).css('left'));
+                    x = posx;
+                    posx -= $(this).width()/2;
+                    $(this).animate({
+                        width: $(this).attr('dataLarguraDepois'),
+                        height:  $(this).attr('dataAlturaDepois'),
+                        left:  $(this).attr('dataPosxDepois'),
+                        top:  $(this).attr('dataPosyDepois')
+                    }, 0);
+                });
+
+            $('.arrasta').mouseleave(function(ev) {
+                $(this).animate({
+                    width: $(this).attr('dataLarguraAtual'),
+                    height:  $(this).attr('dataAlturaAtual'),
+                    left:  $(this).attr('dataPosxAtual'),
+                    top:  $(this).attr('dataPosyAtual')
+                }, 0);
+            });
+
+
+        });
+    </script>
+
+</head>
+
+<body>
+
+    <div id="quadroArrastas" class="arredondado">
+        <div id="cabeca" class="estiloComum arrasta" data-correta="1" dataTop="191px" dataLeft="73px"></div>
+        <div id="lupa" class="estiloComum arrasta" data-correta="1" dataTop="234px" dataLeft="72px"></div>
+        <div id="chapeu" class="estiloComum arrasta" data-correta="1"  dataTop="129px" dataLeft="63px"></div>
+        <div id="mapa" class="estiloComum arrasta" data-correta="1" dataTop="158px" dataLeft="170px"></div>
+    </div>
+
+    <div id="quadroAlvo">
+        <div id="corpo" class="estiloComum alvo" data-correta= "1"></div>
+    </div>
+
+    <div id="texto">
+        <div id="ficaTexto"></div>
+    </div>
+
+    <div class="msg">
+      Muito Bem! Releia o texto quantas vezes julgar necessário para que você
+      seja capaz de responder corretamente as questões a seguir.
+    </div>
+</body>
+</html>

@@ -1,0 +1,118 @@
+<!doctype html>
+<html lang="pt-br">
+
+<head>
+  <title>Lição 10 Peça 34</title> <!-- rev_ad001 -->
+  <meta charset="utf-8">
+  <script src="../wilib/js/lib/require.js"></script>
+  <script src="../wilib/js/app.js"></script>
+  <link rel="stylesheet" href="../wilib/css/font-awesome.css">
+  <link rel="stylesheet" href="../wilib/css/estilo.css">
+
+  <script>
+    require(['../wilib/js/lib/quebra-cabeca'], function (edi) {
+
+      edi.setConfig({
+        titulo: 'Monte o quebra-cabeça e leia o texto com atenção.'
+      });
+
+      var config = {
+        width: 300,
+        height: 240,
+        left: 10,
+        top: 10,
+        background: '#ccc',
+        numPecas: 2,
+        callBacks: [
+          function () {
+            $('#texto-01').fadeIn();
+          },
+          function () {
+            $('#texto-02').fadeIn();
+          },
+          function () {
+            $('#texto-03').fadeIn();
+          }
+        ]
+      };
+
+      edi.quebraCabeca('../img/licao10/34.png', function () {
+        $('#texto-04, .msg').fadeIn();
+      }, config);
+
+      ajuda({
+        width: 300
+      });
+
+    });
+  </script>
+
+  <style>
+    #texto {
+      width: 400px;
+      position: absolute;
+      left: 330px;
+      top: 80px;
+      font-size: 12px;
+      line-height: 1.4;
+      z-index: 1000;
+      text-align: justify;
+    }
+
+    .texto {
+      display: none;
+    }
+
+    .msg {
+      position: absolute;
+      left: 20px;
+      top: 335px;
+      width: 300px;
+      color: #9c0;
+      font-size: 13px;
+      font-style: italic;
+      display: none;
+    }
+  </style>
+</head>
+
+<body>
+<div id="texto">
+    <span class="texto" id="texto-01">
+      <h3>A FALA HUMANA E O CANTO DOS PÁSSAROS</h3>
+      O passarinho recém-nascido pode aprender o canto típico de seus pais.
+    </span>
+    <span class="texto" id="texto-02">
+      Mas, se entrar em contato com outra espécie, também aprenderá o jeito
+      de cantar estranho. A princípio, o ser humano recém-nascido também
+      pode gravar perfeitamente sons de qualquer língua.
+    </span>
+    <span class="texto" id="texto-03">
+      Mais tarde, os filhotes de aves ficam desconfiados quando ouvem sons
+      diferentes e tendem a só prestar atenção no canto da sua espécie.
+      O cérebro da criança também passa a só gravar sons mais comuns –
+      justamente os sons da sua língua.
+    </span>
+    <span class="texto" id="texto-04">
+      Pássaros e crianças, na etapa seguinte, repetem os sons dos adultos.
+      Isso marcará o cérebro de ambos para sempre, criando conexões de neurônios.
+      A criança, ao se tornar adulta, jamais perderá o sotaque de sua língua de origem.
+
+      Experiências em que os cientistas tentaram ensinar cantos estranhos para
+      pássaros maduros mostraram que, quando eles conseguem aprender, o “sotaque”
+      estrangeiro também é inevitável.
+
+      <br>
+      <br>
+      <span style="font-size: 10px; font-style: italic">
+        (Superinteressante, jan. 1996.)
+      </span>
+    </span>
+</div>
+
+<div class="msg">
+  Muito Bem! No próximo exercício você deverá responder a questões referentes a este texto.
+</div>
+
+</body>
+</html>

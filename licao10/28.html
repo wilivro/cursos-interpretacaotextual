@@ -1,0 +1,69 @@
+<!doctype html>
+<html lang="pt-br">
+	<head>
+		<title>Lição 10 Peça 28</title>
+		<meta charset="utf-8">
+		<script src="../wilib/js/lib/require.js"></script>
+		<script src="../wilib/js/app.js"></script>
+    <link rel="stylesheet" href="../wilib/css/font-awesome.css">
+    <link rel="stylesheet" href="../wilib/css/estilo.css">
+
+		<!-- main -->
+		<script>
+			require(['../wilib/js/lib/alternativa_carimbo'], function (edi) {
+
+				edi.setConfig({// configurando o EDI
+					tipo: 'mascote_pensando',
+          icone: 'exclamacao',
+					titulo: 'De acordo com o texto do exercício anterior, carimbe <br>' +
+									'Certo ou Errado de acordo com as sentenças.',
+				});
+				var alternativas = [
+					{
+						correta: false,
+						alternativa: 'As fortes chuvas que atingiram Alagoas e Pernambuco ' +
+												 'têm ligação direta com o fenômeno do aquecimento global.'
+					}, {
+						correta: true,
+						alternativa: 'Os três fatores que contribuíram para este grande ' +
+												 'volume de chuva foram: frentes frias, elevação da ' +
+												 'temperatura do mar e as “Ondas de leste”.'
+					}, {
+						correta: false,
+						alternativa: 'As chamadas “Ondas de leste” são ondas marítimas ' +
+												 'que atingem até 20 metros de altura.'
+					}, {
+						correta: true,
+						alternativa: 'A forte chuva elevou o nível de rios importantes dos estados.'
+					}
+				];
+
+				edi.alternativa_carimbo(alternativas, null, function (a) {
+					if (a) {
+						mensagem(
+							'Correto. De acordo com a reportagem, três fatores <br>naturais ' +
+							'foram determinantes para o grande volume de chuva.'
+						);
+
+						return;
+					}
+
+					mensagem(
+						'Tente novamente. O aquecimento global não foi um <br>' +
+						'dos fatores determinantes para o grande volume de chuva.'
+					);
+        }, {
+            tamanhoBoxTexto: 300
+        });
+			});
+		</script>
+
+		<style>
+
+		</style>
+	</head>
+
+	<body>
+
+	</body>
+</html>

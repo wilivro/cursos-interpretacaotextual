@@ -1,0 +1,92 @@
+<!doctype html>
+<html lang="pt-br">
+	<head>
+		<title>Lição 10 Peça 46</title>
+		<meta charset="utf-8">
+		<script src="../wilib/js/lib/require.js"></script>
+		<script src="../wilib/js/app.js"></script>
+    <link rel="stylesheet" href="../wilib/css/font-awesome.css">
+    <link rel="stylesheet" href="../wilib/css/estilo.css">
+
+		<!-- main -->
+		<script>
+			require(['../wilib/js/lib/alternativa_botao'], function (edi) {
+
+				edi.setConfig({// configurando o EDI
+          icone: "exclamacao",
+					titulo: "Clique sobre a resposta correta de acordo com o texto.",
+          mascote: 'mascoteVarinha'
+				});
+
+				var btns = [
+					{dataCorreta: false, texto: 'alegria'},
+					{dataCorreta: true,  texto: 'ficar com dó'},
+					{dataCorreta: false, texto: 'tristeza'},
+					{dataCorreta: false, texto: 'fúria'}
+				];
+
+				var config = {
+					width: 330,
+					height: 25,
+					left: 230,
+					top: 135,
+					margin: 3,
+					btnBranco: true,
+					animacao: true
+				}
+
+				edi.alternativa_botao(btns, null, function(a) {
+					if (a) {
+						$('.msg').fadeIn();
+						return;
+					}
+
+					$('.msg').html(
+						'Tente novamente! Leia a linha 5 com bastante atenção ' +
+						'observando a atitude do leão em relação ao ratinho.'
+					).css('color', 'red').fadeIn();
+				}, config);//iniciando o EDI
+			});
+		</script>
+        <style>
+						.alter-btn {
+							width: 330px !important;
+						}
+
+						.txt{
+              text-align: left;
+              width: 270px;
+              margin-left: 60px;
+              position: relative;
+              display: inline-table;
+            }
+
+						h4.titulo {
+							position: absolute;
+							left: 235px;
+							top: 70px;
+							color: #666;
+						}
+
+						.msg {
+				      position: absolute;
+				      left: 10px;
+				      top: 140px;
+				      width: 200px;
+				      font-size: 12px;
+				      font-style: italic;
+				      color: #9c0;
+				      text-align: center;
+				      display: none;
+				    }
+        </style>
+	</head>
+
+	<body>
+		<h4 class="titulo">A palavra “pena” (linha 5) refere-se a:</h4>
+
+		<div class="msg">
+			Muito bem, você acertou! O leão ficou com dó do ratinho e o soltou.
+		</div>
+	</body>
+</html>

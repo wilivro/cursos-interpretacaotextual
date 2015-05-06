@@ -1,0 +1,181 @@
+<!doctype html>
+<html lang="pt-br">
+<head>
+  <title>Lição 10 Peça 44</title>
+  <meta charset="utf-8">
+  <script src="../wilib/js/lib/require.js"></script>
+  <script src="../wilib/js/app.js"></script>
+  <link rel="stylesheet" href="../wilib/css/font-awesome.css">
+  <link rel="stylesheet" href="../wilib/css/estilo.css">
+
+  <script>
+    require(['../wilib/js/lib/alternativa_botao'], function (edi) {
+
+      edi.setConfig({
+        icone: false,
+        qtdTelas: 3,
+        titulo: 'Assinale a alternativa correta de acordo com cada questão.'
+      });
+
+      var telas = [
+        {
+          titulo: 'Qual o título da fábula?',
+          btns: [
+            {
+              dataCorreta: false,
+              texto: 'O leão'
+            },{
+              dataCorreta: true,
+              texto: 'O leão e o ratinho'
+            },{
+              dataCorreta: false,
+              texto: 'O ratinho e o leão'
+            }
+          ],
+          msg: {
+            acert: 'Muito bem! Você acertou o título da fábula.',
+            erro: 'Tente novamente!'
+          }
+        },
+        {
+          titulo: 'A fábula foi retirada de qual livro?',
+          btns: [
+            {
+              dataCorreta: false,
+              texto: 'Fábulas'
+            },{
+              dataCorreta: false,
+              texto: 'Fábulas de La Fontaine'
+            },{
+              dataCorreta: true,
+              texto: 'Fábulas de Esopo'
+            }
+          ],
+          msg: {
+            acert: 'Muito bem! Você acertou o nome do livro do qual foi retirada a fábula.',
+            erro: 'Tente novamente!'
+          }
+        },
+        {
+          titulo: 'Qual a moral da fábula?',
+          btns: [
+            {
+              dataCorreta: true,
+              texto: 'Uma boa ação ganha outra'
+            },{
+              dataCorreta: false,
+              texto: 'Pagar o bem no lugar do mal'
+            },{
+              dataCorreta: false,
+              texto: 'Cuidado com o inimigo'
+            }
+          ],
+          msg: {
+            acert: 'Muito bem! Você acertou a moral da fábula. ',
+            erro: 'Tente novamente! A fábula é uma pequena narrativa alegórica ' +
+                  'que sugere uma verdade ou reflexão de ordem moral.'
+          }
+        }
+      ];
+
+      edi.alternativa_botao(telas[edi.telaAtual - 1].btns, null, function(a){
+        if (a) {
+          $('.msg').html(telas[edi.telaAtual - 1].msg.acert).fadeIn();
+          return;
+        }
+
+        $('.msg')
+          .html(telas[edi.telaAtual - 1].msg.erro)
+          .css('color', 'red').fadeIn();
+      }, {
+        width: 600,
+        height: 30,
+        left: 90,
+        colunas: 1,
+        top: 135,
+        margin: 0,
+        padding: 5,
+        display: 'block',
+        btnBranco: true,
+        animacao: true,
+        randomico: true,
+        tamanhoTexto: 15
+      });
+
+      // mostrando número da tela no html
+      $('#tela-titulo .ico').html(edi.telaAtual);
+
+      // mostrando titulo da tela no html
+      $('#tela-titulo .titulo').html($('<p>').html(telas[edi.telaAtual - 1].titulo));
+
+    });
+  </script>
+
+  <style>
+    #conteudo {
+      height: 315px;
+      background: linear-gradient(#fff, #eee);
+    }
+
+    #tela-titulo {
+      position: absolute;
+      left: 90px;
+      top: 75px;
+      width: 600px;
+      height: 50px;
+    }
+
+    #tela-titulo .ico {
+      position: absolute;
+      left: 0px;
+      top: 0px;
+      width: 45px;
+      height: 45px;
+      border: 3px solid rgb(140, 168, 184);
+      border-radius: 50%;
+      background: #fff;
+      font-size: 35px;
+      text-align: center;
+      color: rgb(140, 168, 184);
+    }
+
+    #tela-titulo .titulo {
+      position: absolute;
+      left: 60px;
+      top: 0;
+      max-width: 530px;
+      height: 50px;
+      display: table;
+    }
+
+    #tela-titulo .titulo p {
+      display: table-cell;
+      vertical-align: middle;
+      margin: 0;
+      padding: 0;
+      color: #666;
+    }
+
+    .msg {
+      position: absolute;
+      left: 90px;
+      top: 325px;
+      width: 600px;
+      font-size: 12px;
+      font-style: italic;
+      color: #9c0;
+      text-align: center;
+      display: none;
+    }
+  </style>
+</head>
+
+<body>
+  <div id="tela-titulo">
+    <div class="ico"></div>
+    <div class="titulo"></div>
+  </div>
+
+  <div class="msg"></div>
+</body>
+</html>

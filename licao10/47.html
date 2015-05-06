@@ -1,0 +1,36 @@
+<!doctype html>
+<html lang="pt-br">
+
+<head>
+	<title>Lição 10 Peça 47</title>
+	<meta charset="utf-8">
+	<script src="../wilib/js/lib/require.js"></script>
+	<script src="../wilib/js/app.js"></script>
+	<link rel="stylesheet" href="../wilib/css/estilo.css">
+	<link rel="stylesheet" href="../wilib/css/font-awesome.css">
+
+	<!-- main -->
+	<script>
+		require(['../wilib/js/lib/reflita2'], function (edi) {
+
+			edi.setConfig({ // configurando o EDI
+        enunciado: false
+			});
+
+      var texto = 'Nesta lição exercitamos a interpretação de textos ' +
+									'com diversos gêneros literários.<br><br>' +
+									'Aprendemos como conhecer esses gêneros pode nos ajudar a ' +
+									'interpretar melhor.<br><br> Neste primeiro curso de interpretação ' +
+									'de textos aliado ao raciocínio lógico você aprendeu conceitos ' +
+									'muito importantes.<br><br> Continue determinado em aprender! ' +
+									'Bons estudos!<br><br>';
+
+			edi.reflita2(texto, null, {mascote: 1});
+		});
+	</script>
+</head>
+
+<body>
+</body>
+
+</html>

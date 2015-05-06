@@ -1,0 +1,132 @@
+<!doctype html>
+<html lang="pt-br">
+<head>
+    <title>Lição 10 Peça 06</title>
+    <meta charset="utf-8">
+    <script src="../wilib/js/lib/require.js"></script>
+    <script src="../wilib/js/app.js"></script>
+    <link rel="stylesheet" href="../wilib/css/font-awesome.css">
+    <link rel="stylesheet" href="../wilib/css/estilo.css">
+
+    <script>
+      require(['../wilib/js/lib/alternativa_boliche'], function (edi) {
+
+      edi.setConfig({
+        icone: 'exclamacao',
+        mascote:'mascote',
+    		qtdTelas: 3,
+        titulo: 'Vamos jogar basquete? Observe a letra da música popular ' +
+                '“Pula a Fogueira” usada em festas juninas em todo Brasil e ' +
+                'marque as respostas corretas de acordo com as questões apresentadas.',
+      });
+
+			var msgFinal = [
+  			{
+  				msgT:'Muito Bem, você acertou!',
+  				msgF:'Pense um pouco mais, lembre-se do que você estudou anteriormente.'
+  			},{
+  				msgT:'Muito Bem, você acertou!',
+  				msgF:'Pense um pouco mais, lembre-se do que você estudou anteriormente.'
+  			},{
+  				msgT:'Muito Bem, você acertou!',
+  				msgF:'Pense um pouco mais, lembre-se do que você estudou anteriormente.'
+  			}
+			];
+
+      var texto = '<p><h3>Pula a fogueira</h3><br>' +
+                  '<h5>(Autores: Getúlio Marinho e João B. Filho)</h5><br>' +
+                  'Pula a fogueira, Iaiá <br>' +
+                  'Pula a fogueira, Ioiô <br>' +
+                  'Cuidado para não se queimar <br>' +
+                  'Olha que a fogueira <br>' +
+                  'Já queimou o meu amor <br>' +
+                  'Nesta noite de festança <br>' +
+                  'Todos caem na dança <br>' +
+                  'Alegrando o coração <br>' +
+                  'Foguetes, cantos e troca <br>' +
+                  'Na cidade e na roça <br>' +
+                  'Em louvor a São João <br>' +
+                  'Nesta noite de folguedo <br>' +
+                  'Todos brincam sem medo <br>' +
+                  'A soltar seu pistolão <br>' +
+                  'Morena flor do sertão <br>' +
+                  'Quero saber se tu és <br>' +
+                  'Dona do meu coração</p>';
+
+      var btns = {
+				tela1: {
+          titulo: 'O título da música “Pula a Fogueira” refere-se a:',
+					texto: texto,
+					btns: [
+						{dataCorreta: false, texto: 'de um texto jornalístico'},
+						{dataCorreta: true,  texto: 'Festa de São João.'},
+						{dataCorreta: false, texto: 'Festa de Santo Agostinho.'},
+						{dataCorreta: false, texto: 'Festa do fogo.'},
+					]
+				},
+
+				tela2: {
+          titulo: 'Para o autor, pular a fogueira é sinônimo de:',
+					texto: texto,
+					btns: [
+            {dataCorreta: true,  texto: 'alegria.'},
+            {dataCorreta: false, texto: 'tristeza.'},
+            {dataCorreta: false, texto: 'acidente.'},
+            {dataCorreta: false, texto: 'incêndio.'}
+					]
+				},
+
+				tela3: {
+          titulo: 'Segundo o texto:',
+					texto: texto,
+					btns: [
+            {dataCorreta: false, texto: 'pular a fogueira significa alegrar-se.'},
+            {dataCorreta: false, texto: 'pular a fogueira significa queimar-se.'},
+            {dataCorreta: true,  texto: 'louvar a São João cantando e dançando alegremente.'},
+            {dataCorreta: false, texto: 'louvar a São João queimando-se na fogueira.'},
+					]
+				}
+      };
+
+      var config = {
+				width: 240,
+        fontSize: '16px',
+        boliche: false,
+				basquete: true,
+				randomico: true,
+        margin: '0px 0px'
+      };
+
+        edi.alternativa_boliche(btns, function (a) {
+				if(a)
+					mensagem('<div style="width: 430px; font-size: 22px; display: inline-block">'+ msgFinal[edi.telaAtual() - 1].msgT+'</div>');
+				else
+					mensagem('<div style="width: 430px; font-size: 22px; display: inline-block">'+ msgFinal[edi.telaAtual() - 1].msgF+'</div>');
+			}, config);//iniciando o EDI
+        });
+    </script>
+
+    <style>
+      #textoBox {
+        font-size: 11px !important;
+        overflow-y: scroll;
+        display: block !important;
+        height: 260px !important;
+      }
+
+      #textoBox > div {
+        position: absolute;
+        left: -15px;
+        top: -15px;
+        margin: 0 !important;
+      }
+
+      .btn {
+
+      }
+    </style>
+</head>
+
+<body>
+</body>
+</html>

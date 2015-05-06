@@ -1,0 +1,76 @@
+<!doctype html>
+<html lang="pt-br">
+<head>
+    <title>Lição 10 Peça 45</title>
+    <meta charset="utf-8">
+    <script src="../wilib/js/lib/require.js"></script>
+    <script src="../wilib/js/app.js"></script>
+    <link rel="stylesheet" href="../wilib/css/font-awesome.css">
+    <link rel="stylesheet" href="../wilib/css/estilo.css">
+
+    <script>
+        require(['../wilib/js/lib/alternativa_boliche'], function (edi) {
+
+        edi.setConfig({
+          icone: 'exclamacao',
+          mascote:'mascote',
+	        qtdTelas: 2,
+          titulo: 'Vamos jogar basquete? Responda corretamente as <br>questões de acordo com o texto lido.'
+        });
+
+			var msgFinal = [
+				{
+					msgT:'Muito bem, você acertou! O leão soltou o ratinho, deixando-o ir embora.',
+					msgF:'Tente novamente!'
+				},
+				{
+					msgT:'Muito bem, você acertou! Na fábula o leão estava cansado depois de uma longa caçada.',
+					msgF:'Tente novamente!'
+				}
+			];
+
+      var btns = {
+				tela1: {
+					texto: 'O que o leão fez com o ratinho?',
+					btns: [
+						{texto: 'comeu', dataCorreta: false},
+						{texto: 'soltou', dataCorreta: true},
+						{texto: 'prendeu', dataCorreta: false}
+					]
+				},
+				tela2: {
+					texto: 'Por que o leão estava cansado?',
+					btns: [
+						{texto: 'de tanto dormir', dataCorreta: false},
+						{texto: 'de correr', dataCorreta: false},
+						{texto: 'de longa caçada', dataCorreta: true}
+					]
+				}
+      };
+
+      var config = {
+				width: 240,
+        fontSize: '16px',
+        boliche: false,
+				basquete: true,
+				randomico: true
+      };
+
+      edi.alternativa_boliche(btns, function (a) {
+				console.log(edi.telaAtual());
+				if(a)
+					mensagem('<div style="width: 430px; font-size: 22px; display: inline-block">'+ msgFinal[edi.telaAtual() - 1].msgT+'</div>');
+				else
+					mensagem('<div style="width: 430px; font-size: 22px; display: inline-block">'+ msgFinal[edi.telaAtual() - 1].msgF+'</div>');
+			}, config);//iniciando o EDI
+      });
+    </script>
+
+    <style>
+
+    </style>
+</head>
+
+<body>
+</body>
+</html>

@@ -1,0 +1,121 @@
+<!doctype html>
+<html lang="pt-br">
+<head>
+  <title>lição 10 peça 23</title>
+  <meta charset="utf-8">
+
+  <script src="../wilib/js/lib/require.js"></script>
+  <script src="../wilib/js/app.js"></script>
+  <link rel="stylesheet" href="../wilib/css/font-awesome.css">
+  <link rel="stylesheet" href="../wilib/css/estilo.css">
+
+  <script>
+    require(['../wilib/js/lib/arrasta'], function (edi) {
+
+      edi.setConfig({
+        mascote: 'mascote',
+        tempoFinal: 10,
+        titulo: 'Qual das características a seguir pode ser atribuída à ' +
+                'galinha? Arraste para o primeiro lugar do pódio a resposta correta.',
+      });
+
+      var arrArrasta = [
+        {arrasta: 'avareza', dataCorreta: 1},
+        {arrasta: 'conformismo', dataCorreta: 2},
+        {arrasta: 'ingratidão', dataCorreta: 3},
+        {arrasta: 'revolta', dataCorreta: 4},
+        {arrasta: 'hipocrisia', dataCorreta: 5}
+      ];
+
+      arrArrasta.sort(function () {
+        return 0.5 - Math.random()
+      });
+
+      for (var i = 0; i < arrArrasta.length; i++) {
+        $('<div>')
+          .addClass('arrasta barra')
+          .attr({'data-correta': arrArrasta[i].dataCorreta})
+          .html(arrArrasta[i].arrasta)
+          .appendTo('#boxArrasta');
+      }
+
+      var config = {
+        alvoFixo: true
+      };
+
+      edi.arrasta('arrasta', 'alvo', function (a, b) {
+        if(a){
+          $('#alvoPodium').css({top: 165});
+          $('#txt').css({color: '#9C0'}).html(b.html())
+
+          mensagem(
+            'Muito Bem! A resposta se justifica pelo fato <br>de a galinha ' +
+            'continuar pondo os ovos, apesar de perder as <br>regalias alimentares. ' +
+            'Ela se conformava com a situação e prosseguia <br>na sua função de ' +
+            'poedeira de ovos de ouro.'
+          );
+
+          return;
+        }
+
+        mensagem(
+          'Tente novamente! A resposta se justifica pelo fato <br>de a galinha ' +
+          'continuar pondo os ovos, apesar de <br>perder as regalias alimentares.'
+        );
+      }, null, config);
+
+    });
+  </script>
+
+  <style>
+    .barra{
+      background: url(../wilib/img/svg/retangulo.svg);
+      width: 239px;
+      height: 45px;
+      margin: 5px;
+      text-align: center;
+      line-height: 40px;
+    }
+
+    #boxArrasta{
+      position: absolute;
+      top: 120px;
+    }
+
+    #texto{
+      text-align: center;
+      margin: 10px;
+      line-height: 24px;
+    }
+
+    #podium{
+      background: url(../wilib/img/svg/podium.svg);
+      width: 459px;
+      height: 155px;
+      position: absolute;
+      top: 202px;
+      left: 310px;
+    }
+
+    #alvoPodium{
+      width: 239px;
+      height: 45px;
+      position: absolute;
+      top: 158px;
+      left: 381px;
+    }
+
+    #msgFinalMain > div {
+      font-size: 16px !important;
+    }
+  </style>
+</head>
+
+<body>
+  <div id="texto">Cada uma das propostas associa-se a um entendimento de <span id="txt">_________________</span>, compreendendo<br>as diferentes relações que os seres humanos podem vir a estabelecer com o planeta.</div>
+  <div id="alvoPodium" class="alvo" data-correta="2"></div>
+  <div id="podium"></div>
+  <div id="boxArrasta">
+  </div>
+</body>
+</html>

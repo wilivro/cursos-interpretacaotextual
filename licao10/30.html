@@ -1,0 +1,81 @@
+<!doctype html>
+<html lang="pt-br">
+
+<head>
+	<title>Lição 01 Peça 06</title> <!-- alt_f002 -->
+  <meta charset="utf-8">
+  <script src="../wilib/js/lib/require.js"></script>
+  <script src="../wilib/js/app.js"></script>
+  <link rel="stylesheet" href="../wilib/css/font-awesome.css">
+  <link rel="stylesheet" href="../wilib/css/estilo.css">
+
+	<script>
+		require(['../wilib/js/lib/alternativa_balao'], function (edi) {
+
+			edi.setConfig({
+        mascote: 'mascote',
+        tempoFinal: 10,
+				titulo: 'De acordo com o texto anterior, Clique na frase ' +
+								'em que o pensamento está correto.'
+			});
+
+      //balões
+      var baloes = [
+        {
+					dataCorreta: false,
+					texto: 'O objetivo principal de quem busca uma qualificação ' +
+								 'profissional é para se adquirir um diploma ou certificado.'
+				},
+        {
+					dataCorreta: false,
+					texto: 'Uma das principais razões que possibilitou Fernando a ter ' +
+								 'facilidades de conseguir um emprego é a quantidade ' +
+								'de amigos que ele possui.'
+				},
+        {
+					dataCorreta: true,
+					texto: 'Através desta reportagem podemos concluir que o mercado de ' +
+								 'trabalho exige do candidato um crescimento constante.'
+				},
+        {
+					dataCorreta: false,
+					texto: 'O candidato que conseguir um emprego não precisa se ' +
+								 'preocupar com os estudos.'
+				},
+      ];
+
+			edi.alternativa_balao(baloes, null, function (a) {
+	    	if (a) {
+					mensagem(
+						'Parabéns! O desenvolvimento profissional deve ser algo constante <br>' +
+						'na vida de qualquer pessoa, e podemos realizá-lo <br>através de nossos estudos.'
+					, {fontSize: 16});
+
+					return;
+	    	}
+
+				mensagem(
+					'Por favor, tente novamente. A qualificação profissional <br>possibilita ' +
+					'ao candidato maiores oportunidades de emprego e assim, <br>maiores chances ' +
+					'de melhorar a sua qualidade de vida.'
+				, {fontSize: 16});
+	    }, {
+        top: 0,
+        left: 80,
+        width: 300,
+        height: 150,
+        margin: '0 60px 0 0',
+        fontSize: 12,
+        leftPerson: -65,
+        topPerson: 43,
+        topIco: 0,
+        leftIco: -7
+	    });
+		});
+	</script>
+</head>
+
+<body>
+</body>
+
+</html>

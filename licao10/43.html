@@ -1,0 +1,117 @@
+<!-- Desenvolvedor: Micael Souza -->
+<!doctype html>
+<html lang="pt-br">
+	<head>
+		<title>Lição 10 Peça 43</title>
+		<meta charset="utf-8">
+		<script src="../wilib/js/lib/require.js"></script>
+		<script src="../wilib/js/app.js"></script>
+    <link rel="stylesheet" href="../wilib/css/font-awesome.css">
+    <link rel="stylesheet" href="../wilib/css/estilo.css">
+
+		<!-- main -->
+		<script>
+			require(['../wilib/js/lib/revela'], function (edi) {
+
+				edi.setConfig({// configurando o EDI
+          icone: "interogacao",
+					titulo: "Clique sobre a imagem e leia com atenção a seguinte fábula.",
+				});
+
+				edi.revela('_btn', 'revela', function() {
+					$('.msg').fadeIn();
+				});//iniciando o EDI
+
+				$('.revela').peBalao({
+					top:34,
+					left:-35,
+					scaleX:1,
+					scaleY:-1,
+					rotate:90
+				});
+			});
+		</script>
+
+		<style>
+			._btn {
+				background: url(../img/licao10/43.jpg) no-repeat;
+				background-size: 100% 100%;
+				width: 271px;
+				height: 220px;
+				position: absolute;
+				left: 20px;
+				top: 78px;
+				cursor: pointer;
+				border-radius: 10px;
+				border: 7px solid #fff;
+				box-shadow: 0 0 5px rgba(0, 0, 0, 0.5);
+			}
+
+			.revela {
+				background: #fff;
+				width: 370px;
+				padding: 10px 20px 10px 30px;
+				position: absolute;
+				left: 330px;
+				top: 84px;
+				text-align: left;
+				border: 1px solid #ccc;
+				border-radius: 10px;
+				font-size: 13px;
+			}
+
+			.revela p {
+				margin-top: 10px;
+				font-size: 11px;
+				font-weight: bold;
+				color: #838383;
+			}
+
+			.msg {
+				position: absolute;
+				left: 32px;
+				top: 325px;
+				width: 260px;
+				font-size: 12px;
+				font-style: italic;
+				color: #9c0;
+				text-align: center;
+				display: none;
+			}
+		</style>
+	</head>
+
+	<body>
+		<div class="_btn"></div>
+		<div class="revela">
+			<strong>O leão e o ratinho</strong>
+
+			<p>
+				O leão estava debaixo de uma árvore. <br>
+				Dormia depois de longa caçada. <br>
+				Alguns ratinhos passeavam em cima do leão cansado. <br>
+				De repente o leão acordou. <br>
+				Os ratinhos conseguiram fugir, menos um. <br>
+				O leão prendeu o ratinho na pata. <br>
+				O ratinho pediu para não ser esmagado. <br>
+				Com pena, o leão soltou o coitado. <br>
+				Deixou o ratinho ir embora. <br>
+				Algum tempo depois, o leão ficou preso na rede de uns caçadores. <br>
+				Lutava para se soltar, mas não conseguia. <br>
+				Urrava fazendo a floresta tremer de medo. <br>
+				Eis que apareceu o ratinho. <br>
+				Com seus dentes afiados roeu as cordas. <br>
+				Assim, o ratinho salvou o leão.
+			</p>
+
+      <span style="font-size: 10px; font-style: italic">
+				Do livro: Fábulas de Esopo - Companhia das Letrinhas
+			</span>
+		</div>
+
+		<div class="msg">
+			Muito Bem! A seguir, você deverá ser capaz de responder a questões
+			relacionadas a este texto, fique atento!
+		</div>
+	</body>
+</html>

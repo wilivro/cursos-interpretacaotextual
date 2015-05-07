@@ -1,0 +1,258 @@
+<!doctype html>
+<html lang="pt-br">
+<head>
+  <title>Lição 10 Peça 05</title>
+  <meta charset="utf-8">
+  <script src="../wilib/js/lib/require.js"></script>
+  <script src="../wilib/js/app.js"></script>
+  <link rel="stylesheet" href="../wilib/css/font-awesome.css">
+  <link rel="stylesheet" href="../wilib/css/estilo.css">
+
+  <script>
+    require(['../wilib/js/lib/alternativa_botao'], function (edi) {
+
+      edi.setConfig({
+        icone: false,
+        enunciado: false,
+        titulo: '',
+        qtdTelas: 3
+      });
+
+      var textoPergunta = [
+        'Indique o segmento que completa, de acordo com o texto, o ' +
+        'enunciado formulado a seguir: No trecho transcrito, o ' +
+        'narrador-personagem é um menino, que relata:',
+
+        'Indique o segmento que completa, de acordo com o texto, o ' +
+        'enunciado formulado a seguir: O menino se confessava ' +
+        '“arrependido de ter vindo” porque:',
+
+        'Assinale o segmento que pode substituir no texto, sem prejuízo ' +
+        'da significação original, o trecho: “Ardia por andar lá fora.”'
+      ];
+
+      var msgFinalT = [
+        'Muito Bem! O texto não fala de possíveis dificuldades do menino ' +
+        'nas aulas de leitura e gramática, não cabendo, pois, a letra a ' +
+        'como resposta. Também não pode ser a letra b porque o desespero ' +
+        'de que fala o texto ocorre porque o menino gostaria de estar lá ' +
+        'fora brincando com o papagaio, não que quisesse e não pudesse comprá-lo. ' +
+        'A letra c está errada, pois, ele não se encontrava de castigo, ' +
+        'apenas estava com os livros nos joelhos. A letra d é errada ' +
+        'porque ele e Raimundo estavam juntos, na escola. Na realidade, ' +
+        'o texto apenas retrata as emoções de um dia de aula; por ' +
+        'isso a resposta correta é a letra e.',
+
+        'Muito Bem! A resposta se encontra no trecho “Agora que ficava ' +
+        'preso, ardia por andar lá fora...”. Ou seja, queria estar na rua, ' +
+        'brincando com os colegas, e não na sala de aula. Talvez a ' +
+        'alternativa que possa trazer dúvida seja a d. Mas não há ' +
+        'essa indicação no texto, inclusive no diálogo ocorrido ' +
+        'entre os dois colegas.',
+
+        'Correto! É uma questão de paráfrase. A forma verbal ardia tem valor' +
+        'conotativo e expressa a ansiedade do menino em estar ' +
+        'fora da escola, brincando com os colegas.'
+      ];
+
+      var msgFinalE = [
+        'Atenção! Pense um pouco mais. Releia o Conto com calma ' +
+        'e procure compreender os aspectos do texto.',
+
+        'Pense um pouco mais. Releia o texto.',
+
+        'Atenção! Esta é uma questão de paráfrase, nós estudamos ' +
+        'este conceito no início desta lição, relembre!'
+      ];
+
+      $('#num').html(edi.telaAtual);
+      $('.texto .middle').html(textoPergunta[edi.telaAtual - 1]);
+
+      var btns = [
+        [
+          {dataCorreta: false, texto: 'as dificuldades que experimenta nas aulas de leitura e gramática.'},
+          {dataCorreta: false, texto: 'o desespero por não possuir um papagaio de papel tão soberbo como aquele que via no céu.'},
+          {dataCorreta: false, texto: 'os temores de ficar de castigo, sentado, os livros nos joelhos.'},
+          {dataCorreta: false, texto: 'o arrependimento por não ter acompanhado Raimundo nas estripulias com os meninos do morro.'},
+          {dataCorreta: true,  texto: 'suas emoções em um dia de escola.'}
+        ],[
+          {dataCorreta: false, texto: 'os outros meninos vadios passariam a chamá-lo de bobo.'},
+          {dataCorreta: false, texto: 'não gostava que os outros meninos empinassem seu papagaio de papel.'},
+          {dataCorreta: true,  texto: 'preferia ter ficado com os outros meninos, a brincar na rua.'},
+          {dataCorreta: false, texto: 'tivera de cumprir a promessa de que viria, feita a Raimundo.'},
+          {dataCorreta: false, texto: 'sentia dor nas pernas, ao ficar muito tempo sentado, com os livros nos joelhos.'}
+        ],[
+          {dataCorreta: false, texto: 'Queimava de raiva por estar preso.'},
+          {dataCorreta: true,  texto: 'Ansiava por estar lá fora.'},
+          {dataCorreta: false, texto: 'Fervia-me para caminhar pelas ruas.'},
+          {dataCorreta: false, texto: 'Recapitulava para saltar para a rua.'},
+          {dataCorreta: false, texto: 'Almejava dirigir-me para o refeitório.'}
+        ]
+      ];
+
+      var config = {
+        width: 340,
+        height: 30,
+        left: 420,
+        colunas: 1,
+        top: 90,
+        margin: 0,
+        padding: 5,
+        display: 'block',
+        btnBranco: true,
+        animacao: true,
+        randomico: true,
+        tamanhoTexto: 15
+      };
+
+      edi.alternativa_botao(btns[edi.telaAtual - 1], null, function(a){
+        if(a) {
+          mensagem('<div style="width: 430px; font-size: 16px; display: inline-block">'+ msgFinalT[edi.telaAtual - 1]+'</div>')
+          return;
+        }
+
+        mensagem('<div style="width: 430px; font-size: 16px; display: inline-block">'+ msgFinalE[edi.telaAtual - 1]+'</div>')
+      }, config);
+
+    });
+  </script>
+
+  <style>
+      #conteudo {
+          position: absolute;
+          width: 790px !important;
+          background: #9bbbe3; /* Old browsers */
+          background: -moz-linear-gradient(top, #9bbbe3 1%, #5b82b4 100%); /* FF3.6+ */
+          background: -webkit-gradient(linear, left top, left bottom, color-stop(1%, #9bbbe3), color-stop(100%, #5b82b4)); /* Chrome,Safari4+ */
+          background: -webkit-linear-gradient(top, #9bbbe3 1%, #5b82b4 100%); /* Chrome10+,Safari5.1+ */
+          background: -o-linear-gradient(top, #9bbbe3 1%, #5b82b4 100%); /* Opera 11.10+ */
+          background: -ms-linear-gradient(top, #9bbbe3 1%, #5b82b4 100%); /* IE10+ */
+          background: linear-gradient(to bottom, #9bbbe3 1%, #5b82b4 100%); /* W3C */
+          filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#9bbbe3', endColorstr='#5b82b4', GradientType=0); /* IE6-9 */
+      }
+
+      .texto {
+          width: 200px;
+          height: 100px;
+          padding: 0 20px;
+          position: absolute;
+          left: 500px;
+          top: 0;
+      }
+
+      .middle {
+          text-align: center;
+          vertical-align: middle;
+          display: table-cell;
+      }
+
+      .texto .middle {
+          height: 100px;
+          line-height: 1.3;
+          color: #fff;
+          font-size: 12px;
+      }
+
+      #num {
+          width: 50px;
+          display: block;
+          height: 50px;
+          text-align: center;
+          line-height: 50px;
+          font-size: 35px;
+          background: #1C8FD0;
+          border: 4px solid #fff;
+          border-radius: 50%;
+          position: absolute;
+          left: 450px;
+          top: 20px;
+          color: #fff;
+      }
+
+      .btn-sem-estilo {
+          box-shadow: 0 0 0 0;
+      }
+
+      .btn-sem-estilo-acertou {
+          background-color: #0060B6 !important;
+      }
+
+      #noticia {
+          position: absolute;
+          width: 375px;
+          height: 265px;
+          left: 10px;
+          top: 80px;
+          z-index: 10;
+          font-size: 18px;
+          line-height: 18px;
+          padding: 10px;
+          background-color: #FFF;
+          color: #666;
+          overflow-y: scroll;
+      }
+
+      #enunciado {
+          position: absolute;
+          top: 1px;
+          left: 0;
+          font-size: 18px;
+          width: 415px;
+          height: 50px;
+          font-style: italic;
+          z-index: 12;
+          color: #FFF;
+      }
+
+      #enunciado .middle {
+          height: 80px;
+          width: 415px;
+          font-size: 18px;
+      }
+
+      .bold {
+          color: #000;
+          float: right;
+          margin-top: 10px;
+          font-size: 14px;
+       }
+  </style>
+</head>
+
+<body>
+<div class="texto">
+  <div class="middle"></div>
+</div>
+
+<div id="noticia">
+  “Com franqueza, estava arrependido de ter vindo. Agora que ficava preso,
+  ardia por andar lá fora, e recapitulava o campo e o morro, pensava nos
+  outros meninos vadios, o Chico Telha, o Américo, o Carlos das Escadinhas,
+  a fina flor do bairro e do gênero humano.
+
+  <br><br>Para o cúmulo de desespero,
+  vi através das vidraças da escola, no claro azul do céu, por cima do
+  morro do Livramento, um papagaio de papel alto e largo, preso de uma
+  corda imensa que bojava no ar, uma cousa soberba. E eu na escola,
+  sentado, pernas unidas, com o livro de leitura e a gramática nos joelhos.
+
+  <br>- Fui bobo em vir, disse eu ao Raimundo.
+  <br>- Não diga isso, murmurou ele”.
+  <br>
+  <span style="font-size: 12px; font-style: italic;">
+    (“Conto de escola”. Machado de Assis. In: Contos,
+    São Paulo, Ática, 1982, 9ª ed., p. 25-30)
+  </span>
+</div>
+
+<div id="num"></div>
+
+<div id="enunciado">
+  <div class="middle">
+    Leia com atenção ao Conto de escola, de Machado de Assis, e
+    responda corretamente a sequência de questões propostas.
+  </div>
+</div>
+
+</body>
+</html>

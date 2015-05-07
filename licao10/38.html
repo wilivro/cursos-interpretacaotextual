@@ -1,0 +1,108 @@
+<!-- Desenvolvedor: Micael Souza -->
+<!doctype html>
+<html lang="pt-br">
+	<head>
+		<title>02</title>
+		<meta charset="utf-8">
+		<script src="../wilib/js/lib/require.js"></script>
+		<script src="../wilib/js/app.js"></script>
+    <link rel="stylesheet" href="../wilib/css/font-awesome.css">
+    <link rel="stylesheet" href="../wilib/css/estilo.css">
+
+		<!-- main -->
+		<script>
+			require(['../wilib/js/lib/revela'], function (edi) {
+
+				edi.setConfig({// configurando o EDI
+          icone: "interogacao",
+					titulo: "Clique sobre a imagem e revele o texto.",
+				});
+
+				edi.revela('_btn', 'revela', function() {
+					$('.msg').fadeIn();
+				});//iniciando o EDI
+
+				$('.revela').peBalao({
+					top:34,
+					left:-35,
+					scaleX:1,
+					scaleY:-1,
+					rotate:90
+				});
+			});
+		</script>
+
+		<style>
+			._btn {
+				background: url(../img/licao10/38.png) no-repeat;
+				background-size: 100% 100%;
+				width: 271px;
+				height: 274px;
+				position: absolute;
+				left: 20px;
+				top: 78px;
+				cursor: pointer;
+				border-radius: 10px;
+				border: 7px solid #fff;
+				box-shadow: 0 0 5px rgba(0, 0, 0, 0.5);
+			}
+
+			.revela {
+				background: #fff;
+				width: 370px;
+				padding: 10px 20px 10px 30px;
+				position: absolute;
+				left: 330px;
+				top: 94px;
+				text-align: left;
+				border: 1px solid #ccc;
+				border-radius: 10px;
+				font-size: 13px;
+			}
+
+			.revela p {
+				margin-top: 40px;
+				font-size: 14px;
+				line-height: 1.3;
+				font-weight: bold;
+				color: #838383;
+			}
+
+			.msg {
+				position: absolute;
+				left: 340px;
+				top: 317px;
+				width: 260px;
+				font-size: 12px;
+				font-style: italic;
+				color: #9c0;
+				text-align: center;
+				display: none;
+			}
+		</style>
+	</head>
+
+	<body>
+		<div class="_btn"></div>
+		<div class="revela">
+			Algum tempo hesitei se devia abrir estas memórias pelo princípio ou pelo
+			fim, isto é, se poria em primeiro lugar o meu nascimento ou a minha morte.
+			<br>
+			Suposto o uso vulgar seja começar pelo nascimento, duas considerações me
+			levaram a adotar diferente método: a primeira é que eu não sou propriamente
+			um autor defunto, mas um defunto autor, para quem a campa foi outro berço;
+			a segunda é que escrito ficaria assim mais galante e mais novo. Moisés,
+			que também contou a sua morte, não a pôs no intróito, mas no cabo:
+			diferença radical entre este livro e o Pentateuco.
+			<br>
+      <span style="font-size: 10px; font-style: italic">
+				(Machado de Assis, in Memórias Póstumas de Brás Cubas)
+			</span>
+		</div>
+
+		<div class="msg">
+			Muito Bem! A seguir, você deverá ser capaz de responder a questões
+			relacionadas a este texto, fique atento!
+		</div>
+	</body>
+</html>

@@ -1,0 +1,189 @@
+<!doctype html>
+<html lang="pt-br">
+<head>
+  <title>Lição 10 Peça 33</title>
+  <meta charset="utf-8">
+  <script src="../wilib/js/lib/require.js"></script>
+  <script src="../wilib/js/app.js"></script>
+  <link rel="stylesheet" href="../wilib/css/font-awesome.css">
+  <link rel="stylesheet" href="../wilib/css/estilo.css">
+
+  <script>
+    require(['../wilib/js/lib/alternativa_botao'], function (edi) {
+
+      edi.setConfig({
+        icone: false,
+        qtdTelas: 3,
+        titulo: 'Responda as questões a seguir clicando sobre a alternativa correta.'
+      });
+
+      var telas = [];
+
+      telas[0] = {
+        titulo: 'Qual o título da reportagem?',
+        btns: [
+          {
+            dataCorreta: false,
+            texto: 'Voto certo'
+          },{
+            dataCorreta: false,
+            texto: 'Na hora do voto'
+          },{
+            dataCorreta: true,
+            texto: 'Não vendo meu voto'
+          },{
+            dataCorreta: false,
+            texto: 'Vendo meu voto'
+          }
+        ],
+        msg: {
+          acert: 'Muito Bem! Você prestou atenção aos detalhes da reportagem.',
+          erro: 'Atenção! Observe todos os aspectos desta reportagem.'
+        }
+      };
+
+      telas[1] = {
+        titulo: 'Qual a mensagem que a reportagem deseja passar para os leitores?',
+        btns: [
+          {
+            dataCorreta: false,
+            texto: 'Que o cidadão brasileiro deve vender seu voto e pensar ' +
+                   'em ganhar vantagens dos candidatos.'
+          },{
+            dataCorreta: false,
+            texto: 'Que o cidadão brasileiro honrar seu direito de escolher ' +
+                   'seus representantes, exercendo desta forma sua cidadania ' +
+                   'e fazendo com que a democracia realmente aconteça.'
+          },{
+            dataCorreta: false,
+            texto: 'Informar que os eleitores vendem o voto.'
+          },{
+            dataCorreta: true,
+            texto: 'Informar aos leitores e eleitores brasileiros de que ' +
+                   'os magistrados criaram um movimento contra a venda do ' +
+                   'voto, tendo ainda por objetivo, informar sobre ' +
+                   'novas normas eleitorais.'
+          }
+        ],
+        msg: {
+          acert: 'Parabéns! Você realmente compreendeu o sentido do texto ' +
+                 'jornalístico. Neste caso, a intenção é a de informar os ' +
+                 'eleitores e leitores do nosso país sobre a campanha ' +
+                 'contra venda de voto e novas normas adotadas para as eleições 2010.',
+
+          erro: 'Fique atento! Este é um texto informativo, a autora desta ' +
+                'reportagem não deseja transmitir a sua ideia, o seu pensamento ' +
+                'sobre o tema, ela deseja transmitir acontecimentos importantes ' +
+                'vinculados a um assunto de interesse público e coletivo.'
+        }
+      };
+
+      telas[2] = {
+        titulo: 'O texto cita o nome do Presidente do TSE ' +
+                '(Tribunal Superior Eleitoral) de nosso país. Quem é ele?',
+        btns: [
+          {
+            dataCorreta: true,
+            texto: 'Ministro Ricardo Lewandowski'
+          },{
+            dataCorreta: false,
+            texto: 'Orlando Silva de Jesus Júnior'
+          },{
+            dataCorreta: false,
+            texto: 'Fernando Haddad'
+          },{
+            dataCorreta: false,
+            texto: 'Juca Ferreira'
+          }
+        ],
+        msg: {
+          acert: 'Parabéns! O Ministro do Tribunal Superior Eleitoral é o Sr. Ricardo Lewandowski.',
+          erro: 'Atenção! Releia o texto e identifique o nome do Ministro do TSE.'
+        }
+      };
+
+      edi.alternativa_botao(telas[edi.telaAtual - 1].btns, null, function(a){
+        if (a) {
+          mensagem(telas[edi.telaAtual - 1].msg.acert, {fontSize: 16});
+          return;
+        }
+
+        mensagem(telas[edi.telaAtual - 1].msg.erro, {fontSize: 16});
+      }, {
+        width: 600,
+        height: 30,
+        left: 90,
+        colunas: 1,
+        top: 135,
+        margin: 0,
+        padding: 5,
+        display: 'block',
+        btnBranco: true,
+        animacao: true,
+        randomico: true,
+        tamanhoTexto: 15
+      });
+
+      // mostrando número da tela no html
+      $('#tela-titulo .ico').html(edi.telaAtual);
+
+      // mostrando titulo da tela no html
+      $('#tela-titulo .titulo').html($('<p>').html(telas[edi.telaAtual - 1].titulo));
+
+    });
+  </script>
+
+  <style>
+    #conteudo {
+      height: 315px;
+      background: linear-gradient(#fff, #eee);
+    }
+
+    #tela-titulo {
+      position: absolute;
+      left: 90px;
+      top: 75px;
+      width: 600px;
+      height: 50px;
+    }
+
+    #tela-titulo .ico {
+      position: absolute;
+      left: 0px;
+      top: 0px;
+      width: 45px;
+      height: 45px;
+      border: 3px solid rgb(140, 168, 184);
+      border-radius: 50%;
+      background: #fff;
+      font-size: 35px;
+      text-align: center;
+      color: rgb(140, 168, 184);
+    }
+
+    #tela-titulo .titulo {
+      position: absolute;
+      left: 60px;
+      top: 0;
+      max-width: 530px;
+      height: 50px;
+      display: table;
+    }
+
+    #tela-titulo .titulo p {
+      display: table-cell;
+      vertical-align: middle;
+      margin: 0;
+      padding: 0;
+      color: #666;
+    }
+  </style>
+</head>
+
+<body>
+  <div id="tela-titulo">
+    <div class="ico"></div>
+    <div class="titulo"></div>
+  </div>
+</body>
+</html>

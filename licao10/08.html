@@ -1,0 +1,144 @@
+<!doctype html>
+<html lang="pt-br">
+<head>
+    <title>Lição 10 Peça 08</title>
+    <meta charset="utf-8">
+    <script src="../wilib/js/lib/require.js"></script>
+    <script src="../wilib/js/app.js"></script>
+    <link rel="stylesheet" href="../wilib/css/font-awesome.css">
+    <link rel="stylesheet" href="../wilib/css/estilo.css">
+
+    <script>
+        require(['../wilib/js/lib/alternativa_botao'], function (edi) {
+
+            edi.setConfig({
+                icone: "exclamacao",
+                titulo: "Observe a imagem a seguir, e marque a que figura de " +
+                        "linguagem ela corresponde. ",
+                mascote: 'mascoteVarinha',
+                qtdTelas: 3
+            });
+
+            var telas = [
+              {
+                titulo: 'O sentimento predominante no texto é:',
+                btns: [
+                  {dataCorreta: false, texto: 'orgulho'},
+                  {dataCorreta: true,  texto: 'saudade'},
+                  {dataCorreta: false, texto: 'fé'},
+                  {dataCorreta: false, texto: 'esperança'},
+                  {dataCorreta: false, texto: 'ansiedade'}
+                ],
+                frases: [
+                  'Muito Bem! O autor saiu de sua terra, mas sente como ' +
+                  'se isso nunca tivesse ocorrido, pois seu sentimento é todo dela.',
+
+                  'Pense um pouco mais, releia o poema.'
+                ]
+              },{
+                titulo: 'Por “perdi-me no espaço” pode-se entender que o autor:',
+                btns: [
+                  {dataCorreta: false, texto: 'ficou perdido na nova terra.'},
+                  {dataCorreta: true,  texto: 'ficou confuso.'},
+                  {dataCorreta: false, texto: 'não gostou da nova terra.'},
+                  {dataCorreta: false, texto: 'perdeu, momentaneamente, o sentimento por sua terra natal.'},
+                  {dataCorreta: false, texto: 'aborreceu-se com a nova situação.'}
+                ],
+                frases: [
+                  'Parabéns! Ao sair da terra natal e não se adaptar ao novo ' +
+                  'lugar, em virtude de sua ligação afetiva com ela, o autor ' +
+                  'se torna confuso. Não se entenda aqui o verbo perder ' +
+                  '(perdi-me) com o seu sentido original. A ideia é a de não ' +
+                  'se encontrar, mentalmente, no novo espaço ocupado. ' +
+                  'Outra justificativa seria a palavra ilusão, que por si só ' +
+                  'demonstra um estado de confusão.',
+
+                  'Observe o texto, procure compreendê-lo. Parta da ' +
+                  'eliminação das opções que não são possíveis.'
+                ]
+              },{
+                titulo: 'Pelo último período do texto, deduz-se que:',
+                btns: [
+                  {dataCorreta: true,  texto: 'ele continuou ligado à sua terra.'},
+                  {dataCorreta: false, texto: 'ele vai voltar à sua terra.'},
+                  {dataCorreta: false, texto: 'ele gostaria de deixar sua cidade, mas nunca conseguiu.'},
+                  {dataCorreta: false, texto: 'ele se alegra por não ter saído.'},
+                  {dataCorreta: false, texto: 'ele nunca saiu da terra onde vive atualmente.'}
+                ],
+                frases: [
+                  'Muito Bem! Como já vimos, o autor saiu apenas fisicamente, ' +
+                  'pois espiritualmente continuou preso à terra natal. ' +
+                  'Cuidado com a letra B. Claro que ele gostaria de retornar, ' +
+                  'mas em momento algum essa ideia é expressa no texto.',
+
+                  'Lembre-se do que você estudou na lição de Raciocínio Lógico, ' +
+                  'para responder corretamente uma questão você precisa compreendê-la.'
+                ]
+              },
+            ];
+
+            var config = {
+                colunas: 1,
+                randomico: true,
+                width: 380,
+                height: 20,
+                left: 280,
+                top: 130,
+                margin: '0px 0px',
+                tamanhoTexto: 14,
+                btnBranco: true,
+                lineHeight: '1.4',
+                animacao: true
+            };
+
+            edi.alternativa_botao(telas[edi.telaAtual - 1].btns, function(a) {
+              if (a) {
+                barraMsg(telas[edi.telaAtual - 1].frases[0], {height: 100});
+                return;
+              }
+
+              barraMsg(telas[edi.telaAtual - 1].frases[1], {height: 100});
+            }, null, config);
+
+            $('#txt').peBalao({borda: '#ccc', tamanhoBorda: 10, scaleX: -1.1, scaleY: -1.1, top: 88, left: 80});
+
+            $('h4.title').html(telas[edi.telaAtual - 1].titulo);
+        });
+    </script>
+</head>
+<style>
+    #txt {
+        position: absolute;
+        top: 80px;
+        left: 20px;
+        padding: 10px 20px;
+        border-radius: 10px;
+        border: 1px solid #ccc;
+        color: #666;
+        width: 180px;
+        font-size: 11px;
+        text-align: center;
+    }
+
+    h4.title {
+      position: absolute;
+      left: 280px;
+      top: 60px;
+      color: #666;
+      width: 380px;
+    }
+</style>
+<body>
+<div id="txt">
+  “Quando vim da minha terra,
+  não vim, perdi-me no espaço,
+  na ilusão de ter saído.
+  Ai de mim, nunca saí”.
+
+  (Carlos Drummond de Andrade)
+</div>
+<img src="../img/licao10/08.png" width="230" style="margin: 100px 15px"/>
+
+<h4 class="title"></h4>
+</body>
+</html>

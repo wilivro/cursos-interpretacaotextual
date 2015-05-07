@@ -1,0 +1,146 @@
+<!doctype html>
+<html lang="pt-br">
+<head>
+	<title>Lição 10 Peça 04</title>
+	<meta charset="utf-8">
+	<script src="../wilib/js/lib/require.js"></script>
+	<script src="../wilib/js/app.js"></script>
+
+	<link rel="stylesheet" href="../wilib/css/font-awesome.css">
+	<link rel="stylesheet" href="../wilib/css/estilo.css">
+
+	<!-- main -->
+	<script>
+    $(function () {
+      require(['../wilib/js/lib/alternativa'], function (edi) {
+        edi.setConfig({ // configurando o EDI
+          icone: 'exclamacao',
+          titulo: 'Leia o texto a seguir e responda corretamente clicando ' +
+									'sobre a alternativa correta.'
+        });
+
+        var alternativas = {
+					titulo: 'O trecho que poderia dar sequência lógica e coesa ao texto é:',
+					msgT: 'Muito Bem! Este texto apresenta os conceitos de Coesão e ' +
+								'Coerência, e você conseguiu percebê-los respondendo corretamente a questão.',
+					msgE: 'Pense um pouco mais! Este texto fala sobre coerência e ' +
+								'coesão, releia o texto e a questão com atenção e refaça o exercício.',
+					alter: [
+						{correta: false, alternativa: 'Não obstante isso, ele é uma pessoa gentil.'},
+						{correta: true,  alternativa: 'Dessa forma, qualquer um que o procurar será atendido.'},
+						{correta: false, alternativa: 'A solidariedade, pois, ainda precisa ser conquistada.'},
+						{correta: false, alternativa: 'E o brasileiro ganhou fama de intolerante.'},
+						{correta: false, alternativa: 'Por conseguinte, se chover, ele dará hospedagem aos desconhecidos.'},
+					]
+				};
+
+        var config = {
+          posx: 180,
+          posy: 110,
+					tamanhoBoxTexto: 350,
+          aleatorio: true,
+          tamanhoBox: 25,
+          marginBtns: 5,
+					tamanhoFonteTexto: 12,
+        };
+
+
+        edi.alternativa(alternativas.alter, function (acertou) {
+          //log(acertou);
+        }, function (a) {
+          if (a) {
+						$('#msg').html(alternativas.msgT).fadeIn();
+						return;
+					}
+
+					$('#msg').html(alternativas.msgE).css('color', 'red').fadeIn();
+        }, config); //iniciando o EDI
+
+        $('#balao').peBalao({left: 10});
+
+        $('#ico').iconeInterrogacaoAzul();
+
+				$('h5.title').html(alternativas.titulo);
+      });
+    });
+	</script>
+
+	<style>
+		#balao {
+			border: 1px solid #ccc;
+			background: #fff;
+			width: 150px;
+			height: 190px;
+			position: absolute;
+			left: 10px;
+			top: 85px;
+			font-size: 11px;
+			text-align: center;
+			font-weight: 700;
+			line-height: 1.2;
+			border-radius: 10px;
+			color: #48A2D4;
+		}
+
+		#ico {
+			margin: 10px 0;
+      height: 59px;
+      position: relative;
+		}
+
+    #ico img {
+      left: 50px;
+    }
+
+		#msg {
+			position: absolute;
+			top: 330px;
+			left: 180px;
+			width: 410px;
+			font-size: 11px;
+			color: #9c0;
+			display: none;
+			font-style: italic;
+			text-align: center;
+		}
+
+		#seta {
+			height: 40px;
+			float: left;
+		}
+
+		#bl {
+			background: #fff;
+			width: 100px;
+			height: 100px;
+			position: absolute;
+			left: 10px;
+			top: 90px;
+			border: 1px solid;
+		}
+
+		h5.title {
+			position: absolute;
+			left: 180px;
+			top: 60px;
+			color: #666;
+		}
+	</style>
+</head>
+
+<body>
+	<div id="balao">
+    <div id="ico"></div>
+		<p>
+			“A maior alegria do brasileiro é hospedar alguém, mesmo um
+			desconhecido que lhe peça pouso, numa noite de chuva.”
+
+			(Cassiano Ricardo, in O Homem Cordial)
+		</p>
+	</div>
+
+	<h5 class="title"></h5>
+
+	<div id="msg"></div>
+</body>
+</html>

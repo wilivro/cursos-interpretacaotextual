@@ -1,0 +1,156 @@
+<!doctype html>
+<html lang="pt-br">
+
+<head>
+	<title>Lição 10 Peça 09</title> <!-- alt_f002 -->
+  <meta charset="utf-8">
+  <script src="../wilib/js/lib/require.js"></script>
+  <script src="../wilib/js/app.js"></script>
+  <link rel="stylesheet" href="../wilib/css/font-awesome.css">
+  <link rel="stylesheet" href="../wilib/css/estilo.css">
+
+	<script>
+		require(['../wilib/js/lib/alternativa_com_carimbo'], function (edi) {
+
+			edi.setConfig({
+				titulo: 'Leia com atenção o poema de Fernando Pessoa e resolva os ' +
+								'exercícios classificando cada alternativa como certa ou errada.',
+	      mascote: 'mascote',
+	      tempoFinal: 10,
+				qtdTelas: 2
+			});
+
+	    //balões
+	    var telas = [
+				{
+					titulo: 'Segundo o poeta, o sofrimento do povo ocorreu:',
+					btns: [
+						{
+							texto: 'apesar das conquistas portuguesas.',
+							dataCorreta: false
+						},
+						{
+							texto: 'em virtude das conquistas portuguesas.',
+							dataCorreta: true
+						},
+						{
+							texto: 'para as conquistas portuguesas.',
+							dataCorreta: false
+						},
+						{
+							texto: 'antes das conquistas portuguesas.',
+							dataCorreta: false
+						},
+						{
+							texto: 'após as conquistas portuguesas.',
+							dataCorreta: false
+						}
+					],
+					frases: [
+						'Correto! A locução prepositiva em virtude de introduz termo ' +
+						'com valor de causa. O relacionamento das conquistas com o ' +
+						'sofrimento do povo é exatamente de causa e efeito. O povo ' +
+						'sofreu por causa das conquistas, pois muita gente não voltou pra casa.',
+
+						'Pense um pouco mais, releia o poema.'
+					]
+				},
+
+				{
+					titulo: 'Segundo o poeta, o sofrimento do povo ocorreu:',
+					btns: [
+						{
+							texto: 'a força moral de Portugal.',
+							dataCorreta: false
+						},
+						{
+							texto: 'a incoerência do sofrimento diante das conquistas.',
+							dataCorreta: false
+						},
+						{
+							texto: 'a importância do sofrimento para que o povo deixe de sofrer.',
+							dataCorreta: false
+						},
+						{
+							texto: 'a profunda união entre as conquistas e o sofrimento do povo.',
+							dataCorreta: true
+						},
+						{
+							texto: 'a inutilidade das conquistas portuguesas.',
+							dataCorreta: false
+						}
+					],
+					frases: [
+						'Muito Bem! A metáfora existe na comparação feita entre o sal ' +
+						'do mar e as lágrimas do povo português. Há, pois, uma fusão ' +
+						'entre o mar, que simboliza as conquistas, e as lágrimas, que ' +
+						'simbolizam o sofrimento. O poeta quer passar a ideia de que ' +
+						'não haveria conquistas sem o sofrimento do povo, as duas coisas ' +
+						'estão intimamente associadas. ',
+
+						'Analise com calma todo o poema, e tente eliminar as respostas ' +
+						'que você considera erradas para chegar mais facilmente a resposta correta.'
+					]
+				},
+	    ];
+
+			edi.iniciar(telas[edi.telaAtual() - 1].btns, function (a, b) {
+	    	//cb
+	    }, function (a) {
+				if (a) {
+					mensagem(telas[edi.telaAtual() - 1].frases[0], {height: 300});
+					return;
+				}
+
+				mensagem(telas[edi.telaAtual() - 1].frases[1], {height: 300});
+	    }, {
+	      top: 100,
+	      left: 220,
+	      fontSize: 13,
+	      width: 500,
+	      height: 45
+	    });
+		});
+	</script>
+    <style>
+      #msg {
+        position: absolute;
+        top: 100px;
+        left: 10px;
+        border-radius: 2px;
+        box-shadow: 2px 2px 5px 3px rgba(0, 0, 0, .5);
+        overflow: auto;
+        background-color: #fff;
+        width: 180px;
+        height: 200px;
+        font-size: 10px;
+        padding-left: 10px;
+      }
+    </style>
+
+</head>
+
+<body>
+<div id="msg">
+    <p>
+		Mar Português <br>
+
+		<br>"Ó mar salgado, quanto do teu sal
+		<br>São lágrimas de Portugal!
+		<br>Por te cruzarmos, quantas mães choraram,
+		<br>Quantos filhos em vão rezaram!
+		<br>Quantas noivas ficaram por casar
+		<br>Para que fosses nosso, ó mar!
+		<br>Valeu a pena? Tudo vale a pena
+		<br>Se a alma não é pequena.
+		<br>Quem quer passar além do Bojador
+		<br>Tem que passar além da dor.
+		<br>Deus ao mar o perigo e o abismo deu,
+		<br>Mas nele é que espelhou o céu"
+
+		<br>(Fernando Pessoa, in Mensagem)
+    </p>
+</div>
+</body>
+
+</html>

@@ -1,0 +1,174 @@
+<!doctype html>
+<html lang="pt-br">
+<head>
+	<title>Lição 10 Peça 03</title>
+	<meta charset="utf-8">
+	<script src="../wilib/js/lib/require.js"></script>
+	<script src="../wilib/js/app.js"></script>
+
+	<link rel="stylesheet" href="../wilib/css/font-awesome.css">
+	<link rel="stylesheet" href="../wilib/css/estilo.css">
+
+	<!-- main -->
+	<script>
+    $(function () {
+      require(['../wilib/js/lib/alternativa'], function (edi) {
+        edi.setConfig({ // configurando o EDI
+          icone: 'exclamacao',
+					qtdTelas: 2,
+          titulo: 'Releia o poema O Caderno, e continue respondendo os exercícios com atenção.'
+        });
+
+        var alternativas = [];
+
+				alternativas[0] = {
+					titulo: 'No poema, o verso “Do primeiro rabisco até o bê-á-bá” sugere a que tipo de aprendizagem? ',
+					msgT: 'Muito Bem! Este verso indica o aprendizado da escrita!',
+					msgE: 'Atenção! Quando começamos a rabiscar, o que desejamos aprender?',
+					alter: [
+						{correta: false, alternativa: 'do desenho.'},
+						{correta: false, alternativa: 'da fala.'},
+						{correta: true,  alternativa: 'da escrita'},
+						{correta: false, alternativa: 'da pintura.'},
+						{correta: false, alternativa: 'da leitura.'}
+					]
+				};
+
+				alternativas[1] = {
+					titulo: 'A partir da leitura do poema, pode-se concluir que o caderno:',
+					msgT: 'Muito Bem! O caderno fala como se fosse uma pessoa, um ser vivo que pensa, raciocina.',
+					msgE: 'Atenção! O caderno se expressa de forma racional, inteligente, dialogando com o leitor.',
+					alter: [
+						{correta: false, alternativa: 'gosta muito de <br>todas as crianças.'},
+						{correta: true,  alternativa: 'fala como se fosse <br>uma pessoa.'},
+						{correta: false, alternativa: 'sonha com desenhos <br>coloridos.'},
+						{correta: false, alternativa: 'gosta muito <br>de rabiscar.'},
+						{correta: false, alternativa: 'fica triste por ser <br>deixado de lado.'}
+					]
+				};
+
+        var config = {
+          posx: 380,
+          posy: 135,
+          aleatorio: true,
+          tamanhoBox: 30,
+          marginBtns: 5
+        };
+
+
+        edi.alternativa(alternativas[edi.root.util.telaAtual].alter, function (acertou) {
+          //log(acertou);
+        }, function (a) {
+          if (a) {
+						$('#msg').html(alternativas[edi.root.util.telaAtual].msgT).fadeIn();
+						return;
+					}
+
+					$('#msg').html(alternativas[edi.root.util.telaAtual].msgE).css('color', 'red').fadeIn();
+        }, config); //iniciando o EDI
+
+        $('#balao').peBalao({left: 10});
+
+        $('#ico').iconeInterrogacaoAzul();
+
+				$('h5.title').html(alternativas[edi.root.util.telaAtual].titulo);
+      });
+    });
+	</script>
+
+	<style>
+		#balao {
+			border: 1px solid #ccc;
+			background: #fff;
+			width: 350px;
+			height: 290px;
+			position: absolute;
+			left: 10px;
+			top: 85px;
+			font-size: 11px;
+			text-align: center;
+			font-weight: 700;
+			line-height: 1.2;
+			border-radius: 10px;
+			color: #48A2D4;
+		}
+
+		#ico {
+			margin: 10px 0;
+      height: 59px;
+      position: relative;
+		}
+
+    #ico img {
+      left: 150px;
+    }
+
+		#msg {
+			position: absolute;
+			top: 140px;
+			left: 650px;
+			width: 110px;
+			font-size: 11px;
+			color: #9c0;
+			display: none;
+			font-style: italic;
+		}
+
+		#seta {
+			height: 40px;
+			float: left;
+		}
+
+		#bl {
+			background: #fff;
+			width: 100px;
+			height: 100px;
+			position: absolute;
+			left: 10px;
+			top: 90px;
+			border: 1px solid;
+		}
+
+		h5.title {
+			position: absolute;
+			left: 380px;
+			top: 60px;
+			width: 360px;
+			color: #666;
+		}
+	</style>
+</head>
+
+<body>
+	<div id="balao">
+    <div id="ico"></div>
+		<p>
+			O CADERNO	<br><br>
+
+			Sou eu que vou seguir você	<br>
+			Do primeiro rabisco até o be-a-bá.	<br>
+			Em todos os desenhos coloridos vou estar:	<br>
+			A casa, a montanha, duas nuvens no céu <br>
+			E um sol a sorrir no papel. <br>
+			(...) <br>
+			O que está escrito em mim <br>
+			Comigo ficará guardado, se lhe dá prazer. <br>
+			A vida segue sempre em frente, o que se há de fazer. <br>
+			Só peço a você um favor, se puder: <br>
+			Não me esqueça num canto qualquer. <br>
+
+			<span style="font-size: 9px; font-style: italic;">
+				<br>(Mutinho e Toquinho, letra retirada do site http://www.toquinho.com.br)
+			</span>
+		</p>
+	</div>
+
+	<h5 class="title">
+		No poema, o verso “Do primeiro rabisco até o bê-á-bá” sugere a que tipo de aprendizagem?
+	</h5>
+
+	<div id="msg">
+		Muito Bem! O caderno fala como se fosse uma pessoa, um ser vivo que pensa, raciocina.
+	</div>
+</body>
+</html>

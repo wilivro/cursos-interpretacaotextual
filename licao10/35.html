@@ -1,0 +1,88 @@
+<!doctype html>
+<html lang="pt-br">
+	<head>
+    <title>Lição 10 Peça 35</title>
+    <meta charset="utf-8">
+    <script src="../wilib/js/lib/require.js"></script>
+    <script src="../wilib/js/app.js"></script>
+    <link rel="stylesheet" href="../wilib/css/font-awesome.css">
+    <link rel="stylesheet" href="../wilib/css/estilo.css">
+
+		<script>
+			require(['../wilib/js/lib/alternativa_vf'], function (edi) {
+
+				edi.setConfig({
+          icone: "interrogacaoAzul",
+          mascote: 'mascote',
+					titulo: "Considerando as ideias e estruturas do texto que você " +
+									"leu <br>anteriormente, clique em VERDADEIRO (V) ou FALSO (F)."
+				});
+
+				var alternativas  = [];
+
+				alternativas.push({
+					dataCorreta: false,
+					texto: 'O passarinho recém-nascido pode aprender o canto de outras ' +
+									'espécies como o ser humano recém-nascido pode aprender ' +
+									'os sons de qualquer língua.',
+				});
+
+				alternativas.push({
+					dataCorreta: false,
+					texto: 'O pássaro adulto quando consegue aprender o canto de outra ' +
+								 'espécie não possui o “sotaque” estrangeiro.',
+				});
+
+				alternativas.push({
+					dataCorreta: true,
+					texto: 'A criança ao se tornar adulta pode aprender outra língua, ' +
+								 'entretanto nunca perderá o sotaque de sua língua de origem.',
+				});
+
+				alternativas.push({
+					dataCorreta: true,
+					texto: 'No processo de construção do texto é usada a linguagem Denotativa.',
+				});
+
+				edi.alternativa_vf(alternativas, function (a) {
+					//
+        }, function (a) {
+					if (a) {
+						$('.msg').html(
+							'Parabéns! Você conseguiu responder corretamente as questões.'
+						).fadeIn();
+
+						return;
+					}
+
+					$('.msg').html(
+						'Observe: Leve em consideração o texto lido anteriormente para ' +
+						'embasar suas respostas, caso considere necessário, releia o texto novamente.'
+					).css('color', 'red').fadeIn();
+        }, {
+					width: 600,
+          left: 60,
+          top: 30,
+          margin: '0 0 15px 0'
+        });
+			});
+		</script>
+
+		<style>
+			.msg {
+				position: absolute;
+				left: 80px;
+				top: 337px;
+				width: 560px;
+				font-size: 12px;
+				font-style: italic;
+				color: #9c0;
+				text-align: center;
+			}
+		</style>
+	</head>
+
+	<body>
+		<div class="msg"></div>
+	</body>
+</html>

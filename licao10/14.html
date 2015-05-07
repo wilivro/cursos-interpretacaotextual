@@ -1,0 +1,280 @@
+<!doctype html>
+<html lang="pt-br">
+<head>
+    <title>Lição 10 Peça 12</title>
+    <meta charset="utf-8">
+    <script src="../wilib/js/lib/require.js"></script>
+    <script src="../wilib/js/app.js"></script>
+
+    <link rel="stylesheet" href="../wilib/css/font-awesome.css">
+    <link rel="stylesheet" href="../wilib/css/estilo.css">
+
+    <script>
+        require(['../wilib/js/lib/comparaTexto'], function (edi) {
+
+            edi.setConfig({
+              icone: false,
+              enunciado: false,
+              titulo: '',
+              qtdTelas: 2
+            });
+
+            var dataInputs = [
+                ['Eu já fiz um juramento', 'E não pretendo quebrar!'],
+                ['O que tiver de ser meu,', 'A minhas mãos há de vir.']
+            ];
+
+            for (var x = 1; x < edi.telaAtual; x++) {
+                for (var y = 1; y < edi.telaAtual+1; y++){
+                    var $color = $('#'+x+y);
+                    $color.css({color: $color.attr('data-cor')});
+                }
+            }
+
+            for (var i = 0; i < dataInputs[edi.telaAtual-1].length; i++) {
+                var ct = $('<div>')
+                        .attr({
+                            id: 'box'+i
+                        })
+                        .css({
+                            position: 'absolute',
+                            top: 60*i,
+                            width: 280
+                        })
+                        .appendTo('#inputs');
+
+                $('<input>')
+                        .addClass('resp')
+                        .attr({
+                            id: i,
+                            'data-correta': dataInputs[edi.telaAtual-1][i]
+                        })
+                        .appendTo(ct);
+
+                $('<div>')
+                        .attr({
+                            id: 'circ'+i
+                        })
+                        .css({
+                            position: 'absolute',
+                            right: 5,
+                            background: '#fff',
+                            width: 50,
+                            height: 50,
+                            borderRadius: 50,
+                            marginTop: -37,
+                            marginRight: 25,
+                            border: '1px solid #ccc'
+                        })
+                        .appendTo(ct)
+
+
+            }
+
+            var textoPergunta = [
+              'Retire do texto e digite corretamente os dois ' +
+              'versos que indicam a determinação do compositor.',
+
+              'Quais são os dois versos da Modinha que ' +
+              'indicam a confiança em Deus por parte do compositor?'
+            ];
+
+            edi.comparaTexto(".resp", function (a) {
+                var id = a.attr("id");
+
+                var img = "../wilib/canvas/objetos/animaCerto";
+                require([img], function (canvas) {
+                    var mascote = new canvas.animaCerto({
+                        width: 36,
+                        cor: '#1C8FD0'
+                    });
+                    mascote.obj.css({
+                        left: 5,
+                        top: (50/ 2) - 17
+                    }).appendTo("#circ" + (id-1));
+                    mascote.play();
+                });
+
+                var $span = $('#'+edi.telaAtual + (parseInt(id)+1));
+
+                $span.css({color: $span.attr('data-cor')});
+
+                id++;
+                $("#" + id).focus();
+
+            }, function(){
+                barraMsg('Parabéns!<br> Continue dedicando-se com atenção.')
+            }, {
+                validarAcentos: true,
+                validarPontos: true,
+                upCaser: true,
+                lowerCaser: true
+            });
+
+            $('.texto .middle').html(textoPergunta[edi.telaAtual - 1]);
+            $('#num').html(edi.telaAtual);
+
+
+        });
+    </script>
+    <style>
+        input {
+            width: 200px;
+            text-align: center;
+            z-index: 10;
+        }
+
+        #inputs {
+            position: absolute;
+            width: 255px;
+            top: 180px;
+            left: 520px;
+        }
+
+        #conteudo {
+            position: absolute;
+            width: 790px !important;
+            background: #9bbbe3; /* Old browsers */
+            background: -moz-linear-gradient(top, #9bbbe3 1%, #5b82b4 100%); /* FF3.6+ */
+            background: -webkit-gradient(linear, left top, left bottom, color-stop(1%, #9bbbe3), color-stop(100%, #5b82b4)); /* Chrome,Safari4+ */
+            background: -webkit-linear-gradient(top, #9bbbe3 1%, #5b82b4 100%); /* Chrome10+,Safari5.1+ */
+            background: -o-linear-gradient(top, #9bbbe3 1%, #5b82b4 100%); /* Opera 11.10+ */
+            background: -ms-linear-gradient(top, #9bbbe3 1%, #5b82b4 100%); /* IE10+ */
+            background: linear-gradient(to bottom, #9bbbe3 1%, #5b82b4 100%); /* W3C */
+            filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#9bbbe3', endColorstr='#5b82b4', GradientType=0); /* IE6-9 */
+        }
+
+
+        #num {
+            width: 50px;
+            display: block;
+            height: 50px;
+            text-align: center;
+            line-height: 50px;
+            font-size: 35px;
+            background: #1C8FD0;
+            border: 4px solid #fff;
+            border-radius: 50%;
+            position: absolute;
+            left: 410px;
+            top: 18px;
+            color: #fff;
+        }
+
+        #noticia {
+            position: absolute;
+            width: 375px;
+            height: 345px;
+            left: 5px;
+            top: 10px;
+            z-index: 10;
+            font-size: 18px;
+            line-height: 18px;
+            padding: 10px;
+            background-color: #FFF;
+            color: #666;
+            overflow: scroll;
+            box-shadow: 5px 5px 5px rgba(0, 0, 0, 0.5);
+        }
+
+        #enunciado .middle {
+            height: 80px;
+            width: 405px;
+            font-size: 16px;
+        }
+
+        .bold {
+            color: #000;
+            font-size: 18px;
+        }
+
+        .middle {
+            text-align: center;
+            vertical-align: middle;
+            display: table-cell;
+        }
+
+        .texto {
+            position: absolute;
+            left: 480px;
+            top: 50px;
+            width: 285px;
+            height: 100px;
+        }
+
+        .texto .middle {
+            width: 285px;
+            height: 100px;
+            line-height: 1.3;
+            color: #fff;
+        }
+
+        #num {
+            width: 50px;
+            display: block;
+            height: 50px;
+            text-align: center;
+            line-height: 50px;
+            font-size: 35px;
+            background: #1C8FD0;
+            border: 4px solid #fff;
+            border-radius: 50%;
+            position: absolute;
+            left: 410px;
+            top: 68px;
+            color: #fff;
+        }
+
+
+    </style>
+</head>
+
+<body>
+<div id="num"></div>
+<div class="texto">
+    <div class="middle"></div>
+</div>
+
+<div id="noticia">
+  <strong>
+    Extraída da série de modinhas anônimas publicadas em Modinhas do
+    passado; investigações folclóricas e artísticas (Rio de Janeiro, 1956).
+  </strong>
+  <br>
+  <br>
+  <br><strong>Eu já fiz um juramento</strong>
+  <br><strong>I</strong>
+  <br>Eu já fiz um juramento
+  <br>E não pretendo quebrar!...
+  <br>Enquanto Deus me der vida,
+  <br>A outra não hei de amar.
+  <br>
+  <br>
+  <br><strong>Estribilho</strong>
+  <br>
+  <br>
+  <br>É assim que se conhece;
+  <br>Todos nós devemos crer:
+  <br>Não se pode desmanchar
+  <br>O que Deus tem a fazer.
+  <br>
+  <br>
+  <br><strong>II</strong>
+  <br>Nada do mundo espero!...
+  <br>Do que a terra produzir,
+  <br>O que tiver de ser meu,
+  <br>A minhas mãos há de vir.
+  <br>
+  <br>
+  <br><strong>Estribilho</strong>
+  <br>
+  <br>
+  <span style="font-size: 12px; font-style:italic">
+    Nota: Esta modinha é um raro e antiguíssimo documento do folclore nordestino.
+  </span>
+</div>
+
+<div id="inputs"></div>
+
+</body>
+</html>

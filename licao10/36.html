@@ -1,0 +1,136 @@
+<!doctype html>
+<html lang="pt-br">
+	<head>
+    <title>Lição 01 Peça 28</title>
+		<meta charset="utf-8">
+		<script src="../wilib/js/lib/require.js"></script>
+		<script src="../wilib/js/app.js"></script>
+    <link rel="stylesheet" href="../wilib/css/font-awesome.css">
+    <link rel="stylesheet" href="../wilib/css/estilo.css">
+
+		<script>
+			require(['../wilib/js/lib/revela','../wilib/js/lib/alternativa_botao'], function (edi, edi2) {
+
+				edi2.setConfig({
+          icone: "exclamacao",
+          mascote: 'mascote',
+					titulo: "Clique sobre a imagem para revelar o texto e responda a questão corretamente.",
+          tempoFinal: 10
+				});
+
+        var btns = [
+					{dataCorreta: false, texto: 'aumenta a cada ano.'},
+					{dataCorreta: false, texto: 'é maior no primeiro ano.'},
+					{dataCorreta: false, texto: 'é maior na data do falecimento.'},
+					{dataCorreta: true,  texto: 'é constante.'},
+					{dataCorreta: false, texto: 'incomoda muito.'}
+				];
+
+        var config = {
+          width: 300,
+					height: 20,
+          btnBranco: true,
+          colunas: 1,
+          margin: 1,
+          top: 125,
+          left: 235
+        };
+
+        $('#txt').peBalao({scaleX: -1, left: 30});
+        edi2.alternativa_botao(btns, null, function (a) {
+          if(a)
+              mensagem(
+								'<div style="width: 430px; font-size: 22px; display: inline-block">' +
+								'Muito Bem! Nada no texto fala de aumento ou diminuição da saudade. ' +
+								'A palavra “calendário” é a chave. Ao dizer que “não há calendário ' +
+								'para a saudade”, a autora diz que não existe data marcada para ' +
+								'se ter mais ou menos saudade. Ou seja, a saudade não depende do ' +
+								'tempo, simbolizado aqui pelo calendário: ela simplesmente existe.' +
+							'</div>');
+          else
+						mensagem(
+							'<div style="width: 430px; font-size: 22px; display: inline-block">' +
+							'Atenção! Nada no texto fala de aumento ou diminuição da saudade. ' +
+							'A palavra “calendário” é a chave. Ao dizer que “não há calendário ' +
+							'para a saudade”, a autora diz que não existe data marcada para se ' +
+							'ter mais ou menos saudade.' +
+						'</div>');
+
+        }, config);
+
+        $('[data-edi = "alternativa_botao"]').addClass('box-revela');
+
+				edi.revela('btn-revela', 'box-revela', function () {
+
+        }, function (btn) {
+					$('h4.titulo').fadeIn();
+				}, {ocultarBtn: true});
+
+
+			});
+		</script>
+
+		<style>
+
+            #img{
+                position: absolute;
+                top: 110px;
+                left: 280px;
+                text-align: center;
+                border-radius: 10px;
+                border: solid 1px #E2E2E2;
+                color: #807E7E;
+                padding: 10px;
+                font-size: 16px;
+            }
+
+            .img {
+                width: 170px;
+                margin-top: 18px;
+                height: 150px;
+                box-shadow: 5px 5px 5px rgba(0, 0, 0, 0.5);
+                border-radius: 5px;
+            }
+
+            #txt {
+                position: absolute;
+                top: 85px;
+                left: 5px;
+                text-align: center;
+                font-size: 12px;
+                height: 260px;
+                width: 180px;
+                color: #666;
+                padding: 25px 10px 0px 10px ;
+                border: 1px solid #ccc;
+                border-radius: 10px;
+            }
+
+						h4.titulo {
+							display: none;
+							position: absolute;
+							left: 236px;
+							top: 65px;
+							color: #666;
+						}
+		</style>
+	</head>
+	<body>
+		<div id="txt" class="box-revela">
+			“Não existe essa coisa de um ano sem Senna, dois anos sem Senna...
+			Não há calendário para a saudade”.
+			<br>
+			<span style="font-size: 10px; font-style: italic">
+				(Adriane Galisteu, no Jornal do Brasil)
+			</span>
+
+      <img class="img" src="../img/licao10/36.png"/>
+    </div>
+
+		<h4 class="titulo">
+			Segundo o texto, a saudade:
+		</h4>
+
+    <img id="img" class="btn-revela" src="../img/licao01/p28.png" width="200"/>
+	</body>
+</html>

@@ -1,0 +1,167 @@
+<!doctype html>
+<html lang="pt-br">
+<head>
+  <title>Lição 10 Peça 02</title>
+	<meta charset="utf-8">
+	<script src="../wilib/js/lib/require.js"></script>
+	<script src="../wilib/js/app.js"></script>
+  <link rel="stylesheet" href="../wilib/css/font-awesome.css">
+  <link rel="stylesheet" href="../wilib/css/estilo.css">
+
+	<script>
+		require(['../wilib/js/lib/revela','../wilib/js/lib/alternativa_botao'], function (edi, edi2) {
+
+			edi2.setConfig({
+        icone: "exclamacao",
+        mascote: 'mascote',
+        tempoFinal: 10,
+				titulo: "Clique sobre a imagem para revelar o poema, e " +
+								"responda corretamente às questões que seguem."
+			});
+
+      var btns = [
+				{
+					texto: "tudo acaba.",
+					dataCorreta: false
+				},{
+					texto: "tudo passa.",
+					dataCorreta: false
+				},{
+					texto: "tudo estaciona.",
+					dataCorreta: false
+				},{
+					texto: "tudo fica como está.",
+					dataCorreta: false
+				},{
+					texto: "passamos por fases.",
+					dataCorreta: true
+				}
+			];
+
+      var config = {
+	      animacao: true,
+	      width: 300,
+	      btnBranco: true,
+	      colunas: 1,
+	      margin: 1,
+	      height: 20,
+	      top: 125,
+	      randomico: true,
+	      left: 285
+      };
+
+      $('#txt').peBalao({scaleX: -1, left: 30});
+
+      edi2.alternativa_botao(btns, null, function (a) {
+				if (a) {
+					$('#msg').html(
+						'Excelente! Quando os compositores dizem que a “vida segue em ' +
+						'frente”, eles afirmam que passamos por fases durante toda nossa existência.'
+					).fadeIn();
+
+					return;
+				}
+
+				$('#msg').html(
+					'Atenção! Se a vida segue, isso indica continuidade. Pense um pouco mais!'
+				).css('color', 'red').fadeIn();
+      }, config);
+
+      $('[data-edi = "alternativa_botao"], h4.title').addClass('box-revela');
+
+			edi.revela('btn-revela', 'box-revela', null, null, {ocultarBtn: true});
+ 		});
+	</script>
+
+	<style>
+    #img{
+      position: absolute;
+      top: 110px;
+      left: 280px;
+      text-align: center;
+      border-radius: 10px;
+      border: solid 1px #E2E2E2;
+      color: #807E7E;
+      padding: 10px;
+      font-size: 16px;
+    }
+
+    .img {
+      width: 170px;
+      margin-top: 8px;
+      margin-left: 41px;
+      height: 170px;
+      box-shadow: 5px 5px 5px rgba(0, 0, 0, 0.5);
+      border-radius: 5px;
+    }
+
+    #txt {
+      position: absolute;
+      top: 85px;
+      left: 5px;
+      font-size: 12px;
+      height: 260px;
+      width: 250px;
+      color: #666;
+      padding: 10px;
+      border: 1px solid #ccc;
+      border-radius: 10px;
+    }
+
+    .bold {
+      font-size: 11px;
+      float: right;
+      color: #000;
+    }
+
+		h4.title {
+			position: absolute;
+			left: 290px;
+			top: 70px;
+			display: none;
+      color: #666;
+		}
+
+		#msg {
+			position: absolute;
+			top: 125px;
+			left: 600px;
+			width: 180px;
+			color: #9c0;
+			font-style: italic;
+			font-size: 12px;
+			display: none;
+		}
+	</style>
+</head>
+<body>
+			<div id="txt" class="box-revela">
+				O CADERNO <br><br>
+
+				Sou eu que vou seguir você<br>
+				Do primeiro rabisco até o bê-á-bá.<br>
+				Em todos os desenhos coloridos vou estar:<br>
+				A casa, a montanha, duas nuvens no céu<br>
+				E um sol a sorrir no papel.<br>
+				(...)<br>
+				O que está escrito em mim<br>
+				Comigo ficará guardado, se lhe dá prazer.<br>
+				A vida segue sempre em frente, o que se há de fazer.<br>
+				Só peço a você um favor, se puder:<br>
+				Não me esqueça num canto qualquer.<br>
+
+				<span style="font-size: 10px;">
+					<br>(Mutinho e Toquinho, letra retirada do site http://www.toquinho.com.br)
+				</span>
+			</div>
+
+			<h4 class="title">A expressão “A vida segue sempre em frente” indica que na vida:</h4>
+
+      <img id="img" class="btn-revela" src="../img/licao10/02.jpg" width="200"/>
+
+			<div id="msg">
+				Excelente! Quando os compositores dizem que a “vida segue em frente”,
+				eles afirmam que passamos por fases durante toda nossa existência.
+			</div>
+</body>
+</html>

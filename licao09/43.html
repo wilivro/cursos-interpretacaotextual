@@ -1,0 +1,81 @@
+<!doctype html>
+<html lang="pt-br">
+<head>
+	<title>Lição 09 Peça 43</title>
+        <meta charset="utf-8">
+        <script src="../wilib/js/lib/require.js"></script>
+        <script src="../wilib/js/app.js"></script>
+        <link rel="stylesheet" href="../wilib/css/font-awesome.css">
+        <link rel="stylesheet" href="../wilib/css/estilo.css">
+
+	<script>
+		require(['../wilib/js/lib/alternativa_vf_a06'], function (edi) {
+
+			edi.setConfig({
+				titulo: 'Em relação à charge de Mafalda, responda às afirmativas clicando em <br>certa ou errada. Lembre-se de clicar no ícone para visualizar a tirinha.',
+                tempoFinal: 10
+			});
+
+            //balões
+            var baloes = [
+
+                {
+                    texto: 'O trecho do segundo quadrinho ressalta a causa<br> de três mil operários serem contratados.',
+                    dataCorreta: false
+                },
+                {
+                    texto: 'No terceiro quadrinho a expressão usada por Mafalda dá <br>sentido de estar pensando em como seria usar o dedo indicador.',
+                    dataCorreta: true
+                },
+                {
+                    texto: 'No último quadrinho, a expressão “o tal indicador” poderia ser substituído pela palavra “responsável” sem modificar ideia do contexto.',
+                    dataCorreta: true
+                }
+
+            ];
+
+			edi.iniciar(baloes, function (a, b) {
+                //cb
+            }, function (a) {
+                barraMsg(a?'Muito Bem!<br> Você conseguiu compreender a ideia do contexto.': 'Atenção!<br>  Releia a charge e tente novamente.', {height: 150, wait: 0, zIndex: 2002})
+            }, {
+                top: 90,
+                left: 120,
+                fontSize: 14,
+                width: 620,
+                height: 80,
+                trocarTxt: true,
+                textAlign: 'center',
+                topCertoErrado: -15
+            });
+            $('#img')
+                    .click(function () {
+                        $(this).transition({
+                            width: 260,
+                            left: 10
+                        })
+                    })
+                    .mouseleave(function () {
+                        $('#img').css({
+                            top: 80,
+                            left: 10,
+                            width: 100
+                        })
+                    });
+		});
+	</script>
+    <style>
+        #img {
+            position: absolute;
+            top: 80px;
+            left: 10px;
+            width: 100px;
+            cursor: pointer;
+            z-index: 2000;
+        }
+    </style>
+</head>
+<body>
+<img id="img" src="../img/licao09/p42.jpg" width="100"/>
+</body>
+</html>

@@ -1,0 +1,306 @@
+<!doctype html>
+<html lang="pt-br">
+<head>
+    <title>Lição 09 Peça 45</title>
+    <meta charset="utf-8">
+    <script src="../wilib/js/lib/require.js"></script>
+    <script src="../wilib/js/app.js"></script>
+    <link rel="stylesheet" href="../wilib/css/font-awesome.css">
+    <link rel="stylesheet" href="../wilib/css/estilo.css">
+
+    <script>
+        require(['../wilib/js/lib/revela'], function (edi) {
+
+            edi.setConfig({
+                icone: "exclamacao",
+                titulo: "No segundo quadrinho, o autor faz uso de dois pontos de exclamação. Clique nos botões para revelar as palavras e responda qual o sentido dessa utilização? "
+            });
+            edi.root.objetivos.push(0);
+
+            var
+                    palavra = 'SURPRESA|||||||||||||||CERTEZA',
+                    btn1Correta = true,
+                    btn2Correta = false,
+                    arrPalavra = palavra.split(''),
+                    ct = '#ctBtns';
+
+            for (var i = 0; i < arrPalavra.length; i++) {
+                if (arrPalavra[i] == '|') {
+                    $('<div>')
+                            .css({
+                                width: 500,
+                                height: 30,
+                                marginTop: 10,
+                                display: 'inline-block'
+                            })
+                            .attr('id', 'ct' + i)
+                            .appendTo(ct);
+                    ct = '#ct' + i;
+                }
+
+                if (arrPalavra[i] != '|') {
+                    var
+                            ctDiv = $('<div>')
+                                    .css({
+                                        display: 'inline-block'
+                                    })
+                                    .appendTo(ct),
+
+                            btn = $('<div>')
+                                    .attr('data-revela', i)
+                                    .addClass((arrPalavra[i] != ' ') ? 'btns botao btn btn-default' : 'btnH')
+                                    .appendTo(ctDiv),
+
+                            ctP = $('<div>')
+                                    .appendTo(btn);
+
+                    $('<p>')
+                            .css({
+                                display: 'none',
+                                fontWeight: 'bold',
+                                margin: 0
+                            })
+                            .attr('data-revela', i)
+                            .addClass('revela')
+                            .html(arrPalavra[i])
+                            .appendTo(ctP)
+                }
+            }
+
+            function seta(top, left, rotate, tamanho) {
+
+                var
+                        balao = $('<div>')
+                                .addClass('seta')
+                                .css({
+                                    position: 'absolute',
+                                    top: top,
+                                    left: left
+                                })
+                                .appendTo('#conteudo'),
+
+                        dv_seta = $('<div>')
+                                .addClass('clique')
+                                .css({
+                                    position: 'absolute',
+                                    top: 0,
+                                    width: 40,
+                                    height: '25px',
+                                    cursor: 'pointer'
+                                })
+                                .appendTo(balao),
+
+                        dv_trianguloSombra = $('<div>')
+                                .addClass('trianguloSombra')
+                                .css({
+                                    'float': 'right',
+                                    'margin-left': '-21px',
+                                    'margin-top': '-2px',
+                                    'border-color': 'transparent transparent transparent #ccc',
+                                    'border-width': '13px',
+                                    'border-style': 'solid'
+                                })
+                                .appendTo(dv_seta),
+
+                        triangulo = $('<div>')
+                                .addClass('triangulo')
+                                .css({
+                                    'float': 'right',
+                                    'margin-left': '-21px',
+                                    'margin-top': '1px',
+                                    'border-color': ' transparent transparent transparent #FF9933',
+                                    'border-width': '10px',
+                                    'border-style': 'solid'
+                                })
+                                .appendTo(dv_seta),
+
+                        dv_retangulo = $('<div>')
+                                .addClass('retangulo')
+                                .css({
+                                    'float': 'left',
+                                    'border-top': '1px solid #ccc',
+                                    'border-bottom': '1px solid #ccc',
+                                    'border-left': '1px solid #ccc',
+                                    'background-color': '#FF9933',
+                                    'width': '14px',
+                                    'margin-top': '6px',
+                                    'height': '8px'
+                                })
+                                .appendTo(dv_seta);
+
+                balao.css({rotate: (!!rotate ? rotate : '')});
+
+                dv_seta.transition({
+                    width: (90 + (!!tamanho ? tamanho : 0))
+                }, 500);
+
+                dv_retangulo.transition({
+                    width: (64 + (!!tamanho ? tamanho : 0)),
+                    backgroundColor: '#9c0'
+                }, 500);
+
+                triangulo.transition({
+                    'border-color': ' transparent transparent transparent #9c0'
+                }, 500);
+            }
+
+            edi.revela('botao', 'revela', function (a) {
+                a.removeClass('btn-default').addClass('btn-hover');
+            }, function () {
+                $('#x').animate({
+                    fontSize: 150
+                }, function () {
+                    $('#x').animate({
+                        fontSize: 100
+                    }, function () {
+
+                        function clique(condicao) {
+                            $('.botao').off();
+                            barraMsg(condicao ? 'Excelente!<br> A reação facial destaca a surpresa por<br> encontrar alguém que empurrasse seu balanço.'
+                                    : 'Atenção!<br> Observe a expressão facial de Cebolinha.', {
+                                height: 150,
+                                wait: 0
+                            });
+                            edi.root.objetivos.pop();
+                            edi.root.objetivos.push(condicao ? 1 : 2);
+                            edi.root.finalizar();
+                        }
+
+                        $('<div>')
+                                .attr({
+                                    id: 'btn1'
+                                })
+                                .addClass('botao')
+                                .css({
+                                    position: 'absolute',
+                                    top: 120,
+                                    left: 187,
+                                    width: 408,
+                                    height: 42,
+                                    cursor: 'pointer'
+                                })
+                                .click(function () {
+                                    clique(btn1Correta);
+                                })
+                                .mouseover(function () {
+                                    seta(136, 683, -180);
+                                    seta(114, 100, 0);
+                                })
+                                .mouseleave(function () {
+                                    $('.seta').remove();
+                                })
+                                .appendTo('#conteudo');
+
+                        $('<div>')
+                                .attr({
+                                    id: 'btn2'
+                                })
+                                .addClass('botao')
+                                .css({
+                                    position: 'absolute',
+                                    top: 285,
+                                    left: 213,
+                                    width: 356,
+                                    height: 42,
+                                    cursor: 'pointer'
+                                })
+                                .click(function () {
+                                    clique(btn2Correta);
+                                })
+                                .mouseover(function () {
+                                    seta(308, 125, 0);
+                                    seta(330, 656, -180);
+                                })
+                                .mouseleave(function () {
+                                    $('.seta').remove();
+                                })
+                                .appendTo('#conteudo');
+                    });
+                })
+            }, {tempoBloqueio: 0});
+
+            $('#img')
+                    .click(function () {
+                        $(this).transition({
+                            width: 600,
+                            left: 73
+                        })
+                    })
+                    .mouseleave(function () {
+                        $('#img').css({
+                            top: 80,
+                            left: 10,
+                            width: 100
+                        })
+                    });
+        });
+    </script>
+
+    <style>
+        #ctBtns {
+            position: absolute;
+            text-align: center;
+        }
+
+        #ctBtns:first-child {
+            position: relative;
+            width: 770px;
+            height: 315px;
+            display: table-cell;
+            vertical-align: middle;
+            text-align: center;
+        }
+
+        .btns div {
+            position: relative;
+            display: table-cell;
+            vertical-align: middle;
+            width: 30px;
+            height: 30px;
+        }
+
+        #ctX {
+            position: absolute;
+            top: 147px;
+            font-size: 100px;
+            color: #F00;
+            left: 318px;
+            width: 150px;
+            height: 150px;
+        }
+
+        #middleX {
+            position: relative;
+            vertical-align: middle;
+            text-align: center;
+            display: table-cell;
+            width: 150px;
+            height: 150px;
+        }
+
+        #x {
+            display: block;
+            font-size: 0;
+        }
+
+        #img {
+            position: absolute;
+            top: 80px;
+            left: 10px;
+            width: 100px;
+            cursor: pointer;
+            z-index: 2000;
+        }
+    </style>
+</head>
+<body>
+<div id="ctBtns"></div>
+<div id="ctX">
+    <div id="middleX">
+        <i id="x" class="fa fa-times"></i>
+    </div>
+</div>
+<img id="img" src="../img/licao09/p44.jpg" width="100"/>
+
+</body>
+</html>

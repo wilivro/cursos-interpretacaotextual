@@ -1,0 +1,143 @@
+<!doctype html>
+<html lang="pt-br">
+	<head>
+		<title>Lição 10 Peça 32</title>
+		<meta charset="utf-8">
+		<script src="../wilib/js/lib/require.js"></script>
+		<script src="../wilib/js/app.js"></script>
+    <link type="text/css" rel="stylesheet" href="../wilib/css/font-awesome.css">
+	 	<link type="text/css" rel="stylesheet" href="../wilib/css/estilo.css">
+
+		<!-- main -->
+		<style type="text/css">
+		</style>
+		<script>
+			require(['../wilib/js/lib/revista'], function (edi) {
+
+				edi.setConfig({// configurando o EDI
+        	titulo: 'Folheie as páginas da revista e leia a reportagem <br>de Claudia Andrade para o site Terra.'				});
+
+				// montando a página
+				function pag(img, txt) {
+					this.page = $('<div>');
+					this.page.addClass('inner-page');
+
+					this.img = $('<img>');
+					this.img.attr('src', img);
+					this.img.appendTo(this.page);
+
+					this.txt = $('<p>');
+					this.txt.html(txt);
+					this.txt.appendTo(this.page);
+
+					return this.page;
+				};
+
+        edi.addPagina(pag(
+					'../img/licao10/32.1.png',
+					'<h5 style="margin: 0">"Não vendo o meu voto"</h5><br>' +
+					'<h6 style="margin: 0">"Claudia Andrade <br>Direto de Brasília"</h6><br>' +
+					'A Associação dos Magistrados Brasileiros (AMB) lançou, nesta terça-feira ' +
+					'(10), a campanha Eleições Limpas, que pretende conscientizar os ' +
+					'eleitores sobre a importância do voto. Com o slogan "Não vendo o meu voto" ' +
+					'a campanha terá foco no combate à troca de voto por benefícios. ' +
+					'A campanha tem parceria do Tribunal Superior Eleitoral. '
+				));
+
+        edi.addPagina(pag(
+					'../img/licao10/32.2.png',
+					'Além do site www.amb.com.br/eleicoeslimpas2010, a divulgação também ' +
+					'será feita através de inserções em emissoras de TV e rádio e ' +
+					'distribuição de folders com perguntas e respostas abordando as ' +
+					'principais dúvidas dos eleitores. O ponto alto da campanha, contudo, ' +
+					'serão as audiências públicas programadas para serem realizadas a ' +
+					'partir do dia 3 de setembro, em várias partes do País. '
+				));
+
+        edi.addPagina(pag(
+					'../img/licao10/32.3.png',
+					'Além de combater a troca de voto por benefícios, a campanha tem ' +
+					'ainda o objetivo de divulgar as novas normas eleitorais, como a ' +
+					'exigência de apresentação do título de eleitor e de um documento ' +
+					'com foto para votar, e estimular a interação dos juízes eleitorais ' +
+					'com a sociedade. "Será o momento de o juiz deixar o cartório ' +
+					'eleitoral e discutir com a população um pleito sem fraude, dizendo ' +
+					'ao eleitor o que é permitido e o que não é", destacou o presidente ' +
+					'da AMB, Mozart Valadares. '
+				));
+
+        edi.addPagina(pag(
+					'../img/licao10/32.4.png',
+					'A nova Lei da Ficha Limpa foi um dos assuntos mais abordados durante ' +
+					'o lançamento da campanha, em Brasília. Questionado sobre uma possível ' +
+					'sensação de impunidade na população, por conta do longo caminho na ' +
+					'Justiça até que um candidato com "ficha suja" ficasse realmente impedido' +
+					'de concorrer, Valadares admitiu a possibilidade. '
+				));
+
+        edi.addPagina(pag(
+					'../img/licao10/32.5.png',
+					'"É possível que a sociedade tenha essa sensação de impunidade. ' +
+					'Mas é preciso que se conscientize que o recurso judicial não é só ' +
+					'para a classe política. Qualquer cidadão que se ache prejudicado ' +
+					'pode recorrer a uma instância superior", afirmou.' +
+					'Presente ao evento, o presidente do TSE, ministro Ricardo Lewandowski, ' +
+					'foi questionado sobre a capacidade de os Tribunais Regionais, o TSE e ' +
+					'até o Supremo Tribunal Eleitoral julgarem os casos rapidamente. '
+				));
+
+        edi.addPagina(pag(
+					'../img/licao10/32.6.png',
+					'"A lei eleitoral estabelece que processos eleitorais tenham ' +
+					'prioridade sobre quaisquer outros processos, em qualquer tribunal ' +
+					'do País. Mas não podemos atropelar a lei, que tem seus prazos, nem ' +
+					'impedir que aqueles que se sentem prejudicados recorram a instâncias ' +
+					'superiores. Esse é um direito fundamental do cidadão". '
+				));
+
+
+
+				edi.revista({
+          width:312,
+          height:300,
+					left:100,
+					top:0,
+					frenteVerso:true
+				}, null, function() {
+					barraMsg(
+						'Muito Bem! Você pode realizar a leitura de uma reportagem importante ' +
+						'voltada a assuntos cotidianos. A seguir você será questionado sobre ' +
+						'este texto, caso considere necessário, releia o texto novamente para ' +
+						'responder corretamente as questões propostas.',
+						{height: 170}
+					);
+				});
+
+			});
+		</script>
+
+		<style>
+			.inner-page {
+				width: 302px;
+				height: 290px;
+				padding: 5px;
+				background: #eee;
+				border: 1px solid #ccc;
+			}
+
+			.inner-page img {
+				width: 200px;
+				height: 120px;
+				margin-left: 50px;
+			}
+
+			.inner-page p {
+				font-size: 12px;
+			}
+		</style>
+	</head>
+
+	<body>
+
+	</body>
+</html>

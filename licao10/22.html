@@ -1,0 +1,110 @@
+<!doctype html>
+<html lang="pt-br">
+<head>
+	<title>Lição 10 Peça 22</title>
+	<meta charset="utf-8">
+	<script src="../wilib/js/lib/require.js"></script>
+	<script src="../wilib/js/app.js"></script>
+
+	<link rel="stylesheet" href="../wilib/css/font-awesome.css">
+	<link rel="stylesheet" href="../wilib/css/estilo.css">
+
+	<!-- main -->
+	<script>
+    $(function () {
+      require(['../wilib/js/lib/alternativa'], function (edi) {
+        edi.setConfig({ // configurando o EDI
+          icone: 'exclamacao',
+          titulo: 'Qual das afirmativas a seguir “Não” é correta em relação ao ' +
+                  'homem da fábula? Clique sobre a alternativa correta.'
+        });
+
+				var alter = [
+					{
+            correta: false,
+            alternativa: 'É um personagem preocupado com o corte de gastos.'
+          },{
+            correta: false,
+            alternativa: 'Mostra ingratidão em relação à galinha.'
+          },{
+            correta: false,
+            alternativa: 'Demonstra não ouvir as opiniões dos outros.'
+          },{
+            correta: false,
+            alternativa: 'Identifica-se como autoritário em relação à mulher'
+          },{
+            correta: true,
+            alternativa: 'Revela sua maldade nos maus-tratos em relação à galinha.'
+          }
+				];
+
+        var config = {
+          posx: 130,
+          posy: 100,
+          aleatorio: true,
+          tamanhoBox: 30,
+          marginBtns: 5,
+          tamanhoBoxTexto: 400,
+        };
+
+
+        edi.alternativa(alter, function (a, el) {
+          // el.parents('.vf-section').find('div')[4];
+        }, function (a) {
+          if (a) {
+						$('#msg').html(
+              'Correto! A palavra maus-tratos pressupõe algum dano físico a ' +
+              'um ser qualquer. O homem se limitava a trocar, por questão de ' +
+              'economia, o alimento da galinha, mas ela não ficava sem comer. ' +
+              'As outras opções são facilmente localizadas no texto.'
+            ).fadeIn();
+						return;
+					}
+
+					$('#msg').html(
+            'Atenção! A palavra maus-tratos pressupõe algum dano físico a um ' +
+            'ser qualquer. O homem se limitava a trocar, por questão de ' +
+            'economia, o alimento da galinha, mas ela não ficava sem comer.'
+          ).css('color', 'red').fadeIn();
+        }, config); //iniciando o EDI
+
+        // $('.vf-section > div:nth-child(2)').each(function(i, div) {
+        //   $(div).html($(div).text().replace('x', '<span class="rev">( )</span>'));
+        // });
+      });
+    });
+	</script>
+
+  <style>
+    #msg {
+      position: absolute;
+      top: 140px;
+      left: 650px;
+      width: 110px;
+      font-size: 11px;
+      color: #9c0;
+      display: none;
+      font-style: italic;
+    }
+
+    #ico {
+      position: absolute;
+      left: 10px;
+      top: 150px;
+    }
+
+    /*.vf-section > div:nth-child(2) {
+      border: 1px solid #ccc;
+      border-radius: 5px;
+    }*/
+  </style>
+</head>
+
+<body>
+  <img id="ico" src="../img/licao10/22.jpg" alt="" />
+
+	<div id="msg">
+		Muito Bem! O caderno fala como se fosse uma pessoa, um ser vivo que pensa, raciocina.
+	</div>
+</body>
+</html>

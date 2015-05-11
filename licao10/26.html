@@ -1,0 +1,117 @@
+<!doctype html>
+<html lang="pt-br">
+	<head>
+    <title>Lição 10 Peça 26</title>
+    <meta charset="utf-8">
+		<script src="../wilib/js/lib/require.js"></script>
+		<script src="../wilib/js/app.js"></script>
+    <link rel="stylesheet" href="../wilib/css/font-awesome.css">
+    <link rel="stylesheet" href="../wilib/css/estilo.css">
+
+		<script>
+			require(['../wilib/js/lib/alternativa_botao'], function (edi) {
+
+				edi.setConfig({
+					enunciado: 'vertical',
+					qtdTelas: 3,
+					titulo: 'Com base no texto do exercício anterior, responda corretamente' +
+									' às perguntas abaixo.'
+				});
+
+				var telas = [
+					{ // tela 1
+						titulo: 'A região que abriga o Complexo de SUAPE se consolida de que forma?',
+						btns: [
+							{
+								dataCorreta: false,
+								texto: 'Como um dos destinos menos procurados para <br>investimentos ' +
+											 'no Norte e Nordeste do país.'
+							},{
+								dataCorreta: true,
+								texto: 'Como um dos principais destinos dos <br>investimentos no ' +
+											 'Norte e Nordeste do País.'
+							},{
+								dataCorreta: false,
+								texto: 'Como uma região falida que não <br>atrai novos investimentos.'
+							}
+						]
+					},{ // tela 1
+						titulo: 'O que mais atrai os investimentos nesta região?',
+						btns: [
+							{
+								dataCorreta: false,
+								texto: 'Um porto situado estrategicamente <br>no interior do país.'
+							},{
+								dataCorreta: true,
+								texto: 'Um porto de localização privilegiada.'
+							},{
+								dataCorreta: false,
+								texto: 'Um porto de localização desprivilegiada.'
+							}
+						]
+					},{ // tela 3
+						titulo: 'Qual é um dos fatores que impulsiona os investimentos para essa região?',
+						btns: [
+							{
+								dataCorreta: false,
+								texto: 'A expansão da pesca marítima.'
+							},{
+								dataCorreta: false,
+								texto: 'A expansão da agricultura.'
+							},{
+								dataCorreta: true,
+								texto: 'A expansão do petróleo.'
+							}
+						]
+					}
+				];
+
+				edi.alternativa_botao(telas[edi.telaAtual - 1].btns, null, function(a) {
+					if (a) {
+						barraMsg(
+							'Parabéns! A localização geográfica de Pernambuco, no centro da ' +
+							'Região Nordeste, faz do Complexo do SUAPE um concentrador e distribuidor de cargas. ',
+							{height: 150}
+						);
+						return;
+					}
+
+					barraMsg(
+						'Tente novamente. Lembre-se que o Complexo do SUAPE está situado ' +
+						'em Pernambuco e, portanto, no litoral da região Nordeste.',
+						{height: 150}
+					);
+				}, {
+					width: 350,
+					height: 40,
+					left: 90,
+					top: 80,
+					colunas: 1,
+					btnBranco: true,
+					animacao: true
+				});
+
+				$('<h4>')
+					.html(telas[edi.telaAtual - 1].titulo)
+					.addClass('titulo')
+					.appendTo('#conteudo');
+
+			});
+		</script>
+
+		<style>
+			.btn-sem-estilo > div {
+				text-align: right !important;
+			}
+
+			h4.titulo {
+				position: absolute;
+				left: 95px;
+				top: 0px;
+				color: #666;
+				width: 350px;
+				text-align: center;
+			}
+		</style>
+	</head>
+</html>

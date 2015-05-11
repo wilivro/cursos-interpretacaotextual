@@ -1,0 +1,83 @@
+<!doctype html>
+<html lang="pt-br">
+	<head>
+    <title>Lição 10 Peça 24</title>
+    <meta charset="utf-8">
+		<script src="../wilib/js/lib/require.js"></script>
+		<script src="../wilib/js/app.js"></script>
+    <link rel="stylesheet" href="../wilib/css/font-awesome.css">
+    <link rel="stylesheet" href="../wilib/css/estilo.css">
+
+		<script>
+			require(['../wilib/js/lib/alternativa_botao'], function (edi) {
+
+				edi.setConfig({
+					enunciado: 'vertical',
+					titulo: '<strong>Era uma vez um homem que tinha uma galinha.</strong>' +
+									' De que outra forma poderia ser escrita à frase destacada? ' +
+									'Clique sobre a alternativa correta.'
+				});
+
+				var telas = [
+					{
+						titulo: 'A região que abriga o Complexo de SUAPE se consolida de que forma?',
+						btns: [
+							{
+								dataCorreta: false,
+								texto: 'Era uma vez uma galinha, que vivia com um homem.'
+							},{
+								dataCorreta: false,
+								texto: 'Era uma vez um homem criador de galinhas.'
+							},{
+								dataCorreta: true,
+								texto: 'Era uma vez um proprietário de uma galinha.'
+							},{
+								dataCorreta: false,
+								texto: 'Era uma vez uma galinha que tinha uma propriedade.'
+							},{
+								dataCorreta: false,
+								texto: 'Certa vez um homem criava uma galinha.'
+							}
+						]
+					}
+				];
+
+				edi.alternativa_botao(telas[edi.telaAtual - 1].btns, null, function(a) {
+					if (a) {
+						barraMsg(
+							'Parabéns! A localização geográfica de Pernambuco, no centro da ' +
+							'Região Nordeste, faz do Complexo do SUAPE um concentrador e distribuidor de cargas. ',
+							{height: 150}
+						);
+						return;
+					}
+
+					barraMsg(
+						'Tente novamente. Lembre-se que o Complexo do SUAPE está situado ' +
+						'em Pernambuco e, portanto, no litoral da região Nordeste.',
+						{height: 150}
+					);
+				}, {
+					width: 380,
+					height: 25,
+					left: 90,
+					top: 40,
+					colunas: 1,
+					btnBranco: true,
+					animacao: true
+				});
+
+			});
+		</script>
+
+		<style>
+			.btn-sem-estilo > div {
+				text-align: right !important;
+			}
+
+			#texto-titulo strong {
+				text-decoration: underline;
+			}
+		</style>
+	</head>
+</html>

@@ -1,0 +1,113 @@
+<!doctype html>
+<html lang="pt-br">
+	<head>
+    <title>Lição 10 Peça 31</title>
+    <meta charset="utf-8">
+		<script src="../wilib/js/lib/require.js"></script>
+		<script src="../wilib/js/app.js"></script>
+    <link rel="stylesheet" href="../wilib/css/font-awesome.css">
+    <link rel="stylesheet" href="../wilib/css/estilo.css">
+
+		<script>
+      require(['../wilib/js/lib/edi'], function(edi) {
+
+        edi.iniciar({
+          enunciado: 'vertical',
+          titulo: 'Clique sobre a frase em que existe uma mensagem de Fernando ' +
+                  'para os leitores da reportagem.'
+        });
+
+        $('.rev').click(function() {
+
+          $(this).addClass('actv').off()
+
+          $('#revela').animate({'top': 10})
+
+          edi.finalizar();
+					$('#msg').fadeIn();
+
+        });
+
+        edi.util.removeLoading();
+
+      });
+		</script>
+
+    <style>
+      #conteudo {
+        height: 385px;
+        background: #f5f5f5;
+      }
+      #revela {
+        position: absolute;
+        left: 30px;
+        top: 55px;
+        padding: 5px;
+        width: 560px;
+        height: 270px;
+        border-radius: 5px;
+        background: linear-gradient(#fff, #eee);
+        box-shadow: 0 2px 2px rgba(0, 0, 0, 0.2);
+        font-size: 12px;
+        cursor: pointer;
+      }
+
+      #msg {
+        position: absolute;
+        left: 30px;
+        top: 330px;
+        width: 560px;
+        color: #9c0;
+        font-size: 12px;
+        font-style: italic;
+				display: none;
+      }
+
+      .rev {
+        transition-duration: 0.5s;
+      }
+
+      .rev.actv {
+        color: #9c0;
+      }
+    </style>
+	</head>
+
+	<body>
+    <div id="revela">
+      “...O mercado de trabalho exige que os profissionais busquem a
+      qualificação, caso contrário estão fadados a serem excluídos.
+      É comum ver os bancos escolares seja do ensino fundamental, médio e
+      das faculdades com pessoas que já passaram dos 30, 40, 50. Todos têm o
+      mesmo objetivo, melhorar sua qualidade de vida com emprego e salário melhores.
+      <br>
+      Fernando Florêncio Duarte, de 29 anos de idade, mora no Bairro Santa
+      Cruz, tem o ensino médio completo e ontem estava na agência para dar
+      entrada no Seguro Desemprego. Era funcionário público municipal e agora
+      aguarda para ser chamado em concurso estadual. A expectativa é de que
+      isso aconteça até o fim de 2010. Segundo ele, trabalha desde os 15 anos
+      de idade e antes de ingressar no serviço público trabalhou na área de
+      logística, nunca teve dificuldades para arrumar emprego e sempre se
+      preocupou em fazer cursos para se atualizar. Porém conhece muitas pessoas
+      que não trabalham por falta de especialização.
+      <span class="rev">
+        Sempre fiz muitos cursos.
+        A preparação deve ser contínua pensando em progredir e se especializar
+      </span>,
+      destacou Fernando. Caso Fernando termine de receber as parcelas do
+      Seguro Desemprego e ainda não tenha sido chamado para o concurso
+      estadual, ele já está fazendo contatos para não ficar sem rendimento...”
+
+      <span style="">
+        Referência:<br>
+        <a href="http://www.cgn.inf.br/?system=news&action=read&id=62817" target="_blank">
+          http://www.cgn.inf.br/?system=news&action=read&id=62817
+        </a>
+      </span>
+    </div>
+
+    <div id="msg">
+      Muito bem. Com base neste texto, responda às perguntas do próximo exercício.
+    </div>
+	</body>
+</html>

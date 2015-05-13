@@ -13,7 +13,7 @@
         require(['../wilib/js/lib/alternativa_botao'], function (edi) {
 
             edi.setConfig({
-                titulo: 'Clique sobre as imagens, observe-as com muita atenção e faça associações corretas, tomando como base seus estudos sobre Conotação e Denotação.',
+                titulo: 'Observe as imagens e faça associações corretas, tomando como base seus estudos sobre Conotação e Denotação.',
                 mascote: 'mascote',
                 qtdTelas: 3
             });
@@ -88,7 +88,7 @@
                         padding: '0 2px'
                     }).appendTo('.texto');
 
-                if (a) 
+                if (a)
                     dv_texto.css({
                         color: '#9c0',
                         textAlign: 'center'
@@ -98,7 +98,7 @@
                         color: '#F00',
                         textAlign: 'center'
                     }).html(errado);
-                
+
             }
 
             edi.alternativa_botao(btns, callback, null, config);

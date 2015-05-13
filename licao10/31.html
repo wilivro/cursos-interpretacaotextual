@@ -1,0 +1,135 @@
+<!doctype html>
+<html lang="pt-br">
+	<head>
+    <title>Lição 10 Peça 31</title>
+    <meta charset="utf-8">
+		<script src="../wilib/js/lib/require.js"></script>
+		<script src="../wilib/js/app.js"></script>
+    <link rel="stylesheet" href="../wilib/css/font-awesome.css">
+    <link rel="stylesheet" href="../wilib/css/estilo.css">
+
+		<script>
+			require([
+				'../wilib/js/lib/revela_num_slider',
+				'../wilib/js/lib/alternativa_botao'
+			], function (edi, edi2) {
+
+				edi.setConfig({
+          mascote: 'mascote',
+          icone: 'interrogacaoAzul',
+					titulo: 'Leia a reportagem a seguir clicando nos botões para avançar o texto.'
+				});
+				var botoes = [
+					{
+						texto: '...Dos 23 alunos que estudaram juntos há mais de 30 anos ' +
+									 'numa escola pública em Caxias, apenas o traficante ' +
+									 'optou pela vida no crime.'
+					},{
+						texto: 'Em 1975, quando começou a estudar na Escola Municipal ' +
+									 'Joaquim da Silva Peçanha, na comunidade da Beira-Mar, em ' +
+									 'Duque de Caxias, Luiz Fernando da Costa tinha 8 anos e era ' +
+									 'um aluno aplicado e participativo. Da 1ª à 4ª série, não ' +
+									 'repetiu o ano, nunca ficou em recuperação e sempre ' +
+									 'passou com bom desempenho.'
+					},{
+						texto: 'Trinta e cinco anos depois, Luiz Fernando virou Fernandinho ' +
+									 'Beira-Mar, o mais famoso bandido brasileiro, um traficante ' +
+									 'e homicida condenado a mais de cem anos de prisão que ' +
+									 'cumpre pena no presídio federal de Campo Grande, ' +
+									 'em Mato Grosso do Sul.'
+					},{
+						texto: 'Basta acompanhar a trajetória dos colegas de turma de ' +
+									 'Beira-Mar para derrubar a premissa de que o caminho do ' +
+									 'crime é a única opção para quem nasce pobre e favelado.'
+					},{
+						texto: 'Dos 23 alunos que fizeram juntos as primeiras quatro séries ' +
+						       'do atual ensino fundamental na Joaquim da Silva Peçanha, de ' +
+									 '1975 a 1978, apenas Luiz Fernando optou pela vida no crime. ' +
+									 'O restante driblou a pobreza e as drogas, e se tornou ' +
+									 'exemplo de superação entre parentes e amigos...'
+					},{
+						texto: '... 13 são pessoas bem-sucedidas, mesmo quando desempenham ' +
+									 'um ofício relativamente simples: de cortar cabelos a dirigir ' +
+									 'Kombis. No grupo, também há suboficial da Aeronáutica, ' +
+									 'policial militar, marceneiro, mecânico, professores ' +
+									 'universitários e frentistas de posto de gasolina. Sete ' +
+									 'ainda vivem na comunidade; outros se casaram e deixaram o ' +
+									 'lugar. A maioria sequer concluiu o ensino fundamental. ' +
+									 'Uma professora universitária foi morar nos Estados Unidos. ' +
+									 'Tem um PM vivendo no Nordeste e um mecânico trabalhando na Base ' +
+									 'Aérea de Anápolis, em Goiás, onde ficam caças supersônicos da ' +
+									 'Força Aérea Brasileira (FAB)...'
+					},{
+						texto: '...Nenhum deles tem antecedentes criminais...'
+					},{
+						texto: ''
+					}
+				];
+
+        edi.revela_num_slider(botoes, null, function() {
+					$('[data-edi="revela_num_slider"]').fadeOut();
+					$('[data-edi="alternativa_botao"], h4.titulo').fadeIn();
+				}, {
+					tamanhoFonteTexto: 12,
+					showNum: true,
+					espacoSetas: 370,
+					tamanhoBoxTexto: 510,
+					left: -20,
+					leftSetas: 105
+				});
+
+				edi2.alternativa_botao([
+					{dataCorreta: false, texto: 'SIM'},
+					{dataCorreta: true,  texto: 'NÃO'}
+				], null, null, {
+					height: 25,
+					left: 220,
+					top: 280
+				});
+
+        $('#ico').iconeExclamacao(true);
+
+				$('[data-edi="alternativa_botao"]').hide();
+
+			});
+		</script>
+
+		<style>
+      #balao {
+        border: 1px solid #ccc;
+        background: #fff;
+        width: 200px;
+        height: 250px;
+        position: absolute;
+        left: 10px;
+        top: 100px;
+        font-size: 13px;
+        text-align: center;
+        line-height: 1.3;
+        border-radius: 10px;
+        color: #666;
+      }
+
+      #ico {
+        margin: 20px 0 20px 0;
+        height: 59px;
+        position: relative;
+        left: 70px;
+      }
+
+			h4.titulo {
+				position: absolute;
+				left: 215px;
+				top: 140px;
+				width: 350px;
+				text-align: center;
+				color: #666;
+				display: none;
+			}
+		</style>
+	</head>
+
+	<body>
+		<h4 class="titulo">Após esta leitura, é possível fazer uma relação entre a pobreza e o crime?</h4>
+	</body>
+</html>

@@ -23,7 +23,8 @@
                 {arrasta: 'palavra', dataCorreta: '2', dataId: '2'},
                 {arrasta: 'interpretação', dataCorreta: '3', dataId: '3'},
                 {arrasta: 'atrapalhar', dataCorreta: '4', dataId: '4'},
-                {arrasta: 'texto', dataCorreta: '5', dataId: '5'}
+                {arrasta: 'texto', dataCorreta: '5', dataId: '5'},
+                {arrasta: 'pode', dataCorreta: '6', dataId: '6'}
             ];
 
             var texto = $('#boxTexto').html();
@@ -79,8 +80,9 @@
                     .attr('id', 'mascote')
                     .appendTo('#conteudo');
 
-            $('.b1').peBalao({scaleX: 1.3, scaleY: -1.3, top: 154, left: 180, borda: '#666'});
+            // $('.b1').peBalao({scaleX: 1.3, scaleY: -1.3, top: 154, left: 180, borda: '#666'});
             $('.b2').peBalao({scaleX: -1.3, scaleY: -1.3, top: 74, left: 180, borda: '#666'});
+            $('.b3').peBalao({scaleX: 1.3, scaleY: -1.3, top: 70, left: 180, borda: '#666'});
         });
     </script>
     <style>
@@ -123,7 +125,6 @@
             left: 10px;
         }
 
-
     </style>
 
 </head>
@@ -131,10 +132,13 @@
 
 <div id="boxTexto">
     <span class="balao b1" style="width: 300px; top: 75px;">
-        A {0} de sentidos que pode haver numa {1}, numa expressão ou num texto é chamada de ambiguidade. Será que a ambiguidade resulta na má {2} da mensagem, ocasionando múltiplos sentidos?
+      A {0} de sentidos que pode haver numa {1}, numa expressão ou num texto é chamada de ambiguidade.
     </span>
     <span class="balao b2" style="left: 340px; width: 420px; top: 100px">
-        Sim, isso pode ajudar ou {3} na interpretação de um {4}.
+      A ambiguidade resulta na má {2} da mensagem, ocasionando múltiplos sentidos?
+    </span>
+    <span class="balao b3" style="width: 300px; top: 160px;">
+      Sim, isso {5} ajudar ou {3} na interpretação de um {4}.
     </span>
 
     <img src="../wilib/img/svg/personagem1.svg" width="100" style="position: absolute; left: 280px; top: 190px;"/>

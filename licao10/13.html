@@ -1,0 +1,295 @@
+<!doctype html>
+<html lang="pt-br">
+<head>
+    <title>Lição 01 Peça 19</title>
+    <meta charset="utf-8">
+    <script src="../wilib/js/lib/require.js"></script>
+    <script src="../wilib/js/app.js"></script>
+    <link rel="stylesheet" href="../wilib/css/font-awesome.css">
+    <link rel="stylesheet" href="../wilib/css/estilo.css">
+
+    <script>
+        require(['../wilib/js/lib/arrasta'], function (edi) {
+
+          edi.setConfig({
+            mascote: 'mascote',
+            tempoFinal: 10,
+            titulo: 'Leia a Modinha com atenção e pinte as respostas corretas de acordo com cada questão.',
+            qtdTelas: 3
+          });
+
+          arrPergunta = [
+              'Pinte de verde no texto a palavra que designa o tema da composição de Alceu Valença?',
+              'Pinte de vermelho as palavras que indicam a origem da história da música, ou seja,a  região que  a música retrata.',
+              'Pinte de azul a vegetação da região onde se passa a história da música?'
+          ];
+
+          arrMsg = [
+              {
+                  msgT: 'Muito Bem,você acertou!<br>  O tema da música é A seca.',
+                  msgF: 'Tente novamente!<br>  Observe que o compositor retrata a história de um local <br> do Brasil, conta uma história, observe que história é essa.'
+              },
+              {
+                  msgT: 'Parabéns!<br> A região homenageada por esta composição é a<br> região Nordestina, o sertão, mas especificamente.',
+                  msgF: 'Leia a letra da música com atenção,<br> ele cita o nome da região e a localidade <br>exata de onde a história acontece.'
+              },
+              {
+                  msgT: 'Muito Bem!<br> A vegetação típica da região Nordestina,<br> especificamente o sertão, é a caatinga.',
+                  msgF: 'Pense com calma!<br> Leia com atenção a letra da <br>música você vai encontrar a resposta correta.'
+              }
+          ];
+
+
+          $('.alvo' + edi.telaAtual).addClass('alvo');
+
+          $('#pergunta>.middle').html(arrPergunta[edi.telaAtual - 1]);
+
+          var pintar = function (b, c, condicao) {
+              switch (b.attr('data-correta')) {
+
+                  case '1':
+                      c.css({
+                          background: 'url(../wilib/img/fotos/tinta-verd.png) no-repeat',
+                          backgroundPositionX: (condicao) ? '0' : '-360px',
+                          color: '#fff',
+                          padding: '0 20px 0 10px',
+                          margin: '0 -20px 0 -10px',
+                          textShadow: '1px 1px 1px #000'
+                      }).animate({
+                          backgroundPositionX: '0px'
+                      }, 80);
+                      break;
+
+                  case '2':
+                      c.css({
+                          background: 'url(../wilib/img/fotos/tinta-verm.png) no-repeat',
+                          backgroundSize: '100% 100%',
+                          backgroundPositionX: (condicao) ? '0' : '-360px',
+                          color: '#fff',
+                          padding: '0 20px 0 10px',
+                          margin: '0 -20px 0 -10px',
+                          textShadow: '1px 1px 1px #000'
+                      }).animate({
+                          backgroundPositionX: '0px'
+                      }, 80);
+                      break;
+
+                  case '3':
+                      c.css({
+                          background: 'url(../wilib/img/fotos/tinta-azul.png) no-repeat',
+                          backgroundPositionX: (condicao) ? '0' : '-360px',
+                          color: '#fff',
+                          padding: '0 20px 0 10px',
+                          margin: '0 -20px 0 -10px',
+                          textShadow: '1px 1px 1px #000'
+                      }).animate({
+                          backgroundPositionX: '0px'
+                      }, 80);
+                      break;
+              }
+              c.css({
+                  backgroundSize: '100% 100%'
+              })
+          };
+
+          edi.arrasta('arrasta', 'alvo', function (a, b, c) {
+              b.remove();
+              c.removeClass('alvo');
+
+              pintar(b, c, false);
+
+              if(edi.telaAtual == 1){
+                  barraMsg(a?arrMsg[edi.telaAtual-1].msgT:arrMsg[edi.telaAtual-1].msgF, {zIndex: 25, height: 100});
+                  edi.root.objetivos = [a?1:2];
+              }
+
+          }, function(a){
+
+              barraMsg(a?arrMsg[edi.telaAtual-1].msgT:arrMsg[edi.telaAtual-1].msgF, {zIndex: 25, height: 100});
+          }, {
+              clone: true,
+              target: false
+          });
+          $('#arrasta1').load('../wilib/img/svg/pincel.svg', function () {
+              $('#arrasta1').find('svg').attr({
+                  width: 90
+              });
+              $('#arrasta1').find('svg').find('#corPonta').attr({
+                  fill: '#9c0'
+              });
+          });
+          $('#arrasta2').load('../wilib/img/svg/pincel.svg', function () {
+              $('#arrasta2').find('svg').attr({
+                  width: 90
+              });
+              $('#arrasta2').find('svg').find('#corPonta').attr({
+                  fill: '#f00'
+              });
+          });
+          $('#arrasta3').load('../wilib/img/svg/pincel.svg', function () {
+              $('#arrasta3').find('svg').attr({
+                  width: 90
+              });
+              $('#arrasta3').find('svg').find('#corPonta').attr({
+                  fill: '#27DDF5'
+              });
+          });
+          for (var i = 0; i < edi.telaAtual; i++) {
+              var arrasta = $('#arrasta' + (i));
+              var alvo = $('.alvo' + (i));
+              alvo.droppable('destroy');
+              pintar(arrasta, alvo, true)
+          }
+
+        });
+    </script>
+
+    <style>
+        #conteudo {
+            width: 788px !important;
+            background: #A5BBCD;
+        }
+
+        .box {
+            position: absolute;
+            left: 20px;
+            top: 165px;
+        }
+
+        .arrastas {
+            position: absolute;
+            width: 100px;
+            height: 300px;
+        }
+
+        .arrasta {
+            display: inline-block;
+            width: 90px;
+            height: 65px;
+        }
+
+        .alvos {
+            position: absolute;
+            word-spacing: 5px;
+            left: 246px;
+            top: 80px;
+            width: 475px;
+            height: 0;
+            display: table;
+            font-size: 12px;
+            color: #666;
+        }
+
+        .alvos p, .alvos strong {
+          margin: 5px 0;
+        }
+
+        .alvo {
+            display: inline-block;
+            background-size: 100% 100% !important;
+            font-weight: bold;
+        }
+
+        .branco {
+            position: absolute;
+            left: 0;
+            top: 80px;
+            height: 292px;
+            width: 788px;
+            background: #fff
+        }
+
+        .branco > .branco {
+            border-radius: 10px;
+            height: 308px;
+            width: 560px;
+            left: 220px;
+            top: -10px;
+            border: 1px solid #999;
+        }
+
+        #pergunta {
+            position: absolute;
+            width: 210px;
+            height: 80px;
+            top: 5px;
+            left: 5px;
+        }
+
+        #pergunta > .middle {
+            position: relative;
+            width: 210px;
+            height: 80px;
+            display: table-cell;
+            vertical-align: middle;
+            text-align: center;
+            font-size: 15px;
+            color: #666;
+        }
+
+        .nomePincel {
+            position: absolute;
+            left: 70px;
+            width: 200px;
+        }
+
+    </style>
+</head>
+<body>
+<div class="branco">
+    <div class="branco"></div>
+    <div id="pergunta">
+        <div class="middle"></div>
+    </div>
+</div>
+<div class="box">
+    <div class="arrastas">
+        <div id="arrasta1" class="arrasta" data-correta="1"></div>
+        <div id="arrasta2" class="arrasta" data-correta="2"></div>
+        <div id="arrasta3" class="arrasta" data-correta="3"></div>
+    </div>
+    <div class="nomePincel" style="top: 40px; color: #9c0">Pincel verde</div>
+    <div class="nomePincel" style="top: 110px; color: #f00">Pincel vermelho</div>
+    <div class="nomePincel" style="top: 180px; color: #27DDF5">Pincel azul</div>
+</div>
+<div class="alvos">
+    <div style="display: inline-block">
+      <span style="font-size: 12px; font-style: italic">
+        Extraída da série de modinhas anônimas publicadas em Modinhas do passado;
+        investigações folclóricas e artísticas (Rio de Janeiro, 1956).
+      </span>
+
+      <h4>Se eu Soubesse</h4>
+
+      <strong>I</strong>
+      <p>
+        Se eu soubesse que tão cedo era
+        <span class="alvo1" data-correta="1">traído</span>,
+        Eu não teria o meu amor te dedicado;
+        Viveria bem feliz sem estas mágoas,
+        Se os meus olhos não ousassem ter te olhado.
+      </p>
+
+      <strong>II</strong>
+      <p>
+        <span class="alvo2" data-correta="2">Com teus olhares tão ternos me fascinaste!...</span>
+        <span class="alvo2" data-correta="2">Com tuas frases que exprimiam só ternura,</span>
+        <span class="alvo2" data-correta="2">Inspiraste em meu peito este afeto,</span>
+        Que eu te dava como um anjo de candura...
+      </p>
+
+      <strong>III</strong>
+      <p>
+        Eu pensava que a doçura de teu riso
+        Fosse mel e não veneno da ilusão.
+        Soluçando, seguirei o meu destino,
+        <span class="alvo3" data-correta="3">
+          Sem ter forças pra ferir teu coração...
+        </span>
+      </p>
+
+    </div>
+</div>
+
+</body>
+</html>

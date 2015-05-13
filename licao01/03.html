@@ -1,4 +1,3 @@
-<!-- Desenvolvedor: Danilo Thiago -->
 <!doctype html>
 <html lang="pt-br">
 <head>
@@ -10,192 +9,156 @@
     <link rel="stylesheet" href="../wilib/css/estilo.css">
 
     <script>
-        require(['../wilib/js/lib/revela_slide'], function (edi) {
+        require(['../wilib/js/lib/arrasta'], function (edi) {
 
             edi.setConfig({
-                icone: 'exclamacao',
-                titulo: 'Clique sobre os personagens e observe a explicação<br> de Fred e Malú sobre Texto e Contexto.'
+                icone: 'interrogacaoAzul',
+                titulo: 'Que tal ampliar seu conhecimento sobre o que é interpretar um texto? Arraste<br> as frases para a posição correta e aprimore seu conhecimento sobre o tema.',
+                mascote: 'mascote',
+                tempoFinal: 15
             });
 
-            function callback(a, b) {
-                b.parent().css('box-shadow', '0 0 0 3px #8CA8B8');
+            var arrArrasta = [
+                {arrasta: 'A interpretação textual auxilia no estudo de tudo que está escrito no texto de forma ', dataCorreta: '1'},
+                {arrasta: 'explícita ou implícita, ou seja, o que é facilmente percebido no texto, e o que está ', dataCorreta: '2'},
+                {arrasta: 'nas “entrelinhas”, que não foi dito claramente, muitas vezes, por questões ', dataCorreta: '3'},
+                {arrasta: 'políticas, morais, ideológicas, sociais ou religiosas.', dataCorreta: '4'}
+            ];
+
+            arrArrasta.sort(function () {
+                return 0.5 - Math.random()
+            });
+
+            for (var i = 0; i < arrArrasta.length; i++) {
+                $('<div>')
+                        .addClass('arrasta')
+                        .attr('data-correta', arrArrasta[i].dataCorreta)
+                        .html(arrArrasta[i].arrasta)
+                        .appendTo('#boxArrasta');
             }
 
-            function calbackFinal() {
-                mensagem('Atenção! Contexto é a relação entre<br> o texto e a situação em que ele ocorre.<br> É o conjunto de circunstâncias em que<br> se produz a mensagem - lugar e tempo<br> e que permitem sua compreensão.')
-            }
+            var config = {
+                animacaoFundoArrasta: true,
+                colorirFilho: true,
+                arrastaAbsolute: true,
+                gradiente: 'corGradiente-claro'
+            };
 
-            edi.revela_slide('.revela', callback, calbackFinal, {});
+            edi.arrasta('arrasta', 'alvo', function (a, b, c) {
+            }, function (a) {
+                if(a){
+                    $('#texto').css({
+                        border: '1px solid #999',
+                        fontSize: 15,
+                        height: 120,
+                        padding: 20,
+                        lineHeight: '20px',
+                        color: '#666'
+                    }).html('A interpretação textual auxilia no estudo de tudo que está escrito no texto de forma explícita ou implícita, ou seja, o que é facilmente percebido no texto, e o que está nas “entrelinhas”, que não foi dito claramente, muitas vezes, por questões políticas, morais, ideológicas, sociais ou religiosas.')
+                    $('.alvo').remove();
+                }
 
-
-            $('.revelaEsquerda').each(function () {
-                $(this).peBalao({
-                    top: 81,
-                    left: 20,
-                    scaleX: 1,
-                    scaleY: -1,
-                    rotate: 0
-                });
-            });
-
-            $('.revelaDireito').each(function () {
-                $(this).peBalao({
-                    top: 82,
-                    left: 120,
-                    scaleX: -1,
-                    scaleY: -1,
-                    rotate: 0
-                });
-            });
-
-            $('#rev-04, #rev-08').each(function () {
-                $(this).peBalao({
-                    top: 137,
-                    left: 210,
-                    scaleX: -1,
-                    scaleY: -1,
-                    rotate: 0
-                });
-            });
+                $('#boxArrasta')
+                        .css({height: 35, padding: 28, fontSize: 16, color: '#666'})
+                        .html((a?'Muito Bem!<br> Você acabou de exercitar seu raciocínio lógico aliado à interpretação. Você leu as frases desconexas, compreendeu o sentido do texto e as organizou de forma sequencial e lógica. Continue assim!'
+                                :'Atenção!<br> Ao realizar este exercício você já está utilizando o seu raciocínio lógico, pois precisa compreender o texto, e o organizar em uma sequência lógica. Releia as frases e busque uma sequência que as organize de forma correta!'))
+            }, config);
 
         });
+
     </script>
 
     <style>
-        i {
-            font-style: italic;
-            font-weight: bold;
-        }
 
-        .revela {
-            border: 1px solid #ccc;
-            padding: 10px 10px 10px 10px;
-            font-size: 14px;
-            line-height: 1.3;
-            border-radius: 10px;
-            background: #fff;
-            text-shadow: 1px 1px 1px rgba(0, 0, 0, 0.2);
+        #boxBox{
+            position: absolute;
+            margin-left: 50%;
+            left: -300px;
+            width: 600px;
+            height: 110px;
+            top: 240px;
+        }
+        #boxArrasta {
+            position: relative;
+            border: solid 1px #A7B9C3;
+            background: rgba(140, 168, 184, 0.1);
+            vertical-align: middle;
+            display: table-cell;
+            width: 600px;
+            height: 135px;
+            cursor: default;
             text-align: center;
+            font-size: 18px;
+            color: #999;
+        }
+
+        .arrasta {
+            display: inline-block;
+            width: 530px;
+            text-align: center;
+            margin: 0;
+            font-size: 14px;;
+            color:#666;
+        }
+
+        #boxTexto {
             position: absolute;
-            bottom: 200px;
+            top: 70px;
+            left: -300px;
+            width: 600px;
+            height: 170px;
+            margin-left: 50%;
         }
 
-        #rev-01  {
-            left: 330px;
-            top: 110px;
-            padding-top: 15px;
-            width: 320px;
-            height: 44px;
+        #texto {
+            position: relative;
+            display: table-cell;
+            vertical-align: middle;
+            text-align: center;
+            font-size: 18px;
+            color: #999;
+            width: 600px;
+            height: 170px;
         }
 
-        #rev-02 {
-            left: 150px;
-            top: 120px;
-            width: 220px;
-            padding-top: 15px;
-            height: 45px;
+        .alvo {
+            display: inline-block;
+            width: 550px;
+            height: 25px;
+            margin: 1px 0;
+            padding: 0;
+            border: 1px solid #999;
         }
 
-        #rev-03  {
-            left: 330px;
-            top: 110px;
-            width: 220px;
-            padding-top: 23px;
-            height: 36px;
+        #boxTexto .fa{
+            position: relative;
+            padding: 2px;
+            display: inline-block;
+            color: #9C0;
+            top: -10px;
         }
 
-        #rev-04, #rev-08 {
-            width: 290px;
-            left: 60px;
-            top: 65px;
-            height: 105px;
-        }
-
-        #rev-05 {
-            left: 370px;
-            width: 100px;
-            padding-top: 25px;
-            height: 35px;
-        }
-
-        #rev-06 {
-            width: 170px;
-            left: 130px;
-            height: 44px;
-            top: 100px;
-            padding-top: 16px;
-        }
-
-        #rev-07 {
-            width: 360px;
-            left: 330px;
-            height: 50px;
-            top: 100px;
-        }
-
-        #rev-09 {
-            left: 300px;
-            width: 260px;
-            height: 42px;
-            padding-top: 17px;
-            top: 110px;
-        }
-
-        .person {
-            width: 280px;
-            height: 200px;
-            position: absolute;
-            left: 210px;
-            top: 200px;
-        }
 
 
     </style>
 </head>
 
 <body>
-<img src="../wilib/img/svg/personagens.svg" class="person" id="person-03">
+<section id="boxBox">
+    <div id="boxArrasta"></div>
+</section>
 
-<p class="revelaEsquerda revela" id="rev-01">
-    Malú, você assistiu a aula da Professora Bianca sobre interpretação de textos desta semana?
-</p>
+<div id="ponto"></div>
 
-<p class="revelaDireito revela" id="rev-02">
-    Sim Fred, ela abordou os conceitos de texto e contexto.
-</p>
+<div id="boxTexto">
+    <div id="texto">
+        <span class="fa fa-angle-double-right" style="font-weight: bold; font-size: 23px"></span><div id="alvo1" class="alvo" data-correta="1"></div><span class="fa fa-plus"></span>
+        <span class="fa fa-plus"></span><div id="alvo2" class="alvo" data-correta="2"></div><span class="fa fa-plus"></span>
+        <span class="fa fa-plus"></span><div id="alvo3" class="alvo" data-correta="3"></div><span class="fa fa-plus"></span>
+        <span class="fa fa-plus"></span><div id="alvo4" class="alvo" data-correta="4"></div><span class="fa fa-angle-double-left" style="font-weight: bold; font-size: 23px"></span>
+    </div>
+</div>
 
-<p class="revelaEsquerda revela" id="rev-03">
-    E o que foi que ela disse?
-</p>
-
-<p class="revela" id="rev-04">
-    Ela explicou que um texto é constituído por diversas frases e em cada uma delas, há uma “certa” informação que a faz
-    ligar-se com a frase anterior e/ou com a frase posterior, criando condições para a estruturação do conteúdo a ser
-    transmitido.
-</p>
-
-<p class="revelaEsquerda revela" id="rev-05">
-    Hum...
-</p>
-
-<p class="revelaDireito revela" id="rev-06">
-    E a essa interligação dá-se o nome de contexto.
-</p>
-
-<p class="revelaEsquerda revela" id="rev-07">
-    Nossa! Já ouvi falar muito sobre contexto, mas nunca soube exatamente o que era. Então, quer dizer que contexto é
-    essa “ligação” entre as frases de um texto?
-</p>
-
-<p class="revela" id="rev-08">
-    Isso, exatamente! A Professora Bianca também ressaltou que o relacionamento entre as frases é tão grande, que, se
-    uma frase for retirada de seu contexto original e analisada separadamente, poderá ter um significado diferente
-    daquele inicial.
-</p>
-
-<p class="revelaEsquerda revela" id="rev-09">
-    Poxa, então o contexto é fundamental para a interpretação correta de um texto!
-</p>
 
 </body>
 </html>

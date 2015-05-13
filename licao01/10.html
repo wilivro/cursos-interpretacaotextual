@@ -1,57 +1,62 @@
 <!doctype html>
 <html lang="pt-br">
 <head>
-	<title>Lição 01 Peça 10</title>
-        <meta charset="utf-8">
-        <script src="../wilib/js/lib/require.js"></script>
-        <script src="../wilib/js/app.js"></script>
-        <link rel="stylesheet" href="../wilib/css/font-awesome.css">
-        <link rel="stylesheet" href="../wilib/css/estilo.css">
+    <title>Lição 01 Peça 10</title>
+    <meta charset="utf-8">
+    <script src="../wilib/js/lib/require.js"></script>
+    <script src="../wilib/js/app.js"></script>
+    <link rel="stylesheet" href="../wilib/css/font-awesome.css">
+    <link rel="stylesheet" href="../wilib/css/estilo.css">
 
-	<script>
-		require(['../wilib/js/lib/alternativa_balao'], function (edi) {
+    <script>
+        require(['../wilib/js/lib/alternativa_botao'], function (edi) {
 
-			edi.setConfig({
-				titulo: 'Você sabe o que significa interpretar?<br>Clique sobre a alternativa correta.',
-                mascote: 'mascote',
-                tempoFinal: 10
-			});
+            edi.setConfig({
+                titulo: 'O que você entende por texto? <br>Clique sobre a personagem que melhor define o conceito de texto.',
+                mascote: 'mascote'
+            });
 
-            var baloes = [
-
-                {texto: 'Interpretar é o mesmo que atuar, é representar uma personagem criada por um autor ou escritor.', dataCorreta: false},
-                {texto: 'O ato de interpretar só pode ser realizado por atrizes e atores consagrados.', dataCorreta: false},
-                {texto: 'Interpretar significa explicar, esclarecer, compreender o que está subentendido em um texto ou imagem.', dataCorreta: true},
-                {texto: 'Interpretar é dissimular, fingir ser o que não é. Pode ser entendido como ação de enganar, mentir.', dataCorreta: false}
-
+            var btns = [
+                [
+                    {texto: 'Texto é um amontoado desorganizado de palavras.', dataCorreta: false},
+                    {texto: 'Texto é um conjunto de ideias organizadas e relacionadas entre si, formando um todo significativo capaz de produzir interação comunicativa.', dataCorreta: true},
+                    {texto: 'Textos são palavras da língua portuguesa escritas em Sequência.', dataCorreta: false}
+                ]
             ];
 
-			edi.alternativa_balao(baloes, function (a, b) {
-                //cb
-            }, function (a) {
-                if(a){
-                    mensagem('Excelente! Interpretar é compreender<br> o que está escrito em um texto,<br> uma imagem, um som, etc.');
-                }
-                else {
-                    mensagem('Atenção! Releia as alternativas e,<br> leve em consideração que este<br> curso fala sobre interpretação <br>de textos e lógica.<br> Tente novamente!');
-                }
-            }, {
-                top: 0,
-                left: 80,
-                width: 300,
-                height: 150,
-                margin: '0 60px 0 0',
-                fontSize: 12,
-                leftPerson: -65,
-                topPerson: 43,
-                topIco: 0,
-                leftIco: -7
-            });
-		});
-	</script>
+            var config = {
+                width: 200,
+                height: 100,
+                left: 65,
+                top: 205,
+                colunas: 3,
+                margin: 10,
+                padding: 5,
+                display: 'block',
+                btnBranco: true,
+                animacao: false
+            };
+
+            function callback(a) {
+            };
+
+            edi.alternativa_botao(btns[edi.telaAtual - 1], callback, function (a) {
+                barraMsg(a?'Muito bem!<br> Texto é um conjunto de ideias organizadas de forma coerente e com significado.'
+                :'Atenção!<br> Para que possamos escrever um texto precisamos que as palavras tenham coerência entre si e, apresentem um significado para quem lê.', {height: 150})
+            }, config);
+
+        });
+    </script>
 </head>
-
+<style>
+    .img {
+        position: absolute;
+        top: 100px;
+    }
+</style>
 <body>
+<img class="img" style="left: 125px;" src="../wilib/img/svg/personagem1.svg" width="100"/>
+<img class="img" style="left: 310px;" src="../wilib/img/svg/ruiva.svg" width="175"/>
+<img class="img" style="left: 555px;" src="../wilib/img/svg/personagem2.svg" width="110"/>
 </body>
-
 </html>

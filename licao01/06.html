@@ -1,217 +1,130 @@
 <!doctype html>
 <html lang="pt-br">
-	<head>
-        <title>Lição 01 Peça 06</title>
-		<meta charset="utf-8">
-		<script src="../wilib/js/lib/require.js"></script>
-		<script src="../wilib/js/app.js"></script>
-        <link rel="stylesheet" href="../wilib/css/font-awesome.css">
-        <link rel="stylesheet" href="../wilib/css/estilo.css">
+<head>
+    <title>Lição 01 Peça 06</title>
+    <meta charset="utf-8">
+    <script src="../wilib/js/lib/require.js"></script>
+    <script src="../wilib/js/app.js"></script>
+    <link rel="stylesheet" href="../wilib/css/font-awesome.css">
+    <link rel="stylesheet" href="../wilib/css/estilo.css">
 
-		<script>
-			require(['../wilib/js/lib/revela','../wilib/js/lib/arrasta'], function (edi, edi2) {
+    <script>
+        require(['../wilib/js/lib/revela_slide'], function (edi) {
 
-				edi.setConfig({
-					titulo: "Vamos conhecer exemplos de Paráfrases? Clique sobre a imagem<br> para revelar as sentenças e em seguida complete-as corretamente.",
-                    mascote: 'mascote'
-				});
-
-				edi.revela('_btn', 'revela', null, function(){
-                    $('#bloqueio').fadeOut()
-                },{});
-
-                var arrArrasta = [
-                    {arrasta: 'Paráfrase', dataCorreta: '1', dataId: '1'},
-                    {arrasta: 'título', dataCorreta: '2', dataId: '2'},
-                    {arrasta: 'texto', dataCorreta: '3', dataId: '3'},
-                    {arrasta: 'reescrevemos', dataCorreta: '4', dataId: '4'},
-                    {arrasta: 'ideia', dataCorreta: '5', dataId: '5'}
-                ];
-
-                var texto = $('#texto').html();
-
-                for (var i = 0; i < arrArrasta.length; i++) {
-                    var aux = '';
-                    for (var j = 0; j < arrArrasta[i].arrasta.length; j++) {
-                        aux += '_';
-                    };
-                    texto = texto.replace('{' + i + '}', '<div class="alvo" data-correta="'+arrArrasta[i].dataCorreta+'">' + aux + '</div>');
-                }
-
-                $('#texto').html(texto);
-
-                arrArrasta.sort(function () {
-                    return 0.5 - Math.random()
-                });
-
-                $('#texto').html(texto);
-
-                arrArrasta.sort(function () {
-                    return 0.5 - Math.random()
-                });
-
-
-                for (var i = 0; i < arrArrasta.length; i++) {
-                    $('<div>')
-                            .addClass('arrasta fundoArrasta azulAlpha')
-                            .attr({
-                                'data-id': arrArrasta[i].dataId,
-                                id: 'arrasta'+(i+1),
-                                'data-correta': arrArrasta[i].dataCorreta
-                            })
-                            .html(arrArrasta[i].arrasta)
-                            .appendTo('#arrasta');
-                }
-
-                var config = {
-                    colorirFilho: true,
-                    arrastaAbsolute: true,
-                    reloadCorreta: true
-                };
-
-                edi2.arrasta('arrasta', 'alvo', function (a, b, c) {
-                    if(a){
-                        c.html(b.css({display: 'flex'}))
-                    }
-                }, function (a) {
-                    mensagem('A seguir conheceremos as<br> diferenças entre Interpretar<br> e Compreender um texto.');
-                }, config);
-
-                $('.arrasta').css({
-                    margin: -5,
-                    padding: 5
-                });
+            edi.setConfig({
+                icone: 'exclamacao',
+                titulo: 'Clique nas personagens e leia atentamente o diálogo:'
             });
-		</script>
 
-		<style>
-
-			._btn {
-				background: url(../img/licao01/p06.png) no-repeat;
-				background-size: 100% 100%;
-				width: 271px;
-				height: 274px;
-				position: absolute;
-				left: 20px;
-				top: 78px;
-				cursor: pointer;
-				border-radius: 10px;
-				border: 7px solid #fff;
-				box-shadow: 0 0 5px rgba(0, 0, 0, 0.5);
-			}
-
-			.revela {
-                background: #fff;
-                width: 365px;
-                padding: 30px 20px;
-                color: #666;
-                position: absolute;
-                left: 330px;
-                top: 175px;
-                text-align: left;
-			}
-
-            .alvo {
-                display: inline-block;
+            function callback(a, b) {
+                b.parent().css('box-shadow', '0 0 0 3px #8CA8B8');
             }
-            .arrasta {
-                padding: 5px;
-                margin-right: 10px;
-                margin-left: 10px;
-                display: inline-block;
-                color: #FFF;
-            }
-            #boxArrasta{
-                width: 400px;
-                height: 60px;
-                cursor: default;
-                top: 220px;
-                left: 315px;
-            }
-            #arrasta{
-                position: relative;
-                display: table-cell;
-                vertical-align: middle;
-                width: 400px;
-                height: 70px;
+                
+            function calbackFinal () {
+                barraMsg('Muito bem!<br> Neste diálogo percebemos que a palavra lógica está relacionada a uma conclusão baseada na razão. No seu cotidiano, você pode perceber a intenção das pessoas quando utilizam a palavra lógica.', {height: 150})
             }
 
-            #texto{
-                font-size: 14px;
-                color: #666;
-                text-align: justify;
-                line-height: 21px;
-            }
-            #bloqueio{
-                position: absolute;
-                background-color: #FFF;
-                width: 500px;
-                height: 120px;
-                cursor: default;
-                top: 280px;
-                left: 320px;
-                z-index: 10;
-            }
+            edi.revela_slide('.revela', callback, calbackFinal);
+            
+           
+            $('.maria').each(function() {
+                $(this).peBalao({
+                    top:82,
+                    left:100,
+                    scaleX:-1,
+                    scaleY:-1,
+                    rotate:0
+                });                     
+            });
 
-            table {
-                position: absolute;
-                top: -95px;
-                left: 5px;
-                text-align: center;
-                font-size: 12px;
-            }
+            $('.joao').each(function() {
+                $(this).peBalao({
+                    top:81,
+                    left:20,
+                    scaleX:1,
+                    scaleY:-1,
+                    rotate:0
+                });                     
+            });
 
-            th, tr, td {
-                border: solid 1px #000;
-                color: #000;
-            }
-            td > span {
-                color: #0099CC;
-                font-weight: bold;
-                font-size: 15px;
-            }
+        });
+    </script>
+    
+    <style>
+        i {
+            font-style: italic;
+            font-weight: bold;
+        }
+        
+        .revela {
+            border: 1px solid #ccc;
+            padding: 10px 10px 10px 10px;
+            font-size: 14px;
+            line-height: 1.3;
+            border-radius: 10px;
+            background: #fff;
+            text-shadow: 1px 1px 1px rgba(0, 0, 0, 0.2);
+            text-align: center;
+            position: absolute;
+            bottom: 200px;
+            height: 50px;
+            width: 420px;
+        }
+        
+        .maria {
+            left: 180px;
+            top: 120px;
+            width: 160px;
+        }
+        .maria.b2 {
+            padding-top: 15px;
+            height: 45px;
+        }
+        .joao {
+            left: 330px;
+            top: 110px;
+            width: 100px;
+            line-height: 50px;
+        }
 
-            th {
-                width: 190px;
-                color: #fff;
-                background: #666;
-            }
-        </style>
-	</head>
+        .person {
+            width: 280px;
+            height: 200px;
+            position: absolute;
+            left: 210px;
+            top: 200px;
+        }
+        
 
-	<body>
+    </style>
+</head>
 
-		<div class="_btn"></div>
-		<div  class="revela">
-            <table id="tabela">
-                <tr>
-                    <th>TÍTULO DO TEXTO</th>
-                    <th>PARÁFRASES</th>
-                </tr>
-                <tr>
-                    <td><span>“O HOMEM UNIDO”</span></td>
-                    <td>
-                        A INTEGRAÇÃO DO MUNDO<br>
-                        A INTEGRAÇÃO DA HUMANIDADE<br>
-                        A UNIÃO DO HOMEM<br>
-                        HOMEM + HOMEM = MUNDO<br>
-                        A MACACADA SE UNIU (SÁTIRA)
-                    </td>
-                </tr>
-            </table>
-            <div id="texto">
-                Estes são exemplos de {0}. Pegamos um {1} ou {2} e o {3} de outra maneira, mantendo sempre a {4} principal.
-            </div>
-            </div>
-            <div id="boxArrasta" class="btn btn-default-hover">
-                <div id="arrasta"></div>
-            </div>
-        <div id="bloqueio"></div>
-    </body>
+<body>
+    <img src="../wilib/img/svg/personagens.svg" class="person" id="person-03">
+    
+    <p class="revelaEsquerda revela maria">
+        João, eu estou com muitas dúvclassas, você pode me ajudar?
+    </p>
+    <p class="revelaDireito revela joao">
+        Sim, claro!
+    </p>
+    <p class="revelaEsquerda revela maria b2">
+        No Brasil a língua oficial é o português?
+    </p>
+    <p class="revelaDireito revela joao" style="width: 130px">
+        É lógico que sim!
+    </p>
+    <p class="revelaEsquerda revela maria b2">
+        E Portugal é mesmo um país da Europa?
+    </p>
+    <p class="revelaDireito revela joao" style="width: 130px">
+        Sim. Isso é lógico!
+    </p>
+    <p class="revelaEsquerda revela maria" style="width: 310px">
+        Eu vou prestar um concurso público e estava com muitas dúvidas, obrigada por sua ajuda, pelo visto vou precisar de muita sorte!
+    </p>
+    <p class="revelaDireito revela joao" style="width: 230px">
+        Sorte e muito raciocínio lógico!
+    </p>
+</body>
 </html>
-
-
-
-
-
-

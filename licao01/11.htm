@@ -1,0 +1,80 @@
+<!doctype html>
+<html lang="pt-br">
+	<head>
+		<title>Lição 01 Peça 11</title>
+		<meta charset="utf-8">
+		<script src="../wilib/js/lib/require.js"></script>
+		<script src="../wilib/js/app.js"></script>
+        <link rel="stylesheet" href="../wilib/css/font-awesome.css">
+        <link rel="stylesheet" href="../wilib/css/estilo.css">
+		
+		<script>
+			require(['../wilib/js/lib/revela'], function (edi) {
+				
+				edi.setConfig({
+                    icone: "interogacao",
+					titulo: "Clique sobre a imagem e observe um exemplo<br> do que Não pode ser considerado um texto."
+				});
+
+				edi.revela('_btn', 'revela', null, function(){
+					barraMsg('Excelente!<br> Observe que o texto apresenta uma construção sintática possível (sujeito, verbo e complemento), no entanto, não pode ser considerado um texto.', {height: 150, wait: 5})
+				});//iniciando o EDI
+				
+				$('.revela').peBalao({
+					top:34,
+					left:-35,
+					scaleX:1,
+					scaleY:-1,
+					rotate:90
+				});
+			});
+		</script>
+		
+		<style>
+			._btn {
+				background: url(../img/licao01/p11.jpg) no-repeat;
+				background-size: 100% 100%;
+				width: 271px;
+				height: 274px;
+				position: absolute;
+				left: 20px;
+				top: 78px;
+				cursor: pointer;
+				border-radius: 10px;
+				border: 7px solid #fff;
+				box-shadow: 0 0 5px rgba(0, 0, 0, 0.5);
+			}
+			
+			.revela {
+				background: #fff;
+				width: 246px;
+				height: 241px;
+				padding: 10px 20px 10px 30px;
+				position: absolute;
+				left: 330px;
+				top: 94px;
+				text-align: left;
+				border: 1px solid #ccc;
+				border-radius: 10px;
+			}
+			
+			.revela p {
+				margin-top: 40px;
+				font-size: 14px;
+				line-height: 1.3;
+				font-weight: bold;
+				color: #838383;
+			}
+		</style>
+	</head>
+	
+	<body>
+		<div class="_btn"></div>
+		<div class="revela">
+			<p>
+				Dilma é a primeira mulher e o vizinho matou meu cachorro.
+				A pobreza é um dos maiores motivadores da violência em nosso país porque as pessoas não entenderam que a Aids é um problema mundial e ninguém percebeu a importância do presidente que foi viajar?”
+			</p>
+		</div>
+	</body>
+</html>

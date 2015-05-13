@@ -1,4 +1,3 @@
-<!-- Desenvolvedor: Danilo Thiago -->
 <!doctype html>
 <html lang="pt-br">
 <head>
@@ -10,147 +9,53 @@
     <link rel="stylesheet" href="../wilib/css/estilo.css">
 
     <script>
-        require(['../wilib/js/lib/arrasta'], function (edi) {
+        require(['../wilib/js/lib/alternativa_vf'], function (edi) {
 
             edi.setConfig({
+                icone: "interrogacaoAzul",
                 mascote: 'mascote',
-                titulo: 'Utilize as palavras abaixo para completar a explicação de <br>Reinaldo e Carlos sobre Intertexto e Interpretação de texto.',
-                tempoFinal: 20
+                titulo: "De acordo com os estudos realizados até o momento, a lógica auxilia no desenvolvimento de três aspectos importantes para interpretação de textos.<br> Quais são esses aspectos? Marque a alternativa verdadeira."
             });
 
-            var arrArrasta = [
-                {arrasta: 'apresentam', dataCorreta: '1', dataId: '1'},
-                {arrasta: 'indiretas', dataCorreta: '2', dataId: '2'},
-                {arrasta: 'autores', dataCorreta: '3', dataId: '3'},
-                {arrasta: 'objetivo', dataCorreta: '4', dataId: '4'},
-                {arrasta: 'texto', dataCorreta: '5', dataId: '5'},
-                {arrasta: 'principal', dataCorreta: '6', dataId: '6'},
-                {arrasta: 'secundárias', dataCorreta: '7', dataId: '7'},
-                {arrasta: 'argumentações', dataCorreta: '8', dataId: '8'},
-                {arrasta: 'esclarecimento ', dataCorreta: '9', dataId: '9'}
-            ];
+            var alternativas = [];
 
-            var texto = $('#boxTexto').html();
-
-            for (var i = 0; i < arrArrasta.length; i++) {
-                    var aux = '';
-                    for (var j = 0; j < arrArrasta[i].arrasta.length; j++) {
-                        aux += '_';
-                    };
-                texto = texto.replace('{' + i + '}', '<div class="alvo" data-correta="'+arrArrasta[i].dataCorreta+'">' + aux + '</div>');
-            }
-
-            $('#boxTexto').html(texto);
-
-            arrArrasta.sort(function () {
-                return 0.5 - Math.random()
+            alternativas.push({
+                texto: 'Atuar, representar e dissimular.',
+                dataCorreta: false
             });
 
+            alternativas.push({
+                texto: 'Ler, escrever e resolver problemas.',
+                dataCorreta: true
+            });
 
-            for (var i = 0; i < arrArrasta.length; i++) {
-                $('<div>')
-                        .addClass('arrasta fundoArrasta azulAlpha')
-                        .attr({
-                            'data-id': arrArrasta[i].dataId,
-                            id: 'arrasta' + (i + 1),
-                            'data-correta': arrArrasta[i].dataCorreta
-                        })
-                        .html(arrArrasta[i].arrasta)
-                        .appendTo('#arrasta');
-            }
+            alternativas.push({
+                texto: 'Cantar, escrever poesias e ler muitos livros.',
+                dataCorreta: false
+            });
 
-            var config = {
-                colorirFilho: true,
-                arrastaAbsolute: true,
-                reloadCorreta: true,
-                alvoFixo: true
-            };
+            alternativas.push({
+                texto: 'Ouvir música clássica, ler contos e traduzir textos em inglês.',
+                dataCorreta: false
+            });
 
-            edi.arrasta('arrasta', 'alvo', function (a, b, c) {
-                if(a){
-                    c.html(b.css({display: 'flex'}))
-                }
+            edi.alternativa_vf(alternativas, function (a) {
+
             }, function (a) {
-                mensagem('Neste exercício você pode conhecer<br> o conceito de Intertexto e o primeiro<br> objetivo de uma boa interpretação<br> de texto. Continue dedicando<br> atenção a seus estudos.');
-            }, config);
-
-            $('.arrasta').css({
-                margin: -5,
-                padding: 5
+                barraMsg(a ? 'Parabéns! Compreender e interpretar de forma lógica proporciona uma leitura eficaz, uma escrita aprimorada e grande capacidade para solucionar problemas.' : 'Atenção! A interpretação lógica corresponde à capacidade de compreender textos, imagens, etc., não tem relação com atuação. Pense um pouco mais!', {
+                    height: 150,
+                    wait: 0
+                });
+            }, {
+                left: 60,
+                top: 50,
+                margin: '0 0 15px 0'
             });
-
-            $('<div>')
-                    .attr('id', 'mascote')
-                    .appendTo('#conteudo');
-
-            $('.b1').peBalao({scaleX: 1.3, scaleY: -1.3, top: 114, left: 180, borda: '#666'});
-            $('.b2').peBalao({scaleX: -1.3, scaleY: -1.3, top: 134, left: 180, borda: '#666'});
         });
     </script>
-    <style>
-        .alvo {
-            display: inline-block;
-        }
-
-        .arrasta {
-            padding: 5px;
-            margin-right: 10px;
-            margin-left: 10px;
-            display: inline-block;
-            color: #FFF;
-        }
-
-        #boxArrasta {
-            padding-top: 5px;
-            width: 650px;
-            height: 55px;
-            cursor: default;
-            top: 240px;
-            left: 50px;
-        }
-
-        #arrasta {
-            position: relative;
-            display: table-cell;
-            vertical-align: middle;
-            width: 650px;
-            height: 60px;
-        }
-
-        .balao {
-            position: absolute;
-            padding: 10px;
-            border: solid 1px #666;
-            border-radius: 10px;
-            top: 75px;
-            text-align: center;
-            left: 10px;
-        }
-
-
-    </style>
-
 </head>
+
 <body>
 
-<div id="boxTexto">
-    <span class="balao b1" style="width: 300px; top: 85px;">
-        Comumente, os textos {0} referências diretas ou {1} a outros {2} através de citações. Esse tipo de recurso
-        denomina-se Intertexto.
-    </span>
-    <span class="balao b2" style="left: 340px; width: 420px;">
-        O primeiro {3} de uma interpretação de {4} é a identificação de sua ideia {5}. A partir daí, localizam-se as ideias
-        {6}, ou fundamentações, as {7}, ou explicações, que levem ao {8} das questões apresentadas na prova.
-    </span>
-
-    <img src="../wilib/img/svg/personagem1.svg" width="100" style="position: absolute; left: 220px; top: 190px;"/>
-    <img src="../wilib/img/svg/personagem2.svg" width="110" style="position: absolute; left: 420px; top: 190px;" alt=""/>
-    <div id="personagem1"></div>
-    <div id="personagem2"></div>
-
-    <div id="boxArrasta" class="btn btn-default-hover">
-        <div id="arrasta"></div>
-    </div>
-</div>
 </body>
 </html>

@@ -1,0 +1,94 @@
+<!-- Desenvolvedor: Danilo Thiago -->
+<!doctype html>
+<html lang="pt-br">
+<head>
+    <title>Lição 01 Peça 02</title>
+    <meta charset="utf-8">
+    <script src="../wilib/js/lib/require.js"></script>
+    <script src="../wilib/js/app.js"></script>
+    <link rel="stylesheet" href="../wilib/css/font-awesome.css">
+    <link rel="stylesheet" href="../wilib/css/estilo.css">
+
+    <script>
+        $(function () {
+            require(['../wilib/js/lib/alternativa'], function (edi) {
+
+                edi.setConfig({
+                    icone: 'interrogacaoAzul',
+                    titulo: 'Antes de estudarmos sobre Interpretação de Textos vamos compreender<br> o que é um texto. De acordo com seus conhecimentos prévios clique<br> sobre a alternativa que melhor define o conceito de texto.'
+                });
+
+                var alternativas = [
+                    {
+                        alternativa: 'Texto é o nome dado a um conjunto de livros dispostos em um mesmo local.',
+                        correta: false
+                    }, {
+                        alternativa: 'Texto é um conjunto de ideias organizadas e relacionadas entre si, formando um todo significativo capaz de produzir interação comunicativa.',
+                        correta: true
+                    }, {
+                        alternativa: 'Texto é o título de um poema muito famoso.',
+                        correta: false
+                    }
+                ];
+
+                var config = {
+                    posx: 15,
+                    posy: 85,
+                    aleatorio: true,
+                    tamanhoBox: 35,
+                    tamanhoBoxTexto: 600,
+                    marginBtns: 5
+                }
+
+                edi.alternativa(alternativas, function (acertou) {
+                }, function (a) {
+                    if (a) {
+                        $('#msg').fadeIn();
+                    } else {
+                        $('#msg').fadeIn()
+                                .find('p')
+                                .html('Atenção! Texto é uma sequência verbal (palavras), oral ou escrita, que forma um todo que tem sentido para um determinado grupo de pessoas em uma determinada situação.');
+                    }
+                }, config);
+
+                $('#balao').peBalao({
+                    left: 10,
+                    tamanhoBorda: 15,
+                    borda: '#ccc'
+                });
+
+            });
+        })
+    </script>
+
+    <style>
+
+        #msg {
+            width: 500px;
+            position: absolute;
+            bottom: 20px;
+            left: 10px;
+            font-size: 13px;
+            text-align: center;
+            font-weight: 700;
+            color: #666;
+            display: none;
+        }
+
+        #msg p {margin-top: -10px}
+
+        #seta {
+            height: 40px;
+            float: left;
+        }
+    </style>
+</head>
+
+<body>
+<div id="msg">
+    <img id="seta" src="../wilib/img/fotos/seta-dir.png">
+    <p>Muito bem, você acertou! Texto é, então, uma sequência verbal (palavras), oral ou escrita, que forma um todo que
+        tem sentido para um determinado grupo de pessoas em uma determinada situação.</p>
+</div>
+</body>
+</html>

@@ -1,4 +1,3 @@
-<!-- Desenvolvedor: Danilo Thiago -->
 <!doctype html>
 <html lang="pt-br">
 <head>
@@ -6,57 +5,196 @@
     <meta charset="utf-8">
     <script src="../wilib/js/lib/require.js"></script>
     <script src="../wilib/js/app.js"></script>
-    <link type="text/css" rel="stylesheet" href="../wilib/css/font-awesome.css">
-    <link type="text/css" rel="stylesheet" href="../wilib/css/estilo.css">
+    <link rel="stylesheet" href="../wilib/css/font-awesome.css">
+    <link rel="stylesheet" href="../wilib/css/estilo.css">
 
-    <style type="text/css">
-    </style>
     <script>
-        require(['../wilib/js/lib/slide_vertical'], function (edi) {
+        require(['../wilib/js/lib/alternativa'], function (edi) {
 
             edi.setConfig({
-                titulo: "Em uma prova de concurso os candidatos são levados através da<br>Interpretação de Textos a cumprir algumas exigências, para<br>conhecê-las clique sobre as barras a seguir.",
+                icone: "interrogacaoAzul",
                 mascote: 'mascote',
-                icone: "interrogacaoAzul"
+                titulo: "O que você entende por lógica?<br> Clique sobre as imagens, leia as dicas e, em seguida marque a alternativa que melhor conceitua lógica de acordo com seus conhecimentos prévios.",
+                tempoFinal: 10,
+                qtdTelas: 2
             });
 
-            var slides = [
-                {
-                    btn: 'IDENTIFICAR',
-                    txt: 'reconhecer os elementos fundamentais de uma argumentação, de um processo, de uma época (neste caso, procuram-se os verbos e os advérbios, os quais definem o tempo).',
-                    img: '../img/licao01/p05.1.png'
-                },
-                {
-                    btn: 'COMPARAR ',
-                    txt: 'descobrir as relações de semelhança ou de diferenças entre as situações do texto.',
-                    img: '../img/licao01/p05.2.png'
-                },
-                {
-                    btn: 'COMENTAR',
-                    txt: 'relacionar  o conteúdo apresentado com uma realidade, opinando a respeito.',
-                    img: '../img/licao01/p05.3.png'
-                },
-                {
-                    btn: 'RESUMIR',
-                    txt: 'concentrar as ideias centrais e/ou secundárias em um só parágrafo.',
-                    img: '../img/licao01/p05.4.png'
-                },
-                {
-                    btn: 'PARAFRASEAR',
-                    txt: 'reescrever o texto com outras palavras. ',
-                    img: '../img/licao01/p05.5.png'
+            var revela =
+                    [
+                        'Lógica é uma Ciência.',
+                        'Estimula a dúvida, a crítica e o questionamento.',
+                        'Possui objetos definidos de estudo.'
+                    ];
+
+            var configBtns = {
+                width: 200, // tamanho tem que ser igual ao do btn-revela
+                height: 95
+            };
+
+            var btns = [];
+
+            btns.push({
+                alternativa: "A lógica é o estudo dos métodos e princípios usados, para distinguir o raciocínio correto do incorreto.",
+                correta: false
+            });
+
+            btns.push({
+                alternativa: "A lógica é a ciência que estuda a forma de interpretação dos contos e poesias da literatura brasileira.",
+                correta: true
+            });
+
+            btns.push({
+                alternativa: "Lógica são exercícios de matemática que nada tem a ver com filosofia",
+                correta: false
+            });
+
+            var config = {
+                tamanhoBoxTexto: 410,
+                marginBtns: 5,
+                posx: 150,
+                posy: 140
+
+            };
+
+            function callback(a) {
+            }
+
+            edi.alternativa(btns, callback, function (a) {
+                if (a) {
+                    $('#txtFinal').animate({left: 1}, 800)
                 }
-            ];
+                else {
+                    $('#txtFinal').animate({left: 1}, 800)
+                            .css({
+                                border: '2px dashed #F00',
+                                color: '#F00',
+                                fontSize: 15
+                            }).find('div').html("Atenção! A lógica tem relação à busca do sentido verdadeiro de questões, textos e métodos de raciocínio.");
+                }
+            }, config);
 
-            edi.slide_vertical(slides, function () {
+            if (edi.telaAtual() == 1) {
+                $('[data-edi = "alternativa"]').css({display: 'none'});
+            }
+            else {
+                $('.btn-revela').hide();
+            }
 
-            }, function () {
-                mensagem('Muito Bem! Ao realizar uma <br>prova de concurso será exigido<br> de você este conhecimento.');
-            }, {showNumber: true});
+            $('.btn-revela').mousedown(function () {
+                var $this = $(this);
+                var $div = $('<div>')
+                        .css({
+                            position: 'absolute',
+                            top: 210,
+                            left: 10,
+                            border: '1px solid #ccc',
+                            borderTop: 'none',
+                            borderRadius: '0 0 10px 10px',
+                            width: configBtns.width,
+                            height: 0,
+                            boxShadow: '3px 3px 5px rgba(0,0,0,0.5)',
+                            overflow: 'hidden'
+                        })
+                        .appendTo($this);
+
+                var middle = $('<div>')
+                        .css({
+                            position: 'relative',
+                            width: configBtns.width,
+                            height: configBtns.height,
+                            display: 'table-cell',
+                            verticalAlign: 'middle',
+                            textAlign: 'center',
+                            fontSize: 14,
+                            color: '#666',
+                            padding: '0 10px'
+                        })
+                        .html(revela[$this.attr('data-revela')])
+                        .appendTo($div);
+
+                $div.animate({
+                    height: 95
+                }, function () {
+                    $this.addClass('ok');
+                    if ($('.btn-revela.ok').length == revela.length) {
+                        edi.root.objetivos = [];
+                        edi.root.finalizar();
+                    }
+                });
+
+                $this.off();
+
+            })
+
 
         });
     </script>
+
+    <style>
+
+        #txtFinal {
+            position: absolute;
+            top: 110px;
+            left: -143px;
+            width: 119px;
+            height: 226px;
+            border-radius: 15px;
+            color: #9C0;
+            text-align: center;
+            border: 2px dashed #9C0;
+            padding: 10px;
+            z-index: 2;
+            font-size: 14px;
+        }
+
+        #central {
+            position: relative;
+            width: 119px;
+            height: 226px;
+            display: table-cell;
+            vertical-align: middle;
+        }
+
+        .btn-revela {
+            position: absolute;
+            top: 70px;
+            left: 10px;
+            text-align: center;
+            border-radius: 10px;
+            border: solid 1px #E2E2E2;
+            color: rgb(128, 126, 126);
+            padding: 10px;
+            font-size: 16px;
+            width: 200px;
+            height: 190px;
+            background-size: 100% 100% !important;
+            box-shadow: 5px 1px 5px rgba(0, 0, 0, 0.5);
+            cursor: pointer;
+        }
+
+        #txt {
+            position: absolute;
+            top: 80px;
+            left: 180px;
+            color: #666;
+            font-size: 18px;
+            width: 430px;
+            text-align: center;
+        }
+
+    </style>
 </head>
 <body>
+<div id="txt" data-edi="alternativa">Tomando por base as dicas anteriores responda corretamente qual o conceito de
+    lógica.
+</div>
+<div class="btn-revela" data-revela="0" style="background: url(../img/licao01/p13.1.jpg);"></div>
+<div class="btn-revela" data-revela="1" style="background: url(../img/licao01/p13.2.jpg); left:280px;"></div>
+<div class="btn-revela" data-revela="2" style="background: url(../img/licao01/p13.3.jpg); left: 550px;"></div>
+<div id="txtFinal">
+    <div id="central">Muito bem! Precisamos pensar e argumentar logicamente para dar sentido às questões. A lógica nos
+        permite não dar como certo qualquer informação, mas nos sugere o aprofundamento e o questionamento.
+    </div>
+</div>
 </body>
 </html>

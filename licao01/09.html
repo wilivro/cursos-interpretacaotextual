@@ -1,0 +1,83 @@
+<!doctype html>
+<html lang="pt-br">
+<head>
+    <title>Lição 01 Peça 09</title>
+    <meta charset="utf-8">
+    <script src="../wilib/js/lib/require.js"></script>
+    <script src="../wilib/js/app.js"></script>
+    <link rel="stylesheet" href="../wilib/css/font-awesome.css">
+    <link rel="stylesheet" href="../wilib/css/estilo.css">
+
+    <script>
+        require(['../wilib/js/lib/quebra-cabeca'], function (edi) {
+
+            edi.setConfig({
+                titulo: 'Monte o quebra-cabeça e revele o texto.',
+                tempoFinal: 15
+            });
+
+            var config = {
+                width: 406,
+                height: 303,
+                left: 6,
+                top: 6,
+                background: '#ccc',
+                numPecas: 2,
+                callBacks: [
+                    function () {
+                        $('#texto-01').fadeIn();
+                    },
+                    function () {
+                        $('#texto-02').fadeIn();
+                    },
+                    function () {
+                        $('#texto-03').fadeIn();
+                    }
+                ]
+            };
+
+            edi.quebraCabeca('../img/licao01/p09.jpg', function () {
+                barraMsg('Parabéns!<br> Você usou a lógica para montar o quebra-cabeça! Ao ler textos você precisa estar atento para o significado das palavras, raciocinar com calma e atenção, porque muitas vezes as ideias não estão explícitas, elas precisam ser interpretadas.', {height: 200, zIndex: 2001, wait: 3})
+            }, config);
+
+        });
+    </script>
+
+    <style>
+        #texto {
+            width: 180px;
+            position: absolute;
+            left: 430px;
+            top: 100px;
+            font-size: 14px;
+            line-height: 1.4;
+            z-index: 1000;
+            text-align: justify;
+            color: #666;
+        }
+
+        .texto {
+            display: none;
+        }
+
+    </style>
+</head>
+
+<body>
+<div id="texto">
+    <span class="texto" id="texto-01">
+        A lógica nos auxilia a tomar como ponto de partida os conhecimentos aceitos como
+    </span>
+    <span class="texto" id="texto-02">
+         verdadeiros e, então, formular leis gerais, fazer encadeamentos de ideias
+    </span>
+    <span class="texto" id="texto-03">
+          e concluir sobre novas infrações ambientais e destinação final adequada de rejeitos.
+    </span>
+    <span class="texto" id="texto-04">
+
+    </span>
+</div>
+
+</body>
+</html>

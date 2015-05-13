@@ -1,22 +1,22 @@
 <!doctype html>
 <html lang="pt-br">
 <head>
-	<title>Lição 01 Peça 02</title>
+	<title>Lição 01 Peça 10</title>
         <meta charset="utf-8">
         <script src="../wilib/js/lib/require.js"></script>
         <script src="../wilib/js/app.js"></script>
         <link rel="stylesheet" href="../wilib/css/font-awesome.css">
         <link rel="stylesheet" href="../wilib/css/estilo.css">
+
 	<script>
 		require(['../wilib/js/lib/alternativa_balao'], function (edi) {
 
 			edi.setConfig({
-				titulo: 'Antes de iniciarmos nossos estudos sobre interpretação e lógica precisamos entender o que significam estes dois termos. Você sabe o que significa interpretar? Clique sobre a alternativa correta.',
+				titulo: 'Você sabe o que significa interpretar?<br>Clique sobre a alternativa correta.',
                 mascote: 'mascote',
                 tempoFinal: 10
 			});
 
-            //balões
             var baloes = [
 
                 {texto: 'Interpretar é o mesmo que atuar, é representar uma personagem criada por um autor ou escritor.', dataCorreta: false},
@@ -29,7 +29,12 @@
 			edi.alternativa_balao(baloes, function (a, b) {
                 //cb
             }, function (a) {
-                barraMsg(a?'Excelente!<br> Interpretar é compreender o que está escrito<br> em um texto, uma imagem, um som, etc.':'Atenção!<br> Releia as alternativas e, leve em consideração que este curso<br> fala sobre interpretação de textos e lógica. Tente novamente!',{height: 150, wait: 0})
+                if(a){
+                    mensagem('Excelente! Interpretar é compreender<br> o que está escrito em um texto,<br> uma imagem, um som, etc.');
+                }
+                else {
+                    mensagem('Atenção! Releia as alternativas e,<br> leve em consideração que este<br> curso fala sobre interpretação <br>de textos e lógica.<br> Tente novamente!');
+                }
             }, {
                 top: 0,
                 left: 80,

@@ -11,25 +11,25 @@
 
 		<script>
 			require(['../wilib/js/lib/alternativa_vf'], function (edi) {
-				
+
 				edi.setConfig({
                     icone: "interrogacaoAzul",
                     mascote: 'mascote',
-					titulo: "Clique em D para frases com sentido denotativo e<br>em C para frases com sentido Conotativo."
+					titulo: "Digite D para frases com sentido denotativo <br>e C para frases com sentido Conotativo."
 				});
-				
+
 				var alternativas  = [];
-				
+
 				alternativas.push({
 					texto: 'O monstro foi capturado por um grupo de Bombeiros.',
 					dataCorreta: true
 				});
-				
+
 				alternativas.push({
 					texto: 'Paulo Coelho é um monstro da literatura moderna.',
 					dataCorreta: false
 				});
-				
+
 				alternativas.push({
 					texto: 'Mário está nadando no ouro.',
 					dataCorreta: false
@@ -39,7 +39,7 @@
 					texto: 'O burro auxilia o homem.',
 					dataCorreta: true
 				});
-				
+
 				alternativas.push({
 					texto: 'A rosa desabrochou.',
 					dataCorreta: true
@@ -79,7 +79,7 @@
       }
 		</style>
 	</head>
-	
+
 	<body>
 		<div id="txtFinal">Excelente! Com os conceitos de denotação e conotação bem claros, você conseguirá interpretar com mais eficiência, pois uma das maiores dificuldades ao interpretar é compreender o sentido em que as palavras foram escritas.</div>
 	</body>

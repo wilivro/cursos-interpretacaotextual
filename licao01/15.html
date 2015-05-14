@@ -9,107 +9,142 @@
     <link rel="stylesheet" href="../wilib/css/estilo.css">
 
     <script>
-        require(['../wilib/js/lib/revela'], function (edi) {
-
+        require(['../wilib/js/lib/arrasta'], function (edi) {
             edi.setConfig({
-                icone: "exclamacao",
-                titulo: "Clique sobre as imagens e revele os conceitos de Coerência e Coesão."
+                mascote: 'mascote',
+                titulo: "Arraste os termos para os conceitos<br> corretos de Letramento e Alfabetização."
             });
 
-            var condicao = true;
+            var config = {
+                colorirFilho: true,
+                arrastaAbsolute: true
+            };
 
-            edi.revela('btn-revela', 'box-revela', null, function(){
-                if(condicao){
-                    setTimeout(function(){
-                        mensagem('<div style="display: inline-block; width: 450px;">Muito Bem! Você já conhece os conceitos de Coerência e Coesão, aplique-os em suas construções textuais e em suas interpretações de textos.</div>');
-                    },5000);
-                    condicao = false;
-                }
+            edi.arrasta('arrasta', 'alvo', function (a, b, c) {
+                b.css('margin-top', '5px');
+                c.css({display: 'flex'})
+            }, function(a){
+                barraMsg(a?'Muito bem!<br> Ser Letrado é ser capaz de usar a leitura e a escrita no seu dia a dia, de forma que sua visão de mundo seja ampliada. Ao mesmo tempo, que ser alfabetizado é capaz de decifrar os códigos de leitura e escrita.'
+                        :'Atenção!<br> Ser letrado é mais amplo que ser alfabetizado, existem pessoas alfabetizadas que não são letradas. Tente novamente.', {height: 150, wait: 0})
+            }, config);
 
-            }, {
-                ocultarRev: true,
-                bloqueiaClickFinal: false,
-                tempoBloqueio: 5000
-            });//iniciando o EDI
-
-            $('#rev-1').peBalao({
-                top: 40,
-                left: -35,
-                scaleX: -1,
-                scaleY: 1,
-                background: '#FFF',
+            $('#balao').peBalao({
+                left:40,
+                tamanhoBorda: 14,
                 borda: '#ccc',
-                tamanhoBorda: 9,
-                rotate: -90
+                scaleX:-1
             });
 
-            $('#rev-2').peBalao({
-                top: 40,
-                left: -35,
-                scaleX: -1,
-                scaleY: 1,
-                background: '#FFF',
-                borda: '#ccc',
-                tamanhoBorda: 9,
-                rotate: -90
-            });
+            $('#ico').iconeInterrogacaoAzul(true);
         });
     </script>
 
-    <style>
-        .container {
-            width: 100%;
-            margin-top: 15px;
-            float: left;
-        }
-
-        .btn-revela {
-            width: 180px;
-            height: 120px;
-            border: 7px solid #fff;
-            border-radius: 15px;
-            margin-left: 20px;
-            cursor: pointer;
-            float: left;
-            box-shadow: 0 0 5px rgba(0, 0, 0, 0.3);
-        }
-
-        .box-revela {
-            background-size: 100% 100% !important;
-            width: 400px;
-            margin: 7px 0 0 20px;
-            float: left;
+    <style media="screen">
+        #balao {
             border: 1px solid #ccc;
-            padding: 10px;
-            border-radius: 10px;
-            position: relative;
+            background: #fff;
+            width: 140px;
+            height: 250px;
+            position: absolute;
+            left: 10px;
+            top: 100px;
             font-size: 13px;
+            text-align: center;
+            line-height: 1.3;
+            border-radius: 10px;
+            color: #666;
         }
 
+        #ico {
+            margin: 40px 0 20px 0;
+            height: 59px;
+            position: relative;
+            left: 35px;
+        }
+        #main {
+            position: absolute;
+            left: 100px;
+            top: 80px;
+        }
+
+        .box {
+            width: 270px;
+            height: 200px;
+            float: left;
+            margin: 5px 5px 15px 5px;
+            padding: 5px;
+            border-radius: 5px;
+            background: linear-gradient(to bottom, #fff, #eee);
+            box-shadow: 0px 1px 3px rgba(0, 0, 0, 0.3);
+        }
+
+        .box .alvo {
+            width: 100%;
+            height: 30px;
+            background: #eee;
+            box-shadow: inset 1px 1px 2px rgba(0, 0, 0, 0.3);
+            border-radius: 5px;
+        }
+
+        .box .text {
+            width: 100%;
+            height: 170px;
+            display: table;
+        }
+
+        .box .text p {
+            width: 100%;
+            display: table-cell;
+            vertical-align: middle;
+            font-size: 13px;
+            text-align: center;
+            color: #666;
+        }
+
+        #arrastas {
+            width: 555px;
+            height: 20px;
+            clear: both;
+            margin: 5px;
+            padding: 5px;
+            border-radius: 5px;
+        }
+
+        .arrasta {
+            width: 205px;
+            display: inline-block;
+            text-align: center;
+            color: #fff;
+        }
     </style>
 </head>
-
 <body>
-<section class="container">
-    <img class="btn-revela" data-revela="0" src="../img/licao01/p15.1.png">
-
-    <div class="box-revela" id="rev-1" data-revela="0">
-            <span class="bold">Coesão textual</span> é uma articulação gramatical entre os elementos do texto. Esses elementos, bem trabalhados,
-            permitem a retomada de termos já expressos anteriormente ou antecipar a expressão deles, de forma tal, que o
-            texto se torne uma leitura inteligível, agradável, não tenha muitas repetições e tenha referências bem
-            definidas para a sua perfeita compreensão.
+<div id="main">
+    <div class="box">
+        <div class="alvo" data-correta="0"></div>
+        <div class="text">
+            <p>
+                É o processo em que o individuo é visto em atividade desenvolvendo suas habilidades de escrita e leitura com perfeição ou ao menos com bastante facilidade, um indivíduo letrado é capaz de associar diversos assuntos distintos, por exemplo, sobre cultura, sociedade, política, economia, tecnologia e outros inúmeros assuntos que estão em contato diário. 
+            </p>
+        </div>
     </div>
-</section>
 
-<section class="container">
-    <img class="btn-revela" data-revela="1" src="../img/licao01/p15.2.png">
-
-    <div class="box-revela" id="rev-2" data-revela="1">
-            <span class="bold">Coerência textual</span> é a articulação bem feita entre os elementos do texto e a ideia que o prende, o tema a que
-            se refere. O assunto deve ficar preso em todo o desenvolver do texto, de forma que, permaneça no fio dos
-            enunciados do começo ao fim. Não se pode desmentir um fato (direta ou indiretamente) que foi dito
-            anteriormente. O posicionamento tomado no início do texto deve ser mantido até a conclusão.
+    <div class="box">
+        <div class="alvo" data-correta="1"></div>
+        <div class="text">
+            <p>
+                Em termos gerais entende-se por <span class="bold">alfabetização o ensino/aprendizagem</span> das letras que constituem o alfabeto e as diversas maneiras de utilizá-las, isto é, como por meio das letras do alfabeto poderá se comunicar com a sociedade em geral, sendo considerado o processo de fator fundamental para a comunicação. 
+            </p>
+        </div>
     </div>
-</section>
+
+    <div id="arrastas" class="btn btn-default-hover">
+        <div class="arrasta fundoArrasta azulAlpha" data-correta="0">Letramento</div>
+        <div class="arrasta fundoArrasta azulAlpha" data-correta="1">Alfabetização</div>
+    </div>
+
+
+</div>
+
 </body>
 </html>

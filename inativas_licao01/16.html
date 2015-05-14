@@ -1,0 +1,165 @@
+<!doctype html>
+<html lang="pt-br">
+<head>
+    <title>Lição 01 Peça 16</title>
+    <meta charset="utf-8">
+    <script src="../wilib/js/lib/require.js"></script>
+    <script src="../wilib/js/app.js"></script>
+    <link rel="stylesheet" href="../wilib/css/font-awesome.css">
+    <link rel="stylesheet" href="../wilib/css/estilo.css">
+
+    <script>
+        require(['../wilib/js/lib/alternativa'], function (edi) {
+
+            edi.setConfig({
+                icone: "exclamacao",
+                mascote: 'mascote',
+                titulo: "Leia o texto a seguir e responda corretamente clicando sobre a alternativa correta.",
+                tempoFinal: 10
+            });
+
+            var pergunta = [
+                'O trecho que poderia dar sequência lógica e coesa ao texto é:'
+            ];
+
+            $('#quest').html(pergunta[edi.telaAtual() - 1]);
+
+            var btns = [];
+
+            btns.push({
+                alternativa: "Não obstante isso, ele é uma pessoa gentil.",
+                correta: false
+            });
+
+            btns.push({
+                alternativa: "Dessa forma, qualquer um que o procurar será atendido.",
+                correta: true
+            });
+
+            btns.push({
+                alternativa: "A solidariedade, pois, ainda precisa ser conquistada.",
+                correta: false
+            });
+
+            btns.push({
+                alternativa: "E o brasileiro ganhou fama de intolerante.",
+                correta: false
+            });
+
+            btns.push({
+                alternativa: "Por conseguinte, se chover, ele dará hospedagem aos desconhecidos.",
+                correta: false
+            });
+
+            var config = {
+                tamanhoBoxTexto: 210,
+                marginBtns: 5,
+                aleatorio: false,
+                posx: 270,
+                posy: 73
+
+            };
+
+            function callback(a) {
+
+            }
+
+            edi.alternativa(btns, callback, function (a) {
+                if (a) {
+                    $('#txtFinal').animate({top: '275px'}, 800, function(){
+                        barraMsg('<span class="bold">Resolução:</span> A resposta correta é alternativa B.<br>' +
+                        'Na opção A, não obstante isso tem valor concessivo. Deveria ser por isso ou semelhantes. Na letra C, a conjunção pois é conclusiva, não pode estar seguida de ainda precisa, pois o texto diz que o brasileiro já conquistou a solidariedade. A alternativa D contraria inteiramente o texto. A letra E não dá sequência ao texto, pois este não condiciona a hospedagem à chuva.', {height: 180})
+                    });
+                }
+                else {
+                    $('#txtFinal')
+                            .animate({top: '275px'}, 800)
+                            .css({
+                        border: '2px dashed #F00',
+                        color: '#F00'
+                    }).find('div').html("Atenção! Lembre-se que a questão pede que você marque a alternativa em que o sentido denotativo ocorre, tente novamente!");
+                }
+            }, config);
+
+        });
+    </script>
+
+    <style>
+
+        #txt {
+            position: absolute;
+            top: 75px;
+            left: 10px;
+            font-size: 14px;
+            width: 219px;
+            background: #FAFAFA;
+            border-radius: 10px;
+            box-shadow: 3px 3px 5px rgba(0, 0, 0, 0.5);
+            color: #666;
+            padding: 5px 10px;
+            text-align: center;
+        }
+
+        #txt > div.txt {
+            text-align: left;
+        }
+
+        .txt > span.bold {
+            font-size: 11px;
+            float: right;
+            color: #000;
+        }
+
+        #quest {
+            display: inline-block;
+            text-align: justify;
+            width: 200px;
+            font-size: 16px;
+        }
+
+        #txtFinal{
+            position: absolute;
+            top: 389px;
+            left: 7px;
+            width: 229px;
+            height: 95px;
+            border-radius: 15px;
+            color: #9C0;
+            text-align: center;
+            border: 2px dashed #9C0;
+            padding: 0 10px;
+            z-index: 2;
+        }
+
+        .central{
+            position: relative;
+            width: 229px;
+            height: 95px;
+            font-size: 14px;
+            display: table-cell;
+            vertical-align: middle;
+        }
+
+    </style>
+</head>
+<body>
+
+
+<div id="txt" class="box-revela">
+    <div class="txt">
+        “A maior alegria do brasileiro é hospedar alguém, mesmo um desconhecido que lhe peça pouso, numa noite de
+        chuva.”<br>
+
+        <span class="bold">(Cassiano Ricardo, in O Homem Cordial)</span>
+    </div>
+
+    <p id="quest"></p>
+</div>
+
+<div id="txtFinal">
+    <div class="central">
+        Muito Bem! Você compreendeu o sentido de Coesão e Coerência, iremos praticar a partir deste exercício os conhecimentos adquiridos até este momento.
+    </div>
+</div>
+</body>
+</html>

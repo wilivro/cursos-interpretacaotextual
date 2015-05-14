@@ -1,166 +1,59 @@
 <!doctype html>
 <html lang="pt-br">
-<head>
-    <title>Lição 01 Peça 20</title>
-    <meta charset="utf-8">
-    <script src="../wilib/js/lib/require.js"></script>
-    <script src="../wilib/js/app.js"></script>
-    <link rel="stylesheet" href="../wilib/css/font-awesome.css">
-    <link rel="stylesheet" href="../wilib/css/estilo.css">
+	<head>
+		<title>Lição 01 Peça 20</title>
+		<meta charset="utf-8">
+		<script src="../wilib/js/lib/require.js"></script>
+		<script src="../wilib/js/app.js"></script>
+		<link rel="stylesheet" href="../wilib/css/font-awesome.css">
+		<link rel="stylesheet" href="../wilib/css/estilo.css">
 
-    <script>
-        require(['../wilib/js/lib/alternativa_botao'], function (edi) {
+		<script>
+            $(function () {
+                require(['../wilib/js/lib/alternativa'], function (edi) {
 
-            edi.setConfig({
-                titulo: 'Leia com atenção a um trecho do poema “A ilusão do migrante” de Carlos Drummond de Andrade e responda aos questionamentos de forma correta.',
-                mascote: 'mascote',
-                qtdTelas: 3
-            });
+                    edi.setConfig({
+                        icone: 'interrogacaoAzul',
+                        titulo: 'De acordo com seu aprendizado até aqui, marque a alternativa que<br> determina como o raciocínio lógico ajuda na interpretação de textos.'
+                    });
 
-            var pergunta = [
-                'O sentimento predominante no texto é:',
-                'Por “perdi-me no espaço” pode-se entender que o autor:',
-                'Pelo último período do texto, deduz-se que:'
-            ];
+                    var alternativas = [
+                        {
+                            alternativa: 'Raciocinar logicamente e interpretar significa escrever textos sem coerência e conexão entre as frases do texto.',
+                            correta: false
+                        },{
+                            alternativa: 'O raciocínio lógico ajuda na interpretação porque ajuda na memorização dos conceitos sem que seja necessária a compreensão.',
+                            correta: false
+                        },{
+                            alternativa: 'Com a prática e a repetição de exercícios e leituras, a mente procura pelo caminho correto (lógico) para conseguir chegar à resolução do problema; ao mesmo tempo em que elimina as tentativas erradas que não servem para solucionar a questão.',
+                            correta: true
+                        }
+                    ];
 
-            var msgFinal = [
-                {
-                    msgT:'Muito Bem!<br> O autor saiu de sua terra, mas sente como se isso<br> nunca tivesse ocorrido, pois seu sentimento é todo dela.',
-                    msgF:'Pense um pouco mais, releia o poema.'
-                },
-                {
-                    msgT:'Parabéns!<br> Ao sair da terra natal e não se adaptar ao novo lugar, em virtude de sua ligação afetiva com ela, o autor se torna confuso. Não se entenda aqui o verbo perder (perdi-me) com o seu sentido original. A ideia é a de não se encontrar, mentalmente, no novo espaço ocupado. Outra justificativa seria a palavra ilusão, que por si só demonstra um estado de confusão.',
-                    msgF:'Observe o texto, procure compreendê-lo.<br> Parta da eliminação das opções que não são possíveis.'
-                },
-                {
-                    msgT:'Muito Bem!<br> Como já vimos, o autor saiu apenas fisicamente,<br> pois espiritualmente continuou preso à terra natal.<br> Cuidado com a letra B. Claro que ele gostaria de retornar,<br> mas em momento algum essa ideia é expressa no texto.',
-                    msgF:'Lembre-se do que você estudou na lição de Raciocínio Lógico,<br> para responder corretamente uma questão você precisa compreendê-la.'
-                }
-            ];
+                    var config = {
+                        posx: 15,
+                        posy: 130,
+                        aleatorio: true,
+                        tamanhoBox: 35,
+                        tamanhoBoxTexto: 600,
+                        marginBtns: 10
+                    }
 
-            $('#num').html(edi.telaAtual);
+                    edi.alternativa(alternativas, function (acertou) {
+                    }, function (a) {
+                        barraMsg(a?'Muito bem!<br> O raciocínio lógico ajuda na interpretação de textos porque promove meios de verificar a verdade, fazendo com que o caminho do pensamento seja mais fácil a medida que treinamos nosso pensamento.'
+                                :'Atenção!<br> Lembre-se que o raciocínio lógico tem por objetivo verificar verdades e desenvolver o pensamento. Tente novamente!', {height: 150, wait: 0})
+                    }, config);
 
-            var btns = [
-                [
-                    {texto: 'orgulho', dataCorreta: false},
-                    {texto: 'saudade', dataCorreta: true},
-                    {texto: 'fé', dataCorreta: false},
-                    {texto: 'esperança', dataCorreta: false},
-                    {texto: 'ansiedade', dataCorreta: false}
-
-                ],
-                [
-                    {texto: 'ficou perdido<br> na nova terra.', dataCorreta: false},
-                    {texto: 'ficou confuso.', dataCorreta: true},
-                    {texto: 'não gostou da<br> nova terra.', dataCorreta: false},
-                    {texto: 'perdeu, momentaneamente,<br> o sentimento por sua terra natal.', dataCorreta: false},
-                    {texto: 'aborreceu-se<br> com a nova situação.', dataCorreta: false}
-
-                ],
-                [
-                    {texto: 'ele continuou <br>ligado à sua terra.', dataCorreta: true},
-                    {texto: 'ele vai voltar<br> à sua terra.', dataCorreta: false},
-                    {texto: 'ele gostaria de <br>deixar sua cidade,<br> mas nunca conseguiu.', dataCorreta: false},
-                    {texto: 'ele se alegra por<br> não ter saído.', dataCorreta: false},
-                    {texto: 'ele nunca saiu <br>da terra onde <br>vive atualmente.', dataCorreta: false}
-
-                ]
-            ];
-
-            var config = {
-                width: 280,
-                height: 30,
-                left: 470,
-                colunas: 1,
-                top: 85,
-                margin: 0,
-                padding: 5,
-                display: 'block',
-                btnBranco: true,
-                animacao: true,
-                randomico: true
-            };
-
-            function callback(a) {};
-
-            edi.alternativa_botao(btns[edi.telaAtual - 1], callback, function(a){
-                barraMsg(a ? msgFinal[edi.telaAtual - 1].msgT : msgFinal[edi.telaAtual - 1].msgF, {height: 200})
-            }, config);
-
-            $('#noticia').peBalao({scaleX: -1, left: 20});
-            $('.texto .middle').html(pergunta[edi.telaAtual - 1]);
-        });
-    </script>
-
-    <style>
-
-        #noticia {
-            position: absolute;
-            text-align: center;
-            width: 230px;
-            left: 10px;
-            top: 85px;
-            z-index: 10;
-            font-size: 16px;
-            line-height: 18px;
-            background-color: #FFF;
-            color: #666;
-            padding: 130px 10px 10px 10px;
-            border: solid 1px #ccc;
-            border-radius: 10px;
-        }
-
-        #noticia>span {
-            font-size: 12px;
-            float: right;
-            color: #000;
-        }
-
-        .texto {
-            width: 150px;
-            height: 100px;
-            position: absolute;
-            left: 290px;
-            top: 80px;
-        }
-
-        .middle {
-            text-align: center;
-            vertical-align: middle;
-            display: table-cell;
-        }
-
-        .texto .middle {
-            width: 150px;
-            height: 100px;
-            font-size: 18px;
-            color: #666;
-        }
-
-        #img {
-            position: absolute;
-            left: 50px;
-            margin-top: -123px;
-        }
-
-    </style>
-</head>
-
-<body>
-
-<div class="texto">
-    <div class="middle"></div>
-</div>
-
-<div id="noticia">
-    <img id="img" src="../img/licao01/p20.png" width="150" alt=""/>
-    “Quando vim da minha terra,<br>
-    não vim, perdi-me no espaço,<br>
-    na ilusão de ter saído.<br>
-    Ai de mim, nunca saí”.<br>
-    <br>
-    <span class="bold">(Carlos Drummond de Andrade)</span>
-</div>
-
-</body>
+                        $('#balao').peBalao({
+                            left: 10,
+                            tamanhoBorda: 15,
+                            borda: '#ccc'
+                        });
+                });
+            })
+		</script>
+	</head>
+	<body>
+	</body>
 </html>

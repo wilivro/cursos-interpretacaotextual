@@ -1,7 +1,7 @@
 <!doctype html>
 <html lang="pt-br">
 <head>
-    <title>Lição 01 Peça 08</title>
+    <title>Lição 01 Peça 12</title>
     <meta charset="utf-8">
     <script src="../wilib/js/lib/require.js"></script>
     <script src="../wilib/js/app.js"></script>
@@ -92,7 +92,9 @@
 
             }else{
 
-                edi3.revela_slide('.revela', null, null, {
+                edi3.revela_slide('.revela', null, function(){
+                    barraMsg('Excelente! <br>Continue seus estudos de forma atenta, exercitando seu raciocínio lógico.', {height: 100})
+                }, {
                     btnPrevConfig: {
                         left: 10,
                         top: 310

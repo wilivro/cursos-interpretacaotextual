@@ -1,8 +1,9 @@
-<!--Desenvolvedor: Danilo Thiago-->
+
+
 <!doctype html>
 <html lang="pt-br">
 <head>
-    <title>arr_a002</title>
+    <title>Lição 06 Peça 25</title>
     <meta charset="utf-8">
     <script src="../wilib/js/lib/require.js"></script>
     <script src="../wilib/js/app.js"></script>
@@ -13,164 +14,114 @@
         require(['../wilib/js/lib/arrasta'], function (edi) {
 
             edi.setConfig({
+                titulo: 'Arraste até o meio das setas o exemplo onde há conectivo de dúvida.',
                 mascote: 'mascote',
-                titulo: 'Arraste até o meio das setas o exemplo onde há conectivo de dúvida.'
+                tempoFinal: 15
             });
-
-            var texto = [
-                {texto: 'Amanhã é provável que comecem a chamar os convocados.', dataCorreta: 1},
-                {texto: 'Minha camisa furou e tenho que comprar uma nova.', dataCorreta: 0},
-                {texto: 'O Carro é novo, mas só dá problema.', dataCorreta: 0}
-            ]
-
-            texto.sort(function () {
-                return 0.5 - Math.random()
-            });
-
-            for (var i = 0; i < texto.length; i++) {
-                var div = $('<div>')
-                        .css({
-                            position: 'relative',
-                            display: 'table-cell',
-                            'vertical-align': 'middle',
-                            width: '320px',
-                            height: '75px'
-                        })
-                        .html(texto[i].texto)
-
-                $('<div>')
-                        .css('margin','5px')
-                        .attr('data-correta', texto[i].dataCorreta)
-                        .addClass('arrasta')
-                        .addClass('azulAlpha')
-                        .append(div)
-                        .appendTo('#arrastas')
-            }
-
-            var config = {
-                colorirFilho: true,
-                cb: function () {
-                    var top = 270, left= 80;
-
-                    $('<img>').attr({
-                        src:"../wilib/img/svg/seta.svg",
-                        style: "height: 100px; top:"+top+"px; left: "+(400+left)+"px"
-                    }).appendTo('#ctAlvo');
-
-                    $('<img>').attr({
-                        src:"../wilib/img/svg/seta.svg",
-                        style: "height: 100px; top:"+top+"px; left: "+(440+left)+"px"
-                    }).appendTo('#ctAlvo');
-                    $('<img>').attr({
-                        src:"../wilib/img/svg/seta.svg",
-                        style: "height: 100px; top:"+top+"px; left: "+(480+left)+"px"
-                    }).appendTo('#ctAlvo');
-
-                    $('<img>').attr({
-                        src:"../wilib/img/svg/seta.svg",
-                        style: "height: 100px; top:"+top+"px; left: "+(520+left)+"px"
-                    }).appendTo('#ctAlvo');
-                }
-            };
 
             edi.arrasta('arrasta', 'alvo', function (a, b, c) {
-                b.removeClass('azulAlpha');
-            }, function(a) {
                 if (a) {
-                   barraMsg('Muito bem! Você foi capaz de compreender que o conectivo de dúvida está presente nesta frase, “é provável”.', {height: 80});
+                    $('#imagem').fadeIn();
+                    barraMsg('Muito bem! Você foi capaz de compreender que o conectivo de dúvida está presente nesta frase, “é provável”.', {height: 80});
                 } else{
                     barraMsg('Atenção! Os conectivos “e” e “mas” não passam o sentido de dúvida ao contexto. Reflita e tente novamente.', {height: 80});
                 };
-            }, config);
+            });
 
-            $('.arrasta').css({
-                margin: -5,
-                padding: 5
-            })
 
         });
+
     </script>
+
     <style>
-        #ctAlvo {
-            width: 788px;
-            text-align: center;
-        }
 
-        #ctAlvo p {
-            margin: 40px 0 0 0;
-            color: #6D9DB8;
-            font-size: 22px;
-        }
-
-        #ctAlvo > div
-        {
+         #imagem {
+            background: url(../img/licao07/p31.png) no-repeat;
+            background-size: 100% 100%;
+            width: 271px;
+            height: 274px;
             position: absolute;
-            margin: 10px 0 0 0;
-            left: 385px;
-            top: 170px;
-            border: 1px solid #C7D9E4;
-            height: 75px;
-            width: 325px;
+            left: 52px;
+            top: 85px;
+            cursor: pointer;
+            border-radius: 10px;
+            border: 7px solid #fff;
+            display: none;
             z-index: 5;
+            box-shadow: 0 0 5px rgba(0, 0, 0, 0.5);
         }
 
-        #ctAlvo img {
+        #arrasta {
             position: absolute;
-            top: 30px;
-        }
-
-        #ctArrasta {
-            position: absolute;
-            top: 80px;
-            left: 0px;
-            width: 340px;
-            height: 275px;
-        }
-        #arrastas{
-            position: relative;
-            display: table-cell;
-            vertical-align: middle;
-            width: 700px;
-            height: 85px;
+            left: 60px;
+            top: 120px;
+            padding: 20px;
+            width: 225px;
+            height: 180px;
+            background: url(../wilib/img/svg/04.svg) no-repeat;
+            background-size: 100% 100%;
         }
 
         .arrasta {
-            display: inline-block;
-            width: 320px;
+            width: 220px;
+            height: 50px;
+            font-size: 12px;
             text-align: center;
-            padding: 15px 0 0 0;
-            height: 65px;
-            font-size: 13px;
-            color: #FFF;
+            line-height: 1;
+            margin-top: 10px;
         }
 
-         #img {
-            background: url(../img/licao07/p31.png) no-repeat;
-            background-size: 100% 100%;
-            width: 111px;
-            height: 114px;
+        #alvo {
             position: absolute;
-            left: 490px;
-            top: 70px;
-            cursor: pointer;
+            left: 450px;
+            top: 90px;
+            width: 292px;
+            height: 292px;
+            background: url(../wilib/img/svg/04.1.svg) no-repeat;
+            background-size: 100% 100%;
+        }
+
+        .ctalvo {
+            position: absolute;
+            left: 0;
+            top: 120px;
+            width: 292px;
+            height: 50px;
+            border: 1px solid #ccc;
+        }
+
+        .alvo {
+            position: relative;
+            width: 292px;
+            height: 50px;
+            vertical-align: middle;
         }
 
     </style>
-
 </head>
+
 <body>
+<div id="imagem"></div>
 
-<div id="ctAlvo">
-
-    <div class="alvo revela" data-correta="1"></div>
-
+<div id="arrasta">
+    <div class="arrasta" data-correta="0">
+        Amanhã é provável que comecem a chamar os convocados.
+        <br><br>
+    </div>
+    <div class="arrasta" data-correta="1">
+        Minha camisa furou e tenho que comprar uma nova.
+        <br><br>
+    </div>
+    <div class="arrasta" data-correta="0">
+        O Carro é novo, mas só dá problema.
+        <br><br>
+    </div>
 </div>
 
-<div id="ctArrasta" class="btn btn-default-hover">
-    <div id="arrastas"></div>
+<div id="alvo">
+    <div class="ctalvo">
+        <div class="alvo" data-correta="1"></div>
+    </div>
 </div>
-
-<div id="img"></div>
-
 </body>
 </html>

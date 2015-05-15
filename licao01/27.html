@@ -1,3 +1,4 @@
+<!-- Desenvolvedor: Danilo Thiago -->
 <!doctype html>
 <html lang="pt-br">
 <head>
@@ -5,265 +6,132 @@
     <meta charset="utf-8">
     <script src="../wilib/js/lib/require.js"></script>
     <script src="../wilib/js/app.js"></script>
-
     <link rel="stylesheet" href="../wilib/css/font-awesome.css">
     <link rel="stylesheet" href="../wilib/css/estilo.css">
 
     <script>
-        require(['../wilib/js/lib/comparaTexto'], function (edi) {
+        require(['../wilib/js/lib/arrasta'], function (edi) {
 
             edi.setConfig({
-                icone: false,
-                enunciado: false,
-                titulo: '',
-                qtdTelas: 2
+                icone: 'exclamacao',
+                titulo: 'Arraste os conceitos aos termos corretos.',
+                mascote: 'mascote',
+                tempoFinal: 10
             });
 
-            var dataInputs = [
-                ['Eu já fiz um juramento', 'E não pretendo quebrar!...'],
-                ['O que tiver de ser meu,', 'A minhas mãos há de vir.']
+            var arrArrasta = [
+                {arrasta: 'É o conjunto de palavras de uso geral por uma população. São aqueles conceitos que são entendidos por todos no mesmo instante em que é falado. Correr, andar, bater, bola, etc.', dataCorreta: '1'},
+                {arrasta: 'É aquele conjunto de palavras de uma área específica. Por exemplo, podemos citar os termos técnicos da área do Direito, da Medicina, da Psiquiatria, etc. ', dataCorreta: '2'}
             ];
 
-            for (var x = 1; x < edi.telaAtual; x++) {
-                for (var y = 1; y < edi.telaAtual+1; y++){
-                    var $color = $('#'+x+y);
-                    $color.css({color: $color.attr('data-cor')});
-                }
-            }
+            arrArrasta.sort(function () {
+                return 0.5 - Math.random()
+            });
 
-            for (var i = 0; i < dataInputs[edi.telaAtual-1].length; i++) {
-                var ct = $('<div>')
-                        .attr({
-                            id: 'box'+i
-                        })
-                        .css({
-                            position: 'absolute',
-                            top: 60*i,
-                            width: 280
-                        })
-                        .appendTo('#inputs');
-
-                $('<input>')
-                        .addClass('resp')
-                        .attr({
-                            id: i,
-                            'data-correta': dataInputs[edi.telaAtual-1][i]
-                        })
-                        .appendTo(ct);
-
+            for (var i = 0; i < arrArrasta.length; i++) {
                 $('<div>')
-                        .attr({
-                            id: 'circ'+i
-                        })
-                        .css({
-                            position: 'absolute',
-                            right: 5,
-                            background: '#fff',
-                            width: 50,
-                            height: 50,
-                            borderRadius: 50,
-                            marginTop: -37,
-                            marginRight: 25,
-                            border: '1px solid #ccc'
-                        })
-                        .appendTo(ct)
-
-
+                  .addClass('arrasta')
+                  .attr('data-correta', arrArrasta[i].dataCorreta)
+                  .html(arrArrasta[i].arrasta)
+                  .appendTo('#arrasta');
             }
 
-            var textoPergunta = [
-                'Retire do texto e digite corretamente os dois versos que indicam a determinação do compositor.',
-                'Quais são os dois versos da Modinha que indicam a confiança em Deus por parte do compositor?',
-                'Assinale o segmento que pode substituir no texto, sem prejuízo da significação original, o trecho: “Ardia por andar lá fora.”'
-            ];
+            var config = {
+                animacaoFundoArrasta: true,
+                colorirFilho: true
+            };
 
-            edi.comparaTexto(".resp", function (a) {
-                var id = a.attr("id");
-
-                var img = "../wilib/canvas/objetos/animaCerto";
-                require([img], function (canvas) {
-                    var mascote = new canvas.animaCerto({
-                        width: 36,
-                        cor: '#1C8FD0'
+            edi.arrasta('arrasta', 'alvo', function (a, b, c) {
+                    b.css({
+                        height: 80,
+                        top: -2,
+                        marginLeft: -5
                     });
-                    mascote.obj.css({
-                        left: 5,
-                        top: (50/ 2) - 17
-                    }).appendTo("#circ" + (id-1));
-                    mascote.play();
-                });
-
-                var $span = $('#'+edi.telaAtual + (parseInt(id)+1));
-
-                $span.css({color: $span.attr('data-cor')});
-
-                id++;
-                $("#" + id).focus();
-
-            }, function(){
-                barraMsg('Parabéns!<br> Continue dedicando-se com atenção.')
-            }, {
-                validarAcentos: true,
-                validarPontos: true,
-                upCaser: true,
-                lowerCaser: true
-            });
-
-            $('.texto .middle').html(textoPergunta[edi.telaAtual - 1]);
-            $('#num').html(edi.telaAtual);
-
+            }, function(a){
+                barraMsg(a?'Parabéns!<br>Você já sabe a diferença entre vocabulário comum e vocabulário específico.'
+                        :'Atenção!<br> Vocabulário comum são todas as palavras que você conhece, são de fácil entendimento. Use a lógica para deduzir os conceitos corretos.', {height: 100, wait: 0})
+            }, config);
 
         });
     </script>
+
     <style>
-        input {
-            width: 200px;
-            text-align: center;
-            z-index: 10;
-        }
-
-        #inputs {
+        #ctArrasta {
             position: absolute;
-            width: 255px;
-            top: 180px;
-            left: 520px;
-        }
-
-        #conteudo {
-            position: absolute;
-            width: 790px !important;
-            background: #9bbbe3; /* Old browsers */
-            background: -moz-linear-gradient(top, #9bbbe3 1%, #5b82b4 100%); /* FF3.6+ */
-            background: -webkit-gradient(linear, left top, left bottom, color-stop(1%, #9bbbe3), color-stop(100%, #5b82b4)); /* Chrome,Safari4+ */
-            background: -webkit-linear-gradient(top, #9bbbe3 1%, #5b82b4 100%); /* Chrome10+,Safari5.1+ */
-            background: -o-linear-gradient(top, #9bbbe3 1%, #5b82b4 100%); /* Opera 11.10+ */
-            background: -ms-linear-gradient(top, #9bbbe3 1%, #5b82b4 100%); /* IE10+ */
-            background: linear-gradient(to bottom, #9bbbe3 1%, #5b82b4 100%); /* W3C */
-            filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#9bbbe3', endColorstr='#5b82b4', GradientType=0); /* IE6-9 */
-        }
-
-
-        #num {
-            width: 50px;
-            display: block;
-            height: 50px;
-            text-align: center;
-            line-height: 50px;
-            font-size: 35px;
-            background: #1C8FD0;
-            border: 4px solid #fff;
-            border-radius: 50%;
-            position: absolute;
-            left: 410px;
-            top: 18px;
-            color: #fff;
-        }
-
-        #noticia {
-            position: absolute;
-            width: 375px;
-            height: 345px;
-            left: 5px;
-            top: 10px;
-            z-index: 10;
-            font-size: 18px;
-            line-height: 18px;
+            top: 75px;
+            left: 490px;
+            width: 250px;
+            height: 270px;
             padding: 10px;
-            background-color: #FFF;
-            color: #666;
-            overflow: scroll;
-            box-shadow: 5px 5px 5px rgba(0, 0, 0, 0.5);
         }
 
-        #enunciado .middle {
-            height: 80px;
-            width: 405px;
-            font-size: 16px;
-        }
-
-        .bold {
-            color: #000;
-            font-size: 18px;
-        }
-
-        .middle {
+        #arrasta {
+            width: 210px;
+            height: 270px;
             text-align: center;
-            vertical-align: middle;
+            cursor: default;
+            position: relative;
             display: table-cell;
+            vertical-align: middle;
         }
 
-        .texto {
-            position: absolute;
-            left: 480px;
-            top: 50px;
-            width: 285px;
-            height: 100px;
-        }
-
-        .texto .middle {
-            width: 285px;
-            height: 100px;
-            line-height: 1.3;
-            color: #fff;
-        }
-
-        #num {
-            width: 50px;
-            display: block;
-            height: 50px;
+        .arrasta {
+            padding: 5px;
+            width: 210px;
+            margin: 5PX 0 20px 8px;
             text-align: center;
-            line-height: 50px;
-            font-size: 35px;
-            background: #1C8FD0;
-            border: 4px solid #fff;
-            border-radius: 50%;
-            position: absolute;
-            left: 410px;
-            top: 68px;
             color: #fff;
+            font-size: 14px;
         }
 
+        .ctTexto {
+            margin: 20px 15px 0px 25px;
+            top: 90px;
+            left: 10px;
+            border: solid 1px rgba(140,168,184,0.4);
+            border-radius: 10px;
+            display: inline-block;
+        }
+        .texto {
+            font-size: 14px;
+            line-height: 20px;
+            width: 450px;
+            height: 120px;
+            position: relative;
+            display: table-cell;
+            vertical-align: middle;
+            color: #666;
+            text-align: center;
+        }
 
+        .alvo {
+            border: solid 1px rgba(140,168,184,0.4);
+            display: inline-block;
+            width: 400px;
+            height: 80px;
+            margin-top: 1px;
+            padding: 0;
+        }
     </style>
 </head>
 
 <body>
-<div id="num"></div>
-<div class="texto">
-    <div class="middle"></div>
+<div id="ctArrasta" class="btn btn-default-hover">
+    <div id="arrasta"></div>
 </div>
 
-<div id="noticia">
-    <span class="bold" style="font-size: 13px"> Extraída da série de modinhas anônimas publicadas em Modinhas do passado; investigações folclóricas e artísticas (Rio de Janeiro, 1956).</span><br>
-    <br>
-    <span class="bold">Eu já fiz um juramento</span><br>
-    <br>
-    <span class="bold">I</span><br>
-    <span id="11" data-cor="#9c0" >Eu já fiz um juramento</span><br>
-    <span id="12" data-cor="#9c0" >E não pretendo quebrar!...</span><br>
-    Enquanto Deus me der vida,<br>
-    A outra não hei de amar.<br>
-    <br>
-    Estribilho<br>
-    <br>
-    É assim que se conhece;<br>
-    Todos nós devemos crer:<br>
-    Não se pode desmanchar<br>
-    O que Deus tem a fazer.<br>
-    <br>
-    <span class="bold">II</span><br>
-    Nada do mundo espero!...<br>
-    Do que a terra produzir,<br>
-    <span id="21"data-cor="#c90">O que tiver de ser meu,</span><br>
-    <span id="22"data-cor="#c90">A minhas mãos há de vir.</span><br>
-    <br>
-    Estribilho<br>
-    <br>
-    <span class="bold" style="font-size: 13px">Nota: Esta modinha é um raro e antiguíssimo documento do folclore nordestino.</span>
-
-
+<div class="ctTexto">
+    <div class="texto">
+        <div>Vocabulário Comum</div>
+        <div class="alvo" data-correta="1"></div>
+    </div>
 </div>
-<div id="inputs"></div>
+<div class="ctTexto">
+    <div class="texto">
+        <div>Vocabulário Específico</div>
+        <div class="alvo" data-correta="2"></div>
+    </div>
+</div>
 
 </body>
 </html>

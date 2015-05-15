@@ -9,261 +9,112 @@
     <link rel="stylesheet" href="../wilib/css/estilo.css">
 
     <script>
-        require(['../wilib/js/lib/edi', '../wilib/js/lib/alternativa_botao'], function (edi, edi2) {
-            edi2.setConfig({
-                icone: "exclamacao",
-                mascote: 'mascote',
-                titulo: "Leia com atenção os textos a seguir.",
-                tempoFinal: 10,
-                qtdTelas: 2
+        require(['../wilib/js/lib/revela_slide'], function (edi) {
+
+            edi.setConfig({
+                icone: 'exclamacao',
+                titulo: 'Clique sobre os personagens e compreenda o que são “pontos de entendimento”.'
             });
 
-            var pergunta = [
-                    'Clique sobre a opção correta.',
-                    'Apesar de abordarem o mesmo assunto, os resultados são diferentes em cada texto. Por que isto ocorre?'
-            ];
-
-            var btns = [
-                [
-                    {texto: "A devastação e destruição da<br> natureza causada pelo homem.", dataCorreta: true},
-                    {texto: "A preservação dos recursos naturais.", dataCorreta: false},
-                    {texto: "Nenhuma das alternativas anteriores.", dataCorreta: false}
-                ],
-                [
-                    {texto: "No primeiro texto a natureza saiu<br> vitoriosa ao recuperar seu espaço<br> outrora perdido, enquanto no segundo<br> texto os pássaros e as rosas sofrem<br> a consequência da construção de<br> mais um prédio de dez andares.", dataCorreta: true},
-                    {texto: "No segundo texto a natureza saiu<br> vitoriosa ao recuperar seu espaço<br> outrora perdido, enquanto no primeiro<br> texto os pássaros e as rosas sofrem<br> a consequência da construção de <br>mais um prédio de dez andares.", dataCorreta: false},
-                ]
-            ];
-
-            var config = {
-                animacao: true,
-                width: 350,
-                btnBranco: true,
-                colunas: 1,
-                margin: 1,
-                height: edi2.telaAtual==1?30:90,
-                top: edi2.telaAtual==1?150: 140,
-                randomico: true,
-                left: 370
-
-            };
-
-            edi2.alternativa_botao(btns[edi2.telaAtual-1], null, function (a) {
-                if (a)
-                    barraMsg('<div style="width: 430px; font-size: 22px; display: inline-block">Muito Bem! Você trabalhou com dois tipos de texto uma poesia e um texto narrativo, comparando-os, você pode exercitar sua capacidade de compreensão.</div>', {height: 200});
-                else
-                    barraMsg('<div style="width: 430px; font-size: 22px; display: inline-block">Atenção! Releia cada texto com calma, prestando atenção aos detalhes, procure compreender o que cada um diz, caso considere necessário, faça anotações sobre os pontos mais importantes.</div>', {height: 200});
-
-
-            }, config);
-
-            edi.iniciar({
-                titulo: 'Clique nas folhas e conheça as atividades<br>realizadas no Projeto Créditos de Carbono.',
-                mascote: 'mascote'
-            });
-
-            $('#num').html(edi2.telaAtual);
-            $('.middle').html(pergunta[edi2.telaAtual-1]);
-
-            if(edi2.telaAtual==1){
-                edi.objetivos.push(0);
-                $('[data-edi = "alternativa_botao"]').css({display: 'none'});
+            function callback(a, b) {
+                b.parent().css('box-shadow', '0 0 0 3px #8CA8B8');
             }
 
-            function clickFolha() {
+            function calbackFinal() {
+                barraMsg('Muito bem!<br> Quanto mais informações o cérebro tiver mais associações ele será capaz de fazer, portanto, ler é imprescindível para criar “pontos de entendimento” que facilitarão na resolução de problemas e nas interpretações textuais. Isso é lógica!', {height: 150, wait: 3})
+            }
 
-                $('.folha').each(function () {
-                    $(this).find('.ct').css({display: 'none'})
-                    $(this)
-                            .css({
-                                top: $(this).attr('data-top'),
-                                left: $(this).attr('data-left'),
-                                width: 42,
-                                height: 55,
-                                padding: 0
-                            })
-                            .addClass('folhaRotate')
-                            .off();
+            edi.revela_slide('.revela', callback, calbackFinal);
+
+            $('.revelaEsquerda').each(function () {
+                $(this).peBalao({
+                    top: 82,
+                    left: (!$(this).hasClass('b5')) ? 130 : 80,
+                    scaleX: -1,
+                    scaleY: -1,
+                    rotate: 0
                 });
+            });
 
-                var _this = $(this);
+            $('.revelaDireito').each(function () {
+                $(this).peBalao({
+                    top: (!$(this).hasClass('b4')) ? 81 : 122,
+                    left: 20,
+                    scaleX: 1,
+                    scaleY: -1,
+                    rotate: 0
+                });
+            });
 
-                _this
-                        .attr({
-                            'data-top': _this.css('top'),
-                            'data-left': _this.css('left')
-                        })
-                        .removeClass('folhaRotate')
-                        .css({
-                            backgroundSize: '100% 100%'
-                        })
-                        .animate({
-                            padding: 3,
-                            top: 90,
-                            left: 100,
-                            width: 210,
-                            height: 250
-                        }, function () {
-                            _this.find('.ct').fadeIn();
-
-                            if (!_this.hasClass('ok')) {
-                                _this.addClass('ok');
-                                edi.regressiva(1000, 'para clicar em outro botão!', function () {
-                                    $('.folhaRotate').each(function () {
-                                        $(this).mousedown(clickFolha)
-                                    });
-
-                                    edi.objetivos.pop();
-
-                                    if (edi.objetivos.length == 0)
-                                        $('[data-edi = "alternativa_botao"]').fadeIn();
-                                })
-                            } else {
-                                $('.folhaRotate').each(function () {
-                                    $(this).mousedown(clickFolha)
-                                });
-                            }
-                        });
-            }
-
-            $('.folhaRotate').mousedown(clickFolha);
-
-            ajuda({linkColor: '#3D86CF', top: 40});
-
-            edi.util.removeLoading();
         });
     </script>
+
     <style>
-        .folhaRotate {
-            position: absolute;
-            left: 20px;
+        i {
+            font-style: italic;
+            font-weight: bold;
         }
 
-        .ct {
-            background-color: #FFF;
-            height: 232px;
-            margin-top: 15px;
-            display: none;
-            overflow: auto;
-        }
-
-        .txt {
-            padding: 0 22px 10px 12px;
-            font-size: 16px;
-            display: table-cell;
-            vertical-align: middle;
-            height: 222px;
-            color: #666;
-        }
-
-        .txt p {
-            color: #8CA8B8
-        }
-
-        #pergunta {
-            position: absolute;
-            top: 71px;
-            left: 410px;
-            width: 308px;
-            height: 65px;
-        }
-
-        .middle {
+        .revela {
+            border: 1px solid #ccc;
+            padding: 10px 10px 10px 10px;
+            font-size: 14px;
+            line-height: 1.3;
+            border-radius: 10px;
+            background: #fff;
+            text-shadow: 1px 1px 1px rgba(0, 0, 0, 0.2);
             text-align: center;
-            font-size: 16px;
-            vertical-align: middle;
-            display: table-cell;
-            color: #666;
-            width: 308px;
-            height: 65px;
-        }
-
-        #num {
             position: absolute;
-            width: 50px;
-            display: block;
+            bottom: 200px;
             height: 50px;
-            text-align: center;
-            line-height: 50px;
-            font-size: 35px;
-            background: #FFF;
-            border: 4px solid #1C8FD0;
-            border-radius: 50%;
-            left: 340px;
-            top: 75px;
-            color: #666;
+            width: 420px;
         }
+
+        .rev-01 {
+            left: 50px;
+            top: 120px;
+        }
+
+        .rev-02 {
+            left: 330px;
+            top: 110px;
+        }
+
+        .person {
+            width: 280px;
+            height: 200px;
+            position: absolute;
+            left: 210px;
+            top: 200px;
+        }
+
 
     </style>
 </head>
+
 <body>
-<div data-edi="alternativa_botao">
-<div id="pergunta">
-    <div class="middle"></div>
-</div>
-<div id="num"></div>
-</div>
-<div class="folha folhaRotate" style="top: 140px">
-    <div class="ct">
-        <div class="txt">
-            <p>TEXTO I - CIMENTO ARMADO</p>
+<img src="../wilib/img/svg/personagens.svg" class="person" id="person-03">
 
-            <p>
-                Batem estacas no terreno morto.<br>
-                No terreno morto surge vida nova.<br>
-                As goiabeiras do velho parque<br>
-                E os roseirais, abandonados,<br>
-                Serão cortados<br>
-                E derrubados.<br>
-                Um prédio novo de dez andares,<br>
-                Frio e cinzento,<br>
-                Terá seu corpo de cimento armado<br>
-                Enraizado no velho parque<br>
-                De goiabeiras<br>
-                De roseirais.<br>
-                <br>
-                Batem estacas no terreno morto.<br>
-                Século vinte...<br>
-                Vida de aço...<br>
-                Cimento armado!<br>
-                Batem estacas<br>
-                No prédio novo de dez andares,<br>
-                Terraços tristes<br>
-                Pássaros presos,<br>
-                Rosas suspensas<br>
-                Flores da vida,<br>
-                Rosas de dor<br>
-                <br>
-                (Paulo Bonfim)
-            </p>
-        </div>
-    </div>
-</div>
-<div class="folha folhaRotate" style="top: 240px" data-txt="dasdsadsadasdasdasd">
-    <div class="ct">
-        <div class="txt">
-            <p>
-                Texto II - A FLORESTA DO CONTRÁRIO<br>
-                <br>
-                “Todas as florestas existem antes dos homens. Elas estão lá e então o homem chega, vai destruindo,
-                derruba as árvores, começa a construir prédios, casas, tudo com muito tijolo e concreto. E poluição
-                também. Mas esta floresta aconteceu o contrário. O que havia antes era uma cidade dos homens, dessas bem
-                poluídas, feia, suja, meio neurótica. Então as árvores foram chegando, ocupando novamente o espaço,
-                conseguiram expulsar toda aquela sujeira e se instalaram no lugar. É o que poderia se chamar de vingança
-                da natureza, foi assim que terminou o seu relato o amigo beija-flor. Por isso, ele estava tão feliz,
-                beijocando todas as flores, aliás, um colibri bem assanhado, passava flor por ali, ele já sapecava um
-                beijão. Agora não havia entendido por que uma ou outra árvore tinha parede por dentro, e ele achou bem
-                melhor assim. Algumas árvores chegaram a engolir casas inteiras. Era um lugar muito bonito, gostoso de
-                ficar. Só que não podia, precisava partir sem demora. Foi se despedir do colibri, mas ele já estava
-                namorando apertado uma outra florzinha, era melhor não atrapalhar.<br>
-                <br>
-                (Fragmento do livro “Em busca do tesouro de Magritte”.)
+<p class="revelaEsquerda revela rev-01" style="width: 188px; left: 160px;">
+    Fred, você entendeu o que são esses “pontos de entendimento”?
+</p>
 
-            </p>
+<p class="revelaDireito revela rev-02">
+    Sim, Maria. Entendi que quando nosso cérebro associa conceitos a fatos já aprendidos, ele raciocina com mais rapidez
+    porque faz essas associações.
+</p>
 
-        </div>
-    </div>
-</div>
+<p class="revelaEsquerda revela rev-01" style="width: 188px; left: 160px; line-height: 50px">
+    Como assim? Não entendi...
+</p>
 
+<p class="revelaDireito revela rev-02 b4" style="width: 430px; top: 65px; height: 90px;">
+    Por exemplo: Na frase; “Maria correu até a farmácia e comprou remédios”. Temos o conhecimento do que é uma pessoa,
+    no caso, Maria, sabemos o que é correr e o que significa comprar remédios em uma farmácia. Partindo desses conceitos
+    que já conhecemos podemos entender perfeitamente a frase com uma incrível rapidez!
+</p>
+<p class="revelaEsquerda revela rev-01 b5" style="width: 145px; left: 180px;">
+    Entendi! Muito obrigada Fred, você me ajudou muito!
+</p>
 </body>
 </html>

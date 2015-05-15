@@ -1,128 +1,126 @@
 <!doctype html>
 <html lang="pt-br">
-	<head>
-        <title>Lição 01 Peça 28</title>
-		<meta charset="utf-8">
-		<script src="../wilib/js/lib/require.js"></script>
-		<script src="../wilib/js/app.js"></script>
-        <link rel="stylesheet" href="../wilib/css/font-awesome.css">
-        <link rel="stylesheet" href="../wilib/css/estilo.css">
+<head>
+    <title>Lição 01 Peça 28</title>
+    <meta charset="utf-8">
+    <script src="../wilib/js/lib/require.js"></script>
+    <script src="../wilib/js/app.js"></script>
+    <link type="text/css" rel="stylesheet" href="../wilib/css/font-awesome.css">
+    <link type="text/css" rel="stylesheet" href="../wilib/css/estilo.css">
 
 		<script>
-			require(['../wilib/js/lib/revela','../wilib/js/lib/alternativa_botao'], function (edi, edi2) {
+			require(['../wilib/js/lib/revela'], function (edi) {
 
-				edi2.setConfig({
-                    icone: "exclamacao",
-                    mascote: 'mascote',
-					titulo: "Clique sobre a imagem para revelar o texto e em seguida<br> assinale a alternativa correta para a questão a seguir.",
-                    tempoFinal: 10
+				edi.setConfig({
+					titulo: "Clique nos botões e aprenda mais sobre vocabulário comum e vocabulário específico.",
+					mascote: 'mascote',
+					tempoFinal: 20
 				});
 
-                var btns = [];
+				var config = {
+					efeito: 'slideDown',
+					tempoBloqueio: 5000
+				}
 
-                btns.push({
-                    texto: "O Conto caracteriza-se pelo diálogo entre animais, e seres inanimados.",
-                    dataCorreta: false
-                });
+				function callback () {
 
-                btns.push({
-                    texto: "O conto caracteriza-se por ser uma narrativa curta, um texto em prosa que dá o seu recado em reduzido número de páginas ou linhas.",
-                    dataCorreta: true
-                });
+				}
 
-                btns.push({
-                    texto: "É uma narração, segundo a ordem temporal. O termo é atribuído, por exemplo, aos noticiários dos jornais, comentários literários ou científicos, que preenchem periodicamente as páginas de um jornal.",
-                    dataCorreta: false
-                });
-
-                btns.push({
-                    texto: "É uma das sete artes tradicionais, pela qual a linguagem humana é utilizada com fins estéticos, ou seja, ela retrata algo que tudo pode acontecer dependendo da imaginação do autor como a do leitor.",
-                    dataCorreta: false
-                });
-
-                var config = {
-                    width: 450,
-                    btnBranco: true,
-                    colunas: 1,
-                    margin: 1,
-                    height: 45,
-                    top: 75,
-                    left: 215
-
-                };
-
-                function callback (a) {
-
-                }
-                $('#txt').peBalao({scaleX: -1, left: 30});
-                edi2.alternativa_botao(btns, callback, function (a) {
-                    if(a)
-                        mensagem('<div style="width: 430px; font-size: 22px; display: inline-block">Parabéns! A letra B define corretamente o Conto, que é uma narrativa curta, em prosa que passa informação desejada através de um número pequeno de páginas ou linhas. A letra A, refere-se ao conceito de fábula, a letra C, define o estilo literário de crônicas e a letra D, indica o conceito de poesia.</div>');
-                    else
-                        mensagem('<div style="width: 430px; font-size: 22px; display: inline-block">Dica! O Conto é uma narrativa curta, em prosa que passa informação sem prolongar o texto.</div>');
-
-
-                }, config);
-
-                $('[data-edi = "alternativa_botao"]').addClass('box-revela');
-
-				edi.revela('btn-revela', 'box-revela', function () {
-
-                }, function (btn) {
-
-				}, {ocultarBtn: true});
-
-
+				edi.revela('btn-revela', 'box-revela', function (btn, revela) {
+					btn.addClass('active');
+				}, function (btn) {
+                    $('#txt').fadeIn();
+				}, config);
 			});
 		</script>
 
 		<style>
+			.rev {
+				float: left;
+				width: 250px;
+				height: 250px;
+				margin: 50px 0 0 95px;
+				position: relative;
+				text-shadow: 1px 1px 1px rgba(0, 0, 0, 0.1);
+			}
 
-            #img{
-                position: absolute;
-                top: 110px;
-                left: 280px;
-                text-align: center;
-                border-radius: 10px;
-                border: solid 1px #E2E2E2;
-                color: #807E7E;
-                padding: 10px;
-                font-size: 16px;
+			.btn-revela {
+				width: 130px;
+				height: 20px;
+				background: linear-gradient(#999, #000, #999);
+				border-radius: 5px;
+				border: 3px solid #fff;
+				box-shadow: 0 0 5px rgba(0, 0, 0, 0.3);
+				text-align: center;
+				color: #fff;
+				line-height: 20px;
+				cursor: pointer;
+				position: absolute;
+				left: 55px;
+				top: -13px;
+			}
+
+			.btn-revela.active {
+				background: linear-gradient(#B26B00, #FF9900, #B26B00);
+			}
+
+			.box-revela {
+				width: 240px;
+				height: 150px;
+				padding: 5px;
+				border-radius: 5px;
+				border: 1px solid rgba(0, 0, 0, 0.2);
+				box-shadow: 0 2px 0px rgba(0, 0, 0, 0.3);
+				font-size: 14px;
+			}
+
+			.box-revela .highlight {
+				width: 100%;
+				padding: 8px 0;
+				margin: 20px 0;
+				background: #eee;
+				text-align: center;
+				font-weight: bold;
+				color: rgba(139, 177, 195, 1);
+				float: left;
+			}
+
+			.box-revela .texto {
+				text-align: center;
+				margin-top: 40px;
+				line-height: 1.2;
+			}
+            #txt{
+				position: absolute;
+				color: #9C0;
+				border: solid 1px #9C0;
+				border-radius: 10px;
+				top: 300px;
+				padding: 5px 10px;
+				text-align: center;
+				width: 620px;
+				left: 70px;
+				display: none;
             }
-
-            .img {
-                width: 170px;
-                margin-top: 18px;
-                height: 170px;
-                box-shadow: 5px 5px 5px rgba(0, 0, 0, 0.5);
-                border-radius: 5px;
-            }
-
-            #txt {
-                position: absolute;
-                top: 85px;
-                left: 5px;
-                text-align: center;
-                font-size: 18px;
-                height: 260px;
-                width: 180px;
-                color: #666;
-                padding: 25px 10px 0px 10px ;
-                border: 1px solid #ccc;
-                border-radius: 10px;
-            }
-
 		</style>
 	</head>
 
-    <div id="txt" class="box-revela">
-        O que é um Conto?
-
-        <img class="img" src="../img/licao01/p28.png" width="200"/>
-
-    </div>
-
 	<body>
-        <img id="img" class="btn-revela" src="../img/licao01/p28.png" width="200"/>
+		<section class="rev">
+			<div class="btn-revela" data-revela="0">1</div>
+			<div class="box-revela" data-revela="0">
+                <p class="texto">No vocabulário específico só se formam unidades de sentido se houver experiência com essas áreas através de livros ou convívio profissional.</p>
+			</div>
+		</section>
+
+		<section class="rev">
+			<div class="btn-revela" data-revela="1">2</div>
+			<div class="box-revela" data-revela="1">
+                <p class="texto">Perceba então que se pode ser desenvolvido tanto no vocabulário comum, quanto no específico; ou ser pobre em ambos; ou ser desenvolvido num e no outro não.</p>
+			</div>
+		</section>
+
+    <div id="txt">Excelente! Perceba que o vocabulário comum já faz parte do seu cotidiano, são todas as palavras que você fala e compreende com facilidade, enquanto o vocabulário específico necessita de estudo e aperfeiçoamento em determinada área. </div>
+
 	</body>
 </html>

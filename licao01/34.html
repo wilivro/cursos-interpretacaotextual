@@ -9,212 +9,104 @@
     <link rel="stylesheet" href="../wilib/css/estilo.css">
 
     <script>
-        require(['../wilib/js/lib/arrasta'], function (edi) {
+        require(['../wilib/js/lib/revela_slide'], function (edi) {
 
             edi.setConfig({
-                mascote: 'mascote',
-                titulo: 'Clique e arraste o pincel para pintar de verde a resposta correta,<br> levando em conta o texto lido da escritora Ruth Rocha.',
-                tempoFinal: 10
+                icone: 'exclamacao',
+                titulo: 'Clique sobre as setas dos personagens e veja a explicação.'
             });
 
-            var arrArrasta = [
-                {arrasta: '', dataCorreta: '1', dataId: '1'}
-            ];
-
-            arrArrasta.sort(function () {
-                return 0.5 - Math.random()
-            });
-
-            for (var i = 0; i < arrArrasta.length; i++) {
-                $('<div>')
-                        .addClass('arrasta')
-                        .css({
-                            width: '102px',
-                            height: '65px'
-                        })
-                        .attr({
-                            'data-id': arrArrasta[i].dataId,
-                            id: 'arrasta'+(i+1),
-                            'data-correta': arrArrasta[i].dataCorreta
-                        })
-                        .html(arrArrasta[i].arrasta)
-                        .appendTo('#arrasta');
+            function callback(a, b) {
+                b.parent().css('box-shadow', '0 0 0 3px #8CA8B8');
+            }
+                
+            function calbackFinal () {
+                barraMsg('Muito bem!<br> Desse modo, percebemos que as frases podem nos ajudar ou atrapalhar na interpretação, assim como os parágrafos.',{height: 100})
             }
 
-            var config = {
-                colorirFilho: true,
-                arrastaAbsolute: true,
-                reloadCorreta: true,
-                clone: false,
-                alvoFixo: false,
-                multAlvo: true,
-                target: false
-            };
-
-            var animacao = function(a, fps, stop){
-                var cont = 0;
-                var tempo = setInterval(function(){
-                    cont+=10;
-                    a.attr('width', cont);
-                    if(cont == stop)
-                        clearInterval(tempo);
-                }, 30/1000);
-            };
-
-            var arr = [
-                {txt: 'Porque eles são os personagens principais da história narrada.', dataCorreta: 1},
-                {txt: 'Porque eles representam, respectivamente, o bem e o mal na história.', dataCorreta: 0},
-                {txt: 'Porque são os narradores da história.', dataCorreta: 0},
-                {txt: 'Porque ambos são personagens famosos de outras histórias.', dataCorreta: 0},
-                {txt: 'Porque representam a oposição homem-animal.', dataCorreta: 0}
-            ]
-
-            arr.sort(function () {
-                return 0.5 - Math.random()
+            edi.revela_slide('.revela', callback, calbackFinal);
+            
+           
+            $('.revelaEsquerda').each(function() {
+                $(this).peBalao({
+                    top:82,
+                    left:230,
+                    scaleX:-1,
+                    scaleY:-1,
+                    rotate:0
+                });                     
             });
 
-            for(var i = 0; i < arr.length; i++){
-                var alvo = $('<div>')
-                        .addClass('alvo')
-                        .attr({'data-correta': arr[i].dataCorreta})
-                        .appendTo('#boxTexto')
-
-                $('<div>').addClass('svg').appendTo(alvo)
-
-                $('<div>')
-                        .addClass('centraliza')
-                        .html(arr[i].txt)
-                        .appendTo(alvo)
-
-            };
-
-            edi.arrasta('arrasta', 'alvo', function (a, b, c) {
-
-                barraMsg(a?'Correto!<br> A história toda gira em torno desses dois personagens, sendo que a mulher tem menos importância no texto, já que não interfere no relacionamento do animal com a família; por ela ficaria tudo na mesma, até o fim. Assim, o título faz alusão aos dois personagens centrais.'
-                        :'Fique atento!<br> A história e responda corretamente a questão.')
-
-                b.remove();
-
-                animacao(c.find('#Layer_2 rect'), 10000, 611);
-                c.css('color', '#DDD');
-
-                $('.arrasta').off();
-
-                c.find('#Layer_2 rect').attr('fill', '#9c0');
-
-            }, function (a) {
-
-            }, config);
-
-            $('#arrasta1')
-                    .load('../wilib/img/svg/pincel.svg', function(){
-                        $('#corPonta').attr('fill', '#9c0');
-                    });
-
-            $('<div>')
-                    .attr('id', 'mascote')
-                    .appendTo('#conteudo');
-
-            $('.svg').load('../wilib/img/svg/fundoPincel.svg', function(){
-                $('#Layer_2 rect')
-                        .attr({
-                            width: 0,
-                            height: 50
-                        });
+            $('.revelaDireito').each(function() {
+                $(this).peBalao({
+                    top:81,
+                    left:20,
+                    scaleX:1,
+                    scaleY:-1,
+                    rotate:0
+                });                     
             });
-
-            $('#txt').peBalao({scaleX: -1, left: 10})
 
         });
     </script>
+    
     <style>
-        .svg, .svg svg{
-            position: absolute;
-            width: 514px;
-            height: 48px;
-            display: block;
+        i {
+            font-style: italic;
+            font-weight: bold;
         }
-
-        .alvo {
-            display: inline-block;
-            width: 514px;
-            height: 48px;
-            margin-bottom: 5px;
-        }
-        .arrasta {
-            margin-right: 10px;
-            margin-left: 10px;
-            display: inline-block;
-            color: #FFF;
-            width: 77px;
-            text-align: center;
-        }
-        #boxArrasta{
-            width: 150px;
-            height: 140px;
-            position: absolute;
-            cursor: default;
-            top: 210px;
-            left: 40px;
-            box-shadow: 0 2px rgba(0, 0, 0, 0.2);
-            background: linear-gradient(#fff, #eee);
-            border-radius: 5px;
-            border: 1px solid #eee;
-        }
-        #arrasta{
-            position: relative;
-            display: table-cell;
-            vertical-align: middle;
-            color: #666;
-            width: 150px;
-            height: 140px;
-        }
-        #boxTexto{
-            position: absolute;
-            width: 700px;
-            height: 240px;
-            text-align: left;
-            line-height: 30px;
-            color: #666;
-            top: 71px;
-            left: 250px;
-            border-radius: 10px;
-            padding-left: 20px;
-        }
-
-        .centraliza{
-            position: relative;
-            text-align: center;
-            display: table-cell;
-            vertical-align: middle;
-            width: 514px;
-            height: 48px;
-        }
-
-        #txt {
-            position: absolute;
-            width: 200px;
-            padding: 10px;
-            left: 20px;
-            top: 81px;
-            color: #666;
+        
+        .revela {
             border: 1px solid #ccc;
+            padding: 10px 10px 10px 10px;
+            font-size: 14px;
+            line-height: 1.3;
             border-radius: 10px;
+            background: #fff;
+            text-shadow: 1px 1px 1px rgba(0, 0, 0, 0.2);
+            text-align: center;
+            position: absolute;
+            bottom: 200px;
+            height: 50px;
+            width: 460px;
         }
+        
+        .rev-01 {
+            left: 50px;
+            top: 120px;
+        }
+        .rev-02 {
+            left: 330px;
+            top: 110px;
+        }
+
+        .person {
+            position: absolute;
+            left: 180px;
+            top: 200px;
+        }
+        
 
     </style>
-
 </head>
+
 <body>
+    <img src="../wilib/img/svg/ruiva_perfil.svg" class="person" width="150">
+    <img src="../wilib/img/svg/loira_perfil.svg" class="person" style="left: 350px">
+    <p class="revela" style="border: none">
 
-<div id="txt">
-    O texto recebe o título de O homem e a galinha. Por que a história recebe esse título?
-</div>
-<div id="boxArrasta">
-    <div id="arrasta"></div>
-</div>
-<div id="boxTexto">
-
-</div>
+    </p>
+    <p class="revelaEsquerda revela rev-01">
+        Joana, vamos observar a frase anterior: “João é extramente claudicante”. Ao ler essa frase, se o leitor não souber o significado da palavra claudicante, ele não conseguirá compreender o sentido da frase.
+    </p>
+    <p class="revelaDireito revela rev-02" style="width: 320px">
+        Mesmo que ele tenha outras unidades de sentido, como: João (é uma pessoa) é (verbo ser); extramente (totalmente, muito)?
+    </p>
+    <p class="revelaEsquerda revela rev-01" style="width:310px;">
+        Sim, mesmo se ele tiver outras unidades de sentido. Pois a palavra claudicante é fundamental para dar sentido ao que João é.
+    </p>
+    <p class="revelaDireito revela rev-02" style="width: 200px; line-height: 50px;">
+        Hummm, entendi!
+    </p>
 </body>
 </html>

@@ -1,70 +1,50 @@
 <!doctype html>
 <html lang="pt-br">
-	<head>
-		<title>Lição 01 Peça 24</title>
-		<meta charset="utf-8">
-		<script src="../wilib/js/lib/require.js"></script>
-		<script src="../wilib/js/app.js"></script>
-		
-		<link rel="stylesheet" href="../wilib/css/font-awesome.css">
-		<link rel="stylesheet" href="../wilib/css/estilo.css">
+<head>
+    <title>Lição 01 Peça 24</title>
+    <meta charset="utf-8">
+    <script src="../wilib/js/lib/require.js"></script>
+    <script src="../wilib/js/app.js"></script>
+    <link rel="stylesheet" href="../wilib/css/font-awesome.css">
+    <link rel="stylesheet" href="../wilib/css/estilo.css">
 
-		<script>
-            $(function () {
-                require(['../wilib/js/lib/alternativa'], function (edi) {
+    <script>
+        require(['../wilib/js/lib/alternativa_b06'], function (edi) {
 
-                    edi.setConfig({
-                        icone: 'interrogacaoAzul',
-                        titulo: 'Você conhece alguma modinha?<br> O que podemos definir como Modinha?<br> Clique sobre a alternativa correta.'
-                    });
+            edi.setConfig({
+                icone: "interrogacaoAzul",
+                titulo: "Clique apenas sobre as opções que correspondem às<br>possibilidades de reúso urbano da água:",
+                mascote: 'mascote'
+            });
 
-                    var alternativas = [
-                        {
-                            alternativa: 'Modinha é um estilo de roupa usado de acordo<br> com a moda estipulada pelo estado de São Paulo. ',
-                            correta: false
-                        },{
-                            alternativa: 'Modinha é o nome de uma poesia muito<br> famoso, escrita por Cecília Meirelles.',
-                            correta: false
-                        },{
-                            alternativa: 'Modinha é o nome de uma cidade do interior da Bahia.',
-                            correta: false
-                        },{
-                            alternativa: 'Modinha é um estilo musical originário de Portugal e muito usado pelos<br> seresteiros fazendo serenatas às altas horas da noite pelas ruas das cidades.',
-                            correta: true
-                        }
-                    ];
-
-                    var config = {
-                        posx: 15,
-                        posy: 115,
-                        aleatorio: true,
-                        tamanhoBox: 35,
-                        tamanhoBoxTexto: 600,
-                        marginBtns: 5
-                    }
-
-                    edi.alternativa(alternativas, function (acertou) {
-                    }, function (a) {
-                        barraMsg(a?'Parabéns!<br> Você conhece o conceito de Modinha.':'Tente novamente.<br> Modinha não é um estilo de roupa, muito<br> menos o nome de uma cidade da Bahia.' , {height: 100})
-                    }, config);
-
-                        $('#balao').peBalao({
-                            left: 10,
-                            tamanhoBorda: 15,
-                            borda: '#ccc'
-                        });
-
-                });
-            })
-		</script>
-
-		<style>
+            var alternativa = [
+                {texto: 'Vocabulário amplo', dataCorreta: true},
+                {texto: 'Dinheiro', dataCorreta: false},
+                {texto: 'Computador', dataCorreta: false},
+                {texto: 'Grau de escolaridade', dataCorreta: true},
+                {texto: 'Internet', dataCorreta: false},
+                {texto: 'Convívio social', dataCorreta: true},
+                {texto: 'Hábito de leitura', dataCorreta: true},
+                {texto: 'Boa alimentação', dataCorreta: false},
+                {texto: 'Uso de óculos', dataCorreta: false},
+                {texto: 'Ginástica', dataCorreta: false},
+                {texto: 'Informação constante', dataCorreta: true},
+                {texto: 'Cópia', dataCorreta: false},
+                {texto: 'Memorização', dataCorreta: false}
+            ];
 
 
-		</style>
-	</head>
-
-	<body>
-
-	</body>
+            edi.alternativa_b06(alternativa, null, function(a){
+                barraMsg(a?'Muito bem!<br> Quanto mais conhecimento você tiver mais fácil<br> será para interpretar textos e solucionar problemas.'
+                        :'Atenção!<br> Lembre-se que para que nosso cérebro faça associações <br>ele precisa adquirir diversos conhecimentos e experiências.', {height: 100, wait: 0});
+            }, {
+                width: 160,
+                height: 38,
+                margin: '0px 13px 10px 10px',
+                left: 20,
+                top: 73
+            });
+        });
+    </script>
+</head>
 </html>

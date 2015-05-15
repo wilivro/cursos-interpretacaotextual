@@ -1,0 +1,94 @@
+<!doctype html>
+<html lang="pt-br">
+<head>
+    <title>Lição 01 Peça 35</title>
+    <meta charset="utf-8">
+    <script src="../wilib/js/lib/require.js"></script>
+    <script src="../wilib/js/app.js"></script>
+    <link rel="stylesheet" href="../wilib/css/font-awesome.css">
+    <link rel="stylesheet" href="../wilib/css/estilo.css">
+
+    <script>
+        $(function () {
+            require(['../wilib/js/lib/alternativa'], function (edi) {
+
+                edi.setConfig({
+                    icone: 'interrogacaoAzul',
+                    titulo: 'Qual das afirmativas a seguir “Não” é correta em relação ao homem da fábula? Clique sobre a alternativa correta.'
+                });
+
+                var alternativas = [
+                    {
+                        alternativa: 'Revela sua maldade nos maus-tratos em relação à galinha.',
+                        correta: true
+                    }, {
+                        alternativa: 'É um personagem preocupado com o corte de gastos.',
+                        correta: false
+                    }, {
+                        alternativa: 'Mostra ingratidão em relação à galinha.',
+                        correta: false
+                    }, {
+                        alternativa: 'Demonstra não ouvir as opiniões dos outros.',
+                        correta: false
+                    }, {
+                        alternativa: 'Identifica-se como autoritário em relação à mulher',
+                        correta: false
+                    }
+                ];
+
+                var config = {
+                    posx: 15,
+                    posy: 85,
+                    aleatorio: true,
+                    tamanhoBox: 35,
+                    tamanhoBoxTexto: 600,
+                    marginBtns: 5
+                }
+
+                edi.alternativa(alternativas, function (acertou) {
+                }, function (a) {
+                    barraMsg(a?'Correto!<br>A palavra maus-tratos pressupõe algum dano físico a um ser qualquer. <br>O homem se limitava a trocar, por questão de economia, o alimento da galinha, mas ela não ficava sem comer.<br> As outras opções são facilmente localizadas no texto.'
+                            :'Atenção! <br>A palavra maus-tratos pressupõe algum dano físico a um ser qualquer.<br> O homem se limitava a trocar, por questão de economia, o alimento da galinha, mas ela não ficava sem comer.')
+                }, config);
+
+                $('#balao').peBalao({
+                    left: 10,
+                    tamanhoBorda: 15,
+                    borda: '#ccc'
+                });
+
+            });
+        })
+    </script>
+
+    <style>
+
+        #msg {
+            width: 500px;
+            position: absolute;
+            bottom: 20px;
+            left: 10px;
+            font-size: 13px;
+            text-align: center;
+            font-weight: 700;
+            color: #666;
+            display: none;
+        }
+
+        #msg p {margin-top: -10px}
+
+        #seta {
+            height: 40px;
+            float: left;
+        }
+    </style>
+</head>
+
+<body>
+<div id="msg">
+    <img id="seta" src="../wilib/img/fotos/seta-dir.png">
+    <p>Muito bem, você acertou! Texto é, então, uma sequência verbal (palavras), oral ou escrita, que forma um todo que
+        tem sentido para um determinado grupo de pessoas em uma determinada situação.</p>
+</div>
+</body>
+</html>

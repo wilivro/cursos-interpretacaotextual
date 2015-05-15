@@ -1,224 +1,377 @@
 <!doctype html>
 <html lang="pt-br">
-<head>
-    <title>Lição 01 Peça 18</title>
-    <meta charset="utf-8">
-    <script src="../wilib/js/lib/require.js"></script>
-    <script src="../wilib/js/app.js"></script>
-    <link rel="stylesheet" href="../wilib/css/font-awesome.css">
-    <link rel="stylesheet" href="../wilib/css/estilo.css">
+	<head>
+		<title>Lição 04 Peça 16</title>
+		<meta charset="utf-8">
+		<script src="../wilib/js/lib/require.js"></script>
+		<script src="../wilib/js/app.js"></script>
+        <link rel="stylesheet" href="../wilib/css/font-awesome.css">
+        <link rel="stylesheet" href="../wilib/css/estilo.css">
 
-    <script>
-        require(['../wilib/js/lib/alternativa_botao'], function (edi) {
+		<script>
+			require(['../wilib/js/lib/revela'], function (edi) {
 
-            edi.setConfig({
-                icone: false,
-                enunciado: false,
-                titulo: '',
-                qtdTelas: 3
+				edi.setConfig({
+					titulo: "Clique sobre o botão e assista a uma animação onde a Professora Lúcia <br>conversa com seus alunos sobre Raciocínio Lógico e Interpretação de Textos.",
+                    mascote: 'mascote'
+				});
+
+                edi.revela('_btn', 'revela', function () {
+                            $('#bloqueio').show()
+                        }, function(){
+                            $('#txt1').hide();
+                            $('#txt2').hide();
+                            $('#certo').fadeIn();
+                        }, {ocultarRev: true, tempoBloqueio: 1000}
+                        ,function () {
+                            log('geral: '+cont)
+                            $('#bloqueio').fadeOut();
+                            switch (cont){
+                                case 1:
+                                    $('#txt1').hide();
+                                    $('#txt2').show();
+                                    break;
+                                case 2:
+                                    $('#txt2').html('Clique na<br>Professora.');
+                                    $('#txt2').hide();
+                                    $('#txt1').show();
+                                    break;
+                                case 3:
+                                    $('#txt1').html('Clique nos<br>alunos.');
+                                    $('#txt2').hide();
+                                    $('#txt1').show();
+                                    break;
+                                case 4:
+                                    $('#txt2').html('Clique na<br>Professora.');
+                                    $('#txt2').hide();
+                                    $('#txt1').show();
+                                    break;
+                                case 5:
+                                    $('#txt1').html('Clique nos<br>alunos.');
+                                    $('#txt2').hide();
+                                    $('#txt1').show();
+                                    break;
+                                case 6:
+                                    $('#txt2').html('Clique na<br>Professora.');
+                                    $('#txt2').hide();
+                                    $('#txt1').show();
+                                    break;
+                                case 7:
+                                    $('#txt1').html('Clique nos<br>alunos.');
+                                    $('#txt2').hide();
+                                    $('#txt1').show();
+                                    break;
+                                case 8:
+                                    $('#txt2').html('Clique na<br>Professora.');
+                                    $('#txt2').hide();
+                                    $('#txt1').show();
+                                    break;
+                                case 9:
+                                    $('#txt1').hide();
+                                    $('#txt2').hide();
+                                    $('#certo').fadeIn();
+                                    break;
+                            }
+                        });
+
+                $('#revela1').peBalao({
+                    top:34,
+                    left:-35,
+                    scaleX:1,
+                    scaleY:-1,
+                    rotate:90,
+                    borda: '#ccc'
+                });
+
+                $('#revela2').peBalao({
+                    left:10,
+                    scaleX:-1,
+                    scaleY:-1,
+                    rotate:180,
+                    borda: '#ccc'
+                });
+
+                $('#revela3').peBalao({
+                    top: 25,
+                    left: 187,
+                    scaleX:1,
+                    scaleY:1,
+                    rotate:90,
+                    borda: '#ccc'
+                });
+
+                $('#revela4').peBalao({
+                    left:10,
+                    scaleX:-1,
+                    scaleY:-1,
+                    rotate:180,
+                    borda: '#ccc'
+                });
+
+                $('#revela6').peBalao({
+                    left: 212,
+                    scaleY:-1,
+                    rotate:180,
+                    borda: '#ccc'
+                });
+
+                $('#revela5').peBalao({
+                    top:34,
+                    left:-35,
+                    scaleX:1,
+                    scaleY:-1,
+                    rotate:90,
+                    borda: '#ccc'
+                });
+
+                var canvas = "../wilib/canvas/objetos/professora";
+
+                require([canvas], function (canvas) {
+                    var professora = new canvas.professora();
+                    professora.obj.css({
+                        top: 70,
+                        left: 200
+                    }).appendTo('#conteudo');
+
+                    professora.clickProfessora = function () {
+
+                        switch (cont){
+                            case 0:
+                                $('#btn1').click();
+                                break;
+                            case 2:
+                                $('#btn3').click();
+                                break;
+                            case 4:
+                                $('#btn5').click();
+                                break;
+                            case 6:
+                                $('#btn7').click();
+                                break;
+                            case 8:
+                                $('#btn9').click();
+                                break;
+                        }
+                    };
+
+                    professora.clickAlunos = function () {
+                        switch (cont){
+                            case 1:
+                                $('#btn2').click();
+                                break;
+                            case 3:
+                                $('#btn4').click();
+                                break;
+                            case 5:
+                                $('#btn6').click();
+                                break;
+                            case 7:
+                                $('#btn8').click();
+                                break;
+                        }
+                    };
+
+                    professora.play();
+                });
+
             });
+		</script>
 
-            var textoPergunta = [
-                'O título da música “Pula a Fogueira” refere-se a:',
-                'Para o autor, pular a fogueira é sinônimo de:',
-                'Segundo o texto:'
-            ];
+		<style>
+			.revela {
+				background: #fff;
+				padding: 5px;
+				position: absolute;
+				text-align: center;
+				border: 1px solid #ccc;
+				border-radius: 10px;
+			}
 
-            var msgFinal = [
-				{msgT: 'Muito Bem, você acertou!', msgF: 'Pense um pouco mais, lembre-se do que você estudou anteriormente.'},
-            ];
+			.revela p {
+				font-size: 12px;
+				line-height: 1.3;
+				font-weight: bold;
+				color: #838383;
+			}
 
-            $('#num').html(edi.telaAtual);
-            $('.texto .middle').html(textoPergunta[edi.telaAtual - 1]);
+            #revela1{
+                top: 70px;
+                left: 330px;
+                width: 370px;
+                z-index: 1;
+            }
 
-            var btns = [
-                [
-                    {texto: 'Festa de São Pedro.', dataCorreta: false},
-                    {texto: 'Festa de São João.', dataCorreta: true},
-                    {texto: 'Festa de Santo Agostinho.', dataCorreta: false},
-                    {texto: 'Festa do fogo.', dataCorreta: false}
-                ],
-                [
-                    {texto: 'alegria', dataCorreta: true},
-                    {texto: 'tristeza', dataCorreta: false},
-                    {texto: 'acidente', dataCorreta: false},
-                    {texto: 'incêndio', dataCorreta: false}
-                ],
-                [
-                    {texto: 'pular a fogueira <br>significa alegrar-se.', dataCorreta: false},
-                    {texto: 'pular a fogueira <br>significa queimar-se.', dataCorreta: false},
-                    {texto: 'louvar a <br>São João cantando e<br> dançando alegremente.', dataCorreta: true},
-                    {texto: 'louvar a São João <br>queimando-se<br>na fogueira.', dataCorreta: false}
-                ]
-            ];
+            #revela2{
+                top: 300px;
+                left: 260px;
+                z-index: 1;
+            }
 
-            var config = {
-                width: 340,
-                height: 30,
-                left: 430,
-                colunas: 1,
-                top: 90,
-                margin: 0,
-                padding: 5,
-                display: 'block',
-                btnBranco: true,
-                animacao: true,
-                randomico: true,
-                tamanhoTexto: 15
-            };
+            #revela3{
+                left: 20px;
+                top: 80px;
+                width: 200px;
+            }
 
-            function callback(a) {};
+            #revela5{
+                top: 70px;
+                left: 330px;
+                width: 370px;
+                z-index: 1;
+            }
 
-            edi.alternativa_botao(btns[edi.telaAtual - 1], callback, function(a){
-                    barraMsg(a?msgFinal[0].msgT : msgFinal[0].msgF, {height: 100, zIndex: 100})
-            }, config);
+            #bloqueio{
+                position: absolute;
+                width: 320px;
+                height: 315px;
+                top: 68px;
+                left: 190px;
+                z-index: 1;
+                display: none;
+            }
 
-        });
-    </script>
+            #revela4{
+                top: 300px;
+                left: 260px;
+                z-index: 1;
+            }
 
-    <style>
-        #conteudo {
-            position: absolute;
-            width: 790px !important;
-            background: #E8C615; /* Old browsers */
-            background: -moz-linear-gradient(top, #E8C615 1%, #EDD8B1 100%); /* FF3.6+ */
-            background: -webkit-gradient(linear, left top, left bottom, color-stop(1%, #E8C615), color-stop(100%, #EDD8B1)); /* Chrome,Safari4+ */
-            background: -webkit-linear-gradient(top, #E8C615 1%, #EDD8B1 100%); /* Chrome10+,Safari5.1+ */
-            background: -o-linear-gradient(top, #E8C615 1%, #EDD8B1 100%); /* Opera 11.10+ */
-            background: -ms-linear-gradient(top, #E8C615 1%, #EDD8B1 100%); /* IE10+ */
-            background: linear-gradient(to bottom, #E8C615 1%, #EDD8B1 100%); /* W3C */
-            filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#E8C615', endColorstr='#EDD8B1', GradientType=0); /* IE6-9 */
-        }
+            #revela6{
+                width: 320px;
+                left: 210px;
+                top: 300px;
+                z-index: 1;
+            }
 
-        .texto {
-            width: 200px;
-            height: 100px;
-            padding: 0 20px;
-            position: absolute;
-            left: 500px;
-            top: 0;
-        }
+            #revela7{
+                top: 70px;
+                left: 330px;
+                width: 370px;
+                z-index: 1;
+            }
 
-        .middle {
-			width: 200px;
-			text-align: center;
-            vertical-align: middle;
-            display: table-cell;
-        }
+            #revela8{
+                width: 320px;
+                left: 210px;
+                top: 300px;
+                z-index: 1;
+            }
 
-        .texto .middle {
-            height: 100px;
-            line-height: 1.3;
-            color: #fff;
-			text-shadow: 1px 1px 2px rgba(0,0,0,0.5);
-		}
+            #revela9{
+                width: 320px;
+                left: 210px;
+                top: 300px;
+                z-index: 1;
+            }
 
-        #num {
-            width: 50px;
-            display: block;
-            height: 50px;
-            text-align: center;
-            line-height: 50px;
-            font-size: 35px;
-			text-shadow: 1px 1px 2px rgba(0,0,0,0.5);
-            background: #1C8FD0;
-            border: 4px solid #fff;
-            border-radius: 50%;
-            position: absolute;
-            left: 450px;
-            top: 20px;
-            color: #fff;
-        }
+            .retangulo{
+                position: absolute;
+                left: 20px;
+                top: 90px;
+                text-align: center;
+                border: solid 1px #8CA8B8;
+                box-shadow: 1px 1px 1px rgba(66, 66, 66, .5);
+                font-size: 12px;
+                padding: 10px;
+                color: #666;
+            }
 
-        .btn-sem-estilo {
-            box-shadow: 0 0 0 0;
-        }
+            #certo{
+                position: absolute;
+                width: 200px;
+                height: 103px;
+                top: 90px;
+                left: 500px;
+                border-radius: 15px;
+                padding: 10px;
+                border: 2px dashed #9C0;
+                text-align: center;
+                color: #9C0;
+                display: none;
+            }
 
-        .btn-sem-estilo-acertou {
-            background-color: #0060B6 !important;
-        }
+		</style>
+	</head>
 
-        #noticia {
-            position: absolute;
-            width: 375px;
-            height: 265px;
-            left: 10px;
-            top: 80px;
-            z-index: 10;
-            font-size: 18px;
-			text-shadow: 1px 1px 1px rgba(0,0,0,0.5);
-            line-height: 18px;
-            padding: 10px;
-            background-color: #FFF;
-            color: #666;
-            overflow: scroll;
-        }
+	<body>
 
-        #enunciado {
-            position: absolute;
-            top: 1px;
-            left: 0;
-            font-size: 18px;
-			text-shadow: 1px 1px 5px rgba(0,0,0,0.5);
-            width: 415px;
-            height: 50px;
-            font-style: italic;
-            z-index: 12;
-            color: #FFF;
-        }
+        <div id="txt1" class="retangulo" style="top: 200px; left: 70px">
+            Clique na<br>
+            Professora.
+        </div>
 
-        #enunciado .middle {
-            height: 80px;
-            width: 415px;
-            font-size: 15px;
-			text-shadow: 1px 1px 2px rgba(0,0,0,0.5);
-        }
+        <div id="txt2" class="retangulo" style="display: none; top: 180px; left: 470px">
+            Clique nos<br>
+            alunos.
+        </div>
 
-        .bold {
-            color: #000;
-            margin-top: 10px;
-            font-size: 14px;
-			text-shadow: 1px 1px 2px rgba(0,0,0,0.5);
-         }
-    </style>
-</head>
+        <div id="bloqueio"></div>
 
-<body>
-<div class="texto">
-    <div class="middle"></div>
-</div>
+		<div id="btn1" class="_btn" data-revela="1"></div>
+		<div id="btn2" class="_btn" data-revela="2"></div>
+		<div id="btn3" class="_btn" data-revela="3"></div>
+		<div id="btn4" class="_btn" data-revela="4"></div>
+        <div id="btn5" class="_btn" data-revela="5"></div>
+        <div id="btn6" class="_btn" data-revela="6"></div>
+        <div id="btn7" class="_btn" data-revela="7"></div>
+        <div id="btn8" class="_btn" data-revela="8"></div>
+        <div id="btn9" class="_btn" data-revela="9"></div>
 
-<div id="noticia">
-	Pula a fogueira<br>
-	<span class="bold">(Autores: Getúlio Marinho e João B. Filho)</span><br>
-<p>
-	Pula a fogueira, Iaiá<br>
-	Pula a fogueira, Ioiô<br>
-	Cuidado para não se queimar<br>
-	Olha que a fogueira<br>
-	Já queimou o meu amor<br>
-	Nesta noite de festança<br>
-	Todos caem na dança<br>
-	Alegrando o coração<br>
-	Foguetes, cantos e troca<br>
-	Na cidade e na roça<br>
-	Em louvor a São João<br>
-	Nesta noite de folguedo<br>
-	Todos brincam sem medo<br>
-	A soltar seu pistolão<br>
-	Morena flor do sertão<br>
-	Quero saber se tu és<br>
-	Dona do meu coração<br>
-</p>
-</div>
+        <div id="revela1" class="revela" data-revela="1">
+			<p>
+                Hoje falaremos de um tema importante: Raciocínio Lógico e Interpretação de Textos. O ser humano deve ser capaz de fazer investigações racionais, de ponderar, questionar e compreender conceitos, atestando ou não sua veracidade.
+            </p>
+		</div>
 
-<div id="num"></div>
+        <div id="revela2" class="revela alunos" data-revela="2">
+			<p>
+                Professora, este raciocínio depende de lógica?
+			</p>
+		</div>
 
-<div id="enunciado">
-    <div class="middle">
-		Vamos jogar basquete?<br> Observe a letra da música popular “Pula a Fogueira” usada em festas juninas em todo Brasil e marque as respostas corretas de acordo com as questões apresentadas.
-    </div>
-</div>
+        <div id="revela3" class="revela" data-revela="3">
+			<p>
+                Sim, da capacidade racional das pessoas de interpretarem corretamente, resolvendo situações difíceis, compreendendo o que está por trás de textos, propostas e hipóteses.
+            </p>
+		</div>
 
-</body>
+        <div id="revela4" class="revela alunos" data-revela="4">
+			<p>
+                Entendi, precisamos pensar e pensar sem preguiça não é?!
+			</p>
+		</div>
+
+        <div id="revela5" class="revela" data-revela="5">
+            <p>
+                Isso mesmo! Não podemos ter preguiça de pensar, e quem não estimula o desenvolvimento do seu raciocínio lógico não é capaz de questionar e criticar teorias, sendo com facilidade, manipulado, cometendo erros que podem prejudicá-lo para a vida toda.
+
+            </p>
+        </div>
+
+        <div id="revela6" class="revela alunos" data-revela="6">
+            <p>
+                Então professora, toda que vez nos apresentarem um problema ou um texto difícil como devemos agir?
+            </p>
+        </div>
+
+        <div id="revela7" class="revela" data-revela="7">
+            <p>
+                Devemos usar nosso raciocínio lógico, percebendo cada detalhe, lendo com atenção, verificando o que é ou não é possível.
+            </p>
+        </div>
+
+        <div id="revela8" class="revela alunos" data-revela="8">
+            <p>
+                Ah! Então podemos usar nosso raciocínio começando por eliminar as opções que com certeza não podem ser verdadeiras ou corretas?
+            </p>
+        </div>
+
+        <div id="revela9" class="revela" data-revela="9">
+            <p>
+                Sim, claro! É uma excelente maneira de resolver questões, analisando primeiro o que não pode de forma alguma ser verdade, desta forma, você racionalmente elimina possibilidades e facilita seu raciocínio para chegar à verdade.
+            </p>
+        </div>
+
+        <div id="certo">Muito Bem! Através da explicação da professora Sara, você pode aprender mais sobre os conceitos de Denotação e Conotação.</div>
+	</body>
 </html>

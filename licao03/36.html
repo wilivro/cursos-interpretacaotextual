@@ -14,7 +14,7 @@
 			require(['../wilib/js/lib/edi', '../wilib/js/lib/canvas-load'], function (edi) {
 
 				edi.iniciar({
-					titulo: "<span style='line-height: 15px; font-size: 14px;'>Pedro é universitário, ele cursa “direito”, para conseguir seu diploma ele deverá estudar muito, para isso, precisa da sua ajuda e do seu conhecimento. A cada resposta correta ele subirá um degrau rumo ao seu objetivo de se tornar um grande advogado! Responda se as frases são  Conotativas ou Denotativas clicando sobre a opção correta.</span>",
+					titulo: "Pedro é universitário, ele cursa “direito”, para conseguir seu diploma ele deverá estudar muito, para isso, precisa da sua ajuda e do seu conhecimento. A cada resposta correta ele subirá um degrau rumo ao seu objetivo de se tornar um grande advogado! Responda se as frases são Conotativas ou Denotativas digitando a opção correta nos espaços.",
                     espacamento: '15px'
 
 				});
@@ -28,6 +28,10 @@
             });
 		</script>
 		<style>
+						#texto-titulo {
+							font-size: 14px;
+						}
+
             #canvas{
                 position: absolute;
                 top: 68px;
@@ -43,7 +47,7 @@
 
             .btnBlack {
                 border-radius: 50px;
-                box-shadow: 
+                box-shadow:
                             0 0 1px 4px rgba(255, 255, 255, 1),
                       inset 0 10px 1px 1px rgba(255, 255, 255, 0.2);
                 background: linear-gradient(#9c0, #B7F7AA);

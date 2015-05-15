@@ -1,0 +1,201 @@
+<!-- Desenvolvedor: Danilo Thiago -->
+<!doctype html>
+<html lang="pt-br">
+<head>
+    <title>Lição 01 Peça 03</title>
+    <meta charset="utf-8">
+    <script src="../wilib/js/lib/require.js"></script>
+    <script src="../wilib/js/app.js"></script>
+    <link rel="stylesheet" href="../wilib/css/font-awesome.css">
+    <link rel="stylesheet" href="../wilib/css/estilo.css">
+
+    <script>
+        require(['../wilib/js/lib/revela_slide'], function (edi) {
+
+            edi.setConfig({
+                icone: 'exclamacao',
+                titulo: 'Clique sobre os personagens e observe a explicação<br> de Fred e Malú sobre Texto e Contexto.'
+            });
+
+            function callback(a, b) {
+                b.parent().css('box-shadow', '0 0 0 3px #8CA8B8');
+            }
+
+            function calbackFinal() {
+                mensagem('Atenção! Contexto é a relação entre<br> o texto e a situação em que ele ocorre.<br> É o conjunto de circunstâncias em que<br> se produz a mensagem - lugar e tempo<br> e que permitem sua compreensão.')
+            }
+
+            edi.revela_slide('.revela', callback, calbackFinal, {});
+
+
+            $('.revelaEsquerda').each(function () {
+                $(this).peBalao({
+                    top: 81,
+                    left: 20,
+                    scaleX: 1,
+                    scaleY: -1,
+                    rotate: 0
+                });
+            });
+
+            $('.revelaDireito').each(function () {
+                $(this).peBalao({
+                    top: 82,
+                    left: 120,
+                    scaleX: -1,
+                    scaleY: -1,
+                    rotate: 0
+                });
+            });
+
+            $('#rev-04, #rev-08').each(function () {
+                $(this).peBalao({
+                    top: 137,
+                    left: 210,
+                    scaleX: -1,
+                    scaleY: -1,
+                    rotate: 0
+                });
+            });
+
+        });
+    </script>
+
+    <style>
+        i {
+            font-style: italic;
+            font-weight: bold;
+        }
+
+        .revela {
+            border: 1px solid #ccc;
+            padding: 10px 10px 10px 10px;
+            font-size: 14px;
+            line-height: 1.3;
+            border-radius: 10px;
+            background: #fff;
+            text-shadow: 1px 1px 1px rgba(0, 0, 0, 0.2);
+            text-align: center;
+            position: absolute;
+            bottom: 200px;
+        }
+
+        #rev-01  {
+            left: 330px;
+            top: 110px;
+            padding-top: 15px;
+            width: 320px;
+            height: 44px;
+        }
+
+        #rev-02 {
+            left: 150px;
+            top: 120px;
+            width: 220px;
+            padding-top: 15px;
+            height: 45px;
+        }
+
+        #rev-03  {
+            left: 330px;
+            top: 110px;
+            width: 220px;
+            padding-top: 23px;
+            height: 36px;
+        }
+
+        #rev-04, #rev-08 {
+            width: 290px;
+            left: 60px;
+            top: 65px;
+            height: 105px;
+        }
+
+        #rev-05 {
+            left: 370px;
+            width: 100px;
+            padding-top: 25px;
+            height: 35px;
+        }
+
+        #rev-06 {
+            width: 170px;
+            left: 130px;
+            height: 44px;
+            top: 100px;
+            padding-top: 16px;
+        }
+
+        #rev-07 {
+            width: 360px;
+            left: 330px;
+            height: 50px;
+            top: 100px;
+        }
+
+        #rev-09 {
+            left: 300px;
+            width: 260px;
+            height: 42px;
+            padding-top: 17px;
+            top: 110px;
+        }
+
+        .person {
+            width: 280px;
+            height: 200px;
+            position: absolute;
+            left: 210px;
+            top: 200px;
+        }
+
+
+    </style>
+</head>
+
+<body>
+<img src="../wilib/img/svg/personagens.svg" class="person" id="person-03">
+
+<p class="revelaEsquerda revela" id="rev-01">
+    Malú, você assistiu a aula da Professora Bianca sobre interpretação de textos desta semana?
+</p>
+
+<p class="revelaDireito revela" id="rev-02">
+    Sim Fred, ela abordou os conceitos de texto e contexto.
+</p>
+
+<p class="revelaEsquerda revela" id="rev-03">
+    E o que foi que ela disse?
+</p>
+
+<p class="revela" id="rev-04">
+    Ela explicou que um texto é constituído por diversas frases e em cada uma delas, há uma “certa” informação que a faz
+    ligar-se com a frase anterior e/ou com a frase posterior, criando condições para a estruturação do conteúdo a ser
+    transmitido.
+</p>
+
+<p class="revelaEsquerda revela" id="rev-05">
+    Hum...
+</p>
+
+<p class="revelaDireito revela" id="rev-06">
+    E a essa interligação dá-se o nome de contexto.
+</p>
+
+<p class="revelaEsquerda revela" id="rev-07">
+    Nossa! Já ouvi falar muito sobre contexto, mas nunca soube exatamente o que era. Então, quer dizer que contexto é
+    essa “ligação” entre as frases de um texto?
+</p>
+
+<p class="revela" id="rev-08">
+    Isso, exatamente! A Professora Bianca também ressaltou que o relacionamento entre as frases é tão grande, que, se
+    uma frase for retirada de seu contexto original e analisada separadamente, poderá ter um significado diferente
+    daquele inicial.
+</p>
+
+<p class="revelaEsquerda revela" id="rev-09">
+    Poxa, então o contexto é fundamental para a interpretação correta de um texto!
+</p>
+
+</body>
+</html>

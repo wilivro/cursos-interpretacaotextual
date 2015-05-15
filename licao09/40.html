@@ -1,0 +1,149 @@
+<!doctype html>
+<html lang="pt-br">
+<head>
+    <title>Lição 08 Peça 44</title>
+    <meta charset="utf-8">
+    <script src="../wilib/js/lib/require.js"></script>
+    <script src="../wilib/js/app.js"></script>
+    <link type="text/css" rel="stylesheet" href="../wilib/css/font-awesome.css">
+    <link type="text/css" rel="stylesheet" href="../wilib/css/estilo.css">
+
+    <script>
+        $(function () {
+            require(['../wilib/js/lib/alternativa_botao'], function (edi) {
+
+                edi.setConfig({
+                    mascote: 'mascote',
+                    icone: 'exclamacao',
+                    titulo: 'Leia a tirinha com atenção e, em seguida clique em<br> prosseguir para visualizar e responder as questões:',
+                    qtdTelas: 2
+                });
+
+                var btns = [
+                    {
+                        texto: 'Revelou desinteresse<br> na leitura do dicionário.',
+                        dataCorreta: false
+                    },
+                    {
+                        texto: 'Causou surpresa em sua filha, ao se <br>dedicar à leitura de um livro tão grande.',
+                        dataCorreta: false
+                    },
+                    {
+                        texto: 'Queria consultar o dicionário para tirar uma <br>dúvida, e não ler o livro, como sua filha pensava.',
+                        dataCorreta: true
+                    }
+                ];
+
+                var config = {
+                    width: 400,
+                    height: 20,
+                    left: 255,
+                    top: 150,
+                    btnBranco: true,
+                    margin: 8,
+                    colunas: 1,
+                    tamanhoTexto: 13,
+                    animacao: true,
+                    cb: function () {
+                        //
+                    }
+                };
+
+                edi.alternativa_botao(btns, function (a) {
+                    //
+                }, function (a) {
+                    barraMsg(a?'Muito bem!<br> Mafalda não sabia que o livro se tratava de um dicionário e pensou que seu iria lê-lo. Sendo que seu pai estava apenas fazendo uma consulta rápida sobre o significado de um vocábulo.'
+                            :'Atenção!<br> Mafalda é uma garotinha, que não sabe que o livro sobre a<br> qual ela se refere é um dicionário e achou que seu pai iria lê-lo.', {wait: 0, zIndex: 2002, height: 200});
+                }, config);
+
+                if(edi.root.util.telaAtual == 1) {
+                    $('#balao').css('display','block');
+
+                    $('[data-edi = "alternativa_botao"]').css('display','block');
+                    $('#img')
+                            .css({
+                                width: 100,
+                                top: 68,
+                                left: 150
+                            })
+                            .click(function () {
+                                $(this).transition({
+                                    width: 300,
+                                    left: 150
+                                })
+                            })
+                            .mouseleave(function () {
+                                $('#img').css({
+                                    top: 68,
+                                    left: 150,
+                                    width: 100
+                                })
+                            });
+                    $('#ico').iconeInterrogacaoAzul(true);
+                } else {
+                    $('[data-edi = "alternativa_botao"]').css({display: 'none'});
+                    edi.root.objetivos.pop();
+                    setTimeout(function(){
+                        console.log('oi')
+                        edi.root.finalizar();
+                    }, 1000)
+                }
+
+                $('#balao').peBalao({
+                    left: 40,
+                    tamanhoBorda: 14,
+                    borda: '#ccc',
+                    scaleX: -1
+                });
+
+            });
+
+        })
+    </script>
+
+    <style>
+        #balao {
+            display: none;
+            border: 1px solid #ccc;
+            background: #fff;
+            width: 100px;
+            height: 200px;
+            padding: 15px;
+            position: absolute;
+            left: 10px;
+            top: 100px;
+            font-size: 13px;
+            text-align: center;
+            line-height: 1.3;
+            border-radius: 10px;
+            color: #666;
+        }
+
+        #ico {
+            margin: 10px 10px 20px 45px;
+            height: 59px;
+            position: relative;
+            left: -25px;
+        }
+
+        #img {
+            position: absolute;
+            top: 68px;
+            left: 240px;
+            cursor: pointer;
+            z-index: 2002;
+        }
+
+    </style>
+</head>
+
+<body>
+<img id="img" src="../img/licao09/p40.png" width="300"/>
+<div id="balao">
+    <div id="ico"></div>
+    <p>
+        O efeito de humor foi um recurso utilizado pelo autor da tirinha para mostrar que o pai de Mafalda:
+    </p>
+</div>
+</body>
+</html>

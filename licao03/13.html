@@ -14,8 +14,9 @@
 			require(['../wilib/js/lib/comparaTexto'], function (edi) {
 
 				edi.setConfig({
-					titulo: "Clique sobre as imagens para revelar as frases, e em seguida, digite Denotação se o significado for Denotativo ou Conotação, se o significado for Conotativo.",
-                    mascote: 'mascote'
+        	mascote: 'mascote',
+					titulo: "Clique sobre as imagens para revelar as frases, e em " +
+									"seguida, digite se o significado é Denotativo ou Conotativo."
 				});
 
                 edi.comparaTexto(".resp", function(a){
@@ -37,8 +38,8 @@
                         })
                         .html('<div class="txtAux">"Essa mulher é uma cobra."</div><br>Muito bem! Essa frase tem um sentido conotativo, quando observamos o contexto em que a palavra “cobra” está inserida, neste caso, num sentido figurado.');
                     }
-                        console.log("naoooa");                
-                    
+                        console.log("naoooa");
+
                 }, null, {validarAcentos: true,
                     validarPontos: true,
                     upCaser: true,
@@ -142,10 +143,10 @@
             <div class="txt" style="margin-bottom: 30px;">Essa mulher é uma cobra.</div>
         </div>
 
-        
+
         <input class="resp" id="in1" data-correta="Denotação" tabindex="2">
         <input class="resp" id="in2" data-correta="Conotação" tabindex="1">
-      
+
 
         <img id="img1" src="../img/licao03/peca13_1.png" width="150">
         <img id="img2" src="../img/licao03/peca13_2.png" width="150">

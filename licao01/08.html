@@ -1,53 +1,109 @@
 <!doctype html>
 <html lang="pt-br">
-<head>
-    <title>Lição 01 Peça 08</title>
-    <meta charset="utf-8">
-    <script src="../wilib/js/lib/require.js"></script>
-    <script src="../wilib/js/app.js"></script>
-    <link rel="stylesheet" href="../wilib/css/font-awesome.css">
-    <link rel="stylesheet" href="../wilib/css/estilo.css">
+	<head>
+        <title>Lição 01 Peça 08</title>
+		<meta charset="utf-8">
+		<script src="../wilib/js/lib/require.js"></script>
+		<script src="../wilib/js/app.js"></script>
+        <link rel="stylesheet" href="../wilib/css/font-awesome.css">
+        <link rel="stylesheet" href="../wilib/css/estilo.css">
 
-    <script>
-        require(['../wilib/js/lib/revela_b05'], function (edi) {
+		<script>
+			require(['../wilib/js/lib/revela','../wilib/js/lib/alternativa_botao'], function (edi, edi2) {
 
-            edi.setConfig({
+				edi2.setConfig({
+                    icone: "exclamacao",
+                    mascote: 'mascote',
+					titulo: "Clique sobre a imagem, leia a sentença e,<br> responda utilizando seu raciocínio lógico.",
+                    tempoFinal: 10
+				});
 
-                titulo: "Quais os erros que poderemos cometer ao interpretar um texto?<br>Clique sobre os botões e conheça-os.",
-                mascote: 'mascote'
+                var btns = [];
 
-            });
+                var botoes = [
 
-            var img = '../img/licao01/p08.jpg';
+                    {texto: 'Sim, se a sentença diz que de fato, todas as farmácias<br> do Brasil vendem sabonete, essa sentença é válida.', dataCorreta: false},
+                    {texto: 'Não, esse raciocínio não é válido, pois dizer que todas as<br> farmácias do Brasil vendem sabonetes não é a mesma coisa que<br> dizer que todos os sabonetes do Brasil são vendidos em farmácias. ', dataCorreta: true}
 
-            var revelas = [
-                    'Extrapolação - Ocorre quando se sai do contexto, acrescentando ideias que não estão no texto, quer por conhecimento prévio do tema quer pela imaginação.',
-                    'Redução - É o oposto da extrapolação. Dá-se atenção apenas a um aspecto, esquecendo que um texto é um conjunto de ideias, o que pode ser insuficiente para o total do entendimento do tema desenvolvido.',
-                    'Contradição - Não raro, o texto apresenta  ideias contrárias às do candidato, fazendo-o tirar conclusões equivocadas  e, consequentemente, errando a questão.'
-            ];
+                ];
 
-            edi.revela_b05(revelas, null, function(){
-                mensagem('Neste exercício você aprendeu o<br> que não deve fazer ao Interpretar<br>um Texto, portanto, esteja atento!');
-            }, {fontSize: 12});
+                var config = {
+                    btnBranco: true,
+                    colunas: 1,
+                    width: 500,
+                    left: 250,
+                    top: 130
 
-            $('<img>')
-                    .css({
-                        position: 'absolute',
-                        left: 15,
-                        top: 95,
-                        border: '7px solid #FFF',
-                        boxShadow: '0 0 1px 1px #ccc',
-                        borderRadius: 10
-                    })
-                    .attr({
-                        src: img,
-                        width: 250
-                    })
-                    .appendTo('#conteudo');
+                };
 
-        });
-    </script>
-</head>
-<body>
-</body>
+                function callback (a) {
+
+                }
+
+                edi2.alternativa_botao(botoes, callback, function(a){
+                    barraMsg(a?'Muito bem!<br> A sentença não diz que os sabonetes no Brasil são vendidos somente nas farmácias. Por tanto, não é uma sentença válida.'
+                            :'Atenção!<br> A sentença diz que os sabonetes no Brasil são vendidos em farmácias, mas não diz que são vendidos somente em farmácias. Tente novamente.', {height: 150})
+                }, config);
+
+                $('[data-edi = "alternativa_botao"]').addClass('box-revela');
+
+				edi.revela('btn-revela', 'box-revela', function () {
+
+                }, function (btn) {
+				}, {});
+
+				$('#img').transition({
+                    transform: 'scale(0.8)',
+                    top: 100,
+					left: 15
+				}, 1000);
+			});
+		</script>
+
+		<style>
+
+            #img{
+                position: absolute;
+                top: 200px;
+                left: 180px;
+                -webkit-transform: scale(0.1);
+                -moz-transform: scale(0.1);
+                -ms-transform: scale(0.1);
+                transform: scale(0.1);
+                text-align: center;
+                border-radius: 10px;
+                border: solid 1px #E2E2E2;
+                color: rgb(128, 126, 126);
+                padding: 10px;
+                font-size: 16px;
+            }
+
+            #txt {
+                position: absolute;
+                top: 255px;
+                left: 10px;
+                font-size: 14px;
+                width: 219px;
+                height: 290px;
+                color: #666;
+                text-align: center;
+            }
+
+            .bold {
+                font-size: 11px;
+                float: right;
+                color: #000;
+            }
+
+		</style>
+	</head>
+
+    <div id="txt" class="box-revela">
+        Vamos supor que, de fato, todas as farmácias do Brasil vendessem sabonetes. A partir dessa frase, poderíamos concluir que, no Brasil, todos os sabonetes são vendidos apenas em farmácias?
+
+    </div>
+
+	<body>
+        <img id="img" class="btn-revela" src="../img/licao01/p08.jpg" width="200"/>
+	</body>
 </html>

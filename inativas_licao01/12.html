@@ -1,0 +1,62 @@
+<!doctype html>
+<html lang="pt-br">
+	<head>
+        <title>Lição 01 Peça 12</title>
+        <meta charset="utf-8">
+        <script src="../wilib/js/lib/require.js"></script>
+        <script src="../wilib/js/app.js"></script>
+        <link rel="stylesheet" href="../wilib/css/font-awesome.css">
+        <link rel="stylesheet" href="../wilib/css/estilo.css">
+
+		<script>
+			require(['../wilib/js/lib/alternativa_vf'], function (edi) {
+				
+				edi.setConfig({
+                    icone: "interrogacaoAzul",
+                    mascote: 'mascote',
+					titulo: "De acordo com os estudos realizados até o momento, a lógica auxilia no desenvolvimento de três aspectos importantes para interpretação de textos.<br>Quais são esses aspectos? Marque a alternativa verdadeira."
+				});
+				
+				var alternativas  = [];
+				
+				alternativas.push({
+					texto: 'Atuar, representar e dissimular.',
+					dataCorreta: false
+				});
+				
+				alternativas.push({
+					texto: 'Ler, escrever e resolver problemas.',
+					dataCorreta: true
+				});
+				
+				alternativas.push({
+					texto: 'Cantar, escrever poesias e ler muitos livros.',
+					dataCorreta: false
+				});
+
+				alternativas.push({
+					texto: 'Ouvir música clássica, ler contos e traduzir textos em inglês.',
+					dataCorreta: false
+				});
+				
+				edi.alternativa_vf(alternativas, function (a) {
+
+                }, function (a) {
+					if(a){
+						mensagem('<div style="display: inline-block; width: 440px;">Parabéns! Compreender e interpretar de forma lógica proporciona uma leitura eficaz, uma escrita aprimorada e grande capacidade para solucionar problemas.</div>')
+					} else {
+						mensagem('<div style="display: inline-block; width: 460px;">Atenção! A interpretação lógica corresponde à capacidade de compreender textos, imagens, etc., não tem relação com atuação. Pense um pouco mais!</div>')
+					}
+                }, {
+                    left: 60,
+                    top: 50,
+                    margin: '0 0 15px 0'
+                });
+			});
+		</script>
+	</head>
+	
+	<body>
+
+	</body>
+</html>

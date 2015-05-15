@@ -1,0 +1,131 @@
+<!doctype html>
+<html lang="pt-br">
+	<head>
+		<title>Lição 10 Peça 20</title>
+		<meta charset="utf-8">
+		<script src="../wilib/js/lib/require.js"></script>
+		<script src="../wilib/js/app.js"></script>
+    <link type="text/css" rel="stylesheet" href="../wilib/css/font-awesome.css">
+	 	<link type="text/css" rel="stylesheet" href="../wilib/css/estilo.css">
+
+		<!-- main -->
+		<style type="text/css">
+		</style>
+		<script>
+			require(['../wilib/js/lib/revista'], function (edi) {
+
+				edi.setConfig({// configurando o EDI
+        	titulo: 'Folheie a revista e conheça o texto da autora Ruth Rocha.'
+				});
+
+				// montando a página
+				function pag(img, txt) {
+					this.page = $('<div>');
+					this.page.addClass('inner-page');
+
+					this.img = $('<img>');
+					this.img.attr('src', img);
+					this.img.appendTo(this.page);
+
+					this.txt = $('<p>');
+					this.txt.html(txt);
+					this.txt.appendTo(this.page);
+
+					return this.page;
+				};
+
+        edi.addPagina(pag(
+					'../img/licao10/20.1.png',
+					'<h5>O HOMEM E A GALINHA</h5><br>' + 
+					'Era uma vez um homem que tinha uma galinha. Era uma galinha como as outras.' +
+					'Um dia a galinha botou um ovo de ouro. O homem ficou contente. Chamou a mulher:' +
+					'- Olha o ovo que a galinha botou.' +
+					'A mulher ficou contente:' +
+					'- Vamos ficar ricos!'
+				));
+
+        edi.addPagina(pag(
+					'../img/licao10/20.2.png',
+					'E a mulher começou a tratar bem da galinha. ' +
+					'Todos os dias a mulher dava mingau para a galinha. ' +
+					'Dava pão-de-ló, dava até sorvete. ' +
+					'E todos os dias a galinha botava um ovo de ouro. ' +
+					'Vai que o marido disse:' +
+					'- Pra que esse luxo com a galinha? Nunca vi galinha comer pão-de-ló... Muito menos tomar sorvete!'
+				));
+
+        edi.addPagina(pag(
+					'../img/licao10/20.3.png',
+					'- É, mas esta é diferente! Ela bota ovos de ouro!' +
+					'O marido não quis conversa:' +
+					'- Acaba com isso mulher. Galinha come é farelo.' +
+					'Aí a mulher disse:' +
+					'- E se ela não botar mais ovos de ouro?' +
+					'- Bota sim - o marido respondeu.' +
+					'A mulher todos os dias dava farelo à galinha. E a galinha botava um ovo de ouro.' +
+					'Vai que o marido disse:' +
+					'- Farelo está muito caro, mulher, um dinheirão! A galinha pode muito bem comer milho.'
+				));
+
+        edi.addPagina(pag(
+					'../img/licao10/20.4.png',
+					'- E se ela não botar mais ovos de ouro?' +
+					'- Bota sim - o marido respondeu.' +
+					'Aí a mulher começou a dar milho pra galinha. ' +
+					'E todos os dias a galinha botava um ovo de ouro. ' +
+					'Vai que o marido disse:' +
+					'- Pra que esse luxo de dar milho pra galinha? ' +
+					'Ela que procure o de-comer no quintal!'
+				));
+
+        edi.addPagina(pag(
+					'../img/licao10/20.5.png',
+					'- E se ela não botar mais ovos de ouro? - a mulher perguntou.' +
+					'- Bota sim - o marido falou.' +
+					'E a mulher soltou a galinha no quintal. ' +
+					'Ela catava sozinha a comida dela. ' +
+					'Todos os dias a galinha botava um ovo de ouro. ' +
+					'Um dia a galinha encontrou o portão aberto. ' +
+					'Foi embora e não voltou mais.' +
+					'Dizem: eu não sei que ela agora está numa boa casa onde tratam dela a pão-de-ló.' +
+					'<br>(Ruth Rocha)'
+				));
+
+
+
+				edi.revista({
+          width:312,
+          height:300,
+					left:100,
+					top:0,
+					frenteVerso:true
+				});
+
+			});
+		</script>
+
+		<style>
+			.inner-page {
+				width: 302px;
+				height: 290px;
+				padding: 5px;
+				background: #eee;
+				border: 1px solid #ccc;
+			}
+
+			.inner-page img {
+				width: 200px;
+				height: 120px;
+				margin-left: 50px;
+			}
+
+			.inner-page p {
+				font-size: 12px;
+			}
+		</style>
+	</head>
+
+	<body>
+
+	</body>
+</html>

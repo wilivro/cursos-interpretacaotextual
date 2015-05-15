@@ -9,192 +9,153 @@
     <link rel="stylesheet" href="../wilib/css/estilo.css">
 
     <script>
-        require(['../wilib/js/lib/alternativa'], function (edi) {
+        require(['../wilib/js/lib/arrasta'], function (edi) {
 
             edi.setConfig({
-                icone: "interrogacaoAzul",
                 mascote: 'mascote',
-                titulo: "O que você entende por lógica?<br> Clique sobre as imagens, leia as dicas e, em seguida marque a alternativa que melhor conceitua lógica de acordo com seus conhecimentos prévios.",
-                tempoFinal: 10,
-                qtdTelas: 2
+                titulo: 'Arraste as palavras para os espaços corretos e leia a explicação de Maria.',
+                tempoFinal: 20
             });
 
-            var revela =
-                    [
-                        'Lógica é uma Ciência.',
-                        'Estimula a dúvida, a crítica e o questionamento.',
-                        'Possui objetos definidos de estudo.'
-                    ];
+            var arrArrasta = [
+                {arrasta: 'duas', dataCorreta: '1', dataId: '1'},
+                {arrasta: 'raciocínio', dataCorreta: '2', dataId: '2'},
+                {arrasta: 'criança', dataCorreta: '3', dataId: '3'},
+                {arrasta: 'amarrada', dataCorreta: '4', dataId: '4'},
+                {arrasta: 'concreta', dataCorreta: '5', dataId: '5'},
+                {arrasta: 'corda', dataCorreta: '6', dataId: '6'},
+                {arrasta: 'cabeça', dataCorreta: '7', dataId: '7'},
+                {arrasta: 'adulto', dataCorreta: '8', dataId: '8'},
+                {arrasta: 'interpretará', dataCorreta: '9', dataId: '9'},
+                {arrasta: 'raiva', dataCorreta: '10', dataId: '10'},
+                {arrasta: 'aborrecido', dataCorreta: '11', dataId: '11'}
+            ];
 
-            var configBtns = {
-                width: 200, // tamanho tem que ser igual ao do btn-revela
-                height: 95
-            };
+            var texto = 'Existem [0] formas de [1]; abstrato e concreto. A criança pensa de forma concreta, por exemplo, se dissermos a uma [2], “Você está com a cara [3]”,' +
+                    ' ela poderá interpretar de forma [4], imaginando que uma [5] ou fio estão enrolados em volta da sua [6] amarrando seu rosto. Já, se um [7] ouvir a mesma frase,' +
+                    ' [8] de forma abstrata ou subjetiva, que se refere ao fato de estar com [9], chateado ou [10].';
 
-            var btns = [];
+            for (var i = 0; i < arrArrasta.length; i++) {
+                var aux = '';
+                for (var j = 0; j < arrArrasta[i].arrasta.length; j++) {
+                    aux += '_';
+                }
+                ;
+                texto = texto.replace('[' + i + ']', '<div class="alvo" data-correta="' + arrArrasta[i].dataCorreta + '">' + aux + '</div>');
+            }
 
-            btns.push({
-                alternativa: "A lógica é o estudo dos métodos e princípios usados, para distinguir o raciocínio correto do incorreto.",
-                correta: false
+            $('.balao').html(texto);
+
+            arrArrasta.sort(function () {
+                return 0.5 - Math.random()
             });
 
-            btns.push({
-                alternativa: "A lógica é a ciência que estuda a forma de interpretação dos contos e poesias da literatura brasileira.",
-                correta: true
-            });
-
-            btns.push({
-                alternativa: "Lógica são exercícios de matemática que nada tem a ver com filosofia",
-                correta: false
-            });
+            for (var i = 0; i < arrArrasta.length; i++) {
+                $('<div>')
+                        .addClass('arrasta fundoArrasta azulAlpha')
+                        .attr({
+                            'data-id': arrArrasta[i].dataId,
+                            id: 'arrasta' + (i + 1),
+                            'data-correta': arrArrasta[i].dataCorreta
+                        })
+                        .html(arrArrasta[i].arrasta)
+                        .appendTo('#arrasta');
+            }
 
             var config = {
-                tamanhoBoxTexto: 410,
-                marginBtns: 5,
-                posx: 140,
-                posy: 140
-
+                colorirFilho: true,
+                arrastaAbsolute: true,
+                reloadCorreta: true,
+                alvoFixo: true
             };
 
-            function callback(a) {
-            }
-
-            edi.alternativa(btns, callback, function (a) {
+            edi.arrasta('arrasta', 'alvo', function (a, b, c) {
                 if (a) {
-                    $('#txtFinal').animate({left: 1}, 800)
+                    c.html(b.css({display: 'flex'}))
                 }
-                else {
-                    $('#txtFinal').animate({left: 1}, 800)
-                            .css({
-                                border: '2px dashed #F00',
-                                color: '#F00',
-                                fontSize: 15
-                            }).find('div').html("Atenção! Lembre-se que a questão pede que você marque a alternativa em que o sentido denotativo ocorre, tente novamente!");
-                }
+            }, function () {
+                barraMsg('Muito bem!<br> Se você interpretar todos os textos que vier a ler “ao pé da letra” poderá gerar muitas confusões, por isso, o raciocínio lógico é tão importante, pois nos permite investigar, questionar e analisar o texto em seu contexto.', {height: 150, wait: 5});
             }, config);
 
-            if (edi.telaAtual() == 1) {
-                $('[data-edi = "alternativa"]').css({display: 'none'});
-            }
-            else {
-                $('.btn-revela').hide();
-            }
+            $('.arrasta').css({
+                margin: -5,
+                padding: 5
+            });
 
-            $('.btn-revela').mousedown(function () {
-                var $this = $(this);
-                var $div = $('<div>')
-                        .css({
-                            position: 'absolute',
-                            top: 210,
-                            left: 10,
-                            border: '1px solid #ccc',
-                            borderTop: 'none',
-                            borderRadius: '0 0 10px 10px',
-                            width: configBtns.width,
-                            height: 0,
-                            boxShadow: '3px 3px 5px rgba(0,0,0,0.5)',
-                            overflow: 'hidden'
-                        })
-                        .appendTo($this);
-
-                var middle = $('<div>')
-                        .css({
-                            position: 'relative',
-                            width: configBtns.width,
-                            height: configBtns.height,
-                            display: 'table-cell',
-                            verticalAlign: 'middle',
-                            textAlign: 'center',
-                            fontSize: 14,
-                            color: '#666',
-                            padding: '0 10px'
-                        })
-                        .html(revela[$this.attr('data-revela')])
-                        .appendTo($div);
-
-                $div.animate({
-                    height: 95
-                }, function () {
-                    $this.addClass('ok');
-                    if ($('.btn-revela.ok').length == revela.length) {
-                        edi.root.objetivos = [];
-                        edi.root.finalizar();
-                    }
-                });
-
-                $this.off();
-
-            })
-
+            $('<div>')
+                    .attr('id', 'mascote')
+                    .appendTo('#conteudo');
 
         });
     </script>
-
     <style>
-
-        #txtFinal {
-            position: absolute;
-            top: 110px;
-            left: -143px;
-            width: 119px;
-            height: 226px;
-            border-radius: 15px;
-            color: #9C0;
-            text-align: center;
-            border: 2px dashed #9C0;
-            padding: 10px;
-            z-index: 2;
-            font-size: 14px;
+        .alvo {
+            display: inline-block;
         }
 
-        #central {
+        .arrasta {
+            padding: 5px;
+            margin-right: 10px;
+            margin-left: 10px;
+            display: inline-block;
+            color: #FFF;
+            font-size: 16px;;
+        }
+
+        #boxArrasta {
+            position: absolute;
+            padding-top: 5px;
+            width: 650px;
+            height: 55px;
+            cursor: default;
+            top: 300px;
+            left: 50px;
+        }
+
+        #arrasta {
             position: relative;
-            width: 119px;
-            height: 226px;
             display: table-cell;
             vertical-align: middle;
+            width: 650px;
+            height: 60px;
         }
 
-        .btn-revela {
+        .balao {
+            position: relative;
+            vertical-align: middle;
+            text-align: center;
+            display: table-cell;
+            width: 500px;
+            height: 220px;
+            font-size: 16px;
+            color: #666;
+            line-height: 20px;
+        }
+
+        #boxTexto {
             position: absolute;
             top: 70px;
-            left: 10px;
+            left: 220px;
+            width: 500px;
+            height: 220px;
             text-align: center;
             border-radius: 10px;
-            border: solid 1px #E2E2E2;
-            color: rgb(128, 126, 126);
-            padding: 10px;
-            font-size: 16px;
-            width: 200px;
-            height: 190px;
-            background-size: 100% 100% !important;
-            box-shadow: 5px 1px 5px rgba(0, 0, 0, 0.5);
-            cursor: pointer;
-        }
-
-        #txt {
-            position: absolute;
-            top: 80px;
-            left: 180px;
-            color: #666;
-            font-size: 18px;
-            width: 430px;
-            text-align: center;
         }
 
     </style>
+
 </head>
 <body>
-<div id="txt" data-edi="alternativa">Tomando por base as dicas anteriores responda corretamente qual o conceito de
-    lógica.
+<img src="../wilib/img/svg/ruiva.svg" width="200" style="margin: 12px 5px; border-radius: 10px;"/>
+
+<div id="boxArrasta" class="btn btn-default-hover">
+    <div id="arrasta"></div>
 </div>
-<div class="btn-revela" data-revela="0" style="background: url(../img/licao01/p13.1.jpg);"></div>
-<div class="btn-revela" data-revela="1" style="background: url(../img/licao01/p13.2.jpg); left:280px;"></div>
-<div class="btn-revela" data-revela="2" style="background: url(../img/licao01/p13.3.jpg); left: 550px;"></div>
-<div id="txtFinal">
-    <div id="central">Muito bem! Precisamos pensar e argumentar logicamente para dar sentido às questões. A lógica nos
-        permite não dar como certo qualquer informação, mas nos sugere o aprofundamento e o questionamento.
-    </div>
+
+<div id="boxTexto">
+    <div class="balao"></div>
 </div>
+
+
 </body>
 </html>

@@ -1,94 +1,52 @@
-<!-- Desenvolvedor: Danilo Thiago -->
 <!doctype html>
 <html lang="pt-br">
 <head>
-    <title>Lição 01 Peça 02</title>
-    <meta charset="utf-8">
-    <script src="../wilib/js/lib/require.js"></script>
-    <script src="../wilib/js/app.js"></script>
-    <link rel="stylesheet" href="../wilib/css/font-awesome.css">
-    <link rel="stylesheet" href="../wilib/css/estilo.css">
+	<title>Lição 01 Peça 02</title>
+        <meta charset="utf-8">
+        <script src="../wilib/js/lib/require.js"></script>
+        <script src="../wilib/js/app.js"></script>
+        <link rel="stylesheet" href="../wilib/css/font-awesome.css">
+        <link rel="stylesheet" href="../wilib/css/estilo.css">
+	<script>
+		require(['../wilib/js/lib/alternativa_balao'], function (edi) {
 
-    <script>
-        $(function () {
-            require(['../wilib/js/lib/alternativa'], function (edi) {
+			edi.setConfig({
+				titulo: 'Antes de iniciarmos nossos estudos sobre interpretação e lógica precisamos entender o que significam estes dois termos. Você sabe o que significa interpretar? Clique sobre a alternativa correta.',
+                mascote: 'mascote',
+                tempoFinal: 10
+			});
 
-                edi.setConfig({
-                    icone: 'interrogacaoAzul',
-                    titulo: 'Antes de estudarmos sobre Interpretação de Textos vamos compreender<br> o que é um texto. De acordo com seus conhecimentos prévios clique<br> sobre a alternativa que melhor define o conceito de texto.'
-                });
+            //balões
+            var baloes = [
 
-                var alternativas = [
-                    {
-                        alternativa: 'Texto é o nome dado a um conjunto de livros dispostos em um mesmo local.',
-                        correta: false
-                    }, {
-                        alternativa: 'Texto é um conjunto de ideias organizadas e relacionadas entre si, formando um todo significativo capaz de produzir interação comunicativa.',
-                        correta: true
-                    }, {
-                        alternativa: 'Texto é o título de um poema muito famoso.',
-                        correta: false
-                    }
-                ];
+                {texto: 'Interpretar é o mesmo que atuar, é representar uma personagem criada por um autor ou escritor.', dataCorreta: false},
+                {texto: 'O ato de interpretar só pode ser realizado por atrizes e atores consagrados.', dataCorreta: false},
+                {texto: 'Interpretar significa explicar, esclarecer, compreender o que está subentendido em um texto ou imagem.', dataCorreta: true},
+                {texto: 'Interpretar é dissimular, fingir ser o que não é. Pode ser entendido como ação de enganar, mentir.', dataCorreta: false}
 
-                var config = {
-                    posx: 15,
-                    posy: 85,
-                    aleatorio: true,
-                    tamanhoBox: 35,
-                    tamanhoBoxTexto: 600,
-                    marginBtns: 5
-                }
+            ];
 
-                edi.alternativa(alternativas, function (acertou) {
-                }, function (a) {
-                    if (a) {
-                        $('#msg').fadeIn();
-                    } else {
-                        $('#msg').fadeIn()
-                                .find('p')
-                                .html('Atenção! Texto é uma sequência verbal (palavras), oral ou escrita, que forma um todo que tem sentido para um determinado grupo de pessoas em uma determinada situação.');
-                    }
-                }, config);
-
-                $('#balao').peBalao({
-                    left: 10,
-                    tamanhoBorda: 15,
-                    borda: '#ccc'
-                });
-
+			edi.alternativa_balao(baloes, function (a, b) {
+                //cb
+            }, function (a) {
+                barraMsg(a?'Excelente!<br> Interpretar é compreender o que está escrito<br> em um texto, uma imagem, um som, etc.':'Atenção!<br> Releia as alternativas e, leve em consideração que este curso<br> fala sobre interpretação de textos e lógica. Tente novamente!',{height: 150, wait: 0})
+            }, {
+                top: 0,
+                left: 80,
+                width: 300,
+                height: 150,
+                margin: '0 60px 0 0',
+                fontSize: 12,
+                leftPerson: -65,
+                topPerson: 43,
+                topIco: 0,
+                leftIco: -7
             });
-        })
-    </script>
-
-    <style>
-
-        #msg {
-            width: 500px;
-            position: absolute;
-            bottom: 20px;
-            left: 10px;
-            font-size: 13px;
-            text-align: center;
-            font-weight: 700;
-            color: #666;
-            display: none;
-        }
-
-        #msg p {margin-top: -10px}
-
-        #seta {
-            height: 40px;
-            float: left;
-        }
-    </style>
+		});
+	</script>
 </head>
 
 <body>
-<div id="msg">
-    <img id="seta" src="../wilib/img/fotos/seta-dir.png">
-    <p>Muito bem, você acertou! Texto é, então, uma sequência verbal (palavras), oral ou escrita, que forma um todo que
-        tem sentido para um determinado grupo de pessoas em uma determinada situação.</p>
-</div>
 </body>
+
 </html>

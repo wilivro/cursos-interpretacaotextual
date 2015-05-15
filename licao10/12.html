@@ -1,0 +1,150 @@
+<!doctype html>
+<html lang="pt-br">
+	<head>
+		<title>Lição 10 Peça 12</title>
+		<meta charset="utf-8">
+		<script src="../wilib/js/lib/require.js"></script>
+		<script src="../wilib/js/app.js"></script>
+    <link rel="stylesheet" href="../wilib/css/font-awesome.css">
+    <link rel="stylesheet" href="../wilib/css/estilo.css">
+
+		<!-- main -->
+		<script>
+			require(['../wilib/js/lib/alternativa_botao'], function (edi) {
+
+				edi.setConfig({// configurando o EDI
+          icone: "exclamacao",
+					titulo: "Vamos conhecer uma modinha? Clique sobre a imagem revele o " +
+									"texto, e em seguida responda corretamente as questões.",
+          mascote: 'mascoteVarinha',
+					qtdTelas: 2
+				});
+
+				var telas = [
+					{
+						titulo: 'Qual o tema retrato por esta modinha?',
+						btns: [
+							{dataCorreta: true,  texto: 'Amor'},
+							{dataCorreta: false, texto: 'ficar com dó'},
+							{dataCorreta: false, texto: 'fúria'}
+						]
+					}, {
+						titulo: 'Qual o sentimento do autor da Modinha diante do ser amado?',
+						btns: [
+							{dataCorreta: false, texto: 'Tristeza'},
+							{dataCorreta: true,  texto: 'Angústia'},
+							{dataCorreta: false, texto: 'Alegria'}
+						]
+					}
+				];
+
+				var config = {
+					width: 230,
+					height: 25,
+					left: 460,
+					top: 135,
+					margin: 3,
+					btnBranco: true,
+					animacao: true
+				}
+
+				edi.alternativa_botao(telas[edi.telaAtual - 1].btns, null, function(a) {
+					if (a) {
+						$('.msg').fadeIn();
+						return;
+					}
+
+					$('.msg').html(
+						'Pense um pouco mais. Analise os versos e responda corretamente.'
+					).css('color', 'red').fadeIn();
+				}, config);//iniciando o EDI
+
+				$('h4.titulo').html(telas[edi.telaAtual - 1].titulo);
+
+				$('.alter-btn, h4.titulo').hide();
+
+				$('._btn').click(function() {
+					$(this).fadeOut();
+
+					$('.alter-btn, h4.titulo, .texto').fadeIn();
+				});
+			});
+		</script>
+        <style>
+						.alter-btn {
+							width: 330px !important;
+						}
+
+						h4.titulo {
+							position: absolute;
+							left: 445px;
+							top: 70px;
+							color: #666;
+						}
+
+						.msg {
+				      position: absolute;
+				      left: 470px;
+				      top: 320px;
+				      width: 200px;
+				      font-size: 12px;
+				      font-style: italic;
+				      color: #9c0;
+				      text-align: center;
+				      display: none;
+				    }
+
+						._btn {
+							position: absolute;
+							left: 290px;
+							top: 150px;
+							width: 200px;
+							cursor: pointer;
+						}
+
+						.texto {
+							position: absolute;
+							left: 20px;
+							top: 70px;
+							width: 300px;
+							font-size: 13px;
+							display: none;
+						}
+        </style>
+	</head>
+
+	<body>
+		<div class="texto">
+			<h5>A Vida Desta Alma</h5>
+
+			<strong>I</strong>
+			<p>
+				A vida dest’alma deponho em teus pés
+				Não pode esta vida ser minha, bem vês?!...
+				Te amo, e bem sabes que morro por ti;
+				Deliro e padeço, depois que te vi.
+			</p>
+
+			<strong>II</strong>
+			<p>
+				Teus olhos têm chamas, teus olhos têm luz,
+				E a alma incendeia, nos flocos azuis...
+				Te amo, e bem sabes que morro por ti!
+				Deliro e padeço, depois que te vi.
+			</p>
+
+			<span style="font-size: 12px; font-style: italic">
+				(Pertence ao folclore pernambucano. Recolhida em
+				Triunfo, no fim do século XIX).
+			</span>
+		</div>
+
+		<h4 class="titulo"></h4>
+
+		<div class="msg">
+			Correto! Esta Modinha fala de Amor, e o autor declara toda a sua angústia por tanto amar.
+		</div>
+
+		<img class="_btn" src="../img/licao10/12.png">
+	</body>
+</html>

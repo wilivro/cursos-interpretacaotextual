@@ -1,172 +1,84 @@
 <!doctype html>
 <html lang="pt-br">
-<head>
-    <title>Lição 01 Peça 43</title>
-    <meta charset="utf-8">
-    <script src="../wilib/js/lib/require.js"></script>
-    <script src="../wilib/js/app.js"></script>
-    <link rel="stylesheet" href="../wilib/css/font-awesome.css">
-    <link rel="stylesheet" href="../wilib/css/estilo.css">
+	<head>
+		<title>Lição 01 Peça 08</title>
+		<meta charset="utf-8">
+		<script src="../wilib/js/lib/require.js"></script>
+		<script src="../wilib/js/app.js"></script>
+		<link rel="stylesheet" href="../wilib/css/font-awesome.css">
+		<link rel="stylesheet" href="../wilib/css/estilo.css">
 
-    <script>
-        require(['../wilib/js/lib/arrasta'], function (edi) {
+		<script>
+			require(['../wilib/js/lib/alternativa'], function (edi) {
 
-            edi.setConfig({
-                mascote: 'mascote',
-                tempoFinal: 10,
-                titulo: 'Relacione as semelhanças sobre as quais se ' +
-                'construíram as metáforas das frases a seguir ' +
-                'pintando a alternativa correta.'
-            });
+				edi.setConfig({
+					tipo: 'mascote_pensando',
+					icone: 'exclamacao',
+					titulo: 'Marque a resposta correta de acordo com a sentença.',
+				});
+				
+				var alternativas = [
+					{
+						alternativa: 'Através da leitura e decodificação dos códigos de linguagem.',
+						correta: false
+					},
+                    {
+						alternativa: 'Através do Raciocínio Lógico aliado à prática e aquisição de novos conhecimentos.',
+						correta: true
+					},
+                    {
+						alternativa: 'Através da sorte, porque apenas marquei aleatoriamente as questões e acabei “dando sorte”',
+						correta: false
+					}	
+				];
+				
+				var config = {
+					posx: 180,
+					posy: 100,
+					aleatorio: true,
+                    tamanhoBoxTexto: 410,
+					tamanhoBox: 35,
+					marginBtns: 25
+				}
 
+				edi.alternativa(alternativas, null, function (a) {
+					barraMsg(a?'Parabéns!<br> Você usou seu raciocínio lógico para associar as palavras conhecidas, atribuindo sentido aos textos lidos, isso significa que você aprendeu a interpretar usando a lógica. Continue praticando e ampliando eu<br> vocabulário, ler é fundamental!'
+                            :'Você errou!<br> Lembre-se que nesta lição estudamos como o raciocínio lógico pode auxiliar na interpretação e compreensão de textos. Responda com atenção.', {height: 150, wait: 0})
+				}, config);
+				
+				$('#balao').peBalao({
+					left: 10
+				});
+			});
+		</script>
 
-            edi.arrasta('arrasta', 'alvo', function (a, b, c) {
+		<style>
+			#balao {
+				border: 1px solid #ccc;
+				background: #fff;
+				width: 140px;
+				height: 190px;
+				position: absolute;
+				left: 10px;
+				top: 100px;
+				font-size: 13px;
+				text-align: center;
+				font-weight: 700;
+				line-height: 1.2;
+				border-radius: 10px;
+				color: #48A2D4;
+			}
+			
+			#ico {
+				margin: 10px 0 -10px 0;
+			}
+		</style>
+	</head>
 
-                b.remove();
-                c.css({
-                    background: 'url(../wilib/img/fotos/tinta-verd.png) no-repeat',
-                    backgroundSize: '100% 100%',
-                    backgroundPositionX: '-360px',
-                    color: '#fff'
-                }).animate({
-                    backgroundPositionX: '0px'
-                }, 80);
-                $('.arrasta').off();
-            }, function(a){
-                if(a) {
-                    barraMsg('Parabéns! Ao dizer que está com saudade de ficar bom,<br>o autor afirma, de maneira literária, que está doente. Isso elimina as<br> letras A e E. “Escrever é consequência natural.” Consequência de quê?<br> De ficar bom, ou seja, ficando bom, ele volta a escrever. Ele só não está escrevendo por estar doente. Daí o gabarito ser a letra C.', {zIndex: 1000});
-                }
-                else {
-                    barraMsg('Fique atento! Ao dizer que está com saudade de ficar bom,<br> o autor afirma, de maneira literária, que está...', {zIndex: 1000});
-                }
-
-            }, {
-                clone: true,
-                multAlvo: true,
-                target: false
-            });
-            $('#arrasta').load('../wilib/img/svg/pincel.svg', function () {
-                $('#arrasta').find('svg').attr({
-                    width: 90
-                });
-                $('#corPonta').attr({
-                    fill: '#9c0'
-                });
-            });
-
-
-        });
-    </script>
-
-    <style>
-        .box {
-            position: absolute;
-            left: 190px;
-            top: 110px;
-            width: 400px;
-            height: 255px;
-            border-radius: 5px;
-            border: 1px solid #eee;
-            box-shadow: 0 2px rgba(0, 0, 0, 0.2);
-            background: linear-gradient(#fff, #eee);
-        }
-
-        .arrastas {
-            position: absolute;
-            left: 160px;
-            top: -40px;
-            width: 100px;
-            height: 100px;
-            border-radius: 5px;
-            border: 1px solid #eee;
-            box-shadow: 0 2px rgba(0, 0, 0, 0.2);
-            background: linear-gradient(#fff, #eee);
-        }
-
-        .arrasta {
-            position: absolute;
-            left: 5px;
-            top: 15px;
-            width: 90px;
-            height: 70px;
-        }
-
-        .alvos {
-            position: absolute;
-            left: 20px;
-            top: 70px;
-            width: 550px;
-            display: table;
-        }
-
-        .alvo {
-            position: relative;
-            float: left;
-            width: 360px;
-            padding: 10px 40px 10px 0px;
-            text-align: center;
-            font-size: 13px;
-            color: #666;
-        }
-
-        #txt {
-            position: absolute;
-            top: 75px;
-            left: 10px;
-            width: 250px;
-            background: #FAFAFA;
-            border-radius: 10px;
-            box-shadow: 3px 3px 5px rgba(0, 0, 0, 0.5);
-            color: #666;
-            padding: 5px 10px;
-            text-align: center;
-            font-size: 16px;
-            z-index: 1000;
-        }
-
-        #txt > div.txt {
-            text-align: left;
-        }
-
-        .txt > p.bold {
-            font-size: 11px;
-            float: right;
-            color: #000;
-        }
-
-        #pergunta {
-            position: absolute;
-            top: 200px;
-            left: 30px;
-            text-align: center;
-            font-size: 18px;
-            color: #666;
-        }
-    </style>
-</head>
-<body>
-
-<div class="box">
-    <div class="arrastas">
-        <div id="arrasta" class="arrasta" data-correta="1"></div>
-    </div>
-
-    <div class="alvos">
-        <div class="alvo" data-correta="0"><span class="bold">A</span> - O autor esteve doente e voltou a escrever.</div>
-        <div class="alvo" data-correta="0"><span class="bold">B</span> - O autor está doente e continua escrevendo.</div>
-        <div class="alvo" data-correta="1"><span class="bold">C</span> - O autor não escreve porque está doente.</div>
-        <div class="alvo" data-correta="0"><span class="bold">D</span> - O autor está doente porque não escreve.</div>
-        <div class="alvo" data-correta="0"><span class="bold">E</span> - O autor ficou bom, mas não voltou a escrever.</div>
-    </div>
-</div>
-
-
-<div id="txt" class="box-revela">
-    <div class="txt">
-        Estou com saudade de ficar bom.<br> Escrever é conseqüência natural.
-        <p class="bold">(Jorge Amado, na Folha<br> de São Paulo, 22/10/96)</p>
-    </div>
-</div>
-<div id="pergunta">Segundo o texto:</div>
-</body>
+	<body>
+		<div id="balao">
+			<img id="ico" src="../wilib/img/svg/iconeInterrogacao.svg">
+			<p>Para responder a essas questões você utilizou os conhecimentos adquiridos ao longo desta lição. Como foi possível interpretar esses textos?</p>
+		</div>
+	</body>
 </html>

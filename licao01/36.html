@@ -3,99 +3,122 @@
 <head>
     <title>Lição 01 Peça 36</title>
     <meta charset="utf-8">
-
     <script src="../wilib/js/lib/require.js"></script>
     <script src="../wilib/js/app.js"></script>
     <link rel="stylesheet" href="../wilib/css/font-awesome.css">
     <link rel="stylesheet" href="../wilib/css/estilo.css">
 
     <script>
-        require(['../wilib/js/lib/arrasta'], function (edi) {
+        require(['../wilib/js/lib/quebra-cabeca', '../wilib/js/lib/alternativa_botao'], function (edi, edi2) {
 
-            edi.setConfig({
-                icone: 'exclamacao',
-                titulo: 'Qual das características a seguir pode ser atribuída à galinha?<br>Arraste para o primeiro lugar do pódio a resposta correta.',
-                mascote: 'mascote',
-                tempoFinal: 10
+            edi2.setConfig({
+                titulo: 'Monte o quebra-cabeça para revelar o texto, e responda corretamente à questão.'
             });
-
-            var arrArrasta = [
-                {arrasta: 'conformismo', dataCorreta: 1},
-                {arrasta: 'avareza', dataCorreta: 2},
-                {arrasta: 'ingratidão', dataCorreta: 3},
-                {arrasta: 'revolta', dataCorreta: 4},
-                {arrasta: 'hipocrisia', dataCorreta: 5}
+            var btns = [
+                [
+                    {texto: 'Põe a hospitalidade<br> acima da prudência.', dataCorreta: true},
+                    {texto: 'Hospeda qualquer um, mas<br> somente em noites chuvosas.', dataCorreta: false},
+                    {texto: 'Dá preferência a hospedar<br> pessoas desconhecidas.', dataCorreta: false}
+                ]
             ];
 
-            arrArrasta.sort(function () {
-                return 0.5 - Math.random()
-            });
+            var arr = [
+                {
+                    quest: 'Segundo o poeta, o sofrimento<br> do povo ocorreu:',
+                    msgT: 'Muito bem!<br> Na ânsia de ser hospitaleiro, o brasileiro hospeda,<br> imprudentemente, em sua casa, pessoas desconhecidas.',
+                    msgF: 'Atenção!<br> O texto não diz que o brasileiro hospeda apenas em noites<br> chuvosas, e o texto também não faz referência a nenhuma<br> preferência dos brasileiros ao hospedar. Pense um pouco mais.'
+                }
+            ];
 
-            for (var i = 0; i < arrArrasta.length; i++) {
+            $('#quest').html(arr[edi.telaAtual() - 1].quest);
+            $('.num').html(edi.telaAtual());
 
-                $('<div>')
-                        .addClass('arrasta barra')
-                        .attr({
-                            'data-correta': arrArrasta[i].dataCorreta
-                        })
-                        .html(arrArrasta[i].arrasta)
-                        .appendTo('#boxArrasta');
-            }
+            var config2 = {
+                tamanhoTexto: 14,
+                colunas: 1,
+                width: 320,
+                height: 20,
+                left: 230,
+                top: 150,
+                margin: '1px 5px',
+                padding: 5,
+                randomico: true,
+                display: 'block',
+                btnBranco: true,
+                animacao: true
+            };
 
-            var config = {};
+            edi2.alternativa_botao(btns[edi.telaAtual() - 1], null, function (a) {
+                barraMsg(a ? arr[edi.telaAtual() - 1].msgT : arr[edi.telaAtual() - 1].msgF, {height: 100, wait: 0})
+            }, config2);
 
-            edi.arrasta('arrasta', 'alvo', function (a, b) {
-                    $('#alvoPodium').css({top: 165});
+            var config = {
+                width: 303,
+                height: 178,
+                left: 80,
+                top: 60,
+                background: '#ccc',
+                numPecas: 2,
+                callBacks: [
+                    function () {
+                        $('#texto-01').fadeIn();
+                    },
+                    function () {
+                        $('#texto-02').fadeIn();
+                    },
+                    function () {
+                        $('#texto-03').fadeIn();
+                    }
+                ]
+            };
 
-                barraMsg(a?'Muito Bem! A resposta se justifica pelo fato de a galinha continuar pondo os ovos, apesar de perder as regalias alimentares. Ela se conformava com a situação e prosseguia na sua função de poedeira de ovos de ouro.'
-                        :'Tente novamente! A resposta se justifica pelo fato de a galinha continuar pondo os ovos, apesar de perder as regalias alimentares.')
+            $('[data-edi="alternativa_botao"]').css({display: 'none'});
 
-            }, null, config);
+            edi.quebraCabeca('../img/licao01/p36.jpg', function () {
+                edi.root.regressiva(5000, 'para a próxima questão.');
+                setTimeout(function(){
+                    $('[data-edi="alternativa_botao"]').fadeIn();
+                    $('#texto, [data-edi="quebraCabeca"]').fadeOut();
+                    $('#texto-titulo').html('Segundo as ideias contidas no texto, o brasileiro:')
+                }, 5000);
+
+            }, config);
 
         });
-
     </script>
 
     <style>
-        .barra{
-            background: url(../wilib/img/svg/retangulo.svg);
-            width: 239px;
-            height: 45px;
-            margin: 5px;
-            text-align: center;
-            line-height: 40px;
-        }
-        #boxArrasta{
+        #texto {
+            width: 270px;
             position: absolute;
-            top: 100px;
+            left: 400px;
+            top: 180px;
+            font-size: 14px;
+            line-height: 1.4;
+            z-index: 1000;
+            text-align: justify;
+            color: #666;
         }
-        #texto{
-            text-align: center;
-            margin: 10px;
-            line-height: 24px;
+
+        .texto {
+            display: none;
         }
-        #podium{
-            background: url(../wilib/img/svg/podium.svg);
-            width: 459px;
-            height: 155px;
-            position: absolute;
-            top: 202px;
-            left: 310px;
-        }
-        #alvoPodium{
-            width: 239px;
-            height: 45px;
-            position: absolute;
-            top: 158px;
-            left: 381px;
-        }
+
     </style>
 </head>
 
 <body>
-<div id="alvoPodium" class="alvo" data-correta="1"></div>
-<div id="podium"></div>
-<div id="boxArrasta">
+<div id="texto">
+    <span class="texto" id="texto-01">
+        “A maior alegria do brasileiro é hospedar alguém, mesmo
+    </span>
+    <span class="texto" id="texto-02">
+        um desconhecido que lhe peça pouso, numa noite de chuva.”
+    </span>
+    <span class="texto" id="texto-03">
+        <span style="float: right; font-size: 12px">(Cassiano Ricardo, in O Homem Cordial)</span>
+    </span>
 </div>
+
 </body>
 </html>

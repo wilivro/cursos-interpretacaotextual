@@ -1,0 +1,61 @@
+<!doctype html>
+<html lang="pt-br">
+<head>
+    <title>Lição 01 Peça 41</title>
+    <meta charset="utf-8">
+    <script src="../wilib/js/lib/require.js"></script>
+    <script src="../wilib/js/app.js"></script>
+    <link rel="stylesheet" href="../wilib/css/font-awesome.css">
+    <link rel="stylesheet" href="../wilib/css/estilo.css">
+
+    <script>
+        require(['../wilib/js/lib/alternativa_vf'], function (edi) {
+
+            edi.setConfig({
+                icone: "interrogacaoAzul",
+                mascote: 'mascote',
+                titulo: "Considerando as ideias e estruturas do texto que você leu<br> anteriormente, clique em VERDADEIRO (V) ou FALSO (F)."
+            });
+
+            var alternativas = [];
+
+            alternativas.push({
+                texto: 'O passarinho recém-nascido pode aprender o canto de outras<br>espécies como o ser humano recém-nascido pode aprender os<br> sons de qualquer língua.',
+                dataCorreta: false
+            });
+
+            alternativas.push({
+                texto: 'O pássaro adulto quando consegue aprender o canto<br> de outra espécie não possui o “sotaque” estrangeiro.',
+                dataCorreta: false
+            });
+
+            alternativas.push({
+                texto: 'A criança ao se tornar adulta pode aprender outra língua,<br> entretanto nunca perderá o sotaque de sua língua de origem.',
+                dataCorreta: true
+            });
+
+            alternativas.push({
+                texto: 'No processo de construção do texto<br> é usada a linguagem Denotativa.',
+                dataCorreta: true
+            });
+
+            edi.alternativa_vf(alternativas, function (a) {
+
+            }, function (a) {
+                if (a)
+                    mensagem('<div style="width: 430px; font-size: 22px; display: inline-block">Parabéns! Você conseguiu responder corretamente as questões.</div>');
+                else
+                    mensagem('<div style="width: 430px; font-size: 22px; display: inline-block">Observe: Leve em consideração o texto lido anteriormente para embasar suas respostas, caso considere necessário, releia o texto novamente.</div>');
+            }, {
+                left: 60,
+                top: 50,
+                margin: '0 0 15px 0'
+            });
+        });
+    </script>
+</head>
+
+<body>
+
+</body>
+</html>

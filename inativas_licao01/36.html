@@ -1,7 +1,7 @@
 <!doctype html>
 <html lang="pt-br">
 <head>
-    <title>Lição 01 Peça 39</title>
+    <title>Lição 01 Peça 36</title>
     <meta charset="utf-8">
 
     <script src="../wilib/js/lib/require.js"></script>
@@ -14,17 +14,17 @@
 
             edi.setConfig({
                 icone: 'exclamacao',
-                titulo: 'Clique no botão iniciar para revelar o texto e a questão.<br> Em seguida arraste até o primeiro lugar do pódio a resposta correta.',
+                titulo: 'Qual das características a seguir pode ser atribuída à galinha?<br>Arraste para o primeiro lugar do pódio a resposta correta.',
                 mascote: 'mascote',
                 tempoFinal: 10
             });
 
             var arrArrasta = [
-                {arrasta: 'O autor não escreve <br>porque está doente.', dataCorreta: 1},
-                {arrasta: 'O autor esteve doente <br>e voltou a escrever.', dataCorreta: 2},
-                {arrasta: 'O autor está doente e<br> continua escrevendo.', dataCorreta: 3},
-                {arrasta: 'O autor está doente<br> porque não escreve.', dataCorreta: 4},
-                {arrasta: 'O autor ficou bom,<br> mas não voltou a escrever.', dataCorreta: 5}
+                {arrasta: 'conformismo', dataCorreta: 1},
+                {arrasta: 'avareza', dataCorreta: 2},
+                {arrasta: 'ingratidão', dataCorreta: 3},
+                {arrasta: 'revolta', dataCorreta: 4},
+                {arrasta: 'hipocrisia', dataCorreta: 5}
             ];
 
             arrArrasta.sort(function () {
@@ -47,31 +47,23 @@
             edi.arrasta('arrasta', 'alvo', function (a, b) {
                     $('#alvoPodium').css({top: 165});
 
-                barraMsg(a?'Muito bem!<br> Ao dizer que está com saudade de ficar bom, o autor afirma, de maneira literária, que está doente. E que só não está escrevendo por estar doente.'
-                        :'Atenção!<br> Ao dizer que está com saudade de ficar bom, o autor afirma, de maneira literária, que está doente. E que só não está escrevendo por estar doente. Tente novamente.', {height: 150, wait: 0})
+                barraMsg(a?'Muito Bem! A resposta se justifica pelo fato de a galinha continuar pondo os ovos, apesar de perder as regalias alimentares. Ela se conformava com a situação e prosseguia na sua função de poedeira de ovos de ouro.'
+                        :'Tente novamente! A resposta se justifica pelo fato de a galinha continuar pondo os ovos, apesar de perder as regalias alimentares.')
 
             }, null, config);
-
-            $('#botao').mousedown(function(){
-                $('#texto-titulo').fadeOut(function(){
-                    $(this).html('Estou com saudade de ficar bom. Escrever é consequência natural.<br><span style="float: right; font-size: 12px;">(Jorge Amado, na Folha de São Paulo, 22/10/96).</span><br>Segundo o texto:').fadeIn()
-                });
-                $('#botao, #block').fadeOut();
-            });
 
         });
 
     </script>
 
     <style>
-
         .barra{
             background: url(../wilib/img/svg/retangulo.svg);
             width: 239px;
             height: 45px;
             margin: 5px;
             text-align: center;
-            line-height: 15px;
+            line-height: 40px;
         }
         #boxArrasta{
             position: absolute;
@@ -97,22 +89,6 @@
             top: 158px;
             left: 381px;
         }
-        #block {
-            position: absolute;
-            top: 68px;
-            left: 0;
-            width: 788px;
-            height: 315px;
-            background: #fff;
-            z-index: 1000;
-        }
-        #botao {
-            position: absolute;
-            z-index: 1002;
-            top: 120px;
-            left: 300px;
-            cursor: pointer;
-        }
     </style>
 </head>
 
@@ -121,7 +97,5 @@
 <div id="podium"></div>
 <div id="boxArrasta">
 </div>
-<div id="block"></div>
-<img id="botao" src="../wilib/img/svg/btn-seta-cima.svg" width="200"/>
 </body>
 </html>

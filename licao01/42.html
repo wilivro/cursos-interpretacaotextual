@@ -1,143 +1,202 @@
 <!doctype html>
 <html lang="pt-br">
-	<head>
-        <title>Lição 01 Peça 42</title>
-		<meta charset="utf-8">
-		<script src="../wilib/js/lib/require.js"></script>
-		<script src="../wilib/js/app.js"></script>
-        <link rel="stylesheet" href="../wilib/css/font-awesome.css">
-        <link rel="stylesheet" href="../wilib/css/estilo.css">
+<head>
+    <title>Lição 01 Peça 42</title>
+    <meta charset="utf-8">
+    <script src="../wilib/js/lib/require.js"></script>
+    <script src="../wilib/js/app.js"></script>
+    <link rel="stylesheet" href="../wilib/css/font-awesome.css">
+    <link rel="stylesheet" href="../wilib/css/estilo.css">
 
-		<script>
-			require(['../wilib/js/lib/revela','../wilib/js/lib/alternativa_botao'], function (edi, edi2) {
+    <script>
+        require(['../wilib/js/lib/arrasta', '../wilib/js/lib/alternativa_botao'], function (edi, edi2) {
 
-				edi2.setConfig({
-                    icone: "exclamacao",
+            if (edi2.root.util.telaAtual == 0) {
+
+                edi2.setConfig({
                     mascote: 'mascote',
-					titulo: "Clique sobre a imagem para revelar o texto<br> e em seguida responda corretamente a questão.",
-                    tempoFinal: 10
-				});
-
-                var btns = [];
-
-                btns.push({
-                    texto: "aumenta a cada ano.",
-                    dataCorreta: false
+                    titulo: 'Complete o texto arrastando as palavras para <br>os espaços corretos, em seguida responda a questão.',
+                    tempoFinal: 20,
+                    qtdTelas: 2
                 });
 
-                btns.push({
-                    texto: "é maior no primeiro ano.",
-                    dataCorreta: true
+                edi2.alternativa_botao();
+
+                var arrArrasta = [
+                    {arrasta: 'prêmio', dataCorreta: '1', dataId: '1'},
+                    {arrasta: 'Shell', dataCorreta: '2', dataId: '2'},
+                    {arrasta: 'quero', dataCorreta: '3', dataId: '3'},
+                    {arrasta: 'feios', dataCorreta: '4', dataId: '4'},
+                    {arrasta: 'empresas', dataCorreta: '5', dataId: '5'},
+                    {arrasta: 'multinacionais', dataCorreta: '6', dataId: '6'},
+                    {arrasta: 'traidor', dataCorreta: '7', dataId: '7'},
+                    {arrasta: 'venda', dataCorreta: '8', dataId: '8'}
+                ];
+
+                var texto = 'Um [0] chamado Sharp ou [1], Deus me livre! Não [2]. Acho<br> ' +
+                        'esses nomes [3]. Não recebo prêmios de [4] ligadas a grupos<br> [5]. Não sou [6] do meu povo nem estou à [7].<span style="float: right; font-size: 12px;">(Ariano Suassuna, na Veja, 3/7/96)</span>';
+
+                for (var i = 0; i < arrArrasta.length; i++) {
+                    var aux = '';
+                    for (var j = 0; j < arrArrasta[i].arrasta.length; j++) {
+                        aux += '_';
+                    }
+                    ;
+                    texto = texto.replace('[' + i + ']', '<div class="alvo" data-correta="' + arrArrasta[i].dataCorreta + '">' + aux + '</div>');
+                }
+
+                $('.balao').html(texto);
+
+                arrArrasta.sort(function () {
+                    return 0.5 - Math.random()
                 });
 
-                btns.push({
-                    texto: "é maior na data do falecimento.",
-                    dataCorreta: false
-                });
-
-                btns.push({
-                    texto: "é constante.",
-                    dataCorreta: false
-                });
-
-                btns.push({
-                    texto: "incomoda muito.",
-                    dataCorreta: false
-                });
+                for (var i = 0; i < arrArrasta.length; i++) {
+                    $('<div>')
+                            .addClass('arrasta fundoArrasta azulAlpha')
+                            .attr({
+                                'data-id': arrArrasta[i].dataId,
+                                id: 'arrasta' + (i + 1),
+                                'data-correta': arrArrasta[i].dataCorreta
+                            })
+                            .html(arrArrasta[i].arrasta)
+                            .appendTo('#arrasta');
+                }
 
                 var config = {
-                    animacao: true,
-                    width: 300,
-                    btnBranco: true,
-                    colunas: 1,
-                    margin: 1,
-                    height: 30,
-                    top: 80,
-                    randomico: true,
-                    left: 285
-
+                    colorirFilho: true,
+                    reloadCorreta: true,
+                    alvoFixo: true
                 };
 
-                function callback (a) {
-
-                }
-                $('#txt').peBalao({scaleX: -1, left: 30});
-                edi2.alternativa_botao(btns, callback, function (a) {
-                    if(a)
-                        mensagem('<div style="width: 430px; font-size: 22px; display: inline-block">Muito Bem! Nada no texto fala de aumento ou diminuição da saudade. A palavra “calendário” é a chave. Ao dizer que “não há calendário para a saudade”, a autora diz que não existe data marcada para se ter mais ou menos saudade. Ou seja, a saudade não depende do tempo, simbolizado aqui pelo calendário: ela simplesmente existe.</div>');
-                    else
-                        mensagem('<div style="width: 430px; font-size: 22px; display: inline-block">Atenção! Nada no texto fala de aumento ou diminuição da saudade. A palavra “calendário” é a chave. Ao dizer que “não há calendário para a saudade”, a autora diz que não existe data marcada para se ter mais ou menos saudade.</div>');
-
-
+                edi.arrasta('arrasta', 'alvo', function (a, b, c) {
+                    if (a) {
+                        c.html(b.css({display: 'flex'}))
+                    }
+                }, function () {
                 }, config);
 
-                $('[data-edi = "alternativa_botao"]').addClass('box-revela');
+                $('.arrasta').css({
+                    margin: -5,
+                    padding: 5
+                });
 
-				edi.revela('btn-revela', 'box-revela', function () {
+                $('<div>')
+                        .attr('id', 'mascote')
+                        .appendTo('#conteudo');
+            } else {
+                edi2.setConfig({
+                    titulo: 'A palavra que melhor define o autor do texto é:'
+                });
 
-                }, function (btn) {
+                var btns = [
+                    [
+                        {texto: 'megalomaníaco', dataCorreta: false},
+                        {texto: 'revoltado', dataCorreta: false},
+                        {texto: 'narcisista', dataCorreta: false},
+                        {texto: 'nacionalista', dataCorreta: true},
+                        {texto: 'decepcionado', dataCorreta: false}
+                    ]
+                ];
 
-				}, {ocultarBtn: true});
+                var config2 = {
+                    tamanhoTexto: 14,
+                    colunas: 1,
+                    width: 320,
+                    height: 20,
+                    left: 230,
+                    top: 100,
+                    margin: '1px 5px',
+                    padding: 5,
+                    randomico: true,
+                    display: 'block',
+                    btnBranco: true,
+                    animacao: true
+                };
 
+                edi2.alternativa_botao(btns[0], null, function (a) {
+                    barraMsg(a?'Parabéns!<br> Ao dizer que não aceita “prêmios de empresas ligadas a grupos multinacionais”, o autor revela o seu amor pelo Brasil, a esse<br> sentimento dá-se o nome de nacionalismo. Perceba como é <br>importante ter um vocabulário rico.'
+                            :'Atenção!<br> Para resolver essa questão você precisa associar a palavra ao seu significado e desta forma compreender o texto. Caso não conheça algumas das palavras pesquise no dicionário on-line e tente novamente.', {
+                        height: 150,
+                        wait: 0
+                    })
+                }, config2);
 
-			});
-		</script>
-
-		<style>
-
-            #img{
-                position: absolute;
-                top: 110px;
-                left: 280px;
-                text-align: center;
-                border-radius: 10px;
-                border: solid 1px #E2E2E2;
-                color: #807E7E;
-                padding: 10px;
-                font-size: 16px;
+                $('#tela1').hide();
+                edi.arrasta();
             }
 
-            .img {
-                width: 170px;
-                margin-top: 8px;
-                margin-left: 41px;
-                height: 170px;
-                box-shadow: 5px 5px 5px rgba(0, 0, 0, 0.5);
-                border-radius: 5px;
-            }
+        });
+    </script>
+    <style>
+        .alvo {
+            display: inline-block;
+        }
 
-            #txt {
-                position: absolute;
-                top: 85px;
-                left: 5px;
-                font-size: 14px;
-                height: 260px;
-                width: 250px;
-                color: #666;
-                padding: 10px;
-                border: 1px solid #ccc;
-                border-radius: 10px;
-            }
+        .arrasta {
+            padding: 5px;
+            margin-right: 10px;
+            margin-left: 10px;
+            display: inline-block;
+            color: #FFF;
+            font-size: 16px;;
+        }
 
-            .bold {
-                font-size: 11px;
-                float: right;
-                color: #000;
-            }
+        #boxArrasta {
+            position: absolute;
+            padding-top: 5px;
+            width: 700px;
+            height: 55px;
+            cursor: default;
+            top: 300px;
+            left: 30px;
+        }
 
-		</style>
-	</head>
+        #arrasta {
+            position: relative;
+            display: table-cell;
+            vertical-align: middle;
+            width: 700px;
+            height: 60px;
+        }
 
-    <div id="txt" class="box-revela">
-        “Não existe essa coisa de um ano sem<br>Senna, dois anos sem Senna... Não há calendário para a saudade”.<br><br>
+        .balao {
+            position: relative;
+            vertical-align: middle;
+            text-align: center;
+            display: table-cell;
+            width: 510px;
+            height: 220px;
+            font-size: 16px;
+            color: #666;
+            line-height: 20px;
+        }
 
-        <span class="bold">(Adriane Galisteu, no Jornal do Brasil))</span>
+        #boxTexto {
+            position: absolute;
+            top: 70px;
+            left: 220px;
+            width: 510px;
+            height: 220px;
+            text-align: center;
+            border-radius: 10px;
+        }
 
-        <img class="img" src="../img/licao01/p42.png" width="200"/>
+    </style>
 
+</head>
+<body>
+<div id="tela1">
+    <img src="../wilib/img/svg/ruiva.svg" width="200" style="margin: 12px 5px; border-radius: 10px;"/>
+
+    <div id="boxArrasta" class="btn btn-default-hover">
+        <div id="arrasta"></div>
     </div>
 
-	<body>
-        <img id="img" class="btn-revela" src="../img/licao01/p42.png" width="200"/>
-	</body>
+    <div id="boxTexto">
+        <div class="balao"></div>
+    </div>
+</div>
+
+</body>
 </html>

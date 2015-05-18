@@ -1,7 +1,8 @@
+<!--Desenvolvedor: Leandro Fortaleza -->
 <!doctype html>
 <html lang="pt-br">
 <head>
-    <title>Lição 01 Peça 37</title>
+    <title>rev_k004</title>
     <meta charset="utf-8">
     <script src="../wilib/js/lib/require.js"></script>
     <script src="../wilib/js/app.js"></script>
@@ -9,86 +10,55 @@
     <link rel="stylesheet" href="../wilib/css/estilo.css">
 
     <script>
-        $(function () {
-            require(['../wilib/js/lib/alternativa'], function (edi) {
+        require(['../wilib/js/lib/alternativa_b06'], function (edi) {
 
-                edi.setConfig({
-                    icone: 'interrogacaoAzul',
-                    titulo: 'Antes de estudarmos sobre Interpretação de Textos vamos compreender<br> o que é um texto. De acordo com seus conhecimentos prévios clique<br> sobre a alternativa que melhor define o conceito de texto.'
-                });
-
-                var alternativas = [
-                    {
-                        alternativa: 'Era uma vez um proprietário de uma galinha.',
-                        correta: true
-                    }, {
-                        alternativa: 'Era uma vez uma galinha, que vivia com um homem.',
-                        correta: false
-                    }, {
-                        alternativa: 'Era uma vez um homem criador de galinhas.',
-                        correta: false
-                    }, {
-                        alternativa: 'Era uma vez uma galinha que tinha uma propriedade.',
-                        correta: false
-                    }, {
-                        alternativa: 'Certa vez um homem criava uma galinha.',
-                        correta: false
-                    }
-                ];
-
-                var config = {
-                    posx: 15,
-                    posy: 85,
-                    aleatorio: true,
-                    tamanhoBox: 35,
-                    tamanhoBoxTexto: 600,
-                    marginBtns: 5
-                }
-
-                edi.alternativa(alternativas, function (acertou) {
-                }, function (a) {
-                    barraMsg(a?'Parabéns!<br>A passagem em destaque no enunciado nos diz que o homem era dono de uma galinha. Na letra a, afirma-se que a galinha vivia com o homem, o que não quer dizer que ele fosse seu dono. Na letra b, há uma generalização: o homem cria galinhas, não apenas aquela da história, alterando-se o sentido do trecho. A letra d é descabida. A letra e pode confundir um pouco; o fato de o homem criar uma galinha não garante que seja ele seu dono: pode-se criar um animal para uma terceira pessoa.'
-                            :'Fique atento! A passagem em destaque no enunciado nos diz que o homem era dono de uma galinha. Na letra a, afirma-se que a galinha vivia com o homem, o que não quer dizer que ele fosse seu dono. Na letra b, há uma generalização: o homem cria galinhas, não apenas aquela da história, alterando-se o sentido do trecho.')
-                }, config);
-
-                $('#balao').peBalao({
-                    left: 10,
-                    tamanhoBorda: 15,
-                    borda: '#ccc'
-                });
-
+            edi.setConfig({
+                icone: "interrogacaoAzul",
+                titulo: "No texto: Passei a vida atrás de eleitores e agora busco os leitores. <br>(José Sarney, na Veja, dez/97). O autor sugere estar passando de:",
+                mascote: 'mascote'
             });
-        })
+
+            var alternativa = [
+                {texto: 'escritor a político', dataCorreta: false},
+                {texto: ' político a jornalista', dataCorreta: false},
+                {texto: 'político a romancista', dataCorreta: false},
+                {texto: 'senador a escritor', dataCorreta: false},
+                {texto: 'político a escritor', dataCorreta: true}
+            ];
+
+
+            edi.alternativa_b06(alternativa, null, function(a){
+                a?($('#txt').fadeIn()):($('#txt').css('color','#f00').html('Atenção! Quem corre atrás de eleitores é político, quem escrever é escritor, analise novamente a questão, releia o texto usando seu raciocínio lógico.').fadeIn())
+            }, {
+                width: 206,
+                height: 38,
+                margin: '0px 13px 10px 10px',
+                left: 0,
+                top: 53,
+                qtdFirstLine: 3,
+                randomico: true
+            });
+        });
     </script>
-
     <style>
-
-        #msg {
-            width: 500px;
+        #txt {
             position: absolute;
-            bottom: 20px;
-            left: 10px;
-            font-size: 13px;
+            top: 270px;
+            left: 125px;
+            width: 387px;
+            color: #9c0;
             text-align: center;
-            font-weight: 700;
-            color: #666;
+            border: 2px solid #ccc;
+            border-radius: 10px;
+            padding: 15px;
+            box-shadow: 5px 5px 2px rgba(0,0,0,0.5);
             display: none;
-        }
-
-        #msg p {margin-top: -10px}
-
-        #seta {
-            height: 40px;
-            float: left;
         }
     </style>
 </head>
-
 <body>
-<div id="msg">
-    <img id="seta" src="../wilib/img/fotos/seta-dir.png">
-    <p>Muito bem, você acertou! Texto é, então, uma sequência verbal (palavras), oral ou escrita, que forma um todo que
-        tem sentido para um determinado grupo de pessoas em uma determinada situação.</p>
+<div id="txt">
+    Muito bem! Quem corre atrás de eleitores é político, e o político José Sarney, passou de político a escritor.
 </div>
 </body>
 </html>

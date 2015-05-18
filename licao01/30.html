@@ -1,188 +1,92 @@
 <!doctype html>
 <html lang="pt-br">
-<head>
-    <title>Liçao 01 Peça 30</title>
-    <meta charset="utf-8">
-    <script src="../wilib/js/lib/require.js"></script>
-    <script src="../wilib/js/app.js"></script>
-    <link type="text/css" rel="stylesheet" href="../wilib/css/font-awesome.css">
-    <link type="text/css" rel="stylesheet" href="../wilib/css/estilo.css">
+	<head>
+        <title>Lição 01 Peça 30</title>
+		<meta charset="utf-8">
+		<script src="../wilib/js/lib/require.js"></script>
+		<script src="../wilib/js/app.js"></script>
+        <link rel="stylesheet" href="../wilib/css/font-awesome.css">
+        <link rel="stylesheet" href="../wilib/css/estilo.css">
 
-    <script>
-        require(['../wilib/js/lib/revela', '../wilib/js/lib/alternativa_botao'], function (edi, edi2) {
+		<script>
+			require(['../wilib/js/lib/revela','../wilib/js/lib/alternativa'], function (edi, edi2) {
 
-            edi2.setConfig({
-                icone: "interrogacaoAzul",
-                titulo: "Leia atentamente o texto a seguir e responda as questões.",
-                mascote: 'mascote',
-                qtdTelas: 2
-            });
+				edi2.setConfig({
+                    icone: "exclamacao",
+                    mascote: 'mascote',
+					titulo: "Clique sobre a imagem para revelar o texto<br> e em seguida responda corretamente a questão.",
+                    tempoFinal: 10
+				});
 
-            var btns = [
-                [
-                    {texto: 'econômicas', dataCorreta: true},
-                    {texto: 'sentimentais', dataCorreta: false},
-                    {texto: 'lúdicas', dataCorreta: false},
-                    {texto: 'de segurança', dataCorreta: false},
-                    {texto: 'de machismo', dataCorreta: false}
-                ],
-                [
-                    {texto: 'se trata de uma descrição <br>com alguns traços narrativos.', dataCorreta: true},
-                    {texto: 'se trata de uma dissertação.', dataCorreta: false},
-                    {texto: 'o autor preferiu o discurso direto.', dataCorreta: false},
-                    {texto: 'o segundo período é exemplo<br> de discurso indireto livre.', dataCorreta: false},
-                    {texto: 'não se detecta a <br>presença de personagens.', dataCorreta: false}
-                ]
-            ];
+                var btns = [];
 
-            var arr = [
-                {
-                    quest: 'A resposta do homem <br>se deu por razões:',
-                    msgT: 'Parabéns!<br> Ao pedir à mulher que regresse logo, ele pensava que não precisaria comprar uma capa de chuva porque eles já possuem uma, ou que gastaria menos, já que em sua cidade a capa é mais barata. O risco da questão é a presença do adjetivo, lúdicas, menos conhecido. É necessário melhorar o vocabulário. Lúdicas quer dizer “relativas a jogos, brinquedos, divertimentos”.',
-                    msgF: 'Pense um pouco mais.<br> Ao pedir à mulher que regresse logo, ele pensava que não precisaria comprar uma capa de chuva porque eles já possuem uma, ou que gastaria menos, já que em sua cidade a capa é mais barata.'
-                },
-                {
-                    quest: 'Com relação à tipologia textual,<br> pode-se afirmar que:',
-                    msgT: 'Muito Bem!<br> As duas primeiras alternativas estão eliminadas, pois o texto é narrativo. Tanto a fala da mulher quanto a do marido são integrais, ou seja, exemplificam o que se conhece como discurso direto. O autor não usou o travessão, mais comum, preferindo as aspas. A letra d não tem cabimento, para quem conhece o discurso indireto livre. Não poderia ser a opção e, uma vez que o homem e a mulher são as personagens do texto.',
-                    msgF: 'Observe: Tanto a fala da mulher quanto a do marido são integrais, ou seja, exemplificam o que se conhece como discurso direto. O autor não usou o travessão, mais comum, preferindo as aspas. A letra d não tem cabimento, para quem conhece o discurso indireto livre. Não poderia ser a opção e, uma vez que o homem e a mulher são as personagens do texto.'
-                }
-            ];
+                btns.push({
+                    alternativa: "Como estudamos anteriormente, para ler precisamos apenas decodificar os códigos de linguagem, conhecer as letras, formar palavras e frases. No entanto, o que é necessário para ler e compreender um texto? Responda corretamente clicando sobre a alternativa correta.",
+                    correta: false
+                });
 
-            $('#quest').html(arr[edi.telaAtual()-1].quest);
-            $('.num').html(edi.telaAtual());
+                btns.push({
+                    alternativa: "Para interpretar e compreender um texto nós precisamos de unidades de sentido que representem as palavras, as frases e os parágrafos do texto.",
+                    correta: true
+                });
 
-            var config = {
-                tamanhoTexto: 14,
-                colunas: 1,
-                width: 320,
-                height: 20,
-                left: 390,
-                top: 135,
-                margin: '1px 5px',
-                padding: 5,
-                randomico: true,
-                display: 'block',
-                btnBranco: true,
-                animacao: true
-            };
+                btns.push({
+                    alternativa: "Para interpretar e compreender um texto nós precisamos conhecer todo o alfabeto da língua brasileira e compreender um pouco de outras línguas para conseguir decodificar os códigos de forma correta.",
+                    correta: false
+                });
 
-            edi2.alternativa_botao(btns[edi.telaAtual()-1], null, function(a){
-                barraMsg(a ? arr[edi.telaAtual()-1].msgT : arr[edi.telaAtual()-1].msgF)
-            }, config);
+                var config = {
+                    tamanhoBoxTexto: 450,
+                    marginBtns: 45,
+                    posx: 200,
+                    posy: 95
+                };
 
-            $('[data-edi="alternativa_botao"]').addClass('box-revela');
+                function callback (a) {}
 
-            edi.revela('btn-revela', 'box-revela', function (btn, revela) {
-                //
-            }, function (btn) {
-                btn.remove();
-            }, {
-                piscar: false
-            });
+                edi2.alternativa(btns, callback, function(a){
+                    barraMsg(a?'Muito bem!<br> Para interpretar e compreender bem um texto nós precisamos todo tempo de pensar logicamente, dando sentido ao que lemos, buscando criar associações possíveis.'
+                            :'Você errou!<br> Para interpretar e compreender bem um texto nós precisamos todo tempo de pensar logicamente, dando sentido ao que lemos, buscando criar associações possíveis. Tente novamente!', {height: 150, wait: 0})
+                }, config);
 
-        });
-    </script>
+                $('[data-edi = "alternativa"]').addClass('box-revela');
 
-    <style>
-        .btn-revela {
-            background: url(../wilib/img/svg/interrogacao.svg) no-repeat;
-            background-size: 100% 100%;
-            width: 101px;
-            height: 99px;
-            top: 160px;
-            left: 340px;
-            z-index: 100;
-            position: absolute;
-            cursor: pointer;
-        }
+				edi.revela('btn-revela', 'box-revela', function () {
+                    console.log(edi.objetivos)
+                }, function (a) {
 
-        .box-revela {
-            position: absolute;
-            top: 125px;
-            left: 190px;
-        }
+				}, {});
 
-        #balao {
-            background: #EFEFEF;
-            border-radius: 10px;
-            padding: 10px;
-            width: 270px;
-            text-align: center;
-            color: #666;
-            box-shadow: -5px 5px rgba(0, 0, 0, 0.3);
-            left: 20px;
-            top: 105px;
-        }
+				$('#img').transition({
+                    transform: 'scale(0.8)',
+                    top: 100,
+					left: -10
+				}, 1000);
+			});
+		</script>
 
-        .bold {
-            font-size: 12px;
-            float: right;
-            color: #000;
-        }
+		<style>
 
-        .quest {
-            position: absolute;
-            top: 75px;
-            left: 392px;
-            width: 320px;
-            height: 50px;
-        }
+            #img{
+                position: absolute;
+                top: 200px;
+                left: 180px;
+                -webkit-transform: scale(0.1);
+                -moz-transform: scale(0.1);
+                -ms-transform: scale(0.1);
+                transform: scale(0.1);
+                text-align: center;
+                border-radius: 10px;
+                border: solid 1px #E2E2E2;
+                color: rgb(128, 126, 126);
+                padding: 10px;
+                font-size: 16px;
+            }
 
-        #quest {
-            top: 0;
-            left: 0;
-            width: 320px;
-            height: 50px;
-            position: relative;
-            display: table-cell;
-            vertical-align: middle;
-            text-align: center;
-            color: #666;
-            font-size: 18px;
-        }
+		</style>
+	</head>
 
-        #num {
-            position: absolute;
-            top: 70px;
-            left: 340px;
-            border: solid 5px #aaa;
-            border-radius: 50px;
-            width: 50px;
-            height: 50px;
-            box-shadow: -2px 2px 5px rgba(0,0,0,0.3);
-        }
-
-        .num {
-            position: relative;
-            display: table-cell;
-            vertical-align: middle;
-            text-align: center;
-            color: #666;
-            font-size: 35px;
-            width: 50px;
-            height: 50px;
-        }
-
-    </style>
-</head>
-
-<body>
-
-<div id="num" class="box-revela">
-    <div class="num"></div>
-</div>
-<div class="quest">
-    <div id="quest" class="box-revela"></div>
-</div>
-<div class="btn-revela"></div>
-<div id="balao" class="box-revela italico">
-    A mulher foi passear na capital. Dias depois o marido dela recebeu um telegrama:
-    “Envie quinhentos cruzeiros. Preciso comprar uma capa de chuva. Aqui está chovendo sem parar”.
-    E ele respondeu:
-    “Regresse. Aqui chove mais barato”.<br><br>
-
-    <span class="bold">(Ziraldo, in As Anedotas do Pasquim)</span>
-</div>
-
-</body>
+	<body>
+        <img id="img" class="btn-revela" src="../img/licao01/p30.jpg" width="200" height="200"/>
+	</body>
 </html>

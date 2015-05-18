@@ -1,193 +1,45 @@
 <!doctype html>
 <html lang="pt-br">
 <head>
-    <title>Liçao 01 Peça 25</title>
+    <title>Lição 01 Peça 25</title>
     <meta charset="utf-8">
     <script src="../wilib/js/lib/require.js"></script>
     <script src="../wilib/js/app.js"></script>
     <link type="text/css" rel="stylesheet" href="../wilib/css/font-awesome.css">
     <link type="text/css" rel="stylesheet" href="../wilib/css/estilo.css">
 
+    <style type="text/css">
+    </style>
     <script>
-        require(['../wilib/js/lib/revela', '../wilib/js/lib/alternativa_botao'], function (edi, edi2) {
+        require(['../wilib/js/lib/slide_vertical'], function (edi) {
 
-            edi2.setConfig({
-                icone: "interrogacaoAzul",
-                titulo: "Leia atentamente o texto a seguir e responda as questões.",
+            edi.setConfig({
+                titulo: "Clique sobre as barras para revelar os textos.",
                 mascote: 'mascote',
-                qtdTelas: 2
+                icone: "interrogacaoAzul"
             });
 
-            var btns = [
-                [
-                    {texto: 'Amor', dataCorreta: true},
-                    {texto: 'Saudade', dataCorreta: false},
-                    {texto: 'Tristeza', dataCorreta: false}
-                ],
-                [
-                    {texto: 'Tristeza', dataCorreta: false},
-                    {texto: 'Angústia', dataCorreta: true},
-                    {texto: 'Alegria', dataCorreta: false}
-                ]
-            ];
-
-            var arr = [
+            var slides = [
                 {
-                    quest: 'Qual o tema retrato por esta modinha?',
-                    msgT: 'Correto!<br> Esta Modinha fala de Amor, e o autor <br>declara toda a sua angústia por tanto amar.',
-                    msgF: 'Pense um pouco mais.<br> Analise os versos e responda corretamente.'
+                    txt: 'Entendemos por vocabulário linguístico as unidades de sentido que estão associadas com seus objetos. ',
+                    img: '../img/licao01/p25.1.jpg'
                 },
                 {
-                    quest: 'Qual o sentimento do autor da Modinha diante do ser amado?',
-                    msgT: 'Correto!<br> Esta Modinha fala de Amor, e o autor <br>declara toda a sua angústia por tanto amar.',
-                    msgF: 'Pense um pouco mais.<br> Analise os versos e responda corretamente.'
+                    txt: 'Por exemplo: a palavra correr está associado a um ponto, nadar a outro ponto, de modo que ao ouvir essas palavras, o cérebro reproduz automaticamente os pontos representativos, permitindo sua compreensão.',
+                    img: '../img/licao01/p25.2.jpg'
                 }
             ];
 
-            $('#quest').html(arr[edi.telaAtual()-1].quest);
-            $('.num').html(edi.telaAtual());
+            edi.slide_vertical(slides, function () {
 
-            var config = {
-                tamanhoTexto: 14,
-                colunas: 1,
-                width: 320,
-                height: 20,
-                left: 410,
-                top: 135,
-                margin: '1px 5px',
-                padding: 5,
-                randomico: true,
-                display: 'block',
-                btnBranco: true,
-                animacao: true
-            };
-
-            edi2.alternativa_botao(btns[edi.telaAtual()-1], null, function(a){
-                barraMsg(a ? arr[edi.telaAtual()-1].msgT : arr[edi.telaAtual()-1].msgF)
-            }, config);
-
-            $('[data-edi="alternativa_botao"]').addClass('box-revela');
-
-            edi.revela('btn-revela', 'box-revela', function (btn, revela) {
-                //
-            }, function (btn) {
-                btn.remove();
-            }, {
-                piscar: false
-            });
-
+            }, function () {
+                barraMsg('Muito bem!<br> Você aprendeu o que é vocabulário linguístico.<br> Adquira mais conhecimento, quanto mais palavras você <br>conhecer, mais associações seu cérebro será capaz de realizar.', {height: 100})
+            }, {showNumber: true, tempoBloqueio: 10000});
         });
     </script>
-
-    <style>
-        .btn-revela {
-            background: url(../img/licao01/p25.png) no-repeat;
-            background-size: 100% 100%;
-            width: 241px;
-            height: 169px;
-            top: 140px;
-            left: 270px;
-            z-index: 100;
-            position: absolute;
-            cursor: pointer;
-        }
-
-        .box-revela {
-            position: absolute;
-            top: 125px;
-            left: 190px;
-        }
-
-        #balao {
-            background: #EFEFEF;
-            border-radius: 10px;
-            padding: 10px;
-            width: 320px;
-            color: #666;
-            box-shadow: -5px 5px rgba(0, 0, 0, 0.3);
-            left: 10px;
-            top: 75px;
-            font-size: 14px;
-        }
-
-        .bold {
-            font-size: 12px;
-            float: right;
-            color: #000;
-        }
-
-        .quest {
-            position: absolute;
-            top: 75px;
-            left: 422px;
-            width: 320px;
-            height: 50px;
-        }
-
-        #quest {
-            top: 0;
-            left: 0;
-            width: 320px;
-            height: 50px;
-            position: relative;
-            display: table-cell;
-            vertical-align: middle;
-            text-align: center;
-            color: #666;
-            font-size: 18px;
-        }
-
-        #num {
-            position: absolute;
-            top: 70px;
-            left: 360px;
-            border: solid 5px #aaa;
-            border-radius: 50px;
-            width: 50px;
-            height: 50px;
-            box-shadow: -2px 2px 5px rgba(0,0,0,0.3);
-        }
-
-        .num {
-            position: relative;
-            display: table-cell;
-            vertical-align: middle;
-            text-align: center;
-            color: #666;
-            font-size: 35px;
-            width: 50px;
-            height: 50px;
-        }
-
-    </style>
 </head>
 
 <body>
-
-<div id="num" class="box-revela">
-    <div class="num"></div>
-</div>
-<div class="quest">
-    <div id="quest" class="box-revela"></div>
-</div>
-<div class="btn-revela"></div>
-<div id="balao" class="box-revela italico">
-    A Vida Desta Alma<br>
-    <br>
-    I<br>
-    A vida dest’alma deponho em teus pés<br>
-    Não pode esta vida ser minha, bem vês?!...<br>
-    Te amo, e bem sabes que morro por ti;<br>
-    Deliro e padeço, depois que te vi.<br>
-    <br>
-    II<br>
-    Teus olhos têm chamas, teus olhos têm luz,<br>
-    E a alma incendeia, nos flocos azuis...<br>
-    Te amo, e bem sabes que morro por ti!<br>
-    Deliro e padeço, depois que te vi.<br>
-    <br>
-    <span class="bold">(Pertence ao folclore pernambucano. Recolhida em Triunfo, no fim do século XIX).</span>
-</div>
 
 </body>
 </html>

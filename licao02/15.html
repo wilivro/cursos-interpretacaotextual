@@ -14,7 +14,7 @@
 
             edi.setConfig({
                 icone: 'exclamacao',
-                titulo: 'Clique nos personagens e aprenda mais com João e Maria.'
+                titulo: 'Clique nas setas e aprenda mais com João e Maria.'
             });
 
             function callback(a, b) {
@@ -22,7 +22,7 @@
             }
 
             function calbackFinal() {
-                mensagem('Parabéns! Perceba que não é tão difícil quando <br> você usa as dicas que recebeu em suas interpretações.')
+              $('#msg').fadeIn();
             }
 
             edi.revela_slide('.revela', callback, calbackFinal, {});
@@ -183,7 +183,19 @@
             top: 200px;
         }
 
-
+        #msg {
+          position: absolute;
+          left: 500px;
+          top: 210px;
+          width: 180px;
+          padding: 5px;
+          color: #9c0;
+          font-size: 11px;
+          font-style: italic;
+          border: 1px dotted #9c0;
+          border-radius: 5px;
+          display: none;
+        }
     </style>
 </head>
 
@@ -199,7 +211,7 @@
 </p>
 
 <p class="revela" id="rev-03">
-    Sim, tenho feito isso, mas ainda me sinto insegura com a leitura. 
+    Sim, tenho feito isso, mas ainda me sinto insegura com a leitura.
 </p>
 
 <p class="revela" id="rev-04">
@@ -211,7 +223,7 @@
 </p>
 
 <p class="revela" id="rev-06">
-    Sempre acontece isso, colocam nas alternativas as mesmas palavras da questão, usando sinônimos para nos confundir, mas se analisarmos com calma nós veremos que está tudo ali. 
+    Sempre acontece isso, colocam nas alternativas as mesmas palavras da questão, usando sinônimos para nos confundir, mas se analisarmos com calma nós veremos que está tudo ali.
 </p>
 
 <p class="revela" id="rev-07">
@@ -219,6 +231,9 @@
 </p>
 
 
-
+<div id="msg">
+  Parabéns! Perceba que não é tão difícil quando você usa as dicas que
+  recebeu em suas interpretações.
+</div>
 </body>
 </html>

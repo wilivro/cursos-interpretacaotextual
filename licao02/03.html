@@ -14,7 +14,7 @@
 
             edi.setConfig({
                 icone: 'exclamacao',
-                titulo: 'Clique sobre os personagens e leia o diálogo.'
+                titulo: 'Clique sobre as setas e leia o diálogo.'
             });
 
             function callback(a, b) {
@@ -22,7 +22,7 @@
             }
 
             function calbackFinal() {
-                mensagem('Muito Bem! Para que haja uma boa interpretação precisamos relacionar o que sabemos com o que nos é apresentado pelo autor do texto. Se não lemos, não <br> temos conteúdo para argumentar, e desta forma, <br> compreender o texto. Leia mais!')
+                mensagem()
             }
 
             edi.revela_slide('.revela', callback, calbackFinal, {});
@@ -111,7 +111,7 @@
             height: 55px;
         }
 
-       
+
         .person {
             width: 280px;
             height: 200px;
@@ -120,7 +120,18 @@
             top: 200px;
         }
 
-
+        #msg {
+          position: absolute;
+          left: 500px;
+          top: 180px;
+          width: 260px;
+          padding: 5px;
+          color: #9c0;
+          font-size: 12px;
+          font-style: italic;
+          border: 1px dotted #9c0;
+          border-radius: 5px;
+        }
     </style>
 </head>
 
@@ -128,11 +139,11 @@
 <img src="../wilib/img/svg/personagens.svg" class="person" id="person-03">
 
 <p class="revelaEsquerda revela" id="rev-01">
-    João é verdade que a interpretação <br> amplia os horizontes? 
+    João é verdade que a interpretação <br> amplia os horizontes?
 </p>
 
 <p class="revelaDireito revela" id="rev-02">
-    Sim, Maria. E essa ampliação acontece justamente quando há leitura. Somos partes de nossos escritos, de nossos pensamentos, de nossas histórias, muitas vezes contadas por outros. 
+    Sim, Maria. E essa ampliação acontece justamente quando há leitura. Somos partes de nossos escritos, de nossos pensamentos, de nossas histórias, muitas vezes contadas por outros.
 </p>
 
 <p class="revelaEsquerda revela" id="rev-03">
@@ -143,5 +154,12 @@
     Com certeza, várias vezes, isso aconteceu comigo também. Temos aí a confirmação de que nossos pensamentos têm relação com os pensamentos dos autores.
 </p>
 
+
+<div id="msg">
+  Muito Bem! Para que haja uma boa interpretação precisamos relacionar o
+  que sabemos com o que nos é apresentado pelo autor do texto. Se não lemos,
+  não <br> temos conteúdo para argumentar, e desta forma, <br> compreender o
+  texto. Leia mais!
+</div>
 </body>
 </html>

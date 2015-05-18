@@ -1,4 +1,3 @@
-<!-- Desenvolvedor: Rodolfo Araújo -->
 <!doctype html>
 <html lang="pt-br">
 <head>
@@ -6,69 +5,52 @@
   <meta charset="utf-8">
   <script src="../wilib/js/lib/require.js"></script>
   <script src="../wilib/js/app.js"></script>
-
   <link rel="stylesheet" href="../wilib/css/font-awesome.css">
-   <link rel="stylesheet" href="../wilib/css/estilo.css">
-
-  <script>
-  require(['../wilib/js/lib/revela_pergaminho'], function (edi) {
-
-    edi.setConfig({
-      icone: 'exclamacao',
-      titulo: 'Clique sobre os pergaminhos e saiba como devemos proceder ao interpretar um texto que ainda não dominamos.',
-      mascote: 'mascote',
-      tempoFinal: 15
-    });
-
-    var pergaminhos = [
-      "Devemos reler o texto quantas vezes forem necessárias.",
-      "Centralizar cada questão ao pedaço ou parte do texto correspondente."
-    ];
-
-    var config = {
-      textoMarginTop: 10,
-      width: 130,
-      height: 185,
-      left: 220,
-      top: 110,
-      fontSize: 12
-    };
-
-    edi.revela_pergaminho(pergaminhos, function () {
-      //
-    }, function () {
-      $('#msgAcerto').fadeIn();
-    }, config);
-
-  });
-  </script>
+  <link rel="stylesheet" href="../wilib/css/estilo.css">
 
   <style>
-
-    #msgAcerto {
-      width: 160px;
-      height: 180px;
+    #msg {
       position: absolute;
-      left: 580px;
-      top: 130px;
-      padding: 10px;
-      font-size: 16px;
-      text-align: center;
-      font-weight: bold;
-      line-height: 16px;        
+      left: 10px;
+      top: 280px;
+      width: 240px;
+      padding: 5px;
       color: #9c0;
+      font-size: 11px;
+      font-style: italic;
+      border: 1px dotted #9c0;
+      border-radius: 5px;
       display: none;
-      z-index: 5;
     }
-
   </style>
+
+  <script>
+    require(['../wilib/js/lib/revela_r01b'], function (edi) {
+
+      edi.setConfig({
+        icone: "exclamacao",
+        mascote: 'mascote',
+        titulo: 'Clique sobre as pastas e saiba como devemos proceder ' +
+                'ao interpretar um texto que ainda não dominamos.'
+      });
+
+      var arrRevela = [
+        'Devemos reler <br>o texto quantas <br>vezes forem <br>necessárias.',
+        'Centralizar cada <br>questão ao  <br>pedaço ou parte <br>do texto <br>correspondente.'
+      ];
+
+      edi.revela_r01b(arrRevela, null, function() {
+        $('#msg').fadeIn();
+      });
+
+    });
+  </script>
 </head>
-
 <body>
-
-   <div id="msgAcerto" class="borda-pontilhado-verde arredondado">
-      <p>Parabéns! Sempre que tiver dúvida volte ao texto, releia-o, releia as partes separadas, busque as informações em parágrafos específicos, que falem sobre o tema da questão.</p>
-    </div>
-
+  <div id="msg">
+    Parabéns! Sempre que tiver dúvida volte ao texto, releia-o, releia as
+    partes separadas, busque as informações em parágrafos específicos,
+    que falem sobre o tema da questão.
+  </div>
 </body>
 </html>

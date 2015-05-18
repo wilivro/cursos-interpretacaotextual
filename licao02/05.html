@@ -48,7 +48,20 @@
                 animacao: true
             }
 
-            edi.alternativa_botao(btns, null, null, config);
+            edi.alternativa_botao(btns, null, function(a) {
+              if (a) {
+                $('#msg').fadeIn();
+                return;
+              }
+
+              $('#msg').html(
+                'Atenção! As dificuldades precisam ser superadas, por tanto, ' +
+                'para de ler é a última coisa a ser fazer. Pense um pouco mais!'
+              ).css({
+                color: 'red',
+                borderColor: 'red'
+              }).fadeIn();
+            }, config);
         });
     </script>
 
@@ -78,6 +91,20 @@
             z-index: 10;
         }
 
+        #msg {
+          position: absolute;
+          left: 530px;
+          top: 180px;
+          width: 190px;
+          padding: 5px;
+          color: #9c0;
+          font-size: 11px;
+          font-style: italic;
+          border: 1px dotted #9c0;
+          border-radius: 5px;
+          display: none;
+        }
+
     </style>
 
 </head>
@@ -86,6 +113,12 @@
 
     <div id="edu"></div>
     <div id="fred"></div>
+
+    <div id="msg">
+      Muito bem! Para entender um texto, precisamos lê-lo com atenção até o
+      final, mesmo desconhecendo algumas palavras. O que podemos fazer é
+      utilizar um dicionário, desta forma, tiramos as dúvidas imediatamente!
+    </div>
 
 </body>
 </html>

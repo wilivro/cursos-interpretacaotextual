@@ -14,7 +14,7 @@
 
             edi.setConfig({
                 icone: 'exclamacao',
-                titulo: 'Clique sobre os personagens e revele o texto. Leia com atenção!'
+                titulo: 'Clique sobre as setas e revele o texto. Leia com atenção!'
             });
 
             function callback(a, b) {
@@ -22,7 +22,7 @@
             }
 
             function calbackFinal() {
-                mensagem('Excelente! Precisamos ler bem, ler profundamente, ou seja, ler o texto pelo menos umas três vezes. Ler com perspicácia, sutileza, malícia nas entrelinhas. Voltar ao texto tantas quantas vezes for necessário.')
+              $('#msg').fadeIn();
             }
 
             edi.revela_slide('.revela', callback, calbackFinal, {});
@@ -146,7 +146,7 @@
             height: 55px;
         }
 
-       
+
         .person {
             width: 280px;
             height: 200px;
@@ -155,7 +155,19 @@
             top: 200px;
         }
 
-
+        #msg {
+          position: absolute;
+          left: 500px;
+          top: 210px;
+          width: 260px;
+          padding: 5px;
+          color: #9c0;
+          font-size: 11px;
+          font-style: italic;
+          border: 1px dotted #9c0;
+          border-radius: 5px;
+          display: none;
+        }
     </style>
 </head>
 
@@ -185,6 +197,13 @@
 <p class="revela" id="rev-06">
     Isso mesmo! Você deve ler rápido, sem atenção e com pressa de terminar, realmente agindo assim, não conseguirá compreender texto nenhum...
 </p>
+
+
+<div id="msg">
+  Excelente! Precisamos ler bem, ler profundamente, ou seja, ler o texto
+  pelo menos umas três vezes. Ler com perspicácia, sutileza, malícia nas
+  entrelinhas. Voltar ao texto tantas quantas vezes for necessário.
+</div>
 
 </body>
 </html>

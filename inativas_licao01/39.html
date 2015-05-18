@@ -1,0 +1,225 @@
+<!doctype html>
+<html lang="pt-br">
+<head>
+    <title>Lição 01 Peça 39</title>
+    <meta charset="utf-8">
+    <script src="../wilib/js/lib/require.js"></script>
+    <script src="../wilib/js/app.js"></script>
+    <link rel="stylesheet" href="../wilib/css/font-awesome.css">
+    <link rel="stylesheet" href="../wilib/css/estilo.css">
+
+    <script>
+        require(['../wilib/js/lib/alternativa_botao'], function (edi) {
+
+            edi.setConfig({
+                icone: false,
+                enunciado: false,
+                titulo: '',
+                qtdTelas: 3
+            });
+
+            var textoPergunta = [
+                'O tema do texto é:',
+                'O tema se desenvolve com base em uma figura de linguagem conhecida como:',
+                'Por “sem ter da vida alevantado o véu” entende-se:'
+            ];
+
+            var msgFinal = [
+                {
+                    msgT:'Correto! O texto fala da morte de uma criança. Vários trechos comprovam isso: “um anjo dorme aqui” (no túmulo), “cedo finou-se” (finar-se significa morrer), “brincar no céu”. Talvez alguns tenham anotado a letra c; acontece que o autor apresenta o fato sem demonstrar a sua própria tristeza: apenas mostra, liricamente, a morte da criança. Também não se pode pensar em um possível apego do autor pela criança; em nenhum trecho isso fica evidenciado, podendo até tratar-se de uma criança desconhecida do autor.',
+                    msgF:'Observe os trechos: “um anjo dorme aqui” (no túmulo), “cedo finou-se” (finar-se significa morrer), “brincar no céu”. Responda corretamente levando em consideração estes trechos.'
+                },
+                {
+                    msgT:'Parabéns! O autor procura suavizar a ideia da morte. Usa, por exemplo, o verbo dormir, que transmite coisas boas, agradáveis. O próprio verbo finar-se é mais agradável do que o amedrontador morrer. Finalmente, todo o último verso tem essa finalidade, com força maior no verbo brincar. Trata-se de uma figura de linguagem conhecida como eufemismo. A prosopopeia consiste em se personificar alguma coisa; por exemplo: a árvore ficou triste. Hipérbole é a figura do exagero; por exemplo: estou morrendo de rir. Metonímia é uma troca de palavras, havendo entre elas uma relação real, concreta, objetiva; há vários tipos; por exemplo: ler Machado de Assis (autor/obra), não ter um teto onde morar (parte/todo) etc. Sobre o pleonasmo já falamos alguma coisa, ao comentar a questão 4.',
+                    msgF:'Dica: O autor procura suavizar a ideia da morte. Usa, por exemplo, o verbo dormir, que transmite coisas boas, agradáveis. O próprio verbo finar-se é mais agradável do que o amedrontador morrer. Finalmente, todo o último verso tem essa finalidade, com força maior no verbo brincar. Podemos concluir então, que a figura de linguagem utiliza é...'
+                },
+                {
+                    msgT:'Parabéns! Levantar (ou alevantar, como escreveu o poeta) o véu significa perceber bem as coisas, esclarecer-se. A pessoa com um véu no rosto não enxerga bem. Levantando esse véu, percebe melhor as coisas. Quem morreu foi uma criança, portanto não teve tempo de conhecer bem a vida, ou seja, não teve tempo de levantar o véu que a sua pouca idade lhe colocava no rosto. É uma expressão metafórica.',
+                    msgF:'Dica: Levantar (ou alevantar, como escreveu o poeta) o véu significa perceber bem as coisas, esclarecer-se. A pessoa com um véu no rosto não enxerga bem. Levantando esse véu, percebe melhor as coisas. Quem morreu foi uma criança, ou seja, não teve tempo de levantar o véu que a sua pouca idade lhe colocava no rosto. É uma expressão metafórica.'
+                }
+            ];
+
+            $('#num').html(edi.telaAtual);
+            $('.texto .middle').html(textoPergunta[edi.telaAtual - 1]);
+
+            var btns = [
+                [
+                    {texto: 'a morte de uma criança', dataCorreta: true},
+                    {texto: 'a inocência de uma criança', dataCorreta: false},
+                    {texto: 'o nascimento de uma criança', dataCorreta: false},
+                    {texto: 'o sofrimento pela morte de uma criança', dataCorreta: false},
+                    {texto: 'o apego do autor por uma certa criança', dataCorreta: false}
+
+                ],
+                [
+                    {texto: 'eufemismo', dataCorreta: true},
+                    {texto: 'prosopopeia', dataCorreta: false},
+                    {texto: 'hipérbole', dataCorreta: false},
+                    {texto: 'pleonasmo', dataCorreta: false},
+                    {texto: 'metonímia', dataCorreta: false}
+                ],
+
+                [
+                    {texto: 'sem ter conhecido bem a vida', dataCorreta: true},
+                    {texto: 'sem ter nascido', dataCorreta: false},
+                    {texto: 'sem ter morrido cedo', dataCorreta: false},
+                    {texto: 'sem viver misteriosamente', dataCorreta: false},
+                    {texto: 'sem poder relacionar-se<br> com as outras pessoas', dataCorreta: false}
+
+                ]
+            ];
+
+            var config = {
+                width: 340,
+                height: 30,
+                left: 430,
+                colunas: 1,
+                top: 90,
+                margin: '0 5px',
+                padding: 5,
+                display: 'block',
+                btnBranco: true,
+                animacao: true,
+                randomico: true,
+                tamanhoTexto: 15
+            };
+
+            function callback(a) {};
+
+            edi.alternativa_botao(btns[edi.telaAtual - 1], callback, function(a){
+                if(a)
+                    mensagem('<div style="width: 700px; font-size: 22px; display: inline-block">'+ msgFinal[edi.telaAtual - 1].msgT+'</div>');
+                else
+                    mensagem('<div style="width: 430px; font-size: 22px; display: inline-block">'+ msgFinal[edi.telaAtual - 1].msgF+'</div>');
+            }, config);
+
+        });
+    </script>
+
+    <style>
+        #conteudo {
+            position: absolute;
+            width: 790px !important;
+            background: #9bbbe3; /* Old browsers */
+            background: -moz-linear-gradient(top, #9bbbe3 1%, #5b82b4 100%); /* FF3.6+ */
+            background: -webkit-gradient(linear, left top, left bottom, color-stop(1%, #9bbbe3), color-stop(100%, #5b82b4)); /* Chrome,Safari4+ */
+            background: -webkit-linear-gradient(top, #9bbbe3 1%, #5b82b4 100%); /* Chrome10+,Safari5.1+ */
+            background: -o-linear-gradient(top, #9bbbe3 1%, #5b82b4 100%); /* Opera 11.10+ */
+            background: -ms-linear-gradient(top, #9bbbe3 1%, #5b82b4 100%); /* IE10+ */
+            background: linear-gradient(to bottom, #9bbbe3 1%, #5b82b4 100%); /* W3C */
+            filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#9bbbe3', endColorstr='#5b82b4', GradientType=0); /* IE6-9 */
+        }
+
+        .texto {
+            width: 250px;
+            height: 100px;
+            padding: 0 20px;
+            position: absolute;
+            left: 500px;
+            top: 0;
+        }
+
+        .middle {
+            text-align: center;
+            vertical-align: middle;
+            display: table-cell;
+        }
+
+        .texto .middle {
+            width: 250px;
+            height: 100px;
+            line-height: 1.3;
+            color: #fff;
+        }
+
+        #num {
+            width: 50px;
+            display: block;
+            height: 50px;
+            text-align: center;
+            line-height: 50px;
+            font-size: 35px;
+            background: #1C8FD0;
+            border: 4px solid #fff;
+            border-radius: 50%;
+            position: absolute;
+            left: 450px;
+            top: 20px;
+            color: #fff;
+        }
+
+        .btn-sem-estilo {
+            box-shadow: 0 0 0 0;
+        }
+
+        .btn-sem-estilo-acertou {
+            background-color: #0060B6 !important;
+        }
+
+        #noticia {
+            position: absolute;
+            width: 375px;
+            height: 265px;
+            left: 10px;
+            top: 80px;
+            z-index: 10;
+            font-size: 18px;
+            line-height: 18px;
+            padding: 10px;
+            background-color: #FFF;
+            color: #666;
+            overflow: scroll;
+        }
+
+        #enunciado {
+            position: absolute;
+            top: 1px;
+            left: 0;
+            font-size: 18px;
+            width: 415px;
+            height: 50px;
+            font-style: italic;
+            z-index: 12;
+            color: #FFF;
+        }
+
+        #enunciado .middle {
+            height: 80px;
+            width: 415px;
+            font-size: 18px;
+        }
+
+        .bold {
+            color: #000;
+            float: right;
+            margin-top: 10px;
+            font-size: 14px;
+         }
+    </style>
+</head>
+
+<body>
+<div class="texto">
+    <div class="middle"></div>
+</div>
+
+<div id="noticia">
+    Um anjo dorme aqui; na aurora apenas,<br>
+    disse adeus ao brilhar das açucenas<br>
+    em ter da vida alevantado o véu.<br>
+    - Rosa tocada do cruel granizo Cedo<br>
+    finou-se e no infantil sorriso passou do<br>
+    berço pra brincar no céu!<br><br>
+    <span class="bold">(Casimiro de Abreu, in Primaveras)</span>
+</div>
+
+<div id="num"></div>
+
+<div id="enunciado">
+    <div class="middle">
+        Leia o texto e responda corretamente.
+    </div>
+</div>
+
+</body>
+</html>

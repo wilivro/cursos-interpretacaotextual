@@ -9,154 +9,115 @@
     <link rel="stylesheet" href="../wilib/css/estilo.css">
 
     <script>
-        require(['../wilib/js/lib/alternativa_botao'], function (edi) {
+        require(['../wilib/js/lib/revela', '../wilib/js/lib/alternativa_botao'], function (edi, edi2) {
 
-            edi.setConfig({
-                titulo: 'Leia o trecho a seguir e responda corretamente.',
+            edi2.setConfig({
+                icone: "exclamacao",
                 mascote: 'mascote',
-                qtdTelas: 3
+                titulo: "De acordo com o que você aprendeu, clique no balão<br>para revelar as alternativas e responda corretamente:",
+                tempoFinal: 10
             });
 
-            var textoPergunta = [
-                'Segundo as ideias contidas no texto, o brasileiro:',
-                'A palavra <span class="bold italico">mesmo</span> pode ser trocada no texto, sem alteração de sentido, por:',
-                'A expressão <br>“A maior alegria do brasileiro” pode ser entendida como:'
-            ];
+            var btns = [];
 
-            var msgFinal = [
-                {
-                    msgT:'Muito Bem!<br> Na ânsia de ser hospitaleiro, o brasileiro hospeda, imprudentemente, em sua casa, pessoas desconhecidas. A letra b condiciona a hospedagem às noites chuvosas. A opção c não tem nenhum apoio no texto, que não fala em preferências. A letra d não cabe como resposta, pois o texto nos fala de “maior alegria”, ou seja, há outras, menores. A letra e poderia realmente confundir. Na verdade a falta de prudência não existe por aceitar hóspedes durante a noite, mas aceitá-los sendo eles desconhecidos.',
-                    msgF:'Observe: Na ânsia de ser hospitaleiro, o brasileiro hospeda, imprudentemente, em sua casa, pessoas desconhecidas. Na verdade a falta de prudência não existe por aceitar hóspedes durante a noite, mas aceitá-los sendo eles desconhecidos.'
-                },
-                {
-                    msgT:'Muito Bem!<br> Mesmo é palavra denotativa de inclusão, da mesma forma que até.',
-                    msgF:'Atenção! Mesmo é palavra denotativa de inclusão.'
-                },
-                {
-                    msgT:'Correto!<br>Trata-se de um evidente exagero do autor.<br> A figura do exagero chama-se hipérbole.',
-                    msgF:'Dica: Trata-se de um evidente exagero do autor.'
-                }
-            ];
+            btns.push({
+                texto: "fé",
+                dataCorreta: false
+            });
 
-            $('#num').html(edi.telaAtual);
-
-            var btns = [
-                [
-                    {texto: 'põe a hospitalidade acima da prudência.', dataCorreta: true},
-                    {texto: 'hospeda qualquer um, mas<br> somente em noites chuvosas.', dataCorreta: false},
-                    {texto: 'dá preferência a hospedar <br> pessoas desconhecidas.', dataCorreta: false},
-                    {texto: 'não tem outra alegria senão a de<br> hospedar pessoas, conhecidas ou não.', dataCorreta: false},
-                    {texto: 'não é prudente, por aceitar<br> hóspedes no período da noite.', dataCorreta: false}
-
-                ],
-                [
-                    {texto: 'até', dataCorreta: true},
-                    {texto: 'certamente', dataCorreta: false},
-                    {texto: 'talvez', dataCorreta: false},
-                    {texto: 'como', dataCorreta: false},
-                    {texto: 'não', dataCorreta: false}
-
-                ],
-                [
-                    {texto: 'uma hipérbole', dataCorreta: true},
-                    {texto: 'uma personificação', dataCorreta: false},
-                    {texto: 'uma ironia', dataCorreta: false},
-                    {texto: 'uma metáfora', dataCorreta: false},
-                    {texto: 'uma catacrese', dataCorreta: false}
-
-                ]
-            ];
+            btns.push({
+                texto: "respeito",
+                dataCorreta: true
+            });
+            btns.push({
+                texto: " solidariedade",
+                dataCorreta: false
+            });
 
             var config = {
-                width: 340,
-                height: 30,
-                left: 400,
-                colunas: 1,
-                top: 85,
-                margin: 0,
-                padding: 5,
-                display: 'block',
+                colunas: 3,
+                width: 175,
+                height: 35,
+                left: 210,
+                top: 250,
+                tamanhoTexto: 14,
                 btnBranco: true,
-                animacao: true,
-                randomico: true
+                lineHeight: '1.4',
+                animacao: true
             };
 
-            function callback(a) {};
+            function callback(a) {
 
-            edi.alternativa_botao(btns[edi.telaAtual - 1], callback, function(a){
-                barraMsg(a ? msgFinal[edi.telaAtual - 1].msgT : msgFinal[edi.telaAtual - 1].msgF)
+            }
+
+            edi2.alternativa_botao(btns, callback, function(a){
+                barraMsg(a?'Excelente!<br> O autor demonstra respeito pelos animais, no momento<br> em que não os obriga a fazer o que não estão preparados.<br> Ele respeita os limites de cada um.'
+                :'Tente novamente!<br> Perceba que o autor se preocupa em não<br> ultrapassar os limites dos animais, isso demonstra...', {height: 100, wait: 0})
             }, config);
 
-            $('#exc').iconeExclamacao({anima: true});
-            $('#noticia').peBalao({scaleX: -1, left: 20});
-            $('.texto .middle').html(textoPergunta[edi.telaAtual - 1]);
+            $('[data-edi = "alternativa_botao"]').addClass('box-revela');
+
+            edi.revela('btn-revela', 'box-revela', function (btn, revela) {
+                $('#txt').fadeOut();
+            }, function (btn) {
+                $('#anim').transition({
+                    transform: 'scale(1)',
+                    top: 90,
+                    left: 210
+                }, 1000).peBalao({
+                    scaleY: -1, scaleX: -1, top: 92, tamanhoBorda: 12
+                });
+            }, {});
+
+
         });
     </script>
 
     <style>
 
-        #noticia {
+        #img {
             position: absolute;
+            top: 109px;
+            left: 0;
+        }
+
+        #anim {
+            -webkit-transform: scale(0.1);
+            -moz-transform: scale(0.1);
+            -ms-transform: scale(0.1);
+            transform: scale(0.1);
             text-align: center;
-            width: 150px;
-            left: 10px;
-            top: 85px;
-            z-index: 10;
-            font-size: 18px;
-            line-height: 18px;
-            background-color: #FFF;
-            color: #666;
-            padding: 70px 10px 10px 10px;
-            border: solid 1px #ccc;
             border-radius: 10px;
-        }
-
-        #noticia>span {
-            font-size: 12px;
-            float: right;
-            color: #000;
-        }
-
-        .texto {
-            width: 150px;
-            height: 100px;
+            border: solid 1px #999;
             position: absolute;
-            left: 210px;
-            top: 80px;
+            top: 150px;
+            left: -20px;
+            width: auto;
+            height: auto;
+            color: rgb(128, 126, 126);
+            padding: 20px;
+            font-size: 16px;
         }
-
-        .middle {
-            text-align: center;
-            vertical-align: middle;
-            display: table-cell;
-        }
-
-        .texto .middle {
-            width: 150px;
-            height: 100px;
-            font-size: 18px;
+        #txt {
+            position: absolute;
+            top: 200px;
+            left: 230px;
+            width: 330px;
             color: #666;
         }
-
-        #exc {
-            position: absolute;
-            left: 50px;
-            margin-top: -70px;
-        }
-
     </style>
 </head>
-
 <body>
-
-<div class="texto">
-    <div class="middle"></div>
+<div id="txt">
+    Os animais que eu treino não são obrigados a fazer o que vai contra a natureza deles.
+    <br>
+    <span style="font-size: 12px; float: right">(Gilberto Miranda, na Folha de São Paulo, 23/2/96)</span>
 </div>
 
-<div id="noticia">
-    <div id="exc"></div>
-    “A maior alegria do brasileiro é hospedar alguém, mesmo um desconhecido que lhe peça pouso, numa noite de chuva.”<br><br>
-    <span class="bold">(Cassiano Ricardo, in O Homem Cordial)</span>
+<div class="btn-revela">
+    <div id="anim"> O sentimento que melhor define<br> a posição do autor perante os animais é:
+    </div>
+    <img id="img" src="../wilib/img/svg/personagem_negro_perfil.svg" width="200"/>
 </div>
 
 </body>

@@ -1,61 +1,96 @@
 <!doctype html>
 <html lang="pt-br">
 <head>
-    <title>Lição 01 Peça 41</title>
-    <meta charset="utf-8">
-    <script src="../wilib/js/lib/require.js"></script>
-    <script src="../wilib/js/app.js"></script>
-    <link rel="stylesheet" href="../wilib/css/font-awesome.css">
-    <link rel="stylesheet" href="../wilib/css/estilo.css">
+  <title>Lição 01 Peça 41</title>
+  <meta charset="utf-8">
+  <script src="../wilib/js/lib/require.js"></script>
+  <script src="../wilib/js/app.js"></script>
+  <link rel="stylesheet" href="../wilib/css/font-awesome.css">
+   <link rel="stylesheet" href="../wilib/css/estilo.css">
 
-    <script>
-        require(['../wilib/js/lib/alternativa_vf'], function (edi) {
+  <script>
+  require(['../wilib/js/lib/revela_pergaminho', '../wilib/js/lib/alternativa_botao'], function (edi, edi2) {
 
-            edi.setConfig({
-                icone: "interrogacaoAzul",
-                mascote: 'mascote',
-                titulo: "Considerando as ideias e estruturas do texto que você leu<br> anteriormente, clique em VERDADEIRO (V) ou FALSO (F)."
-            });
+    if(edi2.root.util.telaAtual == 0) {
 
-            var alternativas = [];
+      edi.setConfig({
+        icone: 'exclamacao',
+        titulo: 'Clique no pergaminho para revelar o texto e responda a questão.',
+        mascote: 'mascote',
+        tempoFinal: 15,
+        qtdTelas: 2
+      });
 
-            alternativas.push({
-                texto: 'O passarinho recém-nascido pode aprender o canto de outras<br>espécies como o ser humano recém-nascido pode aprender os<br> sons de qualquer língua.',
-                dataCorreta: false
-            });
+      var pergaminhos = [
+        "Enquanto o Titanic<br>" +
+        "ainda flutua, tentemos o<br>" +
+        "impossível para mudar o<br>" +
+        "seu curso. Afinal, quem<br>" +
+        "faz a história são as pessoas" +
+        "e não o contrário.<br>" +
+        "<span style='float: right; font-size: 10px'>( Herbert de Souza, na Folha de São Paulo, 17/11/96)</span>"
+      ];
 
-            alternativas.push({
-                texto: 'O pássaro adulto quando consegue aprender o canto<br> de outra espécie não possui o “sotaque” estrangeiro.',
-                dataCorreta: false
-            });
+      var config = {
+        textoMarginTop: 10,
+        width: 150,
+        height: 185,
+        left: 300,
+        top: 110,
+        fontSize: 12
+      };
 
-            alternativas.push({
-                texto: 'A criança ao se tornar adulta pode aprender outra língua,<br> entretanto nunca perderá o sotaque de sua língua de origem.',
-                dataCorreta: true
-            });
+      edi.revela_pergaminho(pergaminhos, function () {
+        $('<div>').css({zIndex: 4000}).addClass('bloqueio').appendTo('#conteudo');
+        edi.root.regressiva(10000, 'para liberar a proxima questão!', function(){
+          $('.bloqueio').remove();
+        })
+      }, function () {
+      }, config);
 
-            alternativas.push({
-                texto: 'No processo de construção do texto<br> é usada a linguagem Denotativa.',
-                dataCorreta: true
-            });
+      edi2.alternativa_botao();
+    }
+    else {
+      edi2.setConfig({
+        titulo: 'Deduz-se do texto que o Titanic:'
+      });
 
-            edi.alternativa_vf(alternativas, function (a) {
+      var btns = [
+        [
+          {texto: 'é um navio real.', dataCorreta: false},
+          {texto: 'simboliza algo que vai mal.', dataCorreta: true},
+          {texto: 'é um navio imaginário.', dataCorreta: false},
+          {texto: 'simboliza esperança de salvação.', dataCorreta: false},
+          {texto: 'sintetiza todas as tragédias humanas.', dataCorreta: false}
+        ]
+      ];
 
-            }, function (a) {
-                if (a)
-                    mensagem('<div style="width: 430px; font-size: 22px; display: inline-block">Parabéns! Você conseguiu responder corretamente as questões.</div>');
-                else
-                    mensagem('<div style="width: 430px; font-size: 22px; display: inline-block">Observe: Leve em consideração o texto lido anteriormente para embasar suas respostas, caso considere necessário, releia o texto novamente.</div>');
-            }, {
-                left: 60,
-                top: 50,
-                margin: '0 0 15px 0'
-            });
-        });
-    </script>
+      var config2 = {
+        tamanhoTexto: 14,
+        colunas: 1,
+        width: 320,
+        height: 20,
+        left: 230,
+        top: 100,
+        margin: '1px 5px',
+        padding: 5,
+        randomico: true,
+        display: 'block',
+        btnBranco: true,
+        animacao: true
+      };
+
+      edi2.alternativa_botao(btns[0], null, function (a) {
+        barraMsg(a?'Muito bem!<br>Para responder essa questão você utilizou o seu conhecimento prévio sobre o naufrágio do navio. O autor usou essa imagem para falar sobre algo que também anda corre perigo de se tornar um desastre.'
+                :'Atenção!<br> Para responder essa questão você precisa conhecer a história do navio Titanic que naufragou. O autor usou essa imagem para falar sobre algo que também anda corre perigo de se tornar um desastre. Reflita um pouco mais.', {height: 150, wait: 0})
+      }, config2);
+
+      edi.revela_pergaminho();
+    }
+
+  });
+  </script>
 </head>
-
 <body>
-
 </body>
 </html>

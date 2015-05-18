@@ -22,7 +22,7 @@
             }
 
             function calbackFinal() {
-                mensagem()
+                $('#msg').fadeIn();
             }
 
             edi.revela_slide('.revela', callback, calbackFinal, {});
@@ -123,14 +123,15 @@
         #msg {
           position: absolute;
           left: 500px;
-          top: 180px;
+          top: 210px;
           width: 260px;
           padding: 5px;
           color: #9c0;
-          font-size: 12px;
+          font-size: 11px;
           font-style: italic;
           border: 1px dotted #9c0;
           border-radius: 5px;
+          display: none;
         }
     </style>
 </head>
@@ -158,7 +159,7 @@
 <div id="msg">
   Muito Bem! Para que haja uma boa interpretação precisamos relacionar o
   que sabemos com o que nos é apresentado pelo autor do texto. Se não lemos,
-  não <br> temos conteúdo para argumentar, e desta forma, <br> compreender o
+  não temos conteúdo para argumentar, e desta forma, compreender o
   texto. Leia mais!
 </div>
 </body>

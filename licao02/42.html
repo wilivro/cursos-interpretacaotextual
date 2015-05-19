@@ -6,21 +6,21 @@
 		<meta charset="utf-8">
 		<script src="../wilib/js/lib/require.js"></script>
 		<script src="../wilib/js/app.js"></script>
-		
+
 		<link rel="stylesheet" href="../wilib/css/font-awesome.css">
 		<link rel="stylesheet" href="../wilib/css/estilo.css">
-		
+
 		<!-- main -->
 		<script>
 			require(['../wilib/js/lib/alternativa_botao'], function (edi) {
-				
+
 				edi.setConfig({// configurando o EDI
 					icone: false,
 					enunciado: false,
 					titulo: '',
 					qtdTelas: 1
 				});
-				
+
 				var textoPergunta = [
 					'É correto afirmar que, desafiar as regras é uma atitude própria do adolescente das escolas privadas. E esse é o grande desafio <br> do professor moderno? ',
 					];
@@ -35,7 +35,7 @@
 				],
 
 				];
-			
+
 				var config = {
 					width: 350,
 					height: 100,
@@ -49,22 +49,31 @@
 					animacao: true,
 					tamanhoTexto: 16
 				};
-				
-				function callback (a) {
-                   
-				}
 
-				edi.alternativa_botao(btns[edi.telaAtual-1], callback, null, config);//iniciando o EDI
+				edi.alternativa_botao(btns[edi.telaAtual-1], null, function(a) {
+					if (a) {
+						$('#msg').fadeIn();
+						return;
+					}
+
+					$('#msg').html(
+						'Atenção! Releia o texto com atenção, e perceba' +
+						'sobre o que realmente é  falado na reportagem.'
+					).css({
+						color: 'red',
+						borderColor: 'red'
+					}).fadeIn();
+				}, config);//iniciando o EDI
 
 				});
 		</script>
-		
+
 		<style>
 			#conteudo {
 				position: absolute;
 
 				width: 790px !important ;
-	
+
 				background: #9bbbe3; /* Old browsers */
 				background: -moz-linear-gradient(top,  #9bbbe3 1%, #5b82b4 100%); /* FF3.6+ */
 				background: -webkit-gradient(linear, left top, left bottom, color-stop(1%,#9bbbe3), color-stop(100%,#5b82b4)); /* Chrome,Safari4+ */
@@ -74,7 +83,7 @@
 				background: linear-gradient(to bottom,  #9bbbe3 1%,#5b82b4 100%); /* W3C */
 				filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#9bbbe3', endColorstr='#5b82b4',GradientType=0 ); /* IE6-9 */
 			}
-			
+
 			.texto {
 				width: 200px;
 				height: 168px;
@@ -83,7 +92,7 @@
 				left: 470px;
 				top: 5px;
 				}
-			
+
 			.texto p {
 				font-size: 14px;
 				margin: 20px 0 0 0;
@@ -92,7 +101,7 @@
 				color: #fff;
 				width: 235px;
 			}
-			
+
 			#num {
 				width: 50px;
 				display: block;
@@ -108,7 +117,7 @@
 				top: 20px;
 				color:#fff;
 			}
-			
+
 			.btn-sem-estilo {
 				box-shadow: 0 0 0 0;
 			}
@@ -135,13 +144,13 @@
 				background-color: #fff;
 			}
 
-			#grifado { 
+			#grifado {
 				font-weight: bold;
 				font-size: 10px;
 			}
 
 			#enunciado {
-				position: absolute;							
+				position: absolute;
 
 				top: 55px;
 				left: 50px;
@@ -149,28 +158,46 @@
 				font-size: 18px;
 				font-style: italic;
 				z-index: 12;
-				color: #fff;				
+				color: #fff;
 
 			}
 
+			#msg {
+				position: absolute;
+				left: 90px;
+				top: 310px;
+				width: 200px;
+				padding: 5px;
+				background: #fff;
+				color: #9c0;
+				font-style: italic;
+				font-size: 12px;
+				border: 1px dotted #9c0;
+				border-radius: 5px;
+				display: none;
+			}
 
 		</style>
 	</head>
-	
+
 	<body>
-		<div class="texto">			
+		<div class="texto">
 			<p>
-				
+
 			</p>
 		</div>
 
 		<div id="noticia">
 			“Sempre fez parte do desafio do magistério administrar adolescente com hormônios em ebulição e com o desejo natural da idade de desafiar as regras. A diferença é que, hoje, em muitos casos, a relação comercial entre a escola e os pais se sobrepõe à autoridade do professor.” <span id="grifado">(VEJA, p. 63, 11 maio 2005.)</span>
-		</div>   
+		</div>
 
 		<div id="num"></div>
 
-		<div id="enunciado">  Leia o seguinte trecho extraído da  <br> revista Veja e responda corretamente.   </div>  	
+		<div id="enunciado">  Leia o seguinte trecho extraído da  <br> revista Veja e responda corretamente.   </div>
 
+		<div id="msg">
+			Muito bem!  O texto fala sobre os desafios do magistério, e não, de
+			escolas públicas ou privadas.
+		</div>
 	</body>
 </html>

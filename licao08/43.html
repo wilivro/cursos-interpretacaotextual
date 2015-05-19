@@ -1,0 +1,118 @@
+<!-- Desenvolvedor: Leandro Fortaleza -->
+<!doctype html>
+<html lang="pt-br">
+<head>
+    <title>Lição 01 Peça 16</title>
+    <meta charset="utf-8">
+    <script src="../wilib/js/lib/require.js"></script>
+    <script src="../wilib/js/app.js"></script>
+    <link rel="stylesheet" href="../wilib/css/font-awesome.css">
+    <link rel="stylesheet" href="../wilib/css/estilo.css">
+
+    <script>
+        require(['../wilib/js/lib/alternativa_botao'], function (edi) {
+
+            edi.setConfig({
+                titulo: 'Vamos praticar os conhecimentos adquiridos até agora?<br>Clique na opção que completa corretamente a sentença:',
+                mascote: 'mascote'
+            });
+
+            if (edi.telaAtual == 1) {
+                var texto = 'Saí, afastando-me dos grupos e fingindo ler os epitáfios. E, aliás, gosto dos <span class="ajuda" data-ajuda="Epitáfio - vem do grego antigo, e significa, literalmente, sobre o túmulo. É um texto inscrito em lápides e placas que buscam homenagear o defunto. Normalmente é redigido em versos, mas há exceções. (Dicionário Formal).">epitáfios</span>; eles são, entre a gente civilizada, uma expressão daquele pio e secreto egoísmo que induz o homem a arrancar à morte um farrapo ao menos de sombra que passou. Daí vem, talvez, a tristeza inconsolável dos que sabem os seus mortos na vala comum; parece-lhes que a podridão anônima os alcança a eles mesmos. (Machado de Assis, Memórias Póstumas de Brás Cubas).<br><br>É predominantemente dissertativo, servindo os dados do enredo do ambiente como fundo para a divagação.';
+
+                var btns = [
+                    {texto: 'VERDADEIRO', dataCorreta: true},
+                    {texto: 'FALSO', dataCorreta: false}
+                ];
+            }
+
+            var config = {
+                randomico: true,
+                width: 380,
+                height: 40,
+                left: 400,
+                top: 150,
+                tamanhoTexto: 16,
+                colunas: 1,
+                margin: '0 0 10px 0',
+                padding: 5,
+                display: 'block',
+                btnBranco: true,
+                animacao: true
+            };
+
+            function callback(a, b) {
+                barraMsg(a?'Muito bem! A sentença é verdadeira, pois trata de uma dissertação.':'Você errou! Observe que não há traços descritivos ou narrativos.',{height: 80})
+            }
+
+            edi.alternativa_botao(btns, callback, null, config);
+
+            $('.texto').peBalao();
+            $('#num').html(edi.telaAtual);
+            $('.texto').find('p').html(texto);
+
+            ajuda({
+                width: 280,
+                background: 'rgb(44, 62, 80)',
+                color: '#FFF',
+                top: 10,
+                left: 0,
+                linkColor: 'none'
+            })
+        });
+    </script>
+
+    <style>
+        .ajuda{
+            color: #008BFF;
+        }
+        #conteudo {
+            background: radial-gradient(#fff, #eee);
+            height: 315px;
+        }
+
+        .texto {
+            background: #FFF;
+            width: 344px;
+            height: 268px;
+            padding: 0 20px;
+            position: absolute;
+            left: 3px;
+            top: 85px;
+            border-radius: 5px;
+            font-size: 14px;
+            border: 1px solid #E2E2E2;
+        }
+
+        .texto p {
+            margin: 26px 0 0 0;
+            text-align: center;
+            line-height: 1.3;
+        }
+
+        #num {
+            width: 50px;
+            display: block;
+            height: 50px;
+            text-align: center;
+            line-height: 50px;
+            font-size: 35px;
+            border: 4px solid #666;
+            border-radius: 50%;
+            position: absolute;
+            left: 140px;
+            top: 10px;
+        }
+
+        .btn-sem-estilo {
+            box-shadow: 0 0 0 0;
+        }
+    </style>
+</head>
+
+<body>
+<div class="texto">
+    <p></p>
+</div>
+</body>
+</html>

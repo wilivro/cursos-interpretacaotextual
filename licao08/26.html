@@ -1,0 +1,169 @@
+<!-- Desenvolvedor: Rodolfo Araujo -->
+<!doctype html>
+<html lang="pt-br">
+<head>
+    <title>Lição 02 Peça 33</title>
+    <meta charset="utf-8">
+    <script src="../wilib/js/lib/require.js"></script>
+    <script src="../wilib/js/app.js"></script>
+    <link rel="stylesheet" href="../wilib/css/font-awesome.css">
+    <link rel="stylesheet" href="../wilib/css/estilo.css">
+
+    <script>
+        require(['../wilib/js/lib/arrasta'], function (edi) {
+
+            edi.setConfig({
+                mascote: 'mascote',
+                titulo: 'Arraste as palavras para os espaços corretos e  <br> complete o diálogo entre Reinaldo e Carlos.',
+                tempoFinal: 20
+            });
+
+            var arrArrasta = [
+                {arrasta: 'dissertativos', dataCorreta: '1', dataId: '1'},
+                {arrasta: 'ortográfica', dataCorreta: '2', dataId: '2'},
+                {arrasta: 'assunto', dataCorreta: '3', dataId: '3'},
+                {arrasta: 'pessoal', dataCorreta: '4', dataId: '4'}
+            ];
+
+            var texto = $('#boxTexto').html();
+
+            for (var i = 0; i < arrArrasta.length; i++) {
+                    var aux = '';
+                    for (var j = 0; j < arrArrasta[i].arrasta.length; j++) {
+                        aux += '_';
+                    };
+                texto = texto.replace('{' + i + '}', '<div class="alvo" data-correta="'+arrArrasta[i].dataCorreta+'">' + aux + '</div>');
+            }
+
+            $('#boxTexto').html(texto);
+
+            arrArrasta.sort(function () {
+                return 0.5 - Math.random()
+            });
+
+
+            for (var i = 0; i < arrArrasta.length; i++) {
+                $('<div>')
+                        .addClass('arrasta fundoArrasta azulAlpha')
+                        .attr({
+                            'data-id': arrArrasta[i].dataId,
+                            id: 'arrasta' + (i + 1),
+                            'data-correta': arrArrasta[i].dataCorreta
+                        })
+                        .html(arrArrasta[i].arrasta)
+                        .appendTo('#arrasta');
+            }
+
+            var config = {
+                colorirFilho: true,
+                arrastaAbsolute: true,
+                reloadCorreta: true,
+                alvoFixo: true
+            };
+
+            edi.arrasta('arrasta', 'alvo', function (a, b, c) {
+                if(a){
+                    c.html(b.css({display: 'flex'}))
+                }
+            }, function (a) {
+                    $('#msgAcerto').fadeIn();
+            }, config);
+
+            $('.arrasta').css({
+                margin: -5,
+                padding: 5
+            });
+
+            $('<div>')
+                    .attr('id', 'mascote')
+                    .appendTo('#conteudo');
+
+            $('.b1').peBalao({scaleX: 1.3, scaleY: -1.3, top: 104, left: 180, borda: '#666'});
+            $('.b2').peBalao({scaleX: -1.3, scaleY: -1.3, top: 104, left: 180, borda: '#666'});
+        });
+    </script>
+    <style>
+        .alvo {
+            display: inline-block;
+        }
+
+        .arrasta {
+            padding: 5px;
+            margin-right: 10px;
+            margin-left: 10px;
+            display: inline-block;
+            color: #FFF;
+        }
+
+        #boxArrasta {
+            padding-top: 5px;
+            width: 650px;
+            height: 55px;
+            cursor: default;
+            top: 240px;
+            left: 50px;
+        }
+
+        #arrasta {
+            position: relative;
+            display: table-cell;
+            vertical-align: middle;
+            width: 650px;
+            height: 60px;
+        }
+
+        .balao {
+            position: absolute;
+            padding: 10px;
+            border: solid 1px #666;
+            border-radius: 10px;
+            top: 75px;
+            text-align: center;
+            left: 10px;
+            font-size: 13px;
+            height: 70px;
+        }
+
+        #msgAcerto {
+            width: 650px;
+            height: 155px;
+            position: absolute;
+            left: 64px;
+            top: 308px;
+            font-size: 12px;
+            text-align: center;
+            font-weight: bold;
+            line-height: 15px;              
+            color: #fff;
+            display: none;
+        }
+
+</style>
+
+</head>
+<body>
+
+<div id="boxTexto">
+    <span class="balao b1" style="width: 300px; top: 85px; padding-top:10px; height: 70px;">
+        A elaboração de textos {0} requer domínio da modalidade escrita da língua, desde a questão {1} ao uso de um vocabulário preciso.
+    </span>
+    <span class="balao b2" style="width: 420px; top: 85px; left: 340px; padding-top:20px; height:60px;">
+        Além de conhecimento do {2} que se vai abordar e posição crítica <br> ({3}) diante desse assunto.
+    </span>
+
+    <img src="../wilib/img/svg/personagem1.svg" width="100" style="position: absolute; left: 220px; top: 190px;"/>
+    <img src="../wilib/img/svg/personagem2.svg" width="110" style="position: absolute; left: 420px; top: 190px;" alt=""/>
+    <div id="personagem1"></div>
+    <div id="personagem2"></div>
+
+    <div id="boxArrasta" class="btn btn-default-hover">
+        <div id="arrasta"></div>
+    </div>
+
+    <div id="msgAcerto" class="arredondado">
+            <p>Excelente! A atividade dissertadora desenvolve o gosto de pensar e escrever o que pensa, de questionar o mundo, de procurar entender e transformar a realidade.</p>
+    </div>
+
+</div>
+</body>
+</html>

@@ -1,0 +1,129 @@
+<!-- Desenvolvedor: Micael Souza -->
+<!doctype html>
+<html lang="pt-br">
+	<head>
+        <title>arr_j003</title>
+		<meta charset="utf-8">
+		<script src="../wilib/js/lib/require.js"></script>
+		<script src="../wilib/js/app.js"></script>
+		<link rel="stylesheet" href="../wilib/css/font-awesome.css">
+		<link rel="stylesheet" href="../wilib/css/estilo.css">
+
+		<script>
+			require(['../wilib/js/lib/arrasta_numero'], function (edi) {
+
+				edi.setConfig({
+					icone: 'exclamacao',
+					titulo: 'Classifique os trechos abaixo arrastando para o local correto <br> o número do tipo textual correspondente. ',
+					mascote: 'mascote'
+				});
+
+				var arrastas = [];
+
+				arrastas.push({
+					arrasta: 'Narração',
+					alvo: 'Ocorreu um pequeno incêndio na noite de ontem, em um apartamento de propriedade do Sr. marcos da Fonseca. No local, habitavam o proprietário, sua esposa e seus dois filhos. O fogo despontou em um dos quartos que, por sorte, ficava na frente do prédio.'
+				});
+
+				arrastas.push({
+					arrasta: 'Dissertação',
+					alvo: 'O mundo moderno caminha atualmente para sua própria destruição, pois tem havido inúmeros conflitos internacionais, o meio ambiente encontra-se ameaçado por sério desequilíbrio ecológico e, além do mais, permanece o perigo de uma catástrofe nuclear.'
+				});
+
+				arrastas.push({
+					arrasta: 'Descrição',
+					alvo: 'Qualquer pessoa que o visse, quer pessoalmente ou através de meios de comunicação, era levada a sentir que dele emanava uma serenidade e autoconfiança próprias daqueles que vivem com sabedoria e dignidade.'
+				});
+
+                var config = {
+                    embaralhar: true,
+                    arrastaConfig: {
+                        width: 260,
+                        height: 96,
+                        left: 10,
+                        top: 10,
+                        tamanhoArrasta: 50,
+                        numeroLineHeight: 1.7,
+                        fontSize: 13,
+                        textAlign: 'left'
+                    },
+                    alvoConfig: {
+                        width: 320,
+                        height: 96,
+                        fontSize: 11,
+                        left: 445,
+                        top: 10,
+                        textAlign: 'left'
+                    },
+                    reloadCorreta: true
+                }
+
+				edi.arrasta_numero(arrastas, function (a) {
+				    console.log('cb',a)
+				}, function (a) {
+          if (a) {
+          	$('#msgAcerto').fadeIn();
+          } else{
+          	$('#msgErrado').fadeIn();
+          };
+				}, config);
+
+        });
+		</script>
+
+		<style>
+        #conteudo {
+            background: #fdfdfd;
+        }
+
+       #msgAcerto {
+          width: 130px;
+          height: 95px;
+          position: absolute;
+          left: 290px;
+          top: 170px;
+          padding: 5px;
+          padding-bottom: 30px;
+          font-size: 14px;
+          text-align: center;
+          font-weight: bold;
+          line-height: 16px;              
+          color: #9c0;
+          display: none;
+       }
+
+       #msgErrado {
+          width: 130px;
+          height: 85px;
+          position: absolute;
+          left: 290px;
+          top: 170px;
+          padding: 5px;
+          padding-bottom: 30px;
+          font-size: 14px;
+          text-align: center;
+          font-weight: bold;
+          line-height: 16px;                  
+          color: #F00;
+          display: none;
+       }
+
+
+			strong {
+				font-weight: bold;
+			}
+		</style>
+	</head>
+
+	<body>
+
+		<div id="msgAcerto" class="borda-pontilhado-verde arredondado">
+        <p>Parabéns! Você conseguiu compreender os tipos textuais, continue com essa dedicação!</p>
+    </div>
+
+    <div id="msgErrado" class="borda-pontilhado-vermelho arredondado">
+        <p>Você errou! Relembre os conceitos estudados nesta lição e refaça este exercício.</p>
+    </div>
+
+	</body>
+</html>

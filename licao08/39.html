@@ -1,0 +1,94 @@
+<!doctype html>
+<html lang="pt-br">
+	<head>
+		<title>Alternativa Botao</title>
+		<meta charset="utf-8">
+		<script src="../wilib/js/lib/require.js"></script>
+		<script src="../wilib/js/app.js"></script>
+		<link rel="stylesheet" href="../wilib/css/font-awesome.css">
+		<link rel="stylesheet" href="../wilib/css/estilo.css">	
+		
+		<!-- main -->
+
+		<script>
+			require(['../wilib/js/lib/alternativa_botao_asterisco'], function (edi) {
+				
+				edi.setConfig({// configurando o EDI
+					icone: 'exclamacao',
+					titulo: 'Analise as frases e em seguida clique sobre as respostas corretas.',
+					qtdTelas: 2//Se for multi tela, colcoar o valor do length do array 
+				});
+
+				var config = {
+
+				};
+
+				function callback () {
+					
+				}	
+				
+				var btns = [];
+
+				btns.push([
+					{texto: 'Apenas a frase A<br>está correta.', dataCorreta: true},
+					{texto: 'Apenas a frase B<br>está correta.', dataCorreta: false},
+					{texto: 'As duas frases<br>estão corretas.', dataCorreta: false}
+				]);
+
+				btns.push([
+					{texto: 'Apenas a frase A<br>está correta.', dataCorreta: false},
+					{texto: 'Apenas a frase B<br>está correta.', dataCorreta: false},
+					{texto: 'As duas frases<br>estão corretas.', dataCorreta: true}
+				]);
+
+				var textos = [];
+				textos.push([
+					{topico: 'A', texto: 'O texto dissertativo divide-se em introdução, desenvolvimento e conclusão.'},
+					{topico: 'B', texto: 'O trecho seguinte não apresenta coesão textual: A não ser que estudes, serás reprovado no concurso.'}
+				]);
+
+				textos.push([
+					{topico: 'A', texto: 'Um texto pode ser narrativo e apresentar elementos descritivos. O texto narrativo tem como base o fato.'},
+					{topico: 'B', texto: 'Falta de coerência é o mesmo que falta de lógica.'}
+				]);
+
+				//console.log(edi._telaAtual());
+				
+
+
+				edi.alternativa_botao_asterisco(btns, textos, function(a) {
+
+					if(edi._telaAtual()==0)
+						barraMsg(a?'Excelente! A letra B está incorreta, pois na frase a coesão textual acontece!':'Atenção! Lembre-se que coesão indica sentido de completude, uma frase que completa o sentido da outra. Repense sua resposta!', {height: 80});
+				}, null, config);//iniciando o EDI
+
+			});
+		</script>
+		
+		<style>
+
+		     #msgAcerto {
+                width: 370px;
+                height: 40px;
+                position: absolute;
+                left: 170px;
+                top: 325px;
+                padding: 5px;
+                font-size: 12px;
+                text-align: center;
+                line-height: 14px;              
+                color: #9c0;
+                display: none;
+             }
+
+		</style>
+	</head>
+	
+	<body>
+
+		 <div id="msgAcerto" class="borda-pontilhado-verde arredondado">
+            <p>Muito bem, você acertou! Quando o CTB (Código de Trânsito Brasileiro) aborda sobre as normas gerais de circulação, ele alerta para essas situações que antecedem o ato de circulação.</p>
+         </div>
+
+	</body>
+</html>

@@ -1,0 +1,194 @@
+<!doctype html>
+<html lang="pt-br">
+<head>
+    <title>Lição 01 Peça 23</title>
+    <meta charset="utf-8">
+    <script src="../wilib/js/lib/require.js"></script>
+    <script src="../wilib/js/app.js"></script>
+    <link rel="stylesheet" href="../wilib/css/font-awesome.css">
+    <link rel="stylesheet" href="../wilib/css/estilo.css">
+
+    <script>
+        require(['../wilib/js/lib/edi'], function (edi) {
+                 
+
+            
+
+            edi.iniciar({
+                titulo: 'Clique sobre as folhas e veja um exemplo de texto dissertativo<br>argumentativo e um exemplo de texto dissertativo descritivo.',
+                mascote: 'mascote'
+            });
+
+            edi.objetivos = ['0','0']
+
+            function clickFolha() {
+
+                $('.folha').each(function () {
+                    $(this).find('.ct').css({display: 'none'})
+                    $(this)
+                            .css({
+                                top: $(this).attr('data-top'),
+                                left: $(this).attr('data-left'),
+                                width: 42,
+                                height: 55,
+                                padding: 0
+                            })
+                            .addClass('folhaRotate')
+                            .off();
+                });
+
+                var _this = $(this);
+
+                _this
+                        .attr({
+                            'data-top': _this.css('top'),
+                            'data-left': _this.css('left')
+                        })
+                        .removeClass('folhaRotate')
+                        .css({
+                            backgroundSize: '100% 100%'
+                        })
+                        .animate({
+                            padding: 3,
+                            top: 90,
+                            left: 290,
+                            width: 240,
+                            height: 270
+                        }, function () {
+                            _this.find('.ct').fadeIn();
+
+                            if (!_this.hasClass('ok')) {
+                                _this.addClass('ok');
+                                edi.regressiva(1000, 'para clicar em outro botão!', function () {
+                                    $('.folhaRotate').each(function () {
+                                        $(this).mousedown(clickFolha)
+                                    });
+
+                                    edi.objetivos.pop();
+
+                                    if (edi.objetivos.length == 0)
+                                        edi.finalizar(null,null,function(){
+                                            barraMsg('Muito bem! Você conheceu os tipos de texto que poderão surgir em questões de interpretação. Vamos exercitar os conhecimentos adquiridos.',{height: 80})
+                                        })
+                                })
+                            } else {
+                                $('.folhaRotate').each(function () {
+                                    $(this).mousedown(clickFolha)
+                                });
+                            }
+                        });
+            }
+
+            $('.folhaRotate').mousedown(clickFolha);
+
+            ajuda({linkColor: '#3D86CF', top: 40});
+
+            edi.util.removeLoading();
+        });
+    </script>
+    <style>
+        .folhaRotate {
+            position: absolute;
+            left: 20px;
+        }
+
+        .ct {
+            background-color: #FFF;
+            height: 232px;
+            margin-top: 15px;
+            display: none;
+            overflow: auto;
+        }
+
+        .txt {
+            padding: 0 22px 10px 12px;
+            font-size: 16px;
+            display: table-cell;
+            vertical-align: middle;
+            height: 222px;
+            color: #666;
+        }
+
+        .txt p {
+            color: #8CA8B8
+        }
+
+        #pergunta {
+            position: absolute;
+            top: 71px;
+            left: 410px;
+            width: 308px;
+            height: 65px;
+        }
+
+        .middle {
+            text-align: center;
+            font-size: 16px;
+            vertical-align: middle;
+            display: table-cell;
+            color: #666;
+            width: 308px;
+            height: 65px;
+        }
+
+        #num {
+            position: absolute;
+            width: 50px;
+            display: block;
+            height: 50px;
+            text-align: center;
+            line-height: 50px;
+            font-size: 35px;
+            background: #FFF;
+            border: 4px solid #1C8FD0;
+            border-radius: 50%;
+            left: 340px;
+            top: 75px;
+            color: #666;
+        }
+
+    </style>
+</head>
+<body>
+<div data-edi="alternativa_botao">
+<div id="pergunta">
+    <div class="middle"></div>
+</div>
+</div>
+<div class="folha folhaRotate" style="top: 140px">
+    <div class="ct">
+        <div class="txt">
+            <p>
+                Há uma diferença entre esses movimentos de jovens educados nos países do Ocidente, onde,
+em geral, toda a juventude é fenômeno de minoria, e movimentos similares de jovens em países
+islâmicos e em outros lugares, nos quais a maioria da população tem entre 25 e 30 anos. Nestes
+países, portanto, muito mais do que na Europa, os movimentos de jovens são politicamente
+muito mais massivos e podem ter maior impacto político. O impacto adicional na radicalização
+dos movimentos de juventude acontece porque os jovens hoje, em período de crise econômica,
+são desproporcionalmente afetados pelo desemprego e, portanto, estão desproporcionalmente
+insatisfeitos. Mas não se pode adivinhar que rumos tomarão esses movimentos. Mas eles só,
+eles pelos seus próprios meios, não são capazes de definir o formato da política nacional e todo
+o futuro. De qualquer modo, devo dizer que está a fazer-me perguntas enquanto historiador, mas
+sobre o futuro. Infelizmente, os historiadores sabem tanto sobre o futuro quanto qualquer outra
+pessoa. Por isso, as minhas previsões não são fundadas em nenhuma especial vocação que eu
+tenha para prever o futuro.
+<p>Texto Dissertativo Argumentativo</p>
+            </p>
+        </div>
+    </div>
+</div>
+<div class="folha folhaRotate" style="top: 240px" data-txt="dasdsadsadasdasdasd">
+    <div class="ct">
+        <div class="txt">
+            <p>
+               No Brasil, 10% brasileiros mais pobres recebem 0,9% da renda do país, enquanto os 10% mais ricos ficam com 47,2%. Segundo a Unicef, 6 milhões de crianças (10% do total) estão em condições de “severa degradação das condições humanas básicas, incluindo alimentação, água limpa, condições sanitárias, saúde, habitação, educação e informação”.
+            </p>
+
+            <p>Texto Dissertativo Expositivo</p>
+
+        </div>
+    </div>
+</div>
+
+</body>
+</html>

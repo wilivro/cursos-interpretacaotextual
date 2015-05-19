@@ -1,0 +1,207 @@
+<!doctype html>
+<html lang="pt-br">
+<head>
+    <title>Lição 01 Peça 34</title>
+    <meta charset="utf-8">
+    <script src="../wilib/js/lib/require.js"></script>
+    <script src="../wilib/js/app.js"></script>
+    <link rel="stylesheet" href="../wilib/css/font-awesome.css">
+    <link rel="stylesheet" href="../wilib/css/estilo.css">
+
+    <script>
+        require(['../wilib/js/lib/arrasta'], function (edi) {
+
+            edi.setConfig({
+                mascote: 'mascote',
+                titulo: 'Marque o texto com características narrativas, pintando a alternativa correta.',
+                tempoFinal: 10
+            });
+
+            var arrArrasta = [
+                {arrasta: '', dataCorreta: '1', dataId: '1'}
+            ];
+
+            arrArrasta.sort(function () {
+                return 0.5 - Math.random()
+            });
+
+            for (var i = 0; i < arrArrasta.length; i++) {
+                $('<div>')
+                        .addClass('arrasta')
+                        .css({
+                            width: '102px',
+                            height: '65px'
+                        })
+                        .attr({
+                            'data-id': arrArrasta[i].dataId,
+                            id: 'arrasta'+(i+1),
+                            'data-correta': arrArrasta[i].dataCorreta
+                        })
+                        .html(arrArrasta[i].arrasta)
+                        .appendTo('#arrasta');
+            }
+
+            var config = {
+                colorirFilho: true,
+                arrastaAbsolute: true,
+                reloadCorreta: true,
+                clone: false,
+                alvoFixo: false,
+                multAlvo: true,
+                target: false
+            };
+
+            var animacao = function(a, fps, stop){
+                var cont = 0;
+                var tempo = setInterval(function(){
+                    cont+=10;
+                    a.attr('width', cont);
+                    if(cont == stop)
+                        clearInterval(tempo);
+                }, 30/1000);
+            };
+
+            var arr = [
+                {txt: 'O ideal é que todos colaborem. Caso contrário, <br> o Brasil continuará sem rumo.', dataCorreta: 0},
+                {txt: 'Rodrigo e Juliana estavam na sala, quando ocorreu a explosão.', dataCorreta: 1},
+                {txt: 'Ela tem olhos azuis e cabelos louros. Não parece brasileira.', dataCorreta: 0},
+                {txt: 'Minha casa tem dois andares. Os quartos ficam na parte de cima.', dataCorreta: 0},
+                {txt: 'A inteligência humana deve ser usada para o bem.', dataCorreta: 0}
+            ]
+
+            arr.sort(function () {
+                return 0.5 - Math.random()
+            });
+
+            for(var i = 0; i < arr.length; i++){
+                var alvo = $('<div>')
+                        .addClass('alvo')
+                        .attr({'data-correta': arr[i].dataCorreta})
+                        .appendTo('#boxTexto')
+
+                $('<div>').addClass('svg').appendTo(alvo)
+
+                $('<div>')
+                        .addClass('centraliza')
+                        .html(arr[i].txt)
+                        .appendTo(alvo)
+
+            };
+
+            edi.arrasta('arrasta', 'alvo', function (a, b, c) {
+
+                b.remove();
+
+                animacao(c.find('#Layer_2 rect'), 10000, 611);
+                c.css('color', '#DDD');
+
+                $('.arrasta').off();
+
+                c.find('#Layer_2 rect').attr('fill', '#9c0');
+
+            }, function (a) {
+                if (a) {
+                    barraMsg('Muito bem! Narra um fato acontecido explicitando os envolvidos, <br> bem como o local.', {height: 80});
+                } else {
+                    barraMsg('Atenção! Observe que a alternativa correta narra um fato acontecido explicitando os envolvidos, bem como o local.', {height: 80});
+                };    
+            }, config);
+
+            $('#arrasta1')
+                    .load('../wilib/img/svg/pincel.svg', function(){
+                        $('#corPonta').attr('fill', '#9c0');
+                    });
+
+            $('<div>')
+                    .attr('id', 'mascote')
+                    .appendTo('#conteudo');
+
+            $('.svg').load('../wilib/img/svg/fundoPincel.svg', function(){
+                $('#Layer_2 rect')
+                        .attr({
+                            width: 0,
+                            height: 50
+                        });
+            });
+
+        });
+    </script>
+    <style>
+        .svg, .svg svg{
+            position: absolute;
+            width: 514px;
+            height: 48px;
+            display: block;
+        }
+
+        .alvo {
+            display: inline-block;
+            width: 514px;
+            height: 48px;
+            margin-bottom: 5px;
+        }
+        .arrasta {
+            margin-right: 10px;
+            margin-left: 10px;
+            display: inline-block;
+            color: #FFF;
+            width: 77px;
+            text-align: center;
+        }
+        #boxArrasta{
+            width: 150px;
+            height: 140px;
+            position: absolute;
+            cursor: default;
+            top: 160px;
+            left: 40px;
+            box-shadow: 0 2px rgba(0, 0, 0, 0.2);
+            background: linear-gradient(#fff, #eee);
+            border-radius: 5px;
+            border: 1px solid #eee;
+        }
+        #arrasta{
+            position: relative;
+            display: table-cell;
+            vertical-align: middle;
+            color: #666;
+            width: 150px;
+            height: 140px;
+        }
+        #boxTexto{
+            position: absolute;
+            width: 700px;
+            height: 240px;
+            text-align: left;
+            line-height: 14px;
+            color: #666;
+            top: 90px;
+            left: 200px;
+            font-size: 13px;
+            border-radius: 10px;
+            padding-left: 20px;
+        }
+
+        .centraliza{
+            position: relative;
+            text-align: center;
+            display: table-cell;
+            vertical-align: middle;
+            width: 514px;
+            height: 48px;
+        }
+
+
+    </style>
+
+</head>
+<body>
+
+<div id="boxArrasta">
+    <div id="arrasta"></div>
+</div>
+<div id="boxTexto">
+
+</div>
+</body>
+</html>

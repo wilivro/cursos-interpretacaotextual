@@ -1,0 +1,40 @@
+<!-- Desenvolvedor: Leandro Fortaleza -->
+<!doctype html>
+<html lang="pt-br">
+	<head>
+        <title>rev_e003</title>
+		<meta charset="utf-8">
+        <script src="../wilib/js/lib/require.js"></script>
+        <script src="../wilib/js/app.js"></script>
+        <link rel="stylesheet" href="../wilib/css/font-awesome.css">
+        <link rel="stylesheet" href="../wilib/css/estilo.css">
+
+
+        <script>
+			require(['../wilib/js/lib/revela_interrogacao'], function (edi) {
+
+				edi.setConfig({
+        	icone: "exclamacao",
+          mascote: 'mascote',
+					titulo: "Clique sobre os pontos de interrogação e <br>conheça a estrutura de um texto dissertativo.",
+				});
+
+                var revelas = [
+                    "O texto deve ser produzido de forma a satisfazer os objetivos que o escritor se propôs a alcançar.",
+                    "Há uma estrutura para a organização desse tipo de texto.",
+                    "Consiste em organizar o material obtido em três partes: a introdução, o desenvolvimento e a conclusão."
+                ];
+
+				edi.revela_interrogacao(revelas, function (a) {
+//                    console.log('cb', a);
+                }, function (a) {
+                    barraMsg('Muito bem! Cada uma dessas partes se relacionam umas com as outras, seja preparando-as ou retomando-as, portanto, não são isoladas. A seguir<br>veremos como cada uma dessas partes é construída.', {height: 80})
+                });
+			});
+		</script>
+	</head>
+
+	<body>
+
+	</body>
+</html>

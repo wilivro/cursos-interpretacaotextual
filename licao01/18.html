@@ -24,7 +24,7 @@
                             $('#certo').fadeIn();
                         }, {ocultarRev: true, tempoBloqueio: 1000}
                         ,function () {
-                            log('geral: '+cont)
+
                             $('#bloqueio').fadeOut();
                             switch (cont){
                                 case 1:
@@ -38,90 +38,84 @@
                                     break;
                                 case 3:
                                     $('#txt1').html('Clique nos<br>alunos.');
-                                    $('#txt2').hide();
-                                    $('#txt1').show();
                                     break;
                                 case 4:
-                                    $('#txt2').html('Clique na<br>Professora.');
-                                    $('#txt2').hide();
-                                    $('#txt1').show();
+                                    $('#txt1').html('Clique na<br>Professora.');
                                     break;
                                 case 5:
                                     $('#txt1').html('Clique nos<br>alunos.');
-                                    $('#txt2').hide();
-                                    $('#txt1').show();
                                     break;
                                 case 6:
-                                    $('#txt2').html('Clique na<br>Professora.');
-                                    $('#txt2').hide();
-                                    $('#txt1').show();
+                                    $('#txt1').html('Clique na<br>Professora.');
                                     break;
                                 case 7:
                                     $('#txt1').html('Clique nos<br>alunos.');
-                                    $('#txt2').hide();
-                                    $('#txt1').show();
                                     break;
                                 case 8:
-                                    $('#txt2').html('Clique na<br>Professora.');
-                                    $('#txt2').hide();
-                                    $('#txt1').show();
+                                    $('#txt1').html('Clique na<br>Professora.');
                                     break;
                                 case 9:
                                     $('#txt1').hide();
-                                    $('#txt2').hide();
-                                    $('#certo').fadeIn();
                                     break;
                             }
                         });
 
-                $('#revela1').peBalao({
-                    top:34,
-                    left:-35,
-                    scaleX:1,
-                    scaleY:-1,
-                    rotate:90,
-                    borda: '#ccc'
-                });
+                $('.professora').each(function(){
+                    $(this).peBalao({
+                        top:34,
+                        tamanhoBorda: 18,
+                        left:-35,
+                        scaleX:1,
+                        scaleY:-1,
+                        rotate:90,
+                        borda: '#666'
+                    });
+                })
 
                 $('#revela2').peBalao({
                     left:10,
+                    tamanhoBorda: 18,
                     scaleX:-1,
                     scaleY:-1,
                     rotate:180,
-                    borda: '#ccc'
+                    borda: '#666'
                 });
 
-                $('#revela3').peBalao({
-                    top: 25,
-                    left: 187,
-                    scaleX:1,
-                    scaleY:1,
-                    rotate:90,
-                    borda: '#ccc'
-                });
+                $('#revela3, #revela9').each(function(){
+                    $(this).peBalao({
+                        top: 25,
+                        tamanhoBorda: 18,
+                        left: 187,
+                        scaleX:1,
+                        scaleY:1,
+                        rotate:90,
+                        borda: '#666'
+                    });
+                })
 
                 $('#revela4').peBalao({
                     left:10,
+                    tamanhoBorda: 18,
                     scaleX:-1,
                     scaleY:-1,
                     rotate:180,
-                    borda: '#ccc'
+                    borda: '#666'
                 });
 
                 $('#revela6').peBalao({
                     left: 212,
+                    tamanhoBorda: 18,
                     scaleY:-1,
                     rotate:180,
-                    borda: '#ccc'
+                    borda: '#666'
                 });
 
-                $('#revela5').peBalao({
-                    top:34,
-                    left:-35,
-                    scaleX:1,
+                $('#revela8').peBalao({
+                    left: 172,
+                    tamanhoBorda: 18,
                     scaleY:-1,
-                    rotate:90,
-                    borda: '#ccc'
+                    rotate:180,
+                    borda: '#666'
                 });
 
                 var canvas = "../wilib/canvas/objetos/professora";
@@ -183,7 +177,7 @@
 				padding: 5px;
 				position: absolute;
 				text-align: center;
-				border: 1px solid #ccc;
+				border: 1px solid #666;
 				border-radius: 10px;
 			}
 
@@ -258,10 +252,9 @@
             }
 
             #revela9{
-                width: 320px;
-                left: 210px;
-                top: 300px;
-                z-index: 1;
+                left: 20px;
+                top: 80px;
+                width: 200px;
             }
 
             .retangulo{
@@ -279,7 +272,6 @@
             #certo{
                 position: absolute;
                 width: 200px;
-                height: 103px;
                 top: 90px;
                 left: 500px;
                 border-radius: 15px;
@@ -317,7 +309,7 @@
         <div id="btn8" class="_btn" data-revela="8"></div>
         <div id="btn9" class="_btn" data-revela="9"></div>
 
-        <div id="revela1" class="revela" data-revela="1">
+        <div id="revela1" class="revela professora" data-revela="1">
 			<p>
                 Hoje falaremos de um tema importante: Raciocínio Lógico e Interpretação de Textos. O ser humano deve ser capaz de fazer investigações racionais, de ponderar, questionar e compreender conceitos, atestando ou não sua veracidade.
             </p>
@@ -341,7 +333,7 @@
 			</p>
 		</div>
 
-        <div id="revela5" class="revela" data-revela="5">
+        <div id="revela5" class="revela professora" data-revela="5">
             <p>
                 Isso mesmo! Não podemos ter preguiça de pensar, e quem não estimula o desenvolvimento do seu raciocínio lógico não é capaz de questionar e criticar teorias, sendo com facilidade, manipulado, cometendo erros que podem prejudicá-lo para a vida toda.
 
@@ -354,7 +346,7 @@
             </p>
         </div>
 
-        <div id="revela7" class="revela" data-revela="7">
+        <div id="revela7" class="revela professora" data-revela="7">
             <p>
                 Devemos usar nosso raciocínio lógico, percebendo cada detalhe, lendo com atenção, verificando o que é ou não é possível.
             </p>
@@ -372,6 +364,6 @@
             </p>
         </div>
 
-        <div id="certo">Muito Bem! Através da explicação da professora Sara, você pode aprender mais sobre os conceitos de Denotação e Conotação.</div>
+        <div id="certo">Parabéns!<br> Entendeu como a lógica está ligada a tudo que acontece em nossa vida? E em especial na interpretação de textos, problemas cotidianos, teorias e etc.?<br> Continue exercitando seu raciocínio!</div>
 	</body>
 </html>

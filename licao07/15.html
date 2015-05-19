@@ -14,7 +14,7 @@
 
             edi.setConfig({
                 icone: 'exclamacao',
-                titulo: 'Clique sobre os personagens e leia o diálogo.'
+                titulo: 'Clique sobre as setas e leia o diálogo.'
             });
 
             function callback(a, b) {
@@ -22,7 +22,7 @@
             }
 
             function calbackFinal() {
-                mensagem('Muito bem! Continue seus estudos e aprenda <br> mais sobre os conectivos.')
+                $('#msg').fadeIn();
             }
 
             edi.revela_slide('.revela', callback, calbackFinal, {});
@@ -148,7 +148,19 @@
             top: 200px;
         }
 
-
+        #msg {
+          position: absolute;
+          left: 500px;
+          top: 210px;
+          width: 130px;
+          padding: 5px;
+          color: #9c0;
+          font-size: 11px;
+          font-style: italic;
+          border: 1px dotted #9c0;
+          border-radius: 5px;
+          display: none;
+        }
     </style>
 </head>
 
@@ -164,7 +176,7 @@
 </p>
 
 <p class="revela" id="rev-03">
-   Isso mesmo, e também para criar relações entre segmentos do texto. 
+   Isso mesmo, e também para criar relações entre segmentos do texto.
 </p>
 
 <p class="revela" id="rev-04">
@@ -174,6 +186,10 @@
 <p class="revela" id="rev-05">
     Muito bem, eles são muitos, mas você <br> não precisa decorá-los, é só entender <br> qual a ideia que eles passam.
 </p>
+
+<div id="msg">
+  Muito bem! Continue seus estudos e aprenda mais sobre os conectivos.
+</div>
 
 </body>
 </html>

@@ -1,0 +1,147 @@
+<!--Desenvolvedor: Rodolfo Araujo -->
+<!doctype html>
+<html lang="pt-br">
+	<head>
+		<title>Lição 02 Peça 27</title>
+		<meta charset="utf-8">
+		<script src="../wilib/js/lib/require.js"></script>
+		<script src="../wilib/js/app.js"></script>
+		<link rel="stylesheet" href="../wilib/css/font-awesome.css">
+		<link rel="stylesheet" href="../wilib/css/estilo.css">
+
+		<!-- main -->
+		<script>
+
+			require(['../wilib/js/lib/alternativa_boliche'], function (edi) {
+				
+				edi.setConfig({// configurando o EDI
+					icone: 'exclamacao',
+					titulo: 'Clique em CERTO ou ERRADO de acordo com as sentenças a seguir.',
+
+				});
+				
+				var btns = {
+                    tela1:{
+                        texto:'A vivência de quem descreve também influencia na hora de transmitir a impressão alcançada sobre determinado objeto, pessoa, animal, cena, ambiente, emoção vivida ou sentimento.',
+                        btns:[
+                            {texto: 'CERTO', dataCorreta: true},
+                            {texto: 'ERRADO', dataCorreta: false},
+                        ],
+                    },
+                    tela2:{
+                        texto:'Os pormenores são essenciais para se distinguir um determinado momento de qualquer outro, desse modo, a presença de adjetivos e locuções adjetivas é traço distinto de um texto descritivo.',
+                        btns:[
+                            {texto: 'CERTO', dataCorreta: true},
+                            {texto: 'ERRADO', dataCorreta: false},
+                        ],
+                    }
+                };
+
+				var config = {
+					width: 150,
+					height: 50,
+					left: 225,
+					top: 150,
+					boliche: false,
+					colunas: 2,
+					margin: 5,
+					padding: 5
+				};
+				
+				var callback = function (a) {
+					//$('.btn').fadeOut();
+					if(a){
+						$('#certo'+edi.telaAtual()).fadeIn();	
+					}
+					else
+						$('#errado'+edi.telaAtual()).fadeIn();	
+				}
+				
+
+                edi.alternativa_boliche(btns, callback, config);//iniciando o EDI
+              
+			});
+		</script>
+		
+		<style>
+			#conteudo {
+				height: 315px;
+			}
+
+			#grifado {
+				font-weight: bold;
+			}
+
+			.bordaVerde{
+				position: absolute;
+				color: #9c0;
+				border: 2px dashed #9c0;
+				text-align: center;
+				background-color: #FFF;
+				z-index: 1;
+				display: none;
+			}
+			#certo1{
+				top: 268px;
+				left: 150px;
+				width: 429px;
+				height: 60px;
+				padding: 10px;
+			}
+
+			#certo2{
+				top: 268px;
+				left: 130px;
+				width: 500px;
+				height: 40px;
+				padding: 20px;
+			}
+
+
+			#errado1{
+				position: absolute;
+				top: 268px;
+				left: 150px;
+				width: 439px;
+				height: 50px;
+				padding: 20px 20px;
+				color: #F00;
+				border: 2px dashed #F00;
+				text-align: center;
+				background-color: #FFF;
+				z-index: 1;
+				display: none;
+			}
+
+			#errado2{
+				position: absolute;
+				top: 258px;
+				left: 150px;
+				width: 439px;
+				height: 50px;
+				padding: 20px 20px;
+				color: #F00;
+				border: 2px dashed #F00;
+				text-align: center;
+				background-color: #FFF;
+				z-index: 1;
+				display: none;
+			}
+
+
+		</style>
+	</head>
+	
+	<body>
+
+		<div id="certo1" class="arredondado bordaVerde">Excelente! A experiência daquele que descreve alguma coisa é muito importante para transmitir com maior verdade a impressão de determinado fato ou objeto.</div>
+
+		<div id="certo2" class="arredondado bordaVerde">Excelente! Cada detalhe é importante no momento da descrição, pois auxiliam o leitor a criar a imagem ou situação descrita mentalmente.</div>
+
+
+		<div id="errado1" class="arredondado">Atenção! Para descrever com detalhes alguma coisa precisamos transmitir com maior verdade possível às impressões alcançadas. Tente novamente!</div>
+
+		<div id="errado2" class="arredondado">Atenção! Cada detalhe é importante no momento da descrição, pois auxiliam o leitor a criar a imagem ou situação descrita mentalmente.</div>
+
+	</body>
+</html>

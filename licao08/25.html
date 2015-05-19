@@ -1,0 +1,110 @@
+<!-- Desenvolvedor: Danilo Thiago -->
+<!doctype html>
+<html lang="pt-br">
+	<head>
+		<title>alt_d002</title>
+		<meta charset="utf-8">
+		<script src="../wilib/js/lib/require.js"></script>
+		<script src="../wilib/js/app.js"></script>
+		
+		<link rel="stylesheet" href="../wilib/css/font-awesome.css">
+		<link rel="stylesheet" href="../wilib/css/estilo.css">
+
+		<script>
+            $(function () {
+                require(['../wilib/js/lib/alternativa'], function (edi) {
+
+                    edi.setConfig({
+                        icone: 'interrogacaoAzul',
+                        titulo: 'De acordo com seus conhecimentos prévios, o que é dissertar? Clique sobre a alternativa que define corretamente este tipo de texto.'
+                    });
+
+                    var alternativas = [
+                        {
+                            alternativa: 'Dissertar é, por meio da organização de palavras, frases e textos, <br> apresentar ideias, desenvolver raciocínio, analisar contextos, dados e fatos. ',
+                            correta: true
+                        },{
+                            alternativa: 'Dissertar é, contar histórias que envolvam personagens e enredo.',
+                            correta: false
+                        },{
+                            alternativa: 'Dissertar é descrever com detalhes as paisagens, pessoas, objetos ou situações.',
+                            correta: false
+                        }
+                    ];
+
+                    var config = {
+                        posx: 55,
+                        posy: 100,
+                        aleatorio: true,
+                        tamanhoBox: 35,
+                        tamanhoBoxTexto: 600,
+                        marginBtns: 5
+                    }
+
+                    edi.alternativa(alternativas, function (acertou) {
+                    }, function (a) {
+                       if (a) {
+                         $('#msgAcerto').fadeIn();
+                        } else {
+                         $('#msgErrado').fadeIn();
+                    }}, config);
+
+                        $('#balao').peBalao({
+                            left: 10,
+                            tamanhoBorda: 15,
+                            borda: '#ccc'
+                        });
+
+                });
+            })
+		</script>
+
+		<style>
+        
+        #msgAcerto {
+          width: 350px;
+          height: 75px;
+          position: absolute;
+          left: 230px;
+          top: 270px;
+          padding: 2px;
+          padding-bottom: 15px;
+          font-size: 14px;
+          text-align: center;
+          font-weight: bold;
+          line-height: 16px;              
+          color: #9c0;
+          display: none;
+        }
+
+        #msgErrado {
+          width: 350px;
+          height: 75px;
+          position: absolute;
+          left: 230px;
+          top: 270px;
+          padding: 3px;
+          padding-bottom: 15px;
+          font-size: 14px;
+          text-align: center;
+          font-weight: bold;
+          line-height: 16px;                  
+          color: #F00;
+          display: none;
+        }
+
+		</style>
+	</head>
+
+	<body>
+
+    <div id="msgAcerto" class="borda-pontilhado-verde arredondado">
+        <p>Excelente! Perceba que nesses momentos temos a oportunidade de discutir, argumentar e defender o que pensamos utilizando-nos da fundamentação, justificação, explicação, persuasão e de provas.</p>
+    </div>
+
+    <div id="msgErrado" class="borda-pontilhado-vermelho arredondado">
+        <p>Atenção! Dissertar é ter a oportunidade de discutir, argumentar e defender o que pensamos utilizando-nos da fundamentação, justificação, explicação, persuasão e de provas. Reflita um pouco mais!</p>
+    </div>
+
+	</body>
+</html>

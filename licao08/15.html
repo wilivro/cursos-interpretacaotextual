@@ -1,0 +1,88 @@
+<!-- Desenvolvedor: Danilo Thiago -->
+<!doctype html>
+<html lang="pt-br">
+	<head>
+        <title>Lição 01 Peça 52</title>
+		<meta charset="utf-8">
+		<script src="../wilib/js/lib/require.js"></script>
+		<script src="../wilib/js/app.js"></script>
+		<link rel="stylesheet" href="../wilib/css/font-awesome.css">
+		<link rel="stylesheet" href="../wilib/css/estilo.css">
+		
+		<script>
+			require(['../wilib/js/lib/revela_seta'], function (edi) {
+				
+				edi.setConfig({
+					mascote: 'mascote',
+					titulo: 'Ao descrever verbalmente, você deve levar em consideração, de acordo com os fatos, objetos ou pessoas analisadas os seguintes pontos. Clique sobre as setas para <br> revelá-los.',
+					enunciado: 'vertical'
+				});
+
+				var config = {
+					leftBtn: 20,
+					height: 385,
+					alturaFrase: 'auto',//use auto caso não tenha borda
+					larguraFrase: 500,
+					textAlign: 'left',
+					fontSize: 13,
+					lineHeight: '15px',
+					paddingLeftTxt: 0,
+					top: 1,
+					tempoBloqueio: 2000,
+					borda: '',
+                    posx: 650,
+                    posy: 330
+				};
+
+				function callback () {}
+
+				var frases = [];
+
+				frases.push('a) as cores; ');
+				frases.push('b) altura; ');
+				frases.push('c) comprimento; ');
+				frases.push('d) dimensões; ');
+				frases.push('e) características físicas; ');
+				frases.push('f) características psicológicas; ');
+				frases.push('g) sensação térmica; ');
+				frases.push('h) tempo e clima;');
+				frases.push('i) vegetação; ');
+				frases.push('j) perspectiva espacial; ');
+				frases.push('l) peso; ');
+				frases.push('m) textura; ');
+				frases.push('n) utilidade; ');
+				frases.push('o) localização; ');
+
+				edi.revela_seta(frases, callback, function() {
+					$('#msgAcerto').fadeIn();
+				}, config);
+
+			});
+		</script>
+		
+		<style>
+		  #msgAcerto {
+				width: 220px;
+				height: 160px;
+				position: absolute;
+				left: 350px;
+				top: 110px;
+				padding-bottom: 10px;
+				font-size: 14px;
+				text-align: center;
+				font-weight: bold;
+				line-height: 16px;				
+				color: #9c0;
+				display: none;
+			}
+		</style>
+	</head>
+	
+	<body>
+
+	<div id="msgAcerto" class="borda-pontilhado-verde arredondado">
+			<p>Muito bem! Tudo vai depender do que está sendo descrito. Em uma paisagem, por exemplo, a descrição poderá considerar: a posição geográfica (norte, sul, leste, oeste); o clima (úmido, seco); tipo (rural, urbana); a sensação térmica (calor, frio) e se existem casas, árvores, rios, etc.</p>
+	</div>
+
+	</body>
+</html>

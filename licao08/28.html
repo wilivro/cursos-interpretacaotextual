@@ -1,0 +1,130 @@
+<!-- Desenvolvedor: Leandro Fortaleza -->
+<!doctype html>
+<html lang="pt-br">
+<head>
+    <title>arr_c009</title>
+    <meta charset="utf-8">
+    <script src="../wilib/js/lib/require.js"></script>
+    <script src="../wilib/js/app.js"></script>
+    <link rel="stylesheet" href="../wilib/css/font-awesome.css">
+    <link rel="stylesheet" href="../wilib/css/estilo.css">
+
+    <script>
+        require(['../wilib/js/lib/arrasta'], function (edi) {
+            edi.setConfig({
+                mascote: 'mascote',
+                titulo: "Arraste os conceitos as definições corretas e aprenda mais sobre dissertação."
+            });
+
+            var config = {
+                colorirFilho: true,
+                arrastaAbsolute: true,
+                alvoFixo: true
+            };
+
+            edi.arrasta('arrasta', 'alvo', function (a, b) {
+                $(b).css('margin-top', '5px')
+            }, function(a){
+                barraMsg('Muito bem! A produção de textos dissertativos está ligada à capacidade argumentativa daquele que se dispõe a essa construção. É importante destacar que a obtenção de informações, referentes aos diversos assuntos, seja por intermédio da leitura, de conversas, de viagens, de experiências do dia e dia e dos mais variados veículos de informação pode sanar a carência de informações e consequentemente dar suporte ao produzir um texto.', {height: 150})
+            }, config);
+        });
+    </script>
+
+    <style media="screen">
+        #main {
+            position: absolute;
+            left: 60px;
+            top: 80px;
+            width: 660px;
+        }
+
+        .box {
+            width: 200px;
+            height: 200px;
+            float: left;
+            margin: 5px 5px 15px 5px;
+            padding: 5px;
+            border-radius: 5px;
+            background: linear-gradient(to bottom, #fff, #eee);
+            box-shadow: 0px 1px 3px rgba(0, 0, 0, 0.3);
+        }
+
+        .box .alvo {
+            width: 100%;
+            height: 30px;
+            background: #eee;
+            box-shadow: inset 1px 1px 2px rgba(0, 0, 0, 0.3);
+            border-radius: 5px;
+        }
+
+        .box .text {
+            width: 100%;
+            height: 170px;
+            display: table;
+        }
+
+        .box .text p {
+            width: 100%;
+            display: table-cell;
+            vertical-align: middle;
+            font-size: 12px;
+            text-align: center;
+            color: #666;
+        }
+
+        #arrastas {
+            width: 632px;
+            height: 20px;
+            clear: both;
+            margin: 5px;
+            padding: 5px;
+            border-radius: 5px;
+        }
+
+        .arrasta {
+            width: 205px;
+            float: left;
+            text-align: center;
+            color: #fff;
+        }
+    </style>
+</head>
+<body>
+<div id="main">
+    <div class="box">
+        <div class="alvo" data-correta="0"></div>
+        <div class="text">
+            <p>
+                A introdução deve apresentar de maneira clara o assunto que será tratado e delimitar as questões, referentes ao assunto, que serão abordadas.
+Neste momento pode-se formular uma tese, que deverá ser discutida e provada no texto, propor uma pergunta, cuja resposta deverá constar no desenvolvimento e explicitada na conclusão.
+
+            </p>
+        </div>
+    </div>
+
+    <div class="box">
+        <div class="alvo" data-correta="1"></div>
+        <div class="text">
+            <p>
+                É a parte do texto em que as ideias, pontos de vista, conceitos, informações de que dispõe serão desenvolvidas; desenroladas e avaliadas progressivamente.
+            </p>
+        </div>
+    </div>
+
+    <div class="box">
+        <div class="alvo" data-correta="2"></div>
+        <div class="text">
+            <p>
+                É o momento final do texto, este deverá apresentar um resumo forte de tudo o que já foi dito. A conclusão deve expor uma avaliação final do assunto discutido.
+            </p>
+        </div>
+    </div>
+
+    <div id="arrastas" class="btn btn-default-hover">
+        <div class="arrasta fundoArrasta azulAlpha" data-correta="0">Introdução </div>
+        <div class="arrasta fundoArrasta azulAlpha" data-correta="2">Conclusão</div>
+        <div class="arrasta fundoArrasta azulAlpha" data-correta="1">Desenvolvimento</div>
+    </div>
+</div>
+</body>
+</html>

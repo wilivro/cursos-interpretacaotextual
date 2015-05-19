@@ -1,0 +1,56 @@
+
+<!doctype html>
+<html lang="pt-br">
+<head>
+    <title>Lição 06 Peça 22</title>
+    <meta charset="utf-8">
+    <script src="../wilib/js/lib/require.js"></script>
+    <script src="../wilib/js/app.js"></script>
+    <link type="text/css" rel="stylesheet" href="../wilib/css/font-awesome.css">
+    <link type="text/css" rel="stylesheet" href="../wilib/css/estilo.css">
+
+    <script>
+        require(['../wilib/js/lib/revela_a03'], function (edi) {
+
+            edi.setConfig({
+                titulo: "Clique sobre as notas musicais para revelar o texto.",
+                mascote: 'mascote'
+            });
+
+            var arrText = [
+                'A todo instante nos',
+                'deparamos com situações',
+                'que exigem a exposição',
+                'de ideias, argumentos',
+                'e pontos de vista, muitas',
+                'vezes precisamos expor',
+                'aquilo que pensamos sobre',
+                'determinado assunto.',
+                'Em muitas situações somos',
+                'induzidos a organizar nossos',
+                'pensamentose ideias e utilizar',
+                'a linguagem para dissertar.'
+            ];
+
+
+            edi.revela_a03(arrText, null, function(){
+                barraMsg('Muito bem! Vamos estudar sobre o tipo de texto “dissertação”. Fique atento!', {height: 80})
+            });
+        });
+
+    </script>
+</head>
+
+<body>
+</div>
+</body>
+</html>
+
+
+
+
+
+
+
+
+

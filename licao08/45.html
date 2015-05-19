@@ -1,0 +1,133 @@
+<!-- Desenvolvedor: Leandro Fortaleza -->
+<!doctype html>
+<html lang="pt-br">
+<head>
+    <title>Lição 01 Peça 16</title>
+    <meta charset="utf-8">
+    <script src="../wilib/js/lib/require.js"></script>
+    <script src="../wilib/js/app.js"></script>
+    <link rel="stylesheet" href="../wilib/css/font-awesome.css">
+    <link rel="stylesheet" href="../wilib/css/estilo.css">
+
+    <script>
+        require(['../wilib/js/lib/alternativa_botao'], function (edi) {
+
+            edi.setConfig({
+                titulo: 'Leia a quadrinha a seguir e responda que tipo de texto o aluno utilizou para se justificar para a professora.',
+                mascote: 'mascote',
+            });
+
+            
+
+            var btns = [
+                {texto: 'Narração', dataCorreta: false},
+                {texto: 'Dissertação argumentativa', dataCorreta: true},
+                {texto: 'Descrição', dataCorreta: false}
+            ];
+            
+
+            var config = {
+                randomico: true,
+                width: 360,
+                height: 20,
+                left: 400,
+                top: 130,
+                tamanhoTexto: 16,
+                colunas: 1,
+                margin: '0 0 10px 0',
+                padding: 5,
+                display: 'block',
+                btnBranco: true,
+                animacao: true
+            };
+
+            function callback(a, b) {
+
+                if (a) {
+                    $('#resposta')
+                            .html(b[0].outerText)
+                            .css({
+                                color: 'green',
+                                textDecoration: 'underline',
+                                display: 'none'
+                            }).fadeIn();
+                }
+                
+            }
+
+            edi.alternativa_botao(btns, callback, function(a){
+                barraMsg(a?'Muito bem!  O aluno utiliza dois métodos argumentativos.<br>O primeiro método é o dedutivo, que poderia ser<br>simplificado no seguinte <span class="ajuda" data-ajuda="Silogismo - s.m. Lógica. Raciocínio que se pauta na dedução, composto basicamente por duas premissas ou preposições (maior e menor), a partir das quais se alcança uma conclusão. Por exemplo: todos os homens são mortais. Antônio é homem. Logo, Antônio é mortal."(Dicionário InFormal). todos os homens são mortais. Antônio é homem. Logo, Antônio é mortal."(Dicionário InFormal).">silogismo</span>: O computador pegou um vírus. Vírus passam facilmente. Portanto, lápis e canetas foram contaminados. Além disso, ele utiliza também a analogia, ele considera computador, lápis e canetas equivalentes para fazer uma tarefa.':'Atenção! O aluno utiliza dois métodos. O primeiro método é o dedutivo, que poderia ser simplificado no seguinte <span class="ajuda" data-ajuda="Silogismo - s.m. Lógica. Raciocínio que se pauta na dedução, composto basicamente por duas premissas ou preposições (maior e menor), a partir das quais se alcança uma conclusão. Por exemplo: todos os homens são mortais. Antônio é homem. Logo, Antônio é mortal. (Dicionário InFormal).  todos os homens são mortais. Antônio é homem. Logo, Antônio é mortal."(Dicionário InFormal).">silogismo</span>: O computador pegou um vírus. Vírus passam facilmente. Portanto, lápis e canetas foram contaminados. Além disso, ele utiliza também a analogia, ele considera computador, lápis e canetas equivalentes para fazer uma tarefa.', {height: 160, wait:0}, function(){ajuda({
+                        width: 500,
+                        background: 'rgb(44, 62, 80)',
+                        color: '#FFF',
+                        top: 30,
+                        left: 0,
+                        linkColor: 'none'
+                    });});
+            }, config);
+
+           // $('#num').html(edi.telaAtual);
+            //$('.texto').find('p').html(texto);
+
+            
+        });
+    </script>
+
+    <style>
+        #conteudo {
+            background: radial-gradient(#fff, #eee);
+            height: 315px;
+        }
+
+        .ajuda{
+            color: #008BFF;
+        }
+
+        .texto {
+            background: #fff;
+            padding: 0 20px;
+            position: absolute;
+            left: 20px;
+            top: 85px;
+        }
+
+        .texto p {
+            margin: 140px 0 0 0;
+            text-align: center;
+            line-height: 1.3;
+        }
+
+        #num {
+            width: 50px;
+            display: block;
+            height: 50px;
+            text-align: center;
+            line-height: 50px;
+            font-size: 35px;
+            border: 4px solid #666;
+            border-radius: 50%;
+            position: absolute;
+            left: 140px;
+            top: 50px;
+        }
+
+        .btn-sem-estilo {
+            box-shadow: 0 0 0 0;
+        }
+
+        img{
+            position: absolute;
+            left: 10px;
+            top: 1spx;
+            border-radius: 15px;
+            border: 1px solid #999;
+        }
+    </style>
+</head>
+
+<body>
+<div class="texto">
+    <img src="../img/licao08/peca45.png" alt="" width="350">
+</div>
+</body>
+</html>

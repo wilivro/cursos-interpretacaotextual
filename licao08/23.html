@@ -1,0 +1,73 @@
+<!-- Desenvolvedor: Leandro Fortaleza -->
+<!doctype html>
+<html lang="pt-br">
+
+<head>
+    <title>Lição 01 Peça 33</title> <!-- rev_ad001 -->
+    <meta charset="utf-8">
+    <script src="../wilib/js/lib/require.js"></script>
+    <script src="../wilib/js/app.js"></script>
+    <link rel="stylesheet" href="../wilib/css/font-awesome.css">
+    <link rel="stylesheet" href="../wilib/css/estilo.css">
+
+    <script>
+        require(['../wilib/js/lib/quebra-cabeca'], function (edi) {
+
+            edi.setConfig({
+                titulo: 'Monte o quebra-cabeças e relembre os conceitos <br> de discurso direto e discurso indireto.',
+                qtdTelas: 1
+            });
+
+            var arrPeca = [
+                {
+                    img: '../img/licao08/p23.png',
+                }
+            ];
+
+            var config = {
+                width: 323,
+                height: 231,
+                left: 230,
+                top: 40,
+                background: '#ccc',
+                numPecas: 2,
+                callBacks: []
+            };
+
+            edi.quebraCabeca(arrPeca[edi.telaAtual()-1].img, function () {
+                $('#msgAcerto').fadeIn();
+            }, config);
+
+           $('#texto').html(arrPeca[edi.telaAtual()-1].txt)
+        });
+    </script>
+
+    <style>
+
+    #msgAcerto {
+        width: 160px;
+        height: 60px;
+        position: absolute;
+        left: 30px;
+        top: 180px;
+        padding: 0px;
+        padding-bottom: 30px;
+        font-size: 14px;
+        text-align: center;
+        font-weight: bold;
+        line-height: 16px;              
+        color: #9c0;
+        display: none;
+    }
+
+    </style>
+</head>
+
+<body>
+    <div id="msgAcerto" class="borda-pontilhado-verde arredondado">
+        <p>Excelente! Você já é capaz de compreender as diferenças entre os tipos discurso.</p>
+     </div>
+</div>
+
+</body>
+</html>

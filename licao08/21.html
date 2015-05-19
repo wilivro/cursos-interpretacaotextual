@@ -1,0 +1,259 @@
+<!doctype html>
+<html lang="pt-br">
+<head>
+    <title>arr_g001</title>
+    <meta charset="utf-8">
+    <script src="../wilib/js/lib/require.js"></script>
+    <script src="../wilib/js/app.js"></script>
+    <link rel="stylesheet" href="../wilib/css/font-awesome.css">
+    <link rel="stylesheet" href="../wilib/css/estilo.css">
+
+    <script>
+        require(['../wilib/js/lib/arrasta'], function (edi) {
+
+            edi.setConfig({
+                mascote: 'mascote',
+                titulo: 'De acordo com o que você aprendeu no exercício anterior relacione<br>corretamente os tipos de discurso aos exemplos corretos, para isso,<br>arraste cada conceito ao seu exemplo.',
+                qtdTelas: 5
+            });
+
+
+            var quest = edi.util.getURL('quest');
+            $('#alvo').attr('data-correta', quest)
+
+            var tela = quest - 1;
+
+            
+            var arrAlvo = [
+                {alvo: 'Discurso Direto', dataCorreta: '1'},
+                {alvo: 'Discurso Indireto', dataCorreta: '2'},
+                {alvo: 'Discurso Indireto Livre', dataCorreta: '3'}
+            ];
+
+            var arrArrasta = [
+                {arrasta: ' “O Guaxinim está inquieto, mexe dum lado pra outro. Eis que suspira lá na língua dele - Chente! que vida dura esta de guaxinim do banhado!...”', dataCorreta: '1'},
+                {arrasta: '“Fora preso pela manhã, logo ao erguer-se da cama, e, pelo cálculo aproximado do tempo, pois estava sem relógio e mesmo se o tivesse não poderia consultá-la à fraca luz da masmorra, imaginava podiam ser onze horas.”<br> (Lima Barreto)', dataCorreta: '2'},
+                {arrasta: '“Retirou as asas e estraçalhou-a. Só tinham beleza. Entretanto, qualquer urubu... que raiva...” (Ana Maria Machado)', dataCorreta: '3'}
+            ];
+
+            for (var i = 0; i < arrAlvo.length; i++) {
+                var dv_ficaAlvos = $('<div>')
+                    .css({
+                        position: 'relative',
+                        width: 250,
+                        height: 148,
+                        borderRadius: 15,
+                        marginLeft:10,
+                        textAlign: 'center',
+                        border: '1px solid #8CA8B8',
+                        display: 'inline-block'
+                    })
+                    .appendTo('#ctAlvo');
+
+                var dv_tituloAlvo = $('<div>')
+                    .css({
+                        position: 'relative',
+                        width: '100%',
+                        height: '50px',
+                        backgroundColor: '#C5D3DB',
+                        borderRadius:'15px 15px 0px 0px',
+                    })
+                    .appendTo(dv_ficaAlvos);
+
+                var dv_titulo = $('<div>')
+                    .css({
+                        position: 'relative',
+                        width: 251,
+                        height: 50,
+                        color:'#FFF',
+                        display: 'table-cell',
+                        textAlign: 'center',
+                        verticalAlign: 'middle'
+                    })
+                    .html(arrAlvo[i].alvo)
+                    .appendTo(dv_tituloAlvo);
+
+                var dv_alvoRelative = $('<div>')
+                    .css({
+                        position: 'relative',
+                        width: 251,
+                        height: '200%',
+                        display: 'block',
+                        textAlign: 'center',
+                        verticalAlign: 'middle'
+                    })
+                    .appendTo(dv_tituloAlvo);  
+
+                var dv_alvo = $('<div>')
+                    .addClass('alvo')
+                    .attr('data-correta', arrAlvo[i].dataCorreta)
+                    .css({
+                        position: 'absolute',
+                        width: 251,
+                        height: dv_alvoRelative.height(),
+                        display: 'block',
+                        textAlign: 'center'
+                    })
+                    .appendTo(dv_alvoRelative);
+            };
+
+            //$('#txtCirc').html('FRASE ' + edi.util.addZero(quest, 2));
+
+            //arrArrasta = arrArrasta.slice(tela, arrArrasta.length)
+
+            var revela = 1;
+
+            for (var i = 0; i < arrArrasta.length; i++) {
+                $('<div>')
+                    .addClass('arrasta azulAlpha')
+                    .css({
+                        position: 'absolute',
+                        width: 152,
+                        padding: 5,
+                        margin: '-30px 0 20px 0',
+                        textAlign: 'center',
+                        fontSize: '13px',
+                        lineHeight: '13px',
+                    })
+                    .attr({
+                        id: 'arrasta' + (i + 1),
+                        'data-correta': arrArrasta[i].dataCorreta
+                    })
+                    .html(arrArrasta[i].arrasta)
+                    .appendTo('#arrasta');
+            }
+
+
+
+
+            var config = {
+                colorirFilho: true,
+                alvoFixo: true,
+                arrastaAbsolute: false
+            };
+
+            $('.arrasta').css({
+                marginLeft: -300
+            })
+
+            $('#arrasta'+revela).css({
+                marginLeft: 9
+            })
+            $('#txtCirc').html('Frase 0'+revela);
+
+            edi.arrasta('arrasta', 'alvo', function (a, b) {
+                
+                if(a){
+                    b.css('height','0px')
+                    revela++;
+                    if(revela != 4)
+                        $('#txtCirc').html('Frase 0'+revela);
+                    $('#arrasta'+revela).css({
+                        left: 9,
+                        marginLeft: 9
+                    })
+                    .attr('data-x','11px')
+                }
+
+                // b.css({
+                //     display: 'table-cell'
+                // }).removeClass('azulAlpha');
+            }, null, config);
+            
+        });
+
+    </script>
+    <style>
+        #ctArrasta {
+            left: 5px;
+            position: absolute;
+            border-radius: 10px;
+            top: 113px;
+            background-color: #FFF;
+            border: 1px solid #E2E2E2;
+        }
+
+        #arrasta {
+            position: relative;
+            display: table-cell;
+            vertical-align: middle;
+            text-align: center;
+            width: 200px;
+            height: 220px;
+        }
+
+        #ctImg {
+            position: absolute;
+            border: 1px solid #E2E2E2;
+            background-color: rgba(197, 211, 219, 0.2);
+            height: 230px;
+            top: 120px;
+            left: 216px;
+        }
+
+        #imgs {
+            position: relative;
+            display: table-cell;
+            vertical-align: middle;
+            text-align: center;
+            width: 450px;
+            height: 230px;
+        }
+
+        #ctCirc {
+            border-radius: 50px;
+            height: 75px;
+            width: 75px;
+            background-color: #9C0;
+            position: absolute;
+            left: 70px;
+            top: 85px;
+            box-shadow: 0 0 2px 0.5px #000, 0 0 0 5px #FFF, 1px 1px 7px 3px #000;
+            z-index: 5;
+        }
+
+        #txtCirc {
+            position: relative;
+            display: table-cell;
+            vertical-align: middle;
+            text-align: center;
+            color: #FFF;
+            width: 75px;
+            height: 75px;
+        }
+
+        #ctAlvo {
+            position: absolute;
+            top: 71px;
+            left: 216px;
+            background-color: #FFF;
+            text-align: center;
+        }
+
+        #alvo {
+            position: relative;
+            display: table;
+            text-align: center;
+            width: 200px;
+            height: 50px;
+        }
+
+
+    </style>
+
+</head>
+<body>
+
+<div id="ctCirc">
+    <div id="txtCirc"></div>
+</div>
+
+<div id="ctArrasta">
+    <div id="arrasta"></div>
+</div>
+
+<div id="ctAlvo">
+</div>
+
+</body>
+</html>

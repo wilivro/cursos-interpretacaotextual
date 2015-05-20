@@ -1,348 +1,283 @@
 <!doctype html>
 <html lang="pt-br">
 <head>
-    <title>Lição 01 Peça 14</title> <!-- rev_g001 -->
+    <title>Lição 01 Peça 11</title> <!-- rev_g001 -->
     <meta charset="utf-8">
     <script src="../wilib/js/lib/require.js"></script>
     <script src="../wilib/js/app.js"></script>
     <link rel="stylesheet" href="../wilib/css/font-awesome.css">
     <link rel="stylesheet" href="../wilib/css/estilo.css">
 
+    <style>
+      #textos {
+        position: absolute;
+        left: 10px;
+        top: 80px;
+        width: 350px;
+        height: 290px;
+        background: #fff;
+        border: 1px solid #eee;
+      }
+
+      #textos ._btns {
+        position: absolute;
+        width: 350px;
+        height: 30px;
+      }
+
+      #textos ._btns ._btn {
+        width: 175px;
+        height: 30px;
+        text-align: center;
+        font-size: 13px;
+        float: left;
+        background: #eee;
+        line-height: 2.3;
+        cursor: pointer;
+      }
+
+      #textos ._btns ._btn:hover {
+        background: #e5e5e5;
+      }
+
+      #textos ._btns ._btn.ativo {
+        background: #ccc;
+      }
+
+      #textos ._btns ._btn.ativo:hover {
+        background: #c5c5c5;
+      }
+
+      #textos .texto {
+        position: absolute;
+        left: 0px;
+        top: 30px;
+        width: 339px;
+        height: 250px;
+        color: #666;
+        padding: 5px;
+        overflow-y: scroll;
+      }
+
+      #textos .texto[data-revela="2"] {
+        display: none;
+      }
+
+      #textos .texto p {
+        font-size: 13px;
+      }
+
+      #textos .texto .autor {
+        font-size: 10px;
+        font-style: italic;
+      }
+
+      .titulo {
+        position: absolute;
+        left: 390px;
+        top: 60px;
+        width: 370px;
+        font-size: 14px;
+        color: #666;
+        text-align: center;
+      }
+    </style>
+
     <script>
-        require(['../wilib/js/lib/edi', '../wilib/js/lib/alternativa_botao'], function (edi, edi2) {
+        require(['../wilib/js/lib/alternativa_botao'], function (edi) {
 
-            edi.iniciar({
-                icone: 'exclamacao',
-                mascote: 'mascote',
-                tempoFinal: 25,
-                qtdTelas: 3,
-                titulo: 'É preciso destacar que as pessoas dentro da organização ' +
-                        'devem estar alinhadas a estes princípios de conservação ' +
-                        'ambiental. Clique no link e saiba mais:'
-            });
+          edi.setConfig({
+            qtdTelas: 3,
+            titulo: 'Leia com atenção os textos a seguir.'
+          });
 
-            var condicao = true;
-            var folha = $('<div>')
-                    .css({
-                        position: 'absolute',
-                        top: 69,
-                        left: 145,
-                        width: 500,
-                        height: 310,
-                        overflow: "auto",
-                        backgroundColor: '#fff',
-                        border: 'solid 1px rgba(187, 197, 203, 0.5)'
-                    })
-                    .addClass('folha_hide')
-                    .attr('id', 'folha_hide')
-                    .appendTo('#conteudo');
+          var telas = [
+            {
+              titulo: 'Clique sobre a opção correta.',
+              btns: [
+                {
+                  dataCorreta: true,
+                  texto: 'A devastação e destruição da <br>natureza causada pelo homem.'
+                },
+                {
+                  dataCorreta: false,
+                  texto: 'A preservação dos recursos naturais.'
+                },
+                {
+                  dataCorreta: false,
+                  texto: 'Nenhuma das alternativas anteriores.'
+                },
+              ]
+            },
+            {
+              titulo: 'Apesar de abordarem o mesmo assunto, os resultados ' +
+                      'são diferentes em cada texto. Por que isto ocorre?',
+              btns: [
+                {
+                  dataCorreta: true,
+                  texto: 'No primeiro texto a natureza saiu vitoriosa <br>ao ' +
+                         'recuperar seu espaço outrora perdido, <br>enquanto no ' +
+                         'segundo texto os pássaros e as <br>rosas sofrem a ' +
+                         'consequência da construção <br>de mais um prédio de dez andares.'
+                },
+                {
+                  dataCorreta: false,
+                  texto: 'No segundo texto a natureza saiu vitoriosa <br>ao ' +
+                         'recuperar seu espaço outrora perdido, <br>enquanto no ' +
+                         'primeiro texto os pássaros e as <br>rosas sofrem a ' +
+                         'consequência da construção <br>de mais um prédio de dez andares.'
+                },
+              ]
+            },
+            {
+              titulo: '',
+              btns: [
+                {
+                  dataCorreta: false,
+                  texto: ''
+                },
+                {
+                  dataCorreta: false,
+                  texto: ''
+                },
+              ]
+            },
+          ];
 
-            var ctfolha = $('<div>')
-                    .appendTo(folha);
+          // iniciando alternativa_botao
+          edi.alternativa_botao(telas[edi.telaAtual - 1].btns, null, null, {
+            left: 375,
+            top: 130,
+            width: 390,
+            height: (edi.telaAtual == 1) ? 45 : 87, // pra ficar bonitinho
+            colunas: 1,
+            btnBranco: true,
+            animacao: true
+          });
 
-            ctfolha.slimScroll({
-                size: 5,
-                height: 310,
-                position: 'right',
-                color: '#000',
-                alwaysVisible: true,
-                distance: 0,
-                start: folha,
-                railVisible: true,
-                railColor: '#000',
-                railOpacity: 0.3,
-                wheelStep: 10,
-                allowPageScroll: false,
-                disableFadeOut: false
-            });
+          // ocultando .alter-btn e .titulo se for a primeira tela
+          if (edi.telaAtual == 1) {
+            $('.alter-btn, .titulo').hide();
+          }
 
-            $('<p>')
-                    .css({
-                        marginTop: 20,
-                        fontSize: 12,
-                        padding: 10,
-                        lineHeight: 1.5,
-                        textAlign: 'center',
-                        color: '#999'
-                    })
-                    .html(
-                      'Texto I - CIMENTO ARMADO <br><br>' +
-
-                      'Batem estacas no terreno morto. <br>' +
-                      'No terreno morto surge vida nova.  <br>' +
-                      'As goiabeiras do velho parque <br>' +
-                      'E os roseirais, abandonados, <br>' +
-                      'Serão cortados <br>' +
-                      'E derrubados. <br>' +
-                      'Um prédio novo de dez andares, <br>' +
-                      'Frio e cinzento, <br>' +
-                      'Terá seu corpo de cimento armado <br>' +
-                      'Enraizado no velho parque <br>' +
-                      'De goiabeiras <br>' +
-                      'De roseirais. <br><br>' +
-
-                      'Batem estacas no terreno morto. <br>' +
-                      'Século vinte... <br>' +
-                      'Vida de aço... <br>' +
-                      'Cimento armado! <br>' +
-                      'Batem estacas <br>' +
-                      'No prédio novo de dez andares, <br>' +
-                      'Terraços tristes <br>' +
-                      'Pássaros presos, <br>' +
-                      'Rosas suspensas <br>' +
-                      'Flores da vida, <br>' +
-                      'Rosas de dor <br><br>' +
-
-                      '(Paulo Bonfim) <br><br>' +
+          // setando o titulo da tela
+          $('.titulo').html(telas[edi.telaAtual - 1].titulo);
 
 
+          $('._btn').click(function() {
 
-                      'Texto II - A FLORESTA DO CONTRÁRIO <br><br>'+
+            var _this = $(this);
 
-                      '“Todas as florestas existem antes dos homens.<br>' +
-                      'Elas estão lá e então o homem chega, vai destruindo, ' +
-                      'derruba as árvores, começa a construir prédios, casas, ' +
-                      'tudo com muito tijolo e concreto.<br> ' +
-                      'E poluição também.<br> Mas esta floresta aconteceu o contrário.<br> ' +
-                      'O que havia antes era uma cidade dos homens, dessas bem poluídas, ' +
-                      'feia, suja, meio neurótica.<br> Então as árvores foram chegando, ' +
-                      'ocupando novamente o espaço, conseguiram expulsar toda aquela ' +
-                      'sujeira e se instalaram no lugar.<br> É o que poderia se chamar de ' +
-                      'vingança da natureza, foi assim que terminou o seu relato o ' +
-                      'amigo beija-flor.<br> Por isso, ele estava tão feliz, beijocando ' +
-                      'todas as flores, aliás, um colibri bem assanhado, passava ' +
-                      'flor por ali, ele já sapecava um beijão.<br> Agora não havia ' +
-                      'entendido por que uma ou outra árvore tinha parede por dentro, ' +
-                      'e ele achou bem melhor assim.<br> Algumas árvores chegaram a ' +
-                      'engolir casas inteiras.<br> Era um lugar muito bonito, gostoso ' +
-                      'de ficar.<br> Só que não podia, precisava partir sem demora.<br> ' +
-                      'Foi se despedir do colibri, mas ele já estava namorando ' +
-                      'apertado uma outra florzinha, era melhor não atrapalhar”.<br><br><br>' +
-
-                      '(Fragmento do livro “Em busca do tesouro de Magritte”.)'
-                    )
-                    .appendTo(ctfolha);
-
-            $('#close')
-                    .mouseover(function () {
-                        $(this).css({
-                            textShadow: '1px 1px 2px rgba(0, 0, 0, 0)',
-                            boxShadow: '1px 1px 2px rgba(0, 0, 0, 0)'
-                        });
-                    })
-                    .click(function () {
-                        $('#close').css({
-                            display: 'none'
-                        });
-
-                        $(folha).transition({
-                                    scale: 0.1,
-                                    top: 50
-                                }, 500,
-                                function () {
-                                    $(folha).css({
-                                        display: 'none'
-                                    });
-                                    $('.folhaRotate').css({
-                                        display: 'block'
-                                    })
-                                })
-                    });
-
-            $('#close').mouseleave(function () {
-                $(this).css({
-                    textShadow: '1px 1px 2px rgba(0, 0, 0, 0.5)',
-                    boxShadow: '1px 1px 2px rgba(0, 0, 0, 0.5)'
-                });
-            });
-
-            $('.folhaRotate').click(function () {
-                $(this).css({
-                    display: 'none'
-                });
-                $(folha)
-                        .css({
-                            display: 'block',
-                            top: 50
-                        })
-                        .transition({
-                            scale: 0.1
-                        }, 0, function () {
-                            $(this).transition({
-                                scale: 1,
-                                top: 69
-                            }, 500, function () {
-                                $('#close').fadeIn(500);
-                                $('.folha').css({
-                                    display: 'block'
-                                });
-                                if (condicao)
-                                    edi.finalizar();
-                                condicao = false;
-                            })
-                        })
-            });
-
-            edi.util.removeLoading();
-
-            if (edi.util.telaAtual > 0) {
-              var telas = [
-                { // tela 1
-                  titulo: 'Clique sobre a opção correta.',
-                  btns: [ // botoes
-                    {
-                      dataCorreta: true,
-                      texto: 'A devastação e destruição da <br>natureza causada pelo homem.'
-                    }, {
-                      dataCorreta: false,
-                      texto: 'A preservação dos recursos naturais.'
-                    }, {
-                      dataCorreta: false,
-                      texto: 'Nenhuma das alternativas anteriores.'
-                    }
-                  ]
-                }, { // tela 2
-                  titulo: 'Apesar de abordarem o mesmo assunto, os resultados ' +
-                          'são diferentes em cada texto. Por que isto ocorre?',
-                  btns: [ // botoes
-                    {
-                      dataCorreta: true,
-                      texto: 'No primeiro texto a natureza saiu vitoriosa ao <br>' +
-                             'recuperar seu espaço outrora perdido, enquanto <br>no ' +
-                             'segundo texto os pássaros e as rosas sofrem <br>a ' +
-                             'consequência da construção de mais <br>um prédio de dez andares.'
-                    }, {
-                      dataCorreta: false,
-                      texto: 'No segundo texto a natureza saiu vitoriosa ao ' +
-                             'recuperar <br>seu espaço outrora perdido, enquanto no ' +
-                             'primeiro texto <br>os pássaros e as rosas sofrem a ' +
-                             'consequência da <br>construção de mais um prédio de dez andares.'
-                    }
-                  ]
-                }
-              ];
-
-              var config = {
-                  width: 450,
-                  height: (edi.util.telaAtual === 1) ? 45 : 90,
-                  left: 155,
-                  top: 95,
-                  btnBranco: true,
-                  margin: 8,
-                  colunas: 1,
-                  tamanhoTexto: 13,
-                  animacao: true,
-                  cb: function(){
-                    //
-                  }
-              }
-
-              edi2.alternativa_botao(telas[edi.util.telaAtual - 1].btns, function (a) {
-                  //
-              }, function (a) {
-                  if (a && edi.util.telaAtual === 2) {
-                    barraMsg(
-                      'Muito Bem! Você trabalhou com dois tipos de texto uma ' +
-                      'poesia e um texto narrativo, comparando-os, você pode ' +
-                      'exercitar sua capacidade de compreensão.',
-                      {height: 150}
-                    );
-                  } else if (edi.util.telaAtual === 2) {
-                    barraMsg(
-                      'Atenção! Releia cada texto com calma, prestando atenção ' +
-                      'aos detalhes, procure compreender o que cada um diz, ' +
-                      'caso considere necessário, faça anotações sobre os ' +
-                      'pontos mais importantes.',
-                      {height: 150}
-                    );
-                  }
-              }, config);
-
-              $('#balao').peBalao({
-                  left:40,
-                  tamanhoBorda: 14,
-                  borda: '#ccc',
-                  scaleX:-1
+            // se o botao 1 for clicado
+            if (_this.attr('data-revela') == 1) {
+              $('.texto[data-revela="2"]').fadeOut(function() {
+                $('.texto[data-revela="1"]').fadeIn();
               });
 
+              $('._btn[data-revela="2"]').removeClass('ativo');
+              $('._btn[data-revela="1"]').addClass('ativo');
 
-              $('#texto-titulo').html(
-                'Compare os dois textos e responda corretamente.'
-              );
-
-              $('#balao > p').html(telas[edi.util.telaAtual - 1].titulo);
-
-              $('#ico').iconeInterrogacaoAzul(true);
-              $('#balao').fadeIn();
-              $('.folhaRotate').hide();
+              return;
             }
+
+            // se não
+            $('.texto[data-revela="1"]').fadeOut(function() {
+              $('.texto[data-revela="2"]').fadeIn();
+
+              // revelando alter-btn
+              $('.alter-btn, .titulo').fadeIn();
+
+              // alterando o texto do enunciado
+              if (edi.telaAtual == 1) {
+                $('#texto-titulo').html(
+                  'Compare os dois textos e responda corretamente.'
+                );
+              }
+            });
+
+            $('._btn[data-revela="1"]').removeClass('ativo');
+            $('._btn[data-revela="2"]').addClass('ativo');
+
+          });
+
         });
     </script>
-    <style>
-
-        .folha_hide {
-          display: none;
-        }
-
-        .folhaRotate {
-          top: 175px;
-          left: 375px;
-        }
-
-        #close {
-          background-color: rgba(0, 0, 0, 0.1);
-          border-radius: 100px;
-          box-shadow: 1px 1px 2px rgba(0, 0, 0, 0.5);
-          width: 40px;
-          position: absolute;
-          display: none;
-          top: 300px;
-          text-align: center;
-          left: 700px;
-          cursor: pointer;
-          font-size: 32px;
-          color: #F00;
-          text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.5);
-        }
-
-        #balao {
-  				border: 1px solid #ccc;
-  				background: #fff;
-  				width: 140px;
-  				height: 250px;
-  				position: absolute;
-  				left: 10px;
-  				top: 100px;
-  				font-size: 13px;
-  				text-align: center;
-  				line-height: 1.3;
-  				border-radius: 10px;
-  				color: #666;
-          display: none;
-  			}
-
-  			#ico {
-  				margin: 40px 0 20px 0;
-          height: 59px;
-          position: relative;
-          left: 35px;
-  			}
-
-    </style>
 </head>
 <body>
-<div class="folhaRotate folha"></div>
+  <div id="textos">
+    <div class="_btns">
+      <div class="_btn ativo" data-revela="1">Texto 1</div>
+      <div class="_btn" data-revela="2">Texto 2</div>
+    </div>
 
-<div id="close" class="folha_hide">
-    <i class="fa fa-close"></i>
-</div>
+    <div class="texto" data-revela="1">
+      <h4>CIMENTO ARMADO</h4>
 
-<div id="balao">
-  <div id="ico"></div>
+      <p>
+        Batem estacas no terreno morto.
+        No terreno morto surge vida nova.
+        As goiabeiras do velho parque
+        E os roseirais, abandonados,
+        Serão cortados
+        E derrubados.
+        Um prédio novo de dez andares,
+        Frio e cinzento,
+        Terá seu corpo de cimento armado
+        Enraizado no velho parque
+        De goiabeiras
+        De roseirais.
+      </p>
 
-  <p>
+      <p>
+        Batem estacas no terreno morto.
+        Século vinte...
+        Vida de aço...
+        Cimento armado!
+        Batem estacas
+        No prédio novo de dez andares,
+        Terraços tristes
+        Pássaros presos,
+        Rosas suspensas
+        Flores da vida,
+        Rosas de dor
+      </p>
 
-  </p>
-</div>
+      <span class="autor">
+        (Paulo Bonfim)
+      </span>
+    </div>
+
+    <div class="texto" data-revela="2">
+      <h4>A FLORESTA DO CONTRÁRIO</h4>
+
+      <p>
+        “Todas as florestas existem antes dos homens.
+        Elas estão lá e então o homem chega, vai destruindo,
+        derruba as árvores, começa a construir prédios, casas,
+        tudo com muito tijolo e concreto. E poluição também.
+        Mas esta floresta aconteceu o contrário. O que havia antes
+        era uma cidade dos homens, dessas bem poluídas, feia, suja,
+        meio neurótica. Então as árvores foram chegando, ocupando
+        novamente o espaço, conseguiram expulsar toda aquela sujeira
+        e se instalaram no lugar. É o que poderia se chamar de
+        vingança da natureza, foi assim que terminou o seu relato
+        o amigo beija-flor. Por isso, ele estava tão feliz,
+        beijocando todas as flores, aliás, um colibri bem assanhado,
+        passava flor por ali, ele já sapecava um beijão. Agora não
+        havia entendido por que uma ou outra árvore tinha parede
+        por dentro, e ele achou bem melhor assim. Algumas árvores
+        chegaram a engolir casas inteiras. Era um lugar muito bonito,
+        gostoso de ficar. Só que não podia, precisava partir sem demora.
+        Foi se despedir do colibri, mas ele já estava namorando apertado
+        uma outra florzinha, era melhor não atrapalhar”.
+      </p>
+
+      <span class="autor">
+        (Fragmento do livro “Em busca do tesouro de Magritte”.)
+      </span>
+    </div>
+  </div>
+
+  <h4 class="titulo"></h4>
 </body>
 </html>

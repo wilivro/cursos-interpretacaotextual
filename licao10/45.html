@@ -24,7 +24,7 @@
 					msgF:'Tente novamente!'
 				},
 				{
-					msgT:'Muito bem, você acertou! Na fábula o leão estava cansado depois de uma longa caçada.',
+					msgT:'Muito bem, você acertou! Na fábula o <br>leão estava cansado depois de <br>uma longa caçada.',
 					msgF:'Tente novamente!'
 				}
 			];
@@ -59,9 +59,9 @@
       edi.alternativa_boliche(btns, function (a) {
 				console.log(edi.telaAtual());
 				if(a)
-					mensagem('<div style="width: 430px; font-size: 22px; display: inline-block">'+ msgFinal[edi.telaAtual() - 1].msgT+'</div>');
+					mensagem('<div style="width: 430px; font-size: 20px; display: inline-block">'+ msgFinal[edi.telaAtual() - 1].msgT+'</div>');
 				else
-					mensagem('<div style="width: 430px; font-size: 22px; display: inline-block">'+ msgFinal[edi.telaAtual() - 1].msgF+'</div>');
+					mensagem('<div style="width: 430px; font-size: 20px; display: inline-block">'+ msgFinal[edi.telaAtual() - 1].msgF+'</div>');
 			}, config);//iniciando o EDI
       });
     </script>

@@ -29,13 +29,14 @@
         }).animate({
           backgroundPositionX: '0px'
         }, 80);
-      }, function(a) {
-        if (a) {
+      }, function(a,b) {
+        if (a) {          
           barraMsg('Muito bem! Você compreendeu o sentido dos conectivos de oposição, adversidade e restrição.', {height: 80, zIndex:2002});
         };        
+        $('.arrasta').off();
       }, {
         clone: true,
-        multAlvo: true,
+        multAlvo: false,
         target: false
       });
 
@@ -102,7 +103,7 @@
 <body>
   <div class="box">
     <div class="arrastas">
-      <div class="arrasta" data-correta="1"></div>
+      <div id="pincel" class="arrasta" data-correta="1"></div>
     </div>
 
     <div class="alvos">

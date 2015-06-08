@@ -1,0 +1,159 @@
+<!-- Desenvolvedor: Micael Souza -->
+<!doctype html>
+<html lang="pt-br">
+	<head>
+		<title>alt_d001</title>
+		<meta charset="utf-8">
+		<script src="../wilib/js/lib/require.js"></script>
+		<script src="../wilib/js/app.js"></script>
+
+		<link rel="stylesheet" href="../wilib/css/font-awesome.css">
+		<link rel="stylesheet" href="../wilib/css/estilo.css">
+
+		<!-- main -->
+		<script>
+            $(function () {
+                require(['../wilib/js/lib/alternativa'], function (edi) {
+
+                    edi.setConfig({ // configurando o EDI
+                        icone: 'exclamacao',
+                        titulo: 'Qual a tipologia textual do trecho apresentado abaixo? <br> Clique sobre a alternativa correta.'
+                    });
+
+                    var alternativas = [
+                        {
+                            alternativa: 'dissertação subjetiva',
+                            correta: false
+                        },{
+                            alternativa: 'descrição',
+                            correta: false
+                        },{
+                            alternativa: 'narração com alguns traços descritivos',
+                            correta: true
+                        },{
+                            alternativa: 'dissertação objetiva com <br> alguns traços descritivos',
+                            correta: false
+                        },{
+                            alternativa: 'narração com alguns traços dissertativos',
+                            correta: false
+                        }
+                    ];
+
+                    var config = {
+                        posx: 240,
+                        posy: 100,
+                        aleatorio: true,
+                        tamanhoBox: 35,
+                        marginBtns: 5
+                    }
+
+                    edi.alternativa(alternativas, function (acertou) {
+                        //                    log(acertou);
+                    }, function (a) {
+                       if (a) {
+                         $('#msgAcerto').fadeIn();
+                        } else {
+                         $('#msgErrado').fadeIn();
+                       }}, config); //iniciando o EDI
+
+                        $('#balao').peBalao({
+                            left: 10
+                        });
+
+
+                    $('#ico').iconeInterrogacaoAzul();
+                });
+            })
+		</script>
+
+		<style>
+			#balao {
+/*				background: url(../img/balao_seta_top.png) no-repeat;*/
+				border: 1px solid #ccc;
+				background: #fff;
+				width: 190px;
+				height: 240px;
+				position: absolute;
+				left: 10px;
+				padding: 5px;
+				top: 100px;
+				font-size: 13px;
+				text-align: center;
+				font-weight: 700;
+				line-height: 1.2;
+				border-radius: 10px;
+				color: #48A2D4;
+			}
+
+			#ico {
+				margin: 20px 0;
+        height: 59px;
+        position: relative;
+			}
+
+      #ico img {
+       left: 65px;
+      }
+
+			#bl {
+				background: #fff;
+				width: 100px;
+				height: 100px;
+				position: absolute;
+				left: 10px;
+				top: 90px;
+				border: 1px solid;
+			}
+
+      #msgAcerto {
+	      width: 160px;
+	      height: 75px;
+	      position: absolute;
+	      left: 580px;
+	      top: 180px;
+	      padding: 5px;
+	      padding-bottom: 30px;
+	      font-size: 14px;
+	      text-align: center;
+	      font-weight: bold;
+	      line-height: 16px;              
+	      color: #9c0;
+	      display: none;
+   		}
+
+   		#msgErrado {
+	      width: 160px;
+	      height: 70px;
+	      position: absolute;
+	      left: 580px;
+	      top: 180px;
+	      padding: 5px;
+	      padding-bottom: 30px;
+	      font-size: 14px;
+	      text-align: center;
+	      font-weight: bold;
+	      line-height: 16px;                  
+	      color: #F00;
+	      display: none;
+   		}
+		</style>
+	</head>
+
+	<body>
+
+		<div id="balao">
+      <div id="ico"></div>
+			<p>Dona Julieta chamou os filhos mais novos para uma conversa séria. Era uma manhã de domingo, o dia estava claro e ensolarado. Pediu a eles que compreendessem a situação do pai, que não tinha no momento condição de colocá-los em uma escola melhor.</p>
+		</div>
+
+
+    <div id="msgAcerto" class="borda-pontilhado-verde arredondado">
+        <p>Parabéns! Apesar de ser uma narração, o autor coloca traços de descrição para dar mais riqueza ao texto.</p>
+    </div>
+
+    <div id="msgErrado" class="borda-pontilhado-vermelho arredondado">
+        <p>Atenção! Observe que uma história é contada com personagens e que o ambiente é ressaltado.</p>
+    </div>
+
+	</body>
+</html>

@@ -1,0 +1,103 @@
+<!-- Desenvolvedor: Rodolfo Araujo -->
+<!doctype html>
+<html lang="pt-br">
+
+<head>
+	<title>Lição 02 Peça 41</title>
+	<meta charset="utf-8">
+	<script src="../wilib/js/lib/require.js"></script>
+	<script src="../wilib/js/app.js"></script>
+
+	<link rel="stylesheet" href="../wilib/css/font-awesome.css">
+	<link rel="stylesheet" href="../wilib/css/estilo.css">
+
+	<!-- main -->
+	<script>
+		require(['../wilib/js/lib/ligar'], function (edi) {
+
+			edi.setConfig({ // configurando o EDI
+                mascote: 'mascote',
+                icone: 'exclamacao',
+                titulo: 'Existem dois tipos de descrição, objetiva e subjetiva. Ligue os conceitos aos termos corretos e amplie seu conhecimento.',
+                enunciado: 'vertical'
+			});
+
+            var ligas = [
+                {conteudo: 'Descrição subjetiva', dataCorreta: 0, cor: '#8BC959'},
+                {conteudo: 'Descrição objetiva', dataCorreta: 1, cor: '#FF0000'}
+            ];
+
+            var alvos = [
+                {conteudo: 'Acontece quando o que é descrito apresenta-se de forma direta, simples, concreta, como realmente é.', dataCorreta: 1},
+                {conteudo: ' Ocorre quando há emoção por parte de quem descreve.', dataCorreta: 0}
+            ];
+
+			edi.ligar(ligas, alvos, function (a, b, c) {
+				//callback
+				//a:booleano = acertou/errou
+				//b:elementoHTML = liga
+				//c:elementoHTML = alvo
+			}, function (a) {
+				if (a) {
+      			$('#msgAcerto').fadeIn();
+    			}}, {
+				fontSize: 10,
+				erros: true,
+				ligaFixo: false,
+				liga: {
+            width: 150,
+            height: 'none',
+            left: 20,
+            top: 160,
+            paddingTop: 5,
+            paddingBottom: 5,
+            marginBottom: 10,
+            textAlign: 'center'
+        },
+
+        alvo: {
+            width: 175,
+            height: 40,
+            paddingTop: 6,
+            paddingBottom: 6,
+            marginBottom: 20,
+            left: 440,
+            top: 130,
+            textAlign: 'center'
+        }
+      });            
+		});
+	</script>
+
+	<style>
+        #conteudo {
+            background: radial-gradient(#fff, #fdfdfd);
+        }
+
+        #msgAcerto {
+				width: 350px;
+				height: 60px;
+				position: absolute;
+				left: 130px;
+				top: 20px;
+				padding-bottom: 10px;
+				font-size: 14px;
+				text-align: center;
+				font-weight: bold;
+				line-height: 16px;				
+				color: #9c0;
+				display: none;
+			}
+
+	</style>
+</head>
+
+<body>
+
+	<div id="msgAcerto" class="borda-pontilhado-verde arredondado">
+			<p>Muito bem! Você conheceu os dois tipos de descrição, no próximo exercício nós veremos exemplos da descrição objetiva e subjetiva.</p>
+	</div>
+
+</body>
+
+</html>

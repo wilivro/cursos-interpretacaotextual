@@ -1,0 +1,83 @@
+<!-- Desenvolvedor: Leandro Fortaleza -->
+<!doctype html>
+<html lang="pt-br">
+	<head>
+        <title>Lição 01 Peça 03</title>
+		<meta charset="utf-8">
+		<script src="../wilib/js/lib/require.js"></script>
+		<script src="../wilib/js/app.js"></script>
+
+        <link rel="stylesheet" href="../wilib/css/font-awesome.css">
+        <link rel="stylesheet" href="../wilib/css/estilo.css">
+
+		<script>
+			require(['../wilib/js/lib/revela'], function (edi) {
+
+				edi.setConfig({
+        icone: "exclamacao",
+					titulo: "Clique sobre o ícone e revele o texto.",
+					mascote: 'mascote'
+				});
+
+				edi.revela('btn-revela', 'box-revela', function (btn, revela) {
+					//
+				}, function (btn) {
+					barraMsg('Excelente! A alternativa correta é a letra E, porque não atribui <br> nenhuma  característica humana a seres irracionais.', {wait:3000, height:80})
+					btn.animate({left: 50}, 1000);
+				}, {
+					piscar: false,
+					delay: 1000
+				});//iniciando o EDI
+
+				$('.btn-revela').transition({
+					width: 81,
+					height: 79,
+					top: 180,
+					left: 355,
+					rotate: '-360deg'
+				}, 1000);
+			});
+		</script>
+
+		<style>
+			.btn-revela {
+				background: url(../wilib/img/svg/interrogacao.svg) no-repeat;
+				background-size: 100% 100%;
+				width: 800px;
+				height: 700px;
+				z-index: 100;
+				position: absolute;
+				left: 20px;
+				top: -135px;
+				cursor: pointer;
+			}
+
+			.box-revela {
+	      width: 480px;
+	      border: 1px solid #ccc;
+	      border-radius: 15px;
+	      font-size: 14px;
+	      padding: 0px 40px 3px 20px;
+	      position: absolute;
+	      line-height: 1.8;
+	      text-align: left;
+	      text-shadow: 1px 1px 1px rgba(0, 0, 0, 0.2);
+	      top: 73px;
+	      left: 200px;
+      }
+		</style>
+	</head>
+
+	<body>
+		<div class="btn-revela"></div>
+		<div class="box-revela">
+
+		Nem sempre percebemos, mas a verdade é que no nosso dia a dia convivemos com uma variedade muito grande de textos. <br><br>
+
+		Ao sairmos às ruas nos deparamos com cartazes, painéis, panfletos. Em casa, assistimos a telejornais ou lemos jornais de nossa cidade, conversamos com nossos amigos pela Internet, consultamos o manual de instrução para manusearmos um eletrônico novo, e outros mais. <br><br>
+
+		O mais importante de tudo isso é sabermos que não importa qual seja o tipo de texto, todos eles possuem uma finalidade, um objetivo. E para isso, temos os tipos de texto, precisamos conhecê-los bem, para interpretar corretamente e facilitar nosso raciocínio!
+
+   </div>
+	</body>
+</html>

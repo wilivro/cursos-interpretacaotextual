@@ -1,0 +1,108 @@
+<!-- Desenvolvedor: Danilo Thiago -->
+<!doctype html>
+<html lang="pt-br">
+<head>
+    <title>arr_l001</title>
+    <meta charset="utf-8">
+
+    <script src="../wilib/js/lib/require.js"></script>
+    <script src="../wilib/js/app.js"></script>
+    <link rel="stylesheet" href="../wilib/css/font-awesome.css">
+    <link rel="stylesheet" href="../wilib/css/estilo.css">
+
+    <script>
+        require(['../wilib/js/lib/arrasta'], function (edi) {
+
+            edi.setConfig({
+                titulo: 'Arraste para o lugar mais alto do pódio a alternativa que representa duas características representativas do modo de organização dissertativa.',
+                mascote: 'mascote',
+                tempoFinal: 10
+            });
+
+            var arrArrasta = [
+                {arrasta: 'Introdução e clímax', dataCorreta: 1},
+                {arrasta: 'Argumentação e sensação', dataCorreta: 2},
+                {arrasta: 'Sequência de fatos e de aspectos', dataCorreta: 3},
+                {arrasta: 'Verbos de ação e objetividade', dataCorreta: 4},
+                {arrasta: 'Convencimento e descrição', dataCorreta: 5}
+            ];
+
+            arrArrasta.sort(function () {
+                return 0.5 - Math.random()
+            });
+
+            for (var i = 0; i < arrArrasta.length; i++) {
+
+                $('<div>')
+                        .addClass('arrasta barra')
+                        .attr({
+                            'data-correta': arrArrasta[i].dataCorreta
+                        })
+                        .html(arrArrasta[i].arrasta)
+                        .appendTo('#boxArrasta');
+            }
+
+            var config = {
+                alvoFixo: false
+            };
+
+            edi.arrasta('arrasta', 'alvo', function (a, b) {
+                if(a){
+                    $('#alvoPodium').css({top: 165});
+                    $('#txt').css({color: '#9C0'}).html(b.html())
+                    barraMsg('Muito bem! A alternativa correta é a letra D. Pois a dissertação não tem clímax, não expressa sensação, não descreve fatos em sequência e não tem a intenção de descrever coisa alguma, apenas, utiliza verbos de ação e objetividade para embasar uma ideia ou ponto de vista.', {wait:1, zIndex:2002})
+                } else {
+                    $('#alvoPodium').css({top: 165});
+                    barraMsg('Atenção! Observe que a dissertação não tem clímax, não expressa sensação, não descreve fatos em sequência e não tem a intenção de descrever coisa alguma, portanto, qual a alternativa é a mais adequada? <br> Pense um pouco mais!', {zIndex:2002})
+                }
+
+            }, null, config);
+
+       });
+
+    </script>
+
+    <style>
+        .barra{
+            background: url(../wilib/img/svg/retangulo.svg);
+            width: 239px;
+            height: 45px;
+            margin: 5px;
+            text-align: center;
+            line-height: 40px;
+        }
+        #boxArrasta{
+            position: absolute;
+            top: 100px;
+        }
+
+        #podium{
+            background: url(../wilib/img/svg/podium.svg);
+            width: 459px;
+            height: 155px;
+            position: absolute;
+            top: 202px;
+            left: 310px;
+        }
+
+        .arrasta {
+            font-size: 14px;
+        }
+
+        #alvoPodium{
+            width: 239px;
+            height: 45px;
+            position: absolute;
+            top: 158px;
+            left: 381px;
+        }
+    </style>
+</head>
+
+<body>
+<div id="alvoPodium" class="alvo" data-correta="4"></div>
+<div id="podium"></div>
+<div id="boxArrasta">
+</div>
+</body>
+</html>

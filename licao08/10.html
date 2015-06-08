@@ -1,0 +1,115 @@
+<!-- Desenvolvedor: Leandro Fortaleza -->
+<!doctype html>
+<html lang="pt-br">
+	<head>
+		<title>alt_a003</title>
+		<meta charset="utf-8">
+		<script src="../wilib/js/lib/require.js"></script>
+		<script src="../wilib/js/app.js"></script>
+
+		<link rel="stylesheet" href="../wilib/css/font-awesome.css">
+		<link rel="stylesheet" href="../wilib/css/estilo.css">
+
+		<!-- main -->
+		<script>
+			require(['../wilib/js/lib/alternativa_boliche'], function (edi) {
+
+				edi.setConfig({// configurando o EDI
+					icone: 'exclamacao',
+					titulo: 'A narrativa deve tentar elucidar os acontecimentos, respondendo a algumas perguntas essenciais. Leia as opções a seguir e faça pontos no boliche marcando corretamente se as alternativas apresentadas correspondem às características da narração clicando em CERTO ou ERRADO.',
+					mascote: 'mascote',
+                    espacamento: '16px',
+
+				});
+
+				var btns = {
+                    tela1:{
+                        texto:'O QUÊ? - o(s) fato(s) que determina(n) a história.',
+                        btns:[
+                            {texto: 'CERTO', dataCorreta: true},
+                            {texto: 'ERRADO', dataCorreta: false}
+                        ]
+                    },
+                    tela2:{
+                        texto:'QUEM? - a personagem ou personagens.',
+                        btns:[
+                            {texto: 'CERTO', dataCorreta: true},
+                            {texto: 'ERRADO', dataCorreta: false}
+                        ]
+                    },
+                    tela3:{
+                        texto:'COMO? - o enredo, o modo como se tecem os fatos.',
+                        btns:[
+                            {texto: 'CERTO', dataCorreta: true},
+                            {texto: 'ERRADO', dataCorreta: false}
+                        ]
+                    },
+                    tela4:{
+                        texto:'ONDE? - o lugar ou lugares da ocorrência.',
+                        btns:[
+                            {texto: 'CERTO', dataCorreta: true},
+                            {texto: 'ERRADO', dataCorreta: false}
+                        ]
+                    },
+                    tela5:{
+                        texto:'QUANDO? - o momento ou momentos em que se passam os fatos.',
+                        btns:[
+                            {texto: 'CERTO', dataCorreta: true},
+                            {texto: 'ERRADO', dataCorreta: false}
+                        ]
+                    },
+                    tela6:{
+                        texto:'POR QUÊ? - a causa do acontecimento.',
+                        btns:[
+                            {texto: 'CERTO', dataCorreta: true},
+                            {texto: 'ERRADO', dataCorreta: false}
+                        ]
+                    }
+                };
+
+				var config = {
+					width: 120,
+					height: 50,
+					left: 225,
+					top: 150,
+					colunas: 2,
+					margin: 5,
+					padding: 5,
+					cor: '#fff'
+				};
+
+				function callback (a) {
+					//
+                    if(edi.telaAtual() == 1)
+                        $('#textoBox').html(a?'Parabéns! Perceba que a narrativa precisa de um fato, um acontecimento para existir.':'Atenção! Perceba que a narrativa precisa de um fato, um acontecimento para existir.');
+
+                    if(edi.telaAtual() == 2)
+                        $('#textoBox').html(a?'Parabéns! Perceba que a narrativa precisa<br>de um ou mais personagens para existir.':'Atenção! Perceba que a narrativa precisa de um ou mais personagens para existir.');
+
+                    if(edi.telaAtual() == 3)
+                        $('#textoBox').html(a?'Parabéns! Observe que é necessário um meio para os fatos acontecerem, a isto, damos o nome de enredo.':'Atenção! Observe que é necessário um meio para os fatos acontecerem.');
+
+                    if(edi.telaAtual() == 4)
+                        $('#textoBox').html(a?'Parabéns! Observe que para uma narrativa<br>acontecer precisa de um lugar.':'Atenção! Observe que para uma narrativa acontecer precisa de um lugar.');
+
+                    if(edi.telaAtual() == 5)
+                        $('#textoBox').html(a?'Parabéns! Observe que para uma narrativa acontecer<br>precisa de um tempo, um momento.':'Atenção! Observe que para uma narrativa acontecer precisa de um tempo, um momento.');
+
+                    if(edi.telaAtual() == 6)
+                        $('#textoBox').html(a?'Parabéns! Para ocorrer uma narrativa precisa-se de um motivo, uma causa para justificar determinado acontecimento.':'Atenção! Para ocorrer uma narrativa precisa-se de um motivo, uma causa para justificar determinado acontecimento.');
+				}
+
+                edi.alternativa_boliche(btns, callback, config);//iniciando o EDI
+                			});
+		</script>
+
+		<style>
+			#conteudo {
+				height: 315px;
+			}
+		</style>
+	</head>
+
+	<body>
+	</body>
+</html>

@@ -1,0 +1,161 @@
+<!-- Desenvolvedor: Micael Souza -->
+<!doctype html>
+<html lang="pt-br">
+	<head>
+		<title>alt_d001</title>
+		<meta charset="utf-8">
+		<script src="../wilib/js/lib/require.js"></script>
+		<script src="../wilib/js/app.js"></script>
+
+		<link rel="stylesheet" href="../wilib/css/font-awesome.css">
+		<link rel="stylesheet" href="../wilib/css/estilo.css">
+
+		<!-- main -->
+		<script>
+            $(function () {
+                require(['../wilib/js/lib/alternativa'], function (edi) {
+
+                    edi.setConfig({ // configurando o EDI
+                        icone: 'exclamacao',
+                        titulo: 'Marque a afirmação correta em relação ao texto abaixo:'
+                    });
+
+                    var alternativas = [
+                        {
+                            alternativa: 'É texto dissertativo com alguns elementos descritivos.',
+                            correta: false
+                        },{
+                            alternativa: 'Não se trata de texto narrativo, pois não há personagens.',
+                            correta: false
+                        },{
+                            alternativa: 'É um texto descritivo, com <br> alguns elementos narrativos.',
+                            correta: false
+                        },{
+                            alternativa: 'O texto não apresenta personagem-narrador.',
+                            correta: false
+                        },{
+                            alternativa: 'Trata-se de uma narração, sem nenhum traço dissertativo.',
+                            correta: true
+                        }
+                    ];
+
+                    var config = {
+                        posx: 270,
+                        posy: 100,
+                        aleatorio: true,
+                        tamanhoBox: 35,
+                        marginBtns: 5
+                    }
+
+                    edi.alternativa(alternativas, function (acertou) {
+                        //                    log(acertou);
+                    }, function (a) {
+							          if (a) {
+							          	$('#msgAcerto').fadeIn();
+							          } else{
+							          	$('#msgErrado').fadeIn();
+							          };
+                    }, config); //iniciando o EDI
+
+                        $('#balao').peBalao({
+                            left: 10
+                        });
+
+
+                    $('#ico').iconeInterrogacaoAzul();
+                });
+            })
+		</script>
+
+		<style>
+			#balao {
+/*				background: url(../img/balao_seta_top.png) no-repeat;*/
+				border: 1px solid #ccc;
+				background: #fff;
+				width: 220px;
+				height: 260px;
+				position: absolute;
+				left: 10px;
+				top: 100px;
+				padding: 5px;
+				font-size: 13px;
+				text-align: center;
+				font-weight: 700;
+				line-height: 1.2;
+				border-radius: 10px;
+				color: #48A2D4;
+			}
+
+			#ico {
+				margin: 20px 0;
+        height: 59px;
+        position: relative;
+			}
+
+      #ico img {
+       left: 85px;
+      }
+
+
+			#bl {
+				background: #fff;
+				width: 100px;
+				height: 100px;
+				position: absolute;
+				left: 10px;
+				top: 90px;
+				border: 1px solid;
+			}
+
+			 #msgAcerto {
+          width: 130px;
+          height: 35px;
+          position: absolute;
+          left: 620px;
+          top: 190px;
+          padding: 5px;
+          padding-bottom: 30px;
+          font-size: 14px;
+          text-align: center;
+          font-weight: bold;
+          line-height: 16px;              
+          color: #9c0;
+          display: none;
+       }
+
+       #msgErrado {
+          width: 130px;
+          height: 145px;
+          position: absolute;
+          left: 620px;
+          top: 140px;
+          padding: 5px;
+          padding-bottom: 30px;
+          font-size: 14px;
+          text-align: center;
+          font-weight: bold;
+          line-height: 16px;                  
+          color: #F00;
+          display: none;
+       }
+
+		</style>
+	</head>
+
+	<body>
+
+		<div id="balao">
+            <div id="ico"></div>
+			<p>“Senti tocar-me no ombro; era Lobo Neves. Encaramo-nos alguns instantes, mudos, inconsoláveis. Indaguei de Virgília, depois ficamos a conversar uma meia hora. No fim desse tempo, vieram trazer-lhe uma carta; ele leu-a, empalideceu muito e fechou-a com a mão trêmula.” (Machado de Assis, in Memórias Póstumas de Brás Cubas).</p>
+		</div>
+
+		<div id="msgAcerto" class="borda-pontilhado-verde arredondado">
+        <p>Muito bem! O texto é uma narrativa.</p>
+    </div>
+
+    <div id="msgErrado" class="borda-pontilhado-vermelho arredondado">
+        <p>Atenção! O texto não faz nenhuma descrição, nem disserta sobre algum tema, conta apenas uma história. Sendo assim, qual a alternativa correta?</p>
+    </div>
+
+	</body>
+</html>

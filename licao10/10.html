@@ -102,7 +102,11 @@
                 $("#" + id).focus();
 
             }, function(){
-                barraMsg('Muito Bem! Você compreendeu a poesia e conseguiu identificar os pontos mais importantes.')
+              barraMsg(
+                'Muito Bem! Você compreendeu a poesia e conseguiu ' +
+                '<br>identificar os pontos mais importantes.',
+                {height: 150}
+              );
             }, {
                 validarAcentos: true,
                 validarPontos: true,

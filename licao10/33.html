@@ -37,8 +37,8 @@
           }
         ],
         msg: {
-          acert: 'Muito Bem! Você prestou atenção aos detalhes da reportagem.',
-          erro: 'Atenção! Observe todos os aspectos desta reportagem.'
+          acert: 'Muito Bem! Você prestou atenção <br>aos detalhes da reportagem.',
+          erro: 'Atenção! Observe todos os <br>aspectos desta reportagem.'
         }
       };
 
@@ -47,34 +47,34 @@
         btns: [
           {
             dataCorreta: false,
-            texto: 'Que o cidadão brasileiro deve vender seu voto e pensar ' +
+            texto: 'Que o cidadão brasileiro deve vender seu voto e <br>pensar ' +
                    'em ganhar vantagens dos candidatos.'
           },{
             dataCorreta: false,
             texto: 'Que o cidadão brasileiro honrar seu direito de escolher ' +
-                   'seus representantes, exercendo desta forma sua cidadania ' +
-                   'e fazendo com que a democracia realmente aconteça.'
+                   'seus <br>representantes, exercendo desta forma sua cidadania ' +
+                   'e <br>fazendo com que a democracia realmente aconteça.'
           },{
             dataCorreta: false,
             texto: 'Informar que os eleitores vendem o voto.'
           },{
             dataCorreta: true,
             texto: 'Informar aos leitores e eleitores brasileiros de que ' +
-                   'os magistrados criaram um movimento contra a venda do ' +
-                   'voto, tendo ainda por objetivo, informar sobre ' +
+                   'os magistrados <br>criaram um movimento contra a venda do ' +
+                   'voto, tendo ainda por <br>objetivo, informar sobre ' +
                    'novas normas eleitorais.'
           }
         ],
         msg: {
-          acert: 'Parabéns! Você realmente compreendeu o sentido do texto ' +
-                 'jornalístico. Neste caso, a intenção é a de informar os ' +
-                 'eleitores e leitores do nosso país sobre a campanha ' +
-                 'contra venda de voto e novas normas adotadas para as eleições 2010.',
+          acert: 'Parabéns! Você realmente compreendeu o sentido <br>do texto ' +
+                 'jornalístico. Neste caso, a intenção é a de <br>informar os ' +
+                 'eleitores e leitores do nosso país sobre <br>a campanha ' +
+                 'contra venda de voto e novas normas <br>adotadas para as eleições 2010.',
 
-          erro: 'Fique atento! Este é um texto informativo, a autora desta ' +
-                'reportagem não deseja transmitir a sua ideia, o seu pensamento ' +
-                'sobre o tema, ela deseja transmitir acontecimentos importantes ' +
-                'vinculados a um assunto de interesse público e coletivo.'
+          erro: 'Fique atento! Este é um texto informativo, a autora <br>desta ' +
+                'reportagem não deseja transmitir a sua ideia, o seu <br>pensamento ' +
+                'sobre o tema, ela deseja transmitir <br>acontecimentos importantes ' +
+                'vinculados a um <br>assunto de interesse público e coletivo.'
         }
       };
 
@@ -97,18 +97,18 @@
           }
         ],
         msg: {
-          acert: 'Parabéns! O Ministro do Tribunal Superior Eleitoral é o Sr. Ricardo Lewandowski.',
-          erro: 'Atenção! Releia o texto e identifique o nome do Ministro do TSE.'
+          acert: 'Parabéns! O Ministro do Tribunal Superior <br>Eleitoral é o Sr. Ricardo Lewandowski.',
+          erro: 'Atenção! Releia o texto e identifique <br>o nome do Ministro do TSE.'
         }
       };
 
       edi.alternativa_botao(telas[edi.telaAtual - 1].btns, null, function(a){
         if (a) {
-          mensagem(telas[edi.telaAtual - 1].msg.acert, {fontSize: 16});
+          mensagem(telas[edi.telaAtual - 1].msg.acert, {fontSize: 18});
           return;
         }
 
-        mensagem(telas[edi.telaAtual - 1].msg.erro, {fontSize: 16});
+        mensagem(telas[edi.telaAtual - 1].msg.erro, {fontSize: 18});
       }, {
         width: 600,
         height: 30,

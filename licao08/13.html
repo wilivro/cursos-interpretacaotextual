@@ -1,0 +1,105 @@
+<!doctype html>
+<html lang="pt-br">
+<head>
+    <title>Lição 06 Peça 33</title>
+    <meta charset="utf-8">
+    <script src="../wilib/js/lib/require.js"></script>
+    <script src="../wilib/js/app.js"></script>
+    <link rel="stylesheet" href="../wilib/css/font-awesome.css">
+    <link rel="stylesheet" href="../wilib/css/estilo.css">
+
+    <script>
+        require(['../wilib/js/lib/revela_slide'], function (edi) {
+
+            edi.setConfig({
+                icone: 'exclamacao',
+                titulo: 'Clique nas setas e leia a explicação da professora.'
+            });
+
+            function callback(a, b) {
+                b.parent().css('box-shadow', '0 0 0 3px #8CA8B8');
+            }
+
+            function calbackFinal() {
+                barraMsg('Excelente! Descrever é contar com detalhes<br>a alguém sobre alguma coisa vista.', {height: 80, wait: 4})
+            }
+
+            edi.revela_slide('.revela', callback, calbackFinal, {
+                tempoBloqueio: 5000,
+                btnPrevConfig: {
+                    left: 280,
+                    top: 280
+                },
+                btnNextConfig: {
+                    left: 455,
+                    top: 280
+                }
+            });
+        });
+    </script>
+
+    <style>
+        i {
+            font-style: italic;
+            font-weight: bold;
+        }
+
+        .revela {
+            width: 270px;
+            font-size: 13px;
+            line-height: 1.3;
+            text-shadow: 1px 1px 1px rgba(0, 0, 0, 0.2);
+            position: absolute;
+            top: 130px;
+            left: 260px;
+            text-align: center;
+        }
+
+        .img {
+            width: 350px;
+            height: 240px;
+            position: absolute;
+            left: -440px;
+            top: -15px;
+            border: 5px solid #fff;
+            border-radius: 10px;
+            box-shadow: 0px 1px 3px 0px rgba(0, 0, 0, 0.3);
+        }
+
+        .float {
+            float: left;
+            margin-left: -200px;
+        }
+
+        .destaque {
+            text-decoration: underline;
+            color: #1C7C94;
+        }
+
+    </style>
+</head>
+
+<body>
+<p class="revela" id="rev-01">
+    <img class="float" src="../wilib/img/svg/aluno.svg" wifdth="200"/>
+    
+    O que é descrição professora? 
+</p>
+
+<p class="revela" id="rev-02">
+    <img class="float" src="../wilib/img/svg/professora.svg" width="200"/>
+   É a ação que você assume de descrever sobre algo ou alguém. De acordo com o dicionário, é o ato de narrar, contar minuciosamente.
+</p>
+
+<p class="revela" id="rev-03">
+    <img class="float" src="../wilib/img/svg/aluno.svg" wifdth="200"/>
+    Então, sempre que você expõe com detalhes um objeto, uma pessoa ou uma paisagem a alguém, está fazendo uso da descrição?
+</p>
+
+<p class="revela" id="rev-04">
+    <img class="float" src="../wilib/img/svg/professora.svg" width="200"/>
+   Sim, a descrição é como se fosse um retrato distinto e pessoal de algo que se vê ou se viu!
+</p>
+</body>
+
+</html>

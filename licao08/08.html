@@ -1,0 +1,92 @@
+<!-- Desenvolvedor: Leandro Fortaleza -->
+<!doctype html>
+<html lang="pt-br">
+
+<head>
+	<title>Lição 01 Peça 18</title>
+	<meta charset="utf-8">
+	<script src="../wilib/js/lib/require.js"></script>
+	<script src="../wilib/js/app.js"></script>
+
+	<link rel="stylesheet" href="../wilib/css/font-awesome.css">
+	<link rel="stylesheet" href="../wilib/css/estilo.css">
+
+	<!-- main -->
+	<script>
+		require(['../wilib/js/lib/ligar'], function (edi) {
+
+			edi.setConfig({ // configurando o EDI
+                mascote: 'mascote',
+                icone: 'exclamacao',
+                titulo: 'A narração situa seres e objetos no tempo (história). Ligue os conceitos da narrativa: estrutura, desenvolvimento e conclusão às definições corretas.',
+                enunciado: 'vertical'
+			});
+
+            var ligas = [
+                {conteudo: 'Introdução', dataCorreta: 0, cor: '#8BC959'},
+                {conteudo: 'Desenvolvimento', dataCorreta: 1, cor: '#0089FF'},
+                {conteudo: 'Conclusão', dataCorreta: 2, cor: '#0000FF'}
+            ];
+
+            var alvos = [
+                {conteudo: 'Existem várias maneiras de se concluir uma narração. Esclarecer a trama é apenas uma delas.', dataCorreta: 2},
+                {conteudo: 'Através das ações das personagens, constrói-se a trama e o suspense que culmina no clímax.', dataCorreta: 1},
+                {conteudo: 'Apresenta as personagens, localizando-as no tempo e no espaço.', dataCorreta: 0},
+                
+            ];
+
+      var config = {
+			ligaAleatorio: true,
+			alvoAleatorio: true,
+			corAleatoria: true,
+			borderColor: '#ddd',
+            erros: false,
+            fontWeight: 'bold',
+            fontSize: 12,
+            ligaFixo: true,
+            liga: {
+                width: 150,
+                height: 'none',
+                left: 20,
+                top: 140,
+                paddingTop: 5,
+                paddingBottom: 5,
+                marginBottom: 10,
+                textAlign: 'center'
+            },
+            alvo: {
+                width: 220,
+                height: 'none',
+                left: 400,
+                top: 80,
+                paddingTop: 6,
+                paddingBottom: 6,
+                marginBottom: 15,
+                textAlign: 'center'
+            }
+			}
+
+
+			edi.ligar(ligas, alvos, function (a, b, c) {
+				//callback
+				//a:booleano = acertou/errou
+				//b:elementoHTML = liga
+				//c:elementoHTML = alvo
+			}, function () {
+				barraMsg('Muito bem! A narração envolve os seguintes aspectos: Quem? Personagem; Quê? Fatos, enredo; Quando? A época em que ocorreram os acontecimentos. Fique atento a estas dicas, pois ao reconhecer estes aspectos em um texto poderá classificá-lo como uma narrativa.', {height: 100, top: 0, left: 17, topBotao: 110});
+			}, config);
+		});
+	</script>
+
+	<style>
+        #conteudo {
+            background: radial-gradient(#fff, #fdfdfd);
+        }
+	</style>
+</head>
+
+<body>
+
+</body>
+
+</html>

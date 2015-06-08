@@ -1,0 +1,79 @@
+<!-- Desenvolvedor: Danilo Thiago -->
+<!doctype html>
+<html lang="pt-br">
+<head>
+    <title>Lição 01 Peça 11</title> <!-- alt_b001 -->
+    <meta charset="utf-8">
+    <script src="../wilib/js/lib/require.js"></script>
+    <script src="../wilib/js/app.js"></script>
+    <link rel="stylesheet" href="../wilib/css/font-awesome.css">
+    <link rel="stylesheet" href="../wilib/css/estilo.css">
+
+    <script>
+        require(['../wilib/js/lib/alternativa_botao'], function (edi) {
+
+            edi.setConfig({
+                titulo: "Sobre um texto do tipo descritivo, é correto afirmar:",
+                mascote: 'mascote'
+            });
+
+            var btns = [];
+
+            btns.push({
+                texto: "Sua principal característica é narrar um fato fictício ou não, com tempo e espaço <br> bem definidos e personagens que executam as ações que movimentam o enredo.",
+                dataCorreta: false
+            });
+
+            btns.push({
+                texto: "Sua principal característica é explicar um assunto e discorrer sobre ele. <br> Tem como intenção expor um argumento e defendê-lo.",
+                dataCorreta: false
+            });
+
+            btns.push({
+                texto: "Sua principal característica é completar os elementos da narrativa com <br> a caracterização de personagem e de ambiente para transmitir ao leitor <br> dados significativos sobre as personagens.",
+                dataCorreta: true
+            });
+
+            btns.push({
+                texto: "Sua principal característica é indicar como realizar uma ação, com <br> linguagem simples e objetiva e predomínio do modo imperativo.",
+                dataCorreta: false
+            });
+
+
+            btns.push({
+                texto: "Sua principal característica é fazer uma defesa de ideias ou de um ponto de <br> vista do autor do texto. A linguagem é predominantemente persuasiva e denotativa.",
+                dataCorreta: false
+            });
+
+
+            var config = {
+                colunas: 1,
+                width: 580,
+                height: 27,
+                left: 90,
+                top: 68,
+                margin: 5,
+                tamanhoTexto: 10,
+                fontSize: 12,
+                btnBranco: true,
+                randomico: true,
+                lineHeight: '1.4',
+                animacao: true
+            }
+
+            edi.alternativa_botao(btns, null, function(a) {
+                if (a) {
+                    barraMsg('Excelente! Nos textos descritivos, a linguagem é utilizada para construir imagens que representam seres, objetos ou cenas. Descrever é empregar os sentidos para captar uma realidade circunscrita em um texto.', {wait:1, zIndex:2002})
+                } else{
+                    barraMsg('Atenção! Nos textos descritivos, a linguagem é utilizada para construir imagens que representam seres, objetos ou cenas. Descrever é empregar os sentidos para captar uma realidade circunscrita em um texto. <br> Reflita um pouco mais!', {wait:1, zIndex:2002})
+                };
+            }, config);
+        });
+    </script>
+
+</head>
+
+<body>
+
+</body>
+</html>

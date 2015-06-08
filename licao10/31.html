@@ -14,11 +14,6 @@
 				'../wilib/js/lib/alternativa_botao'
 			], function (edi, edi2) {
 
-				edi.setConfig({
-          mascote: 'mascote',
-          icone: 'interrogacaoAzul',
-					titulo: 'Leia a reportagem a seguir clicando nos botões para avançar o texto.'
-				});
 				var botoes = [
 					{
 						texto: '...Dos 23 alunos que estudaram juntos há mais de 30 anos ' +
@@ -61,22 +56,37 @@
 									 'Força Aérea Brasileira (FAB)...'
 					},{
 						texto: '...Nenhum deles tem antecedentes criminais...'
-					},{
-						texto: ''
 					}
 				];
 
-        edi.revela_num_slider(botoes, null, function() {
-					$('[data-edi="revela_num_slider"]').fadeOut();
-					$('[data-edi="alternativa_botao"], h4.titulo').fadeIn();
-				}, {
-					tamanhoFonteTexto: 12,
-					showNum: true,
-					espacoSetas: 370,
-					tamanhoBoxTexto: 510,
-					left: -20,
-					leftSetas: 105
+				edi.setConfig({
+          mascote: 'mascote',
+          icone: 'interrogacaoAzul',
+					qtdTelas: 2,
+					titulo: 'Leia a reportagem a seguir clicando nos botões para avançar o texto.'
 				});
+
+
+				if (edi.telaAtual === 1) {
+					edi.revela_num_slider(botoes, null, null, {
+						tamanhoFonteTexto: 12,
+						showNum: true,
+						espacoSetas: 370,
+						tamanhoBoxTexto: 510,
+						left: -20,
+						leftSetas: 105
+					});
+
+	        $('#ico').iconeExclamacao(true);
+
+					edi2.alternativa_botao();
+
+					$('[data-edi="alternativa_botao, .titulo"]').hide();
+
+					return;
+				}
+
+				edi.revela_num_slider();
 
 				edi2.alternativa_botao([
 					{dataCorreta: false, texto: 'SIM'},
@@ -87,9 +97,7 @@
 					top: 280
 				});
 
-        $('#ico').iconeExclamacao(true);
-
-				$('[data-edi="alternativa_botao"]').hide();
+				$('.titulo').show();
 
 			});
 		</script>

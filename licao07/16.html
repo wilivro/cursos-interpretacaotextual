@@ -1,40 +1,40 @@
 <!doctype html>
 <html lang="pt-br">
 	<head>
-        <title>arr_d002</title>
+    <title>arr_d002</title>
 		<meta charset="utf-8">
 		<script src="../wilib/js/lib/require.js"></script>
 		<script src="../wilib/js/app.js"></script>
-        <link rel="stylesheet" href="../wilib/css/font-awesome.css">
-        <link rel="stylesheet" href="../wilib/css/estilo.css">
+    <link rel="stylesheet" href="../wilib/css/font-awesome.css">
+    <link rel="stylesheet" href="../wilib/css/estilo.css">
 
 		<script>
 			require(['../wilib/js/lib/revela_e10'], function (edi) {
 
 				edi.setConfig({
-                    mascote: 'mascote',
-					titulo: 'Arrastem os conectivos do mural e preencha as <br>frases corretamente. Observe o sentido das frases.'
+          mascote: 'mascote',
+					titulo: 'Clique no diagrama e descubra alguns conectivos <br>que ' +
+									'passam a ideia de adição e continuação.'
 				});
 
-                var revelas =[];
-
-                revelas.push({
-                    titulo:'Adição, Continuação',
-                    frases: ['e','nem','também','bem como','além disso','ainda mais']
-                });
-
-                var config = {
-                    left:238
-                }
-                
-                edi.revela_e10(revelas, function(){
-                    barraMsg('Muito bem! Observe o exemplo: O solo do Nordeste é muito seco e aparentemente árido. O conectivo “e” dá o sentido de adição e continuação.', {height: 80});
-                }, config);
+        edi.revela_e10([
+					{
+	          titulo:'Adição, Continuação',
+	          frases: ['e','nem','também','bem como','além disso','ainda mais']
+	        }
+				], function(){
+          barraMsg(
+						'Muito bem! Observe o exemplo: O solo do Nordeste é muito seco e ' +
+						'aparentemente árido. O conectivo “e” dá o sentido ' +
+						'de adição e continuação.',
+						{height: 80}
+					);
+        }, {left: 238});
 
 			});
 		</script>
         <style>
-          
+
         </style>
 	</head>
 	<body>

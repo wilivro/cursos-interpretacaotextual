@@ -46,9 +46,9 @@
                         //                    log(acertou);
                     }, function (a) {
                     if (a) {
-                        barraMsg('Excelente! Esta é a única alternativa em que há ligação <br> entre os termos, esta ligação é feita pelo conectivo <span id="sublinhado">porque</span>.', {zIndex: 2002})
+                        barraMsg('Excelente! Esta é a única alternativa em que há ligação <br> entre os termos, esta ligação é feita pelo conectivo <span id="sublinhado">porque</span>.', {zIndex: 2002, height: 130})
                     } else {
-                        barraMsg('Atenção! Lembre-se, a ligação é feita para <br> dar continuidade ao sentido da frase. ', {zIndex:2002})
+                        barraMsg('Atenção! Lembre-se, a ligação é feita para <br> dar continuidade ao sentido da frase. ', {zIndex:2002, height: 130})
                     }}, config); //iniciando o EDI
 
                         $('#balao').peBalao({
@@ -62,7 +62,7 @@
         </script>
 
         <style>
-            
+
             #sublinhado {
                 text-decoration: underline;
             }

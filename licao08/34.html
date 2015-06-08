@@ -1,0 +1,124 @@
+<!-- Desenvolvedor: Leandro Fortaleza -->
+<!doctype html>
+<html lang="pt-br">
+	<head>
+        <title>rev_q005</title>
+		<meta charset="utf-8">
+		<script src="../wilib/js/lib/require.js"></script>
+		<script src="../wilib/js/app.js"></script>
+
+        <link rel="stylesheet" href="../wilib/css/font-awesome.css">
+        <link rel="stylesheet" href="../wilib/css/estilo.css">
+
+		<script>
+			require(['../wilib/js/lib/revela','../wilib/js/lib/alternativa_botao'], function (edi, edi2) {
+
+				edi2.setConfig({
+                    icone: "exclamacao",
+                    mascote: 'mascote',
+					titulo: "Clique sobre a personagem para revelar a questão e responda<br> corretamente clicando sobre a alternativa certa.",
+                    tempoFinal: 10
+				});
+
+                var btns = [];
+
+                btns.push({
+                    texto: "<div class='txt'>A estrutura textual é semelhante ao texto descritivo</div>",
+                    dataCorreta: false
+                });
+
+                btns.push({
+                    texto: "<div class='txt'>A postura do autor é de argumentador</div>",
+                    dataCorreta: false
+                });
+
+                btns.push({
+                    texto: "<div class='txt'>Há, exaustivamente, o uso de presente do indicativo.</div>",
+                    dataCorreta: false
+                });
+
+                btns.push({
+                    texto: "<div class='txt'>Não apresenta clímax em sua estrutura</div>",
+                    dataCorreta: false
+                });
+
+                btns.push({
+                    texto: "<div class='txt'>O enredo é o principal</div>",
+                    dataCorreta: true
+                });
+
+                var config = {
+                    colunas: 1,
+                    width: 300,
+                    height: 25,
+                    left: 330,
+                    top: 75,
+                    margin: '7px 7px 0 100px',
+                    tamanhoTexto: 14,
+                    btnBranco: true,
+                    lineHeight: '1.4',
+                    animacao: true
+                };
+
+                function callback (a) {
+                    barraMsg(a?'Muito bem! O enredo é prioritário em uma narração, a resposta<br>correta é a letã E, tendo em vista, que as demais opções não<br>apresentam características narrativas.':'Atenção! A maioria das opções apresentam características da descrição e dissertação, relembre os conceitos da narração e responda novamente.', {height: 150});
+                }
+
+                edi2.alternativa_botao(btns, null, callback, config);
+
+                $('[data-edi = "alternativa_botao"]').addClass('box-revela');
+
+				edi.revela('revela', 'box-revela', function (btn, revela) {
+
+				}, function (btn) {
+				}, {});
+
+				$('.btn-revela').transition({
+                    transform: 'scale(1)',
+                    top: 90,
+					left: 240
+				}, 1000).peBalao({
+                    scaleY: -1, scaleX: -1, top: 132, tamanhoBorda: 12
+                });
+			});
+		</script>
+
+		<style>
+
+            #img{
+                position: absolute;
+                top: 114px;
+                left: 15px;
+            }
+            .btn-revela{
+                -webkit-transform: scale(0.1);
+                -moz-transform: scale(0.1);
+                -ms-transform: scale(0.1);
+                transform: scale(0.1);
+                text-align: center;
+                border-radius: 10px;
+                border: solid 1px #E2E2E2;
+                position: absolute;
+                top: 200px;
+                left: 180px;
+                width: auto;
+                height: auto;
+                color: rgb(128, 126, 126);
+                padding: 20px;
+                font-size: 16px;
+            }
+
+		</style>
+	</head>
+
+	<body>
+
+        <div class="revela">
+            <div class="btn-revela">
+            Sobre o <br>texto narrativo,<br> pode-se<br>afirmar:
+        </div>
+        <img id="img"  src="../wilib/img/svg/personagem_negro_perfil.svg" width="200"/>
+		
+        </div>
+	</body>
+</html>

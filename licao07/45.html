@@ -13,7 +13,7 @@
         require(['../wilib/js/lib/alternativa_botao'], function (edi) {
 
             edi.setConfig({
-                titulo: 'Leia a charge a seguir e marque a alternativa que corresponde a ideia expressa no conectivo em destaque.',
+                titulo: 'Leia a charge a seguir e marque a alternativa que corresponde <br>a ideia expressa no conectivo em destaque.',
                 mascote: 'mascote',
             });
 
@@ -25,7 +25,7 @@
                 {texto: 'Restrição, oposição ', dataCorreta: true},
                 {texto: 'Adição, continuação ', dataCorreta: false}
             ];
-            
+
 
             var config = {
                 randomico: true,
@@ -53,7 +53,7 @@
                                 display: 'none'
                             }).fadeIn();
                 }
-                
+
             }
 
             edi.alternativa_botao(btns, callback, function(a){

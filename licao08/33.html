@@ -1,0 +1,98 @@
+<!-- Desenvolvedor: Leandro Fortaleza -->
+<!doctype html>
+<html lang="pt-br">
+
+<head>
+	<title>Lição 01 Peça 50</title> <!-- alt_f002 -->
+        <meta charset="utf-8">
+        <script src="../wilib/js/lib/require.js"></script>
+        <script src="../wilib/js/app.js"></script>
+        <link rel="stylesheet" href="../wilib/css/font-awesome.css">
+        <link rel="stylesheet" href="../wilib/css/estilo.css">
+
+	<script>
+		require(['../wilib/js/lib/alternativa_com_carimbo'], function (edi) {
+
+			edi.setConfig({
+				titulo: 'De acordo com o texto a seguir, classifique cada sentença como certa ou errada clicando no espaço correspondente ao seu lado.  ',
+                mascote: 'mascote',
+                tempoFinal: 10
+			});
+
+            //balões
+            var baloes = [
+
+                {
+                    texto: 'É texto dissertativo com alguns elementos descritivos.',
+                    dataCorreta: false
+                },
+                {
+                    texto: 'Não se trata de texto narrativo, pois não há personagens.',
+                    dataCorreta: false
+                },
+                {
+                    texto: 'É um texto descritivo, com alguns elementos narrativos.',
+                    dataCorreta: false
+                },
+                {
+                    texto: 'O texto não apresenta personagem-narrador.',
+                    dataCorreta: false
+                },
+                {
+                    texto: 'Trata-se de uma narração, sem nenhum traço dissertativo.',
+                    dataCorreta: true
+                }
+
+            ];
+
+			edi.iniciar(baloes, function (a, b) {
+                //cb
+            }, function (a) { 
+                if (a) {
+                    barraMsg('Muito bem! Machado de Assis apenas narra os fatos acontecidos neste trecho.', {height: 80});
+                } else {
+                    barraMsg('Atenção! Observe que Machado de Assis apenas narra os fatos<br>acontecidos neste trecho.', {height: 80});
+                };                   
+            }, {
+                top: 85,
+                left: 220,
+                fontSize: 13,
+                width: 500,
+                height: 50,
+                trocarTxt: false
+            });
+		});
+	</script>
+    <style>
+        #conteudo{
+            background: url(../img/fotos/53.0.png);
+            background-size: 100% 100%;
+        }
+
+        #msg {
+            position: absolute;
+            top: 100px;
+            left: 10px;
+            border-radius: 2px;
+            box-shadow: 2px 2px 5px 3px rgba(0, 0, 0, .5);
+            overflow: auto;
+            background-color: #fff;
+            width: 180px;
+            height: 200px;
+            font-size: 12px;
+            padding-left: 10px;
+        }
+
+    </style>
+
+</head>
+
+<body>
+<div id="msg">
+    <p>
+        “Senti tocar-me no ombro; era Lobo Neves. Encaramo-nos alguns instantes, mudos, inconsoláveis. Indaguei de Virgília, depois ficamos a conversar uma meia hora. No fim desse tempo, vieram trazer-lhe uma carta; ele leu-a, empalideceu muito e fechou-a com a mão trêmula.” <br> (Machado de Assis, in Memórias Póstumas de Brás Cubas)
+    </p>
+</div>
+</body>
+
+</html>

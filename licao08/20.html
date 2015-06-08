@@ -1,0 +1,57 @@
+<!-- Desenvolvedor: Leandro Fortaleza -->
+<!doctype html>
+<html lang="pt-br">
+
+<head>
+    <title>Lição 01 Peça 21</title> <!-- rev_r001 -->
+  <meta charset="utf-8">
+  <script src="../wilib/js/lib/require.js"></script>
+  <script src="../wilib/js/app.js"></script>
+  <link rel="stylesheet" href="../wilib/css/font-awesome.css">
+  <link rel="stylesheet" href="../wilib/css/estilo.css">
+
+  <script>
+  require(['../wilib/js/lib/revela-btn'], function (edi) {
+
+    edi.setConfig({
+      mascote: 'mascote',
+      titulo: 'Clique sobre as barras para revelar as explicações sobre discurso.',
+      tempoFinal: 10
+    });
+
+    var alternativas = [];
+
+    alternativas.push({
+      img: '../img/licao08/peca19_1.png',
+      titulo: 'Texto narrativo',
+      texto: 'Em um texto narrativo, o autor pode optar por três tipos de discurso: o discurso direto, o discurso indireto e o discurso indireto livre. Não necessariamente estes três discursos estão separados, eles podem aparecer juntos em um texto. Dependerá de quem o produziu.'
+    });
+
+    alternativas.push({
+      img: '../img/licao08/peca19_2.png',
+      titulo: 'Discurso direto ',
+      texto: '<span style="font-size: 11px">Discurso Direto: Neste tipo de discurso as personagens ganham voz. É o que ocorre normalmente em diálogos. Isso permite que traços da fala e da personalidade das personagens sejam destacados e expostos no texto. O discurso direto reproduz fielmente as falas das personagens. Verbos como dizer, falar, perguntar, entre outros, servem para que as falas das personagens sejam introduzidas e elas ganhem vida, como em uma peça teatral.</span>'
+    });
+
+    alternativas.push({
+      img: '../img/licao08/peca19_3.png',
+      titulo: 'Discurso indireto',
+      texto: 'Discurso Indireto: O narrador conta a história e reproduz fala, e reações das personagens. É escrito normalmente em terceira pessoa. Nesse caso, o narrador se utiliza de palavras suas para reproduzir aquilo que foi dito pela personagem.'
+    });
+
+    alternativas.push({
+      img: '../img/licao08/peca19_4.png',
+      titulo: 'Discurso indireto livre',
+      texto: 'Discurso Indireto Livre: O texto é escrito em terceira pessoa e o narrador conta a história, mas as personagens têm voz própria, de acordo com a necessidade do autor de fazê-lo. Sendo assim é uma mistura dos outros dois tipos de discurso e as duas vozes se fundem.'
+    });
+
+    edi.revelaBtn(alternativas,null,null,{qtdX:4});
+  });
+</script>
+</head>
+
+<body>
+
+</body>
+
+</html>

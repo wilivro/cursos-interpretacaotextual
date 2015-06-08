@@ -1,135 +1,136 @@
 <!doctype html>
 <html lang="pt-br">
-	<head>
-        <title>Lição 01 Peça 33</title>
-		<meta charset="utf-8">
-		<script src="../wilib/js/lib/require.js"></script>
-		<script src="../wilib/js/app.js"></script>
-        <link rel="stylesheet" href="../wilib/css/font-awesome.css">
-        <link rel="stylesheet" href="../wilib/css/estilo.css">
+<head>
+  <title>Lição 01 Peça 33</title>
+  <meta charset="utf-8">
+  <script src="../wilib/js/lib/require.js"></script>
+  <script src="../wilib/js/app.js"></script>
+  <link rel="stylesheet" href="../wilib/css/font-awesome.css">
+  <link rel="stylesheet" href="../wilib/css/estilo.css">
 
-		<script>
-			require(['../wilib/js/lib/revela','../wilib/js/lib/alternativa_botao'], function (edi, edi2) {
+  <script>
+    require(['../wilib/js/lib/revela', '../wilib/js/lib/alternativa_botao'], function (edi, edi2) {
 
-				edi2.setConfig({
-                    icone: "exclamacao",
-                    mascote: 'mascote',
-					titulo: "Clique sobre a imagem para revelar o texto e em seguida<br> assinale a alternativa correta para a questão a seguir.",
-                    tempoFinal: 10
-				});
+      edi2.setConfig({
+        icone: "exclamacao",
+        mascote: 'mascote',
+        titulo: "Clique sobre a imagem para revelar o texto e em seguida<br> assinale a alternativa correta para a questão a seguir.",
+        tempoFinal: 10
+      });
 
-                var btns = [];
+      var btns = [];
 
-                btns.push({
-                    texto: "Que João é muito inteligente.",
-                    dataCorreta: false
-                });
+      btns.push({
+        texto: "Que João é muito inteligente.",
+        dataCorreta: false
+      });
 
-                btns.push({
-                    texto: "Que João é irmão de Cláudio.",
-                    dataCorreta: false
-                });
+      btns.push({
+        texto: "Que João é irmão de Cláudio.",
+        dataCorreta: false
+      });
 
-                btns.push({
-                    texto: "Que João não cumpre seus deveres.",
-                    dataCorreta: true
-                });
+      btns.push({
+        texto: "Que João não cumpre seus deveres.",
+        dataCorreta: true
+      });
 
-                var config = {
-                    width: 450,
-                    btnBranco: true,
-                    colunas: 1,
-                    margin: 1,
-                    height: 45,
-                    top: 95,
-                    left: 225
+      var config = {
+        width: 450,
+        btnBranco: true,
+        colunas: 1,
+        margin: 1,
+        height: 45,
+        top: 95,
+        left: 225
 
-                };
+      };
 
-                function callback (a) {
+      function callback(a) {
 
-                }
-                $('#txt').peBalao({scaleX: -1, left: 30});
-                edi2.alternativa_botao(btns, callback, function (a) {
-                    if(a)
-                        mensagem('<div style="width: 430px; font-size: 22px; display: inline-block">Parabéns! Você possui um vocabulário extenso, que permitiu que você interpretasse corretamente a frase. Mas se você não conhecesse a palavra “claudicante”, compreenderia o sentido da frase? Reflita!</div>');
-                    else
-                        mensagem('<div style="width: 430px; font-size: 22px; display: inline-block">Atenção! Para compreender a frase você precisa conhecer o sentido das palavras que a formam, no caso, pesquise o significado da palavra “claudicante” e tente novamente.</div>');
+      }
 
-
-                }, config);
-
-                $('[data-edi = "alternativa_botao"]').addClass('box-revela');
-
-				edi.revela('btn-revela', 'box-revela', function () {
-
-                }, function (btn) {
-
-				}, {ocultarBtn: true});
+      $('#txt').peBalao({scaleX: -1, left: 30});
+      edi2.alternativa_botao(btns, callback, function (a) {
+        if (a)
+          mensagem('<div style="width: 430px; font-size: 22px; display: inline-block">Parabéns! Você possui um vocabulário extenso, que permitiu que você interpretasse corretamente a frase. Mas se você não conhecesse a palavra “claudicante”, compreenderia o sentido da frase? Reflita!</div>');
+        else
+          mensagem('<div style="width: 430px; font-size: 22px; display: inline-block">Atenção! Para compreender a frase você precisa conhecer o sentido das palavras que a formam, no caso, pesquise o significado da palavra “claudicante” e tente novamente.</div>');
 
 
-			});
-		</script>
+      }, config);
 
-		<style>
+      $('[data-edi = "alternativa_botao"]').addClass('box-revela');
 
-            #img{
-                position: absolute;
-                top: 110px;
-                left: 280px;
-                text-align: center;
-                border-radius: 10px;
-                border: solid 1px #E2E2E2;
-                color: #807E7E;
-                padding: 10px;
-                font-size: 16px;
-            }
+      edi.revela('btn-revela', 'box-revela', function () {
 
-            .img {
-                width: 170px;
-                margin-top: 18px;
-                height: 170px;
-                box-shadow: 5px 5px 5px rgba(0, 0, 0, 0.5);
-                border-radius: 5px;
-            }
+      }, function (btn) {
 
-            #txt {
-                position: absolute;
-                top: 85px;
-                left: 5px;
-                text-align: center;
-                font-size: 18px;
-                height: 260px;
-                width: 180px;
-                color: #666;
-                padding: 25px 10px 0px 10px ;
-                border: 1px solid #ccc;
-                border-radius: 10px;
-            }
+      }, {ocultarBtn: true});
 
-            a {
-                color: #0000FF;
-                text-decoration: none;
-                cursor: help;
-            }
-            
-            a:active {
-                color: #FF0000;
-            }
 
-		</style>
-	</head>
+    });
+  </script>
 
-    <div id="txt" class="box-revela">
-        João é extremamente claudicante.
+  <style>
 
-        <img class="img" src="../img/licao01/p33.jpg" width="200"/>
+    #img {
+      position: absolute;
+      top: 110px;
+      left: 280px;
+      text-align: center;
+      border-radius: 10px;
+      border: solid 1px #E2E2E2;
+      color: #807E7E;
+      padding: 10px;
+      font-size: 16px;
+    }
 
-        <a href="http://www.dicionarioinformal.com.br/claudicante/" target="_blank">Claudicante</a>
+    .img {
+      width: 170px;
+      margin-top: 18px;
+      height: 170px;
+      box-shadow: 5px 5px 5px rgba(0, 0, 0, 0.5);
+      border-radius: 5px;
+    }
 
-    </div>
+    #txt {
+      position: absolute;
+      top: 85px;
+      left: 5px;
+      text-align: center;
+      font-size: 18px;
+      height: 260px;
+      width: 180px;
+      color: #666;
+      padding: 25px 10px 0px 10px;
+      border: 1px solid #ccc;
+      border-radius: 10px;
+    }
 
-	<body>
-        <img id="img" class="btn-revela" src="../img/licao01/p33.jpg" width="200"/>
-	</body>
+    a {
+      color: #0000FF;
+      text-decoration: none;
+      cursor: help;
+    }
+
+    a:active {
+      color: #FF0000;
+    }
+
+  </style>
+</head>
+
+<div id="txt" class="box-revela">
+  João é extremamente claudicante.
+
+  <img class="img" src="../img/licao01/p33.jpg" width="200"/>
+
+  <a href="http://www.dicionarioinformal.com.br/claudicante/" target="_blank">Claudicante</a>
+
+</div>
+
+<body>
+<img id="img" class="btn-revela" src="../img/licao01/p33.jpg" width="200"/>
+</body>
 </html>

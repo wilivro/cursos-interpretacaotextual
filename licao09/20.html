@@ -1,81 +1,82 @@
 <!doctype html>
 <html lang="pt-br">
-	<head>
-        <title>Lição 09 Peça 20</title>
-        <meta charset="utf-8">
-        <script src="../wilib/js/lib/require.js"></script>
-        <script src="../wilib/js/app.js"></script>
-        <link rel="stylesheet" href="../wilib/css/font-awesome.css">
-        <link rel="stylesheet" href="../wilib/css/estilo.css">
+<head>
+  <title>Lição 09 Peça 20</title>
+  <meta charset="utf-8">
+  <script src="../wilib/js/lib/require.js"></script>
+  <script src="../wilib/js/app.js"></script>
+  <link rel="stylesheet" href="../wilib/css/font-awesome.css">
+  <link rel="stylesheet" href="../wilib/css/estilo.css">
 
-		<script>
-			require(['../wilib/js/lib/alternativa_vf'], function (edi) {
-				
-				edi.setConfig({
-                    icone: "interrogacaoAzul",
-                    mascote: 'mascote',
-					titulo: "Marque V para verdadeiro e F para falso.<br> Segundo o texto, os animais:"
-				});
-				
-				var alternativas  = [];
-				
-				alternativas.push({
-					texto: 'são obrigados a todo <br>tipo de treinamento.',
-					dataCorreta: true
-				});
-				
-				alternativas.push({
-					texto: 'são treinados dentro<br> de determinados limites.',
-					dataCorreta: true
-				});
-				
-				alternativas.push({
-					texto: 'não fazem o que lhes<br> permite a natureza.',
-					dataCorreta: false
-				});
+  <script>
+    require(['../wilib/js/lib/alternativa_vf'], function (edi) {
 
-				alternativas.push({
-					texto: 'não são objeto de qualquer <br>preocupação para o autor.',
-					dataCorreta: false
-				});
-				
-				edi.alternativa_vf(alternativas, function (a) {
+      edi.setConfig({
+        icone: "interrogacaoAzul",
+        mascote: 'mascote',
+        titulo: "Marque V para verdadeiro e F para falso.<br> Segundo o texto, os animais:"
+      });
 
-                }, function (a) {
-					barraMsg(a?'Muito bem!<br> A única alternativa correta é a segunda.':'Errado!<br> Volte ao texto e reflita sobre a fala do autor.');
-                }, {
-                    left: 300,
-                    top: 95,
-                    margin: '0 0 15px 0'
-                });
-			});
-		</script>
-		<style>
-			#txt {
-				position: absolute;
-				top: 72px;
-				left: 100px;
-				border: 1px solid #666;
-				border-radius: 15px;
-				box-shadow: 3px 2px 1px rgba(0,0,0,0.5);
-				padding: 10px;
-				width: 350px;
-				font-size: 16px;
-				color: #666;
-				text-align: center;
-			}
+      var alternativas = [];
 
-			#img {
-				position: absolute;
-				top: 165px;
-				left: 20px;
-				box-shadow: 3px 2px 1px rgba(0,0,0,0.5);
-			}
-		</style>
-	</head>
-	
-	<body>
-	<div id="txt">“Os animais que eu treino não são obrigados a fazer o que vai contra a natureza deles.”<br> <span style="color: #000; float: right; font-size: 13px;">(Gilberto Miranda, na Folha de São Paulo, 23/2/96)</span></div>
-	<img id="img" src="../img/licao09/p20.jpg" width="250"/>
-	</body>
+      alternativas.push({
+        texto: 'são obrigados a todo <br>tipo de treinamento.',
+        dataCorreta: false
+      });
+
+      alternativas.push({
+        texto: 'são treinados dentro<br> de determinados limites.',
+        dataCorreta: true
+      });
+
+      alternativas.push({
+        texto: 'não fazem o que lhes<br> permite a natureza.',
+        dataCorreta: false
+      });
+
+      alternativas.push({
+        texto: 'não são objeto de qualquer <br>preocupação para o autor.',
+        dataCorreta: false
+      });
+
+      edi.alternativa_vf(alternativas, function (a) {
+
+      }, function (a) {
+        barraMsg(a ? 'Muito bem!<br> A única alternativa correta é a segunda.' : 'Errado!<br> Volte ao texto e reflita sobre a fala do autor.');
+      }, {
+        left: 300,
+        top: 95,
+        margin: '0 0 15px 0'
+      });
+    });
+  </script>
+  <style>
+    #txt {
+      position: absolute;
+      top: 72px;
+      left: 100px;
+      border: 1px solid #666;
+      border-radius: 15px;
+      box-shadow: 3px 2px 1px rgba(0, 0, 0, 0.5);
+      padding: 10px;
+      width: 350px;
+      font-size: 16px;
+      color: #666;
+      text-align: center;
+    }
+
+    #img {
+      position: absolute;
+      top: 165px;
+      left: 20px;
+      box-shadow: 3px 2px 1px rgba(0, 0, 0, 0.5);
+    }
+  </style>
+</head>
+
+<body>
+<div id="txt">“Os animais que eu treino não são obrigados a fazer o que vai contra a natureza deles.”<br> <span
+  style="color: #000; float: right; font-size: 13px;">(Gilberto Miranda, na Folha de São Paulo, 23/2/96)</span></div>
+<img id="img" src="../img/licao09/p20.jpg" width="250"/>
+</body>
 </html>

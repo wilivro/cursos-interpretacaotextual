@@ -36,8 +36,8 @@
             width: 110,
             height: 38,
             margin: '0px 13px 10px 10px',
-            left: 150,
-            top: 50,
+            left: 130,
+            top: 80,
         }
 
 				edi.alternativa_b06(alternativa,null,function(a) {
@@ -55,11 +55,11 @@
 			}
 
 			#msgAcerto {
-				width: 350px;
-				height: 60px;
-				position: absolute;
-				left: 220px;
-				top: 305px;
+			  width: 102px;
+			  height: 160px;
+			  position: absolute;
+			  left: 10px;
+			  top: 165px;
 				padding: 3px;
 				font-size: 12px;
 				text-align: center;
@@ -70,11 +70,11 @@
 			}
 
 			#msgErrado {
-				width: 350px;
-				height: 60px;
-				position: absolute;
-				left: 220px;
-				top: 305px;
+			  width: 102px;
+			  height: 120px;
+			  position: absolute;
+			  left: 10px;
+			  top: 165px;
 				padding: 3px;
 				font-size: 12px;
 				text-align: center;
@@ -83,9 +83,21 @@
 				color: #F00;
 				display: none;
 			}
+
+			 #bg{
+        background: url(../img/licao02/p28_01.png);
+        background-size: 100% 100%;
+        width: 717px;
+        height: 305px;
+        position: absolute;
+        top: 78px;
+        left: 70px;
+       }
 		</style>
 	</head>
 	<body>
+
+		<div id="bg"></div>
 
 		<div id="msgAcerto" class="borda-pontilhado-verde arredondado">
 			<p>Muito bem! Para interpretar e compreender bem um texto nós precisamos Identificar, Comentar, Resumir e Parafrasear.</p>

@@ -62,7 +62,9 @@
             };
 
             edi.arrasta('arrasta', 'alvo', function (a, b) {
-                b.css({top: 5})
+                if (a) {
+                    b.css({top: 5})
+                };
             }, function (a) {
                 if(a)
                     $('#msgAcerto').fadeIn();

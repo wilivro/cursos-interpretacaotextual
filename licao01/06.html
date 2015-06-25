@@ -1,130 +1,144 @@
 <!doctype html>
 <html lang="pt-br">
 <head>
-    <title>Lição 01 Peça 06</title>
-    <meta charset="utf-8">
-    <script src="../wilib/js/lib/require.js"></script>
-    <script src="../wilib/js/app.js"></script>
-    <link rel="stylesheet" href="../wilib/css/font-awesome.css">
-    <link rel="stylesheet" href="../wilib/css/estilo.css">
+  <title>Lição 01 Peça 06</title>
+  <meta charset="utf-8">
+  <script src="../wilib/js/lib/require.js"></script>
+  <script src="../wilib/js/app.js"></script>
+  <link rel="stylesheet" href="../wilib/css/font-awesome.css">
+  <link rel="stylesheet" href="../wilib/css/estilo.css">
 
-    <script>
-        require(['../wilib/js/lib/revela_slide'], function (edi) {
+  <script>
+    require(['../wilib/js/lib/revela_slide'], function (edi) {
 
-            edi.setConfig({
-                icone: 'exclamacao',
-                titulo: 'Clique nas personagens e leia atentamente o diálogo:'
-            });
+      edi.setConfig({
+        icone: 'exclamacao',
+        titulo: 'Clique nas personagens e leia atentamente o diálogo:'
+      });
 
-            function callback(a, b) {
-                b.parent().css('box-shadow', '0 0 0 3px #8CA8B8');
-            }
-                
-            function calbackFinal () {
-                barraMsg('Muito bem!<br> Neste diálogo percebemos que a palavra lógica está relacionada a uma conclusão baseada na razão. No seu cotidiano, você pode perceber a intenção das pessoas quando utilizam a palavra lógica.', {height: 150})
-            }
+      function callback(a, b) {
+        b.parent().css('box-shadow', '0 0 0 3px #8CA8B8');
+      }
 
-            edi.revela_slide('.revela', callback, calbackFinal);
-            
-           
-            $('.maria').each(function() {
-                $(this).peBalao({
-                    top:82,
-                    left:100,
-                    scaleX:-1,
-                    scaleY:-1,
-                    rotate:0
-                });                     
-            });
+      function calbackFinal() {
+        barraMsg('Muito bem!<br> Neste diálogo percebemos que a palavra lógica está relacionada a uma conclusão baseada na razão. No seu cotidiano, você pode perceber a intenção das pessoas quando utilizam a palavra lógica.', {height: 150})
+      }
 
-            $('.joao').each(function() {
-                $(this).peBalao({
-                    top:81,
-                    left:20,
-                    scaleX:1,
-                    scaleY:-1,
-                    rotate:0
-                });                     
-            });
+      edi.revela_slide('.revela', callback, calbackFinal);
 
+
+      $('.maria').each(function () {
+        $(this).peBalao({
+          top: 82,
+          left: 100,
+          scaleX: -1,
+          scaleY: -1,
+          rotate: 0
         });
-    </script>
-    
-    <style>
-        i {
-            font-style: italic;
-            font-weight: bold;
-        }
-        
-        .revela {
-            border: 1px solid #ccc;
-            padding: 10px 10px 10px 10px;
-            font-size: 14px;
-            line-height: 1.3;
-            border-radius: 10px;
-            background: #fff;
-            text-shadow: 1px 1px 1px rgba(0, 0, 0, 0.2);
-            text-align: center;
-            position: absolute;
-            bottom: 200px;
-            height: 50px;
-            width: 420px;
-        }
-        
-        .maria {
-            left: 180px;
-            top: 120px;
-            width: 160px;
-        }
-        .maria.b2 {
-            padding-top: 15px;
-            height: 45px;
-        }
-        .joao {
-            left: 330px;
-            top: 110px;
-            width: 100px;
-            line-height: 50px;
-        }
+      });
 
-        .person {
-            width: 280px;
-            height: 200px;
-            position: absolute;
-            left: 210px;
-            top: 200px;
-        }
-        
+      $('.joao').each(function () {
+        $(this).peBalao({
+          top: 81,
+          left: 20,
+          scaleX: 1,
+          scaleY: -1,
+          rotate: 0
+        });
+      });
 
-    </style>
+    });
+  </script>
+
+  <style>
+    p {
+      color: #666;
+    }
+
+    i {
+      font-style: italic;
+      font-weight: bold;
+    }
+
+    .revela {
+      border: 1px solid #ccc;
+      padding: 10px 10px 10px 10px;
+      font-size: 14px;
+      line-height: 1.3;
+      border-radius: 10px;
+      background: #fff;
+      text-shadow: 1px 1px 1px rgba(0, 0, 0, 0.2);
+      text-align: center;
+      position: absolute;
+      bottom: 200px;
+      height: 50px;
+      width: 420px;
+    }
+
+    .maria {
+      left: 180px;
+      top: 120px;
+      width: 160px;
+    }
+
+    .maria.b2 {
+      padding-top: 15px;
+      height: 45px;
+    }
+
+    .joao {
+      left: 330px;
+      top: 110px;
+      width: 100px;
+      line-height: 50px;
+    }
+
+    .person {
+      width: 280px;
+      height: 200px;
+      position: absolute;
+      left: 210px;
+      top: 200px;
+    }
+
+
+  </style>
 </head>
 
 <body>
-    <img src="../wilib/img/svg/personagens.svg" class="person" id="person-03">
-    
-    <p class="revelaEsquerda revela maria">
-        João, eu estou com muitas dúvclassas, você pode me ajudar?
-    </p>
-    <p class="revelaDireito revela joao">
-        Sim, claro!
-    </p>
-    <p class="revelaEsquerda revela maria b2">
-        No Brasil a língua oficial é o português?
-    </p>
-    <p class="revelaDireito revela joao" style="width: 130px">
-        É lógico que sim!
-    </p>
-    <p class="revelaEsquerda revela maria b2">
-        E Portugal é mesmo um país da Europa?
-    </p>
-    <p class="revelaDireito revela joao" style="width: 130px">
-        Sim. Isso é lógico!
-    </p>
-    <p class="revelaEsquerda revela maria" style="width: 310px">
-        Eu vou prestar um concurso público e estava com muitas dúvidas, obrigada por sua ajuda, pelo visto vou precisar de muita sorte!
-    </p>
-    <p class="revelaDireito revela joao" style="width: 230px">
-        Sorte e muito raciocínio lógico!
-    </p>
+<img src="../wilib/img/svg/personagens.svg" class="person" id="person-03">
+
+<p class="revelaEsquerda revela maria">
+  João, eu estou com muitas dúvidas, você pode me ajudar?
+</p>
+
+<p class="revelaDireito revela joao">
+  Sim, claro!
+</p>
+
+<p class="revelaEsquerda revela maria b2">
+  No Brasil a língua oficial é o português?
+</p>
+
+<p class="revelaDireito revela joao" style="width: 130px">
+  É lógico que sim!
+</p>
+
+<p class="revelaEsquerda revela maria b2">
+  E Portugal é mesmo um país da Europa?
+</p>
+
+<p class="revelaDireito revela joao" style="width: 130px">
+  Sim. Isso é lógico!
+</p>
+
+<p class="revelaEsquerda revela maria" style="width: 310px">
+  Eu vou prestar um concurso público e estava com muitas dúvidas, obrigada por sua ajuda, pelo visto vou precisar de
+  muita sorte!
+</p>
+
+<p class="revelaDireito revela joao" style="width: 230px">
+  Sorte e muito raciocínio lógico!
+</p>
 </body>
 </html>

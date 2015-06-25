@@ -1,5 +1,6 @@
 <!doctype html>
 <html lang="pt-br">
+
 <head>
   <title>Lição 04 Peça 11</title>
   <meta charset="utf-8">
@@ -11,49 +12,49 @@
 
   <!-- main -->
   <script>
-  require(['../wilib/js/lib/revela'], function (edi) {
+    require(['../wilib/js/lib/revela'], function(edi) {
 
-    edi.setConfig({// configurando o EDI
-      icone: "exclamacao",
-      titulo: "Clique sobre as imagens e revele as metáforas correspondentes a cada uma.",
+      edi.setConfig({ // configurando o EDI
+        icone: "exclamacao",
+        titulo: "Clique sobre as imagens e revele as metáforas correspondentes a cada uma.",
+      });
+
+      function callback() {
+        mensagem(
+          'Muito bem! A metáfora é uma figura de linguagem cujo efeito se ' +
+          'dá pelo jogo de palavras que se faz na frase. ' +
+          'Aprenderemos a seguir sobre a metonímia.'
+        );
+      }
+
+      edi.revela('btn-revela', 'box-revela', null, callback, {
+        ocultarRev: true,
+        bloqueiaClickFinal: false,
+        tempoBloqueio: 7000
+      }); //iniciando o EDI
+
+      $('#rev-1').peBalao({
+        top: 40,
+        left: -35,
+        scaleX: -1,
+        scaleY: 1,
+        background: '#FFF',
+        borda: '#ccc',
+        tamanhoBorda: 9,
+        rotate: -90
+      });
+
+      $('#rev-2').peBalao({
+        top: 40,
+        left: -35,
+        scaleX: -1,
+        scaleY: 1,
+        background: '#FFF',
+        borda: '#ccc',
+        tamanhoBorda: 9,
+        rotate: -90
+      });
     });
-
-    function callback () {
-      mensagem(
-        'Muito bem! A metáfora é uma figura de linguagem cujo efeito se ' +
-        'dá pelo jogo de palavras que se faz na frase. ' +
-        'Aprenderemos a seguir sobre a metonímia.'
-      );
-    }
-
-    edi.revela('btn-revela', 'box-revela', null, callback, {
-      ocultarRev: true,
-      bloqueiaClickFinal: false,
-      tempoBloqueio: 7000
-    });//iniciando o EDI
-
-    $('#rev-1').peBalao({
-      top:40,
-      left:-35,
-      scaleX:-1,
-      scaleY:1,
-      background:'#FFF',
-      borda:'#ccc',
-      tamanhoBorda: 9,
-      rotate:-90
-    });
-
-    $('#rev-2').peBalao({
-      top:40,
-      left:-35,
-      scaleX:-1,
-      scaleY:1,
-      background:'#FFF',
-      borda:'#ccc',
-      tamanhoBorda: 9,
-      rotate:-90
-    });
-  });
   </script>
 
   <style>
@@ -62,7 +63,6 @@
       margin-top: 15px;
       float: left;
     }
-
     .btn-revela {
       width: 180px;
       height: 120px;
@@ -73,7 +73,6 @@
       float: left;
       box-shadow: 0 0 5px rgba(0, 0, 0, 0.3);
     }
-
     .box-revela {
       background-size: 100% 100% !important;
       width: 380px;
@@ -84,12 +83,10 @@
       border-radius: 10px;
       position: relative
     }
-
     .box-revela h4 {
       text-align: center;
       margin: 15px 10px 0 10px;
     }
-
     .box-revela p {
       text-align: center;
       margin: 35px 10px 0 10px;
@@ -100,10 +97,12 @@
 
 <body>
   <section class="container">
-    <img class="btn-revela" data-revela="0" src="../img/licao04/08.1.jpg">
+    <img class="btn-revela" data-revela="0" src="../img/licao04/11.1.jpg">
     <div class="box-revela" id="rev-1" data-revela="0">
       <h4>
+
         Pisando em ovos.
+
       </h4>
 
       <p>
@@ -113,10 +112,12 @@
   </section>
 
   <section class="container">
-    <img class="btn-revela" data-revela="1" src="../img/licao04/08.2.png">
+    <img class="btn-revela" data-revela="1" src="../img/licao04/11.2.jpg">
     <div class="box-revela" id="rev-2" data-revela="1">
       <h4>
+
         Chutando o balde.
+
       </h4>
 
       <p>
@@ -125,4 +126,5 @@
     </div>
   </section>
 </body>
+
 </html>

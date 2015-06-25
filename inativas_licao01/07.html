@@ -1,171 +1,161 @@
 <!doctype html>
 <html lang="pt-br">
 <head>
-    <title>Lição 01 Peça 07</title>
-    <meta charset="utf-8">
-    <script src="../wilib/js/lib/require.js"></script>
-    <script src="../wilib/js/app.js"></script>
-    <link rel="stylesheet" href="../wilib/css/font-awesome.css">
-    <link rel="stylesheet" href="../wilib/css/estilo.css">
+  <title>Lição 01 Peça 07</title>
+  <meta charset="utf-8">
+  <script src="../wilib/js/lib/require.js"></script>
+  <script src="../wilib/js/app.js"></script>
+  <link rel="stylesheet" href="../wilib/css/font-awesome.css">
+  <link rel="stylesheet" href="../wilib/css/estilo.css">
 
-    <script>
-        require(['../wilib/js/lib/arrasta'], function (edi) {
+  <script>
+    require(['../wilib/js/lib/arrasta'], function (edi) {
 
-            edi.setConfig({
-                mascote: 'mascote',
-                titulo: 'Arraste para o quadro correto conceitos pertencentes <br>à ação de Interpretar ou Compreender um texto.'
-            });
+      edi.setConfig({
+        mascote: 'mascote',
+        titulo: 'Arraste para o quadro correto conceitos pertencentes <br>à ação de Interpretar ou Compreender um texto.'
+      });
 
-            var arrArrasta = [
-                {arrasta: 'EXPLICAR, COMENTAR, JULGAR,<br>TIRAR CONCLUSÕES, DEDUZIR.', dataCorreta: '0', dataId: '1'},
-                {arrasta: 'Através do texto, INFERE-SE que...', dataCorreta: '0', dataId: '2'},
-                {arrasta: 'É possível DEDUZIR que...', dataCorreta: '0', dataId: '3'},
-                {arrasta: 'O autor permite CONCLUIR que...', dataCorreta: '0', dataId: '4'},
-                {arrasta: 'Qual é a INTENÇÃO do autor ao afirmar que... ', dataCorreta: '0', dataId: '5'},
-                {
-                    arrasta: 'INTELECÇÃO, ENTENDIMENTO, ATENÇÃO AO<br>QUE REALMENTE ESTÁ ESCRITO.',
-                    dataCorreta: '1',
-                    dataId: '6'
-                },
-                {arrasta: 'O texto DIZ que...', dataCorreta: '1', dataId: '7'},
-                {arrasta: 'É SUGERIDO pelo autor que...', dataCorreta: '1', dataId: '8'},
-                {
-                    arrasta: 'De acordo com o texto, é <br>CORRETA ou ERRADA a afirmação...',
-                    dataCorreta: '1',
-                    dataId: '9'
-                },
-                {arrasta: 'O narrador AFIRMA...', dataCorreta: '1', dataId: '10'}
-            ];
+      var arrArrasta = [
+        {arrasta: 'Através do texto, INFERE-SE que...', dataCorreta: '0', dataId: '2'},
+        {arrasta: 'É possível DEDUZIR que...', dataCorreta: '0', dataId: '3'},
+        {arrasta: 'O autor permite CONCLUIR que...', dataCorreta: '0', dataId: '4'},
+        {arrasta: 'Qual é a INTENÇÃO do autor ao afirmar que... ', dataCorreta: '0', dataId: '5'},
+        {arrasta: 'O texto DIZ que...', dataCorreta: '1', dataId: '7'},
+        {arrasta: 'É SUGERIDO pelo autor que...', dataCorreta: '1', dataId: '8'},
+        {arrasta: 'De acordo com o texto, é <br>CORRETA ou ERRADA a afirmação...', dataCorreta: '1', dataId: '9'},
+        {arrasta: 'O narrador AFIRMA...', dataCorreta: '1', dataId: '10'}
+      ];
 
-            arrArrasta.sort(function () {
-                return 0.5 - Math.random()
-            });
+      arrArrasta.sort(function () {
+        return 0.5 - Math.random()
+      });
 
-            for (var i = 0; i < arrArrasta.length; i++) {
-                $('<div>')
-                        .addClass('arrasta fundoArrasta azulAlpha')
-                        .attr({
-                            'data-id': arrArrasta[i].dataId,
-                            id: 'arrasta' + (i + 1),
-                            'data-correta': arrArrasta[i].dataCorreta
-                        })
-                        .html(arrArrasta[i].arrasta)
-                        .appendTo('#boxArrasta');
-            }
+      for (var i = 0; i < arrArrasta.length; i++) {
+        $('<div>')
+          .addClass('arrasta fundoArrasta azulAlpha')
+          .attr({
+            'data-id': arrArrasta[i].dataId,
+            id: 'arrasta' + (i + 1),
+            'data-correta': arrArrasta[i].dataCorreta
+          })
+          .html(arrArrasta[i].arrasta)
+          .appendTo('#boxArrasta');
+      }
 
-            var config = {
-                colorirFilho: true,
-                arrastaAbsolute: true,
-                destroy: true,
-                target: false,
-                multAlvo: true
-            };
+      var config = {
+        colorirFilho: true,
+        arrastaAbsolute: true,
+        destroy: true,
+        target: false,
+        multAlvo: true
+      };
 
-            edi.arrasta('arrasta', 'alvo', function (correta, b) {
-                if (correta) {
-                    $(b).parent().css({
-                        height: 'auto'
-                    });
-                }
-            }, function (correta) {
-                if (correta) {
-                    $('#boxArrasta').fadeOut(500);
-                    $('#msfFinal').fadeIn(1500);
-                    mensagem('Correto! Você compreende a diferença<br> entre Interpretar e Compreender textos.');
-                }
-                else {
-                    mensagem('Pense um pouco mais.<br> Analise cada frase e o que ela<br>representa dentro de cada significado.');
-                }
-            }, config);
-
-            ajuda({top: -140, left: 7, width: 80});
-
-        });
-    </script>
-    <style>
-
-        .ajuda {
-            position: absolute !important;
-            top: 350px;
-            left: 15px;
+      edi.arrasta('arrasta', 'alvo', function (correta, b) {
+        if (correta) {
+          $(b).parent().css({
+            height: 'auto'
+          });
         }
-
-        #msfFinal {
-            display: none;
+      }, function (correta) {
+        if (correta) {
+          $('#boxArrasta').fadeOut(500);
+          $('#msfFinal').fadeIn(1500);
+          mensagem('Correto! Você compreende a diferença<br> entre Interpretar e Compreender textos.');
         }
-
-        #boxArrasta {
-            width: 380px;
-            height: 260px;
-            cursor: default;
-            padding: 15px;
-            text-align: center;
-            left: 100px;
-            top: 5px;
+        else {
+          mensagem('Pense um pouco mais.<br> Analise cada frase e o que ela<br>representa dentro de cada significado.');
         }
+      }, config);
 
-        .alvo {
-            position: absolute;
-            top: 68px;
-            left: 647px;
-            width: 80px;
-            height: 101px;
-            padding: 30px;
-            border-style: solid;
-            border-width: 0 0 1px 1px;
-            border-radius: 5px 5px 0 5px;
-            text-align: center;
-        }
+      ajuda({top: -140, left: 7, width: 80});
 
-        .alvo i {
-            font-size: 80px;
-        }
+    });
+  </script>
+  <style>
 
-        .arrasta {
-            display: inline-block;
-            text-align: center;
-            margin: 2px 0;
-            font-size: 14px;
-            width: 380px;
-            color: #fff;
-        }
+    .ajuda {
+        position: absolute !important;
+        top: 350px;
+        left: 15px;
+      }
 
-        .ct {
-            position: absolute;
-            width: 300px;
-            top: 60px;
-            left: 30px;
-        }
+    #msfFinal {
+      display: none;
+    }
 
-        .ct p {
-            font-size: 25px;
-            color: #9c0;
-            text-shadow: 1px 1px 1px #000;
-        }
+    #boxArrasta {
+      width: 380px;
+      height: 260px;
+      cursor: default;
+      padding: 15px;
+      text-align: center;
+      left: 100px;
+      top: 5px;
+    }
 
-        table {
-            position: absolute;
-            top: 110px;
-            left: 10px;
-            font-size: 18px;
-        }
+    .alvo {
+      position: absolute;
+      top: 68px;
+      left: 647px;
+      width: 80px;
+      height: 101px;
+      padding: 30px;
+      border-style: solid;
+      border-width: 0 0 1px 1px;
+      border-radius: 5px 5px 0 5px;
+      text-align: center;
+    }
 
-        th, tr, td {
-            border: solid 1px #000;
-            color: #000;
-        }
+    .alvo i {
+      font-size: 80px;
+    }
 
-        td {
-            padding-left: 10px;
-            font-size: 15px;
-        }
+    .arrasta {
+      display: inline-block;
+      text-align: center;
+      margin: 2px 0;
+      font-size: 14px;
+      width: 380px;
+      color: #fff;
+    }
 
-        th {
-            width: 100px;
-            color: #fff;
-            text-shadow: 1px 1px #0A0B0D;
-        }
-    </style>
+    .ct {
+      position: absolute;
+      width: 300px;
+      top: 60px;
+      left: 30px;
+    }
+
+    .ct p {
+      font-size: 25px;
+      color: #9c0;
+      text-shadow: 1px 1px 1px #000;
+    }
+
+    table {
+      position: absolute;
+      top: 110px;
+      left: 10px;
+      font-size: 18px;
+    }
+
+    th, tr, td {
+      border: solid 1px #000;
+      color: #000;
+    }
+
+    td {
+      padding-left: 10px;
+      font-size: 15px;
+    }
+
+    th {
+      width: 100px;
+      color: #fff;
+      text-shadow: 1px 1px #0A0B0D;
+    }
+  </style>
 
 </head>
 <body>
@@ -173,48 +163,48 @@
 <div id="boxArrasta" class="btn btn-default-hover"></div>
 
 <div class="alvo" data-correta="0">
-    <i class="fa fa-list-alt"></i>
+  <i class="fa fa-list-alt"></i>
 
-    <p style="margin-left: -7px">INTERPRETAR</p>
+  <p style="margin-left: -7px">INTERPRETAR</p>
 </div>
 
 <div class="alvo" style="top:230px" data-correta="1">
-    <i class="fa fa-list-alt"></i>
+  <i class="fa fa-list-alt"></i>
 
-    <p style="margin-left: -15px">COMPREENDER</p>
+  <p style="margin-left: -15px">COMPREENDER</p>
 </div>
 
 <div id="msfFinal">
-    <table id="tabela">
-        <tr>
-            <th style="background: #00CC33">INTERPRETAR</th>
-            <th style="background: #0099CC">COMPREENDER</th>
-        </tr>
-        <tr>
-            <td>
-                - EXPLICAR, COMENTAR, JULGAR,<br> TIRAR CONCLUSÕES, DEDUZIR.<br>
-                - TIPOS DE ENUNCIADOS:<br>
-                • Através do texto, INFERE-SE que...<br>
-                • É possível DEDUZIR que...<br>
-                • O autor permite CONCLUIR que...<br>
-                • Qual é a INTENÇÃO do autor ao afirmar que...
+  <table id="tabela">
+    <tr>
+      <th style="background: #00CC33">INTERPRETAR</th>
+      <th style="background: #0099CC">COMPREENDER</th>
+    </tr>
+    <tr>
+      <td>
+        - EXPLICAR, COMENTAR, JULGAR,<br> TIRAR CONCLUSÕES, DEDUZIR.<br>
+        - TIPOS DE ENUNCIADOS:<br>
+        • Através do texto, INFERE-SE que...<br>
+        • É possível DEDUZIR que...<br>
+        • O autor permite CONCLUIR que...<br>
+        • Qual é a INTENÇÃO do autor ao afirmar que...
 
-            </td>
-            <td>
-                - INTELECÇÃO, ENTENDIMENTO, ATENÇÃO<br> AO QUE REALMENTE ESTÁ ESCRITO.<br>
-                - TIPOS DE ENUNCIADOS:<br>
-                • O texto DIZ que...<br>
-                • É SUGERIDO pelo autor que...<br>
-                • De acordo com o texto,<br> é CORRETA ou ERRADA a afirmação...<br>
-                • O narrador AFIRMA...
-            </td>
-        </tr>
-    </table>
+      </td>
+      <td>
+        - INTELECÇÃO, ENTENDIMENTO, ATENÇÃO<br> AO QUE REALMENTE ESTÁ ESCRITO.<br>
+        - TIPOS DE ENUNCIADOS:<br>
+        • O texto DIZ que...<br>
+        • É SUGERIDO pelo autor que...<br>
+        • De acordo com o texto,<br> é CORRETA ou ERRADA a afirmação...<br>
+        • O narrador AFIRMA...
+      </td>
+    </tr>
+  </table>
 </div>
 
 <div class="ajuda"
      data-ajuda="Ato de entender, perceber, ação pela qual o espírito concebe. A intelecção sucede quando alguém compreende algo e responde a uma questão suscitada por uma experiência e se liberta da tensão da pesquisa.">
-    Intelecção
+  Intelecção
 </div>
 </body>
 </html>

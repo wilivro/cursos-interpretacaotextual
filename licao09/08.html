@@ -1,51 +1,51 @@
 <!doctype html>
 <html lang="pt-br">
 <head>
-	<title>Lição 09 Peça 08</title>
-        <meta charset="utf-8">
-        <script src="../wilib/js/lib/require.js"></script>
-        <script src="../wilib/js/app.js"></script>
-        <link rel="stylesheet" href="../wilib/css/font-awesome.css">
-        <link rel="stylesheet" href="../wilib/css/estilo.css">
+  <title>Lição 09 Peça 08</title>
+  <meta charset="utf-8">
+  <script src="../wilib/js/lib/require.js"></script>
+  <script src="../wilib/js/app.js"></script>
+  <link rel="stylesheet" href="../wilib/css/font-awesome.css">
+  <link rel="stylesheet" href="../wilib/css/estilo.css">
 
-	<script>
-		require(['../wilib/js/lib/alternativa_balao'], function (edi) {
+  <script>
+    require(['../wilib/js/lib/alternativa_balao'], function (edi) {
 
-			edi.setConfig({
-				titulo: 'Clique no balão que apresenta o mesmo sentido da seguinte frase:<br>“A carne exalava um aroma irresistível.”',
-                mascote: 'mascote',
-                tempoFinal: 10
-			});
+      edi.setConfig({
+        titulo: 'Clique no balão que apresenta o mesmo sentido da seguinte frase:<br>“A carne exalava um aroma irresistível.”',
+        mascote: 'mascote',
+        tempoFinal: 10
+      });
 
-            var baloes = [
+      var baloes = [
 
-                {texto: 'A carne liberava um<br> cheiro estranho.', dataCorreta: true},
-                {texto: 'A carne liberava um<br> odor insuportável.', dataCorreta: false},
-                {texto: 'A carne liberava um<br> odor agradável a que<br> não se podia resistir..', dataCorreta: false},
-                {texto: 'A carne liberava um<br> cheiro ruim, porém aceitável.', dataCorreta: false}
+        {texto: 'A carne liberava um<br> cheiro estranho.', dataCorreta: false},
+        {texto: 'A carne liberava um<br> odor insuportável.', dataCorreta: false},
+        {texto: 'A carne liberava um<br> odor agradável a que<br> não se podia resistir..', dataCorreta: true},
+        {texto: 'A carne liberava um<br> cheiro ruim, porém aceitável.', dataCorreta: false}
 
-            ];
+      ];
 
-			edi.alternativa_balao(baloes, function (a, b) {
-                //cb
-            }, function (a) {
-                barraMsg(a?'Muito bem!<br> Este é o significado correto da frase em destaque.':
-                        'Atenção!<br> Observe o termo “exalava um aroma irresistível”,<br> através de sua interpretação é possível obter a<br> resposta correta. Tente novamente.', {height: 100})
-            }, {
-                top: 0,
-                left: 80,
-                width: 300,
-                height: 150,
-                margin: '0 60px 0 0',
-                fontSize: 12,
-                leftPerson: -65,
-                topPerson: 43,
-                topIco: 0,
-                leftIco: -7
-            });
+      edi.alternativa_balao(baloes, function (a, b) {
+        //cb
+      }, function (a) {
+        barraMsg(a ? 'Muito bem!<br> Este é o significado correto da frase em destaque.' :
+          'Atenção!<br> Observe o termo “exalava um aroma irresistível”,<br> através de sua interpretação é possível obter a<br> resposta correta. Tente novamente.', {height: 100})
+      }, {
+        top: 0,
+        left: 80,
+        width: 300,
+        height: 150,
+        margin: '0 60px 0 0',
+        fontSize: 12,
+        leftPerson: -65,
+        topPerson: 43,
+        topIco: 0,
+        leftIco: -7
+      });
 
-		});
-	</script>
+    });
+  </script>
 </head>
 
 <body>

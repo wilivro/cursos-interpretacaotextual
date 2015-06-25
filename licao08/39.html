@@ -15,8 +15,7 @@
 				
 				edi.setConfig({// configurando o EDI
 					icone: 'exclamacao',
-					titulo: 'Analise as frases e em seguida clique sobre as respostas corretas.',
-					qtdTelas: 2//Se for multi tela, colcoar o valor do length do array 
+					titulo: 'Analise as frases e em seguida clique sobre as respostas corretas.'
 				});
 
 				var config = {
@@ -52,13 +51,8 @@
 					{topico: 'B', texto: 'Falta de coerência é o mesmo que falta de lógica.'}
 				]);
 
-				//console.log(edi._telaAtual());
-				
-
-
 				edi.alternativa_botao_asterisco(btns, textos, function(a) {
 
-					if(edi._telaAtual()==0)
 						barraMsg(a?'Excelente! A letra B está incorreta, pois na frase a coesão textual acontece!':'Atenção! Lembre-se que coesão indica sentido de completude, uma frase que completa o sentido da outra. Repense sua resposta!', {height: 80});
 				}, null, config);//iniciando o EDI
 
@@ -76,7 +70,7 @@
                 padding: 5px;
                 font-size: 12px;
                 text-align: center;
-                line-height: 14px;              
+                line-height: 14px;
                 color: #9c0;
                 display: none;
              }

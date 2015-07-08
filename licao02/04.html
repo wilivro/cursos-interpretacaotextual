@@ -1,0 +1,121 @@
+<!doctype html>
+<html lang="pt-br">
+<head>
+    <title>arr_l001</title>
+    <meta charset="utf-8">
+
+    <script src="../wilib/js/lib/require.js"></script>
+    <script src="../wilib/js/app.js"></script>
+    <link rel="stylesheet" href="../wilib/css/font-awesome.css">
+    <link rel="stylesheet" href="../wilib/css/estilo.css">
+
+    <script>
+        require(['../wilib/js/lib/arrasta'], function (edi) {
+
+            edi.setConfig({
+                titulo: 'O que é preciso para ler com eficiência? <br> Arraste para dentro do livro a resposta correta.',
+                mascote: 'mascote',
+                tempoFinal: 10
+            });
+
+            var arrArrasta = [
+                {arrasta: 'Ler todo o texto, procurando ter uma visão <br> geral do assunto.', dataCorreta: 1},
+                {arrasta: '“Passar os olhos” no texto para ter uma idéia <br> do que ele trata.', dataCorreta: 2},
+                {arrasta: 'Ler somente o primeiro e o último parágrafo <br> para saber como começa e termina o texto.', dataCorreta: 3},
+                {arrasta: 'Não ler todo texto, apenas <br> capturar palavras-chave.', dataCorreta: 4}
+            ];
+
+            arrArrasta.sort(function () {
+                return 0.5 - Math.random()
+            });
+
+            for (var i = 0; i < arrArrasta.length; i++) {
+
+                $('<div>')
+                        .addClass('arrasta barra')
+                        .attr({
+                            'data-correta': arrArrasta[i].dataCorreta
+                        })
+                        .html(arrArrasta[i].arrasta)
+                        .appendTo('#boxArrasta');
+            }
+
+            var config = {
+                alvoFixo: true,
+                target: false
+            };
+
+            edi.arrasta('arrasta', 'alvo', function (a, b) {
+                if(a){
+                    $('#livroResposta').fadeIn(2000);
+                    $('#livro').remove();
+                    $('.arrasta').remove();
+                }
+
+            }, null, config);
+
+
+        });
+
+    </script>
+
+    <style>
+        .barra{
+            background: url(../wilib/img/svg/retangulo.svg);
+            width: 365px;
+            background-size: 100% 100%;
+            font-size: 13px;
+            height: 48px;
+            margin: 5px;
+            text-align: center;
+            line-height: 20px;
+            padding-top: 5px;
+        }
+
+        #boxArrasta{
+            position: absolute;
+            top: 100px;
+        }
+
+        #livro{
+          background: url(../img/licao02/04_1.svg);
+          width: 430px;
+          height: 305px;
+          position: absolute;
+          top: 65px;
+          left: 360px;
+        }
+
+        #livroResposta{
+          background: url(../img/licao02/04_2.svg);
+          width: 430px;
+          height: 305px;
+          position: absolute;
+          top: 65px;
+          left: 175px;
+          z-index: 2;
+          display: none;
+        }
+
+        #alvoPodium{
+          width: 380px;
+          height: 245px;
+          position: absolute;
+          top: 100px;
+          left: 390px;
+          z-index: 11;
+        }
+    </style>
+</head>
+
+<body>
+    <div id="alvoPodium" class="alvo" data-correta="1"></div>
+
+    <div id="livro"></div>
+
+    <div id="livroResposta"></div>
+
+    <div id="boxArrasta">    
+</div>
+</body>
+</html>

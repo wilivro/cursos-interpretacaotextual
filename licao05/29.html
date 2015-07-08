@@ -1,0 +1,142 @@
+<!doctype html>
+<html lang="pt-br">
+	<head>
+		<title>alt_a003</title>
+		<meta charset="utf-8">
+		<script src="../wilib/js/lib/require.js"></script>
+		<script src="../wilib/js/app.js"></script>
+
+		<link rel="stylesheet" href="../wilib/css/font-awesome.css">
+		<link rel="stylesheet" href="../wilib/css/estilo.css">
+
+		<!-- main -->
+		<script>
+			require(['../wilib/js/lib/alternativa_boliche'], function (edi) {
+
+				edi.setConfig({// configurando o EDI
+					icone: 'exclamacao',
+					titulo: 'Vamos jogar boliche? Responda corretamente se as frases são exemplos de eufemismo e marque muitos pontos!',
+					mascote: 'mascote'
+				});
+
+				var btns = {
+                    tela1:{
+                        texto:'Luís foi convidado a retirar-se da escola. ',
+                        btns:[
+                            {texto: 'CERTO', dataCorreta: true},
+                            {texto: 'ERRADO', dataCorreta: false}
+                        ]
+                    },
+                    tela2:{
+                        texto:'A vovó virou uma estrelinha. ',
+                        btns:[
+                            {texto: 'CERTO', dataCorreta: true},
+                            {texto: 'ERRADO', dataCorreta: false}
+                        ]
+                    }
+                };
+
+				var config = {
+					width: 120,
+					height: 50,
+					left: 225,
+					top: 100,
+					colunas: 2,
+					margin: 15,
+					padding: 5,
+					cor: '#fff'
+				};
+
+                var callback = function (a) {
+                //$('.btn').fadeOut();
+                if(a){
+                    $('#certo'+edi.telaAtual()).fadeIn();   
+                }
+                else
+                    $('#errado'+edi.telaAtual()).fadeIn();  
+                }
+                
+
+                edi.alternativa_boliche(btns, callback, config);//iniciando o EDI
+              
+            });
+        </script>
+
+
+		<style>
+			#conteudo {
+				height: 315px;
+			}
+
+            .bordaVerde{
+                position: absolute;
+                color: #9c0;
+                border: 2px dashed #9c0;
+                text-align: center;
+                background-color: #FFF;
+                z-index: 1;
+                display: none;
+            }
+            #certo1{
+                top: 258px;
+                left: 150px;
+                width: 460px;
+                height: 35px;
+                padding: 30px 10px;
+            }
+
+            #certo2{
+                top: 258px;
+                left: 135px;
+                width: 480px;
+                height: 35px;
+                padding: 30px 10px;
+            }
+
+            #errado1{
+                position: absolute;
+                top: 258px;
+                left: 150px;
+                width: 460px;
+                height: 40px;
+                padding: 30px 10px;
+                color: #F00;
+                border: 2px dashed #F00;
+                text-align: center;
+                background-color: #FFF;
+                z-index: 1;
+                display: none;
+            }
+
+            #errado2{
+                position: absolute;
+                top: 258px;
+                left: 150px;
+                width: 460px;
+                height: 40px;
+                padding: 30px 10px;
+                color: #F00;
+                border: 2px dashed #F00;
+                text-align: center;
+                background-color: #FFF;
+                z-index: 1;
+                display: none;
+            }
+
+
+		</style>
+	</head>
+
+	<body>
+
+        <div id="certo1" class="arredondado bordaVerde">Muito bem! Ameniza o enunciado – Luís foi expulso da escola.</div>
+
+        <div id="certo2" class="arredondado bordaVerde">Muito bem! Ameniza o enunciado – A vovó morreu.</div>
+
+        <div id="errado1" class="arredondado">Atenção! Perceba que o termo retirar-se indica que Luís <br> foi expulso da escola.</div>
+
+        <div id="errado2" class="arredondado">Atenção! Perceba que ao dizer “virou estrelinha” <br> indica que a vovó morreu.</div>
+
+
+	</body>
+</html>

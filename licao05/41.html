@@ -1,4 +1,3 @@
-<!-- Desenvolvedor: Danilo Thiago -->
 <!doctype html>
 <html lang="pt-br">
 <head>
@@ -14,17 +13,17 @@
 
             edi.setConfig({
                 mascote: 'mascote',
-                titulo: 'Arraste as frases para as colunas corretas, observando os exemplos de ironia usados na fala e na literatura.'
+                titulo: 'Arraste as frases para as colunas corretas, observando os exemplos <br> de ironia usados na fala e na literatura.'
             });
 
             var arrArrasta = [
                 {arrasta: 'Você parece realmente um santinho digno do altar.', dataCorreta: '0', dataId: '1'},
                 {arrasta: '"... Marcela amou-me durante quinze meses e onze contos de réis..." (M. de Assis).', dataCorreta: '1', dataId: '2'},
                 {arrasta: 'Seu café está ótimo: fraco, frio e sem açúcar.', dataCorreta: '0', dataId: '3'},
-                {arrasta: '"Moça linda bem tratada, / três séculos de família, /burra como uma porta: / um amor!" (Mário de Andrade).', dataCorreta: '1', dataId: '4'},
-                {arrasta: '"A excelente dona Inácia era mestra na arte de judiar crianças." (Monteiro Lobato).', dataCorreta: '1', dataId: '5'},
+                {arrasta: '"Moça linda bem tratada, / três séculos de família, /burra como uma porta: / um amor!" (Mário de Andrade).', dataCorreta: '1', dataId: '4'},                
                 {arrasta: 'Não é encantador o trânsito de São Paulo?', dataCorreta: '0', dataId: '6'},
-                {arrasta: 'Muito competente aquele candidato! Construiu viadutos que ligam nenhum lugar a lugar nenhum.', dataCorreta: '0', dataId: '7'}
+                {arrasta: 'Muito competente aquele candidato! Construiu viadutos que ligam nenhum lugar a lugar nenhum.', dataCorreta: '0', dataId: '7'},
+                {arrasta: '"A excelente dona Inácia era mestra na arte de judiar crianças." (Monteiro Lobato).', dataCorreta: '1', dataId: '5'}
             ];
 
             arrArrasta.sort(function () {
@@ -62,6 +61,10 @@
                 if (correta) {
                     $('#boxArrasta').fadeOut(500);
                     $('#msfFinal').fadeIn(1500);
+                    $('.alvo').fadeOut();
+                    barraMsg('Parabéns! Você entendeu o conceito da figura de linguagem ironia e conseguiu perceber seu uso na fala cotidiana e na literatura.',
+                     {height: 80}
+                    )
                 }
             }, config);
 
@@ -85,8 +88,8 @@
         .alvo {
             position: absolute;
             top: 68px;
-            left: 647px;
-            width: 80px;
+            left: 605px;
+            width: 120px;
             height: 101px;
             padding: 30px;
             border-style: solid;
@@ -111,7 +114,7 @@
             position: absolute;
             width: 300px;
             top: 60px;
-            left: 30px;
+            left: 80px;
         }
 
         .ct p {
@@ -126,16 +129,14 @@
 
 <div id="boxArrasta" class="btn btn-default-hover"></div>
 
-<div class="alvo" data-correta="1">
-    <i class="fa fa-thumbs-o-up"></i>
-
-    <p>POSITIVAS</p>
+<div class="alvo" data-correta="0">
+    
+    <p>Exemplos de ironia na fala:</p>
 </div>
 
-<div class="alvo" style="top:230px" data-correta="0">
-    <i class="fa fa-thumbs-o-down"></i>
-
-    <p>NEGATIVAS</p>
+<div class="alvo" style="top:230px" data-correta="1">
+    
+    <p>Exemplos de ironia em Literatura:</p>
 </div>
 <div id="msfFinal">
     <div id="pos" class="ct">
@@ -146,7 +147,7 @@
         - Muito competente aquele candidato! Construiu viadutos que ligam nenhum lugar a lugar nenhum.
     </div>
 
-    <div id="neg" class="ct" style="left: 330px;">
+    <div id="neg" class="ct" style="left: 430px;">
         <p>Exemplos de ironia em Literatura:</p>
         - "... Marcela amou-me durante quinze meses e onze contos de réis..." (M. de Assis).<br><br>
         - "Moça linda bem tratada, / três séculos de família, /burra como uma porta: / um amor!" (Mário de Andrade).<br><br>

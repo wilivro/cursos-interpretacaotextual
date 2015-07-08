@@ -1,0 +1,90 @@
+<!doctype html>
+<html lang="pt-br">
+<head>
+    <title>Lição 01 Peça 12</title> <!-- rev_m001 -->
+    <meta charset="utf-8">
+    <script src="../wilib/js/lib/require.js"></script>
+    <script src="../wilib/js/app.js"></script>
+    <link rel="stylesheet" href="../wilib/css/font-awesome.css">
+    <link rel="stylesheet" href="../wilib/css/estilo.css">
+
+    <script>
+        require(['../wilib/js/lib/revela'], function (edi) {
+
+            edi.setConfig({
+                icone: "exclamacao",
+                titulo: "Clique no botão e veja outro exemplo de ironia.",
+                mascote: 'mascote'
+            });
+
+            edi.revela('btn-rev', 'box-rev', function (a) {
+                a.css('opacity', 1).off();
+            }, function() {
+                $('#msg').fadeIn();
+            }, {
+                ocultarRev: true,
+                tempoBloqueio: 10000,
+                bloqueiaClickFinal: true,
+                ordenado: true
+            });
+
+
+        });
+    </script>
+
+    <style>
+        .box-rev {
+            width: 200px;
+            height: 250px;
+            position: absolute;
+            top: 75px;
+            left: 275px;
+            background-image: url(../img/licao05/42_2.png);
+            background-size: 100% 100%;
+            border-radius: 10px;
+            border: 7px solid #fff;
+            box-shadow: 0 0 5px rgba(0, 0, 0, 0.5);
+            z-index: 1;
+        }
+
+
+        .btn-rev {
+            position: absolute;
+            cursor: pointer;
+        }
+
+        #pers-01 {
+            background-image: url(../img/licao05/42_1.svg);
+            background-size: 100% 100%;
+            width: 130px;
+            height: 110px;
+            left: 320px;
+            top: 180px;
+        }
+
+         #msg {
+            position: absolute;
+            left: 30px;
+            top: 190px;
+            width: 200px;
+            color: #9c0;
+            font-style: italic;
+            text-align: center;
+            font-size: 13px;
+            display: none;
+        }
+
+    </style>
+</head>
+
+<body>
+<p class="box-rev" id="rev-01" data-revela="0"></p>
+
+<span class="btn-rev" id="pers-01" data-revela="0"></span>
+
+<div id="msg">
+    Muito bem!  Você conheceu a figura de pensamento ironia, estudaremos a seguir a última figura de pensamento, a prosopopeia. Bom estudo!
+</div>
+
+</body>
+</html>
